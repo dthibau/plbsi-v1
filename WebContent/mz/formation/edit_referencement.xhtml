@@ -8,62 +8,62 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a="http://richfaces.org/a4j">
 
-	<s:decorate template="layout/referencement.xhtml">
+	<s:decorate template="layout/referencement.xhtml" id="refDecorate">
 		<ui:define name="balises">
-			<s:decorate template="../layout/edit.xhtml">
+			<s:decorate template="../layout/edit.xhtml" id="mkeyPrimDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.motClePrimaire']}" />
 				</ui:define>
 				<h:inputText required="true" size="20"
-					value="#{formation.motClePrimaire}">
+					value="#{formation.motClePrimaire}" id="mkeyPrimInput">
 					<a:ajax event="change" render="baliseTitlePanel" execute="@this"
 						listener="#{formationManager.updateBaliseTitle}" />
 				</h:inputText>
 			</s:decorate>
 
-			<s:decorate template="../layout/edit.xhtml">
+			<s:decorate template="../layout/edit.xhtml" id="furlDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.url']}" />
 				</ui:define>
-				<h:inputText required="true" size="20" value="#{formation.url}"
+				<h:inputText required="true" size="20" value="#{formation.url}" id="furlInput"
 					validator="#{formationManager.validateUrl}" />
 			</s:decorate>
 
 			<s:decorate
 				rendered="#{sessionDataManager.managerIntervenantsManager}"
-				template="../layout/edit.xhtml">
+				template="../layout/edit.xhtml" id="bkeyDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.baliseKeyWords']}" />
 				</ui:define>
 				<h:inputTextarea required="true" value="#{formation.baliseKeyWords}"
-					cols="60" rows="3" />
+					cols="60" rows="3" id="bkeyArea"/>
 			</s:decorate>
 
-			<s:decorate template="../layout/edit.xhtml">
+			<s:decorate template="../layout/edit.xhtml" id="adDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.campagneAdWords']}" />
 				</ui:define>
 				<h:inputTextarea value="#{formation.campagneAdWords}" cols="60"
-					rows="3" />
+					rows="3" id="adArea"/>
 			</s:decorate>
 
 			<s:decorate
 				rendered="#{sessionDataManager.managerIntervenantsManager}"
-				template="../layout/edit.xhtml">
+				template="../layout/edit.xhtml" id="bdescDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.baliseDescription']}" />
 				</ui:define>
 				<h:inputTextarea value="#{formation.baliseDescription}" cols="60"
-					rows="3" />
+					rows="3" id="bdescArea"/>
 			</s:decorate>
 
 			<a:outputPanel id="baliseTitlePanel">
-				<s:decorate template="../layout/edit.xhtml">
+				<s:decorate template="../layout/edit.xhtml" id="btitDecorate">
 					<ui:define name="label">
 						<h:outputText value="#{messages['formation.baliseTitle']}" />
 					</ui:define>
 					<h:inputTextarea value="#{formation.baliseTitle}" id="baliseInput"
-						cols="60" rows="3" />
+						cols="60" rows="3"/>
 				</s:decorate>
 			</a:outputPanel>
 

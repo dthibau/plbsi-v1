@@ -8,7 +8,7 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
 
-	<s:decorate template="layout/web.xhtml">
+	<s:decorate template="layout/web.xhtml" id="webDecorate">
 
 		<ui:define name="objectifs">
  			<plb:editorObjectifs value="#{formation.objectifs}" id="objectifsEditor" height="160" urlCss="#{URL_CSS}"/> 
@@ -24,7 +24,7 @@
 			<plb:editorParticipants value="#{formation.participants}" id="participantsEditor" height="80" urlCss="#{URL_CSS}"/>			
 		</ui:define>
 		<ui:define name="libelleInformations">
-			<h:inputText value="#{formation.libelleInformation}" />
+			<h:inputText value="#{formation.libelleInformation}" id="linfInput"/>
 		</ui:define>
 		<ui:define name="informations">
 <!-- 			<plb:editor value="#{formation.infos}" id="infosEditor"  height="80" /> -->
@@ -35,17 +35,17 @@
 			<plb:editorDescription value="#{formation.description}" id="descriptionEditor" cols="80" />
 		</ui:define>
 		<ui:define name="publication">
-			<s:decorate template="../layout/edit.xhtml">
+			<s:decorate template="../layout/edit.xhtml" id="pubDecorate">
 				<ui:define name="label">#{messages['formation.nouveaute']}</ui:define>
-				<h:selectOneMenu value="#{formation.nouveaute}">
+				<h:selectOneMenu value="#{formation.nouveaute}" id="pubSelect">
 					<f:selectItem itemValue="oui" itemLabel="Oui" />
 					<f:selectItem itemValue="non" itemLabel="Non" />
 				</h:selectOneMenu>
 			</s:decorate>
-			<s:decorate template="../layout/edit.xhtml">
+			<s:decorate template="../layout/edit.xhtml" id="topDecorate">
 				<ui:define name="label">#{messages['formation.top10']}</ui:define>
 				<rich:inputNumberSpinner value="#{formation.top10}" maxValue="40"
-					inputSize="2" step="1" />
+					inputSize="2" step="1" id="topInput"/>
 			</s:decorate>
 		</ui:define>
 		<ui:define name="contenu">

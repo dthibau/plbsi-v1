@@ -9,10 +9,10 @@
 	xmlns:a="http://richfaces.org/a4j">
 
 	<rich:panel>
-		<h:form>
+		<h:form id="ff_form">
 			<a:outputPanel
 				rendered="#{sessionDataManager.managerIntervenantsManager}">
-				<span> #{messages['search.view']} : <h:selectOneMenu
+				<span> #{messages['search.view']} : <h:selectOneMenu id="v_select"
 						value="#{searchManager.currentView}">
 						<a:ajax event="change"
 							render="obsoletePanel,resultList,totalPanel,filterPanel"
@@ -70,7 +70,7 @@
 				</span>
 				<a:outputPanel id="categoriesSelect">
 				#{messages['formation.categorie']} : <h:selectOneMenu
-						value="#{searchManager.categorie}">
+						id="selectCategorie" value="#{searchManager.categorie}">
 						<a:ajax event="change"
 							render="resultList,totalPanel,messages,searchPanel"
 							execute="@this" immediate="true"
@@ -111,6 +111,7 @@
 		#{messages['keyword']} : <h:inputText id="searchString"
 					value="#{searchManager.searchString}" />
 				<a:commandButton value="Rechercher"
+					id="searchButton"
 					render="resultList,totalPanel,messages"
 					execute="@this,searchString,moreResults"
 					action="#{searchManager.search()}" />

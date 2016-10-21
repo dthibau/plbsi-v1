@@ -14,7 +14,7 @@
 	<h:commandButton value="Annuler" rendered="#{formation.idFormation == 0}" immediate="true"
 		action="/mz/search/search.xhtml" />
 
-	<a:commandButton value="Enregistrer" action="#{formationManager.save}"
+	<a:commandButton id="saveButton" value="Enregistrer" action="#{formationManager.save}"
 		render="tabsPanel" />
 
 

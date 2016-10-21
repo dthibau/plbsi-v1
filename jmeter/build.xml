@@ -23,6 +23,9 @@
 			<jvmarg value="-Xmx1024m" />
 			<jvmarg value="-Djmeter.save.saveservice.assertion_results=all"/>
 			<jvmarg value="-Djmeter.save.saveservice.output_format=xml"/>
+			<property name="SERVER" value="dev.plb.fr"/>
+			<property name="PORT" value="8081"/>
+			<property name="PASSWORD" value="AVTno1cd"/>
 		</jmeter>
 	</target>
 </project>

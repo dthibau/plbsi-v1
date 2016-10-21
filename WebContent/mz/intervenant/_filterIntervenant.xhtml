@@ -11,7 +11,7 @@
 				
 		#{messages['keyword']} : <h:inputText id="searchIntervenantString" value="#{searchIntervenantManager.searchString}" />
 				<a:commandButton value="Rechercher" render="resultList,totalPanel,messages" execute="@this,searchIntervenantString"
-					action="#{searchIntervenantManager.search()}" />
+					action="#{searchIntervenantManager.search()}" id="sButton"/>
 		&nbsp;
 		<a:commandButton value="Afficher tout"
 			render="filterPanel,resultList,totalPanel" execute="@this"

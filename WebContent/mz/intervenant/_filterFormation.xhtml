@@ -24,7 +24,7 @@
 					</h:selectOneMenu>
 				</span>
 				<a:outputPanel id="categoriesSelect">
-				#{messages['formation.categorie']} : <h:selectOneMenu
+				#{messages['formation.categorie']} : <h:selectOneMenu id="selectCategorie"
 						value="#{searchFormationManager.categorie}">
 						<a:ajax event="change" render="resultPanel,totalPanel,messages"
 							execute="@this" 
@@ -39,7 +39,7 @@
 			<a:outputPanel id="searchPanel" layout="block">
 		#{messages['keyword']} : <h:inputText id="searchFormationString"
 					value="#{searchFormationManager.searchString}" />
-				<a:commandButton value="Rechercher"
+				<a:commandButton value="Rechercher" id="sButton"
 					render="resultPanel,totalPanel,messages"
 					execute="@this,searchFormationString,moreResults"
 					action="#{searchFormationManager.search()}" />

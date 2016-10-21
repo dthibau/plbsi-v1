@@ -8,57 +8,67 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a="http://richfaces.org/a4j">
 
-		<f:facet name="header">
-			<rich:columnGroup>
-				<rich:column>
-					<h:outputText value="#{messages['historique.date']}" />
-				</rich:column>
-				<rich:column>
-					<h:outputText value="#{messages['historique.acteur']}" />
-				</rich:column>
-				<rich:column rendered="#{showFormation}">
-					<h:outputText value="#{messages['formation.libelle']}" />
-				</rich:column>
-				<rich:column>
-					<h:outputText value="#{messages['historique.event']}" />
-				</rich:column>
-			</rich:columnGroup>
-		</f:facet>
-		<rich:column>
-			<rich:collapsibleSubTableToggler for="sbtbl" />
-			<h:outputText value="#{event.date}">
-				<s:convertDateTime type="both" />
-			</h:outputText>
-		</rich:column>
-
-		<rich:column id="acteur">
-			<h:outputText rendered="#{event.account != null}" value="#{event.account.nomComplet}" />
-			<h:outputText rendered="#{event.account == null and event.intervenant != null}" value="#{event.intervenant.nomComplet}" />
-		</rich:column>
-		<rich:column id="formation" rendered="#{showFormation}">
-				<s:link rendered="#{event.formation != null}" view="/mz/formation/formation.xhtml"
-						action="#{formationManager.select}">
-						<f:param name="formationId" value="#{event.formation.idFormation}" />
-						<s:conversationPropagation type="none" />
-					<h:outputText value="#{event.formation.libelle}"/>
-				</s:link>
-				<h:outputText rendered="#{event.formation == null}" value="#{messages[event.historiqueKey]}" />
-		</rich:column>
-		<rich:column id="type">
-			<h:outputText rendered="#{messages[event.historiqueKey] != null}" value=" #{messages[event.historiqueKey]}" />
-			<h:outputText rendered="#{messages[event.historiqueKey] == null}" value="#{event.message}" />
-		</rich:column>
-		<rich:collapsibleSubTable value="#{event.messageAsArray}" var="msg"
-			id="sbtbl" expandMode="client" expanded="#{false}">
-			<rich:column colspan="#{showFormation ? '4' : '3'}" id="message">
-				<i><h:outputText escape="false" value="#{msg}" /></i><br/><br/>
+	<f:facet name="header">
+		<rich:columnGroup>
+			<rich:column>
+				<h:outputText value="#{messages['historique.date']}" />
 			</rich:column>
-			<f:facet name="footer">
-				<h:outputFormat rendered="#{event.hasDestinataires()}" value="#{messages['mail.destinataires']}" >
-					<f:param value="#{event.destinatairesAsString}"></f:param>
-				</h:outputFormat>			
-			</f:facet>
-		</rich:collapsibleSubTable>
+			<rich:column>
+				<h:outputText value="#{messages['historique.acteur']}" />
+			</rich:column>
+			<rich:column rendered="#{showFormation}">
+				<h:outputText value="#{messages['formation.libelle']}" />
+			</rich:column>
+			<rich:column>
+				<h:outputText value="#{messages['historique.event']}" />
+			</rich:column>
+		</rich:columnGroup>
+	</f:facet>
+	<rich:column id="sCol">
+		<rich:collapsibleSubTableToggler for="sbtbl" />
+		<h:outputText value="#{event.date}">
+			<s:convertDateTime type="both" />
+		</h:outputText>
+	</rich:column>
+
+	<rich:column id="acteur">
+		<h:outputText rendered="#{event.account != null}"
+			value="#{event.account.nomComplet}" />
+		<h:outputText
+			rendered="#{event.account == null and event.intervenant != null}"
+			value="#{event.intervenant.nomComplet}" />
+	</rich:column>
+	<rich:column id="formation" rendered="#{showFormation}">
+		<s:link rendered="#{event.formation != null}"
+			view="/mz/formation/formation.xhtml"
+			action="#{formationManager.select}">
+			<f:param name="formationId" value="#{event.formation.idFormation}" />
+			<s:conversationPropagation type="none" />
+			<h:outputText value="#{event.formation.libelle}" />
+		</s:link>
+		<h:outputText rendered="#{event.formation == null}"
+			value="#{messages[event.historiqueKey]}" />
+	</rich:column>
+	<rich:column id="type">
+		<h:outputText rendered="#{messages[event.historiqueKey] != null}"
+			value=" #{messages[event.historiqueKey]}" />
+		<h:outputText rendered="#{messages[event.historiqueKey] == null}"
+			value="#{event.message}" />
+	</rich:column>
+	<rich:collapsibleSubTable value="#{event.messageAsArray}" var="msg"
+		id="sbtbl" expandMode="client" expanded="#{false}">
+		<rich:column colspan="#{showFormation ? '4' : '3'}" id="message">
+			<i><h:outputText escape="false" value="#{msg}" /></i>
+			<br />
+			<br />
+		</rich:column>
+		<f:facet name="footer">
+			<h:outputFormat rendered="#{event.hasDestinataires()}"
+				value="#{messages['mail.destinataires']}">
+				<f:param value="#{event.destinatairesAsString}"></f:param>
+			</h:outputFormat>
+		</f:facet>
+	</rich:collapsibleSubTable>
 
 
 </ui:composition>

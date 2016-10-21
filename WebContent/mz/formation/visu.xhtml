@@ -15,7 +15,7 @@
 		value="#{formation.dateModification}">
 		<s:convertDateTime type="date" />
 	</h:outputText>
-	<s:decorate
+	<s:decorate id="propDecorate"
 		template="#{sessionDataManager.managerIntervenantsManager ? 'layout/properties.xhtml' : 'layout/properties_commercial.xhtml'}">
 		<ui:define name="identification">
 			<ui:include src="fields/reference.xhtml" />
@@ -323,7 +323,7 @@
 		</ui:define>
 		<ui:define name="buttons">
 
-			<a:commandButton value="Editer"
+			<a:commandButton value="Editer" id="editButton"
 				action="#{formationManager.setEditMode}"
 				render="formationPanel,referencementPanel,webPanel,sessionsPanel">
 				<f:param name="cid" value="#{conversation.id}" />

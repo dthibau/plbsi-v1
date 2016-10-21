@@ -6,7 +6,18 @@
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables pré-définies" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="SERVER" elementType="Argument">
+            <stringProp name="Argument.name">SERVER</stringProp>
+            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PORT" elementType="Argument">
+            <stringProp name="Argument.name">PORT</stringProp>
+            <stringProp name="Argument.value">8080</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
@@ -35,8 +46,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables pré-définies" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
-          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.domain">${SERVER}</stringProp>
+          <stringProp name="HTTPSampler.port">${PORT}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -147,7 +158,7 @@
                 <elementProp name="loginForm:password" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">loginForm:password</stringProp>
-                  <stringProp name="Argument.value">no1cd</stringProp>
+                  <stringProp name="Argument.value">AVTno1cd</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -236,44 +247,44 @@
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SELECT_FILIERE" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="j_idt62" elementType="HTTPArgument">
+                <elementProp name="ff_form" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">j_idt62</stringProp>
-                  <stringProp name="Argument.value">j_idt62</stringProp>
+                  <stringProp name="Argument.name">ff_form</stringProp>
+                  <stringProp name="Argument.value">ff_form</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt65" elementType="HTTPArgument">
+                <elementProp name="ff_form:v_select" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt65</stringProp>
+                  <stringProp name="Argument.name">ff_form:v_select</stringProp>
                   <stringProp name="Argument.value">0</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:selectFiliere" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectFiliere" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:selectFiliere</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectFiliere</stringProp>
                   <stringProp name="Argument.value">8</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt84" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectCategorie" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt84</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectCategorie</stringProp>
                   <stringProp name="Argument.value">org.jboss.seam.ui.NoSelectionConverter.noSelectionValue</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:selectPartenaire" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectPartenaire" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:selectPartenaire</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectPartenaire</stringProp>
                   <stringProp name="Argument.value">org.jboss.seam.ui.NoSelectionConverter.noSelectionValue</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:searchString" elementType="HTTPArgument">
+                <elementProp name="ff_form:searchString" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:searchString</stringProp>
+                  <stringProp name="Argument.name">ff_form:searchString</stringProp>
                   <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -285,9 +296,9 @@
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt100" elementType="HTTPArgument">
+                <elementProp name="ff_form:j_idt100" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt100</stringProp>
+                  <stringProp name="Argument.name">ff_form:j_idt100</stringProp>
                   <stringProp name="Argument.value">on</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -302,7 +313,7 @@
                 <elementProp name="javax.faces.source" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">javax.faces.source</stringProp>
-                  <stringProp name="Argument.value">j_idt62:selectFiliere</stringProp>
+                  <stringProp name="Argument.value">ff_form:selectFiliere</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -316,7 +327,7 @@
                 <elementProp name="javax.faces.partial.execute" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">javax.faces.partial.execute</stringProp>
-                  <stringProp name="Argument.value">j_idt62:selectFiliere @component</stringProp>
+                  <stringProp name="Argument.value">ff_form:selectFiliere @component</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -337,7 +348,7 @@
                 <elementProp name="org.richfaces.ajax.component" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">org.richfaces.ajax.component</stringProp>
-                  <stringProp name="Argument.value">j_idt62:selectFiliere</stringProp>
+                  <stringProp name="Argument.value">ff_form:selectFiliere</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -610,44 +621,44 @@
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SEARCH_STRING" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="j_idt62" elementType="HTTPArgument">
+                <elementProp name="ff_form" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">j_idt62</stringProp>
-                  <stringProp name="Argument.value">j_idt62</stringProp>
+                  <stringProp name="Argument.name">ff_form</stringProp>
+                  <stringProp name="Argument.value">ff_form</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt65" elementType="HTTPArgument">
+                <elementProp name="ff_form:v_select" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt65</stringProp>
+                  <stringProp name="Argument.name">ff_form:v_select</stringProp>
                   <stringProp name="Argument.value">0</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:selectFiliere" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectFiliere" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:selectFiliere</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectFiliere</stringProp>
                   <stringProp name="Argument.value">8</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt84" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectCategorie" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt84</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectCategorie</stringProp>
                   <stringProp name="Argument.value">org.jboss.seam.ui.NoSelectionConverter.noSelectionValue</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:selectPartenaire" elementType="HTTPArgument">
+                <elementProp name="ff_form:selectPartenaire" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:selectPartenaire</stringProp>
+                  <stringProp name="Argument.name">ff_form:selectPartenaire</stringProp>
                   <stringProp name="Argument.value">org.jboss.seam.ui.NoSelectionConverter.noSelectionValue</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:searchString" elementType="HTTPArgument">
+                <elementProp name="ff_form:searchString" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:searchString</stringProp>
+                  <stringProp name="Argument.name">ff_form:searchString</stringProp>
                   <stringProp name="Argument.value">XML</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -659,9 +670,9 @@
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
-                <elementProp name="j_idt62:j_idt100" elementType="HTTPArgument">
+                <elementProp name="ff_form:j_idt100" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">j_idt62:j_idt100</stringProp>
+                  <stringProp name="Argument.name">ff_form:j_idt100</stringProp>
                   <stringProp name="Argument.value">on</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -676,7 +687,7 @@
                 <elementProp name="javax.faces.source" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">javax.faces.source</stringProp>
-                  <stringProp name="Argument.value">j_idt62:j_idt93</stringProp>
+                  <stringProp name="Argument.value">ff_form:searchButton</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -690,7 +701,7 @@
                 <elementProp name="javax.faces.partial.execute" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">javax.faces.partial.execute</stringProp>
-                  <stringProp name="Argument.value">j_idt62:j_idt93 @component</stringProp>
+                  <stringProp name="Argument.value">ff_form:searchButton @component</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -704,14 +715,14 @@
                 <elementProp name="org.richfaces.ajax.component" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">org.richfaces.ajax.component</stringProp>
-                  <stringProp name="Argument.value">j_idt62:j_idt93</stringProp>
+                  <stringProp name="Argument.value">ff_form:searchButton</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="j_idt62:j_idt93" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">j_idt62:j_idt93</stringProp>
-                  <stringProp name="Argument.value">j_idt62:j_idt93</stringProp>
+                  <stringProp name="Argument.value">jff_form:searchButton</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -1071,17 +1082,17 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CLICK_EDIT" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="j_idt61" elementType="HTTPArgument">
+              <elementProp name="detailForm" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.name">j_idt61</stringProp>
-                <stringProp name="Argument.value">j_idt61</stringProp>
+                <stringProp name="Argument.name">detailForm</stringProp>
+                <stringProp name="Argument.value">detailForm</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:tabsPanel-value" elementType="HTTPArgument">
+              <elementProp name="detailForm:tabsPanel-value" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:tabsPanel-value</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt62</stringProp>
+                <stringProp name="Argument.name">detailForm:tabsPanel-value</stringProp>
+                <stringProp name="Argument.value">detailForm:propTab</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1099,9 +1110,9 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt928:dummyEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt928:dummyEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt928:dummyEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt928:dummyEditor</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -1110,300 +1121,6 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">cid</stringProp>
                 <stringProp name="Argument.value">${CID}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:0:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:0:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:0:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:0:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:1:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:1:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:1:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:1:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:2:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:2:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:2:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:2:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:3:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:3:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:3:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:3:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:4:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:4:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:4:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:4:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:5:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:5:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:5:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:5:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:6:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:6:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:6:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:6:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:7:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:7:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:7:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:7:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:8:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:8:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:8:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:8:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:9:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:9:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:9:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:9:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:10:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:10:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:10:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:10:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:11:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:11:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:11:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:11:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:12:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:12:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:12:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:12:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:13:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:13:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:13:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:13:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:14:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:14:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:14:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:14:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:15:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:15:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:15:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:15:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:16:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:16:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:16:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:16:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:17:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:17:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:17:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:17:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:18:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:18:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:18:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:18:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:19:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:19:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:19:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:19:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:20:sbtbl:state" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:20:sbtbl:state</stringProp>
-                <stringProp name="Argument.value">0</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-              <elementProp name="j_idt61:j_idt1192:20:sbtbl:options" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:20:sbtbl:options</stringProp>
-                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1417,7 +1134,7 @@
               <elementProp name="javax.faces.source" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">javax.faces.source</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt68:j_idt295</stringProp>
+                <stringProp name="Argument.value">detailForm:propDecorate:editButton</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1431,7 +1148,7 @@
               <elementProp name="javax.faces.partial.execute" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">javax.faces.partial.execute</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt68:j_idt295 @component</stringProp>
+                <stringProp name="Argument.value">detailForm:propDecorate:editButton @component</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1452,14 +1169,14 @@
               <elementProp name="org.richfaces.ajax.component" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">org.richfaces.ajax.component</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt68:j_idt295</stringProp>
+                <stringProp name="Argument.value">detailForm:propDecorate:editButton</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt68:j_idt295" elementType="HTTPArgument">
+              <elementProp name="detailForm:propDecorate:editButton" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt68:j_idt295</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt68:j_idt295</stringProp>
+                <stringProp name="Argument.name">detailForm:propDecorate:editButton</stringProp>
+                <stringProp name="Argument.value">detailForm:propDecorate:editButton</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1558,186 +1275,186 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SAVE_DETAIL" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="j_idt61" elementType="HTTPArgument">
+              <elementProp name="detailForm" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.name">j_idt61</stringProp>
-                <stringProp name="Argument.value">j_idt61</stringProp>
+                <stringProp name="Argument.name">detailForm</stringProp>
+                <stringProp name="Argument.value">detailForm</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:tabsPanel-value" elementType="HTTPArgument">
+              <elementProp name="detailForm:tabsPanel-value" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:tabsPanel-value</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt62</stringProp>
+                <stringProp name="Argument.name">detailForm:tabsPanel-value</stringProp>
+                <stringProp name="Argument.value">detailForm:propTab</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt303:j_idt311" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt303:j_idt311" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt303:j_idt311</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt303:j_idt311</stringProp>
                 <stringProp name="Argument.value">JXML</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt322:j_idt330" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt322:j_idt330" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt322:j_idt330</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt322:j_idt330</stringProp>
                 <stringProp name="Argument.value">Java et XML</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt341:j_idt349" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt341:j_idt349" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt341:j_idt349</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt341:j_idt349</stringProp>
                 <stringProp name="Argument.value">oui</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt362:j_idt370" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt362:j_idt370" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt362:j_idt370</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt362:j_idt370</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt381:j_idt389" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt381:j_idt389" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt381:j_idt389</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt381:j_idt389</stringProp>
                 <stringProp name="Argument.value">2</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt400:j_idt408" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt400:j_idt408" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt400:j_idt408</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt400:j_idt408</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt438:j_idt446" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt438:j_idt446" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt438:j_idt446</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt438:j_idt446</stringProp>
                 <stringProp name="Argument.value">1762</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:rangCategorieDecoration:j_idt466" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:rangCategorieDecoration:j_idt466" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:rangCategorieDecoration:j_idt466</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:rangCategorieDecoration:j_idt466</stringProp>
                 <stringProp name="Argument.value">40</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt478-value" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt478-value" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt478-value</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt478-value</stringProp>
                 <stringProp name="Argument.value">false</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt504:remarquesEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt504:remarquesEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt504:remarquesEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt504:remarquesEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	XML-02&lt;/p&gt;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt523:j_idt531" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt523:j_idt531" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt523:j_idt531</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt523:j_idt531</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:prix:j_idt556" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:prix:j_idt556" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:prix:j_idt556</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:prix:j_idt556</stringProp>
                 <stringProp name="Argument.value">1295.0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt586:j_idt590" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt586:j_idt590" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt586:j_idt590</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt586:j_idt590</stringProp>
                 <stringProp name="Argument.value">T2</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt592:j_idt600" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt592:j_idt600" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt592:j_idt600</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt592:j_idt600</stringProp>
                 <stringProp name="Argument.value">zenika</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt611:j_idt619" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt611:j_idt619" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt611:j_idt619</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt611:j_idt619</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt642:j_idt646" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt642:j_idt646" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt642:j_idt646</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt642:j_idt646</stringProp>
                 <stringProp name="Argument.value">Non</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt651:j_idt655" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt651:j_idt655" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt651:j_idt655</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt651:j_idt655</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt657:j_idt661" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt657:j_idt661" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt657:j_idt661</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt657:j_idt661</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt663:j_idt667" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt663:j_idt667" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt663:j_idt667</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt663:j_idt667</stringProp>
                 <stringProp name="Argument.value">intermédiaire</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt684:j_idt692" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt684:j_idt692" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt684:j_idt692</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt684:j_idt692</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt716:j_idt720" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt716:j_idt720" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt716:j_idt720</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt716:j_idt720</stringProp>
                 <stringProp name="Argument.value">rouge</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:formationPartenaireList:0:j_idt735" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:formationPartenaireList:0:j_idt735" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:formationPartenaireList:0:j_idt735</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:formationPartenaireList:0:j_idt735</stringProp>
                 <stringProp name="Argument.value">XM-JAV</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:formationPartenaireList:0:j_idt738" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:formationPartenaireList:0:j_idt738" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:formationPartenaireList:0:j_idt738</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:formationPartenaireList:0:j_idt738</stringProp>
                 <stringProp name="Argument.value">950.0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:formationPartenaireList:0:j_idt741" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:formationPartenaireList:0:j_idt741" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:formationPartenaireList:0:j_idt741</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:formationPartenaireList:0:j_idt741</stringProp>
                 <stringProp name="Argument.value">http://www.oxiane.com/formation/xml-java/</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -1749,37 +1466,37 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt808:j_idt816" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt808:j_idt816" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt808:j_idt816</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt808:j_idt816</stringProp>
                 <stringProp name="Argument.value">Java XML</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt827:j_idt835" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt827:j_idt835" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt827:j_idt835</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt827:j_idt835</stringProp>
                 <stringProp name="Argument.value">formation-java-xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt846:j_idt854" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt846:j_idt854" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt846:j_idt854</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt846:j_idt854</stringProp>
                 <stringProp name="Argument.value">Formation java xml, Formation java, Formation informatique, Formation Paris</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt865:j_idt873" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt865:j_idt873" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt865:j_idt873</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt865:j_idt873</stringProp>
                 <stringProp name="Argument.value">FORM Développement / XML</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt884:j_idt892" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt884:j_idt892" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt884:j_idt892</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt884:j_idt892</stringProp>
                 <stringProp name="Argument.value">Cette formation Java XML vous permettra de:
 - Connaître les principales API Java permettant de manipuler du XML 
 - Savoir naviguer, modifier, transformer un document XML en utilisant SAX ou DOM 
@@ -1789,9 +1506,9 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt806:j_idt903:baliseInput" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt806:j_idt903:baliseInput" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt806:j_idt903:baliseInput</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt806:j_idt903:baliseInput</stringProp>
                 <stringProp name="Argument.value">Formation  Java et XML | PLB</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -1803,9 +1520,9 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:objectifsEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:objectifsEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:objectifsEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:objectifsEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	XML peut s&amp;#39;adapter &amp;agrave; tout contexte et besoin (g&amp;eacute;rer des flux RSS, effectuer des appels entre syst&amp;egrave;mes distants, configurer un syst&amp;egrave;me applicatif...). Malgr&amp;eacute; son omnipr&amp;eacute;sence, XML est souvent source de mises en oeuvre inappropri&amp;eacute;es et co&amp;ucirc;teuses. Derri&amp;egrave;re la simplicit&amp;eacute; relative de XML se cache une syntaxe extr&amp;ecirc;mement riche et puissante ainsi qu&amp;#39;un ensemble de technologies plus difficiles &amp;agrave; appr&amp;eacute;hender. Nous utiliserons le langage Java dont la puissance des API offre des possibilit&amp;eacute;s vari&amp;eacute;es pour manipuler, analyser, valier et transformer le XML.&lt;br /&gt;
 	Cette formation Java XML vous permettra de:&lt;br /&gt;
@@ -1817,71 +1534,71 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:prerequisEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:prerequisEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:prerequisEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:prerequisEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	Notions de Java&lt;/p&gt;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:participantsEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:participantsEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:participantsEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:participantsEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	Cette formation s&amp;#39;adresse aux architectes, d&amp;eacute;veloppeurs, chefs de projet&lt;/p&gt;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:tpEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:tpEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:tpEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:tpEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	40% Th&amp;eacute;orie 60% Pratique&lt;/p&gt;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:j_idt992" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:j_idt992" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:j_idt992</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:j_idt992</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:infosEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:infosEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:infosEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:infosEditor</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:descriptionEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:descriptionEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:descriptionEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:descriptionEditor</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:j_idt1000:j_idt1008" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:j_idt1000:j_idt1008" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:j_idt1000:j_idt1008</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:j_idt1000:j_idt1008</stringProp>
                 <stringProp name="Argument.value">non</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:j_idt1021:j_idt1029" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:j_idt1021:j_idt1029" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:j_idt1021:j_idt1029</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:j_idt1021:j_idt1029</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt982:contenuEditor" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt982:contenuEditor" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt982:contenuEditor</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt982:contenuEditor</stringProp>
                 <stringProp name="Argument.value">&lt;p&gt;
 	&amp;nbsp;&lt;/p&gt;
 &lt;h3 class=&quot;titre&quot;&gt;
@@ -1986,296 +1703,296 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:0:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:0:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:0:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:0:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:0:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:0:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:0:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:0:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:1:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:1:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:1:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:1:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:1:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:1:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:1:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:1:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:2:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:2:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:2:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:2:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:2:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:2:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:2:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:2:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:3:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:3:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:3:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:3:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:3:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:3:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:3:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:3:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:4:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:4:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:4:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:4:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:4:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:4:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:4:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:4:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:5:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:5:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:5:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:5:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:5:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:5:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:5:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:5:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:6:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:6:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:6:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:6:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:6:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:6:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:6:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:6:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:7:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:7:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:7:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:7:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:7:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:7:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:7:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:7:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:8:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:8:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:8:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:8:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:8:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:8:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:8:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:8:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:9:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:9:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:9:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:9:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:9:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:9:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:9:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:9:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:10:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:10:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:10:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:10:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:10:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:10:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:10:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:10:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:11:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:11:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:11:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:11:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:11:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:11:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:11:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:11:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:12:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:12:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:12:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:12:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:12:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:12:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:12:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:12:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:13:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:13:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:13:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:13:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:13:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:13:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:13:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:13:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:14:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:14:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:14:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:14:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:14:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:14:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:14:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:14:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:15:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:15:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:15:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:15:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:15:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:15:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:15:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:15:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:16:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:16:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:16:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:16:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:16:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:16:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:16:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:16:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:17:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:17:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:17:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:17:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:17:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:17:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:17:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:17:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:18:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:18:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:18:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:18:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:18:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:18:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:18:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:18:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:19:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:19:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:19:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:19:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:19:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:19:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:19:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:19:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:20:sbtbl:state" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:20:sbtbl:state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:20:sbtbl:state</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:20:sbtbl:state</stringProp>
                 <stringProp name="Argument.value">0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt1192:20:sbtbl:options" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt1192:20:sbtbl:options" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt1192:20:sbtbl:options</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt1192:20:sbtbl:options</stringProp>
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -2290,7 +2007,7 @@
               <elementProp name="javax.faces.source" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">javax.faces.source</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt301:j_idt748</stringProp>
+                <stringProp name="Argument.value">detailForm:j_idt301:j_idt748</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2304,7 +2021,7 @@
               <elementProp name="javax.faces.partial.execute" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">javax.faces.partial.execute</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt301:j_idt748 @component</stringProp>
+                <stringProp name="Argument.value">detailForm:j_idt301:j_idt748 @component</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2318,14 +2035,14 @@
               <elementProp name="org.richfaces.ajax.component" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">org.richfaces.ajax.component</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt301:j_idt748</stringProp>
+                <stringProp name="Argument.value">detailForm:j_idt301:j_idt748</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
-              <elementProp name="j_idt61:j_idt301:j_idt748" elementType="HTTPArgument">
+              <elementProp name="detailForm:j_idt301:j_idt748" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.name">j_idt61:j_idt301:j_idt748</stringProp>
-                <stringProp name="Argument.value">j_idt61:j_idt301:j_idt748</stringProp>
+                <stringProp name="Argument.name">detailForm:j_idt301:j_idt748</stringProp>
+                <stringProp name="Argument.value">detailForm:j_idt301:j_idt748</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>

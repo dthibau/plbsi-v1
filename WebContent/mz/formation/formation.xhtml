@@ -10,9 +10,9 @@
 
 
 	<ui:define name="body">
-		<h:form>
+		<h:form id="detailForm">
 			<rich:tabPanel switchType="client" id="tabsPanel">
-				<rich:tab header="Propriétés">
+				<rich:tab header="Propriétés" id="propTab">
 					<a:outputPanel id="formationPanel">
 						<a:outputPanel
 							rendered="#{formationManager.visuMode or formationManager.editSessionMode}">
@@ -40,7 +40,7 @@
 				</rich:tab>
 				<rich:tab header="Web">
 					<a:outputPanel id="webPanel">
-						<a:outputPanel
+						<a:outputPanel id="webVisuPanel"
 							rendered="#{formationManager.visuMode or formationManager.editSessionMode or !sessionDataManager.managerIntervenantsManager}">
 							<ui:include src="visu_web.xhtml" />
 						</a:outputPanel>

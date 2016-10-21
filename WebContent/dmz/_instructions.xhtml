@@ -1,0 +1,74 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:popupPanel id="instructionsPopup" modal="true" autosized="true"
+		width="750" resizeable="false">
+		<f:facet name="header">
+			<h2>
+				<h:outputText value="Instructions" />
+			</h2>
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('instructionsPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+
+		<table width="100%">
+			<tr>
+				<td width="100%" valign="top">
+					<div class="instructions">
+						Cette page est dédiée à l’envoi ou la mise à jour de vos
+						compétences.
+						<h2>COMMENT REMPLIR LA FICHE</h2>
+						<ul>
+							<li>Un premier écran d’accueil vous invite à renseigner les
+								informations administratives vous concernant.<br /> Vous pouvez
+								également déposer votre CV sur cet écran (au format .doc de
+								préférence).
+							</li>
+							<li>Un second écran accessible en cliquant sur « suivant »
+								vous permet de renseigner vos compétences<br /> (une fois votre
+								grille créé vous aurez un onglet supplémentaire « grille »
+								accessible depuis l’écran d’accueil).
+							</li>
+							<li>Cliquer sur l’intitulé d’une filière afin de faire
+								apparaître la liste des formations correspondantes.</li>
+							<li>Le chiffre entre parenthèses correspond au nombre de
+								formation que vous animez dans la filière</li>
+							<li>Lorsque vous avez rempli toute la grille, cliquer sur le
+								bouton "Terminer" pour valider votre saisie</li>
+							<li>Lors de votre prochaine visite vous retrouverez vos
+								choix ainsi que les nouvelles formations mises en évidence</li>
+						</ul>
+						<h2>RECOMMANDATIONS AVANT DE REMPLIR LA FICHE</h2>
+						<ul>
+							<li>Merci de ne renseigner par oui uniquement les cours où
+								vous êtes directement opérationnel, si la formation nécessite un
+								peu de préparation ou de rafraîchissement, signalez le dans la
+								zone remarques en précisant la durée nécessaire.</li>
+							<li>Enfin toujours pour les cours où vous estimez être apte,
+								penser à bien regarder le plan de cours (les codes cours sont
+								cliquables) afin de valider qu’il n’y a pas de zone d’ombre.</li>
+						</ul>
+					</div>
+				</td>
+
+			</tr>
+			<tr>
+				<td align="center"><h:form>
+						<a:commandButton value="Accèder à la grille"
+							onclick="#{rich:component('instructionsPopup')}.hide(); return false;" />
+					</h:form></td>
+			</tr>
+		</table>
+	</rich:popupPanel>
+</ui:composition>

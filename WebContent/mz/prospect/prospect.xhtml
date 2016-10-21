@@ -1,0 +1,258 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" 
+	template="../layout/template.xhtml"
+    xmlns:p="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="body">
+		<h:form>		
+			<rich:panel id="prospectPanel" header="Création d'une fiche contact prospect">
+				<rich:panel id="informationFicheContact" header="Informations Fiche Contact : ">
+						<table border="0" cellspacing="15">
+							<tr>
+								<td>
+									<s:decorate template="../layout/edit.xhtml" style="width:500px">
+										<ui:define name="label">#{messages['prospect.typeContact']}</ui:define>
+										<h:selectOneMenu value="#{prospectManager.prospect.type}" style="width:160px; height:20px;" required="true">
+											<f:selectItem itemValue="" itemLabel="N/C"/>
+											<f:selectItems value="#{typesContactSi}" var="type" itemValue="#{type.libelle.toUpperCase()}" itemLabel="#{type.libelle}"/>
+										</h:selectOneMenu>
+								   	</s:decorate>
+								</td>
+							</tr>
+					         <tr>
+					           <td>
+					           		<s:decorate template="../layout/edit.xhtml" style="width:500px">
+										<ui:define name="label">#{messages['prospect.nomEntreprise']}</ui:define>
+											<h:inputText value="#{prospectManager.prospect.societe}" style="width:160px; height:20px;" required="true"/>
+								   	</s:decorate>
+							   </td>
+					         </tr>
+					         <tr>
+					           <td>
+					           		<s:decorate template="../layout/edit.xhtml" style="width:500px">
+										<ui:define name="label">#{messages['prospect.rempliePar']}</ui:define>
+											<h:inputText value="#{prospectManager.prospectDetail.rempliPar}" style="width:160px; height:20px;" required="true"/>
+									</s:decorate>
+							   </td>
+							   <td>
+					           	 	<s:decorate template="../layout/edit.xhtml" style="width:500px">
+										<ui:define name="label">#{messages['prospect.attribueA']}</ui:define>
+											<h:selectOneMenu value="#{prospectManager.prospectDetail.commercial}" style="width:160px; height:20px;">
+						         				<a:ajax event="change" execute="@this" render="statutPanel" />
+													<f:selectItem itemValue="" itemLabel="N/C"/>
+													<f:selectItems value="#{prospectManager.listeCommerciale}" var="commerciale" itemValue="#{commerciale.nomComplet}" itemLabel="#{commerciale.nomComplet}"/>
+									 		</h:selectOneMenu>
+									 </s:decorate>
+								 </td>
+								 <td>
+					           		<s:decorate template="../layout/edit.xhtml" style="width:500px">
+										<ui:define name="label">#{messages['prospect.date']}</ui:define>
+											<h:inputText value="#{prospectManager.prospect.dateCreation}" style="width:160px; height:20px;" required="true"/>
+									</s:decorate>
+							   	</td>
+					         </tr>
+						</table>
+					</rich:panel>
+					<rich:panel id="InformationClient" header="Informations sur le client et la demande : ">
+							<table border="0" cellspacing="15">			
+							 <tr>
+							 	<td>
+							 		<s:decorate template="../layout/edit.xhtml" style="width:500px;">
+											<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
+												<h:selectOneMenu value="#{prospectManager.prospectDetail.natureClient}" style="width:160px; height:20px;" required="true">
+							  						<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							  						<f:selectItem itemValue="Particulier" itemLabel="Particulier" />
+							  						<f:selectItem itemValue="Etranger" itemLabel="Etranger" />
+							  						<f:selectItem itemValue="Ste France" itemLabel="Ste France" />
+												</h:selectOneMenu>
+									</s:decorate>
+							 	</td>
+							 	<td>
+							 		<s:decorate template="../layout/edit.xhtml" style="width:500px;">
+											<ui:define name="label">#{messages['prospect.lieuEntreprise']}</ui:define>
+												<h:selectOneMenu value="#{prospectManager.prospectDetail.lieuEntreprise}" style="width:160px; height:20px;">
+							  						<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							  						<f:selectItem itemValue="IDF" itemLabel="IDF" />
+							  						<f:selectItem itemValue="Province" itemLabel="Province" />
+												</h:selectOneMenu>
+									</s:decorate>
+							 	</td>
+							 </tr>
+					         <tr>
+					         	<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.nomContact']}</ui:define>
+												<h:inputText value="#{prospectManager.prospect.nom}" style="width:160px; height:20px;" required="true"/>
+									</s:decorate>
+								</td>
+								<td>
+									<s:decorate template="../layout/edit.xhtml" style="width:500px">
+												<ui:define name="label">#{messages['prospect.sexe']}</ui:define>
+													<h:selectOneMenu value="#{prospectManager.prospectDetail.sexe}" style="width:160px; height:20px;" required="true">
+													   	<f:selectItem itemValue="" itemLabel="-- Choisir --"/>
+													   	<f:selectItem itemValue="1" itemLabel="Homme"/>
+													   	<f:selectItem itemValue="0" itemLabel="Femme"/>
+													</h:selectOneMenu>
+									</s:decorate>
+								</td>
+					         </tr>
+					         <tr>
+					           <td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.prenom']}</ui:define>
+												<h:inputText value="#{prospectManager.prospect.prenom}" style="width:160px; height:20px;"/>
+									</s:decorate>
+								</td>
+								<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.fonction']}</ui:define>
+												<h:inputText value="#{prospectManager.prospectDetail.fonction}" style="width:160px; height:20px;"/>
+									</s:decorate>
+								</td>
+								<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.telephone']}</ui:define>
+												<h:inputText value="#{prospectManager.prospect.tel}" style="width:160px; height:20px;" required="true"/>
+									</s:decorate>
+								</td>
+					         </tr>
+					         <tr>
+					           <td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.mail']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospect.email}" style="width:160px; height:20px;"/>
+						           </s:decorate>
+					           </td>
+					         </tr>
+					         <tr>
+					         	<td>
+									<s:decorate template="../layout/edit.xhtml" style="width:500px">
+												<ui:define name="label">#{messages['prospect.typeFormation']}</ui:define>
+													<h:selectOneMenu value="#{prospectManager.prospectDetail.typeFormation}" style="width:160px; height:20px;" required="true">
+														<a:ajax event="change" render="afficheLieu" listener="#{prospectManager.estIntra()}"/>
+															<f:selectItem itemValue="" itemLabel="-- Choisir --"/>
+														   	<f:selectItem itemValue="INTER" itemLabel="INTER"/>
+														   	<f:selectItem itemValue="INTRA" itemLabel="INTRA"/>
+													</h:selectOneMenu>
+									</s:decorate>
+								</td>
+								<td><h:panelGrid id="afficheLieu" columns="2">
+										<h:panelGrid columns="1">
+											<h:graphicImage id="fleche" value="/img/fleche.png" width="45px" height="35px" rendered="#{prospectManager.intra}"/>
+										</h:panelGrid>
+										<h:panelGrid columns="1">	
+											<s:decorate template="../layout/edit.xhtml" style="width:400px" rendered="#{prospectManager.intra}">		
+												<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
+												<h:selectOneMenu value="#{prospectManager.prospectDetail.lieu}" style="width:160px; height:20px;">
+													<f:selectItem itemValue="" itemLabel="-- Choisir --"/>
+												   	<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB"/>
+												   	<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+												</h:selectOneMenu>
+											</s:decorate>
+										</h:panelGrid>
+									</h:panelGrid>
+								</td>
+					        </tr>
+					        <tr>
+					        	<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.participant']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.nb_participants}" style="width:160px; height:20px;" required="true"/>
+						           </s:decorate>
+					            </td>
+					         	<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.dateSouhait']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.date_souhaite}" style="width:160px; height:20px;"/>
+						           </s:decorate>
+					            </td>
+					         </tr>
+					         <tr>
+					         	<td>
+					         		<a:outputPanel id="ref">
+							           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.reference']}</ui:define>
+					           				<h:selectOneMenu value="#{prospectManager.prospect.reference}" style="width:160px; height:20px;">
+					           					<a:ajax event="change" render="ref" listener="#{prospectManager.findPrix}"/>
+						         					<f:selectItem itemValue="" itemLabel="Choissisez la référence"/>
+													<f:selectItems value="#{formationsActives}" var="formation" itemValue="#{formation.reference}" itemLabel="#{formation.reference}"/>
+										 	</h:selectOneMenu>
+										 	&nbsp;&nbsp;
+										 	<h:outputText value="Prix : #{prospectManager.prix}" style="color:green;"/>
+							           </s:decorate>
+							        </a:outputPanel>
+					           	</td>
+					           	<td>
+					           		<s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.referenceBis']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.referenceBis}" style="width:160px; height:20px;"/>
+						           </s:decorate>
+					           	</td>
+					         </tr>
+					         <tr>
+					         	<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.concurence']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.concurence}" style="width:160px; height:20px;"/>
+						           </s:decorate>
+					           </td>
+					         </tr>
+					      </table>
+					  </rich:panel>
+					  <rich:panel id="informationNote" header=" Notes complémentaires : ">
+							<table border="0" cellspacing="15">
+					         <tr>
+					         	<td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.effectifN']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.effectifEntreprise}" style="width:100px; height:20px;"/>
+						           </s:decorate>
+					           </td>
+					           <td>
+						           <s:decorate template="../layout/edit.xhtml" style="width:500px">
+											<ui:define name="label">#{messages['prospect.effectifI']}</ui:define>
+						           				<h:inputText value="#{prospectManager.prospectDetail.effectifInfo}" style="width:100px; height:20px;"/>
+						           </s:decorate>
+					           </td>
+					         </tr> 
+					       </table>
+					       <table>
+					       <tr>
+					       	<td>
+				         	   <s:decorate template="../layout/edit.xhtml">
+										<ui:define name="label">#{messages['prospect.remarques']}</ui:define>
+					           				&nbsp;&nbsp;&nbsp;<h:inputTextarea cols="200" rows="2" value="#{prospectManager.prospect.commentaire}">
+					           									<rich:placeholder value="Renseignez ici une remarque formulé par le client."/>
+					           										<a4j:ajax/>
+					           								  </h:inputTextarea>
+					           </s:decorate>
+					         </td>
+					       </tr>
+					       <tr>
+					       	<td>
+				         	   <s:decorate template="../layout/edit.xhtml">
+										<ui:define name="label">#{messages['prospect.consigne']}</ui:define>
+					           				&nbsp;&nbsp;&nbsp;<h:inputTextarea cols="200" rows="2" value="#{prospectManager.prospect.consigne }">
+					           										<rich:placeholder value="Renseignez ici une remarque qui pourra éventuellement aider au suivie de ce propsect."/>
+					           										<a4j:ajax/>
+					           								  </h:inputTextarea>
+					           </s:decorate>
+					        </td>
+					       </tr>
+				           </table>
+					 </rich:panel>
+					 <br />
+					 <center><h:commandButton type="submit" value="Enregistrer Fiche contact prospect" action="#{prospectManager.saveProspect}" style="width:200px; height:40px;"/></center>
+			</rich:panel>		
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

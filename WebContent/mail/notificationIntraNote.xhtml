@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:m="http://jboss.org/schema/seam/mail"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	template="mailLayout.xhtml">
+	
+	<ui:define name="MailSubject">
+		<h:outputText value="Plbsi Suivi des Intra"/>
+	</ui:define>
+	
+	<ui:define name="MailStyle">
+		<ui:include src="#{event.account.commercial ? '/css/mail-css_commercial.xhtml' : '/css/mail-css.xhtml'}" />
+	</ui:define>
+
+	<ui:define name="MailTitle">
+		<h:outputText value="Ajouts de note sur l'Intra : #{intra.idInforamtionIntra}"/>
+	</ui:define>
+
+	<ui:define name="MailContent">
+		<h:outputText  value="Une note a été ajoutée à la demande d'intra n° #{intra.idInforamtionIntra}." />
+		<br />
+		<br />
+		Récapitulatif de la demande d'intra :
+		<br />
+		Nom de la société : 
+		<h:outputText  value=" #{intra.prospect.societe}"/>
+		<br />
+		Numéro Intra : 
+		<h:outputText  value=" #{intra.idInforamtionIntra}"/>
+		<br />
+		Statut de l'intra : 
+		<h:outputText  value=" #{intra.statutIntra}"/>
+		<br />
+		<br />
+		Note(s) :<br /> 
+		<b><h:outputText  value=" #{event.message}"/></b>
+		<br />
+		<br />
+		<h:outputFormat escape="false"
+			value="#{messages['mail.signature']}">
+			<f:param value="#{event.account.getNomComplet()}" />
+			<f:param value="#{event.date}" />
+		</h:outputFormat>
+		<br />
+		<br />
+
+		<ui:include src="_connect.xhtml" />
+		<br />
+		<br />
+		<h:outputText value="Merci d'avance,"/>
+		<br />
+		<br />
+		<h:outputText value="Cordialement,"/>
+	</ui:define>
+
+	<ui:define name="MailContentAlternative">
+		
+
+	</ui:define>
+</ui:composition>

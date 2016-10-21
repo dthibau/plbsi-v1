@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:m="http://jboss.org/schema/seam/mail"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	template="mailLayout.xhtml">
+
+	<ui:define name="MailSubject">
+		<h:outputText value=" #{messages[event.subject]}" />
+	</ui:define>
+
+
+	<ui:define name="MailStyle">
+		<ui:include src="/css/mail-css.xhtml" />
+	</ui:define>
+
+	<ui:define name="MailTitle">
+		<span class="headLogoSujet">Notification de PLB Consultant</span>
+	</ui:define>
+
+	<ui:define name="MailContent">
+		<h:outputText escape="false" value="#{event.messageAsHTML}"/>
+		<br />
+		<br />
+
+
+		<a:outputPanel rendered="#{event.includeUrl}">
+			<ui:include src="_grilleUrl.xhtml" />
+		</a:outputPanel>
+		<br />
+		<br />		
+		
+	</ui:define>
+
+	<ui:define name="MailContentAlternative">
+		
+
+	</ui:define>
+
+</ui:composition>

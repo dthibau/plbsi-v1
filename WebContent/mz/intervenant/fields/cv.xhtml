@@ -1,0 +1,23 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<s:decorate template="../../layout/edit.xhtml">
+		<ui:define name="label">#{messages['intervenant.cv']}</ui:define>
+		<rich:fileUpload fileUploadListener="#{grilleManager.listener}" id="upload" acceptedTypes="doc, pdf, odt,docx"
+                ontyperejected="alert('Format PDF, Word et LibreOffice acceptés');" maxFilesQuantity="1" listHeight="50px">
+                <a:ajax event="uploadcomplete" execute="@none" render="info" />
+            </rich:fileUpload>
+            <h:panelGroup id="info" layout="block">
+            	<h:commandLink action="#{fichierManager.download(intervenant.cv.id)}" value="#{intervenant.cv.name}" target="_blank" />
+            </h:panelGroup>
+            <br/><p style="font-size:10px;font-style:italic">1) Cliquez sur Add ...<br/>
+2) Puis après sélection du fichier cliquez sur Upload ...</p>
+	</s:decorate>
+</ui:composition>

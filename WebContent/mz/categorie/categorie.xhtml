@@ -1,0 +1,162 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j"
+	template="../layout/template.xhtml">
+
+
+	<ui:define name="body">
+		<h:form>
+			<rich:tabPanel switchType="client" id="fieldsPanel">
+				<rich:tab header="Propriétés">
+					<a:outputPanel id="propertyPanel">
+						<s:decorate template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['categorie.libelle']}</ui:define>
+							<h:inputText required="true" value="#{categorie.libelle}">
+								<a:ajax event="change" execute="@this" render="metaPanel"
+									listener="#{categorieManager.updateMeta}" />
+							</h:inputText>
+						</s:decorate>
+						<s:decorate template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['categorie.filiere']}</ui:define>
+							<h:selectOneMenu required="true" value="#{categorie.filiere}">
+								<s:selectItems value="#{filieres}" var="_filiere"
+									label="#{_filiere.libelle}"
+									noSelectionLabel="Sélectionner une filière" />
+								<s:convertEntity />
+								<a:ajax event="change" execute="@this" render="autrePanel,associationsPanel,messages"
+									listener="#{categorieManager.updateAutresCategoiresFiliere}" />
+							</h:selectOneMenu>
+						</s:decorate>
+						<s:decorate template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['categorie.rang']}</ui:define>
+							<h:inputText required="true" value="#{categorie.rang}"></h:inputText>
+						</s:decorate>
+						<div>
+							<rich:collapsiblePanel expanded="#{false}" id="autrePanel"
+								header="Voir les autres catégories de la filière"
+								switchType="client">
+								<rich:dataTable
+									value="#{categorieManager.autresCategoriesFiliere}"
+									var="_categorie">
+									<rich:column>
+										<f:facet name="header">#{messages['categorie.libelle']}</f:facet>
+
+										<h:outputText value="#{_categorie.libelle}" />
+									</rich:column>
+									<rich:column>
+										<f:facet name="header">#{messages['categorie.rang']}</f:facet>
+										<h:outputText value="#{_categorie.rang}" />
+									</rich:column>
+								</rich:dataTable>
+							</rich:collapsiblePanel>
+
+						</div>
+						<s:decorate template="../layout/edit.xhtml"
+							id="descriptionDecorate">
+							<ui:define name="label">#{messages['categorie.description']}</ui:define>
+							<plb:editor value="#{categorie.description}" id="categorieEditor"
+								height="240" />
+						</s:decorate>
+						<s:decorate template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['categorie.url']}</ui:define>
+							<h:inputText required="true" value="#{categorie.url}"></h:inputText>
+						</s:decorate>
+						<a:outputPanel id="metaPanel">
+							<s:decorate template="../layout/edit.xhtml">
+								<ui:define name="label">#{messages['categorie.metaTitre']}</ui:define>
+								<h:inputTextarea required="true"
+									value="#{categorie.baliseTitle}" cols="80"></h:inputTextarea>
+							</s:decorate>
+							<s:decorate template="../layout/edit.xhtml">
+								<ui:define name="label">#{messages['categorie.metaDescription']}</ui:define>
+								<h:inputTextarea required="true"
+									value="#{categorie.baliseDescription}" cols="80"></h:inputTextarea>
+							</s:decorate>
+						</a:outputPanel>
+						<s:decorate template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['categorie.metaKeywords']}</ui:define>
+							<h:inputTextarea required="true"
+								value="#{categorie.baliseKeywords}" cols="80"></h:inputTextarea>
+						</s:decorate>
+
+					</a:outputPanel>
+
+				</rich:tab>
+				<rich:tab header="Associations">
+				<a:outputPanel id="associationsPanel">
+					<table cellspacing="40">
+						<tr>
+							<td><s:decorate template="../layout/edit.xhtml"
+									id="connexesDecorate">
+									<ui:define name="label">#{messages['categorie.connexes']}</ui:define>
+									<rich:pickList value="#{categorieManager.selectedCategories}"
+										sourceCaption="#{messages['categories']}"
+										targetCaption="#{messages['categorie.connexes']}"
+										listWidth="200px" listHeight="450px" orderable="true">
+										<f:selectItems value="#{categoriesAsString}" var="categorie"
+											itemValue="#{categorie}" itemLabel="#{categorie}" />
+
+									</rich:pickList>
+								</s:decorate></td>
+							<td valign="top"><rich:dataTable value="#{formations}"
+									var="_formation">
+									<rich:column>
+										<f:facet name="header">
+											<h:outputText value="#{messages['categorie.formations']}" />
+										</f:facet>
+										<h:outputText value="#{_formation.reference}" /> / 
+										
+										<s:link view="/mz/formation/formation.xhtml"
+											action="#{formationManager.select}">
+											<f:param name="formationId" value="#{_formation.idFormation}" />
+											<s:conversationPropagation type="none" />
+											#{_formation.libelle}
+										</s:link>
+									</rich:column>
+								</rich:dataTable></td>
+								<td valign="top"><rich:dataTable value="#{referents}"
+									var="_categorie">
+									<rich:column>
+										<f:facet name="header">
+											<h:outputText value="#{messages['categorie.referents']}" />
+										</f:facet> 
+										
+										<s:link view="/mz/categorie/categorie.xhtml"
+											action="#{categorieManager.select}">
+											<f:param name="categorieId" value="#{_categorie.id}" />
+											<s:conversationPropagation type="none" />
+											#{_categorie.libelle}
+										</s:link>
+									</rich:column>
+								</rich:dataTable></td>
+						</tr>
+
+						
+					</table>
+
+</a:outputPanel>
+				</rich:tab>
+			</rich:tabPanel>
+			<br />
+			<h:commandButton value="Annuler" immediate="true"
+				action="/mz/categorie/categories.xhtml" />
+
+			<a:commandButton value="Enregistrer"
+				action="#{categorieManager.save}" render="fieldsPanel" />
+			<a:commandButton value="Supprimer"
+				action="#{categorieManager.deleteCategorie}"
+				disabled="#{!categorieManager.deletable}" />
+		</h:form>
+	</ui:define>
+	<ui:define name="tools">
+		<ui:include src="_tools.xhtml" />
+	</ui:define>
+
+
+</ui:composition>

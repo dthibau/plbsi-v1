@@ -1,0 +1,20 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<div class="panel-footer">
+			<div ng-repeat="selectedFormation in selectedFormations">
+				<label>{{selectedFormation.libelle}}</label>
+			</div>
+			<br />
+			<button type="button" class="btn btn-primary btn-sm"
+				ng-disabled="selectedFormations.length == 0" ng-click="addCompetences()">Ajouter les formations
+				sélectionnées, elle apparaîtront dans la liste ci-dessous</button>
+		</div>
+</ui:composition>

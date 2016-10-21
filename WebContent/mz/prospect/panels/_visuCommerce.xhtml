@@ -1,0 +1,80 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table width="100%">
+		<tr valign="top">
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Proposition </legend>
+					<ui:include src="../fields/_dateDevis.xhtml" />
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.montant']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.montant}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml"
+						rendered="#{editProspectManager.prospect.prospectDetail.raisonPerte != null}">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.raisonPerte']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.raisonPerte}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.prixJour']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospectDetail.prix_jour_animation}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.remise']}</ui:define>
+						<h:outputText value="#{editProspectManager.prospectDetail.remise}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Actions commerciales </legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<b><h:outputText value="#{messages['prospect.catalogue']} : " /></b>
+						<h:outputText value="Oui"
+							rendered="#{editProspectManager.prospect.prospectDetail.catalogue == 1}" />
+						<h:outputText value="Non"
+							rendered="#{editProspectManager.prospect.prospectDetail.catalogue == 0 or empty editProspectManager.prospect.prospectDetail.catalogue}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<b><h:outputText value="#{messages['prospect.news']} : " /></b>
+						<h:outputText value="Oui"
+							rendered="#{editProspectManager.prospect.prospectDetail.news == 1}" />
+						<h:outputText value="Non"
+							rendered="#{editProspectManager.prospect.prospectDetail.news == 0 or empty editProspectManager.prospect.prospectDetail.news}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<b><h:outputText value="#{messages['prospect.cial']} : " /></b>
+						<h:outputText value="Oui"
+							rendered="#{editProspectManager.prospect.prospectDetail.cial == 1}" />
+						<h:outputText value="Non"
+							rendered="#{editProspectManager.prospect.prospectDetail.cial == 0 or empty editProspectManager.prospect.prospectDetail.cial}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.connaissance']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.connaissance_site}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+		</tr>
+	</table>
+
+</ui:composition>

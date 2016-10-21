@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+	
+
+		<a:commandButton action="#{devisManager.createDevis(formation)}" 
+			 value="Génèrer un devis" render="devisContent" oncomplete="#{rich:component('devisPopup')}.show();"/>
+				<br />
+		<a:commandButton action="#{demandeClientManager.initDemande()}" value="Créer une demande client" bypassUpdates="true" execute="@this">
+		 	<f:param name="ref" value="#{formation.reference}" />
+			<s:conversationPropagation type="none" /> 
+		</a:commandButton>	 
+	<rich:collapsiblePanel header="#{messages['devis.last']}" expanded="false" switchType="ajax">
+            <rich:dataTable value="#{devisManager.lastDevis}" var="_devis">
+            <rich:column>
+            <f:facet name="header"><h:outputText value="#{messages['devis.numero']}"/></f:facet>
+            <a:commandLink action="#{devisManager.selectDevis(_devis)}" 
+			 title="Modifier un devis" value="#{_devis.numero}" render="devisContent" oncomplete="#{rich:component('devisPopup')}.show();"/>
+            </rich:column>
+            <rich:column>
+            <f:facet name="header"><h:outputText value="#{messages['devis.client']}"/></f:facet>
+            <h:outputText value="#{_devis.client}"/>
+            </rich:column>
+            <rich:column>
+            <f:facet name="header"><h:outputText value="#{messages['devis.date']}"/></f:facet>
+            <h:outputText value="#{_devis.date}">
+            <s:convertDateTime dateStyle="short"/>
+            </h:outputText>
+            </rich:column>
+            <rich:column>
+            
+            <h:commandButton action="#{devisManager.duplicate(_devis)}" value="#{messages['action.dupliquer']}"/>
+            </rich:column>
+            </rich:dataTable>
+        </rich:collapsiblePanel>
+</ui:composition>

@@ -1,0 +1,117 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<rich:dataTable id="resultList"
+		value="#{searchFormationManager.formationResults}" var="dto">
+		<f:facet name="header">
+			<rich:columnGroup>
+				<rich:column colspan="8">
+					<h:outputText value="#{messages['formation.libelle']}" />
+				</rich:column>
+				<rich:column breakRowBefore="true">
+					<h:outputText value="#{messages['intervenant.nom']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.email']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.numPortable']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.ville']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.rang']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.tarif']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['intervenant.dateMisAJour']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['competence.support']}" />
+				</rich:column>
+			</rich:columnGroup>
+		</f:facet>
+
+		<rich:column colspan="8" styleClass="formation-header"
+		rendered="#{!empty dto.competences or searchFormationManager.showEmptyFormation}">
+			<rich:collapsibleSubTableToggler for="intervenants" />
+			<h:outputLink rendered="#{dto.formation.urlPlb != null}"
+				value="#{WEB_URL}#{dto.formation.urlPlb}" styleClass="prop large"
+				target="_blank">#{dto.formation}</h:outputLink>
+			<h:outputText rendered="#{dto.formation.urlPlb == null}"
+				value="#{dto.formation}" /> (#{dto.competences.size()})
+		</rich:column>
+		<rich:collapsibleSubTable value="#{dto.competences}" var="competence"
+			id="intervenants" expandMode="client">
+			<rich:column id="nom"
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }">
+				<s:link action="#{intervenantManager.selectIntervenant}">
+					<f:param name="intervenantId" value="#{competence.intervenant.id}" />
+					<s:conversationPropagation type="none" />
+					#{competence.intervenant.nomComplet}
+				    </s:link>
+			</rich:column>
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="email">
+				<h:outputText value="#{competence.intervenant.email}" />
+			</rich:column>
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="numPortable">
+				<h:outputText value="#{competence.intervenant.numPortable}" />
+			</rich:column>
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="ville">
+				<h:outputText value="#{competence.intervenant.ville}" />
+			</rich:column>
+			
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="rang">
+				<h:outputText value="#{competence.intervenant.rang}" />
+			</rich:column>
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="tarif">
+				<h:outputText value="#{competence.intervenant.tarif}" />
+			</rich:column>
+
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="date">
+				<h:outputText value="#{competence.intervenant.dateMisAJour}">
+					<s:convertDateTime dateStyle="short" locale="#{LOCALE}" />
+				</h:outputText>
+			</rich:column>
+
+
+			<rich:column
+				styleClass="#{competence.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }"
+				id="support">
+				<h:outputText value="#{competence.support}" />
+			</rich:column>
+		</rich:collapsibleSubTable>
+
+
+	</rich:dataTable>
+
+
+</ui:composition>

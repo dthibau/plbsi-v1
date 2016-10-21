@@ -1,0 +1,35 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+	<a:repeat value="#{filieres}" var="_filiere" id="filieresRepeat">
+		<rich:collapsiblePanel
+			header="#{_filiere} (#{grilleManager.getCompetencesAnimees(_filiere).size()})"
+			expanded="#{grilleManager.isExpanded(_filiere)}" switchType="client"
+			id="filierePanel">
+			<f:ajax event="click"
+				action="#{grilleManager.toggleFilierre(_filiere)}" />
+
+			<rich:dataGrid value="#{grilleManager.getKnownCompetencesRows(_filiere)}"
+				var="_competence" columns="1" id="comptencesGrid">
+				<ui:include src="_competenceEdit.xhtml">
+					<ui:param name="competence" value="#{_competence}" />
+					<ui:param name="renderPath" value="#{renderPath}" />
+				</ui:include>
+			</rich:dataGrid>
+
+
+		</rich:collapsiblePanel>
+	</a:repeat>
+
+
+
+
+</ui:composition>

@@ -1,0 +1,35 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<h:commandButton value="Ajouter"
+				action="#{emailTemplateManager.prepareNew()}" />
+			<rich:dataTable value="#{emailTemplateManager.templates}"
+				var="template">
+				<rich:column>
+					<f:facet name="header">#{messages['emailTemplate.subject']}</f:facet>
+					<s:link view="/mz/emailTemplates/template.xhtml"
+						action="#{emailTemplateManager.edit()}">
+						<f:param name="templateId" value="#{template.id}" />
+					#{template.subject}
+				</s:link>·
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">#{messages['emailTemplate.body']}</f:facet>
+					<h:outputText escape="false" value="#{template.summary}" />
+				</rich:column>
+
+			</rich:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

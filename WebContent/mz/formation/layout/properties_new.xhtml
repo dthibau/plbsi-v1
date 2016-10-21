@@ -1,0 +1,49 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<table width="100%">
+		<tr>
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Identification </legend>
+					<ui:insert name="identification" />
+				</fieldset>
+				<fieldset>
+					<legend> Référencement </legend>
+					<ui:insert name="referencement" />
+				</fieldset>
+				<fieldset>
+					<legend> Associations </legend>
+					<ui:insert name="filieres" />
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Commercial </legend>
+					<ui:insert name="commercial" />
+				</fieldset>
+				<fieldset>
+					<legend> Formations mutualisées </legend>
+					<ui:insert name="mutualisees" />
+				</fieldset>				
+				<fieldset>
+					<legend> Formations / Partenaires </legend>
+					<ui:insert name="partenaires" />
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="hidden" name="cid"
+				value="#{conversation.id}" /> <ui:insert name="buttons" /></td>
+		</tr>
+	</table>
+
+
+</ui:composition>

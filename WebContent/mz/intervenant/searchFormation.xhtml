@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="body">
+		<h:form id="resultForm">
+
+			<rich:panel id="filterPanel" >
+				<ui:include src="_filterFormation.xhtml" />
+				
+				<ui:include src="_total.xhtml" >
+					<ui:param name="manager" value="#{searchFormationManager}"/>
+				</ui:include>
+			</rich:panel>
+			
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+		</h:form>
+			<a:outputPanel layout="block" id="resultPanel">
+				<ui:include src="_resultFormation.xhtml" />
+			</a:outputPanel>
+		
+
+
+	</ui:define>
+
+	<ui:define name="tools">
+		<s:button view="/mz/intervenant/searchIntervenant_xls.xhtml" value="Export Excel" />
+	</ui:define>
+</ui:composition>

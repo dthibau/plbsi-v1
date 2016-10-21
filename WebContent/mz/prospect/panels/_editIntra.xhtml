@@ -1,0 +1,531 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<a:outputPanel
+		rendered="#{'Administrateur en recherche d’intervenant'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+		<s:decorate template="../../layout/display.xhtml" style="width:800px;">
+			<ui:define name="label">
+				<h:outputText value="#{messages['intra.info']}" />
+			</ui:define>
+			<b><h:outputText style="color:red;"
+					value="Votre demande est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera." /></b>
+		</s:decorate>
+	</a:outputPanel>
+	<a:outputPanel id="statutIntra"
+		rendered="#{!'Administrateur en recherche d’intervenant'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+		<table>
+			<tr>
+				<td><s:decorate template="../../layout/display.xhtml"
+						style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['intra.statut']}" />
+						</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospect.informationIntra.statutIntra}"
+							style="width:110px; height:20px;">
+							<a:ajax event="change" render="statutIntra"
+								oncomplete="#{rich:component('spinner')}.stop()" />
+							<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE_MODIFIE}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_LOGISTIQUE}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_ANNULE}" />
+							<f:selectItem itemValue="#{ST_PROSPECT_OK}" />
+						</h:selectOneMenu>
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml"
+						style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['intra.mailConfirm']}" />
+						</ui:define>
+						<h:selectBooleanCheckbox value="#{editProspectManager.confirm}" />
+					</s:decorate></td>
+				<td><h:graphicImage id="explication"
+						value="/img/interrogation.jpg" width="35px" height="35px">
+						<rich:tooltip styleClass="tooltip" layout="block">
+							<span> Un mail de confirmation vous sera envoyé en cas de
+								changement de statut. </span>
+						</rich:tooltip>
+					</h:graphicImage></td>
+			</tr>
+		</table>
+		<rich:collapsiblePanel header="Informations générales : "
+			expanded="false" switchType="client">
+			<table border="0" cellspacing="3">
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.dateCreation']}" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.dateCreation}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.prospect.societe}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="Prob. transformation" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospect.informationIntra.probTransformation}"
+								style="width:160px; height:20px;">
+								<f:selectItem itemValue="peu de chance"
+									itemLabel="peu de chance" />
+								<f:selectItem itemValue="ne sait pas" itemLabel="ne sait pas" />
+								<f:selectItem itemValue="forte chance" itemLabel="forte chance" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['intra.duree']}" />
+							</ui:define>
+							<h:inputText
+								value="#{editProspectManager.prospect.informationIntra.duree}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.lieu']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospect.prospectDetail.lieu}"
+								style="width:160px; height:20px;">
+								<a:ajax event="change" render="" />
+								<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
+								<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.ville']}" />
+							</ui:define>
+							<h:inputText value="#{editProspectManager.prospect.ville}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.participant']}" />
+							</ui:define>
+							<h:inputText
+								value="#{editProspectManager.prospect.prospectDetail.nb_participants}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.dateSouhait']}" />
+							</ui:define>
+							<h:inputText
+								value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" />
+						</s:decorate></td>
+				</tr>
+			</table>
+		</rich:collapsiblePanel>
+		<a:outputPanel id="formForLogistique"
+			rendered="#{('Logistique').equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<rich:collapsiblePanel header="Informations à remplir : "
+				expanded="true" switchType="client">
+				<table border="0" cellspacing="3">
+					<tr>
+						<td><s:decorate template="../../layout/display.xhtml"
+								style="width:500px;">
+								<ui:define name="label">
+									<h:outputText value="Contact tech." />
+								</ui:define>
+								<h:inputTextarea id="contactT"
+									value="#{editProspectManager.prospect.informationIntra.coordonneesContactTech}"
+									cols="60" rows="2">
+									<rich:placeholder value="Nom Contact / Téléphone / Email" />
+									<a4j:ajax />
+								</h:inputTextarea>
+							</s:decorate> <rich:message for="contactT" /></td>
+						<td><s:decorate template="../../layout/display.xhtml"
+								style="width:500px;">
+								<ui:define name="label">
+									<h:outputText value="Contact support" />
+								</ui:define>
+								<h:inputTextarea id="contactS"
+									value="#{editProspectManager.prospect.informationIntra.coordonneesContactsupport}"
+									cols="60" rows="2">
+									<rich:placeholder value="Nom Contact / Téléphone / Email" />
+									<a4j:ajax />
+								</h:inputTextarea>
+							</s:decorate> <rich:message for="contactS" /></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../../layout/display.xhtml"
+								style="width:500px;">
+								<ui:define name="label">
+									<h:outputText value="Frais ?" />
+								</ui:define>
+								<h:selectOneMenu
+									value="#{editProspectManager.prospect.informationIntra.frais}">
+									<f:selectItem itemValue="1" itemLabel="OUI" />
+									<f:selectItem itemValue="0" itemLabel="NON" />
+								</h:selectOneMenu>
+							</s:decorate></td>
+						<td><s:decorate template="../../layout/display.xhtml"
+								style="width:500px;">
+								<ui:define name="label">
+									<h:outputText value="Horaire de formation" />
+								</ui:define>
+							</s:decorate> <br />
+							<table>
+								<tr>
+									<td>Deb :</td>
+									<td><rich:inputNumberSpinner
+											value="#{editProspectManager.heureDeb}" minValue="0"
+											maxValue="23" step="1" /></td>
+									<td>&nbsp;H&nbsp;</td>
+									<td><rich:inputNumberSpinner
+											value="#{editProspectManager.minDeb}" minValue="0"
+											maxValue="59" step="1" /></td>
+								</tr>
+								<tr>
+									<td>Fin :</td>
+									<td><rich:inputNumberSpinner
+											value="#{editProspectManager.heureFin}" minValue="0"
+											maxValue="23" step="1" /></td>
+									<td>&nbsp;H&nbsp;</td>
+									<td><rich:inputNumberSpinner
+											value="#{editProspectManager.minFin}" minValue="0"
+											maxValue="59" step="1" /></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<rich:collapsiblePanel
+					header="Adresse : (Obligatoire car la formation ne se déroule pas chez PLB)"
+					expanded="true" switchType="client"
+					rendered="#{('En vos locaux').equals(editProspectManager.prospect.prospectDetail.lieu)}">
+					<table border="0" cellspacing="0">
+						<tr>
+							<td><s:decorate template="../../layout/display.xhtml"
+									style="width:600px;">
+									<ui:define name="label">
+										<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+									</ui:define>
+									<h:outputText
+										value="#{editProspectManager.prospect.informationIntra.prospect.societe}" />
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../../layout/display.xhtml"
+									style="width:400px;">
+									<ui:define name="label">
+										<h:outputText value="#{messages['prospect.adresse']}*" />
+									</ui:define>
+									<h:inputText id="adresse"
+										value="#{editProspectManager.prospect.informationIntra.prospect.adresse}"
+										style="width:200px;">
+									</h:inputText>
+								</s:decorate> <rich:message for="adresse" /></td>
+							<td><s:decorate template="../../layout/display.xhtml"
+									style="width:400px;">
+									<ui:define name="label">
+										<h:outputText value="#{messages['prospect.ville']}*" />
+									</ui:define>
+									<h:inputText id="ville"
+										value="#{editProspectManager.prospect.informationIntra.prospect.ville}">
+									</h:inputText>
+								</s:decorate> <rich:message for="ville" /></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../../layout/display.xhtml"
+									style="width:300px;">
+									<ui:define name="label">
+										<h:outputText value="#{messages['prospect.cp']}*" />
+									</ui:define>
+									<h:inputText id="cp"
+										value="#{editProspectManager.prospect.informationIntra.prospect.cp}"
+										style="width:100px;">
+									</h:inputText>
+								</s:decorate> <rich:message for="cp" /></td>
+							<td><s:decorate template="../../layout/display.xhtml"
+									style="width:400px;">
+									<ui:define name="label">
+										<h:outputText value="#{messages['prospect.pays']}*" />
+									</ui:define>
+									<h:inputText id="pays"
+										value="#{editProspectManager.prospect.informationIntra.prospect.pays}">
+									</h:inputText>
+								</s:decorate> <rich:message for="pays" /></td>
+						</tr>
+					</table>
+				</rich:collapsiblePanel>
+				<ui:include src="../fields/_editInfosComplementaires.xhtml" />
+			</rich:collapsiblePanel>
+		</a:outputPanel>
+		<a:outputPanel id="formForAnnule"
+			rendered="#{('Annulé').equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<rich:collapsiblePanel header="Informations à remplir : "
+				expanded="true" switchType="client">
+				<s:decorate template="../../layout/display.xhtml" style="width:700px;">
+					<center>
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.raisonPerte']}*" />
+						</ui:define>
+						<h:inputTextarea id="annulation"
+							value="#{editProspectManager.prospect.prospectDetail.raisonPerte}"
+							cols="60" rows="2">
+							<f:validateRequired />
+							<rich:validator />
+						</h:inputTextarea>
+					</center>
+				</s:decorate>
+				<rich:message for="annulation" />
+			</rich:collapsiblePanel>
+		</a:outputPanel>
+		<a:outputPanel id="formForModif"
+			rendered="#{'Attente AD'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<rich:panel header="Informations formation : ">
+				<rich:panel id="referencePanelModif">
+					<s:decorate template="../../layout/display.xhtml">
+						<a:commandButton value="Ajouter une formation"
+							action="#{editProspectManager.addReferenceForModif()}"
+							execute="@this referencePanelModif" render="referencePanelModif"
+							oncomplete="#{rich:component('spinner')}.stop()">
+							<f:param name="cid" value="#{conversation.id}" />
+						</a:commandButton>
+					</s:decorate>
+					<rich:dataTable value="#{editProspectManager.prospect.formations}"
+						var="formation" rowKeyVar="index"
+						style="width:100%; overflow-x:auto; overflow-y:auto;">
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.reference']}" />
+							</f:facet>
+							<center>
+								<h:selectOneMenu value="#{formation.formation}"
+									render="referencePanelModif">
+									<a:ajax event="change" render="referencePanelModif"
+										oncomplete="#{rich:component('spinner')}.stop()" />
+									<s:selectItems value="#{formationsActives}" var="for"
+										label="#{for.reference}"
+										noSelectionLabel="Sélectionner une réference"
+										itemValue="#{for}" />
+									<s:convertEntity />
+								</h:selectOneMenu>
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.libelleFormation']}" />
+							</f:facet>
+							<h:outputText value="#{formation.formation.libelle}"
+								style="width:150px" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Durée en jour" />
+							</f:facet>
+							<center>
+								<h:outputText value="#{formation.formation.duree}" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Durée souhaitée" />
+							</f:facet>
+							<center>
+								<h:inputText id="duree" value="#{formation.dureeVoulu}"
+									style="width:50px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Dates souhaitées" />
+							</f:facet>
+							<center>
+								<h:inputText id="date" value="#{formation.session}"
+									style="width:120px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Nb part." />
+							</f:facet>
+							<center>
+								<h:inputText id="participant" value="#{formation.participant}"
+									style="width:30px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Action</f:facet>
+							<center>
+								<a:commandButton value="Supprimer"
+									action="#{editProspectManager.removeReferenceForModif(index)}"
+									execute="@this" render="referencePanelModif"
+									oncomplete="#{rich:component('spinner')}.stop()">
+									<f:param name="cid" value="#{conversation.id}" />
+								</a:commandButton>
+							</center>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+				<rich:panel id="referencePanelModifSpe">
+					<s:decorate template="../../layout/display.xhtml">
+						<a:commandButton value="Ajouter un Spé"
+							action="#{editProspectManager.addSpe()}"
+							execute="@this referencePanelModifSpe"
+							render="referencePanelModifSpe"
+							oncomplete="#{rich:component('spinner')}.stop()">
+							<f:param name="cid" value="#{conversation.id}" />
+						</a:commandButton>
+					</s:decorate>
+					<rich:dataTable
+						value="#{editProspectManager.prospect.informationIntra.intraReferenceSpe}"
+						var="intraReferenceSpe" rowKeyVar="index"
+						style="width:100%; overflow-x:auto; overflow-y:auto;">
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.reference']}" />
+							</f:facet>
+							<center>
+								<h:outputText value="Spé" style="width:150px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.libelleFormation']}*" />
+							</f:facet>
+							<center>
+								<h:inputText id="libelleSpe"
+									value="#{intraReferenceSpe.referenceSpe.libelle}"
+									style="width:200px" required="true" />
+								<rich:message for="libelleSpe" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Durée souhaitée" />
+							</f:facet>
+							<center>
+								<h:inputText id="durreSpe"
+									value="#{intraReferenceSpe.referenceSpe.duree}"
+									style="width:50px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Dates souhaitées" />
+							</f:facet>
+							<center>
+								<h:inputText id="dateSpe"
+									value="#{intraReferenceSpe.referenceSpe.session}"
+									style="width:120px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Nb part." />
+							</f:facet>
+							<center>
+								<h:inputText id="participantSpe"
+									value="#{intraReferenceSpe.referenceSpe.participant}"
+									style="width:30px" />
+							</center>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Action</f:facet>
+							<center>
+								<a:commandButton value="Supprimer"
+									action="#{editProspectManager.removeSpe(index)}"
+									execute="@this" render="referencePanelModifSpe"
+									oncomplete="#{rich:component('spinner')}.stop()">
+									<f:param name="cid" value="#{conversation.id}" />
+								</a:commandButton>
+							</center>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+			</rich:panel>
+		</a:outputPanel>
+	</a:outputPanel>
+	<br />
+	<rich:collapsiblePanel header="Note Perso : " expanded="false"
+		switchType="client" id="notePerso2">
+		<center>
+			<a:commandButton value="Ajouter une note"
+				action="#{editProspectManager.addNote()}" execute="@this notePerso2"
+				render="notePerso2" oncomplete="#{rich:component('spinner')}.stop()">
+				<f:param name="cid" value="#{conversation.id}" />
+			</a:commandButton>
+			<rich:dataTable value="#{editProspectManager.messages}" var="message"
+				rowKeyVar="index">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Message n°" />
+					</f:facet>
+					<center>
+						<h:outputText value="#{index+1}" />
+					</center>
+					<f:facet name="footer">
+						<h:outputText value="Message n°" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+					<h:outputText value="#{message.date}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
+					</h:outputText>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+					<h:outputText value="#{message.account.nomComplet}" />
+					<f:facet name="footer">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+					<h:outputText value="#{message.libelle}"
+						rendered="#{index != (editProspectManager.messages.size()-1) or editProspectManager.modif==false}" />
+					<!-- h:inputTextarea value="#{message.libelle}" rendered="#{index != (editProspectManager.messages.size()-1) or editProspectManager.modif==false}" cols="100" rows="2" disabled="true" style="color:black"/ -->
+					<h:inputTextarea value="#{message.libelle}"
+						rendered="#{index == (editProspectManager.messages.size()-1) and editProspectManager.modif==true}"
+						cols="100" rows="2" />
+					<f:facet name="footer">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+				</rich:column>
+			</rich:dataTable>
+		</center>
+	</rich:collapsiblePanel>
+
+</ui:composition>

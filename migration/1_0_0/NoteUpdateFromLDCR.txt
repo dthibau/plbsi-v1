@@ -1,0 +1,25 @@
+Consolidation LDCR :
+Export LDCR + Ajout de l'onglet UPDATE_SQL
+
+
+Copie/Coller dans gedit
+Remplacement globaux (Ctrl+H) :
+\t par ,
+caractère de fin de ligne par , 
+' par \', 
+µ0µ par µµ 
+µ par ' 
+
+
+
+Insertions formation partenaire
+Rajouter incrément dans feuillet source + Ajout de l'Onglet INSERT
+
+Copie/Coller dans gedit
+Remplacement globaux (Ctrl+H) : 
+\t par 
+caractère de fin de ligne par 
+' par \'
+µ0µ par null
+µ par '
+Recherche le caractère entre First Group, et ajouter l'espace partout

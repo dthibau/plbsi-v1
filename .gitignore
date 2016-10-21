@@ -1,0 +1,28 @@
+# Eclipse
+.classpath
+.project
+.settings/
+build/
+
+# JMeter
+*.log
+jmeter/apache-jmeter-2.11/docs/
+jmeter/apache-jmeter-2.11/printable_docs/
+
+# Word
+**/~$*
+
+#Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+#gedit
+*~
+*.bak
+
+#svn
+**/.svn/
+

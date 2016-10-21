@@ -1,0 +1,55 @@
+package com.plb.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.plb.model.Formation;
+
+public class FormationDto {
+
+	private Formation formation;
+	private boolean intra;
+	private float tarifInter;
+	
+	public static List<FormationDto> buildDtos(List<Formation> formations, Map<String, Float> tarifsInter) {
+		List<FormationDto> ret = new ArrayList<FormationDto>();
+		for (Formation f : formations) {
+			ret.add(new FormationDto(f, tarifsInter));
+		}
+		return ret;
+
+	}
+	public FormationDto(Formation formation, Map<String, Float> tarifsInter) {
+		this.formation = formation;
+		
+		if ( formation.getCodeTarifInter() == null || formation.getCodeTarifInter().length() == 0 || formation.getCodeTarifInter().startsWith("E0") ) {
+			intra = formation.getPrix() != 0 ? false : true;
+			tarifInter = formation.getPrix();
+		} else {
+			if ( formation.getDuree() < 7 )
+				tarifInter = tarifsInter.get(formation.getCodeTarifInter()+formation.getDuree());
+		}
+	}
+	
+	public Formation getFormation() {
+		return formation;
+	}
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+	public boolean isIntra() {
+		return intra;
+	}
+	public void setIntra(boolean intra) {
+		this.intra = intra;
+	}
+	public float getTarifInter() {
+		return tarifInter;
+	}
+	public void setTarifInter(float tarifInter) {
+		this.tarifInter = tarifInter;
+	}
+	
+	
+}

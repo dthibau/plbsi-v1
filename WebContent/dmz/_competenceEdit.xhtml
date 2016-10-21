@@ -1,0 +1,54 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<table cellspacing="5" width="100%">
+		<tr>
+			<td><span><h:selectBooleanCheckbox
+						value="#{competence.checked}">
+						<f:ajax event="change" execute="@this"
+							render="#{renderPath}:filieresRepeat:filierePanel"
+							listener="#{grilleManager.toggleFilierre(competence)}" />
+					</h:selectBooleanCheckbox> <h:outputLink rendered="#{competence.formation.urlPlb != null}"
+						value="#{WEB_URL}#{competence.formation.urlPlb}" target="_blank">
+						<h:outputText value="#{competence.formation.libelle}"
+							styleClass="prop" />
+					</h:outputLink> <h:outputText rendered="#{competence.formation.urlPlb == null}"
+						value="#{competence.formation.libelle}" styleClass="prop" />
+					&#160;<span class="prop">: #{competence.formation.reference}
+						#{competence.formation.duree} jour(s)</span></span></td>
+			<a:outputPanel id="competenceRow">
+
+				<a:outputPanel rendered="#{competence.checked}">
+					<td width="20">&nbsp;</td>
+					<td align="right">
+						<table class="rf-cp-hdr" cellspacing="5">
+							<tr>							
+								<td>Disposez vous d'un support ?</td>
+								<td><h:selectOneRadio value="#{competence.support}">
+										<f:selectItem itemValue="true" itemLabel="Oui" />
+										<f:selectItem itemValue="false" itemLabel="Non" />
+										<f:ajax event="change" execute="@this" listener="#{grilleManager.updateSupport(competence)}" />
+									</h:selectOneRadio></td>
+								<td valign="top">Remarques éventuelles ?</td>
+								<td valign="top"><h:inputTextarea
+										value="#{competence.remarques}" rows="1" cols="60">
+										<f:ajax event="change" execute="@this" listener="#{grilleManager.updateRemarques(competence)}" />
+									</h:inputTextarea></td>
+							</tr>
+						</table>
+
+					</td>
+
+				</a:outputPanel>
+			</a:outputPanel>
+		</tr>
+	</table>
+
+</ui:composition>

@@ -1,0 +1,50 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<a:outputPanel rendered="#{intervenant.grilleCompetence == null}">
+		<h:outputText value="#{messages['intervenant.grille.noGrille']}" />
+	</a:outputPanel>
+	<a:outputPanel rendered="#{intervenant.grilleCompetence != null}">
+
+		<a:outputPanel id="expandButtons">
+			<a:commandButton value="Tout Déplier"
+				action="#{grilleManager.expandAllFilieres}"
+				render="newGrilleDecorate,grilleDecorate,expandButtons"
+				rendered="#{not grilleManager.allExpanded}" />
+			<a:commandButton value="Tout Replier"
+				action="#{grilleManager.collapseAllFilieres}"
+				render="newGrilleDecorate,grilleDecorate,expandButtons"
+				rendered="#{grilleManager.allExpanded}" />
+		</a:outputPanel>
+		<s:decorate template="layout/grille.xhtml" id="newGrilleDecorate">
+			<ui:param name="legend" value="Nouvelles formations" />
+			<ui:define name="filieres">
+				<ui:include src="../../dmz/_newFilieresCompetences.xhtml">
+					<ui:param name="renderPath"
+						value=":intervenantForm:newGrilleDecorate" />
+				</ui:include>
+			</ui:define>
+		</s:decorate>
+		<s:decorate template="layout/grille.xhtml" id="grilleDecorate">
+			<ui:param name="legend" value="Filières / formations" />
+			<ui:define name="filieres">
+				<ui:include src="../../dmz/_filieresCompetences.xhtml">
+					<ui:param name="renderPath" value=":intervenantForm:grilleDecorate" />
+				</ui:include>
+			</ui:define>
+			<ui:define name="buttons">
+				<ui:include src="_editButtonsIntervenant.xhtml" />
+			</ui:define>
+		</s:decorate>
+
+
+	</a:outputPanel>
+
+</ui:composition>

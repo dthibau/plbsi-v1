@@ -1,0 +1,154 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table width="100%">
+		<tr valign="top">
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Société </legend>
+					<ui:include src="../fields/_societe.xhtml" />
+					<s:decorate template="../../layout/edit.xhtml" >
+						<ui:define name="label">#{messages['prospect.lieuEntreprise']}</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.lieuEntreprise}"
+							style="width:160px; height:20px;">
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="IDF" itemLabel="IDF" />
+							<f:selectItem itemValue="Province" itemLabel="Province" />
+						</h:selectOneMenu>
+					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.adresse']}"
+								 />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.adresse}"
+							style="width:280px;" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.cp']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.cp}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.ville']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.ville}" />
+					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.pays']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.pays}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.effectifN']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.effectifEntreprise}"
+							style="width:50px;" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.effectifI']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.effectifInfo}"
+							style="width:50px;" />
+					</s:decorate>
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Contact </legend>
+					<s:decorate template="../../layout/edit.xhtml" >
+						<ui:define name="label">#{messages['prospect.nomContact']}</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.nom}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.prenom']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.prenom}" />
+					</s:decorate>
+					<s:decorate template="../../layout/edit.xhtml" >
+						<ui:define name="label">#{messages['prospect.sexe']}</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.sexe}">
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="1" itemLabel="Homme" />
+							<f:selectItem itemValue="0" itemLabel="Femme" />
+						</h:selectOneMenu>
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.fonction']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.fonction}"
+							style="width:200px;" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.mail']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.email}"
+							style="width:250px;" />
+					</s:decorate>
+					<s:decorate template="../../layout/edit.xhtml" >
+						<ui:define name="label">#{messages['prospect.telephone']}</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.tel}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.fax']}" />
+						</ui:define>
+						<h:inputText value="#{editProspectManager.prospect.fax}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml" >
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.responsable']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.resp_departement}" />
+					</s:decorate>
+					<s:decorate template="../../layout/edit.xhtml" >
+						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.natureClient}"
+							style="width:160px; height:20px;">
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="Particulier" itemLabel="Particulier" />
+							<f:selectItem itemValue="Etranger" itemLabel="Etranger" />
+							<f:selectItem itemValue="Ste France" itemLabel="Ste France" />
+						</h:selectOneMenu>
+					</s:decorate>
+				</fieldset>
+			</td>
+
+		</tr>
+	</table>
+	<rich:collapsiblePanel header="Commentaire client : " expanded="false"
+		switchType="client">
+		<table border="0" cellspacing="3">
+			<tr>
+				<td><h:inputTextarea cols="180" rows="2"
+						value="#{editProspectManager.prospect.commentaire}" /></td>
+			</tr>
+		</table>
+	</rich:collapsiblePanel>
+
+</ui:composition>

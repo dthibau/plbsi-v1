@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title>Calendrier</title>
+
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	margin: 0px;
+	background-image: url(head-calendrier.jpg);
+	background-repeat: no-repeat;
+}
+
+.titre {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	font-weight: bold;
+	padding-bottom: 15px;
+	margin-bottom: 20px;
+	line-height: 60px;
+}
+
+a.calendrier {
+	color:#000;
+}
+a:hover.calendrier {
+	color:#000;
+}
+.filiere0 {
+	color: #5B7EB5;
+}
+
+.row0.pair {
+	background-color: #DFF0FF;
+}
+
+.filiere1 {
+	color: #5197CB;
+}
+
+.row1.pair {
+	background-color: #D7E3F1;
+}
+
+.filiere2 {
+	color: #5ABFD1;
+}
+
+.row2.pair {
+	background-color: #DCEFF3;
+}
+
+.filiere3 {
+	color: #00A992;
+}
+
+.row3.pair {
+	background-color: #DAEFF2;
+}
+
+.filiere4 {
+	color: #539A32;
+}
+
+.row4.pair {
+	background-color: #EDF2E6;
+}
+
+.filiere5 {
+	color: #BCCC1B;
+}
+
+.row5.pair {
+	background-color: #F0F2CF;
+}
+
+.filiere6 {
+	color: #8AAD2B;
+}
+
+.row6.pair {
+	background-color: #E4EACD;
+}
+
+.filiere7 {
+	color: #F5AF11;
+}
+
+.row7.pair {
+	background-color: #FFF9E7;
+}
+
+.filiere8 {
+	color: #DA9615;
+}
+
+.row8.pair {
+	background-color: #FDEAC7;
+}
+
+.filiere9 {
+	color: #EB7F1E;
+}
+
+.row9.pair {
+	background-color: #FBDEC3;
+}
+
+.filiere10 {
+	color: #E34422;
+}
+
+.row10.pair {
+	background-color: #F8D4C2;
+}
+
+.filiere11 {
+	color: #DF0023;
+}
+
+.row11.pair {
+	background-color: #F6C9B9;
+}
+
+.filiere12 {
+	color: #C90925;
+}
+
+.row12.pair {
+	background-color: #F1CCC0;
+}
+
+.filiere13 {
+	color: #AA1932;
+}
+
+.row13.pair {
+	background-color: #E9CAC4;
+}
+
+.filiere14 {
+	color: #A11952;
+}
+
+.row14.pair {
+	background-color: #F3E5E9;
+}
+
+.filiere15 {
+	color: #B8507B;
+}
+
+.row15.pair {
+	background-color: #F4E6EB;
+}
+
+.filiere16 {
+	color: #DF608E;
+}
+
+.row16.pair {
+	background-color: #F6DBE4;
+}
+
+.filiere17 {
+	color: #ED94B4;
+}
+
+.row17.pair {
+	background-color: #FCEFF4;
+}
+
+.filiere18 {
+	color: #F4C0DC;
+}
+
+.row18.pair {
+	background-color: #FCEFF4;
+}
+
+.filiere19 {
+	color: #BC79A6;
+}
+
+.row19.pair {
+	background-color: #EDDEEA;
+}
+
+.filiere20 {
+	color: #A474A5;
+}
+
+.row20.pair {
+	background-color: #E7DCE9;
+}
+
+.filiere21 {
+	color: #ba79bc;
+}
+
+.row21.pair {
+	background-color: #E7DCE9;
+}
+
+thead {
+	font-weight: bold;
+}
+
+tr:hover {
+	background-color: #E5DE85;
+}
+
+#container {
+	width: 95%;
+	padding: 230px 0 0 40px;
+}
+</style>
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+
+
+</head>
+<body>
+	<div id="container">
+		<ui:repeat var="_filiere" value="#{calendarManager.filieres}"
+			varStatus="status">
+
+			<span class="titre filiere#{status.index}">#{_filiere.libelle}</span>
+			<table width="100%">
+				<thead class="filiere#{status.index}">
+					<tr>
+						<td width="500" bgcolor="#FFFFFF">Formations</td>
+						<td width="70" bgcolor="#FFFFFF">Réf.</td>
+						<td width="50" align="center" bgcolor="#FFFFFF">Durée</td>
+						<td width="90" align="center" nowrap="nowrap" bgcolor="#FFFFFF">Tarif HT
+						</td>
+						<ui:repeat value="#{calendarManager.months}" var="_month">
+							<td bgcolor="#FFFFFF">#{fullMonthFormat.format(_month)}</td>
+						</ui:repeat>
+					</tr>
+				</thead>
+				<ui:repeat value="#{calendarManager.getFormations(_filiere)}"
+					var="_dto" varStatus="pair">
+
+					<tr 
+						class="row#{status.index} #{pair.index%2 == 0 ? 'pair' : ''}">
+						<td width="500">#{_dto.formation.libelle}</td>
+
+						<td><h:outputLink rendered="#{_dto.formation.urlPlb != null}"
+								styleClass="calendrier"
+								value="#{WEB_URL}#{_dto.formation.urlPlb}" target="_blank">#{_dto.formation.reference}</h:outputLink>
+								</td>
+						<td align="center">#{_dto.formation.duree}</td>
+						<td align="center" nowrap="nowrap"><h:outputText
+								rendered="#{!_dto.intra}" value="#{_dto.tarifInter}">
+								<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
+							</h:outputText> <h:outputText rendered="#{_dto.intra}"
+								value="#{messages['formation.intra']}" /></td>
+						<ui:repeat value="#{calendarManager.months}" var="_month">
+							<td>#{_dto.formation.getAllSessionsAsString(_month)}</td>
+						</ui:repeat>
+					</tr>
+				</ui:repeat>
+			</table>
+
+		</ui:repeat>
+	</div>
+</body>
+</html>

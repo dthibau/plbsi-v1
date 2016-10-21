@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="336"/>
+	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
+	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="legend" style="default" hAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+	<style name="sousTitle" style="default" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="adresse" style="default" fontSize="8"/>
+	<parameter name="idDevis" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
+	</parameter>
+	<parameter name="noDevis" class="java.lang.String">
+		<defaultValueExpression><![CDATA["jjMMaaCLI1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/dthibau/Dev/PLB/plbsi/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tarif" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[1000.0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="sessions" class="java.util.List"/>
+	<parameter name="particulier" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="etranger" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM
+       `devis_session` JOIN `devis` ON `devis_session`.`id_devis` = `devis`.`id` JOIN `formation` ON `devis`.`formation_id_formation` = `formation`.`id_formation` JOIN
+`account` ON `devis`.`auteur_id` =
+`account`.`id` JOIN
+`formation_session` ON `devis_session`.`session_id_session` =
+`formation_session`.`id_session`
+  WHERE `devis_session`.`ID_DEVIS` = $P{idDevis}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nbParticipants" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="session_id_session" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_devis" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="client" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_client" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remise" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="auteur_id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formation_id_formation" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remiseUnit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_formation" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_precision_libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prix" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_objectifs" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_participants" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prerequis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_travaux_pratiques" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_duree" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_reference" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_contenu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_nouveaute" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_top10" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_mot_cle_primaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_keywords" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_url" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_visible" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_niveau" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_partenariat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prix_partenaire" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_catalogue" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_origine" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_referencement" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_remarques" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tar_code_intra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_infos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_categorie" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_rang_categorie" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="archivedDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="campagneAdWords" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="coursPlbCataloguePartenaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastUpdatePrix" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="libreIntra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plbInter" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statut" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="support" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formationMutualisees_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tar1_code_inter" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_date_creation" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_date_derniere_modif" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="argumentaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="login" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="role" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telephone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deletedDate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_session" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="forsess_date_debut" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="forsess_date_fin" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="forsess_promotion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="totalSession" class="java.lang.Float">
+		<variableExpression><![CDATA[$P{tarif}*$F{nbParticipants}]]></variableExpression>
+	</variable>
+	<variable name="TotalDevis" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalSession}]]></variableExpression>
+	</variable>
+	<variable name="tva" class="java.lang.Float">
+		<variableExpression><![CDATA[$V{totalHTRemise}*0.20]]></variableExpression>
+	</variable>
+	<variable name="totalTTC" class="java.lang.Float">
+		<variableExpression><![CDATA[$V{totalHTRemise}+$V{totalHTRemise}*0.196]]></variableExpression>
+	</variable>
+	<variable name="totalHTRemise" class="java.lang.Float">
+		<variableExpression><![CDATA[$V{TotalDevis}-($V{TotalDevis}*$F{remise}/100)]]></variableExpression>
+	</variable>
+	<variable name="annee" class="java.lang.Integer" calculation="Highest">
+		<variableExpression><![CDATA[$F{forsess_date_debut}.getYear()+1900]]></variableExpression>
+	</variable>
+	<variable name="totalHTRemiseValeur" class="java.lang.Float">
+		<variableExpression><![CDATA[$V{TotalDevis}-$F{remise}]]></variableExpression>
+	</variable>
+	<group name="Devis">
+		<groupExpression><![CDATA[$F{id_devis}]]></groupExpression>
+		<groupFooter>
+			<band height="118">
+				<staticText>
+					<reportElement style="titleCol" x="0" y="-1" width="471" height="22" uuid="83ba75af-078b-44dc-a7b4-1ce44cfff63c"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Tarif total HT € à payer]]></text>
+				</staticText>
+				<textField pattern="#,##0.00 €">
+					<reportElement x="472" y="-1" width="83" height="22" uuid="5eceea16-11e8-4775-8e37-51ef2f530a1d"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalDevis}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="61" width="471" height="18" uuid="e87359c1-7b35-4abc-9c35-10df3c44db95"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[T.V.A. à 20,0%]]></text>
+				</staticText>
+				<textField evaluationTime="Auto" pattern="#,##0.00 €">
+					<reportElement x="472" y="61" width="83" height="18" uuid="aa1e2dcb-6626-4bdd-8722-789b0806c0d9"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="79" width="471" height="22" uuid="f872f236-c89a-4eb5-a902-5262fbfb5fbf"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Tarif total TTC €]]></text>
+				</staticText>
+				<textField evaluationTime="Band" pattern="#,##0.00 €">
+					<reportElement x="472" y="79" width="83" height="22" uuid="78d43cec-5bf6-4c3e-add6-f4ad4510fed3"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}+$V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}+$V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="legend" x="0" y="102" width="555" height="16" uuid="3911c93f-b41a-4187-b217-7e07b18a57f8"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+					<text><![CDATA[Les tarifs indiqués incluent la prestation de formation et la fourniture d'un support de cours par participant]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="39" width="471" height="22" isRemoveLineWhenBlank="true" uuid="85fee59b-77b9-4700-a5f5-df7141160192">
+						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Tarif total Hors taxe remisé €]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="21" width="471" height="18" isRemoveLineWhenBlank="true" uuid="555135d5-0b1c-4c76-9303-7c3d36892a47">
+						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" markup="none"/>
+					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? "Remise ("+$F{remise}+"%)" : "Remise"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00 €">
+					<reportElement x="472" y="39" width="83" height="22" isRemoveLineWhenBlank="true" uuid="bd111d1b-0c11-4bfa-b1da-cccd9efabc2e">
+						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise} : $V{totalHTRemiseValeur}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00 €">
+					<reportElement x="472" y="21" width="83" height="18" isRemoveLineWhenBlank="true" uuid="89bafdd6-524e-45b0-a64d-09238c589e23">
+						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{TotalDevis} * $F{remise} / 100 : $F{remise}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="26">
+				<printWhenExpression><![CDATA[$P{particulier}]]></printWhenExpression>
+				<staticText>
+					<reportElement style="legend" x="0" y="10" width="555" height="16" uuid="f218b528-2d59-47ee-9f0e-744bfa6b03e9"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[Pour les inscriptions à titre individuel (particulier ou indépendant), nous demandons un règlement anticipé des frais de formation]]></text>
+				</staticText>
+			</band>
+			<band height="86">
+				<printWhenExpression><![CDATA[$P{etranger}]]></printWhenExpression>
+				<staticText>
+					<reportElement style="legend" x="0" y="12" width="555" height="74" isPrintWhenDetailOverflows="true" uuid="2fa6d733-57cb-44ff-8ed3-bbea20eef613"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[Pour nos clients dont le siège est situé hors de France Métropolitaine, 100% du montant des prestations doit être réglé impérativement avant le début des formations. Dès que vous aurez choisi votre session, nous vous enverrons une facture ainsi que nos coordonnées bancaires pour vous permettre d’effectuer le règlement de la formation. En fonction de votre nationalité, vous pourriez également avoir besoin d’un visa pour venir suivre une formation en France. Dès réception de votre confirmation et de votre paiement, si le consulat vous le demande, nous pourrions vous envoyer une attestation d’inscription ou tout autre justificatif prouvant que vous êtes inscrit dans notre centre.]]></text>
+				</staticText>
+			</band>
+			<band height="25">
+				<staticText>
+					<reportElement x="0" y="9" width="142" height="16" uuid="0be8dd88-1291-4c81-871c-ba7d0f985dd7"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+					<text><![CDATA[Offre valable 30 jours]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<staticText>
+				<reportElement style="default" x="0" y="0" width="142" height="12" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact commercial]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="default" x="0" y="12" width="142" height="15" uuid="404c6a46-e5d4-4b7a-854f-82c2f2970c9b"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA[$F{prenom} + " " + $F{nom}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement style="default" x="183" y="0" width="189" height="80" uuid="8db1ec0c-dc84-4924-9011-81fcb55279ad"/>
+				<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="default" x="0" y="27" width="142" height="15" uuid="823b6e3e-6128-4cba-8978-8366316f2cc7"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="142" height="15" uuid="ce9f3a7f-5541-43eb-8f2f-c719ead3ea9a"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Tél : " + $F{telephone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="58" width="142" height="20" uuid="a9ee074c-a46f-488c-9c88-7f0abe09e834"/>
+				<text><![CDATA[Fax : 01.43.34.90.95]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="sousTitle" x="372" y="80" width="183" height="27" uuid="bb9f66c3-7f8a-4d10-8dcd-956dc5f34152"/>
+				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="109" width="183" height="20" uuid="bdea8e6e-8fb8-4288-ac42-030b6fca8759"/>
+				<textFieldExpression><![CDATA[$F{contact_client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="129" width="183" height="17" uuid="4f691689-311e-4c6b-88fe-79985b2fb0b6"/>
+				<textFieldExpression><![CDATA["Levallois le " + new SimpleDateFormat("dd MMMM yyyy",Locale.FRANCE).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="178" splitType="Stretch">
+			<staticText>
+				<reportElement style="titleCol" x="0" y="78" width="132" height="20" uuid="2c0683ce-32f2-4f15-a167-a35ddb117656"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2" rightPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Formule proposée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="titleCol" x="0" y="98" width="132" height="38" uuid="ca2b9085-6568-46d5-afad-c0cbd5157edb"/>
+				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Caractéristiques]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="78" width="423" height="20" uuid="50e10c6c-844b-4982-99a9-1404fcec5cfa"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[INTER ENTREPRISE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="98" width="423" height="38" isPrintWhenDetailOverflows="true" uuid="593833af-2446-41c8-88a3-c48b4a40fa6d"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Les formations que nous vous proposons ci-dessous sont en inter entreprise. Les participants de sociétés différentes participent ensemble à la même formation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="titleCol" x="0" y="144" width="183" height="34" uuid="77ba174b-7274-4402-8763-28d57536c066"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Session]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement style="titleCol" x="183" y="144" width="103" height="34" uuid="1562df14-2099-4a8f-8847-10c922f8e904"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Calendrier des sessions " + $V{annee}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="titleCol" x="371" y="144" width="101" height="34" uuid="5a33fbdf-72ad-4af3-8515-3639eab1c84c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre de participants]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement style="titleCol" x="286" y="144" width="85" height="34" uuid="8942185a-7731-4e11-8af6-ec80712bb282"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Tarif HT"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="titleCol" x="472" y="144" width="83" height="34" uuid="bc35a14b-1167-4a83-9c83-8cd48787bd21"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tarif total €]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="title" mode="Opaque" x="0" y="0" width="555" height="32" backcolor="#DCDCDC" uuid="a0d8af01-b4fd-451a-b001-04ac43f90ae5"/>
+				<box topPadding="4">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Proposition financière N°" + $P{noDevis}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="0" y="32" width="555" height="36" backcolor="#DCDCDC" uuid="7eb048e8-e9bb-412b-8de8-d65ee07c852b"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Merci de bien vouloir compléter les parties ci-dessus, et de nous faire parvenir la présente proposition financière paraphée et signée avec la mention «Bon pour Commande» par fax (Fax +33(0)1.43. 34. 90. 95), scanné par mail, ou par courrier postal à l’adresse indiquée en bas de cette page"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="183" height="52" uuid="94b48843-1b98-4c77-b984-a233cb37c1c6"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" markup="html"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT} == 1 ? "<b>"+$F{for_libelle}+"</b><br/>" +
+"(Réf." + $F{for_reference} + ")<br/>" +
+"Durée <b>" + $F{for_duree}.intValue() + " jours</b> " + "(" + $F{for_duree}.intValue()*7 + " heures)" : ""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 ¤">
+				<reportElement stretchType="RelativeToTallestObject" x="286" y="0" width="85" height="52" uuid="37484ac5-3e9d-4b1c-add8-4dad370bec34"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{tarif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="183" y="0" width="103" height="52" uuid="5e01d124-b2c2-45e0-8d28-c32d5edf13ea"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="html"/>
+				<textFieldExpression><![CDATA[$P{sessions}.size() >= $V{REPORT_COUNT} ? $P{sessions}.get($V{REPORT_COUNT}-1) : ""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 €">
+				<reportElement stretchType="RelativeToTallestObject" x="472" y="0" width="83" height="52" uuid="e975c3d2-b800-41e6-a8e5-a596c4c6c08c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{totalSession}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="371" y="0" width="101" height="52" uuid="5a7e3339-a3aa-43a3-990a-2e6e4491ce6a"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nbParticipants}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="114" splitType="Stretch">
+			<staticText>
+				<reportElement style="legend" x="0" y="1" width="555" height="16" uuid="58dc0270-502a-48b8-b7ba-67a9e7d1aa00"/>
+				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="sousTitle" x="0" y="18" width="555" height="28" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
+				<box topPadding="0">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CONDITIONS D'ANNULATION/REPORT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="46" width="555" height="53" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="html"/>
+				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :
+"Entre 5 et 9 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
++ "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement style="adresse" x="0" y="36" width="555" height="11" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - N° Siren : 421 694 779 - N° de déclaration d'existence : 119 211 300 92]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="0" y="22" width="555" height="12" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - Site : www.plb.fr - Email plb@plb.fr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="0" y="2" width="555" height="17" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
+				<box topPadding="2">
+					<topPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLB Consultant - 22/24 rue du Président Wilson - 92 300 Levallois-Perret]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

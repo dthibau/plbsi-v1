@@ -1,0 +1,198 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="body">
+
+
+		<ui:include src="filterGrilles.xhtml" />
+
+		<h:form id="resultForm">
+
+			<rich:dataTable id="resultList" value="#{grillesManager.results}"
+				var="_dto"
+				rowClass="#{_dto.intervenant.rang >= 90 ? 'redcolor' : 'greencolor' }">
+
+				<rich:column id="nom"
+					sortOrder="#{grillesManager.getOrder('nomComplet')}"
+					sortBy="#{_dto.intervenant.nomComplet}">
+					<f:facet name="header">
+						<a:commandLink value="#{messages['intervenant.nom']}"
+							render="resultList"
+							action="#{grillesManager.sortBy('nomComplet')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel
+							rendered="#{grillesManager.isAscending('nomComplet')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel
+							rendered="#{grillesManager.isDescending('nomComplet')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+					<s:link action="#{intervenantManager.selectIntervenant}">
+						<f:param name="intervenantId" value="#{_dto.intervenant.id}" />
+						<s:conversationPropagation type="none" />
+					#{_dto.intervenant.nomComplet}
+				    </s:link>
+				</rich:column>
+
+				<rich:column id="email">
+					<f:facet name="header">
+						<h:outputText value="#{messages['intervenant.email']}"
+							render="resultList" />
+						<s:conversationId />
+					</f:facet>
+					<h:outputText value="#{_dto.intervenant.email}" />
+				</rich:column>
+
+				<rich:column id="numPortable">
+					<f:facet name="header">
+						<div style="width: 100px">
+							<h:outputText value="#{messages['intervenant.numPortable']}"
+								render="resultList" />
+						</div>
+						<s:conversationId />
+					</f:facet>
+					<h:outputText value="#{_dto.intervenant.numPortable}" />
+				</rich:column>
+
+				<rich:column id="rang"
+					sortOrder="#{grillesManager.getOrder('rang')}"
+					sortBy="#{_dto.intervenant.rang}">
+					<f:facet name="header">
+						<a:commandLink value="#{messages['intervenant.rang']}"
+							render="resultList" action="#{grillesManager.sortBy('rang')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel rendered="#{grillesManager.isAscending('rang')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel rendered="#{grillesManager.isDescending('rang')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+					<h:outputText value="#{_dto.intervenant.rang}" />
+				</rich:column>
+
+				<rich:column id="tarif"
+					sortOrder="#{grillesManager.getOrder('tarif')}"
+					sortBy="#{_dto.intervenant.tarif}">
+					<f:facet name="header">
+						<a:commandLink value="#{messages['intervenant.tarif']}"
+							render="resultList" action="#{grillesManager.sortBy('tarif')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel rendered="#{grillesManager.isAscending('tarif')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel rendered="#{grillesManager.isDescending('tarif')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+					<h:outputText value="#{_dto.intervenant.tarif}" />
+				</rich:column>
+
+				<rich:column id="observations">
+					<f:facet name="header">
+						<h:outputText value="#{messages['intervenant.observations']}"
+							render="resultList" />
+						<s:conversationId />
+					</f:facet>
+					<div
+						style="height: 80px; width: 100%; overflow-x: auto; overflow-y: auto">
+						<h:outputText value="#{_dto.intervenant.observations}" />
+					</div>
+				</rich:column>
+
+				<rich:column id="dateNotify"
+					sortOrder="#{grillesManager.getOrder('dateNotify')}"
+					sortBy="#{_dto.dateNotifyAsLong}" >
+					<f:facet name="header">
+						<a:commandLink value="#{messages['intervenant.dateNotify']}"
+							render="resultList"
+							action="#{grillesManager.sortBy('dateNotify')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel
+							rendered="#{grillesManager.isAscending('dateNotify')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel
+							rendered="#{grillesManager.isDescending('dateNotify')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+					<h:outputText value="#{_dto.dateNotify}" />
+				</rich:column>
+
+				<rich:column id="dateGrille"
+					sortOrder="#{grillesManager.getOrder('dateGrille')}"
+					sortBy="#{_dto.dateGrilleAsLong}" styleClass="#{_dto.outdated ? 'obsolete' : ''}">
+					<f:facet name="header">
+						<a:commandLink value="#{messages['intervenant.dateMisAJour']}"
+							render="resultList"
+							action="#{grillesManager.sortBy('dateGrille')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel
+							rendered="#{grillesManager.isAscending('dateGrille')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel
+							rendered="#{grillesManager.isDescending('dateGrille')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+					<h:outputText value="#{_dto.dateGrille}" />
+				</rich:column>
+
+				<rich:column id="selection">
+					<f:facet name="header">
+						<rich:toolbar>
+							<rich:dropDownMenu mode="ajax">
+								<f:facet name="label">
+									<h:outputText value="Selection" />
+								</f:facet>
+								<rich:menuItem label="Tous">
+									<f:ajax event="click" listener="#{grillesManager.selectAll}"
+										render="resultList"></f:ajax>
+								</rich:menuItem>
+								<rich:menuItem label="Aucun">
+									<f:ajax event="click" listener="#{grillesManager.unSelectAll}"
+										render="resultList"></f:ajax>
+								</rich:menuItem>
+							</rich:dropDownMenu>
+						</rich:toolbar>
+					</f:facet>
+					<h:selectBooleanCheckbox value="#{_dto.selected}">
+						<f:ajax />
+					</h:selectBooleanCheckbox>
+				</rich:column>
+
+			</rich:dataTable>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="tools">
+		<h:form>
+			<s:button view="/intervenant/grilles_xls.xhtml"
+				rendered="#{!empty grillesManager.results}" value="Export Excel" />
+			<a:commandButton action="#{grillesManager.createNotification()}"
+				value="Notifier les intervenants"
+				render="notificationIntervenantsContent"
+				oncomplete="#{rich:component('notificationIntervenantsPopup')}.show();" />
+		</h:form>
+		<ui:include src="notificationPanel.xhtml" />
+
+	</ui:define>
+</ui:composition>

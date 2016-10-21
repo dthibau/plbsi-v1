@@ -1,0 +1,2 @@
+alter table formulaire_contact_detail drop column id_niveaudifficulte;
+drop table niveaudifficulte;

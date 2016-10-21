@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:m="http://jboss.com/products/seam/mail"
+	xmlns:f="http://java.sun.com/jsf/core"
+  	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ocs="http://www.opencs.net/taglib"
+	xmlns:c="http://java.sun.com/jstl/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="https://ajax4jsf.dev.java.net/ajax"
+	template="mailLayout.xhtml">
+
+	<ui:define name="MailSubject">
+			#{messages['reminder']} : <h:outputText value=" #{titre.titre}"/> 
+	</ui:define>	
+
+	
+	<ui:define name="MailStyle">
+		<ui:include src="/stylesheet/mail-css.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="MailTitle">
+		<span class="headLogoSujet">#{messages['reminder']} : <h:outputText value=" #{titre.titre}"/>&#160;/&#160;<h:outputText value="#{messages[code]}" /></span>
+	</ui:define>
+	
+	<ui:define name="MailContent">
+		<a:outputPanel rendered="#{code.equals('reminder.ut')}">
+		<h:outputFormat value="#{messages['reminder.ut.content']}">
+			<f:param value="#{titre.titre}"/>
+			<f:param value="#{titre.dateEffet}"/>
+		</h:outputFormat>
+		</a:outputPanel>
+		<a:outputPanel rendered="#{code.equals('reminder.titreur')}">
+			<h:outputFormat value="#{messages['reminder.ut.titreur']}">
+				<f:param value="#{titre.titre}"/>
+			</h:outputFormat>
+			<br/><br/>
+			<u><h:outputText value="#{messages['mail.accompagnement']}"/></u><br/>
+			<i><h:outputText value="#{titre.lastEvent.commentAsHtml}" escape="false" /></i>
+		</a:outputPanel>
+		<br/><br/>
+		
+		<ui:include src="_linkFormation.xhtml"/>
+	    <ui:include src="_connect.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="MailContentAlternative">
+		<h:outputFormat value="#{messages[event.mailCode]}">
+			<f:param value="#{event.actor.getNomComplet()}"/>
+		</h:outputFormat>
+
+
+		<h:outputText value="#{event.comment}" escape="false" />
+
+	</ui:define>
+	
+</ui:composition>

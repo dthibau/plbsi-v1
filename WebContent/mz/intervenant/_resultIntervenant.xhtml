@@ -1,0 +1,152 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<rich:dataTable id="resultList"
+		value="#{searchIntervenantManager.results}" var="intervenant">
+
+		<rich:column id="nom" styleClass="#{intervenant.rangClass}"
+			sortOrder="#{searchIntervenantManager.getOrder('nomComplet')}"
+			sortBy="#{intervenant.nomComplet}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['intervenant.nom']}"
+					render="resultList"
+					action="#{searchIntervenantManager.sortBy('nomComplet')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isAscending('nomComplet')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isDescending('nomComplet')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<s:link action="#{intervenantManager.selectIntervenant}">
+				<f:param name="intervenantId" value="#{intervenant.id}" />
+				<s:conversationPropagation type="none" />
+					#{intervenant.nomComplet}
+				    </s:link>
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="email">
+			<f:facet name="header">
+				<h:outputText value="#{messages['intervenant.email']}"
+					render="resultList" />
+				<s:conversationId />
+			</f:facet>
+			<h:outputText value="#{intervenant.email}" />
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="numPortable">
+			<f:facet name="header">
+				<div style="width: 100px">
+					<h:outputText value="#{messages['intervenant.numPortable']}"
+						render="resultList" />
+				</div>
+				<s:conversationId />
+			</f:facet>
+			<h:outputText value="#{intervenant.numPortable}" />
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="ville">
+			<f:facet name="header">
+				<div style="width: 100px">
+					<h:outputText value="#{messages['intervenant.ville']}"
+						render="resultList" />
+				</div>
+				<s:conversationId />
+			</f:facet>
+			<h:outputText value="#{intervenant.ville}" />
+		</rich:column>
+		
+		<rich:column styleClass="#{intervenant.rangClass}" id="rang"
+			sortOrder="#{searchIntervenantManager.getOrder('rang')}"
+			sortBy="#{intervenant.rang}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['intervenant.rang']}"
+					render="resultList"
+					action="#{searchIntervenantManager.sortBy('rang')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isAscending('rang')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isDescending('rang')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputText value="#{intervenant.rang}" />
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="tarif"
+			sortOrder="#{searchIntervenantManager.getOrder('tarif')}"
+			sortBy="#{intervenant.tarif}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['intervenant.tarif']}"
+					render="resultList"
+					action="#{searchIntervenantManager.sortBy('tarif')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isAscending('tarif')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isDescending('tarif')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputText value="#{intervenant.tarif}" />
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="observations">
+			<f:facet name="header">
+				<h:outputText value="#{messages['intervenant.observations']}"
+					render="resultList" />
+				<s:conversationId />
+			</f:facet>
+			<div
+				style="height: 80px; width: 100%; overflow-x: auto; overflow-y: auto">
+				<h:outputText value="#{intervenant.observations}" />
+			</div>
+		</rich:column>
+
+		<rich:column styleClass="#{intervenant.rangClass}" id="date"
+			sortOrder="#{searchIntervenantManager.getOrder('dateMisAJour')}"
+			sortBy="#{intervenant.dateMisAJourAsLong}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['intervenant.dateMisAJour']}"
+					render="resultList"
+					action="#{searchIntervenantManager.sortBy('dateMisAJour')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isAscending('dateMisAJour')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel
+					rendered="#{searchIntervenantManager.isDescending('dateMisAJour')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputText value="#{intervenant.dateMisAJour}" >
+				<s:convertDateTime dateStyle="short" type="date" locale="#{LOCALE}"></s:convertDateTime>
+			</h:outputText>
+		</rich:column>
+
+
+	</rich:dataTable>
+
+
+</ui:composition>

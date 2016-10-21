@@ -1,0 +1,480 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" 
+	template="../layout/template.xhtml"
+    xmlns:p="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="body">
+		<h:form>		
+			<rich:panel header="Création d'une demande d'intra ">
+				<rich:panel header="Informations principales : ">
+					<table border="0" cellspacing="15">
+						<tr>
+				           <td>
+				           		<s:decorate template="../layout/display.xhtml" style="width:500px">
+									<ui:define name="label">#{messages['prospect.nomEntreprise']}</ui:define>
+										<h:outputText value="#{intraManager.prospect.societe}" style="width:160px; height:20px;"/>
+							   	</s:decorate>
+						   </td>
+						   <td>
+				           	 	<s:decorate template="../layout/display.xhtml" style="width:500px">
+									<ui:define name="label">#{messages['prospect.attribueA']}</ui:define>
+										<h:outputText value="#{intraManager.prospect.prospectDetail.commercial}" style="width:160px; height:20px;"/>
+							   	</s:decorate>
+							 </td>
+						</tr>
+						<tr>
+							<td>
+								<s:decorate template="../layout/edit.xhtml" style="width:400px">		
+									<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
+									<h:selectOneMenu value="#{intraManager.prospect.prospectDetail.lieu}" style="width:160px; height:20px;" required="true">
+										<a:ajax event="change" render="adresse1,adresse2,adresse3,adresse4"/>
+										<f:selectItem itemValue="" itemLabel="-- Choisir --"/>
+									   	<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB"/>
+									   	<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+									</h:selectOneMenu>
+								</s:decorate>
+							</td>
+								<td>
+									<a:outputPanel id="adresse1">
+				        				<s:decorate template="../layout/display.xhtml" rendered="#{('En vos locaux').equals(intraManager.prospect.prospectDetail.lieu)}">
+											<ui:define name="label">
+												<h:outputText value="#{messages['prospect.adresse']}" style="width:500px;"/>
+											</ui:define>
+											<h:inputText value="#{intraManager.prospect.adresse}" style="width:280px;"/>
+										</s:decorate>
+									</a:outputPanel>
+			        			</td>
+			        			<td>
+			        				<a:outputPanel id="adresse2">
+				        				<s:decorate template="../layout/edit.xhtml" style="width:400px;" rendered="#{('En vos locaux').equals(intraManager.prospect.prospectDetail.lieu)}">
+											<ui:define name="label">
+												<h:outputText value="#{messages['prospect.ville']}"/>
+											</ui:define>
+											<h:inputText value="#{intraManager.prospect.ville}"/>
+										</s:decorate>
+									</a:outputPanel>
+			        			</td>
+						</tr>
+						<tr>
+								<td>
+									<a:outputPanel id="adresse3">
+				        				<s:decorate template="../layout/display.xhtml" style="width:400px;" rendered="#{('En vos locaux').equals(intraManager.prospect.prospectDetail.lieu)}">
+											<ui:define name="label">
+												<h:outputText value="#{messages['prospect.cp']}" />
+											</ui:define>
+											<h:inputText value="#{intraManager.prospect.cp}" />
+										</s:decorate>
+									</a:outputPanel>
+			        			</td>
+			        			<td>
+			        				<a:outputPanel id="adresse4">
+				        				<s:decorate template="../layout/display.xhtml"  style="width:500px;" rendered="#{('En vos locaux').equals(intraManager.prospect.prospectDetail.lieu)}">
+											<ui:define name="label">
+												<h:outputText value="#{messages['prospect.pays']}" />
+											</ui:define>
+											<h:inputText value="#{intraManager.prospect.pays}" />
+										</s:decorate>
+									</a:outputPanel>
+			        			</td>
+						</tr>
+						<tr>
+							<td>
+								<s:decorate template="../layout/display.xhtml" style="width:500px">
+									<ui:define name="label">#{messages['intra.duree']}</ui:define>
+										<h:inputText value="#{intraManager.intra.duree}" style="width:160px; height:20px;"/>
+							   	</s:decorate>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<s:decorate template="../layout/edit.xhtml" style="width:500px">
+									<ui:define name="label">Frais de dép souhaités</ui:define>
+									<h:selectOneMenu value="#{intraManager.intra.frais}">
+										<f:selectItem itemValue="0" itemLabel="NON"/>
+									   	<f:selectItem itemValue="1" itemLabel="OUI"/>
+									</h:selectOneMenu>
+								</s:decorate>
+							</td>
+							<td>
+								<s:decorate template="../layout/edit.xhtml" style="width:600px">
+									<ui:define name="label">CV formateurs souhaités</ui:define>
+									<h:selectOneMenu value="#{intraManager.intra.cv}">
+										<f:selectItem itemValue="0" itemLabel="NON"/>
+									   	<f:selectItem itemValue="1" itemLabel="OUI"/>
+									</h:selectOneMenu>
+								</s:decorate>
+							</td>
+							<td>
+								<s:decorate template="../layout/edit.xhtml" style="width:500px">
+									<ui:define name="label">Probabilité de transformation</ui:define>
+										<h:selectOneMenu value="#{intraManager.intra.probTransformation}" style="width:160px; height:20px;">
+												<f:selectItem itemValue="ne sait pas" itemLabel="ne sait pas"/>
+												<f:selectItem itemValue="peu de chance" itemLabel="peu de chance"/>
+											   	<f:selectItem itemValue="forte chance" itemLabel="forte chance"/>
+										</h:selectOneMenu>
+								</s:decorate>
+							</td>
+						</tr>
+					</table>
+				</rich:panel>
+				<rich:panel header="Informations formation : ">
+					<rich:panel id="referencePanel">
+						<s:decorate template="../layout/display.xhtml">
+							<a:commandButton value="Ajouter une formation"
+								action="#{intraManager.addReference()}" execute="@this referencePanel"
+								render="referencePanel">
+									<f:param name="cid" value="#{conversation.id}" />
+							</a:commandButton>
+						</s:decorate>
+						<br />
+						<rich:dataTable value="#{intraManager.prospect.formations}"
+							var="formation" rowKeyVar="index" style="width:100%; overflow-x:auto; overflow-y:auto;">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['prospect.reference']}" />
+								</f:facet>
+								<center>
+									<h:selectOneMenu value="#{formation.formation}" render="referencePanel">
+										<a:ajax event="change" render="referencePanel"/>
+										<s:selectItems value="#{formationsActives}" var="for"
+											label="#{for.reference}" noSelectionLabel="Sélectionner une réference" itemValue="#{for}"/>
+										<s:convertEntity />
+									</h:selectOneMenu>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['prospect.libelleFormation']}" />
+								</f:facet>
+								<h:outputText value="#{formation.formation.libelle}" style="width:150px"/>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Durée en jour" />
+								</f:facet>
+								<center>
+									<h:outputText value="#{formation.formation.duree}" />
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Durée souhaitée" />
+								</f:facet>
+								<center>
+									<h:inputText id="duree" value="#{formation.dureeVoulu}" style="width:50px"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Dates souhaitées" />
+								</f:facet>
+								<center>
+									<h:inputText id="date" value="#{formation.session}" style="width:120px"/>
+									<rich:message for="date"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nb part." />
+								</f:facet>
+								<center>
+									<h:inputText id="participant"  value="#{formation.participant}" style="width:30px"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Action</f:facet>
+								<center>
+									<a:commandButton value="Supprimer"
+										action="#{intraManager.removeReference(index)}" execute="@this"
+										render="referencePanel">
+										<f:param name="cid" value="#{conversation.id}" />
+									</a:commandButton>
+								</center>
+							</rich:column>
+						</rich:dataTable>
+					</rich:panel>
+					<rich:panel id="referencePanelSpe">
+						<s:decorate template="../layout/display.xhtml">
+							<a:commandButton value="Ajouter un Spé"
+								action="#{intraManager.addSpe()}" execute="@this referencePanelSpe"
+								render="referencePanelSpe">
+									<f:param name="cid" value="#{conversation.id}" />
+							</a:commandButton>
+						</s:decorate>
+						<rich:dataTable value="#{intraManager.intra.intraReferenceSpe}"
+							var="intraReferenceSpe" rowKeyVar="index" style="width:100%; overflow-x:auto; overflow-y:auto;">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['prospect.reference']}" />
+								</f:facet>
+								<center>
+									<h:outputText value="Spé"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['prospect.libelleFormation']}*" />
+								</f:facet>
+								<center>
+									<h:inputText id="libelleSpe" value="#{intraReferenceSpe.referenceSpe.libelle}" style="width:200px" required="true"/>
+									<rich:message for="libelleSpe"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Durée souhaitée" />
+								</f:facet>
+								<center>
+									<h:inputText id="durreSpe" value="#{intraReferenceSpe.referenceSpe.duree}" style="width:50px"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Dates souhaitées" />
+								</f:facet>
+								<center>
+									<h:inputText id="dateSpe" value="#{intraReferenceSpe.referenceSpe.session}" style="width:120px"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nb part." />
+								</f:facet>
+								<center>
+									<h:inputText id="participantSpe" value="#{intraReferenceSpe.referenceSpe.participant}" style="width:30px"/>
+								</center>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Action</f:facet>
+								<center>
+									<a:commandButton value="Supprimer"
+										action="#{intraManager.removeSpe(index)}" execute="@this"
+										render="referencePanelSpe">
+										<f:param name="cid" value="#{conversation.id}" />
+									</a:commandButton>
+								</center>
+							</rich:column>
+						</rich:dataTable>
+					</rich:panel>
+				</rich:panel>
+				
+				<rich:panel header="Informations auxilaires : ">
+					<table border="0" cellspacing="15">
+						<tr>
+							<td>
+								<table border="0" cellspacing="15">	
+									<tr>
+										<td>
+											<s:decorate template="../layout/edit.xhtml" style="width:600px">
+												<ui:define name="label">Profils des participants</ui:define>
+												<h:inputTextarea value="#{intraManager.intra.profilParticipant}" cols="60" rows="2"/>
+										   	</s:decorate>
+										</td>
+										<td>
+											<h:graphicImage id="profilPart" value="/img/interrogation.jpg" width="35px" height="35px">
+										 		<rich:tooltip styleClass="tooltip" layout="block">
+				            						<span> 
+				            							Exemples : - développeurs<br />
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
+				            							&nbsp;&nbsp;&nbsp;&nbsp;- administrateurs ... 
+				              						</span>
+				        						</rich:tooltip>
+			        						</h:graphicImage>
+										</td>
+									</tr>
+				           		</table>
+						   </td>
+						   <td>
+						   		<table border="0" cellspacing="15">	
+									<tr>
+										<td>
+							           		<s:decorate template="../layout/edit.xhtml" style="width:600px">
+												<ui:define name="label">Environnement technique</ui:define>
+												<h:inputTextarea value="#{intraManager.intra.environnementTech}" cols="60" rows="2"/>
+										   	</s:decorate>
+										</td>
+										<td>
+											<h:graphicImage id="EnvTech" value="/img/interrogation.jpg" width="35px" height="35px">
+										 		<rich:tooltip styleClass="tooltip" layout="block">
+				            						<span> 
+				            							Exemples : - Microsoft<br />
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
+				            							&nbsp;&nbsp;&nbsp;&nbsp;- Linux Redhat ... 
+				              						</span>
+				        						</rich:tooltip>
+			        						</h:graphicImage>
+										</td>
+									</tr>
+								</table>							
+						   </td>
+						</tr>
+						<tr>
+							<td>
+								<table border="0" cellspacing="15">	
+									<tr>
+										<td>
+							           		<s:decorate template="../layout/edit.xhtml" style="width:600px">
+												<ui:define name="label">Connaissances du sujet </ui:define>
+												<h:inputTextarea value="#{intraManager.intra.connaissanceSujet}" cols="60" rows="2"/>
+										   	</s:decorate>
+										</td>
+										<td>
+											<h:graphicImage id="connaissanceSujet" value="/img/interrogation.jpg" width="35px" height="35px">
+										 		<rich:tooltip styleClass="tooltip" layout="block">
+				            						<span> 
+				            							Exemples : - bonnes connaissances sur la version SQL Server 2008<br />
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
+				            							&nbsp;&nbsp;&nbsp;&nbsp;- maîtrise de Linux et compétences simplement utilisateur de Windows 
+				              						</span>
+				        						</rich:tooltip>
+			        						</h:graphicImage>
+										</td>
+									</tr>
+								</table>
+						   </td>
+						   <td>
+						   		<table border="0" cellspacing="15">	
+									<tr>
+										<td>
+							           		<s:decorate template="../layout/edit.xhtml" style="width:600px">
+												<ui:define name="label">Objectifs </ui:define>
+												<h:inputTextarea value="#{intraManager.intra.objectif}" cols="60" rows="2"/>
+										   	</s:decorate>
+										</td>
+										<td>
+											<h:graphicImage id="objectif" value="/img/interrogation.jpg" width="35px" height="35px">
+										 		<rich:tooltip styleClass="tooltip" layout="block">
+				            						<span> 
+				            							Exemples : - Montée en connaissance sur la version SQL Server 2012 pour un projet<br />
+				            									   qui va bientôt démarrer chez un client<br />
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
+				            							&nbsp;&nbsp;&nbsp;&nbsp;- Comprendre l’administration plus détaillée d’un parc de machines sous<br />
+				            									   Windows 7 et 8 avec l’apport d’un serveur Windows dans un contexte Active<br />
+				            									   Directory car ils vont remplacer leur serveur Linux.
+				            							
+				              						</span>
+				        						</rich:tooltip>
+			        						</h:graphicImage>
+										</td>
+									</tr>
+								</table>
+						   </td>
+						</tr>
+						<tr>
+							<td>
+								<table border="0" cellspacing="15">	
+									<tr>
+										<td>
+							           		<s:decorate template="../layout/edit.xhtml" style="width:600px">
+												<ui:define name="label">Coordonnées du contact technique</ui:define>
+												<h:inputTextarea value="#{intraManager.intra.coordonneesContactTech}" cols="60" rows="2"/>
+										   	</s:decorate>
+										</td>
+										<td>
+											<h:graphicImage id="coordTech" value="/img/interrogation.jpg" width="35px" height="35px">
+										 		<rich:tooltip styleClass="tooltip" layout="block">
+				            						<span> 
+				            							Synthaxe : Nom Contact / Téléphone / Email
+				              						</span>
+				        						</rich:tooltip>
+			        						</h:graphicImage>
+										</td>
+									</tr>
+								</table>
+						   </td>
+						</tr>
+					</table>
+					<rich:panel header="Note Perso" id="notePerso">
+						<center>
+			        	<a:commandButton value="Ajouter une note"
+							action="#{intraManager.addNote2()}" execute="@this notePerso"
+							render="notePerso">
+								<f:param name="cid" value="#{conversation.id}" />
+						</a:commandButton>
+		        		<rich:dataTable value="#{intraManager.messages}" var="message" rowKeyVar="index">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Message n°" />
+								</f:facet>
+									<center><h:outputText value="#{index+1}" /></center>
+								<f:facet name="footer">
+									<h:outputText value="Message n°" />
+								</f:facet>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['historique.date']}" />
+								</f:facet>
+									<h:outputText value="#{message.date}" />
+								<f:facet name="footer">
+									<h:outputText value="#{messages['historique.date']}" />
+								</f:facet>
+							 </rich:column>
+							 <rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['message.emetteur']}" />
+								</f:facet>
+									<h:outputText value="#{message.account.nomComplet}" />
+								<f:facet name="footer">
+									<h:outputText value="#{messages['message.emetteur']}" />
+								</f:facet>
+							 </rich:column>
+							 <rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['historique.FormationCommentEvent']}" />
+								</f:facet>
+									<h:outputText value="#{message.libelle}" rendered="#{index != (intraManager.messages.size()-1) or intraManager.modif==false}"/>
+									<h:inputTextarea value="#{message.libelle}" rendered="#{index == (intraManager.messages.size()-1) and intraManager.modif==true}" cols="60" rows="2"/>
+								<f:facet name="footer">
+									<h:outputText value="#{messages['historique.FormationCommentEvent']}" />
+								</f:facet>
+							 </rich:column>
+						</rich:dataTable> 
+					</center>				
+				</rich:panel>
+				</rich:panel>
+				<rich:panel header="Notification : ">
+					<table>
+						<tr>
+							<td>
+			        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+										<ui:define name="label">
+											<h:outputText value="#{messages['intra.mailConfirm']}"/>
+										</ui:define>
+										<h:selectBooleanCheckbox value="#{intraManager.confirm}" />
+									</s:decorate>
+								</td>
+			        			<td>
+									<h:graphicImage id="explication" value="/img/interrogation.jpg" width="35px" height="35px">
+								 		<rich:tooltip styleClass="tooltip" layout="block">
+		            						<span> 
+		            							Un mail de confirmation vous sera envoyé pour confirmer la création <br />
+		            							de la demande d'intra.
+		              						</span>
+		        						</rich:tooltip>
+		       						</h:graphicImage>
+			        			</td>
+			        		</tr>
+			        	</table>
+				</rich:panel>			
+			</rich:panel>
+			<br />
+			<center>
+				<h:commandButton type="submit" action="#{intraManager.saveIntra()}" value="Enregistrer la demande d'intra" style="width:200px; height:40px;"/>
+			</center>		
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

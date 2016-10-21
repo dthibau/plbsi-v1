@@ -1,0 +1,55 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+
+	<rich:popupPanel id="calendrierPopup" modal="true" autosized="true"
+		resizeable="false">
+		<f:facet name="header">
+			<h:outputText value="Génération du calendrier" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('calendrierPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+		<h:form target="_blank">
+			<s:decorate template="../../layout/edit.xhtml">
+				<ui:define name="label">#{messages['calendrier.month']}</ui:define>
+				<h:selectOneMenu value="#{calendarManager.month}">
+					<f:selectItems value="#{monthsItem}" />
+				</h:selectOneMenu>
+			</s:decorate>
+			<s:decorate template="../../layout/edit.xhtml">
+				<ui:define name="label">#{messages['calendrier.year']}</ui:define>
+				<h:inputText size="4" value="#{calendarManager.year}" />
+			</s:decorate>
+
+			<s:decorate template="../../layout/edit.xhtml">
+				<ui:define name="label">#{messages['calendrier.selection']}</ui:define>
+				<h:selectBooleanCheckbox value="#{calendarManager.selection}" />
+			</s:decorate>
+
+
+
+			<br />
+			<a:commandButton value="Annuler"
+				onclick="#{rich:component('calendrierPopup')}.hide();" />
+
+			<h:commandButton target="_blank" action="#{calendarManager.generate}" value="Générer"
+				onclick="#{rich:component('calendrierPopup')}.hide();">
+				<f:param name="cid" value="#{conversation.id}" />
+			</h:commandButton>
+		</h:form>
+
+	</rich:popupPanel>
+
+</ui:composition>

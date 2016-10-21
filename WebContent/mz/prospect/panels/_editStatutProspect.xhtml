@@ -1,0 +1,168 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table width="100%">
+		<tr valign="top">
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Identification </legend>
+					<ui:include src="../fields/_societe.xhtml" />
+
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.typeContact']}" />
+						</ui:define>
+						<h:selectOneMenu value="#{editProspectManager.prospect.type}"
+							style="width:160px; height:20px;"
+							rendered="#{!applicationManager.isWebType(editProspectManager.prospect.type)}">
+							<f:selectItems value="#{typesContact}" var="type"
+								itemValue="#{type.libelle.toUpperCase()}"
+								itemLabel="#{type.libelle}" />
+						</h:selectOneMenu>
+						<h:outputText value="#{editProspectManager.prospect.type}"
+							rendered="#{applicationManager.isWebType(editProspectManager.prospect.type)}" />
+								
+								&nbsp;&nbsp;
+								<h:outputText
+							value="#{editProspectManager.prospectDetail.heure}" />
+					</s:decorate>
+
+					<ui:include src="../fields/_typeFormation.xhtml" />
+
+
+					<s:decorate template="../../layout/edit.xhtml" style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.participant']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.nb_participants}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.lieu']}" />
+						</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospect.prospectDetail.lieu}"
+							style="width:160px; height:20px;">
+							<a:ajax event="change" render="" />
+							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
+							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+						</h:selectOneMenu>
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateSouhait']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Statut </legend>
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:500px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.attribueA']}" />
+						</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.commercial}">
+							<a:ajax event="change" render="statutDemande,commercial,mont"
+								listener="#{editProspectManager.gereStatut()}"
+								oncomplete="#{rich:component('spinner')}.stop()" />
+							<f:selectItem itemValue="" itemLabel="N/C" />
+							<f:selectItems value="#{editProspectManager.listeCommerciale}"
+								var="commerciale" itemValue="#{commerciale.nomComplet}"
+								itemLabel="#{commerciale.nomComplet}" />
+						</h:selectOneMenu>
+					</s:decorate>
+					<s:decorate template="../../layout/edit.xhtml" style="width:400px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.asuivre']}" />
+						</ui:define>
+						<h:selectBooleanCheckbox disabled="#{!sessionDataManager.managerDispatcher}"
+							value="#{editProspectManager.prospectDetail.asuivre}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:500px;">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.statut']}" />
+						</ui:define>
+						<h:selectOneMenu id="statutEdit"
+							value="#{editProspectManager.prospect.statut}"
+							style="width:175px;"
+							rendered="#{editProspectManager.prospectDetail.commercial == null}">
+							<a:ajax event="change" render="statutDemande,commercial,mont"
+								listener="#{editProspectManager.remplirMontant()}"
+								oncomplete="#{rich:component('spinner')}.stop();" />
+							<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
+							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
+							<f:selectItem itemValue="#{ST_EN_COURS}" />
+							<f:selectItem itemValue="#{ST_ABANDON}" />
+							<f:selectItem itemValue="#{ST_GAGNE}" />
+							<f:selectItem itemValue="#{ST_PERDU}" />
+						</h:selectOneMenu>
+						<h:selectOneMenu id="statutEditWithC"
+							value="#{editProspectManager.prospect.statut}"
+							style="width:175px;"
+							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
+							<a:ajax event="change" render="statutDemande,commercial,mont"
+								listener="#{editProspectManager.remplirMontant()}"
+								oncomplete="#{rich:component('spinner')}.stop();" />
+							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
+							<f:selectItem itemValue="#{ST_EN_COURS}" />
+							<f:selectItem itemValue="#{ST_ABANDON}" />
+							<f:selectItem itemValue="#{ST_GAGNE}" />
+							<f:selectItem itemValue="#{ST_PERDU}" />
+						</h:selectOneMenu>
+						<h:selectOneMenu id="statutEditWithC2"
+							value="#{editProspectManager.prospect.statut}"
+							style="width:175px;"
+							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
+							<a:ajax event="change" render="statutDemande,commercial,mont"
+								listener="#{editProspectManager.remplirMontant()}"
+								oncomplete="#{rich:component('spinner')}.stop();" />
+							<f:selectItem itemValue="#{ST_EN_COURS}" />
+							<f:selectItem itemValue="#{ST_ABANDON}" />
+							<f:selectItem itemValue="#{ST_GAGNE}" />
+							<f:selectItem itemValue="#{ST_PERDU}" />
+						</h:selectOneMenu>
+					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateCreation']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="Date envoi devis" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" />
+						<h:outputText value="Non envoyé"
+							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+
+		</tr>
+	</table>
+
+
+</ui:composition>

@@ -1,0 +1,83 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:dataTable id="resultList" value="#{searchManager.results}"
+		var="_dto" rowClass="#{_dto.formation.visible}">
+		<f:facet name="header">
+			<rich:columnGroup>
+				<rich:column rowspan="2">
+				</rich:column>
+				<rich:column colspan="2">
+					<h:outputText value="#{searchManager.displayYear}" />
+				</rich:column>
+				<rich:column breakRowBefore="true">
+					<h:outputText value="#{messages['search.sessions.nb']}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{messages['search.sessions.dates']}" />
+				</rich:column>
+			</rich:columnGroup>
+		</f:facet>
+		<rich:column>
+			<s:link view="/mz/formation/formation.xhtml"
+				action="#{formationManager.select}">
+				<f:param name="formationId" value="#{_dto.formation.idFormation}" />
+				<s:conversationPropagation type="none" />
+					#{_dto.formation.libelle}
+				</s:link>
+		</rich:column>
+		<rich:column styleClass="#{_dto.formation.getAllSessionsOrganismeDto(searchManager.displayYear).size() == 0 ? 'obsolete' : ''}">
+			<h:outputText
+				value="#{_dto.formation.getAllSessionsOrganismeDto(searchManager.displayYear).size()}" />
+		</rich:column>
+		<rich:column>
+			<a:repeat
+				value="#{_dto.formation.getAllSessionsOrganismeDto(searchManager.displayYear)}"
+				var="_so">
+				<b><h:outputText value="#{_so.session.debut}">
+						<s:convertDateTime type="date" dateStyle="short" />
+					</h:outputText></b> (#{_so.organisme});		
+        	</a:repeat>
+		</rich:column>
+		<rich:collapsibleSubTable var="_fp"
+			value="#{searchManager.plbHidden ? _dto.formation.formationsPartenaire : _dto.formation.allFormationsPartenaire}">
+			<rich:column styleClass="formationPartenaire" rendered="#{!searchManager.obsoleteSessions or _dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear).size() == 0}">
+			<h:outputLink rendered="#{_fp.url != null}"
+					styleClass="large" value="#{_fp.url}" target="_blank">
+				<h:outputText value="#{_fp.partenaire.nom}"/>
+			</h:outputLink>
+			<h:outputText rendered="#{_fp.url == null}" value="#{_fp.partenaire.nom}"/>
+			</rich:column>
+			<rich:column styleClass="#{_dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear).size() == 0 ? 'obsolete' : ''}"
+			rendered="#{!searchManager.obsoleteSessions or _dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear).size() == 0}">
+				<h:outputText
+					value="#{_dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear).size()}"></h:outputText>
+			</rich:column>
+			<rich:column rendered="#{!searchManager.obsoleteSessions or _dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear).size() == 0}">
+				<a:repeat
+					value="#{_dto.formation.getSessions(_fp.partenaire.nom,searchManager.displayYear)}"
+					var="_session">
+					<b><h:outputText value="#{_session.debut}">
+							<s:convertDateTime type="date" dateStyle="short" />
+						</h:outputText></b>
+				</a:repeat>
+			</rich:column>
+			<f:facet name="footer">
+				<rich:columnGroup>
+					<rich:column colspan="3" style="background-color:gray;"></rich:column>
+				</rich:columnGroup>
+
+			</f:facet>
+		</rich:collapsibleSubTable>
+		
+
+
+	</rich:dataTable>
+</ui:composition>

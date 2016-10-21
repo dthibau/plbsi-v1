@@ -1,0 +1,394 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml"
+	xmlns:html="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<ui:define name="body">
+
+		<h:outputStylesheet>
+        .tooltip {
+        background-color: blue;
+        border-width:3px;
+        }
+        
+        .tooltip-custom-body {
+        background-color:  orange;
+        }
+ 
+        .tooltip-text {
+        background-color: #a1caf1;
+        width: 100px;
+        height: 45px;
+        cursor: arrow;
+        border-width: 2px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        }
+        
+        .tooltip-text2 {
+        width: 60px;
+        height: 30px;
+        cursor: arrow;
+        border-width: 0px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        }
+ 
+        .tooltipData {
+        font-weight: bold;
+        }
+        
+        .active-row {
+    	background: #ccccff;
+		}
+		
+    	</h:outputStylesheet>
+
+		<h:head>
+			<!-- fonction pour qui conserve l'onglet selectioné -->
+			<script type="text/javascript" language="JavaScript">
+				var pageActuelle = "page1";
+				
+		        function changePage(texte)
+		        {
+		        	pageActuelle = texte;
+		        } 
+
+		        function loadPage(){
+		        	#{rich:component('mainPanel')}.switchToItem(pageActuelle);
+		        	pageActuelle = "page1";
+			    }
+
+		        function loadPageClient(){
+		        	#{rich:component('mainPanelClient')}.switchToItem(pageActuelle);
+		        	pageActuelle = "page1";
+			    }  
+
+
+			    function validerMontant(){
+					var montant = document.getElementById("#{rich:clientId('montantSaisie')}").value;
+					if(montant != ""){
+						#{rich:component('popupMont')}.hide();
+					}
+				}
+	        </script>
+
+		</h:head>
+
+		<h:form>
+			<a4j:poll id="poll" interval="115000" />
+		</h:form>
+
+		<!-- Pop up de modification et supression de prospect -->
+		<ui:include src="../prospect/popupProspect.xhtml" />
+		<!-- Recherche prospect -->
+		<ui:include src="filterProspects.xhtml" />
+
+		<!-- Liste de prospect récemment mis à jour -->
+		<!--<h:form>
+		<a4j:poll id="poll" interval="10000" render="lastUpdateProspects"/>
+		</h:form>
+		<a:outputPanel id="lastUpdateProspects">
+			<h:outputText value="#{searchProspect.updatedProspects}" />
+		</a:outputPanel>-->
+
+		<h:form id="resultat">
+			<!-- tableau de resultat -->
+			<rich:dataTable id="resultList" value="#{searchProspect.results}"
+				var="_pDto" style="width:100%; overflow-x:auto; overflow-y:auto;">
+				<f:facet name="header">
+					<h:outputText value="Liste des prospects touvé(s)" />
+				</f:facet>
+				<rich:column style="background-color:#{_pDto.color}" id="date"
+					sortBy="#{_pDto.dateCreation}"
+					sortOrder="#{searchProspect.getOrder('date')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.date']}" />
+							<ui:param name="key" value="date" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.dateCreation}">
+						<s:convertDateTime dateStyle="short" locale="#{LOCALE}" />
+					</h:outputText>
+					<f:facet name="footer">
+						<a:commandLink value="#{messages['prospect.date']}"
+							render="resultList" action="#{searchProspect.sortBy('date')}">
+							<s:conversationId />
+						</a:commandLink>
+						<a:outputPanel rendered="#{searchProspect.isAscending('date')}">
+							<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+						</a:outputPanel>
+						<a:outputPanel rendered="#{searchProspect.isDescending('date')}">
+							<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+						</a:outputPanel>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					sortBy="#{_pDto.societe}"
+					sortOrder="#{searchProspect.getOrder('entreprise')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.nomEntreprise']}" />
+							<ui:param name="key" value="entreprise" />
+						</ui:include>
+
+					</f:facet>
+					<b> <a4j:commandLink
+							action="#{editProspectManager.selectProspect(_pDto.prospect)}"
+							value="#{_pDto.societe}" render="prospectPanel"
+							oncomplete="#{rich:component('popupModif')}.show()"
+							style="font-size:14px;">
+						</a4j:commandLink></b>
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.nomEntreprise']}" />
+							<ui:param name="key" value="entreprise" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color};"
+					sortBy="#{_pDto.prospectDetail.natureClient}"
+					sortOrder="#{searchProspect.getOrder('typo')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="Typo" />
+							<ui:param name="key" value="typo" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.prospectDetail.natureClient}" />
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="Typo" />
+							<ui:param name="key" value="typo" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+
+				<rich:column style="background-color:#{_pDto.color}"
+					sortBy="#{_pDto.reference}"
+					sortOrder="#{searchProspect.getOrder('codeCours')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.codeCours']}" />
+							<ui:param name="key" value="codeCours" />
+						</ui:include>
+
+					</f:facet>
+					<s:link view="/mz/formation/formation.xhtml"
+						action="#{formationManager.selectByReference}">
+						<f:param name="ref" value="#{_pDto.reference}" />
+						<s:conversationPropagation type="none" />
+						<h:outputText value="#{_pDto.reference}" />
+					</s:link><br/>
+					(<h:outputText
+									value="#{_pDto.dateSession}"/>)
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.codeCours']}" />
+							<ui:param name="key" value="codeCours" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					rendered="#{sessionDataManager.managerDispatcher}">
+					<f:facet name="header">Informations</f:facet>
+					<div
+						style="height: 60px; width: 400px; overflow-x: auto; overflow-y: auto">
+						<b><h:outputText value="Notes perso : " style="color:red" /></b>
+						<h:outputText value="N/C"
+							rendered="#{empty _pDto.prospect.notePerso}" />
+						<h:outputText value="#{_pDto.prospect.notePerso}"
+							rendered="#{!empty _pDto.prospect.notePerso}" escape="false" />
+						<br />
+					</div>
+					<a:outputPanel rendered="#{!empty _pDto.prospect.commentaire}">
+						<center>
+							<h:outputText
+								value="* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"
+								style="color:green" />
+						</center>
+						<div
+							style="height: 50px; width: 400px; overflow-x: auto; overflow-y: auto">
+							<b><h:outputText value="Remarques client : "
+									style="color:blue" /></b>
+							<h:outputText value="#{_pDto.prospect.commentaire}" />
+							<br />
+						</div>
+					</a:outputPanel>
+					<f:facet name="footer">Informations</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					rendered="#{sessionDataManager.managerDispatcher}"
+					sortBy="#{_pDto.prospectDetail.commercial}"
+					sortOrder="#{searchProspect.getOrder('commercial')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.commerciale']}" />
+							<ui:param name="key" value="commercial" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.prospectDetail.commercial}" />
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.commerciale']}" />
+							<ui:param name="key" value="commercial" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					rendered="#{sessionDataManager.managerDispatcher}"
+					sortBy="#{_pDto.prospect.type}"
+					sortOrder="#{searchProspect.getOrder('typeContact')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.typeContact']}" />
+							<ui:param name="key" value="typeContact" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.prospect.type}" />
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label"
+								value="#{messages['prospect.typeContact']}" />
+							<ui:param name="key" value="typeContact" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					sortBy="#{_pDto.statut}"
+					sortOrder="#{searchProspect.getOrder('statut')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.statut']}" />
+							<ui:param name="key" value="statut" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.statut}" />
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.statut']}" />
+							<ui:param name="key" value="statut" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					sortBy="#{_pDto.dateDevis}"
+					sortOrder="#{searchProspect.getOrder('dateDevis')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.dateDevis']}" />
+							<ui:param name="key" value="dateDevis" />
+						</ui:include>
+					</f:facet>
+					<h:outputText value="#{_pDto.dateDevis}"/>
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="#{messages['prospect.dateDevis']}" />
+							<ui:param name="key" value="dateDevis" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					sortBy="#{_pDto.prospect.informationIntra}"
+					sortOrder="#{searchProspect.getOrder('informationIntra')}">
+					<f:facet name="header">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="Demande intra?" />
+							<ui:param name="key" value="informationIntra" />
+						</ui:include>
+					</f:facet>
+					<center>
+						<h:graphicImage id="pointV" value="/img/pointvert.png"
+							width="40px" height="40px"
+							rendered="#{!empty _pDto.prospect.informationIntra and _pDto.prospect.informationIntra.changementCom==1 and _pDto.prospect.informationIntra.changementAdminIntra==0}">
+							<rich:tooltip styleClass="tooltip" layout="block">
+								<span> Votre demande d'intra est à jour. </span>
+							</rich:tooltip>
+						</h:graphicImage>
+						<h:graphicImage id="pointVValide" value="/img/pointvert.png"
+							width="40px" height="40px"
+							rendered="#{!empty _pDto.prospect.informationIntra and _pDto.prospect.informationIntra.changementCom==1 and _pDto.prospect.informationIntra.changementAdminIntra==1}">
+							<rich:tooltip styleClass="tooltip" layout="block">
+								<span> Votre demande d'intra est à jour et a été validé.
+								</span>
+							</rich:tooltip>
+						</h:graphicImage>
+						<h:graphicImage id="pointO" value="/img/pointrouge.png"
+							width="40px" height="40px"
+							rendered="#{!empty _pDto.prospect.informationIntra and _pDto.prospect.informationIntra.changementAdminIntra==1 and _pDto.prospect.informationIntra.changementCom==0}">
+							<rich:tooltip styleClass="tooltip" layout="block">
+								<span> Votre demande d'intra n'est pas à jour, son statut
+									a évolué. </span>
+							</rich:tooltip>
+						</h:graphicImage>
+						<br /> <b><h:outputText
+								value="N° Intra : #{_pDto.prospect.informationIntra.idInforamtionIntra} - #{_pDto.prospect.informationIntra.statutIntra}"
+								rendered="#{!empty _pDto.prospect.informationIntra}" /></b>
+					</center>
+					<f:facet name="footer">
+						<ui:include src="_sortLinks.xhtml">
+							<ui:param name="label" value="Demande intra?" />
+							<ui:param name="key" value="informationIntra" />
+						</ui:include>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{_pDto.color}"
+					rendered="#{sessionDataManager.managerDispatcher}">
+					<f:facet name="header">
+						<center>
+							<a4j:commandButton action="#{searchProspect.getSelectedItems()}"
+								value="Supprimer" render="popupSuppr"
+								oncomplete="#{rich:component('popupSuppr')}.show()"
+								style="height:40px;">
+								<rich:tooltip id="tt1" styleClass="tooltip" layout="block">
+									<span> Cochez les cases des prospects à supprimer puis
+										cliquez sur ce bouton.<br /> Une popup récapitulative
+										apparaitra pour confirmer la supression.
+									</span>
+								</rich:tooltip>
+							</a4j:commandButton>
+						</center>
+					</f:facet>
+					<center>
+						<h:selectBooleanCheckbox
+							value="#{searchProspect.selectedIds[_pDto.idProspect]}" />
+					</center>
+					<f:facet name="footer">Suppression</f:facet>
+				</rich:column>
+			</rich:dataTable>
+			<rich:jQuery selector="#resultList tr"
+				query="mouseover(function(){jQuery(this).addClass('active-row')})" />
+			<rich:jQuery selector="#resultList tr"
+				query="mouseout(function(){jQuery(this).removeClass('active-row')})" />
+		</h:form>
+	</ui:define>
+	<ui:define name="tools">
+		<center>
+			<s:button view="/mz/searchProspect_xls.xhtml"
+				rendered="#{!empty searchProspect.results}" value="Export Excel"
+				style="width:110px;height:20px;" />
+			<br />
+			<h:commandButton value="#{messages['dispatch.title']}"
+				style="width:110px;height:20px;"
+				rendered="#{sessionDataManager.managerDispatcher}">
+				<rich:componentControl target="dispatchPopup" operation="show" />
+			</h:commandButton>
+		</center>
+	</ui:define>
+</ui:composition>

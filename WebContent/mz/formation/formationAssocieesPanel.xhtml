@@ -1,0 +1,46 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+
+	<rich:popupPanel id="formationAssocieesPopup" modal="true"
+		autosized="true" resizeable="false">
+		<f:facet name="header">
+			<h:outputText value="Ajouter une formation associée" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('formationAssocieesPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+		<h:form>
+			<rich:select enableManualInput="true" value="#{formationManager.newFormationAssociee}">
+				<s:selectItems value="#{formationManager.allFormations}"
+					var="formation" label="#{formation.reference}-#{formation.libelle}"
+					noSelectionLabel="Saisissez des caractères pour sélectionner" />
+				<s:convertEntity />
+			</rich:select>
+
+
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+			<br />
+			<a:commandButton value="Annuler"
+				onclick="#{rich:component('formationAssocieesPopup')}.hide();" />
+			<a:commandButton
+				action="#{formationManager.addFormationAssociee()}"
+				value="Ajouter" execute="@form"
+				render="formationAssocieesList,formationSuivantesListes,formationSuivantesListesEdit,messages"
+				oncomplete="#{rich:component('formationAssocieesPopup')}.hide();"></a:commandButton>
+		</h:form>
+
+	</rich:popupPanel>
+
+</ui:composition>

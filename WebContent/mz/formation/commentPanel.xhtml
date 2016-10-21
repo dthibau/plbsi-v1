@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.org/schema/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a="http://richfaces.org/a4j">
+    
+    
+<h:form>
+<rich:popupPanel id="commentPopup" modal="true" autosized="true" resizeable="false">
+        <f:facet name="header">
+            <h:outputText value="Nouveau commentaire/remarque" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('commentPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+        </f:facet>
+        <h:inputTextarea value="#{formationManager.event.message}" cols="80" rows="5"/>
+        <br/>
+        <h:outputFormat value="#{messages['mail.destinataires']}" >
+        	<f:param value="#{formationManager.event.destinatairesAsString}"></f:param>
+        </h:outputFormat>
+        <br/><br/>
+        <input type="hidden" name="cid" value="#{conversation.id}" />
+        <a:commandButton value="Annuler" onclick="#{rich:component('commentPopup')}.hide();"/>
+        <a:commandButton action="#{formationManager.addComment}" execute="@form" render="historiquePanel" value="Envoyer" onclick="#{rich:component('commentPopup')}.hide();"/>
+ 
+ 
+ 		
+    </rich:popupPanel>
+ </h:form>
+ </ui:composition>   

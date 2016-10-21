@@ -1,0 +1,41 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j"
+    xmlns:a4j="http://richfaces.org/a4j">
+    
+    	<center><p><b>Etes-vous sur de vouloir supprimer ce prospect ?</b></p></center><br />
+		<center><p><b>Info : </b></p></center><br />
+		<center><p>Prospect de l'entreprise <b>#{searchProspect.prospectDelete.societe}</b> du #{searchProspect.prospectDelete.dateCreation}.</p></center><br />
+		<center>
+			<h:outputText value="Dernière modification : #{searchProspect.prospectDelete.dateModification}" rendered="#{!empty searchProspect.prospect.dateModification}"/>
+			<h:outputText value="Prospect jamais modifié." rendered="#{empty searchProspect.prospectDelete.dateModification}"/>
+		</center>
+		<br />	
+        <p>*Warning : Cette supression est définitive et ne pourra en aucun cas être récupéré.</p>
+        <br />
+        <br />
+        <center>
+			<a:status>
+				<f:facet name="stop" />
+				<f:facet name="start">
+					<h:graphicImage value="/img/ai.gif" alt="Chargement ..." style="width:12%"/>
+				</f:facet>
+			</a:status>
+		</center>
+        <center>
+        <p>	
+       		<a4j:region>
+       			<a4j:commandButton value="Supprimer" action="#{searchProspect.deleteProspect()}" render="resultList,resultat,totalPanel" oncomplete="#{rich:component('popupSuppr')}.hide()"/>
+       			&nbsp;&nbsp;
+       			<a4j:commandButton value="Annuler" onclick="#{rich:component('popupSuppr')}.hide()"/>
+       		</a4j:region>
+        </p>
+        </center>
+    
+  </ui:composition>

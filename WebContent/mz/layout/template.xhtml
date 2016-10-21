@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.org/schema/seam/taglib" contentType="text/html">
+	<ui:debug />
+	<h:html>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>plbsi</title>
+		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+
+		<link rel="stylesheet" href="#{request.contextPath}/css/plb.css"
+			media="all" />
+		
+		<link rel="stylesheet" href="#{URL_CSS}" media="all" />
+		<ui:insert name="head" />
+	</h:head>
+	<h:body>
+		<a:outputPanel id="menuPanel">
+			<ui:include src="menu.xhtml">
+				<ui:param name="projectName" value="plbsi" />
+			</ui:include>
+		</a:outputPanel>
+		<div class="flow">
+			<a:outputPanel layout="block" id="bodyPanel" styleClass="body">
+				<h:messages id="messages" globalOnly="true" styleClass="message"
+					errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg"
+					rendered="#{showGlobalMessages != 'false'}" />
+
+				<table width="100%">
+					<tr>
+						<td><ui:insert name="body" /></td>
+						<td valign="top" align="right"><ui:insert name="tools" /></td>
+					</tr>
+				</table>
+			</a:outputPanel>
+		</div>
+
+
+		<div class="footer">
+			<br />
+			<p style="font-size: 8px">
+				<em>Build-number : XXX</em><br /> Powered by <a
+					href="http://seamframework.org">Seam</a> #{org.jboss.seam.version}
+				and <a href="http://www.jboss.org/richfaces">RichFaces</a>.
+			</p>
+		</div>
+		<h:form>
+			<a:poll id="polling"
+				action="#{httpSessionMaintainer.maintainSession}"
+				interval="#{SESSION_FREQUENCY}" />
+		</h:form>
+	</h:body>
+	</h:html>
+</f:view>

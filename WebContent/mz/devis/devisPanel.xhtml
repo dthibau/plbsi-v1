@@ -1,0 +1,154 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+
+	<rich:popupPanel id="devisPopup" modal="true" autosized="true"
+		resizeable="false">
+		<f:facet name="header">
+			<h:outputText rendered="#{devisManager.new}" value="Nouveau devis" />
+			<h:outputText rendered="#{!devisManager.new}"
+				value="Devis n°#{devisManager.devis.id}" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('devisPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+		<h:form>
+			<a:outputPanel id="devisContent">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.client']}" />
+					</ui:define>
+					<h:inputText required="true" value="#{devisManager.devis.client}" />
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.contactClient']}" />
+					</ui:define>
+					<h:inputText required="true"
+						value="#{devisManager.devis.contactClient}" />
+				</s:decorate>
+
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.remise']}" />
+					</ui:define>
+					<a:outputPanel id="remiseInput" styleClass="remiseInput">
+						<rich:inputNumberSpinner
+							rendered="#{devisManager.devis.remiseUnit.equals('%')}"
+							value="#{devisManager.devis.remise}" styleClass="spinner"
+							step="5" />
+						<h:inputText
+							rendered="#{devisManager.devis.remiseUnit.equals('€')}"
+							value="#{devisManager.devis.remise}" size="8" />
+					</a:outputPanel>
+					<h:selectOneMenu value="#{devisManager.devis.remiseUnit}"
+						styleClass="remiseInput remiseUnit">
+						<a:ajax event="change" render="remiseInput" execute="@this" />
+						<f:selectItem itemValue="%" itemLabel="%" />
+						<f:selectItem itemValue="€" itemLabel="€" />
+					</h:selectOneMenu>
+				</s:decorate>
+
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.particulier']}" />
+					</ui:define>
+					<h:selectBooleanCheckbox value="#{devisManager.devis.particulier}" />
+				</s:decorate>
+
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.etranger']}" />
+					</ui:define>
+					<h:selectBooleanCheckbox value="#{devisManager.devis.etranger}" />
+				</s:decorate>
+
+				<h:outputText value="Pas de formation associée"
+					rendered="#{devisManager.devis.formation == null}" />
+				<a:outputPanel rendered="#{devisManager.devis.formation != null}">
+					<fieldset>
+					<legend> Formation :
+					#{devisManager.devis.formation.reference} </legend>
+
+					<s:decorate template="../layout/display.xhtml">
+
+						<a:commandButton value="Ajouter une session"
+							action="#{devisManager.addSession}" execute="@this sessionsPanel"
+							render="sessionsPanel">
+							<f:param name="cid" value="#{conversation.id}" />
+						</a:commandButton>
+					</s:decorate>
+					<rich:panel id="sessionsPanel">
+
+						<rich:dataTable value="#{devisManager.devis.sessions}"
+							var="devisSession" rowKeyVar="index">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['devis.sessions']}" />
+								</f:facet>
+								<h:selectOneMenu value="#{devisSession.session}">
+									<s:selectItems
+										value="#{devisManager.devis.formation.nextSessionsOrganismeDto}"
+										var="_session" label="#{_session}"
+										noSelectionLabel="Sélectionner une session"
+										itemValue="#{_session.session}" />
+									<s:convertEntity />
+								</h:selectOneMenu>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['devis.nbParticipants']}" />
+								</f:facet>
+								<h:inputText value="#{devisSession.nbParticipants}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header"></f:facet>
+								<a:commandButton value="Supprimer"
+									action="#{devisManager.removeSession(index)}" execute="@this"
+									render="sessionsPanel">
+									<f:param name="cid" value="#{conversation.id}" />
+								</a:commandButton>
+							</rich:column>
+						</rich:dataTable>
+					</rich:panel>
+
+					</fieldset>
+				</a:outputPanel>
+
+
+				<br />
+				<a:outputPanel rendered="#{devisManager.devis.prospect == null}">
+					<s:decorate template="../layout/edit.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.demandeClient']}" />
+						</ui:define>
+						<h:selectBooleanCheckbox
+							value="#{devisManager.creerDemandeClient}" />
+					</s:decorate>
+				</a:outputPanel>
+
+				<br />
+
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+				<a:commandButton value="Annuler"
+					onclick="#{rich:component('devisPopup')}.hide();" />
+				<h:commandButton action="#{devisManager.generate}"
+					value="#{messages['action.generer']}"
+					onclick="#{rich:component('devisPopup')}.hide();" />
+			</a:outputPanel>
+		</h:form>
+
+	</rich:popupPanel>
+
+</ui:composition>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="1598" lt="549" ts="1464876649548" s="true" lb="ACCES_HOME" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="440653">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="549" lt="549" ts="1464876649548" s="true" lb="http://localhost:8080/plbsi/mz/search/search.seam" rc="302" rm="Déplacé Temporairement" tn="" dt="" by="319"/>
+  <httpSample t="502" lt="502" ts="1464876650105" s="true" lb="http://localhost:8080/plbsi/login.seam;jsessionid=413wd48fjKOWQ1Z3BrUKYr2b.undefined?cid=1" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5740"/>
+  <httpSample t="2" lt="2" ts="1464876650676" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="144" lt="122" ts="1464876650684" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10105"/>
+  <httpSample t="102" lt="102" ts="1464876650829" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="15" lt="15" ts="1464876650931" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="13" lt="9" ts="1464876650947" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="9" lt="9" ts="1464876650960" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="10" lt="10" ts="1464876650970" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="12" lt="12" ts="1464876650981" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="41" lt="41" ts="1464876650993" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="10" lt="10" ts="1464876651034" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="9" lt="9" ts="1464876651044" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="9" lt="9" ts="1464876651054" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="8" lt="8" ts="1464876651064" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="10" lt="10" ts="1464876651072" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="10" lt="10" ts="1464876651083" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="8" lt="8" ts="1464876651093" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="18" lt="18" ts="1464876651101" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="9" lt="9" ts="1464876651120" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="10" lt="10" ts="1464876651129" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="6" lt="6" ts="1464876651140" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+</httpSample>
+<httpSample t="4057" lt="217" ts="1464876651479" s="true" lb="POST_LOGIN" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="593895">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="217" lt="217" ts="1464876651479" s="true" lb="http://localhost:8080/plbsi/login.seam?cid=1" rc="302" rm="Déplacé Temporairement" tn="" dt="" by="212"/>
+  <httpSample t="3357" lt="2812" ts="1464876651696" s="true" lb="http://localhost:8080/plbsi/mz/search/search.seam?cid=1" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="67530"/>
+  <httpSample t="5" lt="5" ts="1464876655113" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="168" lt="114" ts="1464876655118" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10104"/>
+  <httpSample t="13" lt="13" ts="1464876655286" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="8" lt="8" ts="1464876655299" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="11" lt="8" ts="1464876655307" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="8" lt="8" ts="1464876655318" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="8" lt="8" ts="1464876655326" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="8" lt="8" ts="1464876655334" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="8" lt="8" ts="1464876655342" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="7" lt="7" ts="1464876655350" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="7" lt="7" ts="1464876655358" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="6" lt="6" ts="1464876655365" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="7" lt="7" ts="1464876655372" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="5" lt="5" ts="1464876655380" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="5" lt="5" ts="1464876655385" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="5" lt="5" ts="1464876655391" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="5" lt="5" ts="1464876655396" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="5" lt="5" ts="1464876655401" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="5" lt="5" ts="1464876655406" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="5" lt="5" ts="1464876655411" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/status.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6965"/>
+  <httpSample t="5" lt="5" ts="1464876655416" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datatable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4174"/>
+  <httpSample t="17" lt="17" ts="1464876655421" s="true" lb="http://localhost:8080/plbsi/rfRes/datatable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3148"/>
+  <httpSample t="7" lt="7" ts="1464876655438" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datascroller.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4314"/>
+  <httpSample t="16" lt="16" ts="1464876655446" s="true" lb="http://localhost:8080/plbsi/rfRes/datascroller.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3020"/>
+  <httpSample t="8" lt="8" ts="1464876655462" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="30025"/>
+  <httpSample t="8" lt="8" ts="1464876655470" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelBorders.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6204"/>
+  <httpSample t="7" lt="7" ts="1464876655478" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelSizer.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9400"/>
+  <httpSample t="17" lt="17" ts="1464876655486" s="true" lb="http://localhost:8080/plbsi/rfRes/popupPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2908"/>
+  <httpSample t="5" lt="5" ts="1464876655503" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tooltip.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11483"/>
+  <httpSample t="6" lt="6" ts="1464876655509" s="true" lb="http://localhost:8080/plbsi/rfRes/tooltip.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="556"/>
+  <httpSample t="8" lt="8" ts="1464876655515" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/component-control.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1992"/>
+  <httpSample t="7" lt="7" ts="1464876655523" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="2" lt="2" ts="1464876655530" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+  <httpSample t="2" lt="2" ts="1464876655532" s="true" lb="http://localhost:8080/plbsi/img/ai.gif" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="5010"/>
+  <httpSample t="2" lt="2" ts="1464876655534" s="true" lb="http://localhost:8080/plbsi/img/sort_up.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="1757"/>
+</httpSample>
+<httpSample t="1249" lt="1054" ts="1464876655846" s="true" lb="SELECT_FILIERE" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="27961">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="297" lt="297" ts="1464876657404" s="true" lb="SEARCH_STRING" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3997">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="3373" lt="63" ts="1464876658005" s="true" lb="ACCESS_DETAIL" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1885851">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="63" lt="63" ts="1464876658005" s="true" lb="http://localhost:8080/plbsi/mz/formation/formation.seam?formationId=230&amp;conversationPropagation=none&amp;cid=1&amp;actionMethod=mz%2Fsearch%2Fsearch.xhtml%3AformationManager.select" rc="302" rm="Déplacé Temporairement" tn="" dt="" by="218"/>
+  <httpSample t="2496" lt="1725" ts="1464876658069" s="true" lb="http://localhost:8080/plbsi/mz/formation/formation.seam?cid=2" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="859281"/>
+  <httpSample t="1" lt="1" ts="1464876660695" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="258" lt="257" ts="1464876660696" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10105"/>
+  <httpSample t="12" lt="12" ts="1464876660955" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="12" lt="10" ts="1464876660968" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="9" lt="7" ts="1464876660980" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="6" lt="6" ts="1464876660990" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="5" lt="5" ts="1464876660997" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="5" lt="5" ts="1464876661002" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="4" lt="4" ts="1464876661007" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="4" lt="4" ts="1464876661012" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="4" lt="4" ts="1464876661017" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="4" lt="4" ts="1464876661022" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="5" lt="5" ts="1464876661026" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="5" lt="5" ts="1464876661031" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="5" lt="5" ts="1464876661036" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="4" lt="4" ts="1464876661041" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="4" lt="4" ts="1464876661046" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="5" lt="5" ts="1464876661051" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="4" lt="4" ts="1464876661056" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/togglePanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14535"/>
+  <httpSample t="5" lt="5" ts="1464876661060" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tabPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1955"/>
+  <httpSample t="13" lt="13" ts="1464876661065" s="true" lb="http://localhost:8080/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4863"/>
+  <httpSample t="4" lt="4" ts="1464876661079" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/togglePanelItem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4921"/>
+  <httpSample t="4" lt="4" ts="1464876661084" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tab.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5600"/>
+  <httpSample t="5" lt="5" ts="1464876661088" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datatable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4174"/>
+  <httpSample t="5" lt="5" ts="1464876661093" s="true" lb="http://localhost:8080/plbsi/rfRes/datatable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3148"/>
+  <httpSample t="5" lt="5" ts="1464876661098" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/component-control.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1992"/>
+  <httpSample t="5" lt="5" ts="1464876661103" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tooltip.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11483"/>
+  <httpSample t="4" lt="4" ts="1464876661108" s="true" lb="http://localhost:8080/plbsi/rfRes/tooltip.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="556"/>
+  <httpSample t="5" lt="5" ts="1464876661113" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsiblePanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3562"/>
+  <httpSample t="5" lt="5" ts="1464876661118" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsiblePanelItem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2527"/>
+  <httpSample t="30" lt="30" ts="1464876661124" s="true" lb="http://localhost:8080/plbsi/rfRes/icons.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4932"/>
+  <httpSample t="11" lt="11" ts="1464876661155" s="true" lb="http://localhost:8080/plbsi/rfRes/collapsiblePanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1553"/>
+  <httpSample t="12" lt="12" ts="1464876661166" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-utils.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3047"/>
+  <httpSample t="8" lt="7" ts="1464876661178" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/editor.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9273"/>
+  <httpSample t="9" lt="9" ts="1464876661186" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.component.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2410"/>
+  <httpSample t="7" lt="7" ts="1464876661195" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.mousewheel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2510"/>
+  <httpSample t="7" lt="7" ts="1464876661202" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/inputNumberSpinner.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8207"/>
+  <httpSample t="18" lt="18" ts="1464876661210" s="true" lb="http://localhost:8080/plbsi/rfRes/inputNumberSpinner.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2031"/>
+  <httpSample t="7" lt="7" ts="1464876661229" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="9" lt="9" ts="1464876661236" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsible-subtable-toggler.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2088"/>
+  <httpSample t="26" lt="26" ts="1464876661245" s="true" lb="http://localhost:8080/plbsi/rfRes/collapsible-subtable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2417"/>
+  <httpSample t="12" lt="12" ts="1464876661271" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsible-subtable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4011"/>
+  <httpSample t="5" lt="5" ts="1464876661285" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="5" lt="5" ts="1464876661290" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="30025"/>
+  <httpSample t="6" lt="6" ts="1464876661295" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelBorders.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6204"/>
+  <httpSample t="5" lt="4" ts="1464876661301" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelSizer.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9400"/>
+  <httpSample t="6" lt="6" ts="1464876661306" s="true" lb="http://localhost:8080/plbsi/rfRes/popupPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2908"/>
+  <httpSample t="7" lt="7" ts="1464876661313" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-selection.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1883"/>
+  <httpSample t="7" lt="7" ts="1464876661320" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/inputBase.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3168"/>
+  <httpSample t="5" lt="5" ts="1464876661327" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/list.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17115"/>
+  <httpSample t="5" lt="5" ts="1464876661332" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupList.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1362"/>
+  <httpSample t="5" lt="5" ts="1464876661337" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/select.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="15649"/>
+  <httpSample t="15" lt="15" ts="1464876661343" s="true" lb="http://localhost:8080/plbsi/rfRes/select.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3581"/>
+  <httpSample t="2" lt="2" ts="1464876661358" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+  <httpSample t="5" lt="5" ts="1464876661360" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/org.richfaces/up_icon.gif.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="335"/>
+  <httpSample t="5" lt="5" ts="1464876661365" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/org.richfaces/down_icon.gif.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="334"/>
+  <httpSample t="9" lt="5" ts="1464876661370" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/ckeditor.js.seam?ln=org.richfaces.ckeditor" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="397395"/>
+</httpSample>
+<httpSample t="409" lt="310" ts="1464876661696" s="true" lb="CLICK_EDIT" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="88240">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="377" lt="316" ts="1464876662412" s="true" lb="SAVE_DETAIL" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="83946">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="2648" lt="2231" ts="1464876663094" s="true" lb="INTERVENANTS" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3620183">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="2360" lt="2231" ts="1464876663094" s="true" lb="http://localhost:8080/plbsi/mz/intervenant/searchIntervenant.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3163932"/>
+  <httpSample t="2" lt="2" ts="1464876665596" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="20" lt="19" ts="1464876665598" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10104"/>
+  <httpSample t="7" lt="7" ts="1464876665618" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="6" lt="6" ts="1464876665625" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="8" lt="5" ts="1464876665631" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="5" lt="5" ts="1464876665639" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="4" lt="4" ts="1464876665645" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="6" lt="6" ts="1464876665649" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="5" lt="5" ts="1464876665655" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="8" lt="8" ts="1464876665660" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="7" lt="7" ts="1464876665668" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="7" lt="7" ts="1464876665676" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="6" lt="6" ts="1464876665683" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="5" lt="5" ts="1464876665689" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="5" lt="5" ts="1464876665694" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="5" lt="5" ts="1464876665699" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="6" lt="6" ts="1464876665704" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="4" lt="4" ts="1464876665710" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="4" lt="4" ts="1464876665715" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="5" lt="5" ts="1464876665719" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/status.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6965"/>
+  <httpSample t="4" lt="4" ts="1464876665725" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datatable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4174"/>
+  <httpSample t="5" lt="5" ts="1464876665729" s="true" lb="http://localhost:8080/plbsi/rfRes/datatable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3148"/>
+  <httpSample t="5" lt="5" ts="1464876665734" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="1" lt="1" ts="1464876665739" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+  <httpSample t="1" lt="1" ts="1464876665740" s="true" lb="http://localhost:8080/plbsi/img/ai.gif" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="5010"/>
+  <httpSample t="1" lt="1" ts="1464876665741" s="true" lb="http://localhost:8080/plbsi/img/sort_up.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="1757"/>
+</httpSample>
+<httpSample t="99" lt="99" ts="1464876666072" s="true" lb="INTERVENANTS_FORMATION_SEARCH" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1847">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="1977" lt="1550" ts="1464876666474" s="false" lb="CREER_PROSPECT" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="562570">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>Test failed: text expected to contain /Prospect(s)/</failureMessage>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="1557" lt="1550" ts="1464876666474" s="true" lb="http://localhost:8080/plbsi/mz/prospect/prospect.seam?actionMethod=mz%2Fprospect%2Fprospect.xhtml%3AsearchProspect.init" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="88551"/>
+  <httpSample t="2" lt="1" ts="1464876668040" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="32" lt="31" ts="1464876668042" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10104"/>
+  <httpSample t="12" lt="12" ts="1464876668075" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="13" lt="12" ts="1464876668093" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="16" lt="12" ts="1464876668106" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="11" lt="11" ts="1464876668123" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="12" lt="12" ts="1464876668134" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="11" lt="11" ts="1464876668146" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="11" lt="11" ts="1464876668158" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="11" lt="11" ts="1464876668169" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="11" lt="11" ts="1464876668181" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="11" lt="11" ts="1464876668193" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="11" lt="11" ts="1464876668204" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="11" lt="11" ts="1464876668216" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="11" lt="10" ts="1464876668228" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="11" lt="11" ts="1464876668239" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="11" lt="11" ts="1464876668250" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="12" lt="12" ts="1464876668261" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="11" lt="11" ts="1464876668273" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="104" lt="104" ts="1464876668284" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tooltip.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11483"/>
+  <httpSample t="11" lt="11" ts="1464876668388" s="true" lb="http://localhost:8080/plbsi/rfRes/tooltip.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="556"/>
+  <httpSample t="26" lt="26" ts="1464876668400" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.watermark.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="24672"/>
+  <httpSample t="7" lt="7" ts="1464876668427" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/placeholder.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1794"/>
+  <httpSample t="8" lt="8" ts="1464876668434" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/placeholder.css.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="317"/>
+  <httpSample t="7" lt="7" ts="1464876668442" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="1" lt="1" ts="1464876668450" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+</httpSample>
+<httpSample t="3573" lt="2965" ts="1464876668756" s="false" lb="INTRA" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="967561">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>Test failed: text expected to contain /Intra(s)/</failureMessage>
+  </assertionResult>
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="3099" lt="2965" ts="1464876668756" s="true" lb="http://localhost:8080/plbsi/mz/search/searchProspects.seam?actionMethod=mz%2Fsearch%2FsearchProspects.xhtml%3AintraManager.init" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="77697"/>
+  <httpSample t="2" lt="2" ts="1464876671860" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="37" lt="37" ts="1464876671862" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10104"/>
+  <httpSample t="7" lt="7" ts="1464876671900" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="6" lt="6" ts="1464876671907" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="7" lt="5" ts="1464876671913" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="5" lt="5" ts="1464876671920" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="4" lt="4" ts="1464876671925" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="4" lt="4" ts="1464876671930" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="4" lt="4" ts="1464876671934" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="5" lt="5" ts="1464876671938" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="5" lt="5" ts="1464876671943" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="5" lt="5" ts="1464876671948" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="4" lt="4" ts="1464876671953" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="6" lt="6" ts="1464876671958" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="7" lt="7" ts="1464876671965" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="6" lt="6" ts="1464876671972" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="6" lt="6" ts="1464876671979" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="7" lt="7" ts="1464876671985" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="6" lt="6" ts="1464876671992" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="7" lt="7" ts="1464876671998" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="30025"/>
+  <httpSample t="6" lt="6" ts="1464876672006" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelBorders.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6204"/>
+  <httpSample t="7" lt="7" ts="1464876672012" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelSizer.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9400"/>
+  <httpSample t="7" lt="7" ts="1464876672019" s="true" lb="http://localhost:8080/plbsi/rfRes/popupPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2908"/>
+  <httpSample t="8" lt="7" ts="1464876672026" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tooltip.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11483"/>
+  <httpSample t="6" lt="6" ts="1464876672034" s="true" lb="http://localhost:8080/plbsi/rfRes/tooltip.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="556"/>
+  <httpSample t="7" lt="7" ts="1464876672040" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/component-control.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1992"/>
+  <httpSample t="6" lt="6" ts="1464876672047" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/togglePanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14535"/>
+  <httpSample t="6" lt="6" ts="1464876672054" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tabPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1955"/>
+  <httpSample t="6" lt="6" ts="1464876672061" s="true" lb="http://localhost:8080/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4863"/>
+  <httpSample t="5" lt="5" ts="1464876672067" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/togglePanelItem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4921"/>
+  <httpSample t="5" lt="5" ts="1464876672072" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tab.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5600"/>
+  <httpSample t="5" lt="4" ts="1464876672077" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="6" lt="6" ts="1464876672082" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsiblePanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3562"/>
+  <httpSample t="6" lt="6" ts="1464876672089" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/collapsiblePanelItem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2527"/>
+  <httpSample t="5" lt="5" ts="1464876672095" s="true" lb="http://localhost:8080/plbsi/rfRes/icons.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4932"/>
+  <httpSample t="4" lt="4" ts="1464876672100" s="true" lb="http://localhost:8080/plbsi/rfRes/collapsiblePanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1553"/>
+  <httpSample t="4" lt="4" ts="1464876672105" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datatable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4174"/>
+  <httpSample t="7" lt="7" ts="1464876672109" s="true" lb="http://localhost:8080/plbsi/rfRes/datatable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3148"/>
+  <httpSample t="5" lt="5" ts="1464876672116" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/json-dom.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3268"/>
+  <httpSample t="5" lt="5" ts="1464876672121" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.effects.core.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="22617"/>
+  <httpSample t="5" lt="5" ts="1464876672126" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.effects.highlight.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1470"/>
+  <httpSample t="4" lt="4" ts="1464876672131" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/JQuerySpinBtn.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9973"/>
+  <httpSample t="5" lt="5" ts="1464876672135" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/calendar-utils.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="18283"/>
+  <httpSample t="5" lt="5" ts="1464876672140" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/calendar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="90712"/>
+  <httpSample t="25" lt="24" ts="1464876672145" s="true" lb="http://localhost:8080/plbsi/rfRes/calendar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8626"/>
+  <httpSample t="6" lt="6" ts="1464876672170" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/message.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3519"/>
+  <httpSample t="86" lt="86" ts="1464876672177" s="true" lb="http://localhost:8080/plbsi/rfRes/msg.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1453"/>
+  <httpSample t="6" lt="6" ts="1464876672263" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.watermark.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="24672"/>
+  <httpSample t="4" lt="4" ts="1464876672269" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/placeholder.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1794"/>
+  <httpSample t="6" lt="6" ts="1464876672274" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/placeholder.css.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="317"/>
+  <httpSample t="6" lt="6" ts="1464876672280" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.mousewheel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2510"/>
+  <httpSample t="6" lt="6" ts="1464876672286" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/inputNumberSpinner.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8207"/>
+  <httpSample t="6" lt="6" ts="1464876672293" s="true" lb="http://localhost:8080/plbsi/rfRes/inputNumberSpinner.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2031"/>
+  <httpSample t="7" lt="6" ts="1464876672300" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/status.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6965"/>
+  <httpSample t="7" lt="7" ts="1464876672307" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.component.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2410"/>
+  <httpSample t="1" lt="1" ts="1464876672314" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+  <httpSample t="2" lt="2" ts="1464876672315" s="true" lb="http://localhost:8080/plbsi/img/imprimer.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="5215"/>
+  <httpSample t="2" lt="2" ts="1464876672317" s="true" lb="http://localhost:8080/plbsi/img/demandeIntra.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="3411"/>
+  <httpSample t="2" lt="2" ts="1464876672319" s="true" lb="http://localhost:8080/plbsi/img/information.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="51715"/>
+  <httpSample t="2" lt="2" ts="1464876672321" s="true" lb="http://localhost:8080/plbsi/img/load.gif" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="2156"/>
+  <httpSample t="2" lt="2" ts="1464876672323" s="true" lb="http://localhost:8080/plbsi/img/supprimer.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="25659"/>
+  <httpSample t="2" lt="2" ts="1464876672325" s="true" lb="http://localhost:8080/plbsi/img/ai.gif" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="5010"/>
+  <httpSample t="2" lt="1" ts="1464876672327" s="true" lb="http://localhost:8080/plbsi/img/montant.jpg" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="38336"/>
+</httpSample>
+<httpSample t="2152" lt="2152" ts="1464876672635" s="true" lb="INTRA2" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="380">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="487" lt="118" ts="1464876675089" s="true" lb="LOGOUT" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="558075">
+  <assertionResult>
+    <name>Assertion Réponse</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <httpSample t="160" lt="118" ts="1464876675089" s="true" lb="http://localhost:8080/plbsi/mz/search/search.seam?actionMethod=mz%2Fhistorique.xhtml%3Aidentity.logout%28%29" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="33679"/>
+  <httpSample t="1" lt="1" ts="1464876675252" s="true" lb="http://localhost:8080/plbsi/css/plb.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3782"/>
+  <httpSample t="21" lt="20" ts="1464876675253" s="true" lb="http://dev.plb.fr/Content/css/Site.css" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="10104"/>
+  <httpSample t="7" lt="7" ts="1464876675274" s="true" lb="http://localhost:8080/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2569"/>
+  <httpSample t="8" lt="8" ts="1464876675281" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jsf.js.seam?ln=javax.faces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="29652"/>
+  <httpSample t="13" lt="9" ts="1464876675291" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="268291"/>
+  <httpSample t="10" lt="9" ts="1464876675304" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="25640"/>
+  <httpSample t="7" lt="7" ts="1464876675314" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-base-component.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14816"/>
+  <httpSample t="9" lt="9" ts="1464876675321" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/toolbar.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="975"/>
+  <httpSample t="6" lt="6" ts="1464876675331" s="true" lb="http://localhost:8080/plbsi/rfRes/toolbar.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1949"/>
+  <httpSample t="10" lt="10" ts="1464876675338" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-queue.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="17365"/>
+  <httpSample t="11" lt="11" ts="1464876675349" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/jquery.position.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11807"/>
+  <httpSample t="11" lt="11" ts="1464876675360" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/richfaces-event.js.seam" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="14245"/>
+  <httpSample t="18" lt="18" ts="1464876675372" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popup.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3569"/>
+  <httpSample t="10" lt="10" ts="1464876675391" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuKeyNavigation.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5607"/>
+  <httpSample t="11" lt="11" ts="1464876675401" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu-base.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="8740"/>
+  <httpSample t="11" lt="10" ts="1464876675413" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menu.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="5409"/>
+  <httpSample t="11" lt="11" ts="1464876675424" s="true" lb="http://localhost:8080/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3381"/>
+  <httpSample t="11" lt="11" ts="1464876675436" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/menuitem.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3589"/>
+  <httpSample t="18" lt="18" ts="1464876675448" s="true" lb="http://localhost:8080/plbsi/rfRes/panel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="936"/>
+  <httpSample t="10" lt="10" ts="1464876675467" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/status.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6965"/>
+  <httpSample t="7" lt="7" ts="1464876675477" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datatable.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4174"/>
+  <httpSample t="10" lt="10" ts="1464876675485" s="true" lb="http://localhost:8080/plbsi/rfRes/datatable.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3148"/>
+  <httpSample t="9" lt="9" ts="1464876675495" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/datascroller.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="4314"/>
+  <httpSample t="7" lt="7" ts="1464876675505" s="true" lb="http://localhost:8080/plbsi/rfRes/datascroller.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="3020"/>
+  <httpSample t="7" lt="7" ts="1464876675512" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanel.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="30025"/>
+  <httpSample t="7" lt="7" ts="1464876675519" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelBorders.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="6204"/>
+  <httpSample t="7" lt="7" ts="1464876675526" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/popupPanelSizer.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="9400"/>
+  <httpSample t="6" lt="6" ts="1464876675534" s="true" lb="http://localhost:8080/plbsi/rfRes/popupPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2908"/>
+  <httpSample t="10" lt="10" ts="1464876675541" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/tooltip.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="11483"/>
+  <httpSample t="7" lt="7" ts="1464876675552" s="true" lb="http://localhost:8080/plbsi/rfRes/tooltip.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="556"/>
+  <httpSample t="6" lt="6" ts="1464876675560" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/component-control.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="1992"/>
+  <httpSample t="7" lt="7" ts="1464876675567" s="true" lb="http://localhost:8080/plbsi/javax.faces.resource/poll.js.seam?ln=org.richfaces" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="text" by="2167"/>
+  <httpSample t="1" lt="1" ts="1464876675574" s="true" lb="http://localhost:8080/plbsi/img/intervenants.png" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="604"/>
+  <httpSample t="1" lt="1" ts="1464876675575" s="true" lb="http://localhost:8080/plbsi/img/ai.gif" rc="200" rm="OK" tn="Groupe d&apos;unités 1-1" dt="bin" by="5010"/>
+</httpSample>
+
+</testResults>

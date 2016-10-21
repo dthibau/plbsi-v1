@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:e="http://jboss.org/schema/seam/excel"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<e:workbook filename="prospectPLB.xls" type="jxl">
+	
+		<e:worksheet name="prospect"
+		value="#{searchProspect.results}" var="_pdto" horizontalFreeze="1"
+		verticalFreeze="1">
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.date']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.dateCreation}"/>
+				<ui:param name="type" value="date"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.nomEntreprise']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.societe}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.natureClient']}"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.natureClient}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.mail']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.email}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.reference']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.reference}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.typeFormation']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.typeFormation}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.typeContact']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.type}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.commerciale']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.commercial}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.remarques']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.commentaire}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.montant']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.montant}"/>
+				<ui:param name="type" value="float"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.statut']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.statut}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.lastUpdateDate']}"/>
+				<ui:param name="value" value="#{_pdto.prospect.dateModification}"/>
+				<ui:param name="type" value="date"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['intra.id']}"/>
+				<ui:param name="value" value="#{!empty _pdto.prospect.informationIntra ? _pdto.prospect.informationIntra.idInforamtionIntra : ''}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+		</e:worksheet>
+	
+	</e:workbook>
+	
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table width="100%">
+		<tr valign="top">
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Identification </legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['devis.contactClient']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.societe}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.typeContact']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.type}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.typeFormation']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospectDetail.typeFormation}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.participant']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospectDetail.nb_participants}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
+						<h:outputText
+							value="#{!empty editProspectManager.prospectDetail.lieu ? editProspectManager.prospectDetail.lieu : 'A définir'}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateSouhait']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}"
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.date_souhaite}" />
+						<h:outputText value="N/C"
+							rendered="#{empty editProspectManager.prospect.prospectDetail.date_souhaite}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Statut </legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.attribueA']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.commercial}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml"
+						rendered="#{editProspectManager.prospect.prospectDetail.asuivre}">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.asuivre']}" style="color:red;"/>
+						</ui:define>
+
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.statut']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.statut}" />
+					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateCreation']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="Date envoi devis" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" />
+						<h:outputText value="Non envoyé"
+							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+
+		</tr>
+	</table>
+
+
+</ui:composition>

@@ -1,0 +1,77 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<s:decorate template="layout/referencement.xhtml">
+		<ui:define name="balises">
+			<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.motClePrimaire']}" />
+				</ui:define>
+				<h:inputText required="true" size="20"
+					value="#{formation.motClePrimaire}">
+					<a:ajax event="change" render="baliseTitlePanel" execute="@this"
+						listener="#{formationManager.updateBaliseTitle}" />
+				</h:inputText>
+			</s:decorate>
+
+			<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.url']}" />
+				</ui:define>
+				<h:inputText required="true" size="20" value="#{formation.url}"
+					validator="#{formationManager.validateUrl}" />
+			</s:decorate>
+
+			<s:decorate
+				rendered="#{sessionDataManager.managerIntervenantsManager}"
+				template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.baliseKeyWords']}" />
+				</ui:define>
+				<h:inputTextarea required="true" value="#{formation.baliseKeyWords}"
+					cols="60" rows="3" />
+			</s:decorate>
+
+			<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.campagneAdWords']}" />
+				</ui:define>
+				<h:inputTextarea value="#{formation.campagneAdWords}" cols="60"
+					rows="3" />
+			</s:decorate>
+
+			<s:decorate
+				rendered="#{sessionDataManager.managerIntervenantsManager}"
+				template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.baliseDescription']}" />
+				</ui:define>
+				<h:inputTextarea value="#{formation.baliseDescription}" cols="60"
+					rows="3" />
+			</s:decorate>
+
+			<a:outputPanel id="baliseTitlePanel">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['formation.baliseTitle']}" />
+					</ui:define>
+					<h:inputTextarea value="#{formation.baliseTitle}" id="baliseInput"
+						cols="60" rows="3" />
+				</s:decorate>
+			</a:outputPanel>
+
+		</ui:define>
+
+		<ui:define name="buttons">
+			<ui:include src="_editButtons.xhtml" />
+		</ui:define>
+	</s:decorate>
+
+</ui:composition>

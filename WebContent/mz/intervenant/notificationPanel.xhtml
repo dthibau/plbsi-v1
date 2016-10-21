@@ -1,0 +1,73 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+	
+	<rich:popupPanel id="notificationIntervenantsPopup" modal="true" autosized="true"
+		resizeable="false">
+		<f:facet name="header">
+			<h:outputText value="Notification intervenants" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('notificationIntervenantsPopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+<h:form>	
+
+<a:outputPanel id="notificationIntervenantsContent" layout="block">
+			<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="Choisir le type de notification ?" />
+				</ui:define>
+				<h:selectOneMenu value="#{grillesManager.typeNotification}">
+					<f:selectItem itemLabel="Mise à jour grille de compétence" itemValue="#{GRILLE}"/>
+					<f:selectItem itemLabel="Notification libre" itemValue="#{LIBRE}"/>
+					<f:ajax event="change" render="@form"/>
+				</h:selectOneMenu>
+			</s:decorate>
+<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="Sujet" />
+				</ui:define>
+				<h:inputText value="#{grillesManager.notificationEvent.subject}" cols="80"/>
+			</s:decorate>
+			<s:decorate template="../layout/editArea.xhtml">
+				<ui:define name="label">
+					<h:outputText value="Message" />
+				</ui:define>
+				<h:inputTextarea value="#{grillesManager.notificationEvent.message}" cols="80" rows="12"/>
+			</s:decorate>
+<!-- 			<s:decorate template="../layout/edit.xhtml"> -->
+<!-- 				<ui:define name="label"> -->
+<!-- 					<h:outputText value="Voulez vous inclure l'URL de modification de la grille ?" /> -->
+<!-- 				</ui:define> -->
+<!-- 				<h:selectBooleanCheckbox value="#{grillesManager.notificationEvent.includeUrl}" /> -->
+<!-- 			</s:decorate> -->
+
+ <br/>
+        <h:outputFormat value="#{messages['mail.destinataires.size']}" >
+        	<f:param value="#{grillesManager.notificationEvent.intervenants.size()}"></f:param>
+        </h:outputFormat>
+        <h:outputText rendered="#{grillesManager.notificationEvent.intervenants.size() &lt; 13}" value="( #{grillesManager.notificationEvent.destinatairesAsString} )" />
+        <br/><br/>
+        
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+			<a:commandButton value="#{messages['action.cancel']}"
+				onclick="#{rich:component('notificationIntervenantsPopup')}.hide();" />
+			<h:commandButton action="#{grillesManager.sendNotification()}" value="#{messages['action.envoyer']}"
+				onclick="#{rich:component('notificationIntervenantsPopup')}.hide();" />
+</a:outputPanel>
+</h:form>
+		
+	</rich:popupPanel>
+
+</ui:composition>

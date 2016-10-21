@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:e="http://jboss.org/schema/seam/excel"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<e:workbook filename="intervenantsPLB.xls" type="jxl">
+	
+	<e:worksheet name="intervenants"
+		value="#{searchIntervenantManager.results}" var="intervenant" horizontalFreeze="1"
+		verticalFreeze="1">
+
+		
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.id']}"/>
+			<ui:param name="value" value="#{intervenant.id}"/>
+			<ui:param name="type" value="int"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.adresse']}"/>
+			<ui:param name="value" value="#{intervenant.adresse}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.anglais']}"/>
+			<ui:param name="value" value="#{intervenant.anglais}"/>
+			<ui:param name="type" value="int"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.centres']}"/>
+			<ui:param name="value" value="#{intervenant.centres}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.certifications']}"/>
+			<ui:param name="value" value="#{intervenant.certifications}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.dateMisAJour']}"/>
+			<ui:param name="value" value="#{intervenant.dateMisAJour}"/>
+			<ui:param name="type" value="date"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.email']}"/>
+			<ui:param name="value" value="#{intervenant.email}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.infoTarifIntervenant']}"/>
+			<ui:param name="value" value="#{intervenant.infoTarifIntervenant}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.nom']}"/>
+			<ui:param name="value" value="#{intervenant.nom}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.numPortable']}"/>
+			<ui:param name="value" value="#{intervenant.numPortable}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.numTel']}"/>
+			<ui:param name="value" value="#{intervenant.numTel}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.observations']}"/>
+			<ui:param name="value" value="#{intervenant.observations}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.origine']}"/>
+			<ui:param name="value" value="#{intervenant.origine}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.prenom']}"/>
+			<ui:param name="value" value="#{intervenant.prenom}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.rang']}"/>
+			<ui:param name="value" value="#{intervenant.rang}"/>
+			<ui:param name="type" value="int"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.statut']}"/>
+			<ui:param name="value" value="#{intervenant.statut}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.statutAutre']}"/>
+			<ui:param name="value" value="#{intervenant.statutAutre}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['intervenant.tarif']}"/>
+			<ui:param name="value" value="#{intervenant.tarif}"/>
+			<ui:param name="type" value="int"/>
+		</ui:include>	
+	</e:worksheet>
+</e:workbook>
+</html>

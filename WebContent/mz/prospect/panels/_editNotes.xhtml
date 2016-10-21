@@ -1,0 +1,72 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<rich:collapsiblePanel header="Notes perso : " id="notePerso1"
+		expanded="false" switchType="client">
+		<center>
+			<a:commandButton value="Ajouter une note"
+				action="#{editProspectManager.addNote()}" execute="@this notePerso1"
+				render="notePerso1" oncomplete="#{rich:component('spinner')}.stop()">
+				<f:param name="cid" value="#{conversation.id}" />
+			</a:commandButton>
+			<rich:dataTable value="#{editProspectManager.messages}" var="message"
+				rowKeyVar="index">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Message n°" />
+					</f:facet>
+					<center>
+						<h:outputText value="#{index+1}" />
+					</center>
+					<f:facet name="footer">
+						<h:outputText value="Message n°" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+					<h:outputText value="#{message.date}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
+					</h:outputText>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+					<h:outputText value="#{message.account.nomComplet}" />
+					<f:facet name="footer">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+					<h:outputText value="#{message.libelle}"
+						rendered="#{index != (editProspectManager.messages.size()-1) or editProspectManager.modif==false}" />
+					<!--  h:inputTextarea value="#{message.libelle}" rendered="#{index != (editProspectManager.messages.size()-1) or editProspectManager.modif==false}" cols="100" rows="2" disabled="true" style="color:black"/ -->
+					<h:inputTextarea value="#{message.libelle}"
+						rendered="#{index == (editProspectManager.messages.size()-1) and editProspectManager.modif==true}"
+						cols="100" rows="2" />
+					<f:facet name="footer">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+				</rich:column>
+			</rich:dataTable>
+		</center>
+	</rich:collapsiblePanel>
+</ui:composition>

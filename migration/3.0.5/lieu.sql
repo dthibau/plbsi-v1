@@ -1,0 +1,1 @@
+update formulaire_contact_detail set lieu='Chez le client' where lieu = 'En vos locaux';

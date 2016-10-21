@@ -1,0 +1,28 @@
+<project default="jmeter" basedir=".">
+	<property name="jmeter.dir" value="apache-jmeter-2.11" />
+	<property name="jmeter.ant.dir" value="ant-jmeter-1.1.1" />
+	<property name="jmeter.test" value="." />
+<!-- JMeter -->
+	<path id="jmeter.classpath">
+		<fileset dir="${jmeter.ant.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${jmeter.dir}">
+			<include name="**/ApacheJMeter.jar" />
+		</fileset>
+	</path>
+	<taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpathref="jmeter.classpath" />
+
+<target name="check">
+		<delete>
+<fileset dir="${jmeter.test}/logs">
+			<include name="**/*" />
+		</fileset>
+		</delete>
+		<jmeter jmeterhome="${jmeter.dir}" testplan="${jmeter.test}/checkNavigation.jmx" resultlog="${jmeter.test}/logs/checkNavigation.jtl">
+			<jvmarg value="-Xmx1024m" />
+			<jvmarg value="-Djmeter.save.saveservice.assertion_results=all"/>
+			<jvmarg value="-Djmeter.save.saveservice.output_format=xml"/>
+		</jmeter>
+	</target>
+</project>

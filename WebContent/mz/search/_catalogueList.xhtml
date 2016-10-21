@@ -1,0 +1,210 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:dataTable id="resultList" value="#{searchManager.results}"
+		var="_dto" first="#{searchManager.pagination ? listManager.first : 0}" rows="#{searchManager.pagination ? listManager.pageSize : 0}"
+		rowClass="#{_dto.formation.visible} #{_dto.formation.plbInter ? 'plb' : ''}">
+		<rich:column id="reference" styleClass="#{_dto.formation.type}"
+			sortOrder="#{searchManager.getOrder('reference')}"
+			sortBy="#{_dto.formation.reference}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.reference']}"
+					render="resultList" action="#{searchManager.sortBy('reference')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('reference')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('reference')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputLink rendered="#{_dto.formation.urlPlb != null}"
+				styleClass="#{_dto.formation.type}" value="#{WEB_URL}#{_dto.formation.urlPlb}"
+				target="_blank">#{_dto.formation.reference}</h:outputLink>
+			<h:outputText rendered="#{_dto.formation.urlPlb == null}"
+				styleClass="#{_dto.formation.type}"
+				value="#{_dto.formation.reference}" />
+
+		</rich:column>
+		<rich:column id="libelle" sortOrder="#{searchManager.getOrder('libelle')}"
+			sortBy="#{_dto.formation.libelle}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.libelle']}"
+					render="resultList" action="#{searchManager.sortBy('libelle')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('libelle')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('libelle')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<s:link view="/mz/formation/formation.xhtml"
+				action="#{formationManager.select}">
+				<f:param name="formationId" value="#{_dto.formation.idFormation}" />
+				<s:conversationPropagation type="none" />
+					#{_dto.formation.libelle}
+				</s:link>
+
+		</rich:column>
+
+		<rich:column id="duree" sortOrder="#{searchManager.getOrder('duree')}"
+			sortBy="#{_dto.formation.duree}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.duree']}"
+					render="resultList" action="#{searchManager.sortBy('duree')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('duree')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('duree')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+				#{_dto.formation.duree}
+
+			</rich:column>
+		<rich:column id="tarif" sortOrder="#{searchManager.getOrder('tarif')}"
+			styleClass="tarif #{_dto.formation.hasObsoleteTarif(lastUpdateTarifs) ? 'obsolete' : ''}"
+			sortBy="#{_dto.tarifInter}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.tarif']}"
+					render="resultList" action="#{searchManager.sortBy('tarif')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('tarif')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('tarif')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+
+			<h:outputText rendered="#{!_dto.intra}" value="#{_dto.tarifInter}">
+				<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
+			</h:outputText>
+			<h:outputText rendered="#{_dto.intra}"
+				value="#{messages['formation.intra']}" />
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.commercial}"
+			id="tarifIntra" sortOrder="#{searchManager.getOrder('tarifIntra')}"
+			sortBy="#{_dto.formation.libreIntra}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.tarifIntraCode']}"
+					render="resultList" action="#{searchManager.sortBy('tarifIntra')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('tarifIntraOrder')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('tarifIntra')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputText value="#{_dto.formation.libreIntra}" />
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.managerIntervenantsManager}" id="categorie"
+			sortBy="#{_dto.formation.categorie.libelle}"
+			sortOrder="#{searchManager.getOrder('categorie')}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.categorie']}"
+					render="resultList" action="#{searchManager.sortBy('categorie')}" />
+				<a:outputPanel rendered="#{searchManager.isAscending('categorie')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('categorie')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			<h:outputText escape="false"
+				value="#{_dto.formation.categorie.libelle}" />
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.managerIntervenantsManager}" id="filieres">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.filieres']}" />
+			</f:facet>
+			<h:outputText escape="false"
+				value="#{_dto.formation.filieresAsString}" />
+		</rich:column>
+		<rich:column id="partenaires">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.partenaires']}" />
+			</f:facet>
+			<a:repeat value="#{applicationManager.getFormationsPartenaire(_dto.formation)}" var="fp">
+				<h:outputLink rendered="#{fp.url != null}" value="#{fp.url}"
+					target="_blank">#{fp.partenaire.nom}</h:outputLink>
+				<h:outputText rendered="#{fp.url == null}"
+					value="#{fp.partenaire.nom}" />
+				<br />
+			</a:repeat>
+		</rich:column>
+		<rich:column id="sessions">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.sessions.next']}" />
+			</f:facet>
+			<a:repeat value="#{applicationManager.getFormationsNextSessions(_dto.formation)}" var="so">
+				<b><h:outputText value="#{so.session.debut}">
+						<s:convertDateTime type="date" dateStyle="short" />
+					</h:outputText></b> #{so.organismes};				
+					</a:repeat>
+
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.managerIntervenantsManager}" id="origine">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.origine']}" />
+			</f:facet>
+			<h:outputText escape="false" value="#{_dto.formation.origine}" />
+		</rich:column>
+		<rich:column id="statut" rendered="#{!sessionDataManager.commercial}"
+			sortOrder="#{searchManager.getOrder('statut')}"
+			sortBy="#{_dto.formation.statut}">
+			<f:facet name="header">
+				<a:commandLink value="#{messages['formation.statut']}"
+					render="resultList" action="#{searchManager.sortBy('statut')}">
+					<s:conversationId />
+				</a:commandLink>
+				<a:outputPanel rendered="#{searchManager.isAscending('statut')}">
+					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
+				</a:outputPanel>
+				<a:outputPanel rendered="#{searchManager.isDescending('statut')}">
+					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
+				</a:outputPanel>
+			</f:facet>
+			#{_dto.formation.statut}
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.commercial}"
+			id="mutualisees">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.mutualisees']}" />
+			</f:facet>
+			<a:repeat value="#{applicationManager.getSameFormations(_dto.formation)}" var="f">
+				<s:link view="/mz/formation/formation.xhtml"
+					action="#{formationManager.select}">
+					<f:param name="formationId" value="#{f.idFormation}" />
+					<s:conversationPropagation type="none" />
+					#{f.libelle} (#{f.reference})
+				</s:link>;
+					</a:repeat>
+		</rich:column>
+		<rich:column rendered="#{sessionDataManager.commercial}"
+			id="remarques">
+			<f:facet name="header">
+				<h:outputText value="#{messages['formation.remarques']}" />
+			</f:facet>
+			<h:outputText escape="false" value="#{_dto.formation.shortRemarques}" />
+		</rich:column>
+		<f:facet name="footer">
+			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{searchManager.pagination ? listManager.currentPage :  0}" fastStep="5"/>
+		</f:facet>
+	</rich:dataTable>
+</ui:composition>

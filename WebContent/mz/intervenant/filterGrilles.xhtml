@@ -1,0 +1,47 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:panel>
+		<h:form>
+				
+		#{messages['intervenant.rang']} compris entre : <rich:inputNumberSpinner
+				value="#{grillesManager.rangInf}" styleClass="spinner" step="5">
+				<a:ajax event="change" render="resultList,totalPanel"
+					listener="#{grillesManager.filter()}" />
+			</rich:inputNumberSpinner> et : <rich:inputNumberSpinner
+				value="#{grillesManager.rangSup}" styleClass="spinner" step="5">
+				<a:ajax event="change" render="resultList,totalPanel"
+					listener="#{grillesManager.filter()}" />
+			</rich:inputNumberSpinner>
+&#160;&#160;&#160;
+			Mise à jour des grilles : 
+			<h:selectOneMenu value="#{grillesManager.updateFilter}" id="updateSelector">
+				<f:selectItem itemValue="#{OUTDATED}" itemLabel="Grilles obsolètes"/>
+				<f:selectItem itemValue="#{UPDATED}" itemLabel="Grilles à jour"/>
+				<f:selectItem itemValue="#{ALL}" itemLabel="Toutes les grilles"/>
+				<a:ajax event="change" render="resultList,totalPanel" execute="@this"
+					listener="#{grillesManager.filter()}" />
+			</h:selectOneMenu>
+&#160;&#160;&#160;
+			<a:commandButton value="#{messages['action.refresh']}" action="#{grillesManager.search()}" render="resultList,totalPanel"></a:commandButton>
+			<br/>
+			<a:status>
+				<f:facet name="stop" />
+				<f:facet name="start">
+					<h:graphicImage value="/img/ai.gif" alt="Chargement ..." />
+				</f:facet>
+			</a:status>
+		</h:form>
+		<a:outputPanel id="totalPanel">
+			<br />Résultat : #{grillesManager.results.size()} intervenant(s) trouvé(s)
+			</a:outputPanel>
+	</rich:panel>
+
+</ui:composition>

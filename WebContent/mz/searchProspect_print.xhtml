@@ -1,0 +1,411 @@
+<html  xmlns="http://www.w3.org/1999/xhtml"
+	   xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:c="http://java.sun.com/jsp/jstl/core"
+       xmlns:p="http://jboss.com/products/seam/pdf"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:s="http://java.sun.com/jsf/html">
+       
+<style type="text/css">
+table.sample {
+	width:500px
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: black;
+}
+
+table.sample td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+}
+
+</style>
+       
+ 	<p:document>
+  	
+  	<center><H3>Détail prospect : </H3></center><br />
+  	
+  	<center>
+  	<table>
+  		<tr>
+  			<td>
+			  	<h:outputText value="#{messages['prospect.dateCreation']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.dateCreation}" />
+			</td>
+			<td style="width:15px"></td>
+			<td>
+			  	<h:outputText value="#{messages['prospect.typeContact']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.type}" />&#160;
+				<h:outputText value="#{searchProspect.prospect.prospectDetail.heure}" />&#160;
+				<h:outputText value="WEB" rendered="#{!'TELEPHONE'.equals(searchProspect.prospect.type)}" style="color:red;"/>
+				<h:outputText value="TEL" rendered="#{'TELEPHONE'.equals(searchProspect.prospect.type)}"/>
+			</td>
+  		</tr>
+  		<tr>
+  			<td>
+			  	<h:outputText value="#{messages['prospect.nomEntreprise']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.societe}" />
+			</td>
+			<td style="width:15px"></td>
+			<td>
+			  	<h:outputText value="#{messages['prospect.typeFormation']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.prospectDetail.typeFormation}"/>
+				<h:graphicImage id="fleche" value="/img/fleche.png" width="35px" height="25px" rendered="#{!empty searchProspect.prospect.prospectDetail.lieu}"/>
+				<h:outputText value="#{searchProspect.prospect.prospectDetail.lieu}"/>
+			</td>
+  		</tr>
+  		<tr>
+  			<td>
+			  	<h:outputText value="#{messages['prospect.attribueA']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.prospectDetail.commercial}" />
+			</td>
+			<td style="width:15px"></td>
+			<td>
+			  	<h:outputText value="#{messages['prospect.statut']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.statut}" />
+			</td>
+  		</tr>
+  		<tr>
+  			<td>
+			  	<h:outputText value="#{messages['prospect.reference']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.reference}" />
+			</td>
+			<td style="width:15px"></td>
+			<td>
+			  	<h:outputText value="#{messages['prospect.libelleFormation']} : " />
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.libelle}" />
+			</td>
+  		</tr>
+  		<tr>
+  			<td>
+			  	<h:outputText value="#{messages['prospect.rempliePar']} : " rendered="#{!empty searchProspect.prospect.prospectDetail.rempliPar}"/>
+			</td>
+			<td>
+			  	<h:outputText value="#{searchProspect.prospect.prospectDetail.rempliPar}"/>
+			</td>
+  		</tr>
+  	</table>
+  	<br />
+  	<div>
+	  	<table class="sample" style="width:800px; overflow-x:auto; overflow-y:auto;margin-left:15px">
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.nomContact']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.nom}" />	
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.referenceBis']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.referenceBis}" />
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.prenom']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prenom}" />
+				</td>
+				<td style="background-color:black;"></td>
+				 <td>
+				  	<h:outputText value="#{messages['prospect.opca']}"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.opca}"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.sexe']}" />
+				</td>
+				<td>
+				  	<h:outputText value="Homme" rendered="#{searchProspect.prospect.prospectDetail.sexe == 1}" />
+					<h:outputText value="Femme" rendered="#{searchProspect.prospect.prospectDetail.sexe == 0}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.nomOpca']}"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.nom_opca}"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.fonction']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.fonction}" />
+				</td>
+				<td style="background-color:black;"></td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.mail']}" />
+				</td>
+				<td>
+					<h:outputText value="#{searchProspect.prospect.email}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.montant']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.montant}" />
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.telephone']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.tel}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.raisonPerte']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.raisonPerte}"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.fax']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.fax}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Commentaire client : "/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.commentaire}" style="width:180px"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.responsable']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.resp_departement}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.cial']} : "/>
+				</td>
+				<td>
+				  	<h:outputText value="Oui" rendered="#{searchProspect.prospect.prospectDetail.cial == 1}"/>
+					<h:outputText value="Non" rendered="#{searchProspect.prospect.prospectDetail.cial == 0 or empty searchProspect.prospect.prospectDetail.cial}"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.natureClient']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.natureClient}"/>
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.news']} : "/>
+				</td>
+				<td>
+				  	<h:outputText value="Oui" rendered="#{searchProspect.prospect.prospectDetail.news == 1}"/>
+					<h:outputText value="Non" rendered="#{searchProspect.prospect.prospectDetail.news == 0 or empty searchProspect.prospect.prospectDetail.news}"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.effectifN']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.effectifEntreprise}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.catalogue']} : "/>
+				</td>
+				<td>
+				  	<h:outputText value="Oui" rendered="#{searchProspect.prospect.prospectDetail.catalogue == 1}"/>
+					<h:outputText value="Non" rendered="#{searchProspect.prospect.prospectDetail.catalogue == 0 or empty searchProspect.prospect.prospectDetail.catalogue}"/>
+				</td>		
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.effectifI']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.effectifInfo}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="#{messages['prospect.connaissance']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.connaissance_site}" />
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.adresse']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.adresse}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Adresse facturation" style="color:green;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.adresse_factu}" style="color:green;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.ville']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.ville}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Ville facturation" style="color:green;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.ville_factu}" style="color:green;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.cp']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.cp}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="CP facturation" style="color:green;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.cp_factu}" style="color:green;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.lieuEntreprise']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.lieuEntreprise}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Pays facturation" style="color:green;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.pays_factu}" style="color:green;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.pays']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.pays}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Adresse convocation" style="color:blue;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.adresse_convoc}" style="color:blue;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.participant']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.nb_participants}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Ville convocation" style="color:blue;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.ville_convoc}" style="color:blue;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.nomParticipant']}" />
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.participants}" />
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="CP convocation" style="color:blue;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.cp_convoc}" style="color:blue;"/>
+				</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+				  	<h:outputText value="#{messages['prospect.dateSession']}"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.date}" rendered="#{!empty searchProspect.prospect.prospectDetail.date}"/>
+					<h:outputText value="N/C" rendered="#{empty searchProspect.prospect.prospectDetail.date}"/>
+				</td>
+				<td style="background-color:black;"></td>
+				<td>
+				  	<h:outputText value="Pays convocation" style="color:blue;"/>
+				</td>
+				<td>
+				  	<h:outputText value="#{searchProspect.prospect.prospectDetail.pays_convoc}" style="color:blue;"/>
+				</td>
+		  	</tr>
+	    </table>
+    </div>
+    </center>
+    <br />
+    <center>
+    	<h:form>
+  			<h:commandButton action="#{searchProspect.init()}" value="Retour"/>
+  		</h:form>
+  	</center>
+	</p:document>
+
+
+
+
+</html>

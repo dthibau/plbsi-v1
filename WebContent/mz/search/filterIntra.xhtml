@@ -1,0 +1,133 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	
+	<rich:panel id="panelIntra">
+		<h:form id="formFilterIntra">
+			<!-- Formulaire de recherche pour les roles dispatcher et manager -->
+				<b><h:outputText value="Rechercher par :" rendered="#{!intraManager.afficheIntraModif}"/></b><br /><br />
+				<!-- Champs de recherche -->
+				<a:outputPanel rendered="#{!intraManager.afficheIntraModif}">
+					Intervenant affecté : 
+					<h:selectOneMenu value="#{intraManager.intervenant}" style="width:180px; height:20px;">
+						<a:ajax event="change" render="resultat,resultListIntra,totalPanelIntra,tool"
+						listener="#{intraManager.recherche()}" />
+						<s:selectItems value="#{intraManager.listeIntervenant}" var="intervenant"
+						label="#{intervenant.nom} - #{intervenant.prenom}"
+						noSelectionLabel="Sélectionner un intervenant" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+				
+				<!-- recherche en fonction de la référence -->
+				&nbsp;&nbsp;
+				<a:outputPanel rendered="#{!intraManager.afficheIntraModif}">
+					Référence : 
+					<h:selectOneMenu value="#{intraManager.formation}" style="width:180px; height:20px;">
+						<a:ajax event="change" render="resultat,resultListIntra,totalPanelIntra,tool"
+						listener="#{intraManager.recherche()}" />
+						<s:selectItems value="#{formationsActives}" var="formation"
+						label="#{formation.reference}"
+						noSelectionLabel="Sélectionner une référence" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+				
+				<!-- Recherche en foncton du commercial associé -->
+				&nbsp;&nbsp;
+				<a:outputPanel rendered="#{!intraManager.afficheIntraModif}">
+					#{messages['prospect.commerciale']} : 
+					<h:selectOneMenu value="#{intraManager.commercial}" style="width:180px; height:20px;">
+						<a:ajax event="change" render="resultat,resultListIntra,totalPanelIntra,tool"
+						listener="#{intraManager.recherche()}" />
+						<s:selectItems value="#{intraManager.listeCommercial}" var="commercial"
+						label="#{commercial.nomComplet}"
+						noSelectionLabel="Sélectionner un commercial" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+				
+				<!-- Recherche en foncton du statut de l'intra -->
+				&nbsp;&nbsp;
+				<a:outputPanel id="afficheStatutAll" rendered="#{!intraManager.afficheIntraModif}">
+					Statut de l'intra :
+					<h:selectOneMenu value="#{intraManager.statut}" style="width:110px; height:20px;">
+						<a:ajax event="change" render="resultat,resultListIntra,totalPanelIntra,tool"
+						listener="#{intraManager.recherche()}" />
+						<f:selectItem itemValue="" itemLabel="N/C"/>
+						<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE_MODIFIE}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_LOGISTIQUE}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_ANNULE}" />
+						<f:selectItem itemValue="#{ST_PROSPECT_OK}" />
+					</h:selectOneMenu> 
+				</a:outputPanel>
+				
+				<!-- affiche aussi les intras avec un statut inactif -->
+				&nbsp;&nbsp;
+				<a:outputPanel id="allSelect" rendered="#{!intraManager.afficheIntraModif}">
+					Afficher les intras inactif :
+					<h:selectBooleanCheckbox value="#{intraManager.all}">
+						<a:ajax event="change" render="resultat,resultListIntra,totalPanelIntra,tool"
+						listener="#{intraManager.recherche()}" />
+					</h:selectBooleanCheckbox>
+				</a:outputPanel>
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+				<!-- Affiche les intra recemment modifier -->
+				<br />
+				<br />
+				<a:outputPanel id="afficheModifIntra" rendered="#{!intraManager.afficheIntraModif}">
+					<h:graphicImage value="/img/message.png" width="2%"/>
+					<a:commandLink action="#{intraManager.showModif()}" value="Boite de modification : #{intraManager.intraModif} nouvelle(s) modification(s)" render="resultat,resultListIntra,panelIntra"/>
+				</a:outputPanel>
+				<a:outputPanel rendered="#{intraManager.afficheIntraModif}">
+					<h:graphicImage value="/img/retour.png" width="2%"/>
+					<a:commandLink action="#{intraManager.init()}" value="Revenir au suivi des intra" render="resultat,resultListIntra,panelIntra"/>
+				</a:outputPanel>
+				<br />
+				<br />
+				<center>
+					<a:status>
+						<f:facet name="stop" />
+						<f:facet name="start">
+							<h:graphicImage value="/img/ai.gif" alt="Chargement ..." style="width:3%"/>
+						</f:facet>
+					</a:status>
+				</center>
+				<br />
+				<a:outputPanel id="totalPanelIntra" rendered="#{!intraManager.afficheIntraModif}">
+					<br />Résultat : #{intraManager.results.size()} Intra(s) trouvé(s)
+				</a:outputPanel>
+			
+				<a:outputPanel style="float: right;" rendered="#{!intraManager.afficheIntraModif}">
+						<a:commandButton value="Affichage initial"
+							render="resultat,resultListIntra,totalPanelIntra,panelIntra,tool"
+							execute="@this" action="#{intraManager.reset()}">
+							<rich:tooltip id="tt3" layout="block">
+			                	<span> Cliquez sur ce bouton pour remettre à zéro les champs de<br />
+			                			 recherche et afficher la liste de démarrage (liste par défault).		 	
+			                  	</span>
+			            	</rich:tooltip> 
+		            	</a:commandButton>
+		            	&nbsp;
+		            	<a:commandButton value="Rafraichir"
+							render="resultat,resultListIntra,totalPanelIntra,panelIntra,tool"
+							execute="@this" action="#{intraManager.refresh()}">
+							<rich:tooltip id="ttRefresh" layout="block">
+			                	<span> Cliquez sur ce bouton pour rafraichir les<br />
+		                			 résultats obtenus.		 	
+			                  	</span>
+			            	</rich:tooltip> 
+		            	</a:commandButton>
+				</a:outputPanel>
+			</h:form>
+		</rich:panel>
+</ui:composition>

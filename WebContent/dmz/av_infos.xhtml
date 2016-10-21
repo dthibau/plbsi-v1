@@ -1,0 +1,178 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<div class="container-fluid" ng-controller="InfosCtrl">
+
+	<input type="hidden" value="#{intervenant.id}" ng-model="idIntervenant" />
+	<script>
+var idIntervenant=#{intervenant.id};
+</script>
+
+	<div class="alert alert-success" ng-show="showMessage">
+		<button type="button" class="close" data-ng-click="showMessage=false;">×</button>
+		<strong> {{message}} </strong>
+	</div>
+
+	<div class="row">
+
+		<div class="col-sm-4 form-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">Informations personnelles</div>
+				<div class="panel-body">
+					<form class="horizontal-form">
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="nom" />
+							<ui:param name="label" value="#{messages['intervenant.nom']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="prenom" />
+							<ui:param name="label" value="#{messages['intervenant.prenom']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="email" />
+							<ui:param name="label" value="#{messages['intervenant.email']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoAreaDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="adresse" />
+							<ui:param name="label" value="#{messages['intervenant.adresse']}" />
+						</s:decorate>
+
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="codePostal" />
+							<ui:param name="label"
+								value="#{messages['intervenant.codePostal']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="ville" />
+							<ui:param name="label" value="#{messages['intervenant.ville']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="numTel" />
+							<ui:param name="label" value="Téléphone" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="numPortable" />
+							<ui:param name="label" value="Portable" />
+						</s:decorate>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Informations professionelles</div>
+				<div class="panel-body">
+					<form class="horizontal-form">
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="tarif" />
+							<ui:param name="label" value="#{messages['intervenant.tarif']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoAreaDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="infoTarifIntervenant" />
+							<ui:param name="label"
+								value="#{messages['intervenant.infoTarifIntervenant']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="statut" />
+							<ui:param name="label" value="#{messages['intervenant.statut']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoAreaDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="statutAutre" />
+							<ui:param name="label"
+								value="#{messages['intervenant.statutAutre']}" />
+						</s:decorate>
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="centres" />
+							<ui:param name="label" value="#{messages['intervenant.centres']}" />
+						</s:decorate>
+						<div class="form-group">
+							<div class="checkbox">
+								<label><input type="checkbox" value="" ng-change="changed()"
+									ng-model="intervenant.anglais">#{messages['intervenant.anglais']}</input></label>
+							</div>
+						</div>
+						<s:decorate template="layout/_infoAreaDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="certifications" />
+							<ui:param name="label"
+								value="#{messages['intervenant.certifications']}" />
+						</s:decorate>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Autres</div>
+				<div class="panel-body">
+					<form class="horizontal-form">
+						<s:decorate template="layout/_infoFieldDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="conditionGenerale" />
+							<ui:param name="label" value="Cond. Générales" />
+						</s:decorate>
+						<s:decorate template="layout/_infoAreaDecorator.xhtml"
+							styleClass="form-group">
+							<ui:param name="field" value="champLibre" />
+							<ui:param name="label"
+								value="#{messages['intervenant.champLibre']}" />
+							<ui:param name="rows" value="8" />
+						</s:decorate>
+						<label class="control-label col-sm-4">#{messages['intervenant.cv']}</label>
+						<div class="col-sm-4">
+							<span ng-show="!intervenant.cvName">Pas de CV</span>
+							<a ng-show="intervenant.cvName" href="../Rest/intervenantDownloadCv.seam?idIntervenant={{intervenant.id}}" target="_blank">{{intervenant.cvName}}</a>
+						</div>
+						<div class="col-sm-1">	<a href="#" class="text-danger" title="Supprimer le CV"
+							ng-click="removeCv()"> <span
+								class="glyphicon glyphicon-remove"></span>
+						</a>
+						</div>
+						<div class="col-sm3">
+							<button class="btn btn-primary btn-sm" type="file"
+								ngf-select="uploadFiles($file, $invalidFiles)"
+								accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+								ngf-max-size="5MB">Ajouter</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel-footer text-center">
+				<button type="button" class="btn btn-primary btn-sm"
+					ng-click="updateInfos()" ng-disabled="clean">Enregistrer</button>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+</html>

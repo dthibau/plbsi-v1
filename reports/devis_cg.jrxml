@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis_cg" language="groovy" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="9451d21b-fe95-4ceb-91bb-7a6c3a00d223">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idDevis" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id from devis where id = $P{idDevis}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="31" forecolor="#4F7BE5" uuid="e7c556bc-f6a4-40f1-8384-56ece5e5772b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conditions générales de vente]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="285" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="277" height="285" uuid="f2862ac9-b7b5-4ac6-b511-e8b3f9fa2ea8"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="20" rightPadding="2"/>
+				<textElement markup="html">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<font color=\"blue\"><b>Préambule</b></font><br/>"+
+"Les présentes Conditions Générales de Vente (CGV) s’appliquent à toute commande de stages de formation ou de services passée auprès de la Société PLB par ses clients."+
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 1 : Inscriptions à un stage de formation</b></font><br/>"+
+"Toute demande d’inscription à un stage peut s'effectuer :<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;par téléphone au 01 43 34 90 94<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;par fax au 01 43 34 90 95<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;par Email : à l’adresse de votre chargé d’affaires<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;sur notre site WEB : <u>www.plb.fr</u><br/>" +
+"-&#160;&#160;&#160;&#160;&#160;par courrier, à l'adresse suivante : Société PLB 22-24, rue du  Président Wilson 92300 Levallois<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas d’une formation sur site et à défaut de convention formelle particulière la Société PLB n’est pas tenue d’effectuer l’installation de la salle de formation" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 2 : Confirmation de commande</b></font><br/>"+
+"Les réservations pour une formation sont définitives après réception d’une confirmation écrite et signée.<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Pour être confirmée, toute inscription portant la signature d'un responsable autorisé, devra nous être retournée, par fax ou courrier, dûment complétée<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Toute commande de formation Inter-Entreprises suppose que le client accepte le contenu du stage présent sur le site Web de la Société PLB<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Toute commande de formation Intra-Entreprise suppose que le client accepte le contenu du stage décrit dans la proposition de collaboration<br/>" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 3 : Prise en charge par un organisme collecteur</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB facture un organisme de financement (OPCA) si cette procédure de prise en charge est expressément mentionnée au moment de la commande."+
+" Aucune demande de financement ne pourra être acceptée ultérieurement<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Au cas où les prises en charges des OPCA arriveraient plus de deux mois après la commande, la Société PLB a la possibilité de demander le paiement"+
+" des prestations au Client en direct<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas où le Client souhaiterait tout de même maintenir sa demande de financement malgré le retard de réception de la prise en charge,"+
+" une enveloppe forfaitaire de frais de retard de paiement de" + "2.5% du montant de la prestation sera facturée au client" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 4 : Formation</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB se réserve le droit d'appliquer à tout moment, les modifications qu'elle juge utile à ses programmes et prestations "+
+"ainsi qu'à la programmation de ses sessions. Les modifications ou" + "suppressions sont susceptibles d'intervenir chaque semestre<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Toute formation commencée sera due" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 5 : Prix</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Tous les prix stipulés dans les tarifs ou offres de la Société PLB sont formulés en euros Hors Taxes<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Les prestations sont fournies au prix en vigueur au moment de la commande de la formation<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;La liste des prix figure au catalogue en vigueur lors de la commande et peut être communiquée sur simple demande<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Les repas, les éventuels frais de transport et d'hébergement du stagiaire ne sont jamais compris dans les tarifs<br/>" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 6 : Facturation, délais et modalités de paiement</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Une facture est établie à l’issue de la prestation<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Les factures sont payables sans escompte à 30 jours fin de mois, date de facture à l'ordre de : PLB<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;En contrepartie des versements reçus, la Société PLB s'engage à mettre tout en œuvre pour réaliser les actions prévues dans le cadre de la présente"+
+" convention et à fournir les pièces et documents de nature à justifier la réalité et la validité des dépenses de formation<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Chaque prestation sera détaillée (animation, frais de déplacement, hébergement,…)<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;La facture sera libellée en euros HT et tiendra lieu de convention simplifiée<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;En cas de retard de paiement au terme fixé, les sommes restant dues porteront intérêts de plein droit et sans qu’il soit besoin d’une mise en demeure,"+
+" au taux de 2% le mois, sans que cette clause nuise à l’exigibilité de la dette.<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Les factures émises correspondant à des prestations de services, aucun escompte pour règlement comptant ne peut être déduit" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 6bis : Facturation, délais et modalités de paiement pour client étranger et client particulier</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Pour nos clients dont le siège est situé  hors de France Métropolitaine, 100% du montant des prestations doit être réglé impérativement à la signature du devis.<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Pour les inscriptions à titre individuel (particulier ou indépendant), nous demandons un règlement anticipé des frais de formation." +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 7 : Annulation des formations en France</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Toute annulation d’inscription doit être signalée et confirmée par écrit.<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas d'une annulation par le client au moins 10 jours ouvrés avant la date de début du stage, il n'y a pas de frais d'annulation<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas d'une annulation entre 5 et 9 jours ouvrés avant la date du stage, et afin d'assurer une continuité de service, une facture correspondant"+
+" à 50 % du montant du stage sera adressée au client<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;A moins de 5 jours ouvrés avant le début du cours ou en cas d’une absence du stagiaire le jour du stage, une facture correspondant à 100 %"+
+" du stage sera adressée au client, sauf cas de force majeure" +
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB se réserve le droit d'annuler une session jusqu'à 5 jours avant sa date de début, en cas d'insuffisance d'inscriptions." +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 7bis : Annulation des formations à l’Etranger</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas d'une annulation par le client au moins 15 jours ouvrés avant la date de début du stage, il n'y a pas de frais d'annulation<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Dans le cas d'une annulation en deçà de 15 jours ouvrés avant la date du stage, et afin d'assurer une continuité de service une facture correspondant"+
+" à 100 % du montant du stage sera adressée au client<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB se réserve le droit d'annuler une session jusqu'à 5  jours avant sa date de début en cas d'insuffisance d'inscriptions" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 8 : Documents administratifs</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB accompagne les factures des documents justificatifs (feuilles d’émargement, attestation de présence, questionnaire d’évaluation)"+
+" à la seule entité réceptrice des factures et exclusivement à celle-ci<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB ne peut être tenue responsable de la non réception de la convocation, quels qu’en soit le ou les destinataires chez le client,"+
+" notamment en cas d’absence du stagiaire à la formation" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 9 : Règlement intérieur</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Le participant s'engage à respecter les conditions du règlement intérieur dont il déclare avoir pris connaissance et accepter les termes" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 10 : Confidentialité</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Les informations et le savoir-faire dispensés pendant les formations et séminaires sont destinés à l'usage exclusif de l'auditeur<br/>" +
+"-&#160;&#160;&#160;&#160;&#160;Sauf accord entre les deux parties, le client s'engage à ne pas débaucher directement ou indirectement le personnel de la Société PLB"+
+" avec qui il aurait eu contact à l'occasion d'un stage, et ce durant une période de 24 mois après le dernier stage suivi" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 11 : Responsabilité</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;La Société PLB  ne pourra en aucun cas être déclarée responsable d’un préjudice financier, commercial ou d’une autre nature,"+
+" causé directement ou indirectement par les prestations fournies" +
+"<br/><br/>" +
+"<font color=\"blue\"><b>Article 12 : Droit applicable et attribution de compétence</b></font><br/>"+
+"-&#160;&#160;&#160;&#160;&#160;Les CGV sont régies par la loi française. En cas de litiges et/ou difficultés sur l'interprétation ou l'exécution des Conditions Générales de Vente,"+
+" et si les parties ne parviennent pas à les résoudre à l'amiable, le Tribunal de Commerce est seul compétent"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

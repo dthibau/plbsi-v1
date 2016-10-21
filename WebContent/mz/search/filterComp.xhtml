@@ -1,0 +1,48 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+		<rich:panel>
+			<h:form>
+				<span> #{messages['formation.filiere']} : <h:selectOneMenu
+						value="#{searchManager.filiere}">
+						<a:ajax event="change"
+							render="resultList,categoriesSelect,messages,totalPanel" execute="@this"
+							immediate="true" listener="#{searchManager.filter}" >					
+						</a:ajax>
+						<s:selectItems value="#{filieres}" var="filiere"
+							label="#{filiere.libelle}"
+							noSelectionLabel="Sélectionner une filière" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</span>
+				<a:outputPanel id="categoriesSelect">
+				#{messages['formation.categorie']} : <h:selectOneMenu value="#{searchManager.categorie}">
+						<a:ajax event="change" render="resultList,totalPanel,messages"
+							execute="@this" immediate="true"
+							listener="#{searchManager.filter}" />
+						<s:selectItems value="#{searchManager.categories}" var="categorie"
+							label="#{categorie.libelle}"
+							noSelectionLabel="Sélectionner une catégorie" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+				
+		#{messages['keyword']} : <h:inputText id="searchString" value="#{searchManager.searchString}" />
+				<a:commandButton value="Rechercher" render="resultList,totalPanel" execute="@this,searchString"
+					action="#{searchManager.search()}" />
+					
+				<input type="hidden"  name="cid" value="#{conversation.id}"/>
+			</h:form>
+			<a:outputPanel id="totalPanel">
+			<br/>Résultat : #{searchManager.results.size()} formation(s) trouvées
+			</a:outputPanel>
+		</rich:panel>
+
+</ui:composition>

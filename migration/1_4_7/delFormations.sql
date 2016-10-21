@@ -1,0 +1,15 @@
+delete from event_account where event_id in (select id from event where formation_id_formation in ( select id_formation from formation where archivedDate is not null ));
+delete from event where formation_id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from competence where formation_id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from devis_session where id_devis in (select id from devis where formation_id_formation in ( select id_formation from formation where archivedDate is not null ));
+delete from devis where formation_id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from prospect_formation where formation_id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation_associees where id_formation_principale in ( select id_formation from formation where archivedDate is not null ) or id_formation_associee in ( select id_formation from formation where archivedDate is not null) ;
+delete from formation_filiere where id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation_formation where id_formation_principale in ( select id_formation from formation where archivedDate is not null ) or id_formation_suivante in ( select id_formation from formation where archivedDate is not null );
+delete from formation_intervenant where id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation_organisme where id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation_partenaire_formation_session where formation_partenaire_id in (select id from formation_partenaire where formation_id_formation in ( select id_formation from formation where archivedDate is not null ));
+delete from formation_partenaire where formation_id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation_session where id_formation in ( select id_formation from formation where archivedDate is not null );
+delete from formation where archivedDate is not null;

@@ -1,0 +1,129 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" 
+	xmlns:plb="http://plb.fr/components" template="../layout/template.xhtml">
+
+
+	<ui:define name="body">
+		<h:form>
+			<a:outputPanel id="fieldsPanel">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.libelle']}</ui:define>
+					<h:inputText required="true" value="#{filiere.libelle}">
+						<a:ajax event="change" execute="@this" render="metaPanel"
+							listener="#{filiereManager.updateMeta}" />
+					</h:inputText>
+				</s:decorate>
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">#{messages['filiere.version']}</ui:define>
+					<h:outputText value="#{filiere.dataVersion}"/>
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.titre']}</ui:define>
+					<h:inputText required="true" value="#{filiere.titre}"></h:inputText>
+				</s:decorate>
+				
+				<s:decorate template="../layout/upload.xhtml">
+					<ui:define name="label">#{messages['filiere.logo']}</ui:define>
+					<rich:fileUpload
+						fileUploadListener="#{filiereManager.uploadLogo}" id="upload"
+						acceptedTypes="jpg, gif, png"
+						ontyperejected="alert('Seulement JPG, GIF et PNG sont acceptés');"
+						maxFilesQuantity="1" listHeight="70px">
+						<a:ajax event="uploadcomplete" execute="@none"
+							render="descriptionDecorate" />
+					</rich:fileUpload>
+					<ui:define name="preview"><img style="margin:0 auto;margin-top:10px;margin-bottom:10px;" src="#{WEB_URL_IMG}/filiere/logo/#{filiere.logo}" class="logoFiliere"/></ui:define>
+				</s:decorate>
+				
+				<s:decorate template="../layout/upload.xhtml">
+					<ui:define name="label">#{messages['filiere.imagePetit']}</ui:define>
+					<rich:fileUpload
+						fileUploadListener="#{filiereManager.uploadPetit}" id="upload"
+						acceptedTypes="jpg, gif, png"
+						ontyperejected="alert('Seulement JPG, GIF et PNG sont acceptés');"
+						maxFilesQuantity="1" listHeight="70px">
+						<a:ajax event="uploadcomplete" execute="@none"
+							render="descriptionDecorate" />
+					</rich:fileUpload>
+					<ui:define name="preview"><img style="margin:0 auto;margin-top:10px;margin-bottom:10px;" src="#{WEB_URL_IMG}/filiere/images/#{filiere.imagePetit}" class="logoFiliere"/></ui:define>
+				</s:decorate>
+				
+				<s:decorate template="../layout/upload.xhtml">
+					<ui:define name="label">#{messages['filiere.imageMoyen']}</ui:define>
+					<rich:fileUpload
+						fileUploadListener="#{filiereManager.uploadMoyen}" id="upload"
+						acceptedTypes="jpg, gif, png"
+						ontyperejected="alert('Seulement JPG, GIF et PNG sont acceptés');"
+						maxFilesQuantity="1" listHeight="70px">
+						<a:ajax event="uploadcomplete" execute="@none"
+							render="descriptionDecorate" />
+					</rich:fileUpload>
+					<ui:define name="preview"><img style="margin:0 auto;margin-top:10px;margin-bottom:10px;" src="#{WEB_URL_IMG}/filiere/images/#{filiere.imageMoyen}" class="logoFiliere"/></ui:define>
+				</s:decorate>
+				
+				<s:decorate template="../layout/edit.xhtml" id="miniDescriptionDecorate">
+					<ui:define name="label">#{messages['filiere.miniDescription']}</ui:define>
+					<h:inputTextarea value="#{filiere.miniDescription}" toolbar="full">
+						<f:validateLength maximum="250"/>
+					</h:inputTextarea>
+				</s:decorate>
+
+				<s:decorate template="../layout/edit.xhtml" id="descriptionDecorate">
+					<ui:define name="label">#{messages['filiere.description']}</ui:define>
+
+					<plb:editorsimple id="filiereDescriptionEditor" value="#{filiere.description}" urlCss="#{URL_CSS}"/>
+
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.url']}</ui:define>
+					<h:inputText required="true" value="#{filiere.url}"></h:inputText>
+				</s:decorate>
+				<a:outputPanel id="metaPanel">
+					<s:decorate template="../layout/edit.xhtml">
+						<ui:define name="label">#{messages['filiere.metaTitre']}</ui:define>
+						<h:inputTextarea required="true" value="#{filiere.metaTitre}"
+							cols="80"></h:inputTextarea>
+					</s:decorate>
+					<s:decorate template="../layout/edit.xhtml">
+						<ui:define name="label">#{messages['filiere.metaDescription']}</ui:define>
+						<h:inputTextarea required="true"
+							value="#{filiere.metaDescription}" cols="80"></h:inputTextarea>
+					</s:decorate>
+				</a:outputPanel>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.metaKeywords']}</ui:define>
+					<h:inputTextarea required="true" value="#{filiere.metaKeywords}"
+						cols="80"></h:inputTextarea>
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.ordre']}</ui:define>
+					<h:inputText required="true" value="#{filiere.ordre}"></h:inputText>
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.color']}</ui:define>
+					<h:inputText required="true" value="#{filiere.color}"></h:inputText>
+				</s:decorate>
+			</a:outputPanel>
+			<h:commandButton value="Annuler" immediate="true"
+				action="/mz/filiere/filieres.xhtml" />
+
+			<a:commandButton value="Enregistrer" action="#{filiereManager.save}"
+				render="fieldsPanel" />
+			<a:commandButton value="Supprimer"
+				action="#{filiereManager.deleteFiliere}"
+				disabled="#{!empty filiere.categories}" />
+		</h:form>
+	</ui:define>
+	<ui:define name="tools">
+		<ui:include src="_tools.xhtml" />
+	</ui:define>
+
+
+</ui:composition>

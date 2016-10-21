@@ -1,0 +1,16 @@
+INSERT INTO typecontact VALUES (1, 'Intra');
+INSERT INTO typecontact VALUES (2, 'Telephone');
+INSERT INTO typecontact VALUES (3, 'Rappel');
+INSERT INTO typecontact VALUES (4, 'Devis');
+INSERT INTO typecontact VALUES (5, 'Inscription');
+INSERT INTO typecontact VALUES (6, 'Contact');
+INSERT INTO typecontact VALUES (7, 'Question');
+INSERT INTO typecontact VALUES (8, 'Client');
+INSERT INTO typecontact VALUES (9, 'Calendrier');
+INSERT INTO typecontact VALUES (10, 'Dates supplémentaires');
+INSERT INTO typecontact VALUES (11, 'Inscription perso');
+INSERT INTO typecontact VALUES (12, 'Mail perso web');
+INSERT INTO typecontact VALUES (13, 'Action Co : Fafiec');
+INSERT INTO typecontact VALUES (14, 'Action Co : Opcalia');
+INSERT INTO typecontact VALUES (15, 'Retour de newsletter');
+INSERT INTO typecontact VALUES (16, 'Prospection');

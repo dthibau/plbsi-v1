@@ -1,0 +1,121 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<rich:panel id="popInfFor" header="Informations formation : ">
+		<table border="0" cellspacing="3">
+			<tr>
+				<td><ui:include src="../fields/_typeFormation.xhtml" /> <s:decorate
+						template="../../layout/edit.xhtml"
+						rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}">
+						<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.lieu}"
+							style="width:160px; height:20px;">
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
+							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+						</h:selectOneMenu>
+					</s:decorate></td>
+
+				<td><a:outputPanel id="refEdit">
+						<s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.reference']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospect.reference}"
+								style="width:160px;">
+								<a:ajax event="change" render="refEdit,session"
+									listener="#{editProspectManager.findPrix}"/>
+								<f:selectItem itemValue="" itemLabel="Choissisez la référence" />
+								<f:selectItems value="#{formationsActives}" var="formation"
+									itemValue="#{formation.reference}"
+									itemLabel="#{formation.reference}" />
+							</h:selectOneMenu>
+								 	&nbsp;&nbsp;
+									<h:outputText
+								value="Prix : #{editProspectManager.prixFormation}"
+								style="color:green;" />
+						</s:decorate>
+					</a:outputPanel></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.referenceBis']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.referenceBis}" />
+					</s:decorate></td>
+			</tr>
+			<tr>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.participant']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.nb_participants}" />
+								&nbsp;&nbsp;
+								<a:outputPanel id="nomPLink">
+							<a4j:region>
+								<a4j:commandLink
+									action="#{editProspectManager.afficheParticipant()}"
+									render="nomP,nomPLink" value="Voir le nom des participants"
+									rendered="#{editProspectManager.afficheP == false}" />
+								<a4j:commandLink
+									action="#{editProspectManager.afficheParticipant()}"
+									render="nomP,nomPLink" value="Masquer le nom des participants"
+									rendered="#{editProspectManager.afficheP}" />
+							</a4j:region>
+						</a:outputPanel>
+					</s:decorate> <a:outputPanel id="nomP">
+						<s:decorate template="../../layout/display.xhtml"
+							rendered="#{editProspectManager.afficheP}">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.nomParticipant']}" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.prospectDetail.participants}" />
+						</s:decorate>
+					</a:outputPanel></td>
+				<td><a:outputPanel id="session">
+						<s:decorate template="../../layout/edit.xhtml"
+							rendered="#{!empty editProspectManager.prospect.reference}">
+							<ui:define name="label">#{messages['prospect.dateSession']}</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospectDetail.date}">
+								<s:selectItems value="#{editProspectManager.listeSession}"
+									var="_session" label="#{_session}"
+									noSelectionLabel="Sélectionner une session"
+									itemValue="#{_session.session}" />
+							</h:selectOneMenu>
+						</s:decorate>
+					</a:outputPanel></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateSouhait']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.date_souhaite}" />
+					</s:decorate></td>
+			</tr>
+		</table>
+	</rich:panel>
+
+	<rich:panel header="Consigne : ">
+		<table border="0" cellspacing="3">
+			<tr>
+				<td><h:inputTextarea cols="180" rows="2"
+						value="#{editProspectManager.prospect.consigne}" /></td>
+			</tr>
+		</table>
+	</rich:panel>
+
+
+</ui:composition>

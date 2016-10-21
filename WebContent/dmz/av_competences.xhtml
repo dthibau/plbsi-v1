@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<div class="container-fluid" ng-controller="CompetencesCtrl">
+
+
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h6>
+					<a data-toggle="collapse" href="#limitDate">Limiter l'affichage</a>
+				</h6>
+			</div>
+			<div id="limitDate" class="row collapse">
+				<div class="col-sm-3 ">
+					<h5 class="text-right">
+						<b>Limiter les formations/compétences à</b>
+					</h5>
+				</div>
+				<div class="col-sm-2 ">
+					<select class="form-control" id="sel1" ng-model="selectDate"
+						ng-change="saveDate()">
+						<option value="ALL">Ne pas limiter</option>
+						<option value="2Y">Depuis 2 ans</option>
+						<option value="1Y">Depuis 1 an</option>
+						<option value="6M">Depuis 6 mois</option>
+						<option value="3M">Depuis 3 mois</option>
+						<option value="1M">Depuis 1 mois</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<h6>(Date de votre dernière visite {{fillDate}})</h6>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+		</div>
+	</div>
+
+	<ui:include src="_av_alerte.xhtml" />
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-sm-8">
+					<h4>Sélectionner des formations, puis ajouter les à vos
+						compétences</h4>
+				</div>
+				<div class="col-sm-4">
+					<h6 class="text-right">
+						<a data-toggle="collapse" href="#bodySearch" style="color: white">Replier/Déplier</a>
+					</h6>
+				</div>
+			</div>
+		</div>
+		<div id="bodySearch" class="panel-body">
+			<ul class="nav nav-tabs">
+				<li ng-class="{'active':isKeyWord()}"><a href="#"
+					ng-click="switchTab()"><h4>Recherche par mots-clefs</h4></a></li>
+				<li ng-class="{'active':!isKeyWord()}"><a href="#"
+					ng-click="switchTab()"><h4>Recherche par filière</h4></a></li>
+			</ul>
+
+			<div ng-show="searchByKeyWord">
+
+				<div class="panel-body">
+					Saisir un mot-clé : <input type="text" list="formations"
+						ng-model="query" ng-keyup="searchFormations()" size="80" />
+				</div>
+				<ui:include src="_av_searchResult.xhtml">
+					<ui:param name="title" value="Résultat de la recherche" />
+					<ui:param name="show" value="query.length > 2" />
+					<ui:param name="result" value="formations" />
+				</ui:include>
+
+			</div>
+			<div ng-show="!searchByKeyWord">
+				<ui:include src="_av_selectFiliere.xhtml">
+					<ui:param name="click" value="showFormations(filiere)" />
+				</ui:include>
+				<ui:include src="_av_searchResult.xhtml">
+					<ui:param name="title" value="Résultat de la recherche" />
+					<ui:param name="show" value="selectedFiliere != null" />
+					<ui:param name="result" value="formationsFiliere" />
+				</ui:include>
+
+			</div>
+		</div>
+		<ui:include src="_av_selected.xhtml" />
+
+	</div>
+	<ui:include src="_av_result.xhtml">
+		<ui:param name="title"
+			value="Vos compétences déjà référencées chez PLB " />
+	</ui:include>
+
+</div>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+
+	<span> #{messages['formation.filiere']} : <h:selectOneMenu
+						id="selectFiliere" value="#{searchFormationManager.filiere}">
+						<a:ajax event="change"
+							render="resultPanel,categoriesSelect,messages,totalPanel"
+							execute="@this"
+							listener="#{searchFormationManager.filter}">
+						</a:ajax>
+						<s:selectItems value="#{filieres}" var="filiere"
+							label="#{filiere.libelle}"
+							noSelectionLabel="Sélectionner une filière" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</span>
+				<a:outputPanel id="categoriesSelect">
+				#{messages['formation.categorie']} : <h:selectOneMenu
+						value="#{searchFormationManager.categorie}">
+						<a:ajax event="change" render="resultPanel,totalPanel,messages"
+							execute="@this" 
+							listener="#{searchFormationManager.filter}" />
+						<s:selectItems value="#{searchFormationManager.categories}" var="categorie"
+							label="#{categorie.libelle}"
+							noSelectionLabel="Sélectionner une catégorie" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+
+			<a:outputPanel id="searchPanel" layout="block">
+		#{messages['keyword']} : <h:inputText id="searchFormationString"
+					value="#{searchFormationManager.searchString}" />
+				<a:commandButton value="Rechercher"
+					render="resultPanel,totalPanel,messages"
+					execute="@this,searchFormationString,moreResults"
+					action="#{searchFormationManager.search()}" />
+				<h:selectBooleanCheckbox value="#{searchFormationManager.moreResults}"
+					id="moreResults">
+				</h:selectBooleanCheckbox>
+				<h:outputText value="#{messages['search.moreResults']}" />
+				<h:selectBooleanCheckbox value="#{searchFormationManager.showEmptyFormation}"
+					id="showEmpty">
+					<a:ajax event="change" render="resultPanel"/>
+				</h:selectBooleanCheckbox>
+				<h:outputText value="#{messages['search.showEmptyFormation']}" />
+			</a:outputPanel>
+
+
+</ui:composition>

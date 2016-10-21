@@ -1,0 +1,42 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<!-- Pop up Supprimer -->
+	<rich:popupPanel id="popupNotifStatut" modal="true" autosized="true" resizeable="false" onmaskclick="#{rich:component('popupNotifStatut')}.hide()">
+		<f:facet name="header">
+			<h:outputText value="Warning : Statut de la demande non modifiée" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('popupNotifStatut')}.hide(); return false;">
+				X
+			</h:outputLink>
+		</f:facet>
+		<a:outputPanel id="informationNotif">
+			<center><p><h:graphicImage value="/img/Panneau_Attention.png" width="30%" height="30%"/><br /></p></center>
+			<br />
+			<br />
+			<center><b>Attention, vous êtes passé en mode edit et le statut n'a pas changé.</b></center>
+			<br />
+			<br />
+			<center><b>Que voulez vous faire ?</b></center>
+		</a:outputPanel>
+		<br />
+		<h:form id="formulaireValidNonModif">
+			<center>
+	      		<a4j:commandButton action="#{intraManager.modifyIntra()}" value="Continuer" render="resultListIntra,resultat,totalPanelIntra,afficheModifIntra" oncomplete="#{rich:component('popupModifIntra')}.hide();#{rich:component('popupNotifStatut')}.hide()" style="width:170px;height:35px;"/>
+	      		&nbsp;&nbsp;
+	      		<a4j:commandButton value="Retour au changement de statut"  onclick="if (#{facesContext.maximumSeverity == null}) #{rich:component('popupNotifStatut')}.hide()" style="width:170px;height:35px;"/>
+   			</center>
+		</h:form>
+    </rich:popupPanel>
+    
+</ui:composition>

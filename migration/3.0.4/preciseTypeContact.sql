@@ -1,0 +1,2 @@
+update typecontact set DTYPE='WEB' where libelle in ('Intra','Contact', 'Dates supplémentaires', 'Devis', 'Inscription', 'Question');
+update typecontact set DTYPE='SI' where libelle not in ('Intra','Contact', 'Dates supplémentaires', 'Devis', 'Inscription', 'Question');

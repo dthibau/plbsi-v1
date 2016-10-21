@@ -1,0 +1,12 @@
+NameVirtualHost plbsi.plb.fr
+
+
+
+
+<VirtualHost plbsi.plb.fr>
+        Servername plbsi
+        ServerAlias preview.mymeetingsondemand.com
+        JkMountFile mod-jk/uriworkermap.properties
+
+</VirtualHost>
+

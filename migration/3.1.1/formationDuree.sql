@@ -1,0 +1,1 @@
+alter table formation modify column for_duree decimal(5,1);

@@ -1,0 +1,91 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<s:decorate template="layout/propertiesIntervenant.xhtml">
+		<ui:define name="infoPerso">
+			<ui:include src="fields/nom.xhtml" />
+
+			<ui:include src="fields/prenom.xhtml" />
+
+			<ui:include src="fields/adresse.xhtml" />
+			
+			<ui:include src="fields/codePostal.xhtml" />
+			
+			<ui:include src="fields/ville.xhtml" />
+
+			<ui:include src="fields/email.xhtml" />
+
+			<ui:include src="fields/telephone.xhtml" />
+
+			<ui:include src="fields/portable.xhtml" />
+
+		</ui:define>
+
+		<ui:define name="infoComp">
+
+			<ui:include src="fields/origine.xhtml" />
+
+			<ui:include src="fields/observations.xhtml" />
+
+			<ui:include src="fields/rang.xhtml" />
+
+			<ui:include src="fields/conditionsGenerales.xhtml" />
+			
+			
+
+		</ui:define>
+
+		<ui:define name="infoPro">
+
+			<ui:include src="fields/tarif.xhtml" />
+
+			<ui:include src="fields/infoTarifIntervenant.xhtml" />
+			
+			<ui:include src="fields/infoTarifPLB.xhtml" />
+
+			<ui:include src="fields/statut.xhtml" />
+
+			<ui:include src="fields/statutAutre.xhtml" />
+
+			<ui:include src="fields/centres.xhtml" />
+
+			<ui:include src="fields/anglais.xhtml" />
+
+			<ui:include src="fields/certifications.xhtml" />
+			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.champLibre']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.champLibre}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.cv']}" />
+				</ui:define>
+				<h:commandLink
+					action="#{fichierManager.download(intervenant.cv.id)}"
+					value="#{intervenant.cv.name}" target="_blank" />
+			</s:decorate>
+
+		</ui:define>
+		<ui:define name="grille">
+			<ui:include src="_grille.xhtml" />
+		</ui:define>
+
+
+		<ui:define name="buttons">
+			<ui:include src="_editButtonsIntervenant.xhtml" />
+		</ui:define>	
+
+	</s:decorate>
+
+</ui:composition>

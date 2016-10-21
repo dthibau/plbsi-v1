@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="main_devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fbe7478b-c4e5-4050-99fb-95b39e2bb4f2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
+	<style name="adresse" style="default" fontSize="8"/>
+	<parameter name="idDevis" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/dthibau/Dev/PLB/plbsi/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="noDevis" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id from devis where id = $P{idDevis}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="2" width="595" height="48" uuid="9f584231-90b0-4c7b-9a27-23ab9c2430d2"/>
+				<subreportParameter name="idDevis">
+					<subreportParameterExpression><![CDATA[$P{idDevis}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noDevis">
+					<subreportParameterExpression><![CDATA[$P{noDevis}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["devis.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="54" width="100" height="1" uuid="56ac458b-72ba-4c15-93b9-3d4608a38eb0"/>
+			</break>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="39" uuid="6aa26ec4-b1c1-4497-99ab-7396cdd775a6"/>
+				<subreportParameter name="idDevis">
+					<subreportParameterExpression><![CDATA[$P{idDevis}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["devis_administratif.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="44" width="100" height="1" uuid="a5bfe7f0-87fb-488f-8219-594a77333247"/>
+			</break>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="39" uuid="3adabfd5-572e-4af3-b9d1-d39818e94d04"/>
+				<subreportParameter name="idDevis">
+					<subreportParameterExpression><![CDATA[$P{idDevis}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["devis_cg.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement style="adresse" x="20" y="2" width="555" height="17" uuid="7212c10b-e67a-4d6b-b506-ab836b45beab"/>
+				<box topPadding="2">
+					<topPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLB Consultant - 22/24 rue du Président Wilson - 92 300 Levallois-Perret]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="20" y="22" width="555" height="12" uuid="6942c772-fc7f-4d51-bd43-a75eef90e081"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - Site : www.plb.fr - Email plb@plb.fr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="20" y="36" width="555" height="11" uuid="11a3d963-920a-414e-b309-2be22f3e1230"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

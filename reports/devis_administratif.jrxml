@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis_administratif" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="a1fc349a-8a2e-4d28-be51-2eb881b7074c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="132"/>
+	<style name="default" isDefault="true" fontName="Arial" fontSize="10"/>
+	<parameter name="idDevis" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id from devis where id = $P{idDevis}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="35" width="555" height="20" forecolor="#4F7BE5" uuid="e320d4d3-66e7-4ecc-a93f-94350e301727"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Renseignements administratifs"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="57" width="555" height="29" forecolor="#4F7BE5" uuid="e2548fb1-8906-4143-bf04-43279e597bcb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Merci de bien vouloir renseigner les informations demandées ci-dessous pour la prise en compte de votre commande ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="680" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="555" height="20" uuid="e487aaee-714e-405a-b943-a2d02847ce38"/>
+				<text><![CDATA[Du……………………. au …………………	……………………………………….	………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="20" uuid="f1416a97-ae76-495d-9dbb-961cd2e681da"/>
+				<text><![CDATA[Du……………………. au …………………	……………………………………….	………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="555" height="20" uuid="438cb312-fe21-4cf0-90f7-4dec4e81137d"/>
+				<text><![CDATA[Du……………………. au …………………	……………………………………….	………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="62" width="555" height="20" uuid="af94da2d-4dba-4cda-b0e0-76aae0a5185a"/>
+				<text><![CDATA[Du……………………. au …………………	……………………………………….	………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="555" height="20" uuid="b252df25-66a3-4832-b029-be3e68fd479c"/>
+				<text><![CDATA[Manager du participant : ……………………………………………………………………...]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="555" height="20" uuid="8ee8c229-6db8-485a-b3c2-91ccde2ce931"/>
+				<text><![CDATA[Téléphone / Adresse mail : ……………………………………………………………………]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="141" width="555" height="1" forecolor="#4F7BE5" uuid="f3e0e3af-0c18-468f-8b59-e0102dcb534c"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="149" width="555" height="20" uuid="c06f7f97-7014-477f-aa97-8dbd0aaaf7ef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adresse de facturation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="168" width="555" height="20" uuid="77c2fed0-7597-41df-bc70-b5a913fb04f9"/>
+				<text><![CDATA[……………………………………………………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="188" width="555" height="20" uuid="fda3fd5a-fc53-4030-b101-4895bfaf37a4"/>
+				<text><![CDATA[……………………………………………………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="208" width="555" height="20" uuid="f90aec3e-0a2c-4327-93f4-0ad9059c1c27"/>
+				<text><![CDATA[……………………………………………………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="228" width="555" height="20" uuid="eb4b9046-e1bb-42fe-8699-f6941720e5da"/>
+				<text><![CDATA[Références particulières à mentionner sur la facture:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="248" width="555" height="20" uuid="c1903088-59f5-467d-b79a-024d9263e3b8"/>
+				<text><![CDATA[……………………………………………………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="269" width="282" height="20" uuid="1ed2d417-3e1b-4a03-8402-321d2f16b310"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(n° de bon de commande, de dossier, destinataire, etc.)  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="268" width="224" height="20" uuid="e0f619f8-503a-498b-a5d2-3c2393b854fa"/>
+				<text><![CDATA[……………………………………………………………………………………………………………………………………]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="294" width="555" height="1" forecolor="#4F7BE5" uuid="a3f0a6f8-defb-4d33-bb4b-3bdee9729414"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="302" width="282" height="20" uuid="a9b1d221-db24-4a5e-9835-f7e142e11b31"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Demande de prise en charge par un OPCA : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="323" width="555" height="20" uuid="f0b529a8-324f-444a-8e12-3f01677c9e2d"/>
+				<text><![CDATA[Adresse de l’OPCA : ……………………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="342" width="555" height="20" uuid="a71a2813-14a2-4a32-ae52-33be7b0ad7e5"/>
+				<text><![CDATA[Contact :………………………………………………………………………………………………………………….]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="362" width="555" height="20" uuid="baef4623-2a54-45cf-a879-01b12f455d7a"/>
+				<text><![CDATA[Votre n° adhérent OPCA : ……………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="383" width="555" height="20" uuid="09b02b15-733c-4db9-960d-9ec20c151677"/>
+				<text><![CDATA[Numéro et/ou date de la demande : ………………………………………………..]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="403" width="554" height="20" uuid="36c0c09b-7870-4712-ae2f-94d29634a0a6"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Veuillez noter que votre prise en charge doit nous parvenir au plus tard le premier jour de la formation)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="427" width="555" height="1" forecolor="#4F7BE5" uuid="903096e3-397d-4df9-969b-fc7403decaf7"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="432" width="282" height="20" uuid="1489d1e7-a287-4006-b7e1-8faeaa233492"/>
+				<text><![CDATA[Souhaitez-vous recevoir une convention de formation ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="452" width="555" height="20" uuid="12caf85e-fe9c-4289-aa36-fed71c700ac6"/>
+				<text><![CDATA[Nom de l’entité devant figurer sur la convention (si différent) : ……………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="471" width="555" height="20" uuid="6d90b6e3-49e0-4ae5-baed-3e019d936e29"/>
+				<text><![CDATA[Nom du représentant de la société : …………………………………………………………………………………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="491" width="554" height="20" uuid="630650db-5540-484e-8fe9-bbf1420ccf67"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Si la formation est prise en charge par un OPCA, vous recevrez automatiquement une convention à nous retourner signée)]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="525" width="242" height="128" uuid="ff66ff5d-dde7-4385-988c-932d5b9cfad2"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<staticText>
+					<reportElement x="14" y="11" width="228" height="20" uuid="d427eac0-61d1-44e8-939a-ce991517e46a"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CACHET]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="242" y="525" width="313" height="128" uuid="2dc93a92-4862-4329-8e14-8bdd72c302d0"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<staticText>
+					<reportElement x="16" y="11" width="240" height="20" uuid="aa933fd0-5e8c-4d3c-a98d-1d6de7d618de"/>
+					<text><![CDATA[Date ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="31" width="240" height="20" uuid="3009a846-2806-4f07-b1e7-8e6bd85d22de"/>
+					<text><![CDATA[Nom du signataire]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="83" width="158" height="20" uuid="079996dc-43e9-4668-99e4-c62fcd417f6d"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[SIGNATURE]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="654" width="555" height="20" uuid="46f789ac-f114-4752-9001-f9dee5b5909d"/>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[La signature du présent devis vaut acceptation des conditions générales de vente de PLB Consultant.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

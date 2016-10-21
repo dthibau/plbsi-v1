@@ -1,0 +1,38 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a="http://richfaces.org/a4j" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<rich:panel>
+			<rich:dataTable id="historiqueList" value="#{homeManager.historique}" var="event">
+				<ui:include src="common/historique.xhtml">
+					<ui:param name="manager" value="#{homeManager}" />
+					<ui:param name="showFormation" value="#{true}" />
+				</ui:include>
+				
+			</rich:dataTable>
+			<div style="margin-left:300px">
+			<rich:panel id="controlPanel" style="width:220px">
+				<h:form>
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+				
+						<a:commandButton disabled="#{homeManager.currentPage == 0}" value="#{messages['pagination.recent']}" immediate="true" action="#{homeManager.forward}" render="historiqueList,controlPanel"/>
+
+					 #{homeManager.currentPage*PAGE_SIZE+1} - #{(homeManager.currentPage+1)*PAGE_SIZE}
+
+						<a:commandButton value="#{messages['pagination.vieux']}" immediate="true" action="#{homeManager.backward}" render="historiqueList,controlPanel"/>
+
+				</h:form>
+			</rich:panel>
+			</div>
+		</rich:panel>
+
+	</ui:define>
+</ui:composition>

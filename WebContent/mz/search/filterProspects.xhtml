@@ -1,0 +1,212 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:panel id="panel">
+		<h:form id="formManagerDispatcher">
+			<b>Rechercher par :</b>
+			<br />
+			<br />
+			<!-- Champs de recherche -->
+			<a:outputPanel id="interIntraSelect">
+				Inter / Intra ? : 
+				<h:selectOneMenu value="#{searchProspect.interIntra}"
+					style="width:180px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="#{ALL_INT}" itemLabel="Tous les prospects" />
+					<f:selectItem itemValue="#{INTER}" itemLabel="Inter" />
+					<f:selectItem itemValue="#{INTRA}" itemLabel="Intra" />
+				</h:selectOneMenu>
+			</a:outputPanel>
+
+			<!-- Recherche en foncton du commercial associé -->
+			&nbsp;&nbsp;
+			<a:outputPanel id="commercialSelect"
+				rendered="#{sessionDataManager.managerDispatcher}">
+				#{messages['prospect.commerciale']} : 
+				<h:selectOneMenu value="#{searchProspect.commercialeR}"
+					style="width:180px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<s:selectItems value="#{searchProspect.listeCommerciale}"
+						var="commercial" label="#{commercial.nomComplet}"
+						noSelectionLabel="Sélectionner un commercial" />
+					<s:convertEntity />
+				</h:selectOneMenu>
+			</a:outputPanel>
+
+			<!-- Recherche en foncton du statut du prospect -->
+			&nbsp;&nbsp;
+			<a:outputPanel id="statutSelectAll" rendered="#{searchProspect.all}">
+				#{messages['prospect.statut']} :
+				<h:selectOneMenu id="statutAll" value="#{searchProspect.statut}"
+					style="width:110px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="" itemLabel="N/C" />
+					<f:selectItem itemValue="Non affecté" />
+					<f:selectItem itemValue="En attente" />
+					<f:selectItem itemValue="En cours" />
+					<f:selectItem itemValue="Abandon" />
+					<f:selectItem itemValue="Gagné" />
+					<f:selectItem itemValue="Perdu" />
+				</h:selectOneMenu>
+			</a:outputPanel>
+
+			<a:outputPanel id="statutSelectNotAll"
+				rendered="#{!searchProspect.all}">
+				#{messages['prospect.statut']} :
+				<h:selectOneMenu id="statut" value="#{searchProspect.statut}"
+					style="width:110px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="" itemLabel="N/C" />
+					<f:selectItem itemValue="Non affecté" />
+					<f:selectItem itemValue="En attente" />
+					<f:selectItem itemValue="En cours" />
+				</h:selectOneMenu>
+			</a:outputPanel>
+			<!-- Filtre : prospects à suivre -->
+			&nbsp;&nbsp;
+			<a:outputPanel id="asuivreSelect"
+				rendered="#{sessionDataManager.managerDispatcher}">
+				#{messages['prospect.asuivre.filter']} :
+				<h:selectBooleanCheckbox value="#{searchProspect.asuivre}">
+					<a:ajax event="change"
+						render="resultat,resultList,panel,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="true" itemLabel="" />
+				</h:selectBooleanCheckbox>
+			</a:outputPanel>
+			<br />
+
+			<!-- affiche aussi les prospects avec le statut Gagne et perdu -->
+			&nbsp;&nbsp;
+			<a:outputPanel id="encoursSelect"
+				rendered="#{sessionDataManager.managerDispatcher}">
+				#{messages['prospect.encours']} :
+				<h:selectBooleanCheckbox value="#{searchProspect.enCours}">
+					<a:ajax event="change"
+						render="resultat,resultList,panel,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="true" itemLabel="" />
+				</h:selectBooleanCheckbox>
+			</a:outputPanel>
+			&nbsp;&nbsp;
+			<a:outputPanel id="allSelect">
+				#{messages['prospect.all']} :
+				<h:selectBooleanCheckbox value="#{searchProspect.all}">
+					<a:ajax event="change"
+						render="resultat,resultList,panel,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="true" itemLabel="" />
+				</h:selectBooleanCheckbox>
+			</a:outputPanel>
+			
+			&nbsp;&nbsp;
+			<a:outputPanel id="referenceSelectAll"
+				rendered="#{searchProspect.all}">
+				#{messages['prospect.reference']} : 
+    			<h:selectOneMenu id="referenceAll"
+					value="#{searchProspect.reference}"
+					style="width:160px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="" itemLabel="Choissisez la référence" />
+					<f:selectItems value="#{formationsActives}" var="formation"
+						itemValue="#{formation.reference}"
+						itemLabel="#{formation.reference}" />
+				</h:selectOneMenu>
+			</a:outputPanel>
+			<!-- trie sur la typo -->
+			<a:outputPanel id="typeContactSelect"
+				rendered="#{searchProspect.all}">
+				#{messages['prospect.typeContact']} : 
+				<h:selectOneMenu id="typeContactAll"
+					value="#{searchProspect.typeContact}"
+					style="width:180px; height:20px;">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+					<s:selectItems value="#{typesContact}" var="type"
+						label="#{type.libelle}"
+						noSelectionLabel="Sélectionner un type contact" />
+					<s:convertEntity />
+				</h:selectOneMenu>
+			</a:outputPanel>
+
+			<a:outputPanel id="dateSelect" rendered="#{searchProspect.all}">
+				Date de début : <rich:calendar value="#{searchProspect.dateDebut}">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+				</rich:calendar>
+				Date de fin : <rich:calendar value="#{searchProspect.dateFin}">
+					<a:ajax event="change" render="resultat,resultList,totalPanel"
+						listener="#{searchProspect.recherche()}" />
+				</rich:calendar>
+			</a:outputPanel>
+			<br />
+			<br />
+			<a:outputPanel>
+				<h:commandButton
+					value="Afficher le montant total des prospects signés">
+					<a:ajax event="click" render="panel"
+						listener="#{searchProspect.objectif()}" />
+				</h:commandButton>
+				&nbsp;&nbsp;
+				<h:outputText value="#{messages['prospect.nbProspectGagne']} : "
+					rendered="#{searchProspect.afficheObjectif}" />
+				<h:outputText value="#{searchProspect.nbProspectSigne}"
+					rendered="#{searchProspect.afficheObjectif}" style="color:green" />
+				&nbsp;&nbsp;
+				<h:outputText
+					value="#{messages['prospect.montantProspectGagne']} : "
+					rendered="#{searchProspect.afficheObjectif}" />
+				<h:outputText value="#{searchProspect.montantTotal}"
+					rendered="#{searchProspect.afficheObjectif}" style="color:green">
+					<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
+				</h:outputText>
+			</a:outputPanel>
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+			<br />
+			<br />
+			<center>
+				<a:status>
+					<f:facet name="stop" />
+					<f:facet name="start">
+						<h:graphicImage value="/img/ai.gif" alt="Chargement ..."
+							style="width:3%" />
+					</f:facet>
+				</a:status>
+			</center>
+			<br />
+			<a:outputPanel id="totalPanel">
+				<br />Résultat : #{searchProspect.results.size()} Prospect(s) trouvé(s)
+			</a:outputPanel>
+
+			<a:outputPanel style="float: right;">
+	            	&nbsp;
+	            	<a:commandButton value="Rafraichir"
+					render="resultat,resultList,totalPanel,panel" execute="@this"
+					action="#{searchProspect.refresh()}">
+					<rich:tooltip id="ttR" layout="block">
+						<span> Cliquez sur ce bouton pour rafraichir les<br />
+							résultats obtenus.
+						</span>
+					</rich:tooltip>
+				</a:commandButton>
+			</a:outputPanel>
+			<br />
+			<br />
+			<br />
+		</h:form>
+
+	</rich:panel>
+
+</ui:composition>

@@ -1,0 +1,107 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<div class="container-fluid" ng-controller="newCompetencesCtrl">
+	<input type="hidden" value="#{intervenant.id}" ng-model="idIntervenant" />
+
+	<ui:include src="_av_alerte.xhtml" />
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>Sélectionner des nouvelles formations, puis ajouter les à
+				vos compétences</h4>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-2">
+					<h5>
+						Formations depuis le<b> {{newDate.toLocaleDateString()}}</b>
+					</h5>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-sm"
+						ng-click="editDate()" ng-show="!editDateMode">Changer la
+						date</button>
+					<select ng-show="editDateMode" class="form-control" id="sel1"
+						ng-model="selectDate">
+						<option value="">Ne pas changer</option>
+						<option value="2Y">Depuis 2 ans</option>
+						<option value="1Y">Depuis 1 an</option>
+						<option value="6M">Depuis 6 mois</option>
+						<option value="3M">Depuis 3 mois</option>
+						<option value="1M">Depuis 1 mois</option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-sm"
+						ng-click="saveDate()" ng-show="editDateMode">Enregistrer</button>
+				</div>
+				<div class="col-sm-6" />
+			</div>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#"><h4>Recherche par
+							filière</h4></a></li>
+			</ul>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<div>
+						<label class="radio-inline"> <input type="radio"
+							checked="checked" name="filiere" ng-click="showNewFormations()" />Toutes
+							les filières
+						</label>
+					</div>
+					<div ng-repeat="filiere in filieres[0]">
+						<label class="radio-inline"> <input type="radio"
+							name="filiere" value="{{filiere.id}}"
+							ng-click="showNewFormations(filiere)" />{{filiere.libelle}}
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div ng-repeat="filiere in filieres[1]">
+						<label class="radio-inline"> <input type="radio"
+							name="filiere" value="{{filiere.id}}"
+							ng-click="showNewFormations(filiere)" />{{filiere.libelle}}
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div ng-repeat="filiere in filieres[2]">
+						<label class="radio-inline"> <input type="radio"
+							name="filiere" value="{{filiere.id}}"
+							ng-click="showNewFormations(filiere)" />{{filiere.libelle}}
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div ng-repeat="filiere in filieres[3]">
+						<label class="radio-inline"> <input type="radio"
+							name="filiere" value="{{filiere.id}}"
+							ng-click="showNewFormations(filiere)" />{{filiere.libelle}}
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<ui:include src="_av_searchResult.xhtml">
+				<ui:param name="title" value="Nouvelles formations" />
+				<ui:param name="show" value="formationsFiliere.length > 0" />
+				<ui:param name="result" value="formationsFiliere" />
+			</ui:include>
+
+
+
+		</div>
+		<ui:include src="_av_selected.xhtml" />
+	</div>
+	<ui:include src="_av_result.xhtml">
+		<ui:param name="title" value="Nouvelles competences ajoutées " />
+	</ui:include>
+</div>
+</html>

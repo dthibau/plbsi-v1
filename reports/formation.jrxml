@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="formation" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d51fb098-2fd2-463f-8653-f273dc4b34b3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="136"/>
+	<import value="com.plb.util.HTMLUtils"/>
+	<style name="default" isDefault="true" forecolor="#464A52" markup="html" fontName="Arial" fontSize="12"/>
+	<style name="sous-titre" forecolor="#5E5611" fontName="Arial" fontSize="14" isBold="true"/>
+	<style name="titre" mode="Opaque" forecolor="#464A52" backcolor="#F3F1E4" hAlign="Center" vAlign="Middle" fontName="Arial" fontSize="18" isBold="true"/>
+	<style name="adresse" style="default" fontSize="8"/>
+	<parameter name="idFormation" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[826]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from formation where id_formation=$P{idFormation}]]>
+	</queryString>
+	<field name="id_formation" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_precision_libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prix" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_objectifs" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_participants" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prerequis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_travaux_pratiques" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_duree" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_reference" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_contenu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_nouveaute" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_top10" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_mot_cle_primaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_balise_keywords" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_url" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_visible" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_niveau" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_partenariat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_prix_partenaire" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_catalogue" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_origine" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_referencement" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_remarques" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_replace" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tar_code_intra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_infos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_categorie" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_rang_categorie" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="archivedDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="campagneAdWords" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="coursPlbCataloguePartenaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastUpdatePrix" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="libreIntra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plbInter" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statut" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="support" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formationMutualisees_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tar1_code_inter" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_date_creation" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_date_derniere_modif" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="argumentaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certification" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="distance" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_version" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_eligible_cpf" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_elearning" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="for_cours_officiel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<textField>
+				<reportElement style="titre" x="0" y="74" width="555" height="34" uuid="02ae1e5f-bb33-4fe3-b7cb-3d15f5533c91"/>
+				<textFieldExpression><![CDATA[$F{for_libelle}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="74" backcolor="#D6DAE6" uuid="101858e7-e19d-445e-8400-aed3d64010f1"/>
+				<image>
+					<reportElement x="0" y="0" width="148" height="74" uuid="a730f2d4-bcb8-44d1-91f6-0032e319dc5b"/>
+					<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="100" height="20" uuid="8dba2b8f-334d-4c47-938f-cc3e6f63552e"/>
+				<text><![CDATA[Objectifs :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="default" x="39" y="20" width="516" height="44" uuid="da4bea2e-b06c-4e23-b3f5-a9b4bf8abe45"/>
+				<textFieldExpression><![CDATA[$F{for_objectifs}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="47">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="39" y="20" width="516" height="20" uuid="b700feb9-2c32-4e82-af0e-310533f26a26"/>
+				<textFieldExpression><![CDATA[$F{for_prerequis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="100" height="20" uuid="7a1c8f12-a422-4b3d-8387-a6f00832af51"/>
+				<text><![CDATA[Pré-requis :]]></text>
+			</staticText>
+		</band>
+		<band height="48">
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="100" height="20" uuid="a55350b2-90d7-46ef-8f25-ef3b16d8f5dc"/>
+				<text><![CDATA[Participants :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="39" y="20" width="516" height="20" uuid="60a1a8a7-ab87-4690-9bbc-16beaed28b3c"/>
+				<textFieldExpression><![CDATA[$F{for_participants}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="146" height="20" uuid="ed450ab9-24ba-4e9a-b4a0-60b0baeec906"/>
+				<text><![CDATA[Travaux pratiques :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="39" y="20" width="516" height="20" uuid="f7c2c2df-6229-4db3-8af0-3c8b2d157007"/>
+				<textFieldExpression><![CDATA[$F{for_travaux_pratiques}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<staticText>
+				<reportElement style="sous-titre" x="247" y="0" width="82" height="20" uuid="8d92ee6b-dcec-4356-815d-fc55286179e1"/>
+				<text><![CDATA[Référence : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="2" width="196" height="20" uuid="f6db7ed6-c3ad-4797-a8a9-c5e49cf3d39b"/>
+				<textFieldExpression><![CDATA[$F{for_duree} + " jours (" + ($F{for_duree}*7) + " heures)"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="51" height="20" uuid="aa5ef278-82c3-4a97-826a-2640b686862c"/>
+				<text><![CDATA[Durée :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="2" width="100" height="20" uuid="39fa74fa-e6d0-4e6d-8efe-e9efa32a8a5c"/>
+				<textFieldExpression><![CDATA[$F{for_reference}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="31" width="100" height="1" uuid="ed7cba76-0212-4962-b1bb-3f00fa30db35"/>
+			</break>
+		</band>
+		<band height="75">
+			<staticText>
+				<reportElement style="sous-titre" x="0" y="0" width="194" height="20" isPrintInFirstWholeBand="true" uuid="279c0f42-98fb-43c0-8da8-cd12cfd1121c"/>
+				<text><![CDATA[Contenu de la formation]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="39" y="20" width="516" height="55" uuid="59cb19cd-b9f5-45fd-ab4f-19a625841598"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA[HTMLUtils.getSimpleHTML($F{for_contenu})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement style="adresse" x="0" y="34" width="555" height="11" uuid="f821e196-55ca-47a5-be3f-59c9be0ec2ef"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - N° Siren : 421 694 779 - N° de déclaration d'existence : 119 211 300 92]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="0" y="20" width="555" height="12" uuid="d1dec040-85ae-45bd-af25-f2ab9741356f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - Site : www.plb.fr - Email plb@plb.fr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="adresse" x="0" y="0" width="555" height="17" uuid="5886e579-138a-4f30-af63-b31fa2a6d2ac"/>
+				<box topPadding="2">
+					<topPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLB Consultant - 22/24 rue du Président Wilson - 92 300 Levallois-Perret]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

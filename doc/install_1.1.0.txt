@@ -1,0 +1,12 @@
+BD : Ajout du champ téléphone, des tables devis et devisSession
+
+alter table formation modify statut longtext
+
+---
+Installation font Microsoft 
+Ajouter contrib dans sources.list :
+deb http://debian.mirrors.ovh.net/debian/ squeeze main contrib non-free
+puis
+sudo apt-get install ttf-mscorefonts-installer
+
+Redémarrer JBoss

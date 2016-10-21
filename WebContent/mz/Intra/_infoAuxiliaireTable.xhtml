@@ -1,0 +1,78 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:p="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<table border="0" cellspacing="5">
+		<tr>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
+								<ui:define name="label">Profils des participants</ui:define>
+								<h:outputText value="#{intra.profilParticipant}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
+								<ui:define name="label">Environnement technique</ui:define>
+								<h:outputText value="#{intra.environnementTech}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
+								<ui:define name="label">Connaissances du sujet </ui:define>
+								<h:outputText value="#{intra.connaissanceSujet}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
+								<ui:define name="label">Objectifs </ui:define>
+								<h:outputText value="#{intra.objectif}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
+								<ui:define name="label">Coordonnées du contact technique</ui:define>
+								<h:outputText value="#{intra.coordonneesContactTech}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+
+</ui:composition>

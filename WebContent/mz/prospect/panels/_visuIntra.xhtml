@@ -1,0 +1,523 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table border="0" cellspacing="3">
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['intra.statut']}" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.statutIntra}" />
+				</s:decorate></td>
+			<td><s:decorate template="../../layout/display.xhtml">
+					<ui:define name="label">
+						<h:outputText value="Valider" />
+					</ui:define>
+					<b><h:outputText value="Oui"
+							rendered="#{editProspectManager.prospect.informationIntra.valide == 1}"
+							style="color:green;" /></b>
+					<b><h:outputText value="Non"
+							rendered="#{editProspectManager.prospect.informationIntra.valide == 0}"
+							style="color:red;" /></b>
+				</s:decorate></td>
+		</tr>
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['intra.info']}" />
+					</ui:define>
+					<b><h:outputText style="color:red;"
+							value="Votre demande est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera."
+							rendered="#{'Administrateur en recherche d’intervenant'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Votre demande a été traitée, à vous de modifier son statut afin de faire évoluer votre demande d'intra."
+							rendered="#{'Attente com'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Vous avez modifié votre demande, elle est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera."
+							rendered="#{'Attente AD'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Vous avez passé votre demande d'intra au statut annulé. Votre demande est en cours de traitement."
+							rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+					<b><h:outputText style="color:red;"
+							value="L'annulation de votre demande d'intra à été validé."
+							rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Votre demande est en cours de traitement. L'intervenant a été trouvé, nous sommes dans l'attente d'un accord entre lui et le client."
+							rendered="#{'Attente Audit'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Vous avez passé votre demande d'intra au statut confirmé. Votre demande est en cours de traitement."
+							rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+					<b><h:outputText style="color:red;"
+							value="Votre demande d'intra a été passé au statut Logistique."
+							rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
+				</s:decorate></td>
+		</tr>
+	</table>
+	<br />
+	<rich:collapsiblePanel header="Informations générales : "
+		expanded="false" switchType="client">
+		<table border="0" cellspacing="3">
+			<tr>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateCreation']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.informationIntra.dateCreation}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['intra.id']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.informationIntra.idInforamtionIntra}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.societe}" />
+					</s:decorate></td>
+			</tr>
+			<tr>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="Prob. transformation" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.informationIntra.probTransformation}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['intra.duree']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.informationIntra.duree}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.dateSouhait']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" />
+					</s:decorate></td>
+			</tr>
+			<tr>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.lieu']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.lieu}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.ville']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.ville}" />
+					</s:decorate></td>
+				<td><s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.participant']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.nb_participants}" />
+					</s:decorate></td>
+			</tr>
+		</table>
+		<rich:collapsiblePanel header="Adresse : " expanded="false"
+			switchType="client"
+			rendered="#{!'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra)  and !'OK'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<table border="0" cellspacing="0">
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.societe}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.adresse']}" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.adresse}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.ville']}" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.ville}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.cp']}" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.cp}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.pays']}" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.pays}" />
+						</s:decorate></td>
+				</tr>
+			</table>
+		</rich:collapsiblePanel>
+	</rich:collapsiblePanel>
+	<br />
+	<rich:collapsiblePanel header="Récapitulatif demande de formation : "
+		expanded="false" switchType="client">
+		<center>
+			<rich:dataTable value="#{editProspectManager.prospect.formations}"
+				var="formation" rowKeyVar="index"
+				rendered="#{!'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['prospect.reference']}" />
+					</f:facet>
+					<h:outputText value="#{formation.formation.reference}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['prospect.libelleFormation']}" />
+					</f:facet>
+					<h:outputText value="#{formation.formation.libelle}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Durée en jour" />
+					</f:facet>
+					<h:outputText value="#{formation.formation.duree}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Durée souhaitée" />
+					</f:facet>
+					<h:outputText value="#{formation.dureeVoulu}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Dates souhaitées" />
+					</f:facet>
+					<center>
+						<h:outputText value="#{formation.session}" />
+					</center>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Nb part." />
+					</f:facet>
+					<center>
+						<h:outputText value="#{formation.participant}" />
+					</center>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Intervenant(s)" />
+					</f:facet>
+					<center>
+						<rich:dataTable value="#{formation.intervenants}"
+							var="intervenant" rowKeyVar="index">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nom - Prénom" />
+								</f:facet>
+								<h:outputText
+									value="#{intervenant.intervenant.nom} - #{intervenant.intervenant.prenom}"
+									rendered="#{intervenant.favori==1}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Tarif" />
+								</f:facet>
+								<h:outputText value="#{intervenant.tarif}"
+									rendered="#{intervenant.favori==1}">
+									<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Note" />
+								</f:facet>
+								<h:outputText value="#{intervenant.note}"
+									rendered="#{intervenant.favori==1}" />
+							</rich:column>
+						</rich:dataTable>
+					</center>
+				</rich:column>
+			</rich:dataTable>
+			<a:outputPanel
+				rendered="#{!empty editProspectManager.prospect.informationIntra.intraReferenceSpe}">
+				<rich:dataTable
+					value="#{editProspectManager.prospect.informationIntra.intraReferenceSpe}"
+					var="intraReferenceSpe" rowKeyVar="index">
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.reference']}" />
+						</f:facet>
+						<h:outputText value="Spé" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.libelleFormation']}" />
+						</f:facet>
+						<h:outputText value="#{intraReferenceSpe.referenceSpe.libelle}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Durée souhaitée" />
+						</f:facet>
+						<h:outputText value="#{intraReferenceSpe.referenceSpe.duree}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Dates souhaitées" />
+						</f:facet>
+						<center>
+							<h:outputText value="#{intraReferenceSpe.referenceSpe.session}" />
+						</center>
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Nb part." />
+						</f:facet>
+						<center>
+							<h:outputText
+								value="#{intraReferenceSpe.referenceSpe.participant}" />
+						</center>
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Intervenant(s)" />
+						</f:facet>
+						<center>
+							<rich:dataTable value="#{intraReferenceSpe.intervenants}"
+								var="intervenant" rowKeyVar="index">
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="Nom - Prénom" />
+									</f:facet>
+									<h:outputText
+										value="#{intervenant.intervenant.nom} - #{intervenant.intervenant.prenom}"
+										rendered="#{intervenant.favori==1}" />
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="Tarif" />
+									</f:facet>
+									<h:outputText value="#{intervenant.tarif}"
+										rendered="#{intervenant.favori==1}">
+										<f:convertNumber currencySymbol="€" type="currency"
+											locale="FR" />
+									</h:outputText>
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="Note" />
+									</f:facet>
+									<h:outputText value="#{intervenant.note}"
+										rendered="#{intervenant.favori==1}" />
+								</rich:column>
+							</rich:dataTable>
+						</center>
+					</rich:column>
+				</rich:dataTable>
+			</a:outputPanel>
+		</center>
+		<br />
+		<!-- Champs à afficher quand le statut = Annulé -->
+		<a4j:outputPanel
+			rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<s:decorate template="../../layout/display.xhtml">
+				<center>
+					<ui:define name="label">
+						<h:outputText value="#{messages['prospect.raisonPerte']}" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.prospectDetail.raisonPerte}" />
+				</center>
+			</s:decorate>
+		</a4j:outputPanel>
+		<!-- Champs à afficher quand le statut = Logistique -->
+		<a4j:outputPanel
+			rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) or 'OK'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			<table border="0" cellspacing="3">
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Contact tech." />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.coordonneesContactTech}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Contact support" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.coordonneesContactsupport}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Frais ?" />
+							</ui:define>
+							<h:outputText value="Oui"
+								rendered="#{editProspectManager.prospect.informationIntra.frais == 1}" />
+							<h:outputText value="Non"
+								rendered="#{editProspectManager.prospect.informationIntra.frais == 0}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Horaire de formation" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.heureDeb} - #{editProspectManager.prospect.informationIntra.heureFin}"
+								rendered="#{!empty editProspectManager.prospect.informationIntra.heureDeb or empty editProspectManager.prospect.informationIntra.heureFin}" />
+							<h:outputText value="N/C"
+								rendered="#{empty editProspectManager.prospect.informationIntra.heureDeb and empty editProspectManager.prospect.informationIntra.heureFin}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Profil des participants" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.profilParticipant}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Env. technique" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.environnementTech}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Connaissance sujet" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.connaissanceSujet}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="Objectif" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.objectif}" />
+						</s:decorate></td>
+				</tr>
+			</table>
+			<rich:collapsiblePanel header="Adresse : " expanded="false"
+				switchType="client">
+				<table border="0" cellspacing="0">
+					<tr>
+						<td><s:decorate template="../../layout/display.xhtml">
+								<ui:define name="label">
+									<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+								</ui:define>
+								<h:outputText value="#{editProspectManager.prospect.societe}" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../../layout/display.xhtml">
+								<ui:define name="label">
+									<h:outputText value="#{messages['prospect.adresse']}" />
+								</ui:define>
+								<h:outputText value="#{editProspectManager.prospect.adresse}" />
+							</s:decorate></td>
+						<td><s:decorate template="../../layout/display.xhtml">
+								<ui:define name="label">
+									<h:outputText value="#{messages['prospect.ville']}" />
+								</ui:define>
+								<h:outputText value="#{editProspectManager.prospect.ville}" />
+							</s:decorate></td>
+						<td><s:decorate template="../../layout/display.xhtml">
+								<ui:define name="label">
+									<h:outputText value="#{messages['prospect.cp']}" />
+								</ui:define>
+								<h:outputText value="#{editProspectManager.prospect.cp}" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../../layout/display.xhtml">
+								<ui:define name="label">
+									<h:outputText value="#{messages['prospect.pays']}" />
+								</ui:define>
+								<h:outputText value="#{editProspectManager.prospect.pays}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</rich:collapsiblePanel>
+		</a4j:outputPanel>
+	</rich:collapsiblePanel>
+	<br />
+	<rich:collapsiblePanel header="Note Perso : " expanded="true"
+		switchType="client">
+		<center>
+			<rich:dataTable value="#{editProspectManager.messages}" var="message"
+				rowKeyVar="index">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Message n°" />
+					</f:facet>
+					<center>
+						<h:outputText value="#{index+1}" />
+					</center>
+					<f:facet name="footer">
+						<h:outputText value="Message n°" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+					<h:outputText value="#{message.date}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
+					</h:outputText>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+					<h:outputText value="#{message.account.nomComplet}" />
+					<f:facet name="footer">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+					<h:outputText value="#{message.libelle}" cols="100" rows="2" />
+					<f:facet name="footer">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+				</rich:column>
+			</rich:dataTable>
+		</center>
+	</rich:collapsiblePanel>
+
+</ui:composition>

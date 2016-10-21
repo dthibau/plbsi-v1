@@ -1,0 +1,101 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+
+<style>
+.table-border {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+	<rich:popupPanel id="formationFilierePopup" modal="true"
+		autosized="true" resizeable="false">
+		<f:facet name="header">
+			<h:outputText value="Ajout d'une formation à une filière" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('formationFilierePopup')}.hide(); return false;">
+                X
+            </h:outputLink>
+		</f:facet>
+		<h:form>
+			<a:outputPanel id="formationFiliereContent">
+			<s:decorate template="../layout/edit.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.filiere']}" />
+				</ui:define>
+				<h:selectOneMenu id="inputFpPartenaire" required="true"
+					value="#{formationManager.newFormationFiliere.filiere}">
+					<a:ajax event="change" render="rangFilierePanel" execute="@this" />
+					<s:selectItems value="#{filieres}" var="filiere"
+						label="#{filiere.libelle}"
+						noSelectionLabel="Sélectionner une filière" />
+					<s:convertEntity />
+				</h:selectOneMenu>
+			</s:decorate>
+
+
+
+			<a:outputPanel layout="block" id="rangFilierePanel">
+			<a:outputPanel rendered="#{formationManager.newFormationFiliere.filiere != null}">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['formation.filiere.rang']}" />
+					</ui:define>
+					<h:inputText id="inputFpCode" size="3" required="true"
+						value="#{formationManager.newFormationFiliere.rangFiliere}" />
+				</s:decorate>
+				
+				<div>
+					<rich:panel 
+						header="Voir les autres formations de la filière"
+						switchType="ajax">
+						<div id="" style="overflow-y:scroll; height:400px;">
+						<table width="100%" class="table-border" cellpadding="4">
+						<tr class="table-border"><th class="table-border">#{messages['formation.reference']}</th>
+						<th class="table-border">#{messages['formation.libelle']}</th>
+						<th class="table-border">#{messages['formation.filiere.rang']}</th></tr>
+						<a:repeat value="#{formationManager.autresFormationsFiliere()}" var="fFiliere">
+						<tr class="table-border">
+						<td class="table-border"><h:outputLink rendered="#{fFiliere.formation.urlPlb != null}"
+									value="#{WEB_URL}#{fFiliere.formation.urlPlb}" target="_blank">#{fFiliere.formation.reference}</h:outputLink>
+								<h:outputText rendered="#{fFiliere.formation.urlPlb == null}"
+									value="#{fFiliere.formation.reference}" /></td>
+						<td class="table-border"><h:outputText value="#{fFiliere.formation.libelle}" /></td>
+						<td class="table-border"><h:outputText value="#{fFiliere.rangFiliere}" /></td>
+						</tr>
+						</a:repeat>
+						</table>
+						</div>
+
+					</rich:panel>
+
+				</div>
+				</a:outputPanel>
+			</a:outputPanel>
+
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+			<br />
+			<a:commandButton value="Annuler"
+				onclick="#{rich:component('formationFilierePopup')}.hide();" />
+			<a:commandButton action="#{formationManager.addFormationFiliere}" rendered="#{!formationManager.formationFiliereExists}"
+				value="Ajouter" execute="@form" render="formationFiliereList"
+				oncomplete="#{rich:component('formationFilierePopup')}.hide();"></a:commandButton>
+			<a:commandButton action="#{formationManager.saveFormationFiliere}" rendered="#{formationManager.formationFiliereExists}"
+				value="Modifier" execute="@form" render="formationFiliereList"
+				oncomplete="#{rich:component('formationFilierePopup')}.hide();"></a:commandButton>
+		</a:outputPanel>
+		</h:form>
+
+	</rich:popupPanel>
+
+</ui:composition>

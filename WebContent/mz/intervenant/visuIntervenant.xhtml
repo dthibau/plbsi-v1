@@ -1,0 +1,195 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j">
+
+	<s:decorate template="layout/propertiesIntervenant.xhtml">
+
+		<ui:define name="infoPerso">
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.nom']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.nom}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.prenom']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.prenom}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.adresse']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.adresse}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.codePostal']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.codePostal}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.ville']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.ville}" />
+			</s:decorate>			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.email']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.email}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.numTel']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.numTel}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.numPortable']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.numPortable}" />
+			</s:decorate>
+
+		</ui:define>
+
+		<ui:define name="infoComp">
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.origine']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.origine}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.observations']}" />
+				</ui:define>
+				<div
+					style="height: 100px; overflow-x: auto; overflow-y: auto; padding: 5px">
+					<h:outputText value="#{intervenant.observations}" />
+				</div>
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.rang']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.rang}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.conditionGenerale']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.conditionGenerale}" />
+			</s:decorate>
+
+		</ui:define>
+
+		<ui:define name="infoPro">
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.tarif']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.tarif}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.infoTarifIntervenant']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.infoTarifIntervenant}" />
+			</s:decorate>
+			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.infoTarifPLB']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.infoTarifPLB}" />
+			</s:decorate>
+			
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.statut']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.statut}" />
+			</s:decorate>
+
+			<a:outputPanel rendered="#{intervenant.statut.equals('Autre')}">
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">#{messages['intervenant.statutAutre']}
+					
+						</ui:define>
+					<h:outputText value="#{intervenant.statutAutre}" />
+				</s:decorate>
+			</a:outputPanel>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.centres']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.centres}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.anglais']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.anglais}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.certifications']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.certifications}" />
+			</s:decorate>
+			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.champLibre']}" />
+				</ui:define>
+				<h:outputText value="#{intervenant.champLibre}" />
+			</s:decorate>
+
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['intervenant.cv']}" />
+				</ui:define>
+				<h:commandLink
+					action="#{fichierManager.download(intervenant.cv.id)}"
+					value="#{intervenant.cv.name}" target="_blank" />
+			</s:decorate>
+
+
+
+		</ui:define>
+
+		<ui:define name="grille">
+			<ui:include src="_grille.xhtml" />
+		</ui:define>
+
+		<ui:define name="buttons">
+			<ui:include src="_visuButtonsIntervenant.xhtml" />
+		</ui:define>
+	</s:decorate>
+
+</ui:composition>

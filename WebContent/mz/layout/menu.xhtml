@@ -1,0 +1,154 @@
+<rich:toolbar height="30" rendered="#{identity.loggedIn}" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:toolbarGroup>
+		<h:outputText value="#{projectName}:" />
+		<!-- Menu Formation -->
+		<s:link rendered="#{empty cidSearch and !sessionDataManager.managerIntervenantsManager}" id="menuSearchId1_1" view="/mz/search/search.xhtml"
+					value="Formations" propagation="none" styleClass="navigation1"/>
+		<s:link rendered="#{!empty cidSearch and !sessionDataManager.managerIntervenantsManager}" id="menuSearchId2_1" view="/mz/search/search.xhtml"
+			value="Formations" styleClass="navigation1">
+			<f:param name="cid" value="#{cidSearch}"/>
+		</s:link>
+		<rich:dropDownMenu mode="ajax" rendered="#{sessionDataManager.managerIntervenantsManager}">
+            <f:facet name="label">
+                <h:panelGrid cellpadding="0" cellspacing="0" columns="2" style="vertical-align:middle;color:#0090FF" propagation="none" styleClass="navigation1">
+					<span style="text-decoration:underline;">
+						<s:link rendered="#{empty cidSearch}" id="menuSearchId1Menu" view="/mz/search/search.xhtml"
+							value="Formations" propagation="none" styleClass="navigation1"/>
+						<s:link rendered="#{!empty cidSearch}" id="menuSearchId2Menu" view="/mz/search/search.xhtml"
+							value="Formations" styleClass="navigation1">
+							<f:param name="cid" value="#{cidSearch}"/>
+						</s:link>
+					</span>
+                </h:panelGrid>
+            </f:facet>
+            <rich:menuItem submitMode="client" rendered="#{empty cidSearch}">
+                <s:link rendered="#{empty cidSearch}" id="menuSearchId1" view="/mz/search/search.xhtml"
+					value="Formations" propagation="none"/>
+            </rich:menuItem>
+            <rich:menuItem submitMode="client" rendered="#{!empty cidSearch}">
+            	<s:link rendered="#{!empty cidSearch}" id="menuSearchId2" view="/mz/search/search.xhtml"
+					value="Formations">
+					<f:param name="cid" value="#{cidSearch}"/>
+				</s:link>
+            </rich:menuItem>
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+            	<s:link rendered="#{sessionDataManager.managerIntervenantsManager}" id="menuCreateId" action="#{formationManager.createNew}"
+					value="Nouvelle Formation" propagation="none"/>
+            </rich:menuItem>
+            <rich:menuSeparator id="menuSeparatorFilieres" />
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+            <s:link id="menuFilieres" view="/mz/filiere/filieres.xhtml"
+					value="Filières" propagation="none"/>
+			</rich:menuItem>
+			<rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+            <s:link id="menuCategories" view="/mz/categorie/categories.xhtml"
+					value="Catégories" propagation="none"/>
+			</rich:menuItem>
+        </rich:dropDownMenu>
+		<!-- menu Intervenant -->
+		<rich:dropDownMenu mode="ajax" rendered="#{sessionDataManager.managerIntervenantsManager}">
+                <f:facet name="label">
+                    <h:panelGroup style="vertical-align:middle;color:#0090FF" styleClass="navigation1">
+                        <h:graphicImage value="/img/intervenants.png" styleClass="pic" alt="#{messages['intervenants']}" />
+                		<s:link rendered="#{empty cidSearch}" view="/mz/intervenant/searchIntervenant.xhtml"
+							value="#{messages['intervenants']}" propagation="none" styleClass="navigation1"/>
+				    </h:panelGroup>
+                </f:facet>
+                <rich:menuItem>
+                	<s:link action="#{intervenantManager.prepareNew}" value="#{messages['menu.nouveau']}" propagation="none"/>
+                </rich:menuItem>
+                <rich:menuSeparator id="menuSeparator11" />
+                <rich:menuItem>
+                	<s:link action="/mz/intervenant/searchIntervenant" value="#{messages['menu.search.intervenant']}" propagation="none"/>
+                </rich:menuItem>
+                <rich:menuItem>
+                	<s:link action="/mz/intervenant/searchFormation" value="#{messages['menu.search.formation']}" propagation="none"/>
+                </rich:menuItem>
+                <rich:menuItem>
+               		<s:link action="/mz/intervenant/grilles" value="#{messages['menu.grille']}" propagation="none"/>
+                </rich:menuItem>
+ 		</rich:dropDownMenu>
+		<!-- menu Prospect -->
+		<rich:dropDownMenu mode="ajax">
+            <f:facet name="label">
+                <h:panelGrid cellpadding="0" cellspacing="0" columns="2" style="vertical-align:middle;color:#0090FF" propagation="none" styleClass="navigation1">
+					<span style="text-decoration:underline;">Création Prospect</span>
+                </h:panelGrid>
+            </f:facet>
+            <rich:menuItem submitMode="client">
+            	<s:link action="#{prospectManager.init}" value="Créer une fiche contact" propagation="none" />
+            </rich:menuItem>
+            <rich:menuItem submitMode="client">
+            	<s:link action="#{demandeClientManager.initDemande}" value="Créer une demande client" propagation="none" />
+            </rich:menuItem>
+        </rich:dropDownMenu>
+        <!-- Suivi des offres -->
+		<s:link id="menuSearchProspectIdSuivi" 
+			action="#{searchProspect.init}" value="Suivi des offres"
+			propagation="none" styleClass="navigation1" rendered="#{!sessionDataManager.dispatcher}"/>
+		<s:link id="menuSearchProspectIdDispatch" 
+			action="#{searchProspect.init}" value="Dispatch"
+			propagation="none" styleClass="navigation1" rendered="#{sessionDataManager.dispatcher}"/>
+		<!-- Suivi des intras -->
+		<s:link id="menuSearchIntra" 
+			action="#{intraManager.init}" value="Suivi des intra"
+			propagation="none" styleClass="navigation1" rendered="#{sessionDataManager.managerIntervenantsManager}"/> 
+		<!-- Menu administration -->
+		<rich:dropDownMenu mode="ajax">
+            <f:facet name="label">
+                <h:panelGrid cellpadding="0" cellspacing="0" columns="2" style="vertical-align:middle;color:#0090FF" propagation="none" styleClass="navigation1">
+					<span style="text-decoration:underline;">Administration</span>
+                </h:panelGrid>
+            </f:facet>
+            <rich:menuItem submitMode="client">
+                <s:link id="menuHomeId" view="/mz/historique.xhtml" value="Historique"
+					propagation="none"/>
+            </rich:menuItem>
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+                <s:link rendered="#{sessionDataManager.manager}" id="menuTarif" view="/mz/tarif/tarifs.xhtml"
+					value="Tarifs" propagation="none"/>
+            </rich:menuItem>
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+                <s:link rendered="#{sessionDataManager.manager}" id="menuEmailTemplate" view="/mz/emailTemplates/templates.xhtml"
+					value="Emails Type pour devis" propagation="none"/>
+            </rich:menuItem>
+            <rich:menuSeparator id="menuSeparator12" />
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+                <s:link rendered="#{sessionDataManager.managerIntervenantsManager}" id="menuIndexingId" view="/mz/indexing.xhtml"
+					value="Lancer l'indexation" propagation="none"/>
+            </rich:menuItem>
+            <rich:menuItem submitMode="client" rendered="#{sessionDataManager.managerIntervenantsManager}">
+                <s:link rendered="#{sessionDataManager.managerIntervenantsManager}" id="menuRefreshingId" action="#{applicationManager.refresh()}"
+					value="Rafraîchir les caches" propagation="none"/>
+            </rich:menuItem>
+        </rich:dropDownMenu>
+	</rich:toolbarGroup>
+	<!-- @newMenuItem@ -->
+	<rich:toolbarGroup location="right">
+		<h:outputText id="menuWelcomeId" value="#{loggedUser.nomComplet}"
+			rendered="#{identity.loggedIn}" />
+		<h:outputText id="roleId" value="#{loggedUser.preferredRole}"
+			rendered="#{!loggedUser.manager}" />
+		<h:form>
+			<h:selectOneMenu rendered="#{loggedUser.manager}"
+				value="#{sessionDataManager.currentRole}">
+				<a:ajax event="change" render="menuPanel,bodyPanel" execute="@this"/>
+				<s:selectItems value="#{roles}" var="_role" label="#{_role.libelle}" />
+				<s:convertEnum />
+			</h:selectOneMenu>
+		</h:form>
+		<s:link id="menuLoginId" view="/login.xhtml" value="Login"
+			rendered="#{not identity.loggedIn}" propagation="none" />
+		<s:link id="menuLogoutId" view="/mz/search/search.xhtml"
+			action="#{identity.logout()}" value="Déconnexion"
+			rendered="#{identity.loggedIn}" propagation="none" />
+	</rich:toolbarGroup>
+</rich:toolbar>

@@ -1,0 +1,46 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j"
+    xmlns:a4j="http://richfaces.org/a4j">
+    
+    <!-- Pop up Modifier-->
+	<rich:popupPanel id="popupModifIntra" modal="true" resizable="true" autosized="true" onmaskclick="#{rich:component('popupModifIntra')}.hide()" style="height:700px">
+		<f:facet name="header">
+			<h:outputText value="Informations demande d'intra" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('popupModifIntra')}.hide(); return false;">
+				X
+			</h:outputLink>
+		</f:facet>
+		<a:outputPanel id="intraPanel">
+			<!-- Output panel pop up de modification des données -->
+			<center><h:graphicImage value="/img/modif.png" width="3%" height="3%" rendered="#{intraManager.editMode}"/></center>
+			<br />
+			<center><b><h:outputText value="N° Intra : #{intraManager.intra.idInforamtionIntra}" rendered="#{intraManager.editMode}"/></b></center>
+	        <a:outputPanel rendered="#{intraManager.editMode}">
+				<ui:include src="editIntra.xhtml" />
+			</a:outputPanel>
+			<!-- Output panel pop up de visualisation des données -->
+			<center><h:graphicImage value="/img/information.png" width="3%" height="3%" rendered="#{intraManager.visuMode}" style="vertical-align:middle;" /><b> <h:outputText styleClass="title1"  value=" Intra : #{intraManager.intra.idInforamtionIntra}" rendered="#{intraManager.visuMode}"/></b></center>
+			<br />
+			<center><b><a:outputPanel styleClass="title1" rendered="#{intraManager.visuMode}"><h:outputText value="#{intraManager.intra.statutIntra}" /> / Probabilité : <h:outputText value="#{intraManager.intra.probTransformation}" /></a:outputPanel></b></center><br/>
+			
+			<a:outputPanel rendered="#{intraManager.visuMode}">
+				<ui:include src="visuIntra.xhtml" />
+			</a:outputPanel>
+		</a:outputPanel>
+		<br />
+		<center>
+			<h:outputText value="Dernière modification : #{intraManager.intra.dateModification}" rendered="#{!empty intraManager.intra.dateModification}"/>
+			<h:outputText value="Prospect jamais modifié." rendered="#{empty intraManager.intra.dateModification}"/>
+		</center>
+    </rich:popupPanel>
+    
+</ui:composition>

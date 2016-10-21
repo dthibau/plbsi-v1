@@ -1,0 +1,54 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plb="http://plb.fr/components"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<a:outputPanel id="templateContent">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['emailTemplate.subject']}" />
+					</ui:define>
+					<h:inputText required="true"
+						value="#{emailTemplateManager.template.subject}" size="80"/>
+				</s:decorate>
+
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['emailTemplate.body']}" />
+					</ui:define>
+					<plb:editorsimple value="#{emailTemplateManager.template.body}"
+						id="bodyEditor" cols="80" />
+
+				</s:decorate>
+
+				<br />
+				<s:decorate template="../layout/display.xhtml">
+Vous pouvez utiliser comme champs dynamique :
+<ul>
+					<li>${'#{'}envoiDevisManager.formations${'}'} : La référence d'une formation</li>
+					<li>${'#{'}prospect.adresse${'}'} : L'adresse du prospect</li>
+					<li>${'#{'}prospect.pays${'}'} : Pays du prospect</li>
+					<li>${'#{'}prospect.cp${'}'} : Code postal du prospect</li>
+					</ul>
+
+				</s:decorate>
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+				<h:commandButton value="Annuler" immediate="true"
+					action="/mz/emailTemplates/templates" />
+				<h:commandButton action="#{emailTemplateManager.save}"
+					value="#{messages['action.save']}"
+					 />
+			</a:outputPanel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

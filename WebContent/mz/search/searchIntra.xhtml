@@ -1,0 +1,398 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml"
+    xmlns:html="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+     
+	<ui:define name="body">
+	
+		<h:outputStylesheet>
+        .tooltip {
+        background-color: blue;
+        border-width:3px;
+        }
+        
+        .tooltip-custom-body {
+        background-color:  orange;
+        }
+ 
+        .tooltip-text {
+        background-color: #a1caf1;
+        width: 100px;
+        height: 45px;
+        cursor: arrow;
+        border-width: 2px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        }
+        
+        .tooltip-text2 {
+        width: 60px;
+        height: 30px;
+        cursor: arrow;
+        border-width: 0px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        }
+ 
+        .tooltipData {
+        font-weight: bold;
+        }
+        
+        .active-row {
+    	background: #ccccff;
+		}
+		
+    	</h:outputStylesheet>
+		
+		<h:head>
+ 			<!-- fonction pour qui conserve l'onglet selectioné -->
+	        <script type="text/javascript" language="JavaScript">
+				var pageActuelle = "page3";
+				
+		        function changePage(texte)
+		        {
+		        	pageActuelle = texte;
+		        } 
+
+		        function loadPage(){
+		        	#{rich:component('mainPanelIntra')}.switchToItem(pageActuelle);
+		        	pageActuelle = "page3";
+			    }
+ 
+	        </script>
+	        
+    	</h:head>
+    	
+		<h:form>
+    		<a4j:poll id="pollForIntra" interval="115000"/>
+       	</h:form>
+       	
+		<!-- Pop up de modification demande intra -->
+		<ui:include src="../Intra/popupIntra.xhtml" />
+		
+		<!-- Recherche intra -->
+		<ui:include src="filterIntra.xhtml" />
+		
+		<!-- Recherche intra -->
+		<!--<h:form>
+		<a4j:poll id="poll" interval="10000" render="lastUpdateProspects" execute="@this" bypassUpdates="true"/>
+		</h:form>
+		<a:outputPanel id="lastUpdateProspects">
+			<h:outputText value="#{intraManager.updatedProspects}" />
+		</a:outputPanel>-->
+		
+		<!-- tableau de resultat -->
+		<h:form id="resultat">
+			<!-- tableau de resultat -->	
+			<rich:dataTable id="resultListIntra" value="#{intraManager.results}" var="intra" style="width:100%; overflow-x:auto; overflow-y:auto;">
+				 <f:facet name="header">
+					<h:outputText value="Liste des demandes d'intra touvé(s)" />
+				 </f:facet>
+				 <rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="#{messages['intra.id']}"/>
+					</f:facet>
+						<center><b><h:outputText value="#{intra.idInforamtionIntra}" style="font-size:14px"/></b></center>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['intra.id']}"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="#{messages['prospect.date']}"/>
+					</f:facet>
+						<h:outputText value="#{intra.dateCreation}"/>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['prospect.date']}"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="#{messages['intra.statut']}"/>
+					</f:facet>
+						<center><b><h:outputText value="#{intra.statutIntra}" style="font-size:14px"/></b></center>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['intra.statut']}"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="#{messages['prospect.nomEntreprise']}"/>
+					</f:facet>
+						<h:outputText value="#{intra.prospect.societe}"/>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['prospect.nomEntreprise']}"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="Commercial"/>
+					</f:facet>
+						<h:outputText value="#{intra.prospect.prospectDetail.commercial}"/>
+					<f:facet name="footer">
+						<h:outputText value="Commercial"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)};width:552px;">
+					<f:facet name="header">
+						<h:outputText value="Informations formation - "/>
+						<a4j:outputPanel rendered="#{intraManager.menuDeroulant == false}">
+							<a:commandLink value="Ouvrir détails"
+							render="resultListIntra" action="#{intraManager.changeMenuDeroulant()}">
+								<s:conversationId />
+							</a:commandLink>
+						</a4j:outputPanel>
+						<a4j:outputPanel rendered="#{intraManager.menuDeroulant == true}">
+							<a:commandLink value="Fermer détails"
+							render="resultListIntra" action="#{intraManager.changeMenuDeroulant()}">
+								<s:conversationId />
+							</a:commandLink>
+						</a4j:outputPanel>
+					</f:facet>
+							<center>
+								<rich:collapsiblePanel header="Voir détails" expanded="#{intraManager.menuDeroulant}" switchType="client">
+									<rich:dataTable value="#{intra.prospect.formations}" 
+										var="formation" rowKeyVar="index" style="width:550px">								
+										<rich:column>
+											<f:facet name="header">
+												<h:outputText value="Durée souhaitée" />
+											</f:facet>
+											<center>
+												<h:outputText value="#{formation.dureeVoulu}" style="width:50px" required="true"/>
+											</center>
+										</rich:column>
+										<rich:column>
+											<f:facet name="header">
+												<h:outputText value="Dates souhaitées" />
+											</f:facet>
+											<center>
+												<h:outputText value="#{formation.session}" style="width:120px" required="true"/>
+											</center>
+										</rich:column>*
+										<rich:column style="width:50px">
+											<f:facet name="header">
+												<h:outputText value="#{messages['prospect.reference']}" style="width:50px"/>
+											</f:facet>
+												<h:outputText value="#{formation.formation.reference}" style="width:50px"/>
+										</rich:column>
+										<rich:column>
+											<f:facet name="header">
+												<h:outputText value="#{messages['prospect.libelleFormation']}" />
+											</f:facet>
+												<h:outputText value="#{formation.formation.libelle}" />
+										</rich:column>
+										<rich:column>
+											<f:facet name="header">
+												<h:outputText value="Nb part." />
+											</f:facet>
+												<h:outputText value="#{formation.participant}" />
+										</rich:column>
+										<rich:column>
+											<f:facet name="header">
+												<h:outputText value="Intervenant(s)" />
+											</f:facet>
+											<center>
+												<rich:dataTable value="#{formation.intervenants}"
+												var="intervenant" rowKeyVar="index" style="width:120px">
+													<rich:column>
+														<f:facet name="header">
+															<h:outputText value="Nom - Prénom" />
+														</f:facet>
+															<h:outputText value="#{intervenant.intervenant.nom} - #{intervenant.intervenant.prenom}" rendered="#{intervenant.favori==1}"/>
+													</rich:column>
+												</rich:dataTable>
+											</center>
+										</rich:column>
+									</rich:dataTable>
+									<!-- Tableau ref spe -->
+									<a:outputPanel rendered="#{!empty intra.intraReferenceSpe}">
+										<rich:dataTable value="#{intra.intraReferenceSpe}"
+											var="intraReferenceSpe" rowKeyVar="index" style="width:550px">
+											<rich:column>
+												<f:facet name="header">
+													<h:outputText value="Durée souhaitée" />
+												</f:facet>
+												<center>
+													<h:outputText value="#{intraReferenceSpe.referenceSpe.duree}" style="width:50px"/>
+												</center>
+											</rich:column>
+											<rich:column>
+												<f:facet name="header">
+													<h:outputText value="Dates souhaitées" />
+												</f:facet>
+												<center>
+													<h:outputText value="#{intraReferenceSpe.referenceSpe.session}" style="width:120px"/>
+												</center>
+											</rich:column>
+											<rich:column style="width:50px">
+												<f:facet name="header">
+													<h:outputText value="#{messages['prospect.reference']}" style="width:50px"/>
+												</f:facet>
+													<h:outputText value="Spé" style="width:50px"/>
+											</rich:column>
+											<rich:column>
+												<f:facet name="header">
+													<h:outputText value="#{messages['prospect.libelleFormation']}" />
+												</f:facet>
+													<h:outputText value="#{intraReferenceSpe.referenceSpe.libelle}" />
+											</rich:column>
+											<rich:column>
+												<f:facet name="header">
+													<h:outputText value="Nb part." />
+												</f:facet>
+												<h:outputText value="#{intraReferenceSpe.referenceSpe.participant}" />
+											</rich:column>
+											<rich:column>
+											<f:facet name="header">
+												<h:outputText value="Intervenant(s)" />
+											</f:facet>
+											<center>
+												<rich:dataTable value="#{intraReferenceSpe.intervenants}"
+												var="intervenant" rowKeyVar="index" style="width:120px">
+													<rich:column>
+														<f:facet name="header">
+															<h:outputText value="Nom - Prénom" />
+														</f:facet>
+															<h:outputText value="#{intervenant.intervenant.nom} - #{intervenant.intervenant.prenom}" rendered="#{intervenant.favori==1}"/>
+													</rich:column>
+												</rich:dataTable>
+											</center>
+										</rich:column>
+										</rich:dataTable>
+									</a:outputPanel>
+								</rich:collapsiblePanel>
+							</center>
+					<f:facet name="footer">
+						<h:outputText value="Informations formation - "/>
+						<a4j:outputPanel rendered="#{intraManager.menuDeroulant == false}">
+							<a:commandLink value="Ouvrir détails"
+							render="resultListIntra" action="#{intraManager.changeMenuDeroulant()}">
+								<s:conversationId />
+							</a:commandLink>
+						</a4j:outputPanel>
+						<a4j:outputPanel rendered="#{intraManager.menuDeroulant == true}">
+							<a:commandLink value="Fermer détails"
+							render="resultListIntra" action="#{intraManager.changeMenuDeroulant()}">
+								<s:conversationId />
+							</a:commandLink>
+						</a4j:outputPanel>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="#{messages['prospect.lieu']}"/>
+					</f:facet>
+						<h:outputText value="#{intra.prospect.prospectDetail.lieu}"/>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['prospect.lieu']}"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)};">
+					<f:facet name="header">
+						<h:outputText value="Informations"/>
+					</f:facet>
+						<h:outputText value="#{intra.prospect.notePerso}"  escape="false"/>
+					<f:facet name="footer">
+						<h:outputText value="Informations"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}; width:70px">
+					<f:facet name="header">
+						<h:outputText value="Temps écoulé depuis dernière modif"/>
+					</f:facet>
+						<b><h:outputText value="#{intraManager.findTimeLapse(intra.dateModification, intra.valide)}" rendered="#{!empty intra.dateModification}" style="color:red"/></b>
+						<b><h:outputText value="#{intraManager.findTimeLapse(intra.dateCreation, intra.valide)}" rendered="#{empty intra.dateModification}" style="color:red"/></b>
+					<f:facet name="footer">
+						<h:outputText value="Temps écoulé depuis dernière modif"/>
+					</f:facet>
+				</rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					 <f:facet name="header">
+					 	<h:outputText value="Etat"/>
+					 </f:facet>	
+					 	<center>
+						 	<h:graphicImage id="pointV" value="/img/pointvert.png" width="40px" height="40px" rendered="#{intra.changementAdminIntra==1 and intra.changementCom==0}">
+						 		<rich:tooltip styleClass="tooltip" layout="block">
+            						<span> 
+            							Votre demande d'intra est à jour.
+              						</span>
+        						</rich:tooltip>
+        					</h:graphicImage>
+        					<h:graphicImage id="pointVValide" value="/img/pointvert.png" width="40px" height="40px" rendered="#{intra.changementAdminIntra==1 and intra.changementCom==1}">
+						 		<rich:tooltip styleClass="tooltip" layout="block">
+            						<span> 
+            							Votre demande d'intra est à jour et est validé.
+              						</span>
+        						</rich:tooltip>
+        					</h:graphicImage>
+						 	<h:graphicImage id="pointO" value="/img/pointrouge.png" width="40px" height="40px" rendered="#{intra.changementCom==1 and intra.changementAdminIntra==0}">
+						 		<rich:tooltip styleClass="tooltip" layout="block">
+            						<span> 
+            							Votre demande d'intra n'est pas à jour, son statut a évolué.
+              						</span>
+        						</rich:tooltip>
+        					</h:graphicImage>
+					 	</center>
+					 <f:facet name="footer">
+					 	<h:outputText value="Etat"/>
+					 </f:facet>
+					 </rich:column>
+				<rich:column style="background-color:#{intraManager.coloriage(intra.statutIntra)}">
+					<f:facet name="header">
+						<h:outputText value="Action"/>
+					</f:facet>
+						<center>
+							<table>
+							<tr>
+								<td>
+									<center><h:graphicImage value="/img/information.png" width="40px" height="40px" /></center>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a4j:commandButton action="#{intraManager.selectIntra()}" render="popupModifIntra" oncomplete="#{rich:component('popupModifIntra')}.show()" value="Détails" style="width:70px;">
+										<f:setPropertyActionListener target="#{intraManager.intraSelected}" value="#{intra.idInforamtionIntra}" />
+									</a4j:commandButton>
+								</td>
+							</tr>
+							</table>
+							<br />
+	   						<center>
+								<a:status>
+									<f:facet name="stop" />
+									<f:facet name="start">
+										<h:graphicImage value="/img/ajax-loader.gif" alt="Chargement ..." style="width:50px;height:10px;"/>
+									</f:facet>
+								</a:status>
+							</center>
+						</center>
+					<f:facet name="footer">
+						<h:outputText value="Action"/>
+					</f:facet>
+				</rich:column>				
+			</rich:dataTable>
+			<rich:jQuery selector="#resultListIntra tr"
+       			query="mouseover(function(){jQuery(this).addClass('active-row')})" />
+			<rich:jQuery selector="#resultListIntra tr"
+       			query="mouseout(function(){jQuery(this).removeClass('active-row')})" />
+		</h:form>
+	</ui:define>
+			
+	<ui:define name="tools">
+		<center>
+			<a:outputPanel id="tool">
+				<s:button action="#{intraManager.exportExcel()}" rendered="#{!empty intraManager.results}"  value="Export Excel" style="width:110px;height:20px;"/>
+			</a:outputPanel>
+		</center>
+	</ui:define>
+</ui:composition>

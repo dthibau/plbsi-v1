@@ -1,0 +1,48 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="intervenantForm">
+			<a:outputPanel layout="block" id="tabsPanel">
+				<rich:tabPanel switchType="client">
+					<rich:tab header="Propriétés">
+						<a:outputPanel id="intervenantPanel">
+							<a:outputPanel
+								rendered="#{intervenantManager.creationMode or intervenantManager.editMode}">
+								<ui:include src="editIntervenant.xhtml" />
+							</a:outputPanel>
+							<a:outputPanel rendered="#{intervenantManager.visuMode}">
+								<ui:include src="visuIntervenant.xhtml" />
+							</a:outputPanel>
+						</a:outputPanel>
+					</rich:tab>
+					<rich:tab header="Grille"
+						rendered="#{intervenantManager.creationMode or intervenantManager.editMode}">
+						<ui:include src="_editGrille.xhtml" />
+					</rich:tab>
+					<rich:tab header="Historique">
+					<rich:dataTable value="#{intervenantManager.historique}" var="event">
+						<ui:include src="../common/historique.xhtml" />
+					</rich:dataTable>
+						
+					</rich:tab>
+				</rich:tabPanel>
+
+			</a:outputPanel>
+		</h:form>
+				<h:form>
+			<a:poll id="polling" action="#{intervenantManager.maintainConversation}"
+				interval="#{CONVERSATION_FREQUENCY}" />
+		</h:form>
+		
+	</ui:define>
+
+
+</ui:composition>

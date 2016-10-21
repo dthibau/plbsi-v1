@@ -1,0 +1,17 @@
+Partir de la base de données Back-Office (faire un backup)
+
+Vérifier plb-ds.xml (version de prod)
+
+Démarrer le serveur JBoss avec le mode update d'Hibernate => création des nouvelles tables et adaptation du schéma
+
+Exécuter les scripts migration.sql, partenaire.sql et test.sql
+
+Redémarrer JBoss
+
+Exécuter le script de consolidation LDCR : updateFromLDCR.sql, insertFormationPartenaire.sql
+
+Vérifier si il y a des partenaire_id à null dans FormationParteneaire, si oui les supprimer : 
+delete from formation_partenaire where partenaire_id is null;
+delete from formation_partenaire where formation_id_formation is null;
+
+Se connecter à l'application, et Lancer l'indexation  

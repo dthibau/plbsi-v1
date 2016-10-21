@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:m="http://jboss.org/schema/seam/mail"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	template="mailLayout.xhtml">
+
+	<ui:define name="MailSubject">
+		<h:outputText rendered="#{formation != null}" value=" #{formation.libelle}" />
+		<h:outputText rendered="#{formation == null}" value=" #{messages[event.notificationKey]}" />
+	</ui:define>
+
+
+	<ui:define name="MailStyle">
+		<ui:include src="#{event.account.commercial ? '/css/mail-css_commercial.xhtml' : '/css/mail-css.xhtml'}" />
+	</ui:define>
+
+	<ui:define name="MailTitle">
+		<span class="headLogoSujet"><h:outputText
+				value=" #{formation.libelle}" />&#160;/&#160;<h:outputText
+				value="#{messages[event.notificationKey]}" /></span>
+	</ui:define>
+
+	<ui:define name="MailContent">
+		<h:outputText escape="false" value="#{event.message}"/>
+		<br />
+		<br />
+		<h:outputFormat escape="false"
+			value="#{messages['mail.signature']}">
+			<f:param value="#{event.account.getNomComplet()}" />
+			<f:param value="#{event.date}" />
+		</h:outputFormat>
+		<br />
+		<br />
+
+		<a:outputPanel rendered="#{!empty event.destinataires}">
+			<h:outputFormat escape="false"
+			value="#{messages['mail.destinataires']}">
+			<f:param value="#{event.destinatairesAsString}" />
+		</h:outputFormat>
+		</a:outputPanel>
+		<br />
+		<br />		
+		<ui:include src="_linkFormation.xhtml" />
+		<ui:include src="_connect.xhtml" />
+	</ui:define>
+
+	<ui:define name="MailContentAlternative">
+		
+
+	</ui:define>
+
+</ui:composition>

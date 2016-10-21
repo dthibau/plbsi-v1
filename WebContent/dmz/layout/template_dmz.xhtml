@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:s="http://jboss.org/schema/seam/taglib" contentType="text/html">
+	<ui:debug />
+	<h:html>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>plbsi</title>
+		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+		<h:outputStylesheet name="theme.ecss" />
+		<h:outputStylesheet name="theme.css" />
+		<link rel="stylesheet" href="#{request.contextPath}/css/plb.css"
+			media="all" />
+		<ui:insert name="head" />
+	</h:head>
+	<h:body>
+		<ui:include src="../_instructions.xhtml" />
+		<div class="title">
+			<ui:insert name="title" />
+			<center>
+				<a:outputPanel>
+					<a href="#"
+						onclick="#{rich:component('instructionsPopup')}.show();"> <h:graphicImage
+							value="/img/help.gif" width="20" height="20" />
+					</a>
+					<rich:tooltip>
+						<span style="white-space: nowrap"> Revoir les instructions</span>
+					</rich:tooltip>
+				</a:outputPanel>
+
+			</center>
+		</div>
+
+		<br />
+		<div class="instructions">
+			<ui:insert name="introduction" />
+		</div>
+		<div class="flow">
+			<a:outputPanel layout="block" id="bodyPanel" styleClass="body">
+				<h:messages id="messages" globalOnly="true" styleClass="message"
+					errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg"
+					rendered="#{showGlobalMessages != 'false'}" />
+
+				<table width="100%">
+					<tr>
+						<td><ui:insert name="body" /></td>
+					</tr>
+				</table>
+			</a:outputPanel>
+		</div>
+
+		<div class="footer">
+			<br />
+			<p style="font-size: 10px">Copyright PLB</p>
+		</div>
+
+	</h:body>
+	</h:html>
+</f:view>

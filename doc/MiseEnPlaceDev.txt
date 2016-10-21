@@ -1,0 +1,28 @@
+
+Outils à télécharger
+-------------------
+Seam-Version: 2.3.1.CR1 -> Dézipper 
+JasperReport/iReport : 5.5.0 --> Dézipper
+Jboss-as-7.1.1 Final --> Dézipper
+MySQL --> Install
+
+JDK6
+
+Eclipse Kepler + JBoss Tools (http://download.jboss.org/jbosstools/updates/stable/kepler)
+
+
+
+Serveur de dév et d'intégration : dev.plb.fr
+--------------------------------------------
+Compte : imoustakima/secret
+Accès SSH : ssh -p 22000 imoustakima@dev.plb.fr
+Repository SVN : http://dev.plb.fr/svn/plbsi
+Base de données : http://dev.plb.fr/phpmyadmin (root/Bobmarley1945)
+Serveur Jenkins : http://dev.plb.fr:8080
+Test PLBSI : http://dev.plb.fr:8081
+Trac : trac.plb.fr (Utilisateur à ajouter via 'htpasswd /var/local/trac/.htpasswd jtaliercio')
+
+
+
+
+

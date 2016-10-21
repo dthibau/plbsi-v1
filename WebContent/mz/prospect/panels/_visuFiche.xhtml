@@ -1,0 +1,149 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<table width="100%">
+		<tr valign="top">
+			<td width="50%" valign="top">
+				<fieldset>
+					<legend> Société </legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.nomEntreprise']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.societe}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.lieuEntreprise']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospectDetail.lieuEntreprise}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.adresse']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.adresse}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.cp']}" /> / <h:outputText
+								value="#{messages['prospect.ville']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.cp}" /> / <h:outputText
+							value="#{editProspectManager.prospect.ville}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.pays']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.pays}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.effectifN']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.effectifEntreprise}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.effectifI']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.effectifInfo}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend> Contact </legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.nomContact']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.nom}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.prenom']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.prenom}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.sexe']}" />
+						</ui:define>
+						<h:outputText value="Homme"
+							rendered="#{editProspectManager.prospect.prospectDetail.sexe == 1}" />
+						<h:outputText value="Femme"
+							rendered="#{editProspectManager.prospect.prospectDetail.sexe == 0}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.fonction']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.fonction}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.mail']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.email}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.telephone']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.tel}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.fax']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.fax}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.responsable']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.resp_departement}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.natureClient}" />
+					</s:decorate>
+				</fieldset>
+			</td>
+
+		</tr>
+	</table>
+	<rich:collapsiblePanel
+		header="Commentaire client : cliquez ici pour voir" expanded="true"
+		switchType="client"
+		rendered="#{!empty editProspectManager.prospect.commentaire}">
+		<center>
+			<table border="0" cellspacing="3">
+				<tr>
+					<td>
+						<div
+							style="height: 50px; width: 800px; overflow-x: auto; overflow-y: auto">
+							<h:outputText value="#{editProspectManager.prospect.commentaire}"
+								rendered="#{!empty editProspectManager.prospect.commentaire}" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</rich:collapsiblePanel>
+
+</ui:composition>

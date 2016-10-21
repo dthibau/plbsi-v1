@@ -1,0 +1,63 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<rich:collapsiblePanel header="Notes perso : " expanded="true"
+		switchType="client">
+		<center>
+			<rich:dataTable value="#{searchProspect.messages}" var="message"
+				rowKeyVar="index">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Message n°" />
+					</f:facet>
+					<center>
+						<h:outputText value="#{index+1}" />
+					</center>
+					<f:facet name="footer">
+						<h:outputText value="Message n°" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+					<h:outputText value="#{message.date}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
+					</h:outputText>
+					<f:facet name="footer">
+						<h:outputText value="#{messages['historique.date']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+					<h:outputText value="#{message.account.nomComplet}" />
+					<f:facet name="footer">
+						<h:outputText value="#{messages['message.emetteur']}" />
+					</f:facet>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+					<h:outputText value="#{message.libelle}" />
+					<f:facet name="footer">
+						<h:outputText
+							value="#{messages['historique.FormationCommentEvent']}" />
+					</f:facet>
+				</rich:column>
+			</rich:dataTable>
+		</center>
+	</rich:collapsiblePanel>
+
+</ui:composition>

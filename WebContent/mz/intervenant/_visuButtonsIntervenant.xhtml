@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<a:commandButton value="Editer"
+		action="#{intervenantManager.setEditMode}" render="tabsPanel">
+		<f:param name="cid" value="#{conversation.id}" />
+	</a:commandButton>
+
+	<a:commandButton value="Supprimer" execute="@this" render="@none"
+		oncomplete="#{rich:component('confirmPane')}.show()">
+		<f:param name="cid" value="#{conversation.id}" />
+	</a:commandButton>
+
+	<rich:popupPanel id="confirmPane" autosized="true">
+		<f:facet name="header">
+			<h:outputText value="Suppression d'intervenant" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#"
+				onclick="#{rich:component('confirmPane')}.hide(); return false;">
+                	X
+            		</h:outputLink>
+		</f:facet>
+            		Êtes-vous sûr de vouloir supprimer cet intervenant ? 
+            		<br />
+		<h:commandButton action="#{intervenantManager.suppIntervenant}"
+			value="Supprimer"
+			oncomplete="#{rich:component('confirmPane')}.hide();">
+			<f:param name="intervenantId" value="#{intervenant.id}" />
+		</h:commandButton>
+		<a:commandButton value="Annuler"
+			onclick="#{rich:component('confirmPane')}.hide(); return false;" />
+	</rich:popupPanel>
+
+
+</ui:composition>

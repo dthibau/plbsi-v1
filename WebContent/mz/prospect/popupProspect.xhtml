@@ -1,0 +1,175 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j"
+    xmlns:a4j="http://richfaces.org/a4j">
+        	
+	
+	<!-- Pop up Modifier pour dispatch web et telephone-->
+	<rich:popupPanel id="popupModif" modal="true" resizable="true" autosized="true" onmaskclick="#{rich:component('popupModif')}.hide()" style="height:700px">
+		<f:facet name="header">
+			<h:outputText value="Informations Prospect" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('popupModif')}.hide(); return false;">
+				X
+			</h:outputLink>
+		</f:facet>
+		<a:outputPanel id="prospectPanel">
+			<!-- Output panel pop up de modification des données -->
+			<h:form>
+     			<s:link view="/mz/searchProspect_print.xhtml" rendered="#{editProspectManager.visuMode}">  
+			    	<h:graphicImage value="/img/imprimer.png" style="width:3%;"/>  
+				</s:link> 
+				&nbsp;&nbsp;
+      			<a:commandLink action="#{editProspectManager.prepareDevis()}" rendered="#{editProspectManager.visuMode}" 
+      			render="devisContent" oncomplete="#{rich:component('devisPopup')}.show();">
+      				<h:graphicImage id="dev" value="/img/devis.jpg" style="width:3%;">
+      					<rich:tooltip styleClass="tooltip" layout="block">
+        					<span> 
+        						Cliquez pour générer un devis associé a ce prospect.
+          					</span>
+    					</rich:tooltip>
+    				</h:graphicImage>
+				</a:commandLink>
+				&nbsp;&nbsp;
+
+      			<s:link target="_blank" view="/mz/devis/envoiDevis.xhtml" action="#{envoiDevisManager.selectProspect()}">
+      			     <f:param name="idProspect" value="#{prospect.idProspect}"/>
+      				<h:graphicImage id="env" value="/img/btn-envoi.png" style="width:3%;">
+      					<rich:tooltip styleClass="tooltip" layout="block">
+        					<span> 
+        						Cliquez pour envoyer le devis associé à ce prospect.
+          					</span>
+    					</rich:tooltip>
+    				</h:graphicImage>
+				</s:link>
+				&nbsp;&nbsp;
+				<!-- lien si aucune demande d'intra n'est créée -->
+				<s:link action="#{intraManager.createIntra()}" rendered="#{editProspectManager.visuMode and editProspectManager.prospect.informationIntra == null}">
+      				<h:graphicImage id="lienIntra1" value="/img/demandeIntra.png" style="width:5%;">
+      					<rich:tooltip styleClass="tooltip" layout="block">
+        					<span> 
+        						Cliquez pour créer la demande d'intra associé a ce prospect.
+          					</span>
+    					</rich:tooltip>
+    				</h:graphicImage>
+				</s:link>
+				<!-- lien si une demande d'intra est créée -->
+				<h:commandLink rendered="#{editProspectManager.visuMode and editProspectManager.prospect.informationIntra != null}">
+      				<h:graphicImage id="lienIntra2" value="/img/demandeIntra.png" style="width:5%;">
+      					<rich:tooltip styleClass="tooltip" layout="block">
+        					<span> 
+        						Cliquez pour accèder à la demande d'intra associé a ce prospect.
+          					</span>
+    					</rich:tooltip>
+    				</h:graphicImage>
+    				<rich:componentControl target="popupIntra" operation="show" />
+				</h:commandLink>    
+				<input type="hidden" name="javax.faces.ViewState" value="#{param['javax.faces.ViewState']}"/> 				
+			</h:form>
+			
+			<center><h:graphicImage id="imgPopModif" value="/img/modif.png" width="3%" height="3%" rendered="#{editProspectManager.creationMode or editProspectManager.editMode}"/></center>
+	        <a:outputPanel rendered="#{(editProspectManager.creationMode or editProspectManager.editMode)}">
+				<ui:include src="editProspect.xhtml" />
+			</a:outputPanel>
+			<a:outputPanel rendered="#{false}">
+				<ui:include src="editProspectClient.xhtml" />
+			</a:outputPanel>
+			<!-- Output panel pop up de visualisation des données -->
+			<center><h:graphicImage id="imgPopVisu" value="/img/information.png" width="3%" height="3%" rendered="#{editProspectManager.visuMode}"/></center>
+			<a:outputPanel rendered="#{editProspectManager.visuMode}">
+				<ui:include src="visuProspect.xhtml" />
+			</a:outputPanel>
+		</a:outputPanel>
+		<br />
+		<center>
+			<h:outputText value="Dernière modification : #{editProspectManager.prospect.dateModification}" rendered="#{!empty editProspectManager.prospect.dateModification}"/>
+			<h:outputText value="Prospect jamais modifié." rendered="#{empty editProspectManager.prospect.dateModification}"/>
+		</center>
+    </rich:popupPanel>
+    
+	<!-- Pop up Supprimer -->
+	<rich:popupPanel id="popupSuppr" modal="true" autosized="true" resizeable="false" onmaskclick="#{rich:component('popupSuppr')}.hide()">
+		<f:facet name="header">
+			<h:outputText value="Supprimer Prospect" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('popupSuppr')}.hide(); return false;">
+				X
+			</h:outputLink>
+		</f:facet>
+		<center><p><h:graphicImage id="imgSuppr" value="/img/supprimer.png" width="30%" height="30%"/><br /></p></center>
+		<!-- Pop up dans le cas d'une suppression de prospect unitaire -->
+        <a:outputPanel rendered="#{searchProspect.deleteUnique}">
+			<ui:include src="deleteProspect.xhtml" />
+		</a:outputPanel>
+		<!-- Pop up dans le cas de suppression multiple de prospects -->
+        <a:outputPanel rendered="#{!searchProspect.deleteUnique}">
+			<ui:include src="deleteVariousProspect.xhtml" />
+		</a:outputPanel>
+    </rich:popupPanel>
+	
+	<!-- Pop up saisie montant -->
+	<rich:popupPanel id="popupMont" modal="true" autosized="true" resizeable="false" onmaskclick="true">
+		<f:facet name="header">
+			<h:outputText value="Saisie obligatoire du montant" />
+		</f:facet>
+		<center><p><h:graphicImage value="/img/montant.jpg" width="30%" height="30%"/><br /></p></center>
+		<h:form>
+			<a:outputPanel id="montantSigne">
+		       <s:decorate template="../layout/edit.xhtml" style="width:500px;" rendered="#{editProspectManager.remplirPerte == false}">
+					<ui:define name="label">
+						<h:outputText value="#{messages['prospect.montant']}" />
+					</ui:define>
+					<h:inputText  id="montantSaisie" value="#{editProspectManager.prospectDetail.montant}"/>
+				</s:decorate>
+				<br />
+				<b><h:outputText style="color:red">Le montant dois être obligatoirement renseigné.</h:outputText></b>
+			</a:outputPanel>
+			<br />
+			<center>
+	      		<a4j:commandButton type="submit" render="mont" value="Valider saisie" onclick="validerMontant()" style="width:120px;height:35px;"/>
+	      		&nbsp;&nbsp;
+	      		<a4j:commandButton value="Annuler saisie" action="#{editProspectManager.cancelMontant()}" render="statutDemande,mont" oncomplete="if (#{facesContext.maximumSeverity == null}) #{rich:component('popupMont')}.hide()" style="width:120px;height:35px;"/>
+   			</center>
+		</h:form>
+    </rich:popupPanel>
+    
+    <!-- Pop up demande intra verif -->
+	<rich:popupPanel id="popupIntra" modal="true" autosized="true" resizeable="false" onmaskclick="true">
+		<f:facet name="header">
+			<h:outputText value="Création de demande d'intra" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('popupIntra')}.hide(); return false;">
+				X
+			</h:outputLink>
+		</f:facet>
+		<center><p><h:graphicImage value="/img/demandeIntra.png" width="30%" height="30%"/><br /></p></center>
+		<h:form>
+			<a:outputPanel>
+				<br /><br />
+				<b><h:outputText style="color:red" value="Vous avez déja créé une demande d'intra pour ce propsect."/></b>
+				<br />
+				<br />
+				<b><h:outputText style="color:red" value="Je vous invite à vous rendre dans l'onglet : Suivi intra."/></b>
+				<br />
+				<br />
+			</a:outputPanel>
+			<br /><br />
+			<center>
+	      		<a:commandButton value="Valider" onclick="#{rich:component('popupIntra')}.hide();"  style="width:120px;height:35px;"/>
+   			</center>
+		</h:form>
+    </rich:popupPanel>
+	
+	<ui:include src="../devis/devisPanel.xhtml" />
+	
+	
+</ui:composition>

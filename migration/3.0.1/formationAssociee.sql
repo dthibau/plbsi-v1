@@ -1,0 +1,1 @@
+alter table formation_formation drop column forfor_remarques;

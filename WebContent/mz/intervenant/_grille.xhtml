@@ -1,0 +1,71 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<a:outputPanel rendered="#{intervenant.grilleCompetence == null}">
+		<h:outputText value="#{messages['intervenant.grille.noGrille']}" />
+	</a:outputPanel>
+	<a:outputPanel rendered="#{intervenant.grilleCompetence != null}">
+
+		<s:decorate template="../layout/display.xhtml">
+			<ui:define name="label">
+				<h:outputText value="#{messages['intervenant.grille.notifiedDate']}" />
+			</ui:define>
+			<h:outputText value="#{intervenant.grilleCompetence.notifiedDate}">
+				<s:convertDateTime dateStyle="medium" locale="#{LOCALE}"/>
+			</h:outputText>
+		</s:decorate>
+		<s:decorate template="../layout/display.xhtml">
+			<ui:define name="label">
+				<h:outputText value="#{messages['intervenant.grille.filledDate']}" />
+			</ui:define>
+			<h:outputText value="#{intervenant.grilleCompetence.filledDate}">
+				<s:convertDateTime dateStyle="medium" locale="#{LOCALE}" />
+			</h:outputText>
+		</s:decorate>
+
+		<rich:collapsiblePanel header="#{messages['intervenant.grille']}"
+			expanded="false" switchType="client">
+			<rich:dataTable value="#{intervenant.grilleCompetence.competences}"
+								var="_competence">
+				<rich:column styleClass="#{_competence.support ? 'support' : '' }" id="reference">
+					<f:facet name="header">
+						<h:outputText value="#{messages['formation.reference']}"/>
+					</f:facet>
+					 <h:outputText value="#{_competence.formation.reference}" />
+				</rich:column>	
+				<rich:column styleClass="#{_competence.support ? 'support' : '' }" id="libelle">
+					<f:facet name="header">
+<h:outputText value="#{messages['formation.libelle']}"/>
+					</f:facet>
+<a:outputPanel layout="block">
+					 <h:outputText value="#{_competence.formation.libelle}" />
+					 <h:outputText value=" *" rendered="#{not empty _competence.remarques}"/>
+					 <rich:tooltip id="tt1" styleClass="tooltip" layout="block">
+                <span style="white-space: nowrap"> 
+				<h:outputText value="#{_competence.remarques}"/>
+				<h:outputText value="#{messages['competence.noRemarques']}" rendered="#{empty _competence.remarques}"/></span>
+            </rich:tooltip>
+					 
+					 
+					 </a:outputPanel>
+				</rich:column>	
+				<rich:column styleClass="#{_competence.support ? 'support' : '' }" id="duree">
+					<f:facet name="header">
+						<h:outputText value="#{messages['formation.duree']}"/>
+					</f:facet>
+					 <h:outputText value="#{_competence.formation.duree}" />
+				</rich:column>					
+			</rich:dataTable>
+
+		</rich:collapsiblePanel>
+
+	</a:outputPanel>
+
+</ui:composition>

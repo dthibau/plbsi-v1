@@ -1,0 +1,127 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j"
+	template="../layout/template_bare.xhtml">
+
+	<ui:define name="body">
+		<h:form id="envoiForm">
+			<h:messages />
+			<a:outputPanel id="envoiDevisContent">
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.subject.titre']}" />
+					</ui:define>
+					<h:outputText required="true"
+						value="#{envoiDevisManager.email.subject}" />
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['prospect.mail']}" />
+					</ui:define>
+					<h:inputText required="true"
+						value="#{envoiDevisManager.prospect.email}" />
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.cc']}" />
+					</ui:define>
+					<h:outputText value="#{envoiDevisManager.email.cc}" />
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.attention']}" />
+					</ui:define>
+					<a:outputPanel id="nomPanel">
+						<a:outputPanel rendered="#{envoiDevisManager.editNom}">
+					Genre : <br />
+					Prénom : <h:inputText value="#{envoiDevisManager.prospect.prenom}" />
+							<br />
+					Nom : <h:inputText value="#{envoiDevisManager.prospect.nom}" />
+						</a:outputPanel>
+						<h:outputText rendered="#{!envoiDevisManager.editNom}"
+							value="Mr #{envoiDevisManager.prospect.nomComplet}" />&#160;<a:commandLink
+							execute="@this"
+							value="#{envoiDevisManager.editNom ? 'Valider' : 'Editer'}"
+							render="nomPanel" action="#{envoiDevisManager.switchNom}" />
+					</a:outputPanel>
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.template']}" />
+					</ui:define>
+					<h:selectOneMenu value="#{envoiDevisManager.email.emailTemplate}">
+						<a:ajax event="change" render="bodyMail" execute="@this"
+							listener="#{envoiDevisManager.selectTemplate}" />
+						<s:selectItems value="#{emailTemplates}" var="_template"
+							label="#{_template.subject}"
+							noSelectionLabel="Sélectionner un message type" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</s:decorate>
+				<a:outputPanel id="bodyMail">
+
+					<s:decorate template="../layout/editArea.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['devis.envoi.body']}" />
+						</ui:define>
+						<plb:editorsimple cols="200" id="bodyEditor" height="320"
+							value="#{envoiDevisManager.email.body}" />
+					</s:decorate>
+				</a:outputPanel>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.attachments']}" />
+					</ui:define>
+					<table width="75%" cellspacing="5">
+						<tr valign="top">
+							<td><rich:fileUpload
+									fileUploadListener="#{envoiDevisManager.addAttachment}"
+									id="upload" acceptedTypes="pdf, doc, xls, docx, xlsx"
+									ontyperejected="alert('Seulement PDF, Word et Excel sont acceptés');"
+									maxFilesQuantity="1" listHeight="70px">
+									<a:ajax event="uploadcomplete" execute="@none" render="pjTable" />
+								</rich:fileUpload></td>
+							<td><rich:dataTable
+									value="#{envoiDevisManager.email.attachments}" var="_pj"
+									id="pjTable">
+									<h:column>
+										<f:facet name="header">Nom</f:facet>
+						#{_pj.name}</h:column>
+									<h:column>
+										<a:commandLink value="Enlever"
+											action="#{envoiDevisManager.removeAttachment(_pj)}"
+											render="pjTable" execute="@this" />
+									</h:column>
+								</rich:dataTable></td>
+						</tr>
+					</table>
+
+
+				</s:decorate>
+
+				<br />
+
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+
+<center>
+				<a:commandButton value="Envoyer"
+					action="#{envoiDevisManager.send}"
+					oncomplete="window.close();"
+					style="width:100px;height:30px;" />
+				&nbsp;&nbsp;
+				<a:commandButton value="Annuler"
+					onclick="window.close();"
+					style="width:100px;height:30px;" />
+			</center>
+			</a:outputPanel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

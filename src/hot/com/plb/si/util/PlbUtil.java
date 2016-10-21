@@ -1,6 +1,7 @@
 package com.plb.si.util;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +20,7 @@ import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.record.formula.functions.T;
 
 import com.plb.dto.SessionDto;
@@ -601,11 +603,16 @@ public class PlbUtil {
 
 		BufferedInputStream in = new BufferedInputStream(
 		        con.getInputStream());
-		byte [] ret = new byte[in.available()];
-		in.read(ret);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		BufferedOutputStream bos = new BufferedOutputStream(baos);
+		int c;
+		while ( (c=in.read()) != -1 ) {
+			bos.write(c);
+		}
 		in.close();
+		bos.close();
 
-		return ret;
+		return baos.toByteArray()	;
 	}
 
 }

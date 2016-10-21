@@ -3,13 +3,16 @@ package com.plb.model.devis;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.plb.model.Fichier;
 
@@ -21,14 +24,15 @@ public class Email {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String to,subject,mail,attention,cc;
+	private String recipient,subject,attention,cc;
 	
+	@Lob
 	private String body;
 	
 	@ManyToOne
 	private EmailTemplate emailTemplate;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Fichier> attachments = new ArrayList<Fichier>();
 
 	public int getId() {
@@ -39,12 +43,12 @@ public class Email {
 		this.id = id;
 	}
 
-	public String getTo() {
-		return to;
+	public String getRecipient() {
+		return recipient;
 	}
 
-	public void setTo(String to) {
-		this.to = to;
+	public void setRecipient(String to) {
+		this.recipient = to;
 	}
 
 	public String getSubject() {
@@ -53,15 +57,7 @@ public class Email {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+	}	
 
 	public String getAttention() {
 		return attention;
@@ -79,6 +75,11 @@ public class Email {
 		this.cc = cc;
 	}
 
+	@Transient
+	public String[] getCcAsArray() {
+		return cc.split(",");
+	}
+	
 	public String getBody() {
 		return body;
 	}

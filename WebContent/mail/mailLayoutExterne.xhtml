@@ -6,7 +6,10 @@
 
 	<m:header name="X-Sent-From" value="PLBSI" />
 	<m:from name="#{sender.nomComplet}" address="#{sender.email}" />
-	<m:to name="#{email.to}">#{email.to}</m:to>
+	<m:to name="#{email.recipient}">#{email.recipient}</m:to>
+	<ui:repeat var="_cc" value="#{email.ccAsArray}">
+		<m:cc address="#{_cc}"/>
+	</ui:repeat>
 	<m:subject>[N°DOSSIER]&#160;<ui:insert name="MailSubject" /></m:subject>
 
 	<ui:insert name="MailAttachments" />

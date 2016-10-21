@@ -21,10 +21,17 @@
 	</ui:define>
 
 	<ui:define name="MailContent">
-		<h:outputText escape="false" value="#{email.body}"/>
-		
+		<h:outputText escape="false" value="#{email.body}"/>	
+	</ui:define>
+	
+	<ui:define name="MailAttachments">
+		<ui:repeat var="_pj" value="#{email.attachments}">
+<m:attachment value="#{_pj.data}" contentType="#{_pj.contentType}"
+			fileName="#{_pj.name}" />		
+		</ui:repeat>
 		
 	</ui:define>
+	
 
 	<ui:define name="MailContentAlternative">
 		

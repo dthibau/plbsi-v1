@@ -129,6 +129,8 @@ public class ApplicationManager implements Serializable {
 	public final static String WEB_URL_IMG = projectBundle.getString("WEB_URL_IMG");
 	@Out
 	public final static String URL_CSS = projectBundle.getString("URL_CSS");
+	
+	public final static String DEVIS_CC = projectBundle.getString("DEVIS_CC");
 
 	// Statuts prospects
 	@Out

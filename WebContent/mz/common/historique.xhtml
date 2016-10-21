@@ -45,8 +45,8 @@
 				<h:outputText rendered="#{event.formation == null}" value="#{messages[event.historiqueKey]}" />
 		</rich:column>
 		<rich:column id="type">
-			<h:outputText rendered="#{event.prospect == null}" value=" #{messages[event.historiqueKey]}" />
-			<h:outputText rendered="#{event.prospect != null}" value="#{event.message}" />
+			<h:outputText rendered="#{messages[event.historiqueKey] != null}" value=" #{messages[event.historiqueKey]}" />
+			<h:outputText rendered="#{messages[event.historiqueKey] == null}" value="#{event.message}" />
 		</rich:column>
 		<rich:collapsibleSubTable value="#{event.messageAsArray}" var="msg"
 			id="sbtbl" expandMode="client" expanded="#{false}">

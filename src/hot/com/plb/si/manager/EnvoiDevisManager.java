@@ -2,6 +2,7 @@ package com.plb.si.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -24,6 +25,8 @@ import com.plb.model.Formation;
 import com.plb.model.Prospect;
 import com.plb.model.devis.Email;
 import com.plb.model.directory.Account;
+import com.plb.model.event.Event;
+import com.plb.model.event.ProspectEnvoiMailEvent;
 import com.plb.si.service.FormationDao;
 import com.plb.si.service.NotificationService;
 import com.plb.si.util.Labels;
@@ -78,7 +81,7 @@ public class EnvoiDevisManager {
 		email = new Email();
 		email.setSubject(Labels.getString("devis.envoi.subject",
 				prospect.getIdProspect()));
-		email.setCc("devis@plb.fr," + loggedUser.getEmail());
+		email.setCc(ApplicationManager.DEVIS_CC + "," + loggedUser.getEmail());
 		email.setAttachments(_initAttachments());
 	}
 
@@ -161,8 +164,15 @@ public class EnvoiDevisManager {
 
 	public void send() {
 
-		email.setTo(prospect.getEmail());
+		email.setRecipient(prospect.getEmail());
+		email.setAttention(prospect.getNomComplet());
 		notificationService.sendDevis(email, loggedUser);
+		prospect.getProspectDetail().setDatedevis(new Date());
+		Event prospectSendEvent = new ProspectEnvoiMailEvent(
+				loggedUser, prospect,email);
+		entityManager.persist(email);
+		entityManager.persist(prospectSendEvent);
+		
 	}
 
 	private List<Fichier> _initAttachments() throws IOException {

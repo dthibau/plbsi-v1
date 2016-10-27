@@ -27,3 +27,5 @@ target/
 #svn
 **/.svn/
 
+#jmeter
+*.jtl

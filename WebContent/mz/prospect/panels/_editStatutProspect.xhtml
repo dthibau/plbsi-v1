@@ -24,6 +24,7 @@
 						<h:selectOneMenu value="#{editProspectManager.prospect.type}"
 							style="width:160px; height:20px;"
 							rendered="#{!applicationManager.isWebType(editProspectManager.prospect.type)}">
+							<f:ajax event="change" render="@form"></f:ajax>
 							<f:selectItems value="#{typesContact}" var="type"
 								itemValue="#{type.libelle.toUpperCase()}"
 								itemLabel="#{type.libelle}" />
@@ -36,6 +37,19 @@
 							value="#{editProspectManager.prospectDetail.heure}" />
 					</s:decorate>
 
+					<s:decorate template="../../layout/edit.xhtml">
+						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
+						<h:selectOneMenu 
+							value="#{editProspectManager.prospectDetail.natureClient}"
+							style="width:160px; height:20px;">
+							<f:ajax event="change" render="@form"></f:ajax>
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="Particulier" itemLabel="Particulier" />
+							<f:selectItem itemValue="Etranger" itemLabel="Etranger" />
+							<f:selectItem itemValue="Ste France" itemLabel="Ste France" />
+						</h:selectOneMenu>
+					</s:decorate>
+
 					<ui:include src="../fields/_typeFormation.xhtml" />
 
 
@@ -44,7 +58,9 @@
 							<h:outputText value="#{messages['prospect.participant']}" />
 						</ui:define>
 						<h:inputText
-							value="#{editProspectManager.prospectDetail.nb_participants}" />
+							value="#{editProspectManager.prospectDetail.nb_participants}" >
+							<f:ajax event="change" render="@form"></f:ajax>
+							</h:inputText>
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml"
 						style="width:400px;">
@@ -54,7 +70,8 @@
 						<h:selectOneMenu
 							value="#{editProspectManager.prospect.prospectDetail.lieu}"
 							style="width:160px; height:20px;">
-							<a:ajax event="change" render="" />
+							<a:ajax event="change" render="@form" />
+							<f:selectItem itemValue="" itemLabel="A définir" />
 							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
 							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
 						</h:selectOneMenu>
@@ -65,7 +82,9 @@
 							<h:outputText value="#{messages['prospect.dateSouhait']}" />
 						</ui:define>
 						<h:inputText
-							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" />
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" >
+							<a:ajax event="change" render="@form" />
+							</h:inputText>
 					</s:decorate>
 				</fieldset>
 			</td>
@@ -92,7 +111,8 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.asuivre']}" />
 						</ui:define>
-						<h:selectBooleanCheckbox disabled="#{!sessionDataManager.managerDispatcher}"
+						<h:selectBooleanCheckbox
+							disabled="#{!sessionDataManager.managerDispatcher}"
 							value="#{editProspectManager.prospectDetail.asuivre}" />
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml"

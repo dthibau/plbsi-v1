@@ -80,9 +80,9 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.sexe']}" />
 						</ui:define>
-						<h:outputText value="Homme"
+						<h:outputText value="Monsieur"
 							rendered="#{editProspectManager.prospect.prospectDetail.sexe == 1}" />
-						<h:outputText value="Femme"
+						<h:outputText value="Madame"
 							rendered="#{editProspectManager.prospect.prospectDetail.sexe == 0}" />
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
@@ -128,7 +128,7 @@
 		</tr>
 	</table>
 	<rich:collapsiblePanel
-		header="Commentaire client : cliquez ici pour voir" expanded="true"
+		header="Commentaire client" expanded="true"
 		switchType="client"
 		rendered="#{!empty editProspectManager.prospect.commentaire}">
 		<center>

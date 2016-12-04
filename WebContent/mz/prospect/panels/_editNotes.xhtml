@@ -10,11 +10,11 @@
 	xmlns:p="http://java.sun.com/jsf/html">
 
 	<rich:collapsiblePanel header="Notes perso : " id="notePerso1"
-		expanded="false" switchType="client">
+		expanded="true" switchType="client">
 		<center>
 			<a:commandButton value="Ajouter une note"
 				action="#{editProspectManager.addNote()}" execute="@this notePerso1"
-				render="notePerso1" oncomplete="#{rich:component('spinner')}.stop()">
+				render="notePerso1" >
 				<f:param name="cid" value="#{conversation.id}" />
 			</a:commandButton>
 			<rich:dataTable value="#{editProspectManager.messages}" var="message"

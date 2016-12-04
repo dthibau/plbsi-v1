@@ -16,7 +16,8 @@
 					<legend> Proposition </legend>
 					<ui:include src="../fields/_dateDevis.xhtml" />
 
-					<s:decorate template="../../layout/display.xhtml" style="width:500px;"
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:500px;"
 						rendered="#{editProspectManager.remplirPerte == false}">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.montant']}" />
@@ -33,7 +34,8 @@
 							rendered="#{editProspectManager.remplir == false and editProspectManager.remplirPerte==false}" />
 					</s:decorate>
 
-					<s:decorate template="../../layout/display.xhtml" style="width:500px;"
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:500px;"
 						rendered="#{editProspectManager.remplirPerte}">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.raisonPerte']}" />
@@ -66,6 +68,102 @@
 					</s:decorate>
 				</fieldset>
 			</td>
+			<td>
+				<fieldset>
+					<legend>OPCA</legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.opca']}" />
+						</ui:define>
+						<h:selectOneMenu
+							value="#{editProspectManager.prospectDetail.opca}">
+							<f:selectItem itemValue="" itemLabel="Choissisez parmi la liste" />
+							<f:selectItem itemValue="oui" itemLabel="OUI" />
+							<f:selectItem itemValue="non" itemLabel="NON" />
+							<f:selectItem itemValue="je ne sais pas"
+								itemLabel="Je ne sais pas" />
+						</h:selectOneMenu>
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.nomOpca']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.nom_opca}" />
+					</s:decorate>
+
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td><fieldset>
+					<legend>Facturation</legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.pays']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.pays_factu}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.ville']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.ville_factu}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.adresse']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.adresse_factu}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.cp']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.cp_factu}" />
+					</s:decorate>
+				</fieldset></td>
+			<td>
+				<fieldset>
+					<legend>Convocation</legend>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.pays']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.pays_convoc}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.ville']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.ville_convoc}" />
+					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.adresse']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.adresse_convoc}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.cp']}" />
+						</ui:define>
+						<h:inputText
+							value="#{editProspectManager.prospectDetail.cp_convoc}" />
+					</s:decorate>
+
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
 			<td>
 				<fieldset>
 					<legend> Actions commerciales </legend>

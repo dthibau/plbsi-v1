@@ -11,25 +11,25 @@
 
 	<h:form id="editForm">
 		<rich:tabPanel switchType="client" id="mainPanel">
-			<rich:tab header="Statut prospect" name="page1" style="width:1000px;"
+			<rich:tab header="Statut prospect" name="page1" 
 				onheaderclick="changePage('page1')">
 				<ui:include src="panels/_editStatutProspect.xhtml" />
 				<ui:include src="panels/_editNotes.xhtml" />
 			</rich:tab>
-			<rich:tab header="Fiche Contact" name="page2" style="width:1000px;"
+			<rich:tab header="Fiche Contact" name="page2" 
 				onheaderclick="changePage('page2')">
 				<ui:include src="panels/_editFiche.xhtml" />
 			</rich:tab>
-			<rich:tab header="Formation" name="page3" style="width:1000px;"
+			<rich:tab header="Formation" name="page3" 
 				onheaderclick="changePage('page3')">
 				<ui:include src="panels/_editFormation.xhtml" />
 			</rich:tab>
-			<rich:tab header="Commerce" value="page4" style="width:1000px;"
+			<rich:tab header="Commerce" value="page4" 
 				onheaderclick="changePage('page4')">
 				<ui:include src="panels/_editCommerce.xhtml" />
 			</rich:tab>
 		<rich:tab header="Suivi intra" onheaderclick="changePage('page5')"
-			style="width:1000px;"
+			
 			rendered="#{!empty editProspectManager.prospect.informationIntra}">
 			<ui:include src="panels/_editIntra.xhtml" />
 		</rich:tab>

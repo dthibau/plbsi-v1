@@ -89,8 +89,8 @@
 						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.sexe}">
 							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-							<f:selectItem itemValue="1" itemLabel="Homme" />
-							<f:selectItem itemValue="0" itemLabel="Femme" />
+							<f:selectItem itemValue="1" itemLabel="Monsieur" />
+							<f:selectItem itemValue="0" itemLabel="Madame" />
 						</h:selectOneMenu>
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml" >
@@ -125,9 +125,9 @@
 						<h:inputText
 							value="#{editProspectManager.prospectDetail.resp_departement}" />
 					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml" >
+					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
-						<h:selectOneMenu
+						<h:selectOneMenu 
 							value="#{editProspectManager.prospectDetail.natureClient}"
 							style="width:160px; height:20px;">
 							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
@@ -141,7 +141,7 @@
 
 		</tr>
 	</table>
-	<rich:collapsiblePanel header="Commentaire client : " expanded="false"
+	<rich:collapsiblePanel header="Commentaire client : " expanded="true"
 		switchType="client">
 		<table border="0" cellspacing="3">
 			<tr>

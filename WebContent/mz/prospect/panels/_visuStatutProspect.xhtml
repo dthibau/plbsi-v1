@@ -16,9 +16,14 @@
 					<legend> Identification </legend>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
-							<h:outputText value="#{messages['devis.contactClient']}" />
+							<h:outputText value="#{messages['prospect.nomEntreprise']}" />
 						</ui:define>
 						<h:outputText value="#{editProspectManager.prospect.societe}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.natureClient}" />
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
@@ -81,8 +86,8 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />
 						</ui:define>
-						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
-							value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> <h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.rempliPar != null ? '/' + editProspectManager.prospect.prospectDetail.rempliPar : ''}" />
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
@@ -96,7 +101,6 @@
 					</s:decorate>
 				</fieldset>
 			</td>
-
 		</tr>
 	</table>
 

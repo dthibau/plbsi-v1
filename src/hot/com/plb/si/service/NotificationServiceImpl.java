@@ -158,7 +158,7 @@ public class NotificationServiceImpl implements NotificationService,
 					+ event);
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Unable to send mail to " + contact + "(" + contact.getEmail() + ") event " + event);
 		}
 	}
 

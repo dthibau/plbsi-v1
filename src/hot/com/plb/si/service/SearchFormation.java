@@ -57,10 +57,13 @@ public class SearchFormation {
 		SearchFactory searchFactory = entityManager.getSearchFactory();
 		QueryParser parser = new QueryParser(Version.LUCENE_35, "reference",
 				searchFactory.getAnalyzer(Formation.class));
+		searchWord = searchWord.replace(":", "").replace("^", "").replace("~", "");
 		StringBuffer sbf = new StringBuffer();
 		String[] tokens = searchWord.split(" ");
 		boolean bFirst = true;
 		for (String token : tokens) {
+			if ( _invalidToken(token) )
+				continue;
 			if (!moreResults) { // In this case, we use AND
 				if (bFirst) {
 					bFirst = false;
@@ -87,5 +90,12 @@ public class SearchFormation {
 
 //		System.out.println(luceneQuery);
 		return luceneQuery;
+	}
+	
+	private boolean _invalidToken(String token ) {
+		if ( token == null || token.isEmpty() )
+			return true;
+		
+		return false;
 	}
 }

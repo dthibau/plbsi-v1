@@ -86,8 +86,10 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />
 						</ui:define>
-						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> <h:outputText
-							value="#{editProspectManager.prospect.prospectDetail.rempliPar != null ? '/' + editProspectManager.prospect.prospectDetail.rempliPar : ''}" />
+						<h:outputText value="#{editProspectManager.prospect.dateCreation}" />
+						<a:outputPanel layout="inline" rendered="#{editProspectManager.prospect.prospectDetail.rempliPar != null}">
+						/ <h:outputText value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+						</a:outputPanel>
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">

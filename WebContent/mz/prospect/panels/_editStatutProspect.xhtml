@@ -39,7 +39,7 @@
 
 					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
-						<h:selectOneMenu 
+						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.natureClient}"
 							style="width:160px; height:20px;">
 							<f:ajax event="change" render="@form"></f:ajax>
@@ -58,9 +58,9 @@
 							<h:outputText value="#{messages['prospect.participant']}" />
 						</ui:define>
 						<h:inputText
-							value="#{editProspectManager.prospectDetail.nb_participants}" >
+							value="#{editProspectManager.prospectDetail.nb_participants}">
 							<f:ajax event="change" render="@form"></f:ajax>
-							</h:inputText>
+						</h:inputText>
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml"
 						style="width:400px;">
@@ -82,9 +82,9 @@
 							<h:outputText value="#{messages['prospect.dateSouhait']}" />
 						</ui:define>
 						<h:inputText
-							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" >
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}">
 							<a:ajax event="change" render="@form" />
-							</h:inputText>
+						</h:inputText>
 					</s:decorate>
 				</fieldset>
 			</td>
@@ -164,16 +164,37 @@
 						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml">
+<!-- 					<s:decorate template="../../layout/display.xhtml"> -->
+<!-- 						<ui:define name="label"> -->
+<!-- 							<h:outputText value="Date envoi devis" /> -->
+<!-- 						</ui:define> -->
+<!-- 						<h:outputText -->
+<!-- 							value="#{editProspectManager.prospect.prospectDetail.datedevis}" -->
+<!-- 							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
+<!-- 						<h:outputText value="Non envoyé" -->
+<!-- 							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
+<!-- 					</s:decorate> -->
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:300px;">
 						<ui:define name="label">
-							<h:outputText value="Date envoi devis" />
+							<h:outputText value="Devis envoyé ?" />
 						</ui:define>
-						<h:outputText
-							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
-							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" />
-						<h:outputText value="Non envoyé"
-							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" />
+						<h:selectBooleanCheckbox value="#{editProspectManager.envoye}">
+							<a:ajax event="change" render="envoyeCalendar" />
+							<f:selectItem itemValue="true" itemLabel="" />
+						</h:selectBooleanCheckbox>
 					</s:decorate>
+					<a:outputPanel id="envoyeCalendar">
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:400px;" rendered="#{editProspectManager.envoye}">
+						<ui:define name="label">
+							<h:outputText value="Date : " />
+						</ui:define>
+						<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
+							value="#{editProspectManager.prospectDetail.datedevis}"
+							style="width:100px;height:20px" />
+					</s:decorate>
+					</a:outputPanel>
 				</fieldset>
 			</td>
 

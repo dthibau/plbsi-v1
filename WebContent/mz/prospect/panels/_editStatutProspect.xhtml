@@ -99,8 +99,7 @@
 						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.commercial}">
 							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.gereStatut()}"
-								oncomplete="#{rich:component('spinner')}.stop()" />
+								listener="#{editProspectManager.gereStatut()}" />
 							<f:selectItem itemValue="" itemLabel="N/C" />
 							<f:selectItems value="#{editProspectManager.listeCommerciale}"
 								var="commerciale" itemValue="#{commerciale.nomComplet}"
@@ -125,8 +124,7 @@
 							style="width:175px;"
 							rendered="#{editProspectManager.prospectDetail.commercial == null}">
 							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}"
-								oncomplete="#{rich:component('spinner')}.stop();" />
+								listener="#{editProspectManager.remplirMontant()}" />
 							<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
 							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 							<f:selectItem itemValue="#{ST_EN_COURS}" />
@@ -139,8 +137,7 @@
 							style="width:175px;"
 							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
 							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}"
-								oncomplete="#{rich:component('spinner')}.stop();" />
+								listener="#{editProspectManager.remplirMontant()}" />
 							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 							<f:selectItem itemValue="#{ST_EN_COURS}" />
 							<f:selectItem itemValue="#{ST_ABANDON}" />
@@ -152,8 +149,7 @@
 							style="width:175px;"
 							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
 							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}"
-								oncomplete="#{rich:component('spinner')}.stop();" />
+								listener="#{editProspectManager.remplirMontant()}" />
 							<f:selectItem itemValue="#{ST_EN_COURS}" />
 							<f:selectItem itemValue="#{ST_ABANDON}" />
 							<f:selectItem itemValue="#{ST_GAGNE}" />

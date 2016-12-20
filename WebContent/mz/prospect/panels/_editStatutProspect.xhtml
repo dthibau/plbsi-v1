@@ -91,109 +91,113 @@
 			<td>
 				<fieldset>
 					<legend> Statut </legend>
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:500px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.attribueA']}" />
-						</ui:define>
-						<h:selectOneMenu
-							value="#{editProspectManager.prospectDetail.commercial}">
-							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.gereStatut()}" />
-							<f:selectItem itemValue="" itemLabel="N/C" />
-							<f:selectItems value="#{editProspectManager.listeCommerciale}"
-								var="commerciale" itemValue="#{commerciale.nomComplet}"
-								itemLabel="#{commerciale.nomComplet}" />
-						</h:selectOneMenu>
-					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml" style="width:400px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.asuivre']}" />
-						</ui:define>
-						<h:selectBooleanCheckbox
-							disabled="#{!sessionDataManager.managerDispatcher}"
-							value="#{editProspectManager.prospectDetail.asuivre}" />
-					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:500px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.statut']}" />
-						</ui:define>
-						<h:selectOneMenu id="statutEdit"
-							value="#{editProspectManager.prospect.statut}"
-							style="width:175px;"
-							rendered="#{editProspectManager.prospectDetail.commercial == null}">
-							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}" />
-							<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
-							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
-							<f:selectItem itemValue="#{ST_EN_COURS}" />
-							<f:selectItem itemValue="#{ST_ABANDON}" />
-							<f:selectItem itemValue="#{ST_GAGNE}" />
-							<f:selectItem itemValue="#{ST_PERDU}" />
-						</h:selectOneMenu>
-						<h:selectOneMenu id="statutEditWithC"
-							value="#{editProspectManager.prospect.statut}"
-							style="width:175px;"
-							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
-							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}" />
-							<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
-							<f:selectItem itemValue="#{ST_EN_COURS}" />
-							<f:selectItem itemValue="#{ST_ABANDON}" />
-							<f:selectItem itemValue="#{ST_GAGNE}" />
-							<f:selectItem itemValue="#{ST_PERDU}" />
-						</h:selectOneMenu>
-						<h:selectOneMenu id="statutEditWithC2"
-							value="#{editProspectManager.prospect.statut}"
-							style="width:175px;"
-							rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
-							<a:ajax event="change" render="statutDemande,commercial,mont"
-								listener="#{editProspectManager.remplirMontant()}" />
-							<f:selectItem itemValue="#{ST_EN_COURS}" />
-							<f:selectItem itemValue="#{ST_ABANDON}" />
-							<f:selectItem itemValue="#{ST_GAGNE}" />
-							<f:selectItem itemValue="#{ST_PERDU}" />
-						</h:selectOneMenu>
-					</s:decorate>
+					<a:outputPanel id="statutDemande">
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.attribueA']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospectDetail.commercial}">
+								<a:ajax event="change" render="statutDemande"
+									listener="#{editProspectManager.gereStatut()}" />
+								<f:selectItem itemValue="" itemLabel="N/C" />
+								<f:selectItems value="#{editProspectManager.listeCommerciale}"
+									var="commerciale" itemValue="#{commerciale.nomComplet}"
+									itemLabel="#{commerciale.nomComplet}" />
+							</h:selectOneMenu>
+						</s:decorate>
+						<s:decorate template="../../layout/edit.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.asuivre']}" />
+							</ui:define>
+							<h:selectBooleanCheckbox
+								disabled="#{!sessionDataManager.managerDispatcher}"
+								value="#{editProspectManager.prospectDetail.asuivre}" />
+						</s:decorate>
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.statut']}" />
+							</ui:define>
+							<h:selectOneMenu id="statutEdit"
+								value="#{editProspectManager.prospect.statut}"
+								style="width:175px;"
+								rendered="#{editProspectManager.prospectDetail.commercial == null}">
+								<a:ajax event="change" render="statutDemande"
+									listener="#{editProspectManager.remplirMontant()}" />
+								<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
+								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
+								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_ABANDON}" />
+								<f:selectItem itemValue="#{ST_GAGNE}" />
+								<f:selectItem itemValue="#{ST_PERDU}" />
+							</h:selectOneMenu>
+							<h:selectOneMenu id="statutEditWithC"
+								value="#{editProspectManager.prospect.statut}"
+								style="width:175px;"
+								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
+								<a:ajax event="change" render="statutDemande"
+									listener="#{editProspectManager.remplirMontant()}" />
+								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
+								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_ABANDON}" />
+								<f:selectItem itemValue="#{ST_GAGNE}" />
+								<f:selectItem itemValue="#{ST_PERDU}" />
+							</h:selectOneMenu>
+							<h:selectOneMenu id="statutEditWithC2"
+								value="#{editProspectManager.prospect.statut}"
+								style="width:175px;"
+								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
+								<a:ajax event="change" render="statutDemande"
+									listener="#{editProspectManager.remplirMontant()}" />
+								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_ABANDON}" />
+								<f:selectItem itemValue="#{ST_GAGNE}" />
+								<f:selectItem itemValue="#{ST_PERDU}" />
+							</h:selectOneMenu>
+						</s:decorate>
 
-					<s:decorate template="../../layout/display.xhtml">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.dateCreation']}" />
-						</ui:define>
-						<h:outputText value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
-							value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
-					</s:decorate>
-<!-- 					<s:decorate template="../../layout/display.xhtml"> -->
-<!-- 						<ui:define name="label"> -->
-<!-- 							<h:outputText value="Date envoi devis" /> -->
-<!-- 						</ui:define> -->
-<!-- 						<h:outputText -->
-<!-- 							value="#{editProspectManager.prospect.prospectDetail.datedevis}" -->
-<!-- 							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
-<!-- 						<h:outputText value="Non envoyé" -->
-<!-- 							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
-<!-- 					</s:decorate> -->
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:300px;">
-						<ui:define name="label">
-							<h:outputText value="Devis envoyé ?" />
-						</ui:define>
-						<h:selectBooleanCheckbox value="#{editProspectManager.envoye}">
-							<a:ajax event="change" render="envoyeCalendar" />
-							<f:selectItem itemValue="true" itemLabel="" />
-						</h:selectBooleanCheckbox>
-					</s:decorate>
-					<a:outputPanel id="envoyeCalendar">
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:400px;" rendered="#{editProspectManager.envoye}">
-						<ui:define name="label">
-							<h:outputText value="Date : " />
-						</ui:define>
-						<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
-							value="#{editProspectManager.prospectDetail.datedevis}"
-							style="width:100px;height:20px" />
-					</s:decorate>
+						<s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.dateCreation']}" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.dateCreation}" /> / <h:outputText
+								value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+						</s:decorate>
+						<!-- 					<s:decorate template="../../layout/display.xhtml"> -->
+						<!-- 						<ui:define name="label"> -->
+						<!-- 							<h:outputText value="Date envoi devis" /> -->
+						<!-- 						</ui:define> -->
+						<!-- 						<h:outputText -->
+						<!-- 							value="#{editProspectManager.prospect.prospectDetail.datedevis}" -->
+						<!-- 							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
+						<!-- 						<h:outputText value="Non envoyé" -->
+						<!-- 							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" /> -->
+						<!-- 					</s:decorate> -->
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:300px;">
+							<ui:define name="label">
+								<h:outputText value="Devis envoyé ?" />
+							</ui:define>
+							<h:selectBooleanCheckbox value="#{editProspectManager.envoye}">
+								<a:ajax event="change" render="envoyeCalendar" />
+								<f:selectItem itemValue="true" itemLabel="" />
+							</h:selectBooleanCheckbox>
+						</s:decorate>
+						<a:outputPanel id="envoyeCalendar">
+							<s:decorate template="../../layout/display.xhtml"
+								style="width:400px;" rendered="#{editProspectManager.envoye}">
+								<ui:define name="label">
+									<h:outputText value="Date : " />
+								</ui:define>
+								<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
+									value="#{editProspectManager.prospectDetail.datedevis}"
+									style="width:100px;height:20px" />
+							</s:decorate>
+						</a:outputPanel>
 					</a:outputPanel>
 				</fieldset>
 			</td>

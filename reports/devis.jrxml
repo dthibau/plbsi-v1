@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-01-06T11:15:19 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="336"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
-	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<style name="legend" style="default" hAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="legend" style="default" hTextAlign="Center" hImageAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
 	<style name="sousTitle" style="default" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="adresse" style="default" fontSize="8"/>
 	<parameter name="idDevis" class="java.lang.Integer">
@@ -699,7 +701,7 @@
 				</box>
 				<textElement textAlignment="Center" markup="html"/>
 				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :
-"Entre 5 et 9 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
+"Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
 + "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
 			</textField>
 		</band>
@@ -709,7 +711,7 @@
 			<staticText>
 				<reportElement style="adresse" x="0" y="36" width="555" height="11" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - N° Siren : 421 694 779 - N° de déclaration d'existence : 119 211 300 92]]></text>
+				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - Siret : 42169477900040 - Siren : 421 694 779 - N° Déclaration d'activité : 119 211 300 92]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="adresse" x="0" y="22" width="555" height="12" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>

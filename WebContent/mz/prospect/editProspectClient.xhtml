@@ -89,7 +89,7 @@
 													<h:outputText value="#{messages['prospect.reference']}" />
 												</ui:define>
 						           				<h:selectOneMenu value="#{searchProspect.prospect.reference}" style="width:160px;">
-							         				<a:ajax event="change" render="sessionPop,refEditClient" listener="#{searchProspect.findPrix}" oncomplete="#{rich:component('spinner')}.stop()"/>
+							         				<a:ajax event="change" render="sessionPop,refEditClient" listener="#{searchProspect.findPrix}"/>
 							         					<f:selectItem itemValue="" itemLabel="Choissisez la référence"/>
 														<f:selectItems value="#{formationsActives}" var="formation" itemValue="#{formation.reference}" itemLabel="#{formation.reference}"/>
 											 	</h:selectOneMenu>
@@ -158,7 +158,7 @@
 											<h:outputText value="#{messages['prospect.statut']}" />
 										</ui:define>
 										<h:selectOneMenu id="statutEditClient" value="#{searchProspect.prospect.statut}" style="width:175px;" rendered="#{searchProspect.prospectDetail.commercial == null}">
-										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}" oncomplete="#{rich:component('spinner')}.stop()"/>
+										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}"/>
 												<f:selectItem itemValue="Non affecté" />
 												<f:selectItem itemValue="En attente" />
 												<f:selectItem itemValue="En cours" />
@@ -167,7 +167,7 @@
 												<f:selectItem itemValue="Perdu" />
 										</h:selectOneMenu>
 										<h:selectOneMenu id="statutEditWithClient" value="#{searchProspect.prospect.statut}" style="width:175px;" rendered="#{searchProspect.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
-										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}" oncomplete="#{rich:component('spinner')}.stop()"/>
+										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}" />
 												<f:selectItem itemValue="En attente"/>
 												<f:selectItem itemValue="En cours"/>
 												<f:selectItem itemValue="Abandon" />
@@ -175,7 +175,7 @@
 												<f:selectItem itemValue="Perdu" />
 										</h:selectOneMenu>
 										<h:selectOneMenu id="statutEditWithClient2" value="#{searchProspect.prospect.statut}" style="width:175px;" rendered="#{searchProspect.prospectDetail.commercial != null and sessionDataManager.commercial}">
-										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}" oncomplete="#{rich:component('spinner')}.stop()"/>
+										<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.remplirMontant()}" />
 												<f:selectItem itemValue="En cours"/>
 												<f:selectItem itemValue="Abandon" />
 												<f:selectItem itemValue="Gagné" />
@@ -193,7 +193,7 @@
 											<h:outputText value="#{messages['prospect.attribueA']}" />
 										</ui:define>
 										<h:selectOneMenu value="#{searchProspect.prospectDetail.commercial}">
-											<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.gereStatut()}" oncomplete="#{rich:component('spinner')}.stop()"/>
+											<a:ajax event="change" render="statutDemandeC,commercialC,montClient" listener="#{searchProspect.gereStatut()}" />
 												<f:selectItem itemValue="" itemLabel="N/C"/>
 												<f:selectItems value="#{searchProspect.listeCommerciale}" var="commerciale" itemValue="#{commerciale.nomComplet}" itemLabel="#{commerciale.nomComplet}"/>
 								 		</h:selectOneMenu>
@@ -237,7 +237,7 @@
 										<h:outputText value="Devis envoyé ?" />
 									</ui:define>
 				        			<h:selectBooleanCheckbox value="#{searchProspect.envoye}">
-										<a:ajax event="change" render="dateClientDevis" oncomplete="#{rich:component('spinner')}.stop()"/>
+										<a:ajax event="change" render="dateClientDevis" />
 		  								<f:selectItem itemValue="true" itemLabel="" />
 									</h:selectBooleanCheckbox>
 								</s:decorate>
@@ -259,7 +259,7 @@
 			    	<center>
 			        	<a:commandButton value="Ajouter une note"
 							action="#{searchProspect.addNote()}" execute="@this notePerso1C"
-							render="notePerso1C" oncomplete="#{rich:component('spinner')}.stop()">
+							render="notePerso1C" >
 								<f:param name="cid" value="#{conversation.id}" />
 						</a:commandButton>
 		        		<rich:dataTable value="#{searchProspect.messages}" var="message" rowKeyVar="index">
@@ -326,7 +326,7 @@
 									<h:outputText value="#{messages['intra.statut']}" />
 								</ui:define>
 								<h:selectOneMenu value="#{searchProspect.prospect.informationIntra.statutIntra}" style="width:110px; height:20px;">
-									<a:ajax event="change" render="statutIntraClient" oncomplete="#{rich:component('spinner')}.stop()"/>
+									<a:ajax event="change" render="statutIntraClient" />
 									<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
 									<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
 									<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
@@ -740,7 +740,7 @@
 							<s:decorate template="../layout/display.xhtml">
 								<a:commandButton value="Ajouter une formation"
 									action="#{searchProspect.addReferenceForModif()}" execute="@this referencePanelModifClient"
-									render="referencePanelModifClient" oncomplete="#{rich:component('spinner')}.stop()">
+									render="referencePanelModifClient" >
 										<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</s:decorate>
@@ -752,7 +752,7 @@
 									</f:facet>
 									<center>
 										<h:selectOneMenu value="#{formation.formation}" render="referencePanelModifClient">
-											<a:ajax event="change" render="referencePanelModifClient" oncomplete="#{rich:component('spinner')}.stop()"/>
+											<a:ajax event="change" render="referencePanelModifClient"/>
 											<s:selectItems value="#{formationsActives}" var="for"
 												label="#{for.reference}" noSelectionLabel="Sélectionner une réference" itemValue="#{for}"/>
 											<s:convertEntity />
@@ -802,7 +802,7 @@
 									<center>
 										<a:commandButton value="Supprimer"
 											action="#{searchProspect.removeReferenceForModif(index)}" execute="@this"
-											render="referencePanelModifClient" oncomplete="#{rich:component('spinner')}.stop()">
+											render="referencePanelModifClient" >
 											<f:param name="cid" value="#{conversation.id}" />
 										</a:commandButton>
 									</center>
@@ -813,7 +813,7 @@
 							<s:decorate template="../layout/display.xhtml">
 								<a:commandButton value="Ajouter un Spé"
 									action="#{searchProspect.addSpe()}" execute="@this referencePanelModifClientSpe"
-									render="referencePanelModifClientSpe" oncomplete="#{rich:component('spinner')}.stop()">
+									render="referencePanelModifClientSpe" >
 										<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</s:decorate>
@@ -865,7 +865,7 @@
 									<center>
 										<a:commandButton value="Supprimer"
 											action="#{searchProspect.removeSpe(index)}" execute="@this"
-											render="referencePanelModifClientSpe" oncomplete="#{rich:component('spinner')}.stop()">
+											render="referencePanelModifClientSpe" >
 											<f:param name="cid" value="#{conversation.id}" />
 										</a:commandButton>
 									</center>
@@ -880,7 +880,7 @@
 				<center>
 		        	<a:commandButton value="Ajouter une note"
 						action="#{searchProspect.addNote()}" execute="@this notePerso2C"
-						render="notePerso2C" oncomplete="#{rich:component('spinner')}.stop()">
+						render="notePerso2C" >
 							<f:param name="cid" value="#{conversation.id}" />
 					</a:commandButton>
 	        		<rich:dataTable value="#{searchProspect.messages}" var="message" rowKeyVar="index">

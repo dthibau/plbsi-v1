@@ -29,3 +29,6 @@ target/
 
 #jmeter
 *.jtl
+
+#jasper
+*.jasper

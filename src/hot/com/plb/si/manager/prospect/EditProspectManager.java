@@ -417,13 +417,21 @@ public class EditProspectManager implements Serializable {
 		}
 		// Enregistrement des �ventuelles messages/notes persos
 		int tailleMessagerieFinal = messages.size();
-		if (tailleMessagerie != tailleMessagerieFinal) {
-			log.debug(loggedUser + " Ajout de Note détecté");
-			List<Message> newMessages = new ArrayList<Message>();
-			for (int i = tailleMessagerie; i < tailleMessagerieFinal; i++) {
-				entityManager.persist(messages.get(i));
-				newMessages.add(messages.get(i));
+
+		List<Message> newMessages = new ArrayList<Message>();
+		boolean bNewNote = false;
+		for (Message message : messages) {
+			if (!entityManager.contains(message)) {
+				bNewNote = true;
+
+				entityManager.persist(message);
+				newMessages.add(message);
 			}
+		}
+
+		if (bNewNote) {
+			log.debug(loggedUser + " Ajout de Note détecté");
+
 			if (prospect.getInformationIntra() != null) {
 				InformationIntra intra = prospect.getInformationIntra();
 				IntraNoteEvent intraNoteEvent = new IntraNoteEvent(loggedUser,
@@ -730,7 +738,6 @@ public class EditProspectManager implements Serializable {
 			afficheP = true;
 		}
 	}
-
 
 	public void objectif() {
 		afficheObjectif = true;

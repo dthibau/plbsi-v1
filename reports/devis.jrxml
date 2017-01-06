@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="336"/>
+	<property name="ireport.x" value="124"/>
+	<property name="ireport.y" value="884"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -675,7 +675,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="114" splitType="Stretch">
+		<band height="184" splitType="Stretch">
 			<staticText>
 				<reportElement style="legend" x="0" y="1" width="555" height="16" uuid="58dc0270-502a-48b8-b7ba-67a9e7d1aa00"/>
 				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes]]></text>
@@ -699,9 +699,20 @@
 				</box>
 				<textElement textAlignment="Center" markup="html"/>
 				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :
-"Entre 5 et 9 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
+"Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
 + "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="7" y="152" width="540" height="32" uuid="064cfd2c-6986-4e30-a92a-21fcd4643c3d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PLB Consultant a obtenu le label OPQF qui garantit la qualité de nos actions de formation continue en conformité avec les nouvelles exigences du Code du travail fixées par le décret n°2015-790 du 30 juin 2015. Le label OPQF est l’une des certifications et labels « généralistes » identifiés dans la liste CNEFOP.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="252" y="119" width="50" height="33" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7"/>
+				<imageExpression><![CDATA["/home/dthibau/Dev/PLB/plbsi/src/main/resources/opqf.png"]]></imageExpression>
+			</image>
 		</band>
 	</columnFooter>
 	<pageFooter>
@@ -709,7 +720,7 @@
 			<staticText>
 				<reportElement style="adresse" x="0" y="36" width="555" height="11" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - N° Siren : 421 694 779 - N° de déclaration d'existence : 119 211 300 92]]></text>
+				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - Siret : 42169477900040 - Siren : 421 694 779 - N° Déclaration d'activité : 119 211 300 92]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="adresse" x="0" y="22" width="555" height="12" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>

@@ -699,7 +699,7 @@
 				</box>
 				<textElement textAlignment="Center" markup="html"/>
 				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :
-"Entre 5 et 9 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
+"Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
 + "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
 			</textField>
 		</band>

@@ -100,7 +100,7 @@
 								<s:selectItems value="#{editProspectManager.listeSession}"
 									var="_session" label="#{_session}"
 									noSelectionLabel="Sélectionner une session"
-									itemValue="#{_session.session}" />
+									itemValue="#{_session.session.toString()}" />
 							</h:selectOneMenu>
 						</s:decorate>
 					</a:outputPanel></td>

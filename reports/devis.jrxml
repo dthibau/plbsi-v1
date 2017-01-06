@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="838"/>
+	<property name="ireport.x" value="124"/>
+	<property name="ireport.y" value="872"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -604,7 +604,7 @@
 				<textElement textAlignment="Center">
 					<font isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Merci de bien vouloir compléter les parties ci-dessus, et de nous faire parvenir la présente proposition financière paraphée et signée avec la mention «Bon pour Commande» par fax (Fax +33(0)1.43. 34. 90. 95), scanné par mail, ou par courrier postal à l’adresse indiquée en bas de cette page"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Merci de bien vouloir compléter les parties ci-dessous, et de nous faire parvenir la présente proposition financière paraphée et signée avec la mention «Bon pour Commande» par fax (Fax +33(0)1.43. 34. 90. 95), scanné par mail, ou par courrier postal à l’adresse indiquée en bas de cette page"]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

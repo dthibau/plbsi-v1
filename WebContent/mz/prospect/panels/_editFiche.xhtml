@@ -14,8 +14,10 @@
 			<td width="50%" valign="top">
 				<fieldset>
 					<legend> Société </legend>
-					<ui:include src="../fields/_societe.xhtml" />
-					<s:decorate template="../../layout/edit.xhtml" >
+					<ui:include src="../fields/_societe.xhtml">
+						<ui:param name="prefix" value="fi" />
+					</ui:include>
+					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.lieuEntreprise']}</ui:define>
 						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.lieuEntreprise}"
@@ -28,32 +30,31 @@
 
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.adresse']}"
-								 />
+							<h:outputText value="#{messages['prospect.adresse']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.adresse}"
 							style="width:280px;" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.cp']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.cp}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.ville']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.ville}" />
 					</s:decorate>
 
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.pays']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.pays}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.effectifN']}" />
 						</ui:define>
@@ -61,7 +62,7 @@
 							value="#{editProspectManager.prospectDetail.effectifEntreprise}"
 							style="width:50px;" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.effectifI']}" />
 						</ui:define>
@@ -74,17 +75,17 @@
 			<td>
 				<fieldset>
 					<legend> Contact </legend>
-					<s:decorate template="../../layout/edit.xhtml" >
+					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.nomContact']}</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.nom}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.prenom']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.prenom}" />
 					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml" >
+					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.sexe']}</ui:define>
 						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.sexe}">
@@ -93,7 +94,7 @@
 							<f:selectItem itemValue="0" itemLabel="Madame" />
 						</h:selectOneMenu>
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.fonction']}" />
 						</ui:define>
@@ -101,41 +102,35 @@
 							value="#{editProspectManager.prospectDetail.fonction}"
 							style="width:200px;" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.mail']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.email}"
 							style="width:250px;" />
 					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml" >
+					<s:decorate template="../../layout/edit.xhtml">
 						<ui:define name="label">#{messages['prospect.telephone']}</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.tel}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.fax']}" />
 						</ui:define>
 						<h:inputText value="#{editProspectManager.prospect.fax}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml" >
+					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.responsable']}" />
 						</ui:define>
 						<h:inputText
 							value="#{editProspectManager.prospectDetail.resp_departement}" />
 					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml">
-						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
-						<h:selectOneMenu 
-							value="#{editProspectManager.prospectDetail.natureClient}"
-							style="width:160px; height:20px;">
-							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-							<f:selectItem itemValue="Particulier" itemLabel="Particulier" />
-							<f:selectItem itemValue="Etranger" itemLabel="Etranger" />
-							<f:selectItem itemValue="Ste France" itemLabel="Ste France" />
-						</h:selectOneMenu>
-					</s:decorate>
+
+					<ui:include src="../fields/_natureClient.xhtml">
+						<ui:param name="prefix" value="fi" />
+					</ui:include>
+
 				</fieldset>
 			</td>
 

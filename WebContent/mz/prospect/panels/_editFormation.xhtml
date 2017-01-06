@@ -12,18 +12,25 @@
 	<rich:panel id="popInfFor" header="Informations formation : ">
 		<table border="0" cellspacing="3">
 			<tr>
-				<td><ui:include src="../fields/_typeFormation.xhtml" /> <s:decorate
+				<td><ui:include src="../fields/_typeFormation.xhtml" >
+					<ui:param name="prefix" value="f" />
+				</ui:include> 
+				<a:outputPanel id="f_lieu">
+				<s:decorate 
 						template="../../layout/edit.xhtml"
 						rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}">
 						<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
 						<h:selectOneMenu
 							value="#{editProspectManager.prospectDetail.lieu}"
 							style="width:160px; height:20px;">
+							<a:ajax event="change" render=":editForm:s_lieu" />
 							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
 							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
 							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
 						</h:selectOneMenu>
-					</s:decorate></td>
+					</s:decorate>
+				</a:outputPanel>
+				</td>
 
 				<td><a:outputPanel id="refEdit">
 						<s:decorate template="../../layout/display.xhtml">
@@ -89,7 +96,7 @@
 							rendered="#{!empty editProspectManager.prospect.reference}">
 							<ui:define name="label">#{messages['prospect.dateSession']}</ui:define>
 							<h:selectOneMenu
-								value="#{editProspectManager.prospectDetail.date}">
+								value="#{editProspectManager.prospect.prospectDetail.date}">
 								<s:selectItems value="#{editProspectManager.listeSession}"
 									var="_session" label="#{_session}"
 									noSelectionLabel="Sélectionner une session"
@@ -97,12 +104,14 @@
 							</h:selectOneMenu>
 						</s:decorate>
 					</a:outputPanel></td>
-				<td><s:decorate template="../../layout/display.xhtml">
+				<td><s:decorate id="f_date_souhaite" template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateSouhait']}" />
 						</ui:define>
-						<h:inputText
-							value="#{editProspectManager.prospectDetail.date_souhaite}" />
+						<h:inputText id="f_date_souhaite_input"
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" >
+							<a:ajax event="change" render=":editForm:s_date_souhaite:s_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
+							</h:inputText>
 					</s:decorate></td>
 			</tr>
 		</table>

@@ -14,7 +14,9 @@
 			<td width="50%" valign="top">
 				<fieldset>
 					<legend> Identification </legend>
-					<ui:include src="../fields/_societe.xhtml" />
+					<ui:include src="../fields/_societe.xhtml">
+						<ui:param name="prefix" value="s" />
+					</ui:include>
 
 					<s:decorate template="../../layout/display.xhtml"
 						style="width:400px;">
@@ -37,53 +39,44 @@
 							value="#{editProspectManager.prospectDetail.heure}" />
 					</s:decorate>
 
-					<s:decorate template="../../layout/edit.xhtml">
-						<ui:define name="label">#{messages['prospect.natureClient']}</ui:define>
-						<h:selectOneMenu
-							value="#{editProspectManager.prospectDetail.natureClient}"
-							style="width:160px; height:20px;">
-							<f:ajax event="change" render="@form"></f:ajax>
-							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-							<f:selectItem itemValue="Particulier" itemLabel="Particulier" />
-							<f:selectItem itemValue="Etranger" itemLabel="Etranger" />
-							<f:selectItem itemValue="Ste France" itemLabel="Ste France" />
-						</h:selectOneMenu>
-					</s:decorate>
+					<ui:include src="../fields/_natureClient.xhtml">
+						<ui:param name="prefix" value="s" />
+					</ui:include>
 
-					<ui:include src="../fields/_typeFormation.xhtml" />
+					<ui:include src="../fields/_typeFormation.xhtml">
+						<ui:param name="prefix" value="s" />
+					</ui:include>
 
+					<ui:include src="../fields/_nbParticipants.xhtml">
+						<ui:param name="prefix" value="s" />
+					</ui:include>
 
-					<s:decorate template="../../layout/edit.xhtml" style="width:400px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.participant']}" />
-						</ui:define>
-						<h:inputText
-							value="#{editProspectManager.prospectDetail.nb_participants}">
-							<f:ajax event="change" render="@form"></f:ajax>
-						</h:inputText>
-					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:400px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.lieu']}" />
-						</ui:define>
-						<h:selectOneMenu
-							value="#{editProspectManager.prospect.prospectDetail.lieu}"
-							style="width:160px; height:20px;">
-							<a:ajax event="change" render="@form" />
-							<f:selectItem itemValue="" itemLabel="A définir" />
-							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-						</h:selectOneMenu>
-					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:400px;">
+					<a:outputPanel id="s_lieu">
+						<s:decorate template="../../layout/display.xhtml"
+							rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.lieu']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospect.prospectDetail.lieu}"
+								style="width:160px; height:20px;">
+								<a:ajax event="change" render=":editForm:f_lieu" />
+								<f:selectItem itemValue="" itemLabel="A définir" />
+								<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
+								<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
+							</h:selectOneMenu>
+						</s:decorate>
+					</a:outputPanel>
+					<s:decorate id="s_date_souhaite"
+						template="../../layout/display.xhtml" style="width:400px;">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateSouhait']}" />
 						</ui:define>
-						<h:inputText
+						<h:inputText id="s_date_souhaite_input"
 							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}">
-							<a:ajax event="change" render="@form" />
+							<a:ajax event="change"
+								render=":editForm:f_date_souhaite:f_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
 						</h:inputText>
 					</s:decorate>
 				</fieldset>

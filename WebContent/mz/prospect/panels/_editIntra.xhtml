@@ -31,7 +31,7 @@
 						<h:selectOneMenu
 							value="#{editProspectManager.prospect.informationIntra.statutIntra}"
 							style="width:110px; height:20px;">
-							<a:ajax event="change" render="statutIntra"/>
+							<a:ajax event="change" render="statutIntra" />
 							<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
 							<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
 							<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
@@ -123,23 +123,21 @@
 							</ui:define>
 							<h:inputText value="#{editProspectManager.prospect.ville}" />
 						</s:decorate></td>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:400px;">
-							<ui:define name="label">
-								<h:outputText value="#{messages['prospect.participant']}" />
-							</ui:define>
-							<h:inputText
-								value="#{editProspectManager.prospect.prospectDetail.nb_participants}" />
-						</s:decorate></td>
+					<td><ui:include src="../fields/_nbParticipants.xhtml">
+							<ui:param name="prefix" value="i" />
+						</ui:include></td>
 				</tr>
 				<tr>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:400px;">
+					<td><s:decorate id="i_date_souhaite"
+							template="../../layout/display.xhtml" style="width:400px;">
 							<ui:define name="label">
 								<h:outputText value="#{messages['prospect.dateSouhait']}" />
 							</ui:define>
-							<h:inputText
-								value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" />
+							<h:inputText id="i_date_souhaite_input"
+								value="#{editProspectManager.prospect.prospectDetail.date_souhaite}">
+								<a:ajax event="change"
+									render=":editForm:f_date_souhaite:f_date_souhaite_input :editForm:s_date_souhaite:s_date_souhaite_input" />
+							</h:inputText>
 						</s:decorate></td>
 				</tr>
 			</table>
@@ -283,7 +281,8 @@
 			rendered="#{('Annulé').equals(editProspectManager.prospect.informationIntra.statutIntra)}">
 			<rich:collapsiblePanel header="Informations à remplir : "
 				expanded="true" switchType="client">
-				<s:decorate template="../../layout/display.xhtml" style="width:700px;">
+				<s:decorate template="../../layout/display.xhtml"
+					style="width:700px;">
 					<center>
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.raisonPerte']}*" />
@@ -320,7 +319,7 @@
 							<center>
 								<h:selectOneMenu value="#{formation.formation}"
 									render="referencePanelModif">
-									<a:ajax event="change" render="referencePanelModif"/>
+									<a:ajax event="change" render="referencePanelModif" />
 									<s:selectItems value="#{formationsActives}" var="for"
 										label="#{for.reference}"
 										noSelectionLabel="Sélectionner une réference"

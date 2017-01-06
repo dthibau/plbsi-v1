@@ -9,12 +9,12 @@
 	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:p="http://java.sun.com/jsf/html">
 
-	<s:decorate template="../../layout/edit.xhtml" style="width:400px">
+	<s:decorate id="#{prefix}_typeFormation" template="../../layout/edit.xhtml" style="width:400px">
 		<ui:define name="label">#{messages['prospect.typeFormation']}</ui:define>
 		<h:selectOneMenu
 			value="#{editProspectManager.prospectDetail.typeFormation}"
 			style="width:160px; height:20px;">
-			<f:ajax event="change" render="@form"></f:ajax>
+			<f:ajax event="change" render=":editForm:s_typeFormation :editForm:f_typeFormation :editForm:f_lieu :editForm:s_lieu"></f:ajax>
 			<f:selectItem itemValue="" itemLabel="-- Choisir --" />
 			<f:selectItem itemValue="INTER" itemLabel="INTER" />
 			<f:selectItem itemValue="INTRA" itemLabel="INTRA" />

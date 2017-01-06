@@ -9,13 +9,13 @@
 	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:p="http://java.sun.com/jsf/html">
 
-	<s:decorate template="../../layout/edit.xhtml" style="width:500px;">
+	<s:decorate id="#{prefix}_societe" template="../../layout/edit.xhtml" style="width:500px;">
 		<ui:define name="label">
 			<h:outputText value="#{messages['prospect.nomEntreprise']}" />
 		</ui:define>
-		<h:inputText value="#{editProspectManager.prospect.societe}"
+		<h:inputText id="#{prefix}_societe_input" value="#{editProspectManager.prospect.societe}"
 			style="width:280px;" >
-			<f:ajax event="change" render="@form"></f:ajax>
+			<f:ajax event="change" render=":editForm:s_societe:s_societe_input :editForm:fi_societe:fi_societe_input"></f:ajax>
 		</h:inputText>
 	</s:decorate>
 

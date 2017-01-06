@@ -98,7 +98,7 @@ public class DevisManager {
 		devis = new Devis();
 		devis.setAuteur(loggedUser);
 		devis.setFormation(formation);
-//		devis.addSession(new DevisSession());
+		devis.addSession(new DevisSession());
 	}
 	
 	/**

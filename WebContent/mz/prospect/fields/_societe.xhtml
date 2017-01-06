@@ -14,7 +14,9 @@
 			<h:outputText value="#{messages['prospect.nomEntreprise']}" />
 		</ui:define>
 		<h:inputText value="#{editProspectManager.prospect.societe}"
-			style="width:280px;" />
+			style="width:280px;" >
+			<f:ajax event="change" render="@form"></f:ajax>
+		</h:inputText>
 	</s:decorate>
 
 

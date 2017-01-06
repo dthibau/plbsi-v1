@@ -38,8 +38,6 @@ import com.plb.model.event.IntraModificationEvent;
 import com.plb.model.event.IntraNoteEvent;
 import com.plb.model.event.IntraValidationEvent;
 import com.plb.model.event.NotificationIntervenantsEvent;
-import com.plb.model.event.ProspectEnvoiMailEvent;
-import com.plb.model.event.ProspectModificationEvent;
 import com.plb.model.event.TarifUpdatedEvent;
 import com.plb.model.intervenant.Intervenant;
 import com.plb.si.manager.ApplicationManager;

@@ -31,8 +31,7 @@
 						<h:selectOneMenu
 							value="#{editProspectManager.prospect.informationIntra.statutIntra}"
 							style="width:110px; height:20px;">
-							<a:ajax event="change" render="statutIntra"
-								oncomplete="#{rich:component('spinner')}.stop()" />
+							<a:ajax event="change" render="statutIntra"/>
 							<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
 							<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
 							<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
@@ -307,8 +306,7 @@
 					<s:decorate template="../../layout/display.xhtml">
 						<a:commandButton value="Ajouter une formation"
 							action="#{editProspectManager.addReferenceForModif()}"
-							execute="@this referencePanelModif" render="referencePanelModif"
-							oncomplete="#{rich:component('spinner')}.stop()">
+							execute="@this referencePanelModif" render="referencePanelModif">
 							<f:param name="cid" value="#{conversation.id}" />
 						</a:commandButton>
 					</s:decorate>
@@ -322,8 +320,7 @@
 							<center>
 								<h:selectOneMenu value="#{formation.formation}"
 									render="referencePanelModif">
-									<a:ajax event="change" render="referencePanelModif"
-										oncomplete="#{rich:component('spinner')}.stop()" />
+									<a:ajax event="change" render="referencePanelModif"/>
 									<s:selectItems value="#{formationsActives}" var="for"
 										label="#{for.reference}"
 										noSelectionLabel="Sélectionner une réference"
@@ -379,8 +376,7 @@
 							<center>
 								<a:commandButton value="Supprimer"
 									action="#{editProspectManager.removeReferenceForModif(index)}"
-									execute="@this" render="referencePanelModif"
-									oncomplete="#{rich:component('spinner')}.stop()">
+									execute="@this" render="referencePanelModif">
 									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</center>
@@ -392,8 +388,7 @@
 						<a:commandButton value="Ajouter un Spé"
 							action="#{editProspectManager.addSpe()}"
 							execute="@this referencePanelModifSpe"
-							render="referencePanelModifSpe"
-							oncomplete="#{rich:component('spinner')}.stop()">
+							render="referencePanelModifSpe">
 							<f:param name="cid" value="#{conversation.id}" />
 						</a:commandButton>
 					</s:decorate>
@@ -455,8 +450,7 @@
 							<center>
 								<a:commandButton value="Supprimer"
 									action="#{editProspectManager.removeSpe(index)}"
-									execute="@this" render="referencePanelModifSpe"
-									oncomplete="#{rich:component('spinner')}.stop()">
+									execute="@this" render="referencePanelModifSpe">
 									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</center>
@@ -472,7 +466,7 @@
 		<center>
 			<a:commandButton value="Ajouter une note"
 				action="#{editProspectManager.addNote()}" execute="@this notePerso2"
-				render="notePerso2" oncomplete="#{rich:component('spinner')}.stop()">
+				render="notePerso2">
 				<f:param name="cid" value="#{conversation.id}" />
 			</a:commandButton>
 			<rich:dataTable value="#{editProspectManager.messages}" var="message"

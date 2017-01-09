@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="124"/>
-	<property name="ireport.y" value="872"/>
+	<property name="ireport.x" value="196"/>
+	<property name="ireport.y" value="815"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -513,7 +513,7 @@
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<text><![CDATA[INTER ENTREPRISE]]></text>
+				<text><![CDATA[INTER-ENTREPRISES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="98" width="423" height="38" isPrintWhenDetailOverflows="true" uuid="593833af-2446-41c8-88a3-c48b4a40fa6d"/>
@@ -524,7 +524,7 @@
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<text><![CDATA[Les formations que nous vous proposons ci-dessous sont en inter entreprise. Les participants de sociétés différentes participent ensemble à la même formation]]></text>
+				<text><![CDATA[Les formations que nous vous proposons ci-dessous sont en inter-entreprises. Les participants de sociétés différentes participent ensemble à la même formation]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="titleCol" x="0" y="144" width="183" height="34" uuid="77ba174b-7274-4402-8763-28d57536c066"/>
@@ -675,7 +675,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="184" splitType="Stretch">
+		<band height="138" splitType="Stretch">
 			<staticText>
 				<reportElement style="legend" x="0" y="1" width="555" height="16" uuid="58dc0270-502a-48b8-b7ba-67a9e7d1aa00"/>
 				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes]]></text>
@@ -702,41 +702,34 @@
 "Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
 + "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="7" y="149" width="540" height="32" uuid="064cfd2c-6986-4e30-a92a-21fcd4643c3d"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[PLB Consultant a obtenu le label OPQF qui garantit la qualité de nos actions de formation continue en conformité avec les nouvelles exigences du Code du travail fixées par le décret n°2015-790 du 30 juin 2015. Le label OPQF est l’une des certifications et labels « généralistes » identifiés dans la liste CNEFOP.]]></text>
-			</staticText>
-			<image>
-				<reportElement x="252" y="116" width="50" height="33" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7"/>
-				<imageExpression><![CDATA["resources/opqf.png"]]></imageExpression>
-			</image>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="50">
+		<band height="56">
 			<staticText>
-				<reportElement style="adresse" x="0" y="36" width="555" height="11" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[SARL au capital de 100 000 € - RCS Nanterre B 421 694 779 - APE 6202A - Siret : 42169477900040 - Siren : 421 694 779 - N° Déclaration d'activité : 119 211 300 92]]></text>
+				<reportElement style="adresse" x="0" y="36" width="471" height="11" forecolor="#0000FF" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[ RCS Nanterre B 421 694 779 - APE 6202A - Siret : 42169477900040 - N° Déclaration d'activité : 119 211 300 92]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="adresse" x="0" y="22" width="555" height="12" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - Site : www.plb.fr - Email plb@plb.fr]]></text>
+				<reportElement style="adresse" x="0" y="22" width="471" height="12" forecolor="#0000FF" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - Site : www.plb.fr - Email plb@plb.fr - SARL au capital de 100 000 €]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="adresse" x="0" y="2" width="555" height="17" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
+				<reportElement style="adresse" x="0" y="2" width="555" height="17" forecolor="#0000FF" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
 				<box topPadding="2">
 					<topPen lineWidth="1.5"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
+				<textElement textAlignment="Left">
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PLB Consultant - 22/24 rue du Président Wilson - 92 300 Levallois-Perret]]></text>
 			</staticText>
+			<image>
+				<reportElement x="503" y="19" width="50" height="33" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7"/>
+				<imageExpression><![CDATA["resources/opqf.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageFooter>
 </jasperReport>

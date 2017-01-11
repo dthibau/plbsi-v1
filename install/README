@@ -1,0 +1,13 @@
+Mise en place BD
+----------------
+
+Script user.sql (création base + user)
+
+Mise en place Datasource Jboss
+------------------------------
+
+Copier le répertoire mysql dans $JBOSS_HOME/modules
+
+Démarrer Jboss
+
+Exécuter le script CLI

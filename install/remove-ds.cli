@@ -1,0 +1,7 @@
+batch
+
+data-source disable --name=plbsiDS
+data-source remove --name=plbsiDS 
+/subsystem=datasources/jdbc-driver=mysql:remove
+
+run-batch

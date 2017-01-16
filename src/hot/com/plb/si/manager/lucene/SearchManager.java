@@ -127,6 +127,7 @@ public class SearchManager implements Serializable {
 	public List<FormationDto> getResults() {
 		// cidSearch = Conversation.instance().getId();
 		if (needPerformQuery) {
+			log.debug("Executing new Query !!" );
 			entityManager.clear();
 			try {
 				queryResults = _performQuery(false);
@@ -142,6 +143,7 @@ public class SearchManager implements Serializable {
 			dtos = null;
 		}
 		if (needFilter) {
+			log.debug("Executing new Filtering !!" );
 			results = _filterResults(queryResults, false);
 			if (categorie != null) {
 				Collections.sort(results, new RangCategorieComparator());
@@ -152,6 +154,7 @@ public class SearchManager implements Serializable {
 			dtos = null;
 		}
 		if (dtos == null) {
+			log.debug("Building DTOS !!" );
 			dtos = FormationDto.buildDtos(results, tarifsInter);
 		}
 //		realSize = dtos.size();

@@ -32,6 +32,7 @@ import com.plb.model.Categorie;
 import com.plb.model.Filiere;
 import com.plb.model.FilierePrincipaleComparator;
 import com.plb.model.Formation;
+import com.plb.model.FormationPartenaire;
 import com.plb.model.Partenaire;
 import com.plb.model.RangCategorieComparator;
 import com.plb.model.RangFiliereComparator;
@@ -423,7 +424,7 @@ public class SearchManager implements Serializable {
 			if (categorie != null && !f.getCategorie().equals(categorie)) {
 				continue;
 			}
-			if (partenaire != null && !plbOnly && !f.contains(partenaire)) {
+			if (partenaire != null && !plbOnly && !_containsPartenaire(f, partenaire)) {
 				continue;
 			}
 			if (plbOnly && !f.getFormationsPartenaire().isEmpty()) {
@@ -452,6 +453,18 @@ public class SearchManager implements Serializable {
 			ret.add(f);
 		}
 		return ret;
+	}
+	
+	private boolean _containsPartenaire(Formation formation, Partenaire partenaire) {
+		
+		List<FormationPartenaire> fps = applicationManager.getFormationsPartenaire(formation);
+		
+		for (FormationPartenaire fp : fps ) {
+			if (fp.getPartenaire().equals(partenaire)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 

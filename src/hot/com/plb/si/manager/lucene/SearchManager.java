@@ -220,6 +220,8 @@ public class SearchManager implements Serializable {
 	}
 	public void filter() {
 		needFilter = true;
+		if ( pagination ) 
+			needPerformQuery = true;
 	}
 
 	public void filter(ValueChangeEvent evt) {

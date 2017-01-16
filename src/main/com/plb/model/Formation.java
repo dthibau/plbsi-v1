@@ -236,9 +236,8 @@ public class Formation implements Serializable, Comparable<Formation>{
 	@Transient
 	public boolean contains(Partenaire partenaire) {
 		// Force loading of a lazy association
-		System.out.println("Formations Partenaires " + getFormationsPartenaire());
-		System.out.println("Formations Partenaires var" + formationsPartenaire);
-		for (FormationPartenaire fp : getFormationsPartenaire() ) {
+		List<FormationPartenaire> fps = getFormationsPartenaire();
+		for (FormationPartenaire fp : fps ) {
 			if (fp.getPartenaire().equals(partenaire)) {
 				return true;
 			}

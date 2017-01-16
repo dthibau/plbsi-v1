@@ -57,7 +57,7 @@ public class SearchFormation {
 		SearchFactory searchFactory = entityManager.getSearchFactory();
 		QueryParser parser = new QueryParser(Version.LUCENE_35, "reference",
 				searchFactory.getAnalyzer(Formation.class));
-		searchWord = searchWord.replace(":", "").replace("^", "").replace("~", "").replace(" -", " ");
+		searchWord = searchWord.replace(":", "").replace("^", "").replace("~", "").replace(" -", " ").replace("(", "").replace(")", "");
 		StringBuffer sbf = new StringBuffer();
 		String[] tokens = searchWord.split(" ");
 		boolean bFirst = true;

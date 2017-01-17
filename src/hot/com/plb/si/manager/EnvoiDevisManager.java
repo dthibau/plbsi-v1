@@ -164,7 +164,8 @@ public class EnvoiDevisManager {
 
 	public void send() {
 
-		email.setRecipient(prospect.getEmail());
+//		email.setRecipient(prospect.getEmail());
+		email.setRecipient("david.thibau@gmail.com");
 		email.setAttention(prospect.getNomComplet());
 		notificationService.sendDevis(email, loggedUser);
 		prospect.getProspectDetail().setDatedevis(new Date());

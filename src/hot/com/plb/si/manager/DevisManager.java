@@ -35,6 +35,7 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
+import org.jboss.seam.annotations.RaiseEvent;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.log.Log;
 
@@ -113,18 +114,26 @@ public class DevisManager {
 		devis.setAuteur(loggedUser);
 		
 		if ( formation != null ) {
-			devis.setFormation(formation);
-			// Chercher une session dans le prospect
-			List<SessionOrganismeDto> listeSession = formation.getNextSessionsOrganismeDto();
+			devis.setFormation(formation);	
 			DevisSession devisSession = new DevisSession();
-			devisSession.setNbParticipants(prospect.getProspectDetail()
-					.getNb_participants());
-			for (int i = 0; i < listeSession.size(); i++) {
-				if (listeSession.get(i).getSession().toString()
-						.equals(prospect.getProspectDetail().getDate())) {
-					devisSession.setSession(listeSession.get(i).getSession());
+			if ( prospect.getProspectDetail().getNb_participants() != null ) {
+				devis.setNbParticipants(prospect.getProspectDetail().getNb_participants());				
+				devisSession.setNbParticipants(prospect.getProspectDetail().getNb_participants());
+			} 
+			if ( prospect.getProspectDetail().getDate() != null ) {
+				String debut = prospect.getProspectDetail().getDate().substring(3,13);
+				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+				List<SessionOrganismeDto> sessions = formation.getNextSessionsOrganismeDto();
+				for (SessionOrganismeDto sessionOrganisme : sessions ) {
+					if ( df.format(sessionOrganisme.getSession().getDebut()).equals(debut) ) {
+						devisSession.setSession(sessionOrganisme.getSession());
+						break;
+					}
 				}
 			}
+			
+			devis.addSession(devisSession);
+			
 		}
 	}
 
@@ -140,10 +149,19 @@ public class DevisManager {
 		return formation.getIdFormation() != 0 ? devisDao.findLast(loggedUser,
 				formation) : new ArrayList<Devis>();
 	}
+	
+	public Devis getLastDevisProspect(Prospect prospect) {
+		log.debug(loggedUser + " getLastDevisProspect()");
+		return devisDao.findLastByProspect(prospect);
+	}
 
 	public void addSession() {
 		log.debug(loggedUser + " addSession()");
-		devis.addSession(new DevisSession());
+		DevisSession devisSession = new DevisSession();
+		if ( !devis.getSessions().isEmpty() ) {
+			devisSession.setNbParticipants(devis.getSessions().get(devis.getSessions().size()-1).getNbParticipants());
+		}
+		devis.addSession(devisSession);
 	}
 
 	public void removeSession(int index) {
@@ -151,6 +169,7 @@ public class DevisManager {
 		devis.getSessions().remove(index);
 	}
 
+	@RaiseEvent("devisGenerated")
 	public void generate() throws ServletException {
 		log.debug(loggedUser + " generate() ");
 		if (!entityManager.contains(devis)) {
@@ -167,10 +186,15 @@ public class DevisManager {
 		parametersMap.put("idDevis", devis.getId());
 		parametersMap.put("noDevis", _getNo(devis));
 		if(formation == null){
-			formation = devis.getFormation();
+			formation = devis.getFormation(); // devis.getFormation may also be NULL 
 		}
-		parametersMap.put("tarif", _getPrix(formation));
-		parametersMap.put("sessions", _getSessions(devis));
+		if ( formation == null ) {
+			parametersMap.put("tarif",0f);
+			parametersMap.put("sessions", new ArrayList<String>());
+		} else {
+			parametersMap.put("tarif", _getPrix(formation));
+			parametersMap.put("sessions", _getSessions(devis));
+		}
 		parametersMap.put("etranger", devis.getEtranger());
 		parametersMap.put("particulier", devis.getParticulier());
 		_serveDOC(devisReport, parametersMap);
@@ -283,6 +307,7 @@ public class DevisManager {
 	}
 
 	private float _getPrix(Formation formation) {
+
 		if (formation.getCodeTarifInter() == null
 				|| formation.getCodeTarifInter().equals("")
 				|| formation.getCodeTarifInter().equals("EO")) {

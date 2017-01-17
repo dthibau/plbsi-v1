@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.plb.model.Formation;
+import com.plb.model.Prospect;
 import com.plb.model.devis.Devis;
 import com.plb.model.directory.Account;
 
@@ -42,6 +43,24 @@ public class DevisDao {
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Devis> findByProspect(Prospect prospect) {
+		Query query = entityManager.createQuery("from Devis d where d.prospect=:prospect order by d.id desc");
+		query.setParameter("prospect", prospect);
+		
+		return query.getResultList();
+	}
+	
+	public Devis findLastByProspect(Prospect prospect) {
+		List<Devis> devis = findByProspect(prospect);
+		
+		if ( devis.isEmpty() ) {
+			return null;
+		} else {
+			return devis.get(0);
+		}
+
+	}
 	
 	
 }

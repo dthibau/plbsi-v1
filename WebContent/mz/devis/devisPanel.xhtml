@@ -10,8 +10,8 @@
 
 
 
-	<rich:popupPanel id="devisPopup" modal="true" autosized="true"
-		resizeable="false">
+	<rich:popupPanel id="devisPopup" modal="true" width="600" height="500"
+		resizeable="true">
 		<f:facet name="header">
 			<h:outputText rendered="#{devisManager.new}" value="Nouveau devis" />
 			<h:outputText rendered="#{!devisManager.new}"
@@ -74,54 +74,67 @@
 					<h:selectBooleanCheckbox value="#{devisManager.devis.etranger}" />
 				</s:decorate>
 
-				<h:outputText value="Pas de formation associée"
-					rendered="#{devisManager.devis.formation == null}" />
+				<a:outputPanel rendered="#{devisManager.devis.formation == null}"
+					layout="block">
+					<p align="center">
+						<h:outputText value="Pas de formation associée !"
+							styleClass="errors" />
+					</p>
+				</a:outputPanel>
 				<a:outputPanel rendered="#{devisManager.devis.formation != null}">
 					<fieldset>
-					<legend> Formation :
-					#{devisManager.devis.formation.reference} </legend>
+						<legend> Formation :
+							#{devisManager.devis.formation.reference} </legend>
 
-					<s:decorate template="../layout/display.xhtml">
+						<s:decorate template="../layout/display.xhtml">
 
-						<a:commandButton value="Ajouter une session"
-							action="#{devisManager.addSession}" execute="@this sessionsPanel"
-							render="sessionsPanel">
-							<f:param name="cid" value="#{conversation.id}" />
-						</a:commandButton>
-					</s:decorate>
-					<rich:panel id="sessionsPanel">
+							<a:commandButton value="Ajouter une session"
+								action="#{devisManager.addSession}"
+								execute="@this sessionsPanel" render="sessionsPanel">
+								<f:param name="cid" value="#{conversation.id}" />
+							</a:commandButton>
+						</s:decorate>
+						<rich:panel id="sessionsPanel">
 
-						<rich:dataTable value="#{devisManager.devis.sessions}"
-							var="devisSession" rowKeyVar="index">
-							<rich:column>
-								<f:facet name="header">
-									<h:outputText value="#{messages['devis.sessions']}" />
-								</f:facet>
-								<h:selectOneMenu value="#{devisSession.session}">
-									<s:selectItems
-										value="#{devisManager.devis.formation.nextSessionsOrganismeDto}"
-										var="_session" label="#{_session}"
-										noSelectionLabel="Sélectionner une session"
-										itemValue="#{_session.session}" />
-									<s:convertEntity />
-								</h:selectOneMenu>
-							</rich:column>
-							<rich:column>
-								<f:facet name="header">
-									<h:outputText value="#{messages['devis.nbParticipants']}" />
-								</f:facet>
-								<h:inputText value="#{devisSession.nbParticipants}" />
-							</rich:column>
-							<rich:column>
-								<f:facet name="header"></f:facet>
-								<a:commandButton value="Supprimer"
-									action="#{devisManager.removeSession(index)}" execute="@this"
-									render="sessionsPanel">
-									<f:param name="cid" value="#{conversation.id}" />
-								</a:commandButton>
-							</rich:column>
-						</rich:dataTable>
-					</rich:panel>
+							<rich:dataTable value="#{devisManager.devis.sessions}"
+								var="devisSession" rowKeyVar="index">
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="#{messages['devis.sessions']}" />
+									</f:facet>
+									<h:selectOneMenu value="#{devisSession.session}">
+										<s:selectItems
+											value="#{devisManager.devis.formation.nextSessionsOrganismeDto}"
+											var="_session" label="#{_session}"
+											noSelectionLabel="Sélectionner une session"
+											itemValue="#{_session.session}" />
+										<s:convertEntity />
+									</h:selectOneMenu>
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="#{messages['devis.nbParticipants']}" />
+									</f:facet>
+									<h:inputText value="#{devisSession.nbParticipants}" />
+								</rich:column>
+								<rich:column>
+									<f:facet name="header"></f:facet>
+									<a:commandButton value="Supprimer"
+										action="#{devisManager.removeSession(index)}" execute="@this"
+										render="sessionsPanel">
+										<f:param name="cid" value="#{conversation.id}" />
+									</a:commandButton>
+								</rich:column>
+							</rich:dataTable>
+						</rich:panel>
+
+						<a:outputPanel
+							rendered="#{devisManager.devis.prospect != null and devisManager.devis.prospect.prospectDetail.date_souhaite != null}">
+							<p>
+								<em>Dates souhaitées :
+									<b>#{devisManager.devis.prospect.prospectDetail.date_souhaite}</b></em>
+							</p>
+						</a:outputPanel>
 
 					</fieldset>
 				</a:outputPanel>
@@ -140,12 +153,17 @@
 
 				<br />
 
-				<input type="hidden" name="cid" value="#{conversation.id}" />
-				<a:commandButton value="Annuler"
-					onclick="#{rich:component('devisPopup')}.hide();" />
-				<h:commandButton action="#{devisManager.generate}"
-					value="#{messages['action.generer']}"
-					onclick="#{rich:component('devisPopup')}.hide();" />
+				<center>
+					<input type="hidden" name="cid" value="#{conversation.id}" />
+					<a:commandButton value="Annuler"
+						onclick="#{rich:component('devisPopup')}.hide();"
+						style="width:120px;height:35px;" />
+					&nbsp;&nbsp;
+					<h:commandButton action="#{devisManager.generate}"
+						value="#{messages['action.generer']}"
+						onclick="#{rich:component('devisPopup')}.hide();"
+						style="width:120px;height:35px;" />
+				</center>
 			</a:outputPanel>
 		</h:form>
 

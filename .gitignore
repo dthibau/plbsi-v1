@@ -5,6 +5,10 @@
 build/
 bin/
 
+#Ant
+dist/
+exploded-archives/
+
 # JMeter
 *.log
 jmeter/apache-jmeter-2.11/docs/

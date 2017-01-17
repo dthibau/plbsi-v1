@@ -73,7 +73,8 @@ public class Devis implements Serializable {
 	public Devis(Prospect prospect) {
 		this.prospect = prospect;
 		this.client = prospect.getSociete();
-		this.contactClient = prospect.getNom();
+		this.contactClient = prospect.getNomComplet();
+		
 		if (prospect.getProspectDetail() != null) {
 			this.remise = prospect.getProspectDetail().getRemise();
 			if ("Particulier".equals(prospect.getProspectDetail()

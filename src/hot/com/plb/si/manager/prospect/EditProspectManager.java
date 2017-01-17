@@ -16,6 +16,7 @@ import org.jboss.seam.annotations.FlushModeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.annotations.Observer;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.core.Events;
@@ -34,6 +35,7 @@ import com.plb.model.ProspectDetail;
 import com.plb.model.ProspectFormation;
 import com.plb.model.ReferenceSpe;
 import com.plb.model.TypeContact;
+import com.plb.model.devis.Devis;
 import com.plb.model.directory.Account;
 import com.plb.model.event.Event;
 import com.plb.model.event.IntraModificationEvent;
@@ -44,6 +46,7 @@ import com.plb.si.dto.ProspectDto;
 import com.plb.si.manager.ApplicationManager;
 import com.plb.si.manager.DevisManager;
 import com.plb.si.service.AccountDao;
+import com.plb.si.service.DevisDao;
 import com.plb.si.service.EventDao;
 import com.plb.si.service.FormationDao;
 import com.plb.si.service.MessageDao;
@@ -189,6 +192,8 @@ public class EditProspectManager implements Serializable {
 	// Attribut pour savoir si l'on affiche le calendrier pour la date d'envoie
 	// du devis
 	private boolean envoye;
+	
+	private Devis lastGeneratedDevis;
 
 	// Attribut pour gérer l'envoie de mail
 	private String ancienCommercial;
@@ -207,13 +212,12 @@ public class EditProspectManager implements Serializable {
 
 	private String statutIntraTemp;
 
-	private Date lastSearchDate;
-
 	AccountDao accountDao;
 	FormationDao formationDao;
 	ProspectDao prospectDao;
 	EventDao eventDao;
 	MessageDao messageDao;
+	DevisDao devisDao;
 
 	List<Event> historique;
 
@@ -231,6 +235,7 @@ public class EditProspectManager implements Serializable {
 		formationDao = new FormationDao(entityManager);
 		eventDao = new EventDao(entityManager);
 		messageDao = new MessageDao(entityManager);
+		devisDao = new DevisDao(entityManager);
 
 		listeCommerciale = accountDao.findAllCommercialeActive();
 
@@ -261,7 +266,6 @@ public class EditProspectManager implements Serializable {
 				+ prospect.getNom());
 		if (prospect.getProspectDetail() == null) {
 			prospect.setProspectDetail(new ProspectDetail());
-
 			// On renseigne le commercial associé au prospect pour savoir s'il a
 			// été modifié
 			ancienCommercial = "";
@@ -270,15 +274,16 @@ public class EditProspectManager implements Serializable {
 			// On renseigne le commercial associé au prospect pour savoir s'il a
 			// été modifié
 			ancienCommercial = prospect.getProspectDetail().getCommercial();
-			// if (ancienCommercial == null) {
-			// ancienCommercial = "";
-			// }
+
 			if (prospect.getProspectDetail().getDatedevis() == null) {
 				envoye = false;
 			} else {
 				envoye = true;
 			}
 		}
+		// Last Devis généré
+		_setLastGeneratedDevis();
+		
 
 		messages = messageDao.findAllOrderedByDate(prospect);
 
@@ -847,6 +852,10 @@ public class EditProspectManager implements Serializable {
 		return historique;
 	}
 
+	@Observer("devisGenerated")
+	public void _setLastGeneratedDevis() {
+		lastGeneratedDevis = devisDao.findLastByProspect(prospect);
+	}
 	public Prospect getProspect() {
 		return prospect;
 	}
@@ -1184,6 +1193,14 @@ public class EditProspectManager implements Serializable {
 
 	public List<Account> getListeCommerciale() {
 		return listeCommerciale;
+	}
+
+	public Devis getLastGeneratedDevis() {
+		return lastGeneratedDevis;
+	}
+
+	public void setLastGeneratedDevis(Devis lastGeneratedDevis) {
+		this.lastGeneratedDevis = lastGeneratedDevis;
 	}
 
 }

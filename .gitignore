@@ -7,6 +7,10 @@ bin/
 dist/
 exploded-archives
 
+#Ant
+dist/
+exploded-archives/
+
 # JMeter
 *.log
 jmeter/apache-jmeter-2.11/docs/

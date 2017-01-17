@@ -1,0 +1,1 @@
+alter table devis MODIFY formation_id_formation int(10) unsigned NULL;

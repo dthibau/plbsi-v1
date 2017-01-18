@@ -65,6 +65,8 @@ public class EnvoiDevisManager {
 	FormationDao formationDao;
 	List<ProspectFormation> formationsDevis = null;
 
+	private boolean envoiOk=false;
+	
 	@Create
 	public void init() {
 		formationDao = new FormationDao(entityManager);
@@ -200,7 +202,7 @@ public class EnvoiDevisManager {
 	}
 
 	public String getLieu() {
-		return prospect.getProspectDetail().getLieu().substring(0, 1).toLowerCase() + prospect.getProspectDetail().getLieu().substring(1);
+		return prospect.getProspectDetail() != null && prospect.getProspectDetail().getLieu() != null ? prospect.getProspectDetail().getLieu().substring(0, 1).toLowerCase() + prospect.getProspectDetail().getLieu().substring(1) : "";
 	}
 	
 	public String getDureeSouhaitee() {
@@ -269,7 +271,7 @@ public class EnvoiDevisManager {
 		return "";
 	}
 	
-	public void send() {
+	public String send() {
 
 //		email.setRecipient(prospect.getEmail());
 		email.setRecipient("david.thibau@gmail.com");
@@ -281,6 +283,10 @@ public class EnvoiDevisManager {
 		entityManager.persist(email);
 		entityManager.persist(prospectSendEvent);
 		
+		envoiOk=true;
+		
+		return "/mz/devis/ackEnvoiDevis.xhml";
+		
 	}
 
 	private List<Fichier> _initAttachments() throws IOException {
@@ -290,7 +296,7 @@ public class EnvoiDevisManager {
 			Fichier planFormation = new Fichier();
 			planFormation.setContentType("application/pdf");
 			planFormation.setName("Plan de formation de "
-					+ pf.getFormation().getReference());
+					+ pf.getFormation().getReference()+".pdf");
 			byte[] data = PlbUtil.sendGetAsBytes(pf.getFormation().getUrlPdf());
 			planFormation.setData(data);
 			planFormation.setLength(data.length);
@@ -327,4 +333,14 @@ public class EnvoiDevisManager {
 		return prospectFormation;
 		
 	}
+
+	public boolean isEnvoiOk() {
+		return envoiOk;
+	}
+
+	public void setEnvoiOk(boolean envoiOk) {
+		this.envoiOk = envoiOk;
+	}
+	
+	
 }

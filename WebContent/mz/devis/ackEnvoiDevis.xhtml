@@ -1,0 +1,33 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j"
+	template="../layout/template_bare.xhtml">
+
+	<ui:define name="body">
+
+
+		<p style="font-size: 24px;" align="center">
+			<h:messages errorClass="error" infoClass="info" />
+		</p>
+
+
+		<a:outputPanel rendered="#{envoiDevisManager.envoiOk}">
+			<p style="font-size: 24px;" align="center">
+				Votre fenêtre va se fermer automatiquement et la liste des prospects
+				va se recharger<br />
+				<br /> Bonne chance pour votre devis !
+			</p>
+				<script>
+setTimeout(function(){ window.opener.location.reload(); window.close();}, 3000);
+</script>
+		</a:outputPanel>
+
+	</ui:define>
+
+</ui:composition>

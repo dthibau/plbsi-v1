@@ -110,10 +110,9 @@
 				<input type="hidden" name="cid" value="#{conversation.id}" />
 
 <center>
-				<a:commandButton value="Envoyer"
+				<h:commandButton value="Envoyer"
 					action="#{envoiDevisManager.send}"
-					oncomplete="window.close();"
-					style="width:100px;height:30px;" />
+					style="width:100px;height:30px;"/>
 				&nbsp;&nbsp;
 				<a:commandButton value="Annuler"
 					onclick="window.close();"
@@ -121,7 +120,21 @@
 			</center>
 			</a:outputPanel>
 		</h:form>
-
+<a:status name="envoiStatus">
+                        <f:facet name="start">
+                        
+                            <rich:popupPanel id="statusEnvoiPopup" modal="true" autosized="true" resizeable="false">
+        <f:facet name="header">
+            <h:outputText value="Envoi du devis en cours" />
+        </f:facet>
+        <p style="font-size:18px;" align="center"> L'envoi de mail est en cours.</p>
+ 
+        <p style="font-size:18px;" align="center">
+            Lorsque le mail sera envoyé, cette fenêtre se fermera automatiquement.<br/>Bonne chance pour votre devis !
+        </p>
+    </rich:popupPanel>
+                        </f:facet>
+                    </a:status>
 	</ui:define>
 
 </ui:composition>

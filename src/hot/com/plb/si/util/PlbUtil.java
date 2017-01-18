@@ -221,11 +221,6 @@ public class PlbUtil {
 					+ "<br/>");
 		}
 
-		// if ( !PlbUtil.identicalList(oldFormation.getSessions(),
-		// newFormation.getSessions()) ) {
-		// sbf.append(Labels.getString("formation.sessions") +
-		// " : "+oldFormation.getSessions()+"->"+newFormation.getSessions());
-		// }
 		return sbf.toString();
 	}
 

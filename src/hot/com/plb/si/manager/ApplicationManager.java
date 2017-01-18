@@ -176,6 +176,7 @@ public class ApplicationManager implements Serializable {
 		typesContact = null;
 		typesContactSi = null;
 		typesContactWeb = null;
+		emailTemplates = null;
 		refreshFormations();
 	}
 

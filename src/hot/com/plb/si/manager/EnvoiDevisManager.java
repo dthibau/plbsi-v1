@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
@@ -303,10 +304,10 @@ public class EnvoiDevisManager {
 			return prospect.getFormations();
 		} else { // Inter
 			List<ProspectFormation> ret = new ArrayList<ProspectFormation>();
-			if (prospect.getReference() != null) {
+			if (prospect.getReference() != null && prospect.getReference().length() > 0 ) {
 				ret.add(_constructProspectFormation(prospect.getReference()));
 			}
-			if (prospect.getProspectDetail().getReferenceBis() != null) {
+			if (prospect.getProspectDetail().getReferenceBis() != null && prospect.getProspectDetail().getReferenceBis().length() > 0) {
 				ret.add(_constructProspectFormation(prospect.getProspectDetail().getReferenceBis()));
 			}
 			return ret;
@@ -315,6 +316,7 @@ public class EnvoiDevisManager {
 	
 	private ProspectFormation _constructProspectFormation(String reference) {
 		log.debug("Construct Formation for "+reference);
+
 		Formation formation = formationDao.findByReference(reference);
 		ProspectFormation prospectFormation = new ProspectFormation();
 		prospectFormation.setFormation(formation);
@@ -323,5 +325,6 @@ public class EnvoiDevisManager {
 		prospectFormation.setDureeVoulu(""+formation.getDuree());
 		prospectFormation.setSession(prospect.getProspectDetail().getDate());	
 		return prospectFormation;
+		
 	}
 }

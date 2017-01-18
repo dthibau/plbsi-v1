@@ -6,8 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:plb="http://plb.fr/components"
-	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j"
+	template="../layout/template.xhtml">
 
 	<ui:define name="body">
 		<h:form>
@@ -17,7 +17,7 @@
 						<h:outputText value="#{messages['emailTemplate.subject']}" />
 					</ui:define>
 					<h:inputText required="true"
-						value="#{emailTemplateManager.template.subject}" size="80"/>
+						value="#{emailTemplateManager.template.subject}" size="80" />
 				</s:decorate>
 
 				<s:decorate template="../layout/edit.xhtml">
@@ -29,23 +29,29 @@
 
 				</s:decorate>
 
-				<br />
-				<s:decorate template="../layout/display.xhtml">
+				
+					<s:decorate template="../layout/display.xhtml">
 Vous pouvez utiliser comme champs dynamique :
-<ul>
-					<li>${'#{'}envoiDevisManager.formations${'}'} : La référence d'une formation</li>
-					<li>${'#{'}prospect.adresse${'}'} : L'adresse du prospect</li>
-					<li>${'#{'}prospect.pays${'}'} : Pays du prospect</li>
-					<li>${'#{'}prospect.cp${'}'} : Code postal du prospect</li>
-					</ul>
+<ul style="font-size: 10px;line-height: 12px">
+							<li><b>${'#{'}envoiDevisManager.formations${'}'}</b> : Le libellé des formations concernées</li>
+							<li><b>${'#{'}envoiDevisManager.participants${'}'}</b> : Le nombre de particpants pour les formations concernées</li>
+							<li><b>${'#{'}envoiDevisManager.lieu${'}'}</b> : Le lieu des formations concernées</li>
+							<li><b>${'#{'}envoiDevisManager.duree${'}'}</b> : Les durées des formations (en jours et heures)</li>
+							<li><b>${'#{'}envoiDevisManager.dureeSouhaitee${'}'}</b> : Les durées souhaitées des formations (en jours et heures) (pour les intra)</li>
+							<li><b>${'#{'}envoiDevisManager.date${'}'}</b> : Les dates des sessions proposées</li>
+							<li><b>${'#{'}envoiDevisManager.dateSouhaitee${'}'}</b> : Les dates souhaitées par le prospect</li>
+							<li><b>${'#{'}prospect.adresse${'}'}</b> : L'adresse du prospect</li>
+							<li><b>${'#{'}prospect.pays${'}'}</b> : Pays du prospect</li>
+							<li><b>${'#{'}prospect.cp${'}'}</b> : Code postal du prospect</li>
+						</ul>
+										
+					</s:decorate>
 
-				</s:decorate>
 				<input type="hidden" name="cid" value="#{conversation.id}" />
 				<h:commandButton value="Annuler" immediate="true"
 					action="/mz/emailTemplates/templates" />
 				<h:commandButton action="#{emailTemplateManager.save}"
-					value="#{messages['action.save']}"
-					 />
+					value="#{messages['action.save']}" />
 			</a:outputPanel>
 		</h:form>
 

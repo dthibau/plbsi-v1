@@ -10,14 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+import javax.persistence.Transient;
 
 
 
@@ -468,6 +465,10 @@ public class ProspectDetail implements Serializable {
 		this.date_souhaite = date_souhaite;
 	}
 
+	@Transient
+	public String getDate_souhaiteForDevis() {
+		return date_souhaite != null ? date_souhaite : "A définir conjointement";
+	}
 
 	public String getConcurence() {
 		return concurence;

@@ -23,6 +23,7 @@ import org.richfaces.model.UploadedFile;
 import com.plb.model.Fichier;
 import com.plb.model.Formation;
 import com.plb.model.Prospect;
+import com.plb.model.ProspectFormation;
 import com.plb.model.devis.Email;
 import com.plb.model.directory.Account;
 import com.plb.model.event.Event;
@@ -56,12 +57,12 @@ public class EnvoiDevisManager {
 	private String idProspect;
 
 	private Prospect prospect;
-	private boolean ready;
+//	private boolean ready;
 	private Email email;
 	private boolean editNom = false;
 
 	FormationDao formationDao;
-	Formation formationDevis = null;
+	List<ProspectFormation> formationsDevis = null;
 
 	@Create
 	public void init() {
@@ -145,23 +146,128 @@ public class EnvoiDevisManager {
 	}
 
 	/**
-	 * Depending on the propsect return a list or something else;
+	 * Genere le bon libellé en fonction du nombre de formations
 	 * 
 	 * @return
 	 */
 	public String getFormations() {
-		// First, Prospect has a reference
-		if (formationDevis != null) {
-
-			return formationDevis.getLibelle();
+		if ( !formationsDevis.isEmpty() ) {
+			StringBuffer sbf = new StringBuffer("");
+			for ( int i=0; i< formationsDevis.size(); i++ ) {
+				if ( i == 0 ) {
+					sbf.append("« ");
+				} else if ( i < formationsDevis.size()-1) {
+					sbf.append(", « ");
+				} else {
+					sbf.append(" et « ");
+				}
+				sbf.append(formationsDevis.get(i).getFormation().getLibelle()).append(" »");
+			}
+			return sbf.toString();
 		}
-
-		if (prospect.getFormations() != null) {
-			return PlbUtil.getCollectionAsString(prospect.getFormations());
+		return "";
+	}
+	
+	public String getParticipants() {
+		if ( !formationsDevis.isEmpty() ) {
+			boolean bDiffere = false;
+			String nbParticpants = formationsDevis.get(0).getParticipant();
+			for ( int i=1; i< formationsDevis.size(); i++ ) {
+				if ( !formationsDevis.get(i).getParticipant().equals(nbParticpants) ) {
+					bDiffere = true;
+					break;
+				}
+			}
+			if ( bDiffere) {
+				StringBuffer sbf = new StringBuffer("");
+				for ( int i=0; i< formationsDevis.size(); i++ ) {
+					if ( i == 0 ) {
+						sbf.append("");
+					} else if ( i < formationsDevis.size()-1) {
+						sbf.append(", ");
+					} else {
+						sbf.append(" et ");
+					}
+					sbf.append(formationsDevis.get(i).getParticipant());
+				}
+				return sbf.toString();
+			} else {
+				return nbParticpants;
+			}
 		}
 		return "";
 	}
 
+	public String getLieu() {
+		return prospect.getProspectDetail().getLieu().substring(0, 1).toLowerCase() + prospect.getProspectDetail().getLieu().substring(1);
+	}
+	
+	public String getDureeSouhaitee() {
+		if ( !formationsDevis.isEmpty() ) {
+			StringBuffer sbf = new StringBuffer("");
+			for ( int i=0; i< formationsDevis.size(); i++ ) {
+				if ( i == 0 ) {
+					sbf.append("");
+				} else if ( i < formationsDevis.size()-1) {
+					sbf.append(", ");
+				} else {
+					sbf.append(" et ");
+				}
+				// Is it an Integer
+				try {
+					int duree = Integer.parseInt(formationsDevis.get(i).getDureeVoulu());
+					sbf.append(duree).append(" jour(s) soit ").append(duree*7).append("heures");
+				} catch (NumberFormatException e) {
+					sbf.append(formationsDevis.get(i).getDureeVoulu());
+				}
+			}
+			return sbf.toString();
+		}
+		return "";
+	}
+	public String getDuree() {
+		if ( !formationsDevis.isEmpty() ) {
+			StringBuffer sbf = new StringBuffer("");
+			for ( int i=0; i< formationsDevis.size(); i++ ) {
+				if ( i == 0 ) {
+					sbf.append("");
+				} else if ( i < formationsDevis.size()-1) {
+					sbf.append(", ");
+				} else {
+					sbf.append(" et ");
+				}
+				// Is it an Integer
+				int duree = formationsDevis.get(i).getFormation().getDuree();
+				sbf.append(duree).append(" jour(s) soit ").append(duree*7).append("heures");
+			}
+			return sbf.toString();
+		}
+		return "";
+	}
+	
+	public String getDateSouhaitee() {
+		return prospect.getProspectDetail().getDate_souhaiteForDevis();
+	}
+	
+	public String getDate() {
+		if ( !formationsDevis.isEmpty() ) {
+			StringBuffer sbf = new StringBuffer("");
+			for ( int i=0; i< formationsDevis.size(); i++ ) {
+				if ( i == 0 ) {
+					sbf.append("");
+				} else if ( i < formationsDevis.size()-1) {
+					sbf.append(", ");
+				} else {
+					sbf.append(" et ");
+				}
+				// Is it an Integer
+				sbf.append(formationsDevis.get(i).getSession());
+			}
+			return sbf.toString();
+		}
+		return "";
+	}
+	
 	public void send() {
 
 //		email.setRecipient(prospect.getEmail());
@@ -178,14 +284,13 @@ public class EnvoiDevisManager {
 
 	private List<Fichier> _initAttachments() throws IOException {
 		List<Fichier> ret = new ArrayList<Fichier>();
-		if (prospect.getReference() != null) {
-			formationDevis = formationDao.findByReference(prospect
-					.getReference());
+		formationsDevis = _getFormations();
+		for ( ProspectFormation pf : formationsDevis ) {			
 			Fichier planFormation = new Fichier();
 			planFormation.setContentType("application/pdf");
 			planFormation.setName("Plan de formation de "
-					+ formationDevis.getReference());
-			byte[] data = PlbUtil.sendGetAsBytes(formationDevis.getUrlPdf());
+					+ pf.getFormation().getReference());
+			byte[] data = PlbUtil.sendGetAsBytes(pf.getFormation().getUrlPdf());
 			planFormation.setData(data);
 			planFormation.setLength(data.length);
 			ret.add(planFormation);
@@ -193,4 +298,29 @@ public class EnvoiDevisManager {
 		return ret;
 	}
 
+	private List<ProspectFormation> _getFormations() {
+		if ( prospect.getInformationIntra() != null ) {
+			return prospect.getFormations();
+		} else { // Inter
+			List<ProspectFormation> ret = new ArrayList<ProspectFormation>();
+			if (prospect.getReference() != null) {
+				ret.add(_constructProspectFormation(prospect.getReference()));
+			}
+			if (prospect.getProspectDetail().getReferenceBis() != null) {
+				ret.add(_constructProspectFormation(prospect.getProspectDetail().getReferenceBis()));
+			}
+			return ret;
+		}
+	}
+	
+	private ProspectFormation _constructProspectFormation(String reference) {
+		Formation formation = formationDao.findByReference(reference);
+		ProspectFormation prospectFormation = new ProspectFormation();
+		prospectFormation.setFormation(formation);
+		prospectFormation.setProspect(prospect);
+		prospectFormation.setParticipant(prospect.getProspectDetail().getParticipants());
+		prospectFormation.setDureeVoulu(""+formation.getDuree());
+		prospectFormation.setSession(prospect.getProspectDetail().getDate());	
+		return prospectFormation;
+	}
 }

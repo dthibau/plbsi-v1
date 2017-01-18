@@ -1,0 +1,47 @@
+Le workflow est le suivant : 
+
+1. Tous les leads arrivent dans le panier du dispatcher
+
+2. Le dispatcher attribue le leads à un commercial et le qualifie via une case à cocher "A suivre"
+
+3. Le lead arrive ensuite dans le panier du commercial qui peut alors :
+3.A Générer un devis à partir de l'onglet suivi des offres. Le maximum de champ est alors pré-renseigné : Nom client, contact, (particulier/étranger) 
+3.B Modifier dans Word le devis et sauvegarder cette version sur le disque
+3.C Envoyer le devis via PLBSI
+3.C.1 : Il sélectionne un mail type
+3.C.2 : Le fenêtre de contenu se met à jour, les données dynamiques sont remplies. Le commercial peut compléter
+3.C.3 : A l'envoi, la date d'envoi est mise à jour et une copie est envoyé à devis@plb.fr 
+
+
+
+Côté consultation :
+Une checkbox "A suivre" permet de limiter l'affichage aux leads qualifié comme tel
+La checkox "Affichage en cours" limite la recherche au 3 dernier mois, l'utilisateur a la possibilité de changer la période (idem fonctionnement actuel des "Gagné/perdu/abandon")
+
+Le mail d'envoi du devis est consigné dans l'historique  
+
+
+Côté administration :
+Les mails types sont administrables. Les champs dynamiques sont des expressions EL (utilisée également dans le code source du projet).
+ 
+
+
+
+TESTS
+====
+
+Cas de génération de Devis. 
+
+- Propsect sans formation associée
+- Prospect avec/sans une Date souhaité
+- Prospect avec/sans des sessions 
+- Nature du client renseigné 
+- Nombre de participants renseigné  
+
+Cas d'envoi mail types
+
+Les différents mails types, 
+Validation du formulaire
+Cas de plusieurs formations :
+-En inter / En intra
+-Avec le même nombre de participants / avec des participants différents

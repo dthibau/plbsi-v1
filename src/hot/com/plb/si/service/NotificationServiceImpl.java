@@ -313,7 +313,7 @@ public class NotificationServiceImpl implements NotificationService,
 	}
 	
 
-	@Asynchronous
+//	@Asynchronous
 	@TransactionAttribute(value = TransactionAttributeType.NOT_SUPPORTED)
 	public void sendDevis(Email email, Account sender) {
 		if (ApplicationManager.MAIL_ENABLED && Renderer.instance() != null) {

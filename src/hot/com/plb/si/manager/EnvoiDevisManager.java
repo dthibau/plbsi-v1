@@ -314,6 +314,7 @@ public class EnvoiDevisManager {
 	}
 	
 	private ProspectFormation _constructProspectFormation(String reference) {
+		log.debug("Construct Formation for "+reference);
 		Formation formation = formationDao.findByReference(reference);
 		ProspectFormation prospectFormation = new ProspectFormation();
 		prospectFormation.setFormation(formation);

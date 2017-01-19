@@ -11,7 +11,7 @@
 		<m:cc address="#{_cc}"/>
 	</ui:repeat>
 	<ui:repeat var="_bcc" value="#{email.bccAsArray}">
-		<m:cc address="#{_bcc}"/>
+		<m:bcc address="#{_bcc}"/>
 	</ui:repeat>
 	<m:subject><ui:insert name="MailSubject" /></m:subject>
 

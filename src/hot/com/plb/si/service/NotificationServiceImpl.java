@@ -324,14 +324,14 @@ public class NotificationServiceImpl implements NotificationService,
 			Contexts.getEventContext()
 			.set("sender", sender);
 
-				try {
+//				try {
 					Renderer.instance().render(
 							"/mail/envoiDevis.xhtml");
 					log.info("Un devis a été envoyé à " + email.getRecipient());
-					Thread.sleep(1000);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//					Thread.sleep(1000);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
 		}
 	}
 

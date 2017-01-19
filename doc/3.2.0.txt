@@ -2,7 +2,7 @@ Le workflow est le suivant :
 
 1. Tous les leads arrivent dans le panier du dispatcher
 
-2. Le dispatcher attribue le leads à un commercial et le qualifie via une case à cocher "A suivre"
+2. Le dispatcher attribue le leads à un commercial et le qualifie via une case à cocher "A suivre" ou pas
 
 3. Le lead arrive ensuite dans le panier du commercial qui peut alors :
 3.A Générer un devis à partir de l'onglet suivi des offres. Le maximum de champ est alors pré-renseigné : Nom client, contact, (particulier/étranger) 
@@ -10,7 +10,14 @@ Le workflow est le suivant :
 3.C Envoyer le devis via PLBSI
 3.C.1 : Il sélectionne un mail type
 3.C.2 : Le fenêtre de contenu se met à jour, les données dynamiques sont remplies. Le commercial peut compléter
-3.C.3 : A l'envoi, la date d'envoi est mise à jour et une copie est envoyé à devis@plb.fr 
+Signature :
+Laurent BADREAU | Conseiller en Formation
+PLB Consultant
+22/24 rue du Président Wilson | 92300 Levallois-Perret
+Tél. : + 33 (0)1 43 34 90 94
+www.plb.fr
+
+3.C.3 : A l'envoi, la date d'envoi est mise à jour et une copie cachée est envoyé à devis@plb.fr et au commercial
 
 
 
@@ -18,7 +25,8 @@ Côté consultation :
 Une checkbox "A suivre" permet de limiter l'affichage aux leads qualifié comme tel
 La checkox "Affichage en cours" limite la recherche au 3 dernier mois, l'utilisateur a la possibilité de changer la période (idem fonctionnement actuel des "Gagné/perdu/abandon")
 
-Le mail d'envoi du devis est consigné dans l'historique  
+Le mail d'envoi du devis est consigné dans l'historique,   
+
 
 
 Côté administration :

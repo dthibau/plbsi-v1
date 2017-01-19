@@ -24,7 +24,7 @@ public class Email {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String recipient,subject,attention,cc;
+	private String recipient,subject,attention,cc,bcc;
 	
 	@Lob
 	private String body;
@@ -77,7 +77,20 @@ public class Email {
 
 	@Transient
 	public String[] getCcAsArray() {
-		return cc.split(",");
+		return cc != null && !cc.isEmpty() ? cc.split(",") : new String[0];
+	}
+	
+	public String getBcc() {
+		return bcc;
+	}
+
+	public void setBcc(String bcc) {
+		this.bcc = bcc;
+	}
+
+	@Transient
+	public String[] getBccAsArray() {
+		return bcc != null && !bcc.isEmpty() ? bcc.split(",")  : new String[0];
 	}
 	
 	public String getBody() {

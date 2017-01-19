@@ -11,7 +11,6 @@
 
 	<ui:define name="body">
 		<h:form id="envoiForm">
-			<h:messages />
 			<a:outputPanel id="envoiDevisContent">
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">
@@ -28,10 +27,20 @@
 						value="#{envoiDevisManager.prospect.email}" />
 				</s:decorate>
 				<s:decorate template="../layout/edit.xhtml">
+				   <ui:param name="help" value="true"/>
 					<ui:define name="label">
 						<h:outputText value="#{messages['devis.envoi.cc']}" />
 					</ui:define>
-					<h:outputText value="#{envoiDevisManager.email.cc}" />
+					<ui:define name="help">
+						<h:outputText value="#{messages['devis.envoi.cc.help']}" />
+					</ui:define>
+					<h:inputText value="#{envoiDevisManager.email.cc}" />
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">
+						<h:outputText value="#{messages['devis.envoi.bcc']}" />
+					</ui:define>
+					<h:outputText value="#{envoiDevisManager.email.bcc}" />
 				</s:decorate>
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">
@@ -39,13 +48,13 @@
 					</ui:define>
 					<a:outputPanel id="nomPanel">
 						<a:outputPanel rendered="#{envoiDevisManager.editNom}">
-					Genre : <br />
+					<br />
 					Prénom : <h:inputText value="#{envoiDevisManager.prospect.prenom}" />
 							<br />
 					Nom : <h:inputText value="#{envoiDevisManager.prospect.nom}" />
 						</a:outputPanel>
 						<h:outputText rendered="#{!envoiDevisManager.editNom}"
-							value="Mr #{envoiDevisManager.prospect.nomComplet}" />&#160;<a:commandLink
+							value="#{envoiDevisManager.prospect.nomComplet}" />&#160;<a:commandLink
 							execute="@this"
 							value="#{envoiDevisManager.editNom ? 'Valider' : 'Editer'}"
 							render="nomPanel" action="#{envoiDevisManager.switchNom}" />
@@ -70,7 +79,7 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['devis.envoi.body']}" />
 						</ui:define>
-						<plb:editorsimple cols="200" id="bodyEditor" height="320"
+						<plb:editorsimple cols="200" id="bodyEditor" height="320" 
 							value="#{envoiDevisManager.email.body}" />
 					</s:decorate>
 				</a:outputPanel>

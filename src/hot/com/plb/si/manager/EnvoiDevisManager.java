@@ -17,6 +17,8 @@ import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.web.RequestParameter;
+import org.jboss.seam.faces.FacesMessages;
+import org.jboss.seam.international.StatusMessage.Severity;
 import org.jboss.seam.log.Log;
 import org.richfaces.event.FileUploadEvent;
 import org.richfaces.model.UploadedFile;
@@ -50,6 +52,9 @@ public class EnvoiDevisManager {
 	
 	@In(create=true)
 	NotificationService notificationService;
+	
+	@In
+	FacesMessages facesMessages;
 	
 	@Logger
 	Log log;
@@ -85,7 +90,7 @@ public class EnvoiDevisManager {
 		email = new Email();
 		email.setSubject(Labels.getString("devis.envoi.subject",
 				prospect.getIdProspect()));
-		email.setCc(ApplicationManager.DEVIS_CC + "," + loggedUser.getEmail());
+		email.setBcc(ApplicationManager.DEVIS_CC + "," + loggedUser.getEmail());
 		email.setAttachments(_initAttachments());
 	}
 
@@ -273,8 +278,13 @@ public class EnvoiDevisManager {
 	
 	public String send() {
 
-//		email.setRecipient(prospect.getEmail());
-		email.setRecipient("david.thibau@gmail.com");
+		if ( email.getBody() == null || email.getBody().isEmpty() ) {
+			facesMessages.addFromResourceBundle(Severity.ERROR, "error.email.emptyBody");
+			return "/mz/devis/envoiDevis.xhml";
+		}
+		try {
+		email.setRecipient(prospect.getEmail());
+//		email.setRecipient("david.thibau@gmail.com");
 		email.setAttention(prospect.getNomComplet());
 		notificationService.sendDevis(email, loggedUser);
 		prospect.getProspectDetail().setDatedevis(new Date());
@@ -284,8 +294,12 @@ public class EnvoiDevisManager {
 		entityManager.persist(prospectSendEvent);
 		
 		envoiOk=true;
-		
+		facesMessages.addFromResourceBundle(Severity.INFO, "ack.send");
 		return "/mz/devis/ackEnvoiDevis.xhml";
+		} catch (Exception e) {
+			facesMessages.addFromResourceBundle(Severity.ERROR, e.toString());
+			return "/mz/devis/envoiDevis.xhml";
+		}
 		
 	}
 

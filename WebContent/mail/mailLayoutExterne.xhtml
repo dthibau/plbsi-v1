@@ -24,7 +24,8 @@
 		<body>
 		<ui:insert name="MailStyle"><ui:include src="/stylesheet/mail-css.xhtml" /></ui:insert> 
 		
-		#{email.body}
+		<ui:insert name="MailContent" >#{email.body}</ui:insert>
+		
 		</body>
 		</html>
 		<f:facet name="alternative">

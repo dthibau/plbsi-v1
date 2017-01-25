@@ -22,6 +22,7 @@
 
 	<ui:define name="MailContent">
 		<h:outputText escape="false" value="#{email.body}"/>	
+		<ui:include src="_signature.xhtml" />
 	</ui:define>
 	
 	<ui:define name="MailAttachments">

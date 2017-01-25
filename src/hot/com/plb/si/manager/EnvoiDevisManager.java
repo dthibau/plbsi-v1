@@ -294,7 +294,7 @@ public class EnvoiDevisManager {
 		entityManager.persist(prospectSendEvent);
 		
 		envoiOk=true;
-		facesMessages.addFromResourceBundle(Severity.INFO, "ack.send");
+//		facesMessages.addFromResourceBundle(Severity.INFO, "ack.send");
 		return "/mz/devis/ackEnvoiDevis.xhml";
 		} catch (Exception e) {
 			facesMessages.addFromResourceBundle(Severity.ERROR, e.toString());

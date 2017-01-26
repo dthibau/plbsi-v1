@@ -33,16 +33,16 @@ public class Categorie {
 	
 	// Web
 	@Lob
-	@Column(name="cat_description")
+	@Column(name="cat_description", columnDefinition="text")
 	private String description;
 	
 	@Column(name="cat_balise_title")
 	private String baliseTitle;
 	
-	@Column(name="cat_balise_description")
+	@Column(name="cat_balise_description", columnDefinition="text")
 	private String baliseDescription;
 	
-	@Column(name="cat_balise_keywords")
+	@Column(name="cat_balise_keywords", columnDefinition="text")
 	private String baliseKeywords;
 	
 	@Column(name="cat_url")
@@ -54,7 +54,7 @@ public class Categorie {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="baseCategorie")
 	List<CategorieConnexe> categoriesConnexes = new ArrayList<CategorieConnexe>();
 	
-	@Column(name="cat_afficher_haut")
+	@Column(name="cat_afficher_haut", columnDefinition = "TINYINT")
 	Integer afficherHaut=1;
 
 	@Column(name="data_version")

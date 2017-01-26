@@ -3,8 +3,11 @@ package com.plb.model.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.plb.model.intervenant.Intervenant;
@@ -16,9 +19,11 @@ public class NotificationIntervenantsEvent extends Event {
 
 	private String subject;
 	
+	@Column(columnDefinition="bit")
 	private boolean includeUrl = true;
 	
 	@ManyToMany
+	@JoinTable(joinColumns=@JoinColumn(name="event_id"))
 	List<Intervenant> intervenants = new ArrayList<Intervenant>();
 
 	public String getSubject() {

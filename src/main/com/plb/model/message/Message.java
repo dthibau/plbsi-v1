@@ -33,7 +33,7 @@ public class Message implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	@Column(name="libelle")
+	@Column(name="libelle", columnDefinition="text")
 	private String libelle;
 	
 	//Emetteur du message dans la box

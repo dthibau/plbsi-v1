@@ -16,8 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.plb.dto.SessionOrganismeDto;
-
 @Entity
 @Table(name = "formation_session")
 public class Session implements Comparable<Session> {
@@ -26,13 +24,13 @@ public class Session implements Comparable<Session> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_session")
 	private int id;
-	@Column(name = "forsess_date_debut")
+	@Column(name = "forsess_date_debut", columnDefinition="timestamp")
 	@Temporal(TemporalType.DATE)
 	private Date debut;
-	@Column(name = "forsess_date_fin")
+	@Column(name = "forsess_date_fin", columnDefinition="timestamp")
 	@Temporal(TemporalType.DATE)
 	private Date fin;
-	@Column(name = "forsess_promotion")
+	@Column(name = "forsess_promotion", columnDefinition="smallint")
 	private int promotion;
 
 	@ManyToOne

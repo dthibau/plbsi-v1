@@ -2,6 +2,7 @@ package com.plb.model.intervenant;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,6 +33,7 @@ public class Competence implements Serializable,Comparable<Competence> {
 	@ManyToOne
 	private GrilleCompetence grilleCompetence;
 	
+	@Column(columnDefinition="bit")
 	private Boolean support=false;
 	private String remarques;
 	

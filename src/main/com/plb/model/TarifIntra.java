@@ -10,11 +10,11 @@ import javax.persistence.Table;
 public class TarifIntra {
 
 	@Id
-	@Column(name="tar_code_intra")
+	@Column(name="tar_code_intra", columnDefinition="char")
 	private String code;
-	@Column(name="tar_tarif")
+	@Column(name="tar_tarif", columnDefinition="decimal")
 	private Float tarif;
-	@Column(name="tar_remarques")
+	@Column(name="tar_remarques", columnDefinition="mediumtext")
 	private String remarques;
 
 	public String getCode() {

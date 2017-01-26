@@ -43,7 +43,7 @@ public class Filiere implements Comparable<Filiere> {
 	List<Categorie> categories = new ArrayList<Categorie>();
 
 	@Lob
-	@Column(name="fil_description")
+	@Column(name="fil_description", columnDefinition="mediumtext")
 	private String description;
 	
 	@Column(name="fil_titre")
@@ -52,10 +52,10 @@ public class Filiere implements Comparable<Filiere> {
 	@Column(name="fil_balise_title")
 	private String metaTitre;
 	
-	@Column(name="fil_balise_description")
+	@Column(name="fil_balise_description", columnDefinition="text")
 	private String metaDescription;
 	
-	@Column(name="fil_balise_keywords")
+	@Column(name="fil_balise_keywords", columnDefinition="text")
 	private String metaKeywords;
 	
 	@Column(name="fil_image_petit")

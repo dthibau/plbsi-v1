@@ -1,7 +1,10 @@
 batch
 
-/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
-data-source add --name=plbsiDS --jndi-name=java:/jboss/datasources/plbsiDatasource --driver-name=mysql --connection-url=jdbc:mysql://localhost:3306/plbconsult --user-name=plbconsult --password=7Cc75rC --driver-class=com.mysql.jdbc.Driver
+module add --name=org.mysql --resources=mysql/main/mysql-connector-java-5.1.23-bin.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=org.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
+
+data-source add --name=plbsiDS --jndi-name=java:/jboss/datasources/plbsiDatasource --driver-name=mysql --connection-url=jdbc:mysql://localhost:3306/plbconsult --user-name=plbconsult --password=7Cc75rC --driver-class=com.mysql.jdbc.Driver --statistics-enabled=true --share-prepared-statements --prepared-statements-cache-size=20
 
 data-source enable --name=plbsiDS
 

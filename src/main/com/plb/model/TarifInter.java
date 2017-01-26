@@ -11,9 +11,9 @@ import javax.persistence.Transient;
 public class TarifInter {
 
 	@Id
-	@Column(name="tar1_code_inter")
+	@Column(name="tar1_code_inter", columnDefinition="char")
 	private String code;
-	@Column(name="tar1_tarif")
+	@Column(name="tar1_tarif", columnDefinition="decimal")
 	private Float tarif;
 
 

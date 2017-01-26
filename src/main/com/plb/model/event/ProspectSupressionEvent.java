@@ -7,7 +7,7 @@ import com.plb.model.Prospect;
 import com.plb.model.directory.Account;
 
 @Entity
-@DiscriminatorValue("ProspectCreation")
+@DiscriminatorValue("ProspectSuppression")
 public class ProspectSupressionEvent extends Event{
 
 	public ProspectSupressionEvent() {

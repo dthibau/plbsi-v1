@@ -27,7 +27,7 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 	@Column(name="forfil_rang")
 	private Integer rangFiliere;
 
-	@Column(name="forfil_filiere_principale")
+	@Column(name="forfil_filiere_principale", columnDefinition="set")
 	private String isPrincipale = "non";
 	
 	public FormationFiliere() {

@@ -57,31 +57,31 @@ public class InformationIntra implements Serializable {
 	@Column(name = "duree")
 	private String duree;
 	
-	@Column(name = "prob_transformation")
+	@Column(name = "prob_transformation", columnDefinition="text")
 	@Lob
 	private String probTransformation;
 	
-	@Column(name = "profil_participant")
+	@Column(name = "profil_participant", columnDefinition="text")
 	@Lob
 	private String profilParticipant;
 	
-	@Column(name = "environnement_tech")
+	@Column(name = "environnement_tech", columnDefinition="text")
 	@Lob
 	private String environnementTech;
 	
-	@Column(name = "connaissance_sujet")
+	@Column(name = "connaissance_sujet", columnDefinition="text")
 	@Lob
 	private String connaissanceSujet;
 	
-	@Column(name = "objectif")
+	@Column(name = "objectif", columnDefinition="text")
 	@Lob
 	private String objectif;
 
-	@Column(name = "coordonnees_contact_tech")
+	@Column(name = "coordonnees_contact_tech", columnDefinition="text")
 	@Lob
 	private String coordonneesContactTech;
 	
-	@Column(name = "coordonnees_contact_support")
+	@Column(name = "coordonnees_contact_support", columnDefinition="text")
 	@Lob
 	private String coordonneesContactsupport;
 	
@@ -103,11 +103,11 @@ public class InformationIntra implements Serializable {
 	@Column(name = "montant_frais")
 	private Float montantFrais;
 	
-	@Column(name = "raison_perte")
+	@Column(name = "raison_perte", columnDefinition="text")
 	@Lob
 	private String raisonPerte;
 	
-	@Column(name = "note_reservation")
+	@Column(name = "note_reservation", columnDefinition="text")
 	@Lob
 	private String noteReservation;
 	

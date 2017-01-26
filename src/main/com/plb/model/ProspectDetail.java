@@ -52,7 +52,7 @@ public class ProspectDetail implements Serializable {
 	@Column(name = "nb_participants")
 	private Integer nb_participants;
 	
-	@Column(name = "participants")
+	@Column(name = "participants", columnDefinition="text")
 	private String participants;
 	
 	@Column(name = "adresse_factu")
@@ -88,7 +88,7 @@ public class ProspectDetail implements Serializable {
 	@Column(name = "connaissance_site")
 	private String connaissance_site;
 	
-	@Column(name = "cgv")
+	@Column(name = "cgv", columnDefinition="tinyint")
 	private int cgv;
 	
 	//INTER ou INTRA
@@ -120,13 +120,13 @@ public class ProspectDetail implements Serializable {
 	@Column(name = "referencebis")
 	private String referenceBis;
 	
-	@Column(name = "catalogue")
+	@Column(name = "catalogue", columnDefinition="tinyint")
 	private Integer catalogue;
 	
 	@Column(name = "news")
 	private Integer news;
 	
-	@Column(name = "cial")
+	@Column(name = "cial", columnDefinition="tinyint")
 	private Integer cial;
 	
 	@Column(name = "heure")
@@ -157,6 +157,7 @@ public class ProspectDetail implements Serializable {
 	@JoinColumn(name = "id_formulaire_contact")
 	private Prospect prospect;
 	
+	@Column(columnDefinition="bit")
 	private boolean asuivre=false;
 	//Getteurs and Setteurs
 

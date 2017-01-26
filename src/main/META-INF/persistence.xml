@@ -10,7 +10,7 @@
       <jta-data-source>java:/jboss/datasources/plbsiDatasource</jta-data-source>
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-         <property name="hibernate.hbm2ddl.auto" value="update"/>
+         <property name="hibernate.hbm2ddl.auto" value="validate"/>
          <property name="hibernate.show_sql" value="false"/>
          <property name="hibernate.format_sql" value="true"/>
          <property name="hibernate.connection.charSet" value="utf8"/>
@@ -20,9 +20,7 @@
 		<property name="hibernate.search.default.directory_provider" value="filesystem"/>
 		
 		<!-- directory where the indexes will be stored -->
-<!--  		<property name="hibernate.search.default.indexBase" value="/Users/dthibau/Dev/servers/jboss-as-7.1.1.Final/data/plbsi/formationindexes"/>  -->
-<!-- 		 <property name="hibernate.search.default.indexBase" value="/home/dthibau/Dev/servers/jboss-as-7.1.1.Final/data/plbsi/formationindexes"/> -->
-		 <property name="hibernate.search.default.indexBase" value="/home/jboss/jboss-as-7.1.1.Final/data/plbsi/formationindexes"/>
+		 <property name="hibernate.search.default.indexBase" value="/home/jboss/jboss-eap-6.4/data/plbsi/formationindexes"/>
       </properties>
    </persistence-unit>
    

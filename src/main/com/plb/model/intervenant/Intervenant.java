@@ -55,6 +55,7 @@ public class Intervenant implements Contact {
 	@Column(name="infoTarif")
 	private String infoTarifPLB;
 	private String centres;
+	@Column(columnDefinition="bit")
 	private boolean anglais;
 	@Field
 	@Lob

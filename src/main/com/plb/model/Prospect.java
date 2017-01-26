@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -72,7 +73,7 @@ public class Prospect implements Serializable {
 	@Column(name = "url_formation")
 	private String url_formation;
 
-	@Column(name = "commentaire")
+	@Column(name = "commentaire", columnDefinition="text")
 	private String commentaire;
 
 	@Column(name = "type")
@@ -89,10 +90,10 @@ public class Prospect implements Serializable {
 	@Column(name = "statut")
 	private String statut;
 
-	@Column(name = "consigne")
+	@Column(name = "consigne", columnDefinition="text")
 	private String consigne;
 
-	@Column(name = "note_perso")
+	@Column(name = "note_perso", columnDefinition="text")
 	private String notePerso;
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "prospect", cascade = CascadeType.ALL)

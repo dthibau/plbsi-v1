@@ -63,7 +63,9 @@ public class Devis implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	@Column(columnDefinition="bit")
 	private Boolean particulier;
+	@Column(columnDefinition="bit")
 	private Boolean etranger;
 
 	public Devis() {

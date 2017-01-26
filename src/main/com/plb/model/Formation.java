@@ -26,7 +26,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.apache.solr.analysis.HTMLStripCharFilterFactory;
@@ -62,55 +61,52 @@ public class Formation implements Serializable, Comparable<Formation>{
 	@SequenceGenerator (name = "formationGenerator", sequenceName = "FORMATION_ID", initialValue = 700000, allocationSize = 1)
 	@Column(name = "id_formation")
 	private int idFormation;
-	@Column(name = "for_libelle")
+	@Column(name = "for_libelle", columnDefinition="text")
 	@Field
 	private String libelle;
-	@Column(name = "for_precision_libelle")
+	@Column(name = "for_precision_libelle", columnDefinition="text")
 	@Field
 	private String precision;
-	@Column(name = "for_prix")
+	@Column(name = "for_prix", columnDefinition="decimal")
 	private float prix;
 	@Temporal(TemporalType.DATE)
 	private Date lastUpdatePrix;
-	@Column(name = "for_duree")
+	@Column(name = "for_duree", columnDefinition="decimal")
 	@Min(value = 1)
 	private int duree;
-	@Column(name = "for_reference")
+	@Column(name = "for_reference", columnDefinition="text")
 	@Field
 	private String reference;
-	@Column(name = "for_remarques")
+	@Column(name = "for_remarques", columnDefinition="mediumtext")
 	@Field
 	private String remarques = "";
 
 	@Lob
 	private String statut;
 
-	@Column(name = "for_origine")
+	@Column(name = "for_origine", columnDefinition="text")
 	@Field
 	private String origine;
 	@Column(name = "for_mot_cle_primaire")
 	@Field
 	@Length(max = 50)
 	private String motClePrimaire;
-	@Column(name = "for_balise_title") 
+	@Column(name = "for_balise_title", columnDefinition="mediumtext") 
 	private String baliseTitle;
 
-	@Column(name = "for_url")
+	@Column(name = "for_url", columnDefinition="text")
 	private String url;
 
-	@Column(name = "for_type")
+	@Column(name = "for_type", columnDefinition="text")
 	private String type;
 
-	@Column(name = "for_visible")
+	@Column(name = "for_visible", columnDefinition="enum")
 	private String visible = "non";
 
-	// @ManyToOne(optional = true)
-	// @JoinColumn(name = "tar_code_intra", nullable = true)
-	// TarifIntra tarifIntra;
-	@Column(name = "tar_code_intra")
+	@Column(name = "tar_code_intra", columnDefinition="char")
 	String tarifIntra = "";
 
-	@Column(name = "for_nouveaute")
+	@Column(name = "for_nouveaute", columnDefinition="enum")
 	String nouveaute = "non";
 
 	String libreIntra;
@@ -137,10 +133,10 @@ public class Formation implements Serializable, Comparable<Formation>{
 	private List<FormationPartenaire> formationsPartenaire = new ArrayList<FormationPartenaire>();
 
 	@Lob
-	@Column(name = "for_balise_description")
+	@Column(name = "for_balise_description", columnDefinition="mediumtext")
 	private String baliseDescription;
 	@Lob
-	@Column(name = "for_balise_keywords") 
+	@Column(name = "for_balise_keywords",columnDefinition="mediumtext") 
 	@Field
 	private String baliseKeyWords;
 	@Lob
@@ -149,7 +145,9 @@ public class Formation implements Serializable, Comparable<Formation>{
 	@Column(name = "for_cours_officiel")
 	private String officiel;
 	
+	@Column(columnDefinition="bit")
 	private Boolean support;
+	@Column(columnDefinition="bit")
 	private Boolean plbInter;
 	@Length(max = 255)
 	private String coursPlbCataloguePartenaire;
@@ -181,50 +179,50 @@ public class Formation implements Serializable, Comparable<Formation>{
 	
 	// Contenu web
 	@Lob
-	@Column(name="for_objectifs")
+	@Column(name="for_objectifs", columnDefinition="mediumtext")
 	private String objectifs;
 	
 	@Lob
-	@Column(name="for_prerequis")
+	@Column(name="for_prerequis", columnDefinition="mediumtext")
 	private String prerequis;
 	
 	@Lob
-	@Column(name="for_travaux_pratiques")
+	@Column(name="for_travaux_pratiques", columnDefinition="mediumtext")
 	private String travauxPratiques;
 	
 	@Lob
-	@Column(name="for_infos")
+	@Column(name="for_infos", columnDefinition="mediumtext")
 	private String infos;
 	
 
-	@Column(name="for_replace")
+	@Column(name="for_replace", columnDefinition="text")
 	private String replace;
 	
 	@Lob
-	@Column(name="for_participants")
+	@Column(name="for_participants", columnDefinition="mediumtext")
 	private String participants;
 	
 	@Lob
-	@Column(name="for_contenu")
+	@Column(name="for_contenu", columnDefinition="mediumtext")
 	@Field
 	private String contenu;
 	
 	@Lob
-	@Column(name="for_description")
+	@Column(name="for_description", columnDefinition="mediumtext")
 	@Field
 	private String description;
 	
-	@Column(name="for_top10")
+	@Column(name="for_top10", columnDefinition="tinyint")
 	private Integer top10 = 0;
 	
 	private String certification;
 	
 	private String distance="Non";
 	
-	@Column(name="for_eligible_cpf")
+	@Column(name="for_eligible_cpf", columnDefinition="tinyint")
 	private Boolean eligibleCpf;
 	
-	@Column(name="for_elearning")
+	@Column(name="for_elearning", columnDefinition="tinyint")
 	private Boolean elearning;
 	
 	@Column(name="for_niveau")

@@ -1,9 +1,11 @@
 # Eclipse
-.classpath
-.project
-.settings/
+#.classpath
+".project
+#.settings/
 build/
 bin/
+dist/
+exploded-archives/
 
 #Ant
 dist/

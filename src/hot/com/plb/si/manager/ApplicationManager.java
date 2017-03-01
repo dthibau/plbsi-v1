@@ -50,6 +50,7 @@ import com.plb.si.service.FormationDao;
 import com.plb.si.service.PartenaireDao;
 import com.plb.si.service.TypeContactDao;
 import com.plb.si.util.Labels;
+import com.plb.util.Util;
 
 @Name("applicationManager")
 @Scope(ScopeType.APPLICATION)
@@ -395,6 +396,7 @@ public class ApplicationManager implements Serializable {
 		formationsActives = null;
 		allFormationsPartenaire = new HashMap<Formation, List<FormationPartenaire>>();
 		allFormationsMutualisee = new HashMap<Formation, FormationMutualisees>();
+		allFormationsSessions = new HashMap<Formation, List<Session>>();
 	}
 	public List<Formation> getAllFormations() {
 		if ( allFormations == null ) {
@@ -421,6 +423,20 @@ public class ApplicationManager implements Serializable {
 		}
 		return ret;
 	}
+	public String getFormationsPartenairesAsString(Formation formation) {
+		StringBuffer sbf = new StringBuffer();
+		boolean bFirst = true;
+		List<FormationPartenaire> fps = getFormationsPartenaire(formation); 
+		for (FormationPartenaire fp : fps ) {
+			if (bFirst) {
+				sbf.append(fp.getPartenaire().getNom());
+				bFirst = false;
+			} else {
+				sbf.append("<br/>" + fp.getPartenaire().getNom());
+			}
+		}
+		return sbf.toString();
+	}
 	public FormationMutualisees getFormationsMutualisees(Formation formation) {
 		if ( formation == null ) {
 			return null;
@@ -444,6 +460,27 @@ public class ApplicationManager implements Serializable {
 			allFormationsSessions.put(formation, ret);
 		}
 		return ret;
+	}
+	public String getFormationAllSessionsAsString(Formation formation, Date month) {
+		StringBuilder sb = new StringBuilder();
+		List<Date> dates = new ArrayList<Date>();
+		boolean bFirst = true;
+		List<Session> sessions = getFormationsSessions(formation);
+		for (Session s : sessions) {
+			if (Util.monthEqual(s.getDebut(), month)
+					&& !dates.contains(s.getDebut())) {
+				dates.add(s.getDebut());
+				if (bFirst) {
+					sb.append(s.getDay() + "-" + s.getDayFin());
+					bFirst = false;
+				} else {
+					sb.append(";" + s.getDay() + "-" + s.getDayFin());
+				}
+			}
+		}
+
+		// Pour l'export excel on renvoie un caractère blanc
+		return sb.length() > 0 ? sb.toString() : " ";
 	}
 	public List<SessionOrganismesDto> getFormationsNextSessions(Formation formation) {
 		if ( formation == null ) {

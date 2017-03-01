@@ -188,7 +188,7 @@
 		</ui:include>		
 		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.formationPartenaires']}"/>
-			<ui:param name="value" value="#{applicationManager.getFormationsPartenaire(_dto.formation)}"/>
+			<ui:param name="value" value="#{applicationManager.getFormationsPartenairesAsString(_dto.formation)}"/>
 			<ui:param name="type" value="text"/>
 			
 		</ui:include>		
@@ -217,7 +217,7 @@
 		<ui:repeat var="_month" value="#{searchManager.allMonthSession}">
 			<ui:include src="../../common/excel-session-column.xhtml">
 				<ui:param name="header" value="#{longMonthFormat.format(_month)}"/>
-				<ui:param name="value" value="#{_dto.formation.getAllSessionsAsString(_month)}"/>
+				<ui:param name="value" value="#{applicationManager.getFormationAllSessionsAsString(_dto.formation,_month)}"/>
 				<ui:param name="type" value="text"/>		
 			</ui:include>			
 		</ui:repeat>		

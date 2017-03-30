@@ -494,6 +494,9 @@ public class EditProspectManager implements Serializable {
 	}
 
 	private void _modifyIntra() {
+		Account commercial = _getCommercialByName(prospect.getProspectDetail().getCommercial());
+		
+		prospect.getInformationIntra().setCommercial(commercial);
 		if (horaireDefaut() == false) {
 			horaire();
 			prospect.getInformationIntra().setHeureDeb(heureDeb + ":" + minDeb);
@@ -1195,6 +1198,15 @@ public class EditProspectManager implements Serializable {
 		return listeCommerciale;
 	}
 
+	private Account _getCommercialByName(String fullName) {
+
+		for ( Account commercial : listeCommerciale ) {
+			if ( commercial.getNomComplet().equals(fullName) ) {
+				return commercial;
+			}
+		}
+		return null;
+	}
 	public Devis getLastGeneratedDevis() {
 		return lastGeneratedDevis;
 	}

@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
+import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.FlushModeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
@@ -224,6 +225,7 @@ public class EditProspectManager implements Serializable {
 	ProspectCritere critere = new ProspectCritere();
 
 	// Fonction d'initialisation
+	@Create
 	public void _init() {
 
 		// Initialisation du remplissage obligatoire de montant
@@ -252,7 +254,7 @@ public class EditProspectManager implements Serializable {
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public void selectProspect(Prospect p) {
 
-		_init();
+//		_init();
 		afficheP = false;
 		confirm = false;
 		modif = false;

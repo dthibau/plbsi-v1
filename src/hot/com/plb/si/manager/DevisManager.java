@@ -207,7 +207,7 @@ public class DevisManager {
 			ProspectDetail prospectDetail = new ProspectDetail();
 			prospect.setDateCreation(devis.getDate());
 			prospect.setNom(devis.getContactClient());
-			prospectDetail.setDatedevis(devis.getDate());
+//			prospectDetail.setDatedevis(devis.getDate());
 			prospect.setSociete(devis.getClient());
 			prospect.setType("CLIENT");
 			prospect.setStatut("En cours");

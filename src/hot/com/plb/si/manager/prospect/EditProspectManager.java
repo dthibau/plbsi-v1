@@ -357,7 +357,7 @@ public class EditProspectManager implements Serializable {
 				prospect.getProspectDetail().setDatedevis(null);
 			}
 			// Passe le statut du prospect à "En cours" quand le devis est
-			// envoy�
+			// envoyé
 			if (ST_NON_AFFECTE.equals(prospect.getStatut())
 					|| ST_EN_ATTENTE.equals(prospect.getStatut())) {
 				if (prospect.getProspectDetail().getDatedevis() != null) {
@@ -496,9 +496,11 @@ public class EditProspectManager implements Serializable {
 	}
 
 	private void _modifyIntra() {
-		Account commercial = _getCommercialByName(prospect.getProspectDetail().getCommercial());
-		
+		// Change commercial in intra
+		Account commercial = _getCommercialByName(prospect.getProspectDetail().getCommercial());		
 		prospect.getInformationIntra().setCommercial(commercial);
+		
+		// Change horaires
 		if (horaireDefaut() == false) {
 			horaire();
 			prospect.getInformationIntra().setHeureDeb(heureDeb + ":" + minDeb);
@@ -507,6 +509,8 @@ public class EditProspectManager implements Serializable {
 			prospect.getInformationIntra().setHeureDeb("");
 			prospect.getInformationIntra().setHeureFin("");
 		}
+		
+		// Detect change in statutIntra to send notifications
 		if (!statutIntraTemp.equals(prospect.getInformationIntra()
 				.getStatutIntra())
 				&& !prospect.getInformationIntra().getStatutIntra()
@@ -633,6 +637,16 @@ public class EditProspectManager implements Serializable {
 				remplir = true;
 			} else if ("Perdu".equals(prospect.getStatut())) {
 				remplirPerte = true;
+			}
+			// Update alose intra statut if exist
+			if ( prospect.getInformationIntra() != null ) {
+				if ( prospect.getStatut().equals(gagne) ) {
+					prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_PROSPECT_LOGISTIQUE);
+				}
+				if ( prospect.getStatut().equals(ST_PERDU) ||
+						prospect.getStatut().equals(ST_ABANDON) ) {
+					prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_PROSPECT_ANNULE);
+				}
 			}
 		} catch (Exception e) {
 			log.debug(loggedUser + " STACKTRACE");

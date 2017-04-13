@@ -38,3 +38,6 @@ target/
 
 #jasper
 *.jasper
+
+#merge
+*.orig

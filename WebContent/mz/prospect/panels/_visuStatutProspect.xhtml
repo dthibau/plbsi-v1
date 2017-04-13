@@ -87,7 +87,7 @@
 							<h:outputText value="#{messages['prospect.dateCreation']}" />
 						</ui:define>
 						<h:outputText value="#{editProspectManager.prospect.dateCreation}" >
-						<f:convertDateTime type="both" locale="FR"/>
+						<f:convertDateTime type="both" locale="FR" timeZone="Europe/Paris"/>
 						</h:outputText>
 						<a:outputPanel layout="inline" rendered="#{editProspectManager.prospect.prospectDetail.rempliPar != null}">
 						/ <h:outputText value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
@@ -100,7 +100,7 @@
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
 							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" >
-							<f:convertDateTime type="both" locale="FR"/>
+							<f:convertDateTime type="both" locale="FR" timeZone="Europe/Paris"/>
 							</h:outputText>
 							
 							

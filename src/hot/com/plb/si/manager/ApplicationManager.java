@@ -50,6 +50,7 @@ import com.plb.si.service.FormationDao;
 import com.plb.si.service.PartenaireDao;
 import com.plb.si.service.TypeContactDao;
 import com.plb.si.util.Labels;
+import com.plb.util.Util;
 
 @Name("applicationManager")
 @Scope(ScopeType.APPLICATION)
@@ -82,38 +83,38 @@ public class ApplicationManager implements Serializable {
 
 	@Out(required = false)
 	private Date lastUpdateTarifs;
-	
-	@Out(required=false)
+
+	@Out(required = false)
 	private List<TypeContact> typesContact;
-	
-	@Out(required=false)
+
+	@Out(required = false)
 	private List<TypeContactSI> typesContactSi;
-	
-	@Out(required=false)
+
+	@Out(required = false)
 	private List<TypeContactWeb> typesContactWeb;
-	
-	@Out(required=false)
+
+	@Out(required = false)
 	private List<Formation> formationsActives;
-	
-	@Out(required=false)
+
+	@Out(required = false)
 	private List<EmailTemplate> emailTemplates;
-	
-	private Map<Formation,List<FormationPartenaire>> allFormationsPartenaire = new HashMap<Formation, List<FormationPartenaire>>();
-	private Map<Formation,FormationMutualisees> allFormationsMutualisee = new HashMap<Formation, FormationMutualisees>();
-	private Map<Formation,List<Session>> allFormationsSessions = new HashMap<Formation, List<Session>>();
-	
+
+	private Map<Formation, List<FormationPartenaire>> allFormationsPartenaire = new HashMap<Formation, List<FormationPartenaire>>();
+	private Map<Formation, FormationMutualisees> allFormationsMutualisee = new HashMap<Formation, FormationMutualisees>();
+	private Map<Formation, List<Session>> allFormationsSessions = new HashMap<Formation, List<Session>>();
+
 	@Out
 	public SimpleDateFormat longMonthFormat = new SimpleDateFormat("MMM/yy");
 
 	@Out
-	public SimpleDateFormat fullMonthFormat = new SimpleDateFormat("MMMM",Locale.FRANCE);
-	
+	public SimpleDateFormat fullMonthFormat = new SimpleDateFormat("MMMM",
+			Locale.FRANCE);
+
 	@Out
 	public Locale LOCALE = Locale.FRANCE;
 
-	@Out(required=false)
+	@Out(required = false)
 	Role[] roles;
-
 
 	public final static ResourceBundle projectBundle = ResourceBundle
 			.getBundle("plbsi");
@@ -122,52 +123,61 @@ public class ApplicationManager implements Serializable {
 	public final static String SERVEUR = projectBundle.getString("SERVEUR");
 	@Out
 	public final static String WEB_URL = projectBundle.getString("WEB_URL");
-	
-	public final static String WEB_ROOT_IMG = projectBundle.getString("WEB_ROOT_IMG");
+
+	public final static String WEB_ROOT_IMG = projectBundle
+			.getString("WEB_ROOT_IMG");
 
 	@Out
-	public final static String WEB_URL_IMG = projectBundle.getString("WEB_URL_IMG");
+	public final static String WEB_URL_IMG = projectBundle
+			.getString("WEB_URL_IMG");
 	@Out
 	public final static String URL_CSS = projectBundle.getString("URL_CSS");
-	
+
 	public final static String DEVIS_CC = projectBundle.getString("DEVIS_CC");
 
 	// Statuts prospects
 	@Out
-	public static final String ST_PROSPECT_RECHERCHE = Labels.getString("ST_PROSPECT_RECHERCHE");
+	public static final String ST_PROSPECT_RECHERCHE = Labels
+			.getString("ST_PROSPECT_RECHERCHE");
 	@Out
-	public static final String ST_PROSPECT_AUDIT = Labels.getString("ST_PROSPECT_AUDIT");
+	public static final String ST_PROSPECT_AUDIT = Labels
+			.getString("ST_PROSPECT_AUDIT");
 	@Out
-	public static final String ST_PROSPECT_COMMERCIAL = Labels.getString("ST_PROSPECT_COMMERCIAL");
+	public static final String ST_PROSPECT_COMMERCIAL = Labels
+			.getString("ST_PROSPECT_COMMERCIAL");
 	@Out
-	public static final String ST_PROSPECT_RECHERCHE_MODIFIE = Labels.getString("ST_PROSPECT_RECHERCHE_MODIFIE");
+	public static final String ST_PROSPECT_RECHERCHE_MODIFIE = Labels
+			.getString("ST_PROSPECT_RECHERCHE_MODIFIE");
 	@Out
-	public static final String ST_PROSPECT_LOGISTIQUE = Labels.getString("ST_PROSPECT_LOGISTIQUE");
+	public static final String ST_PROSPECT_LOGISTIQUE = Labels
+			.getString("ST_PROSPECT_LOGISTIQUE");
 	@Out
-	public static final String ST_PROSPECT_ANNULE = Labels.getString("ST_PROSPECT_ANNULE");
+	public static final String ST_PROSPECT_ANNULE = Labels
+			.getString("ST_PROSPECT_ANNULE");
 	@Out
-	public static final String ST_PROSPECT_OK = Labels.getString("ST_PROSPECT_OK");
+	public static final String ST_PROSPECT_OK = Labels
+			.getString("ST_PROSPECT_OK");
 
 	@Logger
 	Log log;
-	
+
 	// Le polling doit être inférieur au timeout de session qui est de 30 mn par
 	// dfaut => 25*60*1000=
 	@Out(required = false)
 	private long SESSION_FREQUENCY = 1500000;
-	
+
 	// Le polling doit être inférieur au timeout de session qui est de 30 mn par
 	// dfaut => 2*60*1000=120000
 	@Out(required = false)
 	private long CONVERSATION_FREQUENCY = 60000;
-	
+
 	private Date grillesUpdateDate = new Date();
-	
-	int MAX_SIZE=20;
+
+	int MAX_SIZE = 20;
 	private List<ProspectUpdate> lastProspectUpdated = new LinkedList<ProspectUpdate>();
 
 	private List<Formation> allFormations, allFormationsArchived;
-	
+
 	public void refresh() {
 		log.debug("Refreshing filieres, categories, partenaires, ... from application cache");
 		filieres = null;
@@ -179,7 +189,6 @@ public class ApplicationManager implements Serializable {
 		emailTemplates = null;
 		refreshFormations();
 	}
-
 
 	@Factory("roles")
 	public void initRoles() {
@@ -200,7 +209,7 @@ public class ApplicationManager implements Serializable {
 		Calendar cal = Calendar.getInstance(Locale.FRANCE);
 		cal.set(Calendar.DAY_OF_MONTH, 15);
 		cal.set(Calendar.MONTH, Calendar.JANUARY);
-		SimpleDateFormat df = new SimpleDateFormat("MMMM",Locale.FRANCE);
+		SimpleDateFormat df = new SimpleDateFormat("MMMM", Locale.FRANCE);
 		monthsItem = new ArrayList<SelectItem>();
 		monthsItem.add(new SelectItem(Calendar.JANUARY,
 				df.format(cal.getTime())));
@@ -276,24 +285,25 @@ public class ApplicationManager implements Serializable {
 		log.debug("Factory for tarifs lastUpdateTarifs");
 		Query q = entityManager
 				.createQuery("from UpdateTarif u order by u.date desc");
-		List<UpdateTarif> results = (List<UpdateTarif>)q.getResultList();
-		if ( results.size() > 0 ) {
-			lastUpdateTarifs = ((UpdateTarif) q.getResultList().get(0)).getDate();
+		List<UpdateTarif> results = (List<UpdateTarif>) q.getResultList();
+		if (results.size() > 0) {
+			lastUpdateTarifs = ((UpdateTarif) q.getResultList().get(0))
+					.getDate();
 		} else {
-			Calendar  cal = Calendar.getInstance();
+			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2006);
 			lastUpdateTarifs = cal.getTime();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Factory("emailTemplates")
 	public void initEmailTemplates() {
 		log.debug("Factory for emailTemplates");
-		emailTemplates = entityManager
-				.createQuery("from EmailTemplate e order by e.subject").getResultList();
+		emailTemplates = entityManager.createQuery(
+				"from EmailTemplate e order by e.subject").getResultList();
 	}
-	
+
 	@Observer(value = "emailTemplateUpdated")
 	public void refreshEmailTemplates() {
 		log.debug("Refreshing email Templates from application cache");
@@ -305,7 +315,7 @@ public class ApplicationManager implements Serializable {
 		log.debug("Refreshing categories from application cache");
 		categories = null;
 	}
-	
+
 	@Observer(value = "tarifsUpdated")
 	public void refreshTarisInter() {
 		log.debug("Refreshing lastUpdateTarifs from application cache");
@@ -320,75 +330,80 @@ public class ApplicationManager implements Serializable {
 		this.grillesUpdateDate = grillesUpdateDate;
 	}
 
-
-	@Observer(value="prospectUpdated") 
-	public void prospectUpdate(Prospect prospect) {	
+	@Observer(value = "prospectUpdated")
+	public void prospectUpdate(Prospect prospect) {
 		log.debug("Updating Last Prospect Modified Date");
-		if ( lastProspectUpdated.size() == MAX_SIZE ) {
+		if (lastProspectUpdated.size() == MAX_SIZE) {
 			lastProspectUpdated.remove(0);
-		} 
+		}
 		lastProspectUpdated.add(new ProspectUpdate(prospect));
 	}
-	
+
 	public List<ProspectUpdate> getUpdatedProspects(Date lastSearchDate) {
-		log.debug("getUpdatedProspects : "+lastProspectUpdated + "SearchDate " + lastSearchDate );
-		if ( lastSearchDate == null ) {
+		log.debug("getUpdatedProspects : " + lastProspectUpdated
+				+ "SearchDate " + lastSearchDate);
+		if (lastSearchDate == null) {
 			lastSearchDate = new Date();
 		}
 		List<ProspectUpdate> ret = new ArrayList<ProspectUpdate>();
-		for ( ProspectUpdate pu : lastProspectUpdated ) {
-			if ( pu.getUpdateDate() != null && pu.getUpdateDate().after(lastSearchDate) ) {
+		for (ProspectUpdate pu : lastProspectUpdated) {
+			if (pu.getUpdateDate() != null
+					&& pu.getUpdateDate().after(lastSearchDate)) {
 				ret.add(pu);
 			}
 		}
 		return ret;
 	}
-	
+
 	@Factory("typesContact")
 	public void fetchTypeContact() {
 		typesContact = new TypeContactDao(entityManager).findAll();
 	}
+
 	@Factory("typesContactSi")
 	public void fetchTypeContactSI() {
-		if ( typesContact == null ) {
+		if (typesContact == null) {
 			fetchTypeContact();
 		}
 		typesContactSi = new ArrayList<TypeContactSI>();
-		for ( TypeContact tc : typesContact ) {
-			if ( tc instanceof TypeContactSI ) {
-				typesContactSi.add((TypeContactSI)tc);
+		for (TypeContact tc : typesContact) {
+			if (tc instanceof TypeContactSI) {
+				typesContactSi.add((TypeContactSI) tc);
 			}
 		}
 	}
+
 	@Factory("typesContactWeb")
 	public void fetchTypeContactWeb() {
-		if ( typesContact == null ) {
+		if (typesContact == null) {
 			fetchTypeContact();
 		}
 		typesContactWeb = new ArrayList<TypeContactWeb>();
-		for ( TypeContact tc : typesContact ) {
-			if ( tc instanceof TypeContactWeb ) {
-				typesContactWeb.add((TypeContactWeb)tc);
+		for (TypeContact tc : typesContact) {
+			if (tc instanceof TypeContactWeb) {
+				typesContactWeb.add((TypeContactWeb) tc);
 			}
 		}
 	}
 
 	public boolean isWebType(String typeProspect) {
-		if ( typesContactWeb == null ) {
+		if (typesContactWeb == null) {
 			fetchTypeContactWeb();
 		}
-		for ( TypeContactWeb tWeb : typesContactWeb ) {
-			if ( tWeb.getLibelle().toUpperCase().equals(typeProspect.toUpperCase())) {
+		for (TypeContactWeb tWeb : typesContactWeb) {
+			if (tWeb.getLibelle().toUpperCase()
+					.equals(typeProspect.toUpperCase())) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	@Factory("formationsActives")
 	public void fetchFormationsActives() {
 		formationsActives = new FormationDao(entityManager).findAllOrder();
 	}
-	
+
 	@Observer("formationUpdated")
 	public void refreshFormations() {
 		allFormations = null;
@@ -396,58 +411,112 @@ public class ApplicationManager implements Serializable {
 		formationsActives = null;
 		allFormationsPartenaire = new HashMap<Formation, List<FormationPartenaire>>();
 		allFormationsMutualisee = new HashMap<Formation, FormationMutualisees>();
+		allFormationsSessions = new HashMap<Formation, List<Session>>();
 	}
+
 	public List<Formation> getAllFormations() {
-		if ( allFormations == null ) {
+		if (allFormations == null) {
 			allFormations = new FormationDao(entityManager).findAll();
 		}
 		return allFormations;
 	}
+
 	public List<Formation> getAllFormationsArchived() {
-		if ( allFormationsArchived == null ) {
-			allFormationsArchived = new FormationDao(entityManager).findAllWithArchived();
+		if (allFormationsArchived == null) {
+			allFormationsArchived = new FormationDao(entityManager)
+					.findAllWithArchived();
 		}
 		return allFormationsArchived;
 	}
-	
+
 	public List<FormationPartenaire> getFormationsPartenaire(Formation formation) {
-		if ( formation == null ) {
+		if (formation == null) {
 			return null;
 		}
 		List<FormationPartenaire> ret = allFormationsPartenaire.get(formation);
-		if ( ret == null ) {
-			formation = entityManager.find(Formation.class, formation.getIdFormation());
+		if (ret == null) {
+			formation = entityManager.find(Formation.class,
+					formation.getIdFormation());
 			ret = formation.getFormationsPartenaire();
 			allFormationsPartenaire.put(formation, ret);
 		}
 		return ret;
 	}
+
+	public String getFormationsPartenairesAsString(Formation formation) {
+
+		StringBuffer sbf = new StringBuffer();
+		boolean bFirst = true;
+		List<FormationPartenaire> fps = getFormationsPartenaire(formation);
+		if (fps != null) {
+			for (FormationPartenaire fp : fps) {
+				if (bFirst) {
+					sbf.append(fp.getPartenaire().getNom() + "(" + fp.getPrix()
+							+ ")");
+					bFirst = false;
+				} else {
+					sbf.append("/" + fp.getPartenaire().getNom() + "("
+							+ fp.getPrix() + ")");
+				}
+			}
+		}
+		return sbf.toString();
+	}
+
 	public FormationMutualisees getFormationsMutualisees(Formation formation) {
-		if ( formation == null ) {
+		if (formation == null) {
 			return null;
 		}
 		FormationMutualisees ret = allFormationsMutualisee.get(formation);
-		if ( ret == null ) {
-			formation = entityManager.find(Formation.class, formation.getIdFormation());
+		if (ret == null) {
+			formation = entityManager.find(Formation.class,
+					formation.getIdFormation());
 			ret = formation.getFormationMutualisees();
 			allFormationsMutualisee.put(formation, ret);
 		}
 		return ret;
 	}
+
 	public List<Session> getFormationsSessions(Formation formation) {
-		if ( formation == null ) {
+		if (formation == null) {
 			return null;
 		}
 		List<Session> ret = allFormationsSessions.get(formation);
-		if ( ret == null ) {
-			formation = entityManager.find(Formation.class, formation.getIdFormation());
+		if (ret == null) {
+			formation = entityManager.find(Formation.class,
+					formation.getIdFormation());
 			ret = formation.getSessions();
 			allFormationsSessions.put(formation, ret);
 		}
 		return ret;
 	}
-	public List<SessionOrganismesDto> getFormationsNextSessions(Formation formation) {
-		if ( formation == null ) {
+
+	public String getFormationAllSessionsAsString(Formation formation,
+			Date month) {
+		StringBuilder sb = new StringBuilder();
+		List<Date> dates = new ArrayList<Date>();
+		boolean bFirst = true;
+		List<Session> sessions = getFormationsSessions(formation);
+		for (Session s : sessions) {
+			if (Util.monthEqual(s.getDebut(), month)
+					&& !dates.contains(s.getDebut())) {
+				dates.add(s.getDebut());
+				if (bFirst) {
+					sb.append(s.getDay() + "-" + s.getDayFin());
+					bFirst = false;
+				} else {
+					sb.append(";" + s.getDay() + "-" + s.getDayFin());
+				}
+			}
+		}
+
+		// Pour l'export excel on renvoie un caractère blanc
+		return sb.length() > 0 ? sb.toString() : " ";
+	}
+
+	public List<SessionOrganismesDto> getFormationsNextSessions(
+			Formation formation) {
+		if (formation == null) {
 			return null;
 		}
 		List<SessionOrganismesDto> ret = null;
@@ -455,17 +524,19 @@ public class ApplicationManager implements Serializable {
 			ret = formation.getNextSessionsOrganismesDto();
 		} catch (LazyInitializationException e) {
 			System.out.println("===========Next Session LAZY========");
-			Formation f = entityManager.find(Formation.class, formation.getIdFormation());
+			Formation f = entityManager.find(Formation.class,
+					formation.getIdFormation());
 			formation.setSessions(f.getSessions());
 			formation.setFormationsPartenaire(f.getFormationsPartenaire());
 			formation.setFormationMutualisees(f.getFormationMutualisees());
 			ret = formation.getNextSessionsOrganismesDto();
 		}
-		
+
 		return ret;
 	}
+
 	public List<Formation> getSameFormations(Formation formation) {
-		if ( formation == null ) {
+		if (formation == null) {
 			return null;
 		}
 		List<Formation> ret = null;
@@ -473,13 +544,14 @@ public class ApplicationManager implements Serializable {
 			ret = formation.getSameFormations();
 		} catch (LazyInitializationException e) {
 			System.out.println("===========Same LAZY========");
-			Formation f = entityManager.find(Formation.class, formation.getIdFormation());
+			Formation f = entityManager.find(Formation.class,
+					formation.getIdFormation());
 			formation.setSessions(f.getSessions());
 			formation.setFormationsPartenaire(f.getFormationsPartenaire());
 			formation.setFormationMutualisees(f.getFormationMutualisees());
 			ret = formation.getSameFormations();
 		}
-		
+
 		return ret;
 	}
 }

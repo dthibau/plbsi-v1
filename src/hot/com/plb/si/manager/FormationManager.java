@@ -599,7 +599,9 @@ public class FormationManager implements Serializable {
 						.getFormationMutualisees().getFormations()) {
 					formation.getFormationMutualisees().addFormation(f);
 					sb.append(f.getReference() + " ");
+					
 				}
+				newFormationMutualisee.getFormationMutualisees().setFormations(new ArrayList<Formation>());
 				entityManager.remove(newFormationMutualisee
 						.getFormationMutualisees());
 				facesMessages.addFromResourceBundle(Severity.INFO,

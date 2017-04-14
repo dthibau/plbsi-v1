@@ -14,6 +14,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/dthibau/Dev/servers/jboss-as-7.1.1.Final/modules/org/hibernate/main/hibernate-core-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="/home/dthibau/Dev/servers/jboss-as-7.1.1.Final/modules/org/hibernate/main/hibernate-core-4.0.1.Final.jar" sourcepath="/home/dthibau/.m2/repository/org/hibernate/hibernate-core/4.0.1.Final/hibernate-core-4.0.1.Final-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -427,7 +427,7 @@ public class SearchManager implements Serializable {
 			if (partenaire != null && !plbOnly && !_containsPartenaire(f, partenaire)) {
 				continue;
 			}
-			if (plbOnly && !f.getFormationsPartenaire().isEmpty()) {
+			if (plbOnly && !applicationManager.getFormationsPartenaire(f).isEmpty()) {
 				continue;
 			}
 			if (currentView == SESSION_VIEW && f.isintra()) {
@@ -446,7 +446,7 @@ public class SearchManager implements Serializable {
 				continue;
 			}
 			if (currentView == SESSION_VIEW && plbHidden
-					&& f.getFormationsPartenaire().isEmpty()) {
+					&& applicationManager.getFormationsPartenaire(f).isEmpty()) {
 				continue;
 			}
 

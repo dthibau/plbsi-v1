@@ -258,6 +258,26 @@ public class IntraManager implements Serializable {
 			} catch (Exception e) {
 				tailleMessagerie = 0;
 			}
+			
+			if ( prospect.getCommentaire() != null && !prospect.getCommentaire().isEmpty() ) {
+				Message m = new Message();
+				m.setLibelle("Remarque : " + prospect.getCommentaire());
+				m.setAccount(loggedUser);
+				m.setProspect(prospect);
+				m.setDate(prospect.getDateCreation());
+				messages.add(m);
+				modif = true;
+			}
+			if ( prospect.getConsigne() != null && !prospect.getConsigne().isEmpty() ) {
+				Message m = new Message();
+				m.setLibelle("Consigne : " + prospect.getConsigne());
+				m.setAccount(loggedUser);
+				m.setProspect(prospect);
+				m.setDate(prospect.getDateCreation());
+				messages.add(m);	
+				modif = true;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

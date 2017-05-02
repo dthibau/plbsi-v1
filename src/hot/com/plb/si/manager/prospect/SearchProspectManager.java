@@ -378,7 +378,7 @@ public class SearchProspectManager implements Serializable {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
 		if (interIntra == ALL_INT) {
 			for (ProspectDto pDto : resultSet) {
-				if (pDto.getProspect().getInformationIntra() == null || !"En cours".equals(statut) || !ApplicationManager.ST_PROSPECT_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) 
+				if (pDto.getProspect().getInformationIntra() == null || !"En cours".equals(statut) || !ApplicationManager.ST_INTRA_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) 
 						) {
 					ret.add(pDto);
 				}
@@ -392,7 +392,7 @@ public class SearchProspectManager implements Serializable {
 		} else if (interIntra == INTRA) {
 			for (ProspectDto pDto : resultSet) {
 				if (pDto.getProspect().getInformationIntra() != null) {
-					if ( !"En cours".equals(statut) || !ApplicationManager.ST_PROSPECT_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) ) {
+					if ( !"En cours".equals(statut) || !ApplicationManager.ST_INTRA_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) ) {
 						ret.add(pDto);
 					}
 				}

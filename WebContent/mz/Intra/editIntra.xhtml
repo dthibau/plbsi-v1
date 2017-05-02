@@ -170,13 +170,13 @@
 										</ui:define>
 										<h:selectOneMenu value="#{intraManager.intra.statutIntra}" style="width:110px; height:20px;">
 											<a:ajax event="change" listener="#{intraManager.statutChange()}" render="statutPage3, buttonValidation"/>
-											<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE_MODIFIE}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_LOGISTIQUE}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_ANNULE}" />
-											<f:selectItem itemValue="#{ST_PROSPECT_OK}" />
+											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}" itemLabel="#{messages[ST_INTRA_RECHERCHE]}"/>
+											<f:selectItem itemValue="#{ST_INTRA_AUDIT}" itemLabel="#{messages[ST_INTRA_AUDIT]}" />
+											<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}"  itemLabel="#{messages[ST_INTRA_COMMERCIAL]}"/>
+											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}" itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}" />
+											<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}" itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}"/>
+											<f:selectItem itemValue="#{ST_INTRA_ANNULE}" itemLabel="#{messages[ST_INTRA_ANNULE]}"/>
+											<f:selectItem itemValue="#{ST_INTRA_OK}" itemLabel="#{messages[ST_INTRA_OK]}"/>
 										</h:selectOneMenu>
 									</s:decorate>
 								</a:outputPanel>
@@ -510,7 +510,7 @@
 					</rich:dataTable>
 				</rich:panel>
 				<br />
-				<rich:panel header="Retour commercial" rendered="#{'Annulé'.equals(intraManager.intra.statutIntra)}">
+				<rich:panel header="Retour commercial" rendered="#{ST_INTRA_ANNULE.equals(intraManager.intra.statutIntra)}">
 					<a:outputPanel>
 						<s:decorate template="../layout/display.xhtml" style="width:700px;">
 							<ui:define name="label">

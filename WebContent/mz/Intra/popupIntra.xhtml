@@ -30,7 +30,7 @@
 			<!-- Output panel pop up de visualisation des données -->
 			<center><h:graphicImage value="/img/information.png" width="3%" height="3%" rendered="#{intraManager.visuMode}" style="vertical-align:middle;" /><b> <h:outputText styleClass="title1"  value=" Intra : #{intraManager.intra.idInforamtionIntra}" rendered="#{intraManager.visuMode}"/></b></center>
 			<br />
-			<center><b><a:outputPanel styleClass="title1" rendered="#{intraManager.visuMode}"><h:outputText value="#{intraManager.intra.statutIntra}" /> / Probabilité : <h:outputText value="#{intraManager.intra.probTransformation}" /></a:outputPanel></b></center><br/>
+			<center><b><a:outputPanel styleClass="title1" rendered="#{intraManager.visuMode}"><h:outputText value="#{messages[intraManager.intra.statutIntra]}" /> / Probabilité : <h:outputText value="#{intraManager.intra.probTransformation}" /></a:outputPanel></b></center><br/>
 			
 			<a:outputPanel rendered="#{intraManager.visuMode}">
 				<ui:include src="visuIntra.xhtml" />

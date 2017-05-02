@@ -209,7 +209,7 @@
 								<ui:define name="label">
 									<h:outputText value="#{messages['intra.statut']}" />
 								</ui:define>
-								<h:outputText value="#{intraManager.intra.statutIntra}" />
+								<h:outputText value="#{messages[intraManager.intra.statutIntra]}" />
 							</s:decorate></td>
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:400px;">
@@ -489,7 +489,7 @@
 			</rich:panel>
 			<br />
 			<rich:panel header="Retour commercial"
-				rendered="#{'Annulé'.equals(intraManager.intra.statutIntra)}">
+				rendered="#{ST_INTRA_ANNULE.equals(intraManager.intra.statutIntra)}">
 				<a:outputPanel>
 					<s:decorate template="../layout/display.xhtml" style="width:500px;">
 						<ui:define name="label">
@@ -670,7 +670,7 @@
 							<h:outputText value="#{messages['intra.statut']}" />
 						</f:facet>
 						<center>
-							<b><h:outputText value="#{event.statutIntra}" /></b>
+							<b><h:outputText value="#{messages[event.statutIntra]}" /></b>
 						</center>
 						<f:facet name="footer">
 							<h:outputText value="#{messages['intra.statut']}" />

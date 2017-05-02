@@ -118,7 +118,7 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial == null}">
-								<a:ajax event="change" render="statutDemande :editForm:statutIntra"
+								<a:ajax event="change" render="statutDemande"
 									listener="#{editProspectManager.remplirMontant()}" />
 								<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
@@ -131,7 +131,7 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
-								<a:ajax event="change" render="statutDemande :editForm:statutIntra"
+								<a:ajax event="change" render="statutDemande"
 									listener="#{editProspectManager.remplirMontant()}" />
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
@@ -143,7 +143,7 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
-								<a:ajax event="change" render="statutDemande :editForm:statutIntra"
+								<a:ajax event="change" render="statutDemande"
 									listener="#{editProspectManager.remplirMontant()}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
 								<f:selectItem itemValue="#{ST_ABANDON}" />

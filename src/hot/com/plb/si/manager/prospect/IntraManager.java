@@ -286,7 +286,7 @@ public class IntraManager implements Serializable {
 
 	public String saveIntra() {
 		intra.setDateCreation(new Date());
-		intra.setStatutIntra(ApplicationManager.ST_PROSPECT_RECHERCHE);
+		intra.setStatutIntra(ApplicationManager.ST_INTRA_RECHERCHE);
 		intra.setProspect(prospect);
 		intra.setChangementAdminIntra(0);
 		intra.setChangementCom(1);
@@ -423,9 +423,9 @@ public class IntraManager implements Serializable {
 		}
 		Account destinataire = new Account();
 		if (!statutIntraTemp.equals(intra.getStatutIntra())
-				&& !ApplicationManager.ST_PROSPECT_AUDIT.equals(intra.getStatutIntra())
-				&& !ApplicationManager.ST_PROSPECT_RECHERCHE.equals(intra.getStatutIntra())
-				&& !ApplicationManager.ST_PROSPECT_RECHERCHE_MODIFIE.equals(intra.getStatutIntra())) {
+				&& !ApplicationManager.ST_INTRA_AUDIT.equals(intra.getStatutIntra())
+				&& !ApplicationManager.ST_INTRA_RECHERCHE.equals(intra.getStatutIntra())
+				&& !ApplicationManager.ST_INTRA_RECHERCHE_MODIFIE.equals(intra.getStatutIntra())) {
 			intra.setChangementAdminIntra(1);
 			intra.setChangementCom(0);
 			intra.setDateModification(new Date());
@@ -447,8 +447,8 @@ public class IntraManager implements Serializable {
 						.sendMailIntra(1000, intra, intraEvent, true);
 			}
 		} else if (!statutIntraTemp.equals(intra.getStatutIntra())
-				&& (ApplicationManager.ST_PROSPECT_AUDIT.equals(intra.getStatutIntra())
-						|| ApplicationManager.ST_PROSPECT_RECHERCHE.equals(intra.getStatutIntra()) || ApplicationManager.ST_PROSPECT_RECHERCHE_MODIFIE
+				&& (ApplicationManager.ST_INTRA_AUDIT.equals(intra.getStatutIntra())
+						|| ApplicationManager.ST_INTRA_RECHERCHE.equals(intra.getStatutIntra()) || ApplicationManager.ST_INTRA_RECHERCHE_MODIFIE
 							.equals(intra.getStatutIntra()))) {
 			intra.setChangementAdminIntra(0);
 			intra.setChangementCom(1);
@@ -720,17 +720,17 @@ public class IntraManager implements Serializable {
 	public String coloriage(String _statut) {
 		String couleur = "";
 		
-		if (ApplicationManager.ST_PROSPECT_ANNULE.equals(_statut)) {
+		if (ApplicationManager.ST_INTRA_ANNULE.equals(_statut)) {
 			couleur = " #ffff66";
-		} else if (ApplicationManager.ST_PROSPECT_RECHERCHE_MODIFIE.equals(_statut)) {
+		} else if (ApplicationManager.ST_INTRA_RECHERCHE_MODIFIE.equals(_statut)) {
 			couleur = "#ffa343";
-		} else if (ApplicationManager.ST_PROSPECT_AUDIT.equals(_statut)) {
+		} else if (ApplicationManager.ST_INTRA_AUDIT.equals(_statut)) {
 			couleur = "#01B0F0";
-		} else if (ApplicationManager.ST_PROSPECT_LOGISTIQUE.equals(_statut)) {
+		} else if (ApplicationManager.ST_INTRA_LOGISTIQUE.equals(_statut)) {
 			couleur = "#4166f5 ";
-		} else if (ApplicationManager.ST_PROSPECT_RECHERCHE.equals(_statut)) {
+		} else if (ApplicationManager.ST_INTRA_RECHERCHE.equals(_statut)) {
 			couleur = "#fe6f5e";
-		} else if (ApplicationManager.ST_PROSPECT_OK.equals(_statut)) {
+		} else if (ApplicationManager.ST_INTRA_OK.equals(_statut)) {
 			couleur = "#98fb98";
 		}
 		return couleur;

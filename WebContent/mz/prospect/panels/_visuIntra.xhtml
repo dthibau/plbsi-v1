@@ -16,7 +16,7 @@
 						<h:outputText value="#{messages['intra.statut']}" />
 					</ui:define>
 					<h:outputText
-						value="#{editProspectManager.prospect.informationIntra.statutIntra}" />
+						value="#{messages[editProspectManager.prospect.informationIntra.statutIntra]}" />
 				</s:decorate></td>
 			<td><s:decorate template="../../layout/display.xhtml">
 					<ui:define name="label">
@@ -37,28 +37,25 @@
 					</ui:define>
 					<b><h:outputText style="color:red;"
 							value="Votre demande est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera."
-							rendered="#{'Administrateur en recherche d’intervenant'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
+							rendered="#{ST_INTRA_RECHERCHE.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
 					<b><h:outputText style="color:red;"
 							value="Votre demande a été traitée, à vous de modifier son statut afin de faire évoluer votre demande d'intra."
-							rendered="#{'Attente com'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
-					<b><h:outputText style="color:red;"
-							value="Vous avez modifié votre demande, elle est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera."
-							rendered="#{'Attente AD'.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
+							rendered="#{ST_INTRA_COMMERCIAL.equals(editProspectManager.prospect.informationIntra.statutIntra)}" /></b>
 					<b><h:outputText style="color:red;"
 							value="Vous avez passé votre demande d'intra au statut annulé. Votre demande est en cours de traitement."
-							rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+							rendered="#{ST_INTRA_ANNULE.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
 					<b><h:outputText style="color:red;"
 							value="L'annulation de votre demande d'intra à été validé."
-							rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
+							rendered="#{ST_INTRA_ANNULE.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
 					<b><h:outputText style="color:red;"
 							value="Votre demande est en cours de traitement. L'intervenant a été trouvé, nous sommes dans l'attente d'un accord entre lui et le client."
-							rendered="#{'Attente Audit'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+							rendered="#{ST_INTRA_AUDIT.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
 					<b><h:outputText style="color:red;"
 							value="Vous avez passé votre demande d'intra au statut confirmé. Votre demande est en cours de traitement."
-							rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
+							rendered="#{ST_INTRA_LOGISTIQUE.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementCom==1}" /></b>
 					<b><h:outputText style="color:red;"
 							value="Votre demande d'intra a été passé au statut Logistique."
-							rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
+							rendered="#{ST_INTRA_LOGISTIQUE.equals(editProspectManager.prospect.informationIntra.statutIntra) and editProspectManager.prospect.informationIntra.changementAdminIntra==1}" /></b>
 				</s:decorate></td>
 		</tr>
 	</table>
@@ -136,7 +133,7 @@
 		</table>
 		<rich:collapsiblePanel header="Adresse : " expanded="false"
 			switchType="client"
-			rendered="#{!'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra)  and !'OK'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			rendered="#{!ST_INTRA_LOGISTIQUE.equals(editProspectManager.prospect.informationIntra.statutIntra)  and !ST_INTRA_OK.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
 			<table border="0" cellspacing="0">
 				<tr>
 					<td><s:decorate template="../../layout/display.xhtml">
@@ -183,7 +180,7 @@
 		<center>
 			<rich:dataTable value="#{editProspectManager.prospect.formations}"
 				var="formation" rowKeyVar="index"
-				rendered="#{!'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+				rendered="#{!ST_INTRA_ANNULE.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
 				<rich:column>
 					<f:facet name="header">
 						<h:outputText value="#{messages['prospect.reference']}" />
@@ -340,7 +337,7 @@
 		<br />
 		<!-- Champs à afficher quand le statut = Annulé -->
 		<a4j:outputPanel
-			rendered="#{'Annulé'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			rendered="#{ST_INTRA_ANNULE.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
 			<s:decorate template="../../layout/display.xhtml">
 				<center>
 					<ui:define name="label">
@@ -353,7 +350,7 @@
 		</a4j:outputPanel>
 		<!-- Champs à afficher quand le statut = Logistique -->
 		<a4j:outputPanel
-			rendered="#{'Logistique'.equals(editProspectManager.prospect.informationIntra.statutIntra) or 'OK'.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
+			rendered="#{ST_INTRA_LOGISTIQUE.equals(editProspectManager.prospect.informationIntra.statutIntra) or ST_INTRA_OK.equals(editProspectManager.prospect.informationIntra.statutIntra)}">
 			<table border="0" cellspacing="3">
 				<tr>
 					<td><s:decorate template="../../layout/display.xhtml">

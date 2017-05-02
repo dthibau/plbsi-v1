@@ -137,26 +137,19 @@ public class ApplicationManager implements Serializable {
 
 	// Statuts prospects
 	@Out
-	public static final String ST_PROSPECT_RECHERCHE = Labels
-			.getString("ST_PROSPECT_RECHERCHE");
+	public static final String ST_INTRA_RECHERCHE = "statut.intra.recherche";
 	@Out
-	public static final String ST_PROSPECT_AUDIT = Labels
-			.getString("ST_PROSPECT_AUDIT");
+	public static final String ST_INTRA_AUDIT = "statut.intra.audit";
 	@Out
-	public static final String ST_PROSPECT_COMMERCIAL = Labels
-			.getString("ST_PROSPECT_COMMERCIAL");
+	public static final String ST_INTRA_COMMERCIAL = "statut.intra.commercial";
 	@Out
-	public static final String ST_PROSPECT_RECHERCHE_MODIFIE = Labels
-			.getString("ST_PROSPECT_RECHERCHE_MODIFIE");
+	public static final String ST_INTRA_RECHERCHE_MODIFIE = "statut.intra.recherche_modifiee";
 	@Out
-	public static final String ST_PROSPECT_LOGISTIQUE = Labels
-			.getString("ST_PROSPECT_LOGISTIQUE");
+	public static final String ST_INTRA_LOGISTIQUE = "statut.intra.logistique";
 	@Out
-	public static final String ST_PROSPECT_ANNULE = Labels
-			.getString("ST_PROSPECT_ANNULE");
+	public static final String ST_INTRA_ANNULE = "statut.intra.annule";
 	@Out
-	public static final String ST_PROSPECT_OK = Labels
-			.getString("ST_PROSPECT_OK");
+	public static final String ST_INTRA_OK = "statut.intra.ok";
 
 	@Logger
 	Log log;

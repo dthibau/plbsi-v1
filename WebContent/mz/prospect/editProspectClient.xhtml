@@ -309,7 +309,7 @@
 			    </rich:panel>
 			 </rich:tab>
 			 <rich:tab header="Suivi intra" name="page2" rendered="#{!empty searchProspect.prospect.informationIntra}">    
-			    <a:outputPanel rendered="#{'Administrateur en recherche d’intervenant'.equals(searchProspect.prospect.informationIntra.statutIntra)}">
+			    <a:outputPanel rendered="#{ST_INTRA_RECHERCHE.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 	        		<s:decorate template="../layout/display.xhtml" style="width:800px;">
 						<ui:define name="label">
 							<h:outputText value="#{messages['intra.info']}" />
@@ -317,7 +317,7 @@
 						<b><h:outputText style="color:red;" value="Votre demande est en cours de traitement, vous recevrez un mail quand le statut de votre demande évoluera."/></b>        
 					</s:decorate>
 	        	</a:outputPanel>
-	        	<a:outputPanel id="statutIntraClient" rendered="#{!'Administrateur en recherche d’intervenant'.equals(searchProspect.prospect.informationIntra.statutIntra)}">
+	        	<a:outputPanel id="statutIntraClient" rendered="#{!ST_INTRA_RECHERCHE.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 	        	<table>
 	        		<tr>
 	        			<td>
@@ -327,13 +327,13 @@
 								</ui:define>
 								<h:selectOneMenu value="#{searchProspect.prospect.informationIntra.statutIntra}" style="width:110px; height:20px;">
 									<a:ajax event="change" render="statutIntraClient" />
-									<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_AUDIT}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_COMMERCIAL}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_RECHERCHE_MODIFIE}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_LOGISTIQUE}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_ANNULE}" />
-									<f:selectItem itemValue="#{ST_PROSPECT_OK}" />
+									<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}" itemLabel="#{messages[ST_INTRA_RECHERCHE]}" />
+									<f:selectItem itemValue="#{ST_INTRA_AUDIT}"  itemLabel="#{messages[ST_INTRA_AUDIT]}" />
+									<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}"  itemLabel="#{messages[ST_INTRA_COMMERCIAL]}" />
+									<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}"  itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}" />
+									<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}"  itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}" />
+									<f:selectItem itemValue="#{ST_INTRA_ANNULE}"  itemLabel="#{messages[ST_INTRA_ANNULE]}" />
+									<f:selectItem itemValue="#{ST_INTRA_OK}"  itemLabel="#{messages[ST_INTRA_OK]}" />
 								</h:selectOneMenu>
 							</s:decorate>
 	        			</td>
@@ -432,7 +432,7 @@
 		        	</table>
 		        </rich:collapsiblePanel>
 		        <rich:collapsiblePanel header="Récapitulatif demande de formation : " expanded="false" switchType="client"
-		        	rendered="#{'Attente com'.equals(searchProspect.prospect.informationIntra.statutIntra)}">
+		        	rendered="#{ST_INTRA_COMMERCIAL.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 				<center>
 				    <rich:dataTable value="#{searchProspect.prospect.formations}"
 						var="formation" rowKeyVar="index" style="width:1000px" >
@@ -578,7 +578,7 @@
 						</a:outputPanel>
 					</center>
 				</rich:collapsiblePanel>
-	        	<a:outputPanel id="formForLogistique" rendered="#{('Logistique').equals(searchProspect.prospect.informationIntra.statutIntra)}">
+	        	<a:outputPanel id="formForLogistique" rendered="#{ST_INTRA_LOGISTIQUE.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 	        		<rich:collapsiblePanel header="Informations à remplir : " expanded="true" switchType="client">
 	        			
 		        		<table border="0" cellspacing="3">
@@ -718,7 +718,7 @@
 		        	</rich:collapsiblePanel>
 	        	</a:outputPanel>
 	        	<ui:include src="fields/_editInfosComplementaires.xhtml"/>
-	        	<a:outputPanel id="formForAnnuleClient" rendered="#{('Annulé').equals(searchProspect.prospect.informationIntra.statutIntra)}">
+	        	<a:outputPanel id="formForAnnuleClient" rendered="#{ST_INTRA_ANNULE.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 		        	<rich:collapsiblePanel header="Informations à remplir : " expanded="true" switchType="client">
 		        		<s:decorate template="../layout/display.xhtml" style="width:700px;">
 							<center>	
@@ -734,7 +734,7 @@
 						<rich:message for="annulationClient"/>
 					</rich:collapsiblePanel>
 	        	</a:outputPanel>
-				<a:outputPanel id="formForModifClient" rendered="#{'Attente AD'.equals(searchProspect.prospect.informationIntra.statutIntra)}">
+				<a:outputPanel id="formForModifClient" rendered="#{ST_INTRA_RECHERCHE_MODIFIE.equals(searchProspect.prospect.informationIntra.statutIntra)}">
 					<rich:panel header="Informations formation : ">
 						<rich:panel id="referencePanelModifClient">
 							<s:decorate template="../layout/display.xhtml">

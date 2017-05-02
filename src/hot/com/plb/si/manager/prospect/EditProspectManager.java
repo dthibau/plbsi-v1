@@ -496,6 +496,18 @@ public class EditProspectManager implements Serializable {
 	}
 
 	private void _modifyIntra() {
+		// If statut changed in Offre, update statut in intra
+		if (  !prospectTemp.getStatut().equals(prospect.getStatut()) ) {		
+			// Update alose intra statut if exist
+			if ( prospect.getStatut().equals(ST_GAGNE) ) {
+				prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_INTRA_LOGISTIQUE);
+			}
+			if ( prospect.getStatut().equals(ST_PERDU) ||
+					prospect.getStatut().equals(ST_ABANDON) ) {
+				prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_INTRA_ANNULE);
+			}
+		}
+
 		// Change commercial in intra
 		Account commercial = _getCommercialByName(prospect.getProspectDetail().getCommercial());		
 		prospect.getInformationIntra().setCommercial(commercial);
@@ -514,7 +526,7 @@ public class EditProspectManager implements Serializable {
 		if (!statutIntraTemp.equals(prospect.getInformationIntra()
 				.getStatutIntra())
 				&& !prospect.getInformationIntra().getStatutIntra()
-						.equals(ApplicationManager.ST_PROSPECT_COMMERCIAL)) {
+						.equals(ApplicationManager.ST_INTRA_COMMERCIAL)) {
 			prospect.getInformationIntra().setChangementAdminIntra(0);
 			prospect.getInformationIntra().setChangementCom(1);
 			prospect.getInformationIntra().setDateModification(new Date());
@@ -542,7 +554,7 @@ public class EditProspectManager implements Serializable {
 		} else if (!statutIntraTemp.equals(prospect.getInformationIntra()
 				.getStatutIntra())
 				&& prospect.getInformationIntra().getStatutIntra()
-						.equals(ApplicationManager.ST_PROSPECT_COMMERCIAL)) {
+						.equals(ApplicationManager.ST_INTRA_COMMERCIAL)) {
 			prospect.getInformationIntra().setChangementAdminIntra(1);
 			prospect.getInformationIntra().setChangementCom(0);
 			prospect.getInformationIntra().setDateModification(new Date());
@@ -630,23 +642,11 @@ public class EditProspectManager implements Serializable {
 		log.debug(loggedUser + " remplirMontant");
 		remplir = false;
 		remplirPerte = false;
-		ResourceBundle bundle = SeamResourceBundle.getBundle();
-		String gagne = bundle.getString("prospect.gagne");
 		try {
-			if (gagne.equals(prospect.getStatut())) {
+			if (ST_GAGNE.equals(prospect.getStatut())) {
 				remplir = true;
-			} else if ("Perdu".equals(prospect.getStatut())) {
+			} else if (ST_PERDU.equals(prospect.getStatut())) {
 				remplirPerte = true;
-			}
-			// Update alose intra statut if exist
-			if ( prospect.getInformationIntra() != null ) {
-				if ( prospect.getStatut().equals(gagne) ) {
-					prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_PROSPECT_LOGISTIQUE);
-				}
-				if ( prospect.getStatut().equals(ST_PERDU) ||
-						prospect.getStatut().equals(ST_ABANDON) ) {
-					prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_PROSPECT_ANNULE);
-				}
 			}
 		} catch (Exception e) {
 			log.debug(loggedUser + " STACKTRACE");

@@ -505,6 +505,9 @@ public class EditProspectManager implements Serializable {
 			if ( prospect.getStatut().equals(ST_PERDU) ||
 					prospect.getStatut().equals(ST_ABANDON) ) {
 				prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_INTRA_ANNULE);
+				if ( prospect.getInformationIntra().getRaisonPerte() == null || prospect.getInformationIntra().getRaisonPerte().isEmpty() ) {
+					prospect.getInformationIntra().setRaisonPerte("Prospect perdu ou abandonné");
+				}
 			}
 		}
 

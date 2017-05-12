@@ -50,9 +50,8 @@
 							<a:outputPanel id="create">
 								<s:decorate template="../layout/edit.xhtml" style="width:300px" rendered="#{demandeClientManager.intra}">
 									<ui:define name="label">Créer une demande d'intra</ui:define>
-										<h:selectBooleanCheckbox value="#{demandeClientManager.createIntra}">
-											<a:ajax event="change" render="validation"/>
-		  									<f:selectItem itemValue="true" itemLabel="" />
+										<h:selectBooleanCheckbox value="#{demandeClientManager.createIntra}" id="checkIntra">
+											<a:ajax event="change" render="validation" execute="@this" />
 										</h:selectBooleanCheckbox>
 								</s:decorate>
 							</a:outputPanel>
@@ -299,7 +298,7 @@
 				<center>
 					<a4j:outputPanel id="validation">
 						<h:commandButton type="submit" value="Enregistrer demande client" action="#{demandeClientManager.saveDemandeClient}" style="width:200px; height:40px;" rendered="#{!demandeClientManager.createIntra}"/>
-						<h:commandButton type="submit" value="Enregistrer demande client" action="#{demandeClientManager.saveDemandeClientIntra()}" style="width:200px; height:40px;" rendered="#{demandeClientManager.createIntra}"/>
+						<h:commandButton type="submit" value="Enregistrer demande intra" action="#{demandeClientManager.saveDemandeClientIntra()}" style="width:200px; height:40px;" rendered="#{demandeClientManager.createIntra}"/>
 					</a4j:outputPanel>
 				</center>
 				<br />

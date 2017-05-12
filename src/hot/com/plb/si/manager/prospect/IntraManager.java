@@ -216,6 +216,8 @@ public class IntraManager implements Serializable {
 		listeCommercial = accountDao.findAllCommercialeActive();
 
 		intra = new InformationIntra();
+		_persistIntra();
+		
 		// Notification
 		confirm = false;
 		// Recherche du commercial afin de trouver l'Account associé dans le but
@@ -283,8 +285,8 @@ public class IntraManager implements Serializable {
 		}
 		return "/mz/Intra/createIntra.xhtml";
 	}
-
-	public String saveIntra() {
+	
+	private IntraCreationEvent _persistIntra() {
 		intra.setDateCreation(new Date());
 		intra.setStatutIntra(ApplicationManager.ST_INTRA_RECHERCHE);
 		intra.setProspect(prospect);
@@ -292,21 +294,27 @@ public class IntraManager implements Serializable {
 		intra.setChangementCom(1);
 		intra.setValide(0);
 		// Enregistrement de l'event création de demande d'intra
-		IntraCreationEvent intraCreation = new IntraCreationEvent(loggedUser,
+		IntraCreationEvent intraCreationEvent = new IntraCreationEvent(loggedUser,
 				intra);
 		entityManager.persist(intra);
-		entityManager.persist(intraCreation);
+		entityManager.persist(intraCreationEvent);
+		
+		return intraCreationEvent;
+	}
+
+	public String saveIntra() {
+		IntraCreationEvent intraCreationEvent = _persistIntra();
 		// Envoie de mail pour notifier la création d'un intra
-		notificationService.sendToIntervenantManager(intraCreation);
-		notificationService.sendMailIntra(1000, intra, intraCreation);
+		notificationService.sendToIntervenantManager(intraCreationEvent);
+		notificationService.sendMailIntra(1000, intra, intraCreationEvent);
 		// si confirmation donc envoie de mail de confirmation au role
 		// Intervenant_Manager
 		if (confirm == true) {
 			Account destinataire = new Account();
 			destinataire = intra.getCommercial();
 			notificationService.resolveDestinataireUnique(destinataire,
-					intraCreation);
-			notificationService.sendMailIntra(1000, intra, intraCreation);
+					intraCreationEvent);
+			notificationService.sendMailIntra(1000, intra, intraCreationEvent);
 		}
 		// Enregistrement des éventuelles messages/notes persos
 		int tailleMessagerieFinal = messages.size();

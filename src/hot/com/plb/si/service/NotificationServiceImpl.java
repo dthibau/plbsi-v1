@@ -308,7 +308,7 @@ public class NotificationServiceImpl implements NotificationService,
 					+ event);
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Impossible d'envoyer l'email à l'adresse" , account.getEmail());
 		}
 	}
 	

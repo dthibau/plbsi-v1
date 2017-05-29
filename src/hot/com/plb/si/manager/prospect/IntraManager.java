@@ -413,9 +413,6 @@ public class IntraManager implements Serializable {
 		valide = intra.getValide();
 	}
 
-	public void validateMontant(FacesContext context, UIComponent input, Object value) {
-		Float.parseFloat(value.toString());
-	}
 	/**
 	 * Sauvegarde les données en base.
 	 */

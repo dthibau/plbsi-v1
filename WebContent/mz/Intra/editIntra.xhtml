@@ -223,7 +223,7 @@
 									<ui:define name="label">
 										<h:outputText value="Montant Frais" />
 									</ui:define>
-									<h:inputText value="#{intraManager.intra.montantFrais}" validator="#{intraManager.validateMontant}">
+									<h:inputText value="#{intraManager.intra.montantFrais}">
 										<f:validateDoubleRange minimum="1"/>
 									</h:inputText>
 								</s:decorate>

@@ -204,7 +204,8 @@
 			<h:outputText escape="false" value="#{_dto.formation.shortRemarques}" />
 		</rich:column>
 		<f:facet name="footer">
-			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{searchManager.pagination ? listManager.currentPage :  0}" fastStep="5"/>
+<!-- 			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{searchManager.pagination ? listManager.currentPage :  0}" fastStep="5"/> -->
+			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{listManager.currentPage}" fastStep="5"/>
 		</f:facet>
 	</rich:dataTable>
 </ui:composition>

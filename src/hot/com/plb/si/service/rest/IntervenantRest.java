@@ -194,5 +194,6 @@ public class IntervenantRest implements Serializable {
 		Intervenant intervenant = entityManager.find(Intervenant.class,
 				Integer.parseInt(idIntervenant));
 		intervenant.setCv(null);
+		facesContext.responseComplete();
 	}
 }

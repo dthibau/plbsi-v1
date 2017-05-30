@@ -153,8 +153,9 @@ public class IntervenantRest implements Serializable {
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 
 			// Configure a repository (to ensure a secure temp location is used)
-		
-			factory.setRepository(new File("../data"));
+			
+			
+			factory.setRepository(new File(System.getProperty("jboss.server.temp.dir")));
 			System.out.println("Path used for Upload : " + factory.getRepository().getAbsolutePath());
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			@SuppressWarnings("unchecked")

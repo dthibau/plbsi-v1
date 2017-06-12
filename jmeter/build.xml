@@ -1,4 +1,4 @@
-<project default="jmeter" basedir=".">
+<project default="check" basedir=".">
 	<property name="jmeter.dir" value="apache-jmeter-2.11" />
 	<property name="jmeter.ant.dir" value="ant-jmeter-1.1.1" />
 	<property name="jmeter.test" value="." />

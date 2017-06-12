@@ -17,9 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.jboss.seam.util.Hex;
-
 import com.plb.model.Formation;
+import com.plb.util.Hex;
 
 @Entity 
 @Table(name="grille_competence")

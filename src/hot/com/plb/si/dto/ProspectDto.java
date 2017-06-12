@@ -13,7 +13,7 @@ import com.plb.model.ProspectDetail;
 import com.plb.model.directory.Role;
 import com.plb.si.util.Labels;
 
-public class ProspectDto implements Serializable,Comparable<ProspectDto>{
+public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class ProspectDto implements Serializable,Comparable<ProspectDto>{
 	private Prospect prospect;
 	// Le rôle visualisant le prospect
 	private Role role;
-	
+
 	public ProspectDto(Prospect prospect, Role role) {
 		this.prospect = prospect;
 		this.role = role;
@@ -42,14 +42,16 @@ public class ProspectDto implements Serializable,Comparable<ProspectDto>{
 	public Integer getIdProspect() {
 		return prospect.getIdProspect();
 	}
+
 	// Fonction permettant d'aattribuer une couleur a un statut de prospect
 	public String getColor() {
 		String couleur = "";
-		
+
 		if (statut1.equals(prospect.getStatut())
 				&& (role.equals(Role.MANAGER) || role.equals(Role.DISPATCHER))) {
 			couleur = "#fe6f5e";
-		} else if ("En attente".equals(prospect.getStatut()) && role.equals(Role.COMMERCIAL)) {
+		} else if ("En attente".equals(prospect.getStatut())
+				&& role.equals(Role.COMMERCIAL)) {
 			couleur = "#fe6f5e";
 		} else if ("En cours".equals(prospect.getStatut())) {
 			couleur = "#d3d3d3";
@@ -57,52 +59,67 @@ public class ProspectDto implements Serializable,Comparable<ProspectDto>{
 			couleur = "#98fb98";
 		} else if ("Perdu".equals(prospect.getStatut())) {
 			couleur = "#987654";
+		} else if ("Abandon".equals(prospect.getStatut())) {
+			couleur = "#5A5983";
+		}
+		if (getAsuivre()) {
+			couleur = "#D59730";
 		}
 		return couleur;
 	}
-	
+
 	public static List<ProspectDto> buildDTO(List<Prospect> prospects, Role role) {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
-		for ( Prospect prospect : prospects ) {
+		for (Prospect prospect : prospects) {
 			ret.add(new ProspectDto(prospect, role));
 		}
 		return ret;
 	}
-	
+
 	public String getStatut() {
 		return prospect.getStatut();
 	}
-	
+
 	public ProspectDetail getProspectDetail() {
 		return prospect.getProspectDetail();
 	}
+
 	public Date getDateCreation() {
 		return prospect.getDateCreation();
 	}
+
 	public String getDateDevis() {
-		return prospect.getProspectDetail() != null && prospect.getProspectDetail().getDatedevis() != null ?
-				Labels.dateFormat.format(prospect.getProspectDetail().getDatedevis()) : "Non envoyé";
+		return prospect.getProspectDetail() != null
+				&& prospect.getProspectDetail().getDatedevis() != null ? Labels.dateFormat
+				.format(prospect.getProspectDetail().getDatedevis())
+				: "Non envoyé";
 	}
+
 	public String getDateSession() {
-		return prospect.getProspectDetail() != null && prospect.getProspectDetail().getDate() != null ?
-				prospect.getProspectDetail().getDate() : "N/C";
+		return prospect.getProspectDetail() != null
+				&& prospect.getProspectDetail().getDate() != null ? prospect
+				.getProspectDetail().getDate() : "N/C";
 	}
-	
+
 	public String getSociete() {
-		return (prospect.getSociete() != null && prospect.getSociete().length() > 0 ) ? prospect.getSociete() : bundle.getString("prospect.nonRenseigne")  ;
+		return (prospect.getSociete() != null && prospect.getSociete().length() > 0) ? prospect
+				.getSociete() : bundle.getString("prospect.nonRenseigne");
 	}
+
 	public String getReference() {
 		return prospect.getReference();
 	}
-	
+
 	public boolean getAsuivre() {
-		return prospect.getProspectDetail() != null ? prospect.getProspectDetail().getAsuivre() : false;
+		return prospect.getProspectDetail() != null ? prospect
+				.getProspectDetail().getAsuivre() : false;
 	}
 
 	@Override
 	public int compareTo(ProspectDto o) {
-		
-		return -(prospect.getDateCreation().compareTo(o.getProspect().getDateCreation()));
+
+		return -(prospect.getDateCreation().compareTo(o.getProspect()
+				.getDateCreation()));
 	}
 
 	@Override
@@ -135,5 +152,5 @@ public class ProspectDto implements Serializable,Comparable<ProspectDto>{
 	public String toString() {
 		return "ProspectDto [prospect=" + prospect + ", role=" + role + "]";
 	}
-	
+
 }

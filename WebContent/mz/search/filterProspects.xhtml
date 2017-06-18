@@ -75,8 +75,7 @@
 			</a:outputPanel>
 			<!-- Filtre : prospects à suivre -->
 			&nbsp;&nbsp;
-			<a:outputPanel id="asuivreSelect"
-				rendered="#{sessionDataManager.managerDispatcher}">
+			<a:outputPanel id="asuivreSelect">
 				#{messages['prospect.asuivre.filter']} :
 				<h:selectBooleanCheckbox value="#{searchProspect.asuivre}">
 					<a:ajax event="change"

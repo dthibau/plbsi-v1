@@ -60,7 +60,9 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		} else if ("Perdu".equals(prospect.getStatut())) {
 			couleur = "#987654";
 		} else if ("Abandon".equals(prospect.getStatut())) {
-			couleur = "#5A5983";
+//			couleur = "#5A5983";
+			couleur = "#AC9A68";
+			
 		}
 //		if (getAsuivre()) {
 //			couleur = "#D59730";

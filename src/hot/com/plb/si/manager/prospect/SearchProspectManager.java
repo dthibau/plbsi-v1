@@ -2,6 +2,7 @@ package com.plb.si.manager.prospect;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -42,6 +43,7 @@ import com.plb.model.event.Event;
 import com.plb.model.message.Message;
 import com.plb.si.dto.ProspectDto;
 import com.plb.si.dto.ProspectUpdate;
+import com.plb.si.dto.TableauRowDto;
 import com.plb.si.manager.ApplicationManager;
 import com.plb.si.manager.DevisManager;
 import com.plb.si.service.AccountDao;
@@ -50,6 +52,7 @@ import com.plb.si.service.FormationDao;
 import com.plb.si.service.MessageDao;
 import com.plb.si.service.NotificationService;
 import com.plb.si.service.ProspectDao;
+import com.plb.si.service.ProspectDetailDao;
 
 @Name("searchProspect")
 @Scope(ScopeType.CONVERSATION)
@@ -96,7 +99,6 @@ public class SearchProspectManager implements Serializable {
 
 	@Out(required = false)
 	public Formation formationDevis;
-
 
 	// Attribut renseignant sur le prospect selectionnés
 	@Out(required = false)
@@ -154,10 +156,10 @@ public class SearchProspectManager implements Serializable {
 	private String typo;
 
 	private TypeContact typeContact;
-	
+
 	private Date dateDebut;
 	private Date dateFin;
-	
+
 	private boolean asuivre;
 
 	// Attribut pour remplissage heure formation
@@ -177,6 +179,8 @@ public class SearchProspectManager implements Serializable {
 	// SortOrder
 	private Map<String, SortOrder> orders = new HashMap<String, SortOrder>();
 
+	private boolean showTableau;
+
 	// Attribu pour les mode visu; edit
 	private static int VISU_MODE = 0;
 	private static int EDIT_MODE = 1;
@@ -190,7 +194,7 @@ public class SearchProspectManager implements Serializable {
 	private boolean remplirPerte;
 
 	// Attribut pour savoir si on affiche les prospect gagne ou perdu
-	
+
 	private int state = ProspectCritere.TODO;
 
 	// Attribut pour savoir si l'on affiche le calendrier pour la date d'envoie
@@ -225,7 +229,7 @@ public class SearchProspectManager implements Serializable {
 	FormationDao formationDao;
 	ProspectDao prospectDao;
 	EventDao eventDao;
-	
+
 	List<Event> historique;
 
 	ProspectCritere critere = new ProspectCritere();
@@ -236,7 +240,7 @@ public class SearchProspectManager implements Serializable {
 	@Begin(join = true)
 	public String init() {
 		log.debug(loggedUser + " init SearchProspectManager");
-		
+
 		long start = System.currentTimeMillis();
 		// liste comportant les resultat de la requete
 		listeSession = new ArrayList<SessionOrganismeDto>();
@@ -281,14 +285,14 @@ public class SearchProspectManager implements Serializable {
 
 	private List<ProspectDto> _filterAsuivre() {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
-		for ( ProspectDto prospectDto : results ) {
-			if ( prospectDto.getAsuivre() ) {
+		for (ProspectDto prospectDto : results) {
+			if (prospectDto.getAsuivre()) {
 				ret.add(prospectDto);
 			}
 		}
 		return ret;
 	}
-	
+
 	private void _findAFaire() {
 		// Fetch results
 		Set<ProspectDto> resultSet = new HashSet<ProspectDto>();
@@ -312,32 +316,32 @@ public class SearchProspectManager implements Serializable {
 
 	}
 
-		// Fonction de recherche en fonction du statut; commerciale; type contact
+	// Fonction de recherche en fonction du statut; commerciale; type contact
 	public void recherche() {
 		afficheObjectif = false;
 		_buildCritere();
 
 		lastSearchDate = new Date();
-		
-		if ( state == ProspectCritere.ALL || state == ProspectCritere.ENCOURS ) {
-	
+
+		if (state == ProspectCritere.ALL || state == ProspectCritere.ENCOURS) {
+
 			Set<ProspectDto> resultSet = new HashSet<ProspectDto>();
 			if (loggedUser.isExtendedManager() || loggedUser.isDispatcher()) {
 				critere.setCommercial(commercialeR);
-				resultSet.addAll(ProspectDto.buildDTO(prospectDao.search(critere),
-						Role.DISPATCHER));
+				resultSet.addAll(ProspectDto.buildDTO(
+						prospectDao.search(critere), Role.DISPATCHER));
 			}
 			if (loggedUser.isCommercial()) {
 				critere.setCommercial(loggedUser);
-				resultSet.addAll(ProspectDto.buildDTO(prospectDao.search(critere),
-						Role.COMMERCIAL));
+				resultSet.addAll(ProspectDto.buildDTO(
+						prospectDao.search(critere), Role.COMMERCIAL));
 			}
 			results = _filterInterIntra(resultSet);
-		
+
 		} else {
 			_findAFaire();
 		}
-		if ( asuivre ) {
+		if (asuivre) {
 			results = _filterAsuivre();
 		}
 	}
@@ -354,7 +358,7 @@ public class SearchProspectManager implements Serializable {
 		state = ProspectCritere.ENCOURS;
 		afficheObjectif = false;
 		typo = null;
-		
+
 		recherche();
 		mode = VISU_MODE;
 	}
@@ -363,7 +367,7 @@ public class SearchProspectManager implements Serializable {
 		critere.setState(state);
 		critere.setStatut(statut);
 		critere.setCommercial(commercialeR);
-		if ( state == ProspectCritere.ALL) {
+		if (state == ProspectCritere.ALL) {
 			critere.setReference(reference);
 			critere.setTypeContact(typeContact);
 			critere.setDateDebut(dateDebut);
@@ -374,12 +378,16 @@ public class SearchProspectManager implements Serializable {
 			critere.setDateFin(null);
 		}
 	}
+
 	private List<ProspectDto> _filterInterIntra(Set<ProspectDto> resultSet) {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
 		if (interIntra == ALL_INT) {
 			for (ProspectDto pDto : resultSet) {
-				if (pDto.getProspect().getInformationIntra() == null || !"En cours".equals(statut) || !ApplicationManager.ST_INTRA_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) 
-						) {
+				if (pDto.getProspect().getInformationIntra() == null
+						|| !"En cours".equals(statut)
+						|| !ApplicationManager.ST_INTRA_ANNULE.equals(pDto
+								.getProspect().getInformationIntra()
+								.getStatutIntra())) {
 					ret.add(pDto);
 				}
 			}
@@ -392,7 +400,10 @@ public class SearchProspectManager implements Serializable {
 		} else if (interIntra == INTRA) {
 			for (ProspectDto pDto : resultSet) {
 				if (pDto.getProspect().getInformationIntra() != null) {
-					if ( !"En cours".equals(statut) || !ApplicationManager.ST_INTRA_ANNULE.equals(pDto.getProspect().getInformationIntra().getStatutIntra()) ) {
+					if (!"En cours".equals(statut)
+							|| !ApplicationManager.ST_INTRA_ANNULE.equals(pDto
+									.getProspect().getInformationIntra()
+									.getStatutIntra())) {
 						ret.add(pDto);
 					}
 				}
@@ -401,7 +412,6 @@ public class SearchProspectManager implements Serializable {
 		Collections.sort(ret);
 		return ret;
 	}
-
 
 	public List<ProspectUpdate> getUpdatedProspects() {
 		return applicationManager.getUpdatedProspects(lastSearchDate);
@@ -420,8 +430,6 @@ public class SearchProspectManager implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
-
 
 	// Selectionne la prospect à supprimer et repasse en mode AUTO
 	@Begin(join = true, flushMode = FlushModeType.AUTO)
@@ -563,7 +571,6 @@ public class SearchProspectManager implements Serializable {
 		return d;
 	}
 
-
 	// Fonction de detection de spam
 	public void spamDetect(Prospect p) {
 		Boolean estSpam = false;
@@ -614,7 +621,6 @@ public class SearchProspectManager implements Serializable {
 		}
 		spam.put(p.getIdProspect(), estSpam);
 	}
-
 
 	// Affiche ou non les nom des participants(Ajax)
 	public void afficheParticipant() {
@@ -675,7 +681,6 @@ public class SearchProspectManager implements Serializable {
 		}
 		return rep;
 	}
-
 
 	// Gestion de l'ordre
 	public void unsetOrder() {
@@ -805,31 +810,34 @@ public class SearchProspectManager implements Serializable {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
+
 	public boolean isAll() {
 		return state == ProspectCritere.ALL;
 	}
+
 	public void setAll(boolean all) {
-		if ( all ) {
+		if (all) {
 			state = ProspectCritere.ALL;
 		} else {
 			state = ProspectCritere.TODO;
 		}
 	}
+
 	public void setEnCours(boolean encours) {
-		if ( encours ) {
+		if (encours) {
 			state = ProspectCritere.ENCOURS;
 		} else {
 			state = ProspectCritere.TODO;
 		}
 	}
+
 	public boolean isEnCours() {
 		return state == ProspectCritere.ENCOURS || state == ProspectCritere.ALL;
 	}
+
 	public boolean isToDo() {
 		return state == ProspectCritere.TODO;
 	}
-
 
 	public String getAncienCommercial() {
 		return ancienCommercial;
@@ -969,7 +977,6 @@ public class SearchProspectManager implements Serializable {
 		return envoye;
 	}
 
-
 	public List<SessionOrganismeDto> getListeSession() {
 		return listeSession;
 	}
@@ -1096,6 +1103,49 @@ public class SearchProspectManager implements Serializable {
 
 	public void setTypeContact(TypeContact typeContact) {
 		this.typeContact = typeContact;
+	}
+
+	public boolean isShowTableau() {
+		return showTableau;
+	}
+
+	public void setShowTableau(boolean showTableau) {
+		this.showTableau = showTableau;
+	}
+
+	public List<TableauRowDto> getTableau() {
+		List<TableauRowDto> tableau = new ArrayList<TableauRowDto>();
+		for ( int i=0; i<=3; i++ ) {
+			List<Object[]> counts = prospectDao.countPotentiel(i,dateDebut,dateFin);
+			_addCols(tableau, i, counts);
+		}
+		return tableau;
+	}
+
+	private void _addCols(List<TableauRowDto> tableau, int key,
+			List<Object[]> counts) {
+
+		for (Object[] count : counts) {
+			if ( count[1] != null && count[1] instanceof String && ((String)count[1]).length() > 0 ) {
+			TableauRowDto row = _getCommercialRow(tableau, (String) count[1]);
+			row.getCounts().put(key, (Long) count[0]);
+			}
+		}
+	}
+
+	private TableauRowDto _getCommercialRow(List<TableauRowDto> tableau,
+			String commercial) {
+
+		for (TableauRowDto row : tableau) {
+			if (row.getCommercial().equals(commercial)) {
+				return row;
+			}
+		}
+		// Création d'une nouvelle ligne
+		TableauRowDto row = new TableauRowDto();
+		row.setCommercial(commercial);
+		tableau.add(row);
+		return row;
 	}
 
 }

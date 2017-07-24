@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.plb.si.util.Labels;
+
 
 
 @Entity
@@ -161,6 +163,8 @@ public class ProspectDetail implements Serializable {
 	private boolean asuivre=false;
 	//Getteurs and Setteurs
 
+	private int potentiel;
+	
 	public String getTypeFormation() {
 		return typeFormation;
 	}
@@ -567,6 +571,20 @@ public class ProspectDetail implements Serializable {
 	}
 
 
+	public String getPotentielAsString() {
+		return Labels.getString("prospect.potentiel."+getPotentiel());
+	}
+	
+	public int getPotentiel() {
+		return potentiel;
+	}
+
+
+	public void setPotentiel(int potentiel) {
+		this.potentiel = potentiel;
+	}
+
+
 	public ProspectDetail clone() {
 		ProspectDetail d = new ProspectDetail();
 		// Champ ProspectDetail
@@ -609,6 +627,7 @@ public class ProspectDetail implements Serializable {
 		d.setDatedevis(getDatedevis());
 		d.setRemise(getRemise());
 		d.setPrix_jour_animation(getPrix_jour_animation());
+		d.setPotentiel(getPotentiel());
 		return d;
 	}
 

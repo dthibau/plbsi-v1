@@ -1,0 +1,60 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:panel>
+		<h:form>
+			<b>Tableau de répartition :</b>
+			<br />
+			<br />
+			<a:outputPanel id="dateSelect">
+				Date de début : <rich:calendar value="#{searchProspect.dateDebut}">
+					<a:ajax event="change" render="tableauPanel"
+						 />
+				</rich:calendar>
+				Date de fin : <rich:calendar value="#{searchProspect.dateFin}">
+					<a:ajax event="change" render="tableauPanel"
+						 />
+				</rich:calendar>
+			</a:outputPanel>
+			<a:outputPanel id="tableauPanel">
+			<rich:dataTable value="#{searchProspect.tableau}" var="_tDto">
+				<rich:column> 
+					<h:outputText value="#{_tDto.commercial}"/> / <h:outputText value="#{_tDto.counts}"/>
+			</rich:column>
+			<rich:column> 
+					<f:facet name="header">
+					<h:outputText value="#{messages['prospect.potentiel.0']}" />
+					</f:facet>
+					<h:outputText value="#{_tDto.NC}"/>
+			</rich:column>
+			<rich:column> 
+					<f:facet name="header">
+					<h:outputText value="#{messages['prospect.potentiel.1']}" />
+					</f:facet>
+					<h:outputText value="#{_tDto.un}"/>
+			</rich:column>
+			<rich:column> 
+					<f:facet name="header">
+					<h:outputText value="#{messages['prospect.potentiel.2']}" />
+					</f:facet>
+					<h:outputText value="#{_tDto.deux}"/>
+			</rich:column>
+			<rich:column> 
+					<f:facet name="header">
+					<h:outputText value="#{messages['prospect.potentiel.3']}" />
+					</f:facet>
+					<h:outputText value="#{_tDto.trois}"/>
+			</rich:column>
+			</rich:dataTable>
+			</a:outputPanel>
+		</h:form>
+	</rich:panel>
+
+</ui:composition>

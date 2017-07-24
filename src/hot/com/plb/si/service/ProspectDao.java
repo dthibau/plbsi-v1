@@ -1,6 +1,7 @@
 package com.plb.si.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -42,6 +43,7 @@ public class ProspectDao {
 	// Fonction qui permet un affichage plus rapide
 	/**
 	 * Requêtage pour les managers
+	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -49,55 +51,62 @@ public class ProspectDao {
 		StringBuffer sbfQuery = _buildFromClause(critere);
 		sbfQuery.append(" and (p.statut=:nonAffecte or p.statut='En attente')");
 		sbfQuery.append(_buildWhereClause(critere));
-		Query query = entityManager.createQuery(sbfQuery.toString() + " ORDER BY dateCreation DESC");
+		Query query = entityManager.createQuery(sbfQuery.toString()
+				+ " ORDER BY dateCreation DESC");
 		_setParameter(critere, query);
 		query.setParameter("nonAffecte", nonAffecte);
-		
+
 		return (List<Prospect>) query.getResultList();
 	}
 
 	/**
 	 * Requêtage pour un commercial
+	 * 
 	 * @param account
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Prospect> findActiveAssociateProspect(Account account, ProspectCritere critere) {
+	public List<Prospect> findActiveAssociateProspect(Account account,
+			ProspectCritere critere) {
 		critere.setCommercial(account);
 		StringBuffer sbfQuery = _buildFromClause(critere);
 		sbfQuery.append(_buildWhereClause(critere));
-		Query query = entityManager.createQuery(sbfQuery.toString() + " ORDER BY dateCreation DESC");
+		Query query = entityManager.createQuery(sbfQuery.toString()
+				+ " ORDER BY dateCreation DESC");
 		_setParameter(critere, query);
 		return (List<Prospect>) query.getResultList();
-		
-	}
 
+	}
 
 	/**
 	 * Recherche dans toute la base de prospects
+	 * 
 	 * @param critere
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Prospect> search(ProspectCritere critere) {	
+	public List<Prospect> search(ProspectCritere critere) {
 		StringBuffer sbfQuery = _buildFromClause(critere);
 		sbfQuery.append(_buildWhereClause(critere));
-		Query query = entityManager.createQuery(sbfQuery.toString() + " ORDER BY dateCreation DESC");
+		Query query = entityManager.createQuery(sbfQuery.toString()
+				+ " ORDER BY dateCreation DESC");
 		_setParameter(critere, query);
 		return (List<Prospect>) query.getResultList();
 
 	}
 
 	private StringBuffer _buildFromClause(ProspectCritere critere) {
-		if ( critere.getCommercial() != null ) {
-			return new StringBuffer("from Prospect p join fetch p.prospectDetail d where d.commercial=:commercial");
+		if (critere.getCommercial() != null) {
+			return new StringBuffer(
+					"from Prospect p join fetch p.prospectDetail d where d.commercial=:commercial");
 		} else {
 			return new StringBuffer("from Prospect p where 1=1");
 		}
 	}
+
 	private String _buildWhereClause(ProspectCritere critere) {
 		StringBuffer sbf = new StringBuffer("");
-		if ( !critere.isAll()  ) {
+		if (!critere.isAll()) {
 			sbf.append(" and p.statut<>:gagne and p.statut<>'Perdu' and p.statut<>'Abandon'");
 		}
 		if (critere.getStatut() != null) {
@@ -106,17 +115,18 @@ public class ProspectDao {
 		if (critere.getReference() != null) {
 			sbf.append(" and p.reference=:ref");
 		}
-		if ( critere.getDateDebut() != null ) {
+		if (critere.getDateDebut() != null) {
 			sbf.append(" and p.dateCreation >= :dateDebut");
 		}
-		if ( critere.getDateFin() != null ) {
+		if (critere.getDateFin() != null) {
 			sbf.append(" and p.dateCreation <= :dateFin");
 		}
-		if ( critere.getTypeContact() != null ) {
+		if (critere.getTypeContact() != null) {
 			sbf.append(" and p.type=:typeC");
 		}
 		return sbf.toString();
 	}
+
 	private void _setParameter(ProspectCritere critere, Query query) {
 		if (!critere.isAll()) {
 			query.setParameter("gagne", gagne);
@@ -137,13 +147,12 @@ public class ProspectDao {
 		if (critere.getDateFin() != null) {
 			query.setParameter("dateFin", critere.getDateFin());
 		}
-		if ( critere.getTypeContact() != null ) {
-			query.setParameter("typeC",critere.getTypeContact().getLibelle());
+		if (critere.getTypeContact() != null) {
+			query.setParameter("typeC", critere.getTypeContact().getLibelle());
 		}
 	}
 
 	// Fonction qui recupere les prospects associées a un commercial donné
-	
 
 	// Fonction de recherche pour un commercial donné (remplacé par la fonction
 	// search() )
@@ -297,6 +306,25 @@ public class ProspectDao {
 		Query q = entityManager
 				.createQuery("select distinct year(p.dateCreation) from Prospect p where dateCreation is not null order by year(p.dateCreation) desc");
 		return q.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Object[]> countPotentiel(int potentiel) {
+		String query = potentiel == 0 ? "select count(p),p.prospectDetail.commercial from Prospect p where (p.prospectDetail.potentiel = :potentiel or p.prospectDetail.potentiel is null) group by p.prospectDetail.commercial"
+				: "select count(p),p.prospectDetail.commercial from Prospect p where p.prospectDetail.potentiel = :potentiel group by p.prospectDetail.commercial";
+		return entityManager.createQuery(query)
+				.setParameter("potentiel", potentiel).getResultList();
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Object[]> countPotentiel(int potentiel, Date from, Date to) {
+		String query= 
+				potentiel == 0 ? 
+						"select count(p),p.prospectDetail.commercial from Prospect p where (p.prospectDetail.potentiel = :potentiel or p.prospectDetail.potentiel is null) and p.dateCreation >= :dateDebut and p.dateCreation <= :dateFin group by p.prospectDetail.commercial" 
+						: "select count(p),p.prospectDetail.commercial from Prospect p where p.prospectDetail.potentiel = :potentiel and p.dateCreation >= :dateDebut and p.dateCreation <= :dateFin group by p.prospectDetail.commercial";
+		return entityManager.createQuery(query).setParameter("potentiel", potentiel).setParameter("dateDebut", from).setParameter("dateFin", to).getResultList();
+		
 	}
 
 	public String getGagne() {

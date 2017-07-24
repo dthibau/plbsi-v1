@@ -1,6 +1,7 @@
 package com.plb.si.service;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,5 +22,7 @@ public class ProspectDetailDao {
 	public List<ProspectDetail> findAll() {
 		return (List<ProspectDetail>) entityManager.createQuery("from Prospect ORDER BY date DESC").getResultList();
 	}
+	
+	
 	
 }

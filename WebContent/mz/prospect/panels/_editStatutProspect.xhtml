@@ -103,6 +103,19 @@
 						<s:decorate template="../../layout/edit.xhtml"
 							style="width:400px;">
 							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.potentiel']}" />
+							</ui:define>
+							<h:selectOneMenu 
+								value="#{editProspectManager.prospectDetail.potentiel}">
+								<f:selectItem itemValue="0" itemLabel="#{messages['prospect.potentiel.0']}" />
+								<f:selectItem itemValue="1" itemLabel="#{messages['prospect.potentiel.1']}" />
+								<f:selectItem itemValue="2" itemLabel="#{messages['prospect.potentiel.2']}" />
+								<f:selectItem itemValue="3" itemLabel="#{messages['prospect.potentiel.3']}" />
+							</h:selectOneMenu>
+						</s:decorate>
+						<s:decorate template="../../layout/edit.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
 								<h:outputText value="#{messages['prospect.asuivre']}" />
 							</ui:define>
 							<h:selectBooleanCheckbox

@@ -92,6 +92,11 @@
 		<!-- Pop up de modification et supression de prospect -->
 		<ui:include src="../prospect/popupProspect.xhtml" />
 		<!-- Recherche prospect -->
+		<a:outputPanel id="tableauRepartition">
+			<ui:include src="tableauRepartition.xhtml" />		
+		</a:outputPanel>
+
+		<!-- Recherche prospect -->
 		<ui:include src="filterProspects.xhtml" />
 
 		<!-- Liste de prospect récemment mis à jour -->
@@ -381,15 +386,15 @@
 	</ui:define>
 	<ui:define name="tools">
 		<center>
+		<h:form>
 			<s:button view="/mz/searchProspect_xls.xhtml"
 				rendered="#{!empty searchProspect.results}" value="Export Excel"
 				style="width:110px;height:20px;" />
 			<br />
-			<h:commandButton value="#{messages['dispatch.title']}"
+			<a:commandButton value="#{messages['dispatch.title']}"
 				style="width:110px;height:20px;"
-				rendered="#{sessionDataManager.managerDispatcher}">
-				<rich:componentControl target="dispatchPopup" operation="show" />
-			</h:commandButton>
+				rendered="#{sessionDataManager.managerDispatcher}" action="#{searchProspect.setShowTableau(true)}" render="tableauRepartition"/>
+		</h:form>
 		</center>
 	</ui:define>
 </ui:composition>

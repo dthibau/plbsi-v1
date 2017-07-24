@@ -68,6 +68,13 @@
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.commercial}" />
 					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.potentiel']}" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.potentielAsString}" />
+					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml"
 						rendered="#{editProspectManager.prospect.prospectDetail.asuivre}">
 						<ui:define name="label">

@@ -179,7 +179,6 @@ public class SearchProspectManager implements Serializable {
 	// SortOrder
 	private Map<String, SortOrder> orders = new HashMap<String, SortOrder>();
 
-	private boolean showTableau;
 
 	// Attribu pour les mode visu; edit
 	private static int VISU_MODE = 0;
@@ -1105,13 +1104,7 @@ public class SearchProspectManager implements Serializable {
 		this.typeContact = typeContact;
 	}
 
-	public boolean isShowTableau() {
-		return showTableau;
-	}
 
-	public void setShowTableau(boolean showTableau) {
-		this.showTableau = showTableau;
-	}
 
 	public List<TableauRowDto> getTableau() {
 		List<TableauRowDto> tableau = new ArrayList<TableauRowDto>();

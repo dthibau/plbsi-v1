@@ -8,53 +8,55 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a="http://richfaces.org/a4j">
 
-	<rich:panel>
-		<h:form>
-			<b>Tableau de répartition :</b>
-			<br />
-			<br />
+	<h:form>
+	<center>
+		<rich:collapsiblePanel header="Tableau de répartition" expanded="false">
+
 			<a:outputPanel id="dateSelect">
 				Date de début : <rich:calendar value="#{searchProspect.dateDebut}">
-					<a:ajax event="change" render="tableauPanel"
-						 />
+					<a:ajax event="change" render="tableauPanel" />
 				</rich:calendar>
 				Date de fin : <rich:calendar value="#{searchProspect.dateFin}">
-					<a:ajax event="change" render="tableauPanel"
-						 />
+					<a:ajax event="change" render="tableauPanel" />
 				</rich:calendar>
 			</a:outputPanel>
+			<br/><br/>
 			<a:outputPanel id="tableauPanel">
-			<rich:dataTable value="#{searchProspect.tableau}" var="_tDto">
-				<rich:column> 
-					<h:outputText value="#{_tDto.commercial}"/> / <h:outputText value="#{_tDto.counts}"/>
-			</rich:column>
-			<rich:column> 
-					<f:facet name="header">
-					<h:outputText value="#{messages['prospect.potentiel.0']}" />
-					</f:facet>
-					<h:outputText value="#{_tDto.NC}"/>
-			</rich:column>
-			<rich:column> 
-					<f:facet name="header">
-					<h:outputText value="#{messages['prospect.potentiel.1']}" />
-					</f:facet>
-					<h:outputText value="#{_tDto.un}"/>
-			</rich:column>
-			<rich:column> 
-					<f:facet name="header">
-					<h:outputText value="#{messages['prospect.potentiel.2']}" />
-					</f:facet>
-					<h:outputText value="#{_tDto.deux}"/>
-			</rich:column>
-			<rich:column> 
-					<f:facet name="header">
-					<h:outputText value="#{messages['prospect.potentiel.3']}" />
-					</f:facet>
-					<h:outputText value="#{_tDto.trois}"/>
-			</rich:column>
-			</rich:dataTable>
+				<rich:dataTable value="#{searchProspect.tableau}" var="_tDto">
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.com']}" />
+						</f:facet>
+						<h:outputText value="#{_tDto.commercial}" /> 
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.potentiel.0']}" />
+						</f:facet>
+						<h:outputText value="#{_tDto.NC}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.potentiel.1']}" />
+						</f:facet>
+						<h:outputText value="#{_tDto.un}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.potentiel.2']}" />
+						</f:facet>
+						<h:outputText value="#{_tDto.deux}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{messages['prospect.potentiel.3']}" />
+						</f:facet>
+						<h:outputText value="#{_tDto.trois}" />
+					</rich:column>
+				</rich:dataTable>
 			</a:outputPanel>
-		</h:form>
-	</rich:panel>
 
+		</rich:collapsiblePanel>
+		</center>
+	</h:form>
 </ui:composition>

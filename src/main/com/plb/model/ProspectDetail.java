@@ -16,8 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.plb.si.util.Labels;
-
 
 
 @Entity
@@ -570,10 +568,6 @@ public class ProspectDetail implements Serializable {
 		this.asuivre = asuivre;
 	}
 
-
-	public String getPotentielAsString() {
-		return Labels.getString("prospect.potentiel."+getPotentiel());
-	}
 	
 	public int getPotentiel() {
 		return potentiel;

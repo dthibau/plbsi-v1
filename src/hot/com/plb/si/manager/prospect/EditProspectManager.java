@@ -193,7 +193,7 @@ public class EditProspectManager implements Serializable {
 	// Attribut pour savoir si l'on affiche le calendrier pour la date d'envoie
 	// du devis
 	private boolean envoye;
-	
+
 	private Devis lastGeneratedDevis;
 
 	// Attribut pour gérer l'envoie de mail
@@ -254,7 +254,7 @@ public class EditProspectManager implements Serializable {
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public void selectProspect(Prospect p) {
 
-//		_init();
+		// _init();
 		afficheP = false;
 		confirm = false;
 		modif = false;
@@ -285,7 +285,6 @@ public class EditProspectManager implements Serializable {
 		}
 		// Last Devis généré
 		_setLastGeneratedDevis();
-		
 
 		messages = messageDao.findAllOrderedByDate(prospect);
 
@@ -497,24 +496,30 @@ public class EditProspectManager implements Serializable {
 
 	private void _modifyIntra() {
 		// If statut changed in Offre, update statut in intra
-		if (  !prospectTemp.getStatut().equals(prospect.getStatut()) ) {		
+		if (!prospectTemp.getStatut().equals(prospect.getStatut())) {
 			// Update alose intra statut if exist
-			if ( prospect.getStatut().equals(ST_GAGNE) ) {
-				prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_INTRA_LOGISTIQUE);
+			if (prospect.getStatut().equals(ST_GAGNE)) {
+				prospect.getInformationIntra().setStatutIntra(
+						ApplicationManager.ST_INTRA_LOGISTIQUE);
 			}
-			if ( prospect.getStatut().equals(ST_PERDU) ||
-					prospect.getStatut().equals(ST_ABANDON) ) {
-				prospect.getInformationIntra().setStatutIntra(ApplicationManager.ST_INTRA_ANNULE);
-				if ( prospect.getInformationIntra().getRaisonPerte() == null || prospect.getInformationIntra().getRaisonPerte().isEmpty() ) {
-					prospect.getInformationIntra().setRaisonPerte("Prospect perdu ou abandonné");
+			if (prospect.getStatut().equals(ST_PERDU)
+					|| prospect.getStatut().equals(ST_ABANDON)) {
+				prospect.getInformationIntra().setStatutIntra(
+						ApplicationManager.ST_INTRA_ANNULE);
+				if (prospect.getInformationIntra().getRaisonPerte() == null
+						|| prospect.getInformationIntra().getRaisonPerte()
+								.isEmpty()) {
+					prospect.getInformationIntra().setRaisonPerte(
+							"Prospect perdu ou abandonné");
 				}
 			}
 		}
 
 		// Change commercial in intra
-		Account commercial = _getCommercialByName(prospect.getProspectDetail().getCommercial());		
+		Account commercial = _getCommercialByName(prospect.getProspectDetail()
+				.getCommercial());
 		prospect.getInformationIntra().setCommercial(commercial);
-		
+
 		// Change horaires
 		if (horaireDefaut() == false) {
 			horaire();
@@ -524,7 +529,7 @@ public class EditProspectManager implements Serializable {
 			prospect.getInformationIntra().setHeureDeb("");
 			prospect.getInformationIntra().setHeureFin("");
 		}
-		
+
 		// Detect change in statutIntra to send notifications
 		if (!statutIntraTemp.equals(prospect.getInformationIntra()
 				.getStatutIntra())
@@ -878,6 +883,7 @@ public class EditProspectManager implements Serializable {
 	public void _setLastGeneratedDevis() {
 		lastGeneratedDevis = devisDao.findLastByProspect(prospect);
 	}
+
 	public Prospect getProspect() {
 		return prospect;
 	}
@@ -1219,13 +1225,14 @@ public class EditProspectManager implements Serializable {
 
 	private Account _getCommercialByName(String fullName) {
 
-		for ( Account commercial : listeCommerciale ) {
-			if ( commercial.getNomComplet().equals(fullName) ) {
+		for (Account commercial : listeCommerciale) {
+			if (commercial.getNomComplet().equals(fullName)) {
 				return commercial;
 			}
 		}
 		return null;
 	}
+
 	public Devis getLastGeneratedDevis() {
 		return lastGeneratedDevis;
 	}
@@ -1234,4 +1241,12 @@ public class EditProspectManager implements Serializable {
 		this.lastGeneratedDevis = lastGeneratedDevis;
 	}
 
+	public String getPotentielAsString() {
+		if (prospect != null && prospect.getProspectDetail() != null) {
+			return Labels.getString("prospect.potentiel."
+					+ prospect.getProspectDetail().getPotentiel());
+		} else {
+			return "";
+		}
+	}
 }

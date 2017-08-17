@@ -92,7 +92,7 @@
 		<!-- Pop up de modification et supression de prospect -->
 		<ui:include src="../prospect/popupProspect.xhtml" />
 		<!-- Tableau de répartition -->
-		<a:outputPanel id="tableauRepartition">
+		<a:outputPanel id="tableauRepartition" rendered="#{!sessionDataManager.commercial}">
 			<ui:include src="tableauRepartition.xhtml" />		
 		</a:outputPanel>
 

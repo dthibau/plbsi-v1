@@ -155,4 +155,12 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		return "ProspectDto [prospect=" + prospect + ", role=" + role + "]";
 	}
 
+	public String getPotentielAsString() {
+		if (prospect != null && prospect.getProspectDetail() != null) {
+			return Labels.getString("prospect.potentiel."
+					+ prospect.getProspectDetail().getPotentiel());
+		} else {
+			return "";
+		}
+	}
 }

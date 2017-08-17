@@ -44,6 +44,11 @@
 				<ui:param name="type" value="text"/>
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="#{messages['prospect.potentiel']}"/>
+				<ui:param name="value" value="#{_pdto.potentielAsString}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
 				<ui:param name="header" value="#{messages['prospect.commerciale']}"/>
 				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.commercial}"/>
 				<ui:param name="type" value="text"/>
@@ -73,6 +78,7 @@
 				<ui:param name="value" value="#{!empty _pdto.prospect.informationIntra ? _pdto.prospect.informationIntra.idInforamtionIntra : ''}"/>
 				<ui:param name="type" value="text"/>
 			</ui:include>
+
 		</e:worksheet>
 	
 	</e:workbook>

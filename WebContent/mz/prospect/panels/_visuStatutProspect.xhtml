@@ -68,6 +68,14 @@
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.commercial}" />
 					</s:decorate>
+
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.statut']}" />
+						</ui:define>
+						<h:outputText value="#{editProspectManager.prospect.statut}" />
+					</s:decorate>
+
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.potentiel']}" />
@@ -82,13 +90,6 @@
 						</ui:define>
 
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.statut']}" />
-						</ui:define>
-						<h:outputText value="#{editProspectManager.prospect.statut}" />
-					</s:decorate>
-
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />

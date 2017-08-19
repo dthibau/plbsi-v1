@@ -28,9 +28,13 @@
 			onheaderclick="changePage('page4')">
 			<ui:include src="panels/_visuCommerce.xhtml" />
 		</rich:tab>
-		<rich:tab header="Suivi intra" onheaderclick="changePage('page5')"
+		<rich:tab header="Suivi intra" name="page5" onheaderclick="changePage('page5')"
 			rendered="#{!empty editProspectManager.prospect.informationIntra}">
 			<ui:include src="panels/_visuIntra.xhtml" />
+		</rich:tab>
+		<rich:tab header="Environnement technique" name="page6" onheaderclick="changePage('page6')"
+			rendered="#{!empty editProspectManager.prospect.informationIntra}">
+			<ui:include src="panels/_visuEnvironnement.xhtml" />
 		</rich:tab>
 		<rich:tab header="Historique" onheaderclick="changePage('page3')"
 			style="width:1000px;">

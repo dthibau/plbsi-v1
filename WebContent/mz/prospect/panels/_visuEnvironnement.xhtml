@@ -1,0 +1,56 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+<table border="0" cellspacing="3">
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="Profil des participants" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.informationIntra.profilParticipant}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="Environnement technique" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.informationIntra.environnementTech}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="Connaissance sujet" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.informationIntra.connaissanceSujet}" />
+						</s:decorate></td>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="Objectif" />
+							</ui:define>
+							<h:outputText value="#{editProspectManager.prospect.informationIntra.objectif}" />
+						</s:decorate></td>
+				</tr>
+				<tr>
+					<td><s:decorate template="../../layout/display.xhtml"
+							style="width:500px;">
+							<ui:define name="label">
+								<h:outputText value="Contact tech." />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.coordonneesContactTech}" />
+						</s:decorate></td>
+				</tr>
+			</table>
+</ui:composition>

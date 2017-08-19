@@ -11,44 +11,47 @@
 
 	<h:form id="editForm">
 		<rich:tabPanel switchType="client" id="mainPanel">
-			<rich:tab header="Statut prospect" name="page1" 
+			<rich:tab header="Statut prospect" name="page1"
 				onheaderclick="changePage('page1')">
 				<ui:include src="panels/_editStatutProspect.xhtml" />
 				<ui:include src="panels/_editNotes.xhtml" />
 			</rich:tab>
-			<rich:tab header="Fiche Contact" name="page2" 
+			<rich:tab header="Fiche Contact" name="page2"
 				onheaderclick="changePage('page2')">
 				<ui:include src="panels/_editFiche.xhtml" />
 			</rich:tab>
-			<rich:tab header="Formation" name="page3" 
+			<rich:tab header="Formation" name="page3"
 				onheaderclick="changePage('page3')">
 				<ui:include src="panels/_editFormation.xhtml" />
 			</rich:tab>
-			<rich:tab header="Commerce" value="page4" 
+			<rich:tab header="Commerce" value="page4"
 				onheaderclick="changePage('page4')">
 				<ui:include src="panels/_editCommerce.xhtml" />
 			</rich:tab>
-		<rich:tab header="Suivi intra" onheaderclick="changePage('page5')"
-			
-			rendered="#{!empty editProspectManager.prospect.informationIntra}">
-			<ui:include src="panels/_editIntra.xhtml" />
-		</rich:tab>
+			<rich:tab header="Suivi intra" name="page5" onheaderclick="changePage('page5')"
+				rendered="#{!empty editProspectManager.prospect.informationIntra}">
+				<ui:include src="panels/_editIntra.xhtml" />
+			</rich:tab>
+			<rich:tab header="Environnement technique" name="page6" onheaderclick="changePage('page6')"
+				rendered="#{!empty editProspectManager.prospect.informationIntra}">
+				<ui:include src="panels/_editEnvironnement.xhtml" />
+			</rich:tab>
 		</rich:tabPanel>
 
 		<br />
 		<center>
-				<a4j:commandButton action="#{editProspectManager.modifyProspect()}"
-					render="resultList,resultat,totalPanel,messages"
-					value="Valider Modification"
-					oncomplete="#{rich:component('popupModif')}.hide()"
-					style="width:120px;height:35px;" />
-				&nbsp;&nbsp;
-				<a4j:commandButton value="Annuler Modification"
-					action="#{editProspectManager.cancel()}"
-					render="resultList,resultat,totalPanel,messages"
-					oncomplete="#{rich:component('popupModif')}.hide()"
-					style="width:120px;height:35px;" />
-			</center>
+			<a4j:commandButton action="#{editProspectManager.modifyProspect()}"
+				render="resultList,resultat,totalPanel,messages"
+				value="Valider Modification"
+				oncomplete="#{rich:component('popupModif')}.hide()"
+				style="width:120px;height:35px;" />
+			&nbsp;&nbsp;
+			<a4j:commandButton value="Annuler Modification"
+				action="#{editProspectManager.cancel()}"
+				render="resultList,resultat,totalPanel,messages"
+				oncomplete="#{rich:component('popupModif')}.hide()"
+				style="width:120px;height:35px;" />
+		</center>
 	</h:form>
 
 </ui:composition>

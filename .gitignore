@@ -41,3 +41,5 @@ target/
 
 #merge
 *.orig
+
+.tern-project

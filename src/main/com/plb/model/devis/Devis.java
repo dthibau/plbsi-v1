@@ -78,7 +78,7 @@ public class Devis implements Serializable {
 		this.contactClient = prospect.getNomComplet();
 		
 		if (prospect.getProspectDetail() != null) {
-			this.remise = prospect.getProspectDetail().getRemise();
+			this.remise = prospect.getProspectDetail().getRemise() != null ? prospect.getProspectDetail().getRemise() : 0f;
 			if ("Particulier".equals(prospect.getProspectDetail()
 					.getNatureClient())) {
 				setParticulier(true);

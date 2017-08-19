@@ -74,7 +74,7 @@ public class DevisManager {
 	Map<String, Float> tarifsInter;
 
 	private Devis devis;
-	
+
 	private boolean creerDemandeClient;
 
 	private List<String> sessionIds;
@@ -83,7 +83,7 @@ public class DevisManager {
 
 	@Logger
 	Log log;
-	
+
 	@Create
 	public void init() {
 		devisDao = new DevisDao(entityManager);
@@ -91,6 +91,7 @@ public class DevisManager {
 
 	/**
 	 * Crée un devis à partir d'une formation
+	 * 
 	 * @param formation
 	 */
 	@Begin(join = true)
@@ -101,39 +102,45 @@ public class DevisManager {
 		devis.setFormation(formation);
 		devis.addSession(new DevisSession());
 	}
-	
+
 	/**
 	 * Crée un devis à partir d'un prospect, la formation peut être nulle.
+	 * 
 	 * @param prospect
 	 * @param formation
 	 */
 	@Begin(join = true)
-	public void createDevis(Prospect prospect, Formation  formation) {
+	public void createDevis(Prospect prospect, Formation formation) {
 		log.debug(loggedUser + " createDevis() from Prospect");
 		devis = new Devis(prospect);
 		devis.setAuteur(loggedUser);
-		
-		if ( formation != null ) {
-			devis.setFormation(formation);	
+
+		if (formation != null) {
+			devis.setFormation(formation);
 			DevisSession devisSession = new DevisSession();
-			if ( prospect.getProspectDetail().getNb_participants() != null ) {
-				devis.setNbParticipants(prospect.getProspectDetail().getNb_participants());				
-				devisSession.setNbParticipants(prospect.getProspectDetail().getNb_participants());
-			} 
-			if ( prospect.getProspectDetail().getDate() != null ) {
-				String debut = prospect.getProspectDetail().getDate().substring(3,13);
+			if (prospect.getProspectDetail().getNb_participants() != null) {
+				devis.setNbParticipants(prospect.getProspectDetail()
+						.getNb_participants());
+				devisSession.setNbParticipants(prospect.getProspectDetail()
+						.getNb_participants());
+			}
+			if (prospect.getProspectDetail().getDate() != null) {
+				String debut = prospect.getProspectDetail().getDate()
+						.substring(3, 13);
 				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-				List<SessionOrganismeDto> sessions = formation.getNextSessionsOrganismeDto();
-				for (SessionOrganismeDto sessionOrganisme : sessions ) {
-					if ( df.format(sessionOrganisme.getSession().getDebut()).equals(debut) ) {
+				List<SessionOrganismeDto> sessions = formation
+						.getNextSessionsOrganismeDto();
+				for (SessionOrganismeDto sessionOrganisme : sessions) {
+					if (df.format(sessionOrganisme.getSession().getDebut())
+							.equals(debut)) {
 						devisSession.setSession(sessionOrganisme.getSession());
 						break;
 					}
 				}
 			}
-			
+
 			devis.addSession(devisSession);
-			
+
 		}
 	}
 
@@ -149,7 +156,7 @@ public class DevisManager {
 		return formation.getIdFormation() != 0 ? devisDao.findLast(loggedUser,
 				formation) : new ArrayList<Devis>();
 	}
-	
+
 	public Devis getLastDevisProspect(Prospect prospect) {
 		log.debug(loggedUser + " getLastDevisProspect()");
 		return devisDao.findLastByProspect(prospect);
@@ -158,15 +165,28 @@ public class DevisManager {
 	public void addSession() {
 		log.debug(loggedUser + " addSession()");
 		DevisSession devisSession = new DevisSession();
-		if ( !devis.getSessions().isEmpty() ) {
-			devisSession.setNbParticipants(devis.getSessions().get(devis.getSessions().size()-1).getNbParticipants());
+		if (!devis.getSessions().isEmpty()) {
+			devisSession.setNbParticipants(devis.getSessions()
+					.get(devis.getSessions().size() - 1).getNbParticipants());
 		}
 		devis.addSession(devisSession);
 	}
 
 	public void removeSession(int index) {
-		log.debug(loggedUser + " removeSession() index : "+index);
+		log.debug(loggedUser + " removeSession() index : " + index);
 		devis.getSessions().remove(index);
+	}
+
+	public boolean hasSession() {
+		if (devis != null && devis.getSessions() != null) {
+			for (DevisSession devisSession : devis.getSessions()) {
+				if (devisSession.getSession() != null
+						&& devisSession.getNbParticipants() > 0) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	@RaiseEvent("devisGenerated")
@@ -185,11 +205,12 @@ public class DevisManager {
 		parametersMap.put("REPORT_LOCALE", Locale.FRANCE);
 		parametersMap.put("idDevis", devis.getId());
 		parametersMap.put("noDevis", _getNo(devis));
-		if(formation == null){
-			formation = devis.getFormation(); // devis.getFormation may also be NULL 
+		if (formation == null) {
+			formation = devis.getFormation(); // devis.getFormation may also be
+												// NULL
 		}
-		if ( formation == null ) {
-			parametersMap.put("tarif",0f);
+		if (formation == null) {
+			parametersMap.put("tarif", 0f);
 			parametersMap.put("sessions", new ArrayList<String>());
 		} else {
 			parametersMap.put("tarif", _getPrix(formation));
@@ -199,42 +220,41 @@ public class DevisManager {
 		parametersMap.put("particulier", devis.getParticulier());
 		_serveDOC(devisReport, parametersMap);
 		facesContext.responseComplete();
-		
-		//Création de la demande CLient si la case est cochée
-		if(creerDemandeClient == true){
+
+		// Création de la demande CLient si la case est cochée
+		if (creerDemandeClient == true) {
 			String dateSession = "";
 			Prospect prospect = new Prospect();
 			ProspectDetail prospectDetail = new ProspectDetail();
 			prospect.setDateCreation(devis.getDate());
 			prospect.setNom(devis.getContactClient());
-//			prospectDetail.setDatedevis(devis.getDate());
+			// prospectDetail.setDatedevis(devis.getDate());
 			prospect.setSociete(devis.getClient());
 			prospect.setType("CLIENT");
 			prospect.setStatut("En cours");
 			prospectDetail.setCgv(1);
 			prospectDetail.setRempliPar(loggedUser.getNomComplet());
 			prospectDetail.setCommercial(loggedUser.getNomComplet());
-			prospectDetail.setNb_participants(devis.getSessions().get(devis.getSessions().size()-1).getNbParticipants());
+			prospectDetail.setNb_participants(devis.getSessions()
+					.get(devis.getSessions().size() - 1).getNbParticipants());
 			prospect.setReference(devis.getFormation().getReference());
 			prospectDetail.setRemise(devis.getRemise());
-			for(int i = 0 ; i < devis.getSessions().size() ; i++){
-				if(i == 0){
-					dateSession = devis.getSessions().get(i).getSession()+"";
-				}
-				else{
-					dateSession = dateSession + " - " + devis.getSessions().get(i).getSession();
+			for (int i = 0; i < devis.getSessions().size(); i++) {
+				if (i == 0) {
+					dateSession = devis.getSessions().get(i).getSession() + "";
+				} else {
+					dateSession = dateSession + " - "
+							+ devis.getSessions().get(i).getSession();
 				}
 			}
 			prospectDetail.setDate(dateSession);
 			prospectDetail.setProspect(prospect);
-			if(devis.getParticulier() == false && devis.getEtranger() == false){
+			if (devis.getParticulier() == false && devis.getEtranger() == false) {
 				prospectDetail.setNatureClient("Ste France");
-			}
-			else{
-				if(devis.getParticulier() == true){
+			} else {
+				if (devis.getParticulier() == true) {
 					prospectDetail.setNatureClient("Particulier");
-				}
-				else if(devis.getEtranger() == true){
+				} else if (devis.getEtranger() == true) {
 					prospectDetail.setNatureClient("Etranger");
 				}
 			}
@@ -243,10 +263,10 @@ public class DevisManager {
 			entityManager.persist(prospectDetail);
 		}
 	}
-	
+
 	public void duplicate(Devis _devis) throws ServletException {
 		log.debug(loggedUser + " duplicate() devis " + devis);
-		devis = (Devis)_devis.getCopy();
+		devis = (Devis) _devis.getCopy();
 		generate();
 	}
 
@@ -274,8 +294,8 @@ public class DevisManager {
 						+ devis.getNumero() + ".docx\"");
 		try {
 			Connection c = getConnection();
-			print = JasperFillManager.fillReport(jasperReport, parametersMap,
-					c);
+			print = JasperFillManager
+					.fillReport(jasperReport, parametersMap, c);
 
 			JRDocxExporter exporter = new JRDocxExporter();
 			// AWDocExporter exporter = new AWDocExporter();
@@ -313,8 +333,9 @@ public class DevisManager {
 				|| formation.getCodeTarifInter().equals("EO")) {
 			return formation.getPrix();
 		} else {
-			log.info("_getPrix tarifsInter" + tarifsInter + " Code : " + formation.getCodeTarifInter()
-					+ formation.getDuree() + " Formation : "+formation);
+			log.info("_getPrix tarifsInter" + tarifsInter + " Code : "
+					+ formation.getCodeTarifInter() + formation.getDuree()
+					+ " Formation : " + formation);
 			return tarifsInter.get(formation.getCodeTarifInter()
 					+ formation.getDuree());
 		}

@@ -109,6 +109,7 @@
 											noSelectionLabel="Sélectionner une session"
 											itemValue="#{_session.session}" />
 										<s:convertEntity />
+										<a:ajax event="change" render="buttonPanel" />
 									</h:selectOneMenu>
 								</rich:column>
 								<rich:column>
@@ -121,7 +122,7 @@
 									<f:facet name="header"></f:facet>
 									<a:commandButton value="Supprimer"
 										action="#{devisManager.removeSession(index)}" execute="@this"
-										render="sessionsPanel">
+										render="sessionsPanel, buttonPanel">
 										<f:param name="cid" value="#{conversation.id}" />
 									</a:commandButton>
 								</rich:column>
@@ -131,8 +132,7 @@
 						<a:outputPanel
 							rendered="#{devisManager.devis.prospect != null and devisManager.devis.prospect.prospectDetail.date_souhaite != null}">
 							<p>
-								<em>Dates souhaitées :
-									<b>#{devisManager.devis.prospect.prospectDetail.date_souhaite}</b></em>
+								<em>Dates souhaitées : <b>#{devisManager.devis.prospect.prospectDetail.date_souhaite}</b></em>
 							</p>
 						</a:outputPanel>
 
@@ -153,17 +153,20 @@
 
 				<br />
 
-				<center>
-					<input type="hidden" name="cid" value="#{conversation.id}" />
-					<a:commandButton value="Annuler"
-						onclick="#{rich:component('devisPopup')}.hide();"
-						style="width:120px;height:35px;" />
-					&nbsp;&nbsp;
-					<h:commandButton action="#{devisManager.generate}"
-						value="#{messages['action.generer']}"
-						onclick="#{rich:component('devisPopup')}.hide();"
-						style="width:120px;height:35px;" />
-				</center>
+				<a:outputPanel id="buttonPanel">
+					<center>
+						<input type="hidden" name="cid" value="#{conversation.id}" />
+						<a:commandButton value="Annuler"
+							onclick="#{rich:component('devisPopup')}.hide();"
+							style="width:120px;height:35px;" />
+						&nbsp;&nbsp;
+						<h:commandButton action="#{devisManager.generate}"
+							disabled="#{devisManager.devis.formation == null or !devisManager.hasSession() }"
+							value="#{messages['action.generer']}"
+							onclick="#{rich:component('devisPopup')}.hide();"
+							style="width:120px;height:35px;" />
+					</center>
+				</a:outputPanel>
 			</a:outputPanel>
 		</h:form>
 

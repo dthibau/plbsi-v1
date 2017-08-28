@@ -116,7 +116,9 @@
 									<f:facet name="header">
 										<h:outputText value="#{messages['devis.nbParticipants']}" />
 									</f:facet>
-									<h:inputText value="#{devisSession.nbParticipants}" />
+									<h:inputText value="#{devisSession.nbParticipants}" >
+										<a:ajax event="keyup" render="buttonPanel" execute="@this"/>
+									</h:inputText>
 								</rich:column>
 								<rich:column>
 									<f:facet name="header"></f:facet>

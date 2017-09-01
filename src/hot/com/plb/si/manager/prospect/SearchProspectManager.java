@@ -420,6 +420,7 @@ public class SearchProspectManager implements Serializable {
 	 * Fonction de rafraichissement prend tous les objets li�s et les
 	 * rafraichient
 	 */
+	@Observer("refreshNeeded")
 	public void refresh() {
 		try {
 			entityManager.clear();

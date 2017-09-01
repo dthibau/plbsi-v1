@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
@@ -592,7 +593,12 @@ public class EditProspectManager implements Serializable {
 
 	// Permet l'annulation de la modification
 	public void cancel() {
-		entityManager.refresh(prospect);
+		try {
+			entityManager.refresh(prospect);
+		} catch (PersistenceException e ) {
+			log.error("Refrehing entity did not work :" + e + ". Trying to refresh the whole list !");
+			Events.instance().raiseEvent("refreshNeeded");
+		}
 	}
 
 	// permet l'aannulation lors de la saisie du montant

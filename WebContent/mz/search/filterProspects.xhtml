@@ -75,15 +75,28 @@
 			</a:outputPanel>
 			<!-- Filtre : prospects à suivre -->
 			&nbsp;&nbsp;
-			<a:outputPanel id="asuivreSelect">
-				#{messages['prospect.asuivre.filter']} :
-				<h:selectBooleanCheckbox value="#{searchProspect.asuivre}">
+			<a:outputPanel id="potentielSelect">
+				#{messages['prospect.potentiel']} :
+<h:selectOneMenu
+							value="#{searchProspect.potentiel}">
 					<a:ajax event="change"
 						render="resultat,resultList,panel,totalPanel"
 						listener="#{searchProspect.recherche()}" />
-					<f:selectItem itemValue="true" itemLabel="" />
-				</h:selectBooleanCheckbox>
+						    <f:selectItem itemValue="-1"
+								itemLabel="#{messages['prospect.potentiel.-1']}" />
+							<f:selectItem itemValue="0"
+								itemLabel="#{messages['prospect.potentiel.0']}" />
+							<f:selectItem itemValue="1"
+								itemLabel="#{messages['prospect.potentiel.1']}" />
+							<f:selectItem itemValue="2"
+								itemLabel="#{messages['prospect.potentiel.2']}" />
+							<f:selectItem itemValue="3"
+								itemLabel="#{messages['prospect.potentiel.3']}" />
+						</h:selectOneMenu>
 			</a:outputPanel>
+			
+								
+						
 			<br />
 
 			<!-- affiche aussi les prospects avec le statut Gagne et perdu -->

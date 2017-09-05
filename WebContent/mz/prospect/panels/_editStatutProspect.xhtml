@@ -159,14 +159,6 @@
 								itemLabel="#{messages['prospect.potentiel.3']}" />
 						</h:selectOneMenu>
 					</s:decorate>
-					<s:decorate template="../../layout/edit.xhtml" style="width:400px;">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.asuivre']}" />
-						</ui:define>
-						<h:selectBooleanCheckbox
-							disabled="#{!sessionDataManager.managerDispatcher}"
-							value="#{editProspectManager.prospectDetail.asuivre}" />
-					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />

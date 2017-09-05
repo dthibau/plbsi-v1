@@ -83,13 +83,6 @@
 						<h:outputText
 							value="#{editProspectManager.potentielAsString}" />
 					</s:decorate>
-					<s:decorate template="../../layout/display.xhtml"
-						rendered="#{editProspectManager.prospect.prospectDetail.asuivre}">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.asuivre']}" style="color:red;"/>
-						</ui:define>
-
-					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />

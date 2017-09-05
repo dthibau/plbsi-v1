@@ -157,10 +157,6 @@ public class ProspectDetail implements Serializable {
 	@JoinColumn(name = "id_formulaire_contact")
 	private Prospect prospect;
 	
-	@Column(columnDefinition="bit")
-	private boolean asuivre=false;
-	//Getteurs and Setteurs
-
 	private int potentiel;
 	
 	public String getTypeFormation() {
@@ -559,16 +555,6 @@ public class ProspectDetail implements Serializable {
 		this.prix_jour_animation = prix_jour_animation;
 	}
 
-	public boolean getAsuivre() {
-		return asuivre;
-	}
-
-
-	public void setAsuivre(boolean asuivre) {
-		this.asuivre = asuivre;
-	}
-
-	
 	public int getPotentiel() {
 		return potentiel;
 	}

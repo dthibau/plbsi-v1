@@ -160,7 +160,7 @@ public class SearchProspectManager implements Serializable {
 	private Date dateDebut;
 	private Date dateFin;
 
-	private boolean asuivre;
+	private int potentiel = -1;
 
 	// Attribut pour remplissage heure formation
 
@@ -282,10 +282,10 @@ public class SearchProspectManager implements Serializable {
 		return "/mz/search/searchProspects.xhtml";
 	}
 
-	private List<ProspectDto> _filterAsuivre() {
+	private List<ProspectDto> _filterPotentiel() {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
 		for (ProspectDto prospectDto : results) {
-			if (prospectDto.getAsuivre()) {
+			if (prospectDto.getPotentiel() == potentiel) {
 				ret.add(prospectDto);
 			}
 		}
@@ -340,8 +340,8 @@ public class SearchProspectManager implements Serializable {
 		} else {
 			_findAFaire();
 		}
-		if (asuivre) {
-			results = _filterAsuivre();
+		if (potentiel != -1) {
+			results = _filterPotentiel();
 		}
 	}
 
@@ -779,12 +779,12 @@ public class SearchProspectManager implements Serializable {
 		this.prospectSelected = prospectSelected;
 	}
 
-	public boolean isAsuivre() {
-		return asuivre;
+	public int getPotentiel() {
+		return potentiel;
 	}
 
-	public void setAsuivre(boolean asuivre) {
-		this.asuivre = asuivre;
+	public void setPotentiel(int potentiel) {
+		this.potentiel = potentiel;
 	}
 
 	public Account getCommercialeR() {

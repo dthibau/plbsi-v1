@@ -112,9 +112,9 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		return prospect.getReference();
 	}
 
-	public boolean getAsuivre() {
+	public int getPotentiel() {
 		return prospect.getProspectDetail() != null ? prospect
-				.getProspectDetail().getAsuivre() : false;
+				.getProspectDetail().getPotentiel() : -1;
 	}
 
 	@Override

@@ -46,67 +46,65 @@ import com.plb.util.Util;
 @Entity
 @Indexed
 @Table(name = "formation")
-@AnalyzerDef(name = "htmlAnalyzer",
-charFilters = {@CharFilterDef(factory = HTMLStripCharFilterFactory.class)},
-tokenizer=@TokenizerDef(factory= StandardTokenizerFactory.class))
-public class Formation implements Serializable, Comparable<Formation>{
+@AnalyzerDef(name = "htmlAnalyzer", charFilters = { @CharFilterDef(factory = HTMLStripCharFilterFactory.class) }, tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class))
+public class Formation implements Serializable, Comparable<Formation> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -211404718465836235L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "formationGenerator")
-	@SequenceGenerator (name = "formationGenerator", sequenceName = "FORMATION_ID", initialValue = 700000, allocationSize = 1)
+	@SequenceGenerator(name = "formationGenerator", sequenceName = "FORMATION_ID", initialValue = 700000, allocationSize = 1)
 	@Column(name = "id_formation")
 	private int idFormation;
-	@Column(name = "for_libelle", columnDefinition="text")
+	@Column(name = "for_libelle", columnDefinition = "text")
 	@Field
 	private String libelle;
-	@Column(name = "for_precision_libelle", columnDefinition="text")
+	@Column(name = "for_precision_libelle", columnDefinition = "text")
 	@Field
 	private String precision;
-	@Column(name = "for_prix", columnDefinition="decimal")
+	@Column(name = "for_prix", columnDefinition = "decimal")
 	private float prix;
 	@Temporal(TemporalType.DATE)
 	private Date lastUpdatePrix;
-	@Column(name = "for_duree", columnDefinition="decimal")
+	@Column(name = "for_duree", columnDefinition = "decimal")
 	@Min(value = 1)
 	private int duree;
-	@Column(name = "for_reference", columnDefinition="text")
+	@Column(name = "for_reference", columnDefinition = "text")
 	@Field
 	private String reference;
-	@Column(name = "for_remarques", columnDefinition="mediumtext")
+	@Column(name = "for_remarques", columnDefinition = "mediumtext")
 	@Field
 	private String remarques = "";
 
 	@Lob
 	private String statut;
 
-	@Column(name = "for_origine", columnDefinition="text")
+	@Column(name = "for_origine", columnDefinition = "text")
 	@Field
 	private String origine;
 	@Column(name = "for_mot_cle_primaire")
 	@Field
 	@Length(max = 50)
 	private String motClePrimaire;
-	@Column(name = "for_balise_title", columnDefinition="mediumtext") 
+	@Column(name = "for_balise_title", columnDefinition = "mediumtext")
 	private String baliseTitle;
 
-	@Column(name = "for_url", columnDefinition="text")
+	@Column(name = "for_url", columnDefinition = "text")
 	private String url;
 
-	@Column(name = "for_type", columnDefinition="text")
+	@Column(name = "for_type", columnDefinition = "text")
 	private String type;
 
-	@Column(name = "for_visible", columnDefinition="enum")
+	@Column(name = "for_visible", columnDefinition = "enum")
 	private String visible = "non";
 
-	@Column(name = "tar_code_intra", columnDefinition="char")
+	@Column(name = "tar_code_intra", columnDefinition = "char")
 	String tarifIntra = "";
 
-	@Column(name = "for_nouveaute", columnDefinition="enum")
+	@Column(name = "for_nouveaute", columnDefinition = "enum")
 	String nouveaute = "non";
 
 	String libreIntra;
@@ -121,7 +119,7 @@ public class Formation implements Serializable, Comparable<Formation>{
 	@Column(name = "for_rang_categorie")
 	private Integer rangCategorie;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation",fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.EAGER)
 	@OrderBy("rangFiliere ASC")
 	private List<FormationFiliere> formationFilieres = new ArrayList<FormationFiliere>();
 
@@ -133,10 +131,10 @@ public class Formation implements Serializable, Comparable<Formation>{
 	private List<FormationPartenaire> formationsPartenaire = new ArrayList<FormationPartenaire>();
 
 	@Lob
-	@Column(name = "for_balise_description", columnDefinition="mediumtext")
+	@Column(name = "for_balise_description", columnDefinition = "mediumtext")
 	private String baliseDescription;
 	@Lob
-	@Column(name = "for_balise_keywords",columnDefinition="mediumtext") 
+	@Column(name = "for_balise_keywords", columnDefinition = "mediumtext")
 	@Field
 	private String baliseKeyWords;
 	@Lob
@@ -144,21 +142,19 @@ public class Formation implements Serializable, Comparable<Formation>{
 
 	@Column(name = "for_cours_officiel")
 	private String officiel;
-	
-	@Column(columnDefinition="bit")
+
+	@Column(columnDefinition = "bit")
 	private Boolean support;
-	@Column(columnDefinition="bit")
+	@Column(columnDefinition = "bit")
 	private Boolean plbInter;
 	@Length(max = 255)
 	private String coursPlbCataloguePartenaire;
 
 	@ManyToOne(optional = true)
 	private FormationMutualisees formationMutualisees;
-	
+
 	@ManyToMany
-	@JoinTable(name="formation_formation",
-			joinColumns={@JoinColumn(name="id_formation_principale", referencedColumnName="id_formation")},
-		      inverseJoinColumns={@JoinColumn(name="id_formation_suivante", referencedColumnName="id_formation")})
+	@JoinTable(name = "formation_formation", joinColumns = { @JoinColumn(name = "id_formation_principale", referencedColumnName = "id_formation") }, inverseJoinColumns = { @JoinColumn(name = "id_formation_suivante", referencedColumnName = "id_formation") })
 	private List<Formation> formationAssociees;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -172,70 +168,67 @@ public class Formation implements Serializable, Comparable<Formation>{
 	@Column(name = "for_date_derniere_modif")
 	private Date dateModification;
 
-
-
 	@Lob
 	private String argumentaire;
-	
+
 	// Contenu web
 	@Lob
-	@Column(name="for_objectifs", columnDefinition="mediumtext")
+	@Column(name = "for_objectifs", columnDefinition = "mediumtext")
 	private String objectifs;
-	
-	@Lob
-	@Column(name="for_prerequis", columnDefinition="mediumtext")
-	private String prerequis;
-	
-	@Lob
-	@Column(name="for_travaux_pratiques", columnDefinition="mediumtext")
-	private String travauxPratiques;
-	
-	@Lob
-	@Column(name="for_infos", columnDefinition="mediumtext")
-	private String infos;
-	
 
-	@Column(name="for_replace", columnDefinition="text")
+	@Lob
+	@Column(name = "for_prerequis", columnDefinition = "mediumtext")
+	private String prerequis;
+
+	@Lob
+	@Column(name = "for_travaux_pratiques", columnDefinition = "mediumtext")
+	private String travauxPratiques;
+
+	@Lob
+	@Column(name = "for_infos", columnDefinition = "mediumtext")
+	private String infos;
+
+	@Column(name = "for_replace", columnDefinition = "text")
 	private String replace;
-	
+
 	@Lob
-	@Column(name="for_participants", columnDefinition="mediumtext")
+	@Column(name = "for_participants", columnDefinition = "mediumtext")
 	private String participants;
-	
+
 	@Lob
-	@Column(name="for_contenu", columnDefinition="mediumtext")
+	@Column(name = "for_contenu", columnDefinition = "mediumtext")
 	@Field
 	private String contenu;
-	
+
 	@Lob
-	@Column(name="for_description", columnDefinition="mediumtext")
+	@Column(name = "for_description", columnDefinition = "mediumtext")
 	@Field
 	private String description;
-	
-	@Column(name="for_top10", columnDefinition="tinyint")
+
+	@Column(name = "for_top10", columnDefinition = "tinyint")
 	private Integer top10 = 0;
-	
+
 	private String certification;
-	
-	private String distance="Non";
-	
-	@Column(name="for_eligible_cpf", columnDefinition="tinyint")
+
+	private String distance = "Non";
+
+	@Column(name = "for_eligible_cpf", columnDefinition = "tinyint")
 	private Boolean eligibleCpf;
-	
-	@Column(name="for_elearning", columnDefinition="tinyint")
+
+	@Column(name = "for_elearning", columnDefinition = "tinyint")
 	private Boolean elearning;
-	
-	@Column(name="for_niveau")
-	private String niveau="débutant";
-	
-	@Column(name="data_version")
-	private Integer dataVersion=3;
-	
+
+	@Column(name = "for_niveau")
+	private String niveau = "débutant";
+
+	@Column(name = "data_version")
+	private Integer dataVersion = 3;
+
 	@Transient
 	public boolean contains(Partenaire partenaire) {
 		// Force loading of a lazy association
 		List<FormationPartenaire> fps = getFormationsPartenaire();
-		for (FormationPartenaire fp : fps ) {
+		for (FormationPartenaire fp : fps) {
 			if (fp.getPartenaire().equals(partenaire)) {
 				return true;
 			}
@@ -409,9 +402,9 @@ public class Formation implements Serializable, Comparable<Formation>{
 		if (getUrl() == null || getFilierePrincipale().getUrl() == null) {
 			return null;
 		}
-		return "/formation/" + getFilierePrincipale().getUrl()
-				+ "/" + getUrl() + "," + getFilierePrincipale().getId() + "-"
-				+ getIdFormation() + ".php";
+		return "/formation/" + getFilierePrincipale().getUrl() + "/" + getUrl()
+				+ "," + getFilierePrincipale().getId() + "-" + getIdFormation()
+				+ ".php";
 	}
 
 	@Transient
@@ -427,8 +420,9 @@ public class Formation implements Serializable, Comparable<Formation>{
 		if (!getFilieres().isEmpty()) {
 			return getFilieres().get(0);
 		}
-		return getCategorie() != null ? getCategorie().getFiliere() : null ;
+		return getCategorie() != null ? getCategorie().getFiliere() : null;
 	}
+
 	@Transient
 	public int getRangFilierePrincipale() {
 		if (!getFormationFilieres().isEmpty()) {
@@ -439,26 +433,32 @@ public class Formation implements Serializable, Comparable<Formation>{
 			}
 
 		}
-		
+
 		return -1;
 	}
 
 	@Transient
 	public String getUrlPdf() {
 
-		return getReference() != null ? "http://www.plb.fr/Formation/Telecharger?reference=" + getReference() : "";
+		return getReference() != null ? "http://www.plb.fr/Formation/Telecharger?reference="
+				+ getReference()
+				: "";
 	}
 
 	@Transient
 	public String getUrlRTF() {
 
-		return getReference() != null ? "http://www.plb.fr/formation/rtf?reference=" + getReference() : "";
+		return getReference() != null ? "http://www.plb.fr/formation/rtf?reference="
+				+ getReference()
+				: "";
 	}
-	
+
 	@Transient
 	public String getUrlBO() {
 
-		return getIdFormation() != 0 ? "http://www.plb.fr/admin/gestion-formations.php?mode=mod&formation=" + getIdFormation() : null;
+		return getIdFormation() != 0 ? "http://www.plb.fr/admin/gestion-formations.php?mode=mod&formation="
+				+ getIdFormation()
+				: null;
 	}
 
 	public String getVisible() {
@@ -487,11 +487,11 @@ public class Formation implements Serializable, Comparable<Formation>{
 
 	@Transient
 	public String getShortRemarques() {
-		if ( remarques != null ) {
+		if (remarques != null) {
 			String remarquesData = HTMLUtils.getData(remarques);
-			return remarquesData.length() < 50 ? remarquesData : remarquesData.substring(0, 46)
-				+ " ..."; 
-		} 
+			return remarquesData.length() < 50 ? remarquesData : remarquesData
+					.substring(0, 46) + " ...";
+		}
 		return null;
 	}
 
@@ -499,9 +499,11 @@ public class Formation implements Serializable, Comparable<Formation>{
 	public String getMultiLigneRemarques() {
 		return remarques != null ? remarques.replace("\n", "<br/>") : "";
 	}
+
 	@Transient
 	public String getMultiLigneArgumentaire() {
-		return argumentaire != null ? argumentaire.replace("\n", "<br/>") : null;
+		return argumentaire != null ? argumentaire.replace("\n", "<br/>")
+				: null;
 	}
 
 	public List<Session> getSessions() {
@@ -532,7 +534,7 @@ public class Formation implements Serializable, Comparable<Formation>{
 		List<Date> dates = new ArrayList<Date>();
 		Calendar cal = Calendar.getInstance();
 		boolean bFirst = true;
-		
+
 		for (Session s : sessions) {
 			if (s.getYear() == cal.get(Calendar.YEAR) && s.getMonth() == month
 					&& !dates.contains(s.getDebut())) {
@@ -818,7 +820,7 @@ public class Formation implements Serializable, Comparable<Formation>{
 	}
 
 	public void removeFormationPartenaire(FormationPartenaire fp) {
-		
+
 		formationsPartenaire.remove(fp);
 
 	}
@@ -954,6 +956,25 @@ public class Formation implements Serializable, Comparable<Formation>{
 		return formationMutualisees;
 	}
 
+	@Transient
+	public String getFormationMutualiseesAsString() {
+		StringBuffer sbf = new StringBuffer();
+		if (formationMutualisees != null) {
+			boolean bFirst = true;
+			for (Formation f : formationMutualisees.getFormations()) {
+				if ( !f.equals(this) ) {
+				if (bFirst) {
+					sbf.append(f.getReference());
+					bFirst = false;
+				} else {
+					sbf.append("," + f.getReference());
+				}
+				}
+			}
+		}
+		return sbf.toString();
+	}
+
 	public void setFormationMutualisees(
 			FormationMutualisees formationMutualisees) {
 		this.formationMutualisees = formationMutualisees;
@@ -976,7 +997,6 @@ public class Formation implements Serializable, Comparable<Formation>{
 		}
 		return new ArrayList<Formation>();
 	}
-
 
 	public List<Formation> getFormationAssociees() {
 		return formationAssociees;
@@ -1039,7 +1059,7 @@ public class Formation implements Serializable, Comparable<Formation>{
 	}
 
 	public void setContenu(String contenu) {
-		if ( contenu != null ) {
+		if (contenu != null) {
 			this.contenu = HTMLUtils.decode(contenu);
 		} else {
 			this.contenu = null;
@@ -1062,7 +1082,6 @@ public class Formation implements Serializable, Comparable<Formation>{
 		this.argumentaire = argumentaire;
 	}
 
-	
 	public String getObjectifs() {
 		return objectifs;
 	}
@@ -1084,16 +1103,16 @@ public class Formation implements Serializable, Comparable<Formation>{
 	}
 
 	public void setPrerequis(String prerequis) {
-		if ( prerequis != null ) {
+		if (prerequis != null) {
 			this.prerequis = HTMLUtils.decode(prerequis);
 		} else {
 			this.prerequis = null;
 		}
 	}
-	
+
 	public String getPrerequis4Front() {
-		if ( prerequis.trim().startsWith("<p>") ) {
-			return prerequis.trim().substring(4,prerequis.trim().length()-4);
+		if (prerequis.trim().startsWith("<p>")) {
+			return prerequis.trim().substring(4, prerequis.trim().length() - 4);
 		}
 		return prerequis.trim();
 	}
@@ -1115,17 +1134,19 @@ public class Formation implements Serializable, Comparable<Formation>{
 	}
 
 	private String _toLibelleInformation(String replace) {
-		if ( replace != null && replace.indexOf("for_infos") != -1) {
+		if (replace != null && replace.indexOf("for_infos") != -1) {
 			int index = replace.indexOf("for_infos");
-			String s = replace.substring(index+"for_infos".length()+1);
-			index = s.indexOf("\"")+1;
+			String s = replace.substring(index + "for_infos".length() + 1);
+			index = s.indexOf("\"") + 1;
 			int stop = s.lastIndexOf("\"");
 			return HTMLUtils.decode(s.substring(index, stop));
 		}
 		return null;
 	}
+
 	private String _toReplace(String libelleInformation) {
-		if ( libelleInformation == null || libelleInformation.trim().length() == 0) {
+		if (libelleInformation == null
+				|| libelleInformation.trim().length() == 0) {
 			return null;
 		}
 		StringBuffer sbf = new StringBuffer("a:1:{s:9:\"for_infos\";s:");
@@ -1135,6 +1156,7 @@ public class Formation implements Serializable, Comparable<Formation>{
 		sbf.append("\";}");
 		return sbf.toString();
 	}
+
 	public String getReplace() {
 		return replace;
 	}

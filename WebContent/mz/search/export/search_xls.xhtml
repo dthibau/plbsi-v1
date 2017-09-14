@@ -29,6 +29,11 @@
 			<ui:param name="type" value="text"/>
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.mutualisees']}"/>
+			<ui:param name="value" value="#{_dto.formation.formationMutualiseesAsString}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.categorie']}"/>
 			<ui:param name="value" value="#{_dto.formation.categorie.libelle}"/>
 			<ui:param name="type" value="text"/>

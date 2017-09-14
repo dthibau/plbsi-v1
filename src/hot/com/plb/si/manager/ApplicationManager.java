@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.Transient;
 
 import org.hibernate.LazyInitializationException;
 import org.jboss.seam.ScopeType;
@@ -468,6 +469,25 @@ public class ApplicationManager implements Serializable {
 			allFormationsMutualisee.put(formation, ret);
 		}
 		return ret;
+	}
+	
+	public String getFormationsMutualiseesAsString(Formation formation) {
+		StringBuffer sbf = new StringBuffer();
+		FormationMutualisees formationMutualisees = getFormationsMutualisees(formation);
+		if (formationMutualisees != null) {
+			boolean bFirst = true;
+			for (Formation f : formationMutualisees.getFormations()) {
+				if ( !f.equals(this) ) {
+				if (bFirst) {
+					sbf.append(f.getReference());
+					bFirst = false;
+				} else {
+					sbf.append("," + f.getReference());
+				}
+				}
+			}
+		}
+		return sbf.toString();
 	}
 
 	public List<Session> getFormationsSessions(Formation formation) {

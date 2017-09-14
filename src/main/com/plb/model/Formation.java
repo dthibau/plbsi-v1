@@ -956,24 +956,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		return formationMutualisees;
 	}
 
-	@Transient
-	public String getFormationMutualiseesAsString() {
-		StringBuffer sbf = new StringBuffer();
-		if (formationMutualisees != null) {
-			boolean bFirst = true;
-			for (Formation f : formationMutualisees.getFormations()) {
-				if ( !f.equals(this) ) {
-				if (bFirst) {
-					sbf.append(f.getReference());
-					bFirst = false;
-				} else {
-					sbf.append("," + f.getReference());
-				}
-				}
-			}
-		}
-		return sbf.toString();
-	}
 
 	public void setFormationMutualisees(
 			FormationMutualisees formationMutualisees) {

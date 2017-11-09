@@ -145,6 +145,10 @@ public class ProspectDetail implements Serializable {
 	@Column(name = "datedevis")
 	private Date datedevis;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "daterelance")
+	private Date dateRelance;
+	
 	@Column(name = "remise")
 	private Float remise = 0f;
 	
@@ -536,6 +540,16 @@ public class ProspectDetail implements Serializable {
 	}
 	
 	
+	public Date getDateRelance() {
+		return dateRelance;
+	}
+
+
+	public void setDateRelance(Date dateRelance) {
+		this.dateRelance = dateRelance;
+	}
+
+
 	public Float getRemise() {
 		return remise;
 	}

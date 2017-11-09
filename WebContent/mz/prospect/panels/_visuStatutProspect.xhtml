@@ -101,12 +101,26 @@
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
 							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" >
-							<f:convertDateTime type="both" locale="FR" timeZone="Europe/Paris"/>
+							<f:convertDateTime type="date" locale="FR" timeZone="Europe/Paris"/>
 							</h:outputText>
 							
 							
 						<h:outputText value="Non envoyé"
 							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" />
+					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="Date relance" />
+						</ui:define>
+						<h:outputText
+							value="#{editProspectManager.prospect.prospectDetail.dateRelance}"
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.dateRelance}" >
+							<f:convertDateTime type="date" locale="FR" timeZone="Europe/Paris"/>
+							</h:outputText>
+							
+							
+						<h:outputText value="Pas de relance"
+							rendered="#{empty editProspectManager.prospect.prospectDetail.dateRelance}" />
 					</s:decorate>
 				</fieldset>
 			</td>

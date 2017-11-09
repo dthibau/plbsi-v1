@@ -106,7 +106,17 @@
 				#{messages['prospect.encours']} :
 				<h:selectBooleanCheckbox value="#{searchProspect.enCours}">
 					<a:ajax event="change"
-						render="resultat,resultList,panel,totalPanel"
+						render="resultat,resultList,panel,totalPanel,relanceSelect"
+						listener="#{searchProspect.recherche()}" />
+					<f:selectItem itemValue="true" itemLabel="" />
+				</h:selectBooleanCheckbox>
+			</a:outputPanel>
+			&nbsp;&nbsp;
+			<a:outputPanel id="relanceSelect">
+				#{messages['prospect.relance']} :
+				<h:selectBooleanCheckbox value="#{searchProspect.relance}">
+					<a:ajax event="change"
+						render="resultat,resultList,panel,totalPanel,encoursSelect"
 						listener="#{searchProspect.recherche()}" />
 					<f:selectItem itemValue="true" itemLabel="" />
 				</h:selectBooleanCheckbox>

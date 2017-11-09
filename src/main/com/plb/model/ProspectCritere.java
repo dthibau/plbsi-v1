@@ -10,7 +10,7 @@ public class ProspectCritere {
 	public static int TODO = 1; // A faire
 	public static int ENCOURS = 2; // Les affaires en cours tout statuts
 									// confondus
-
+	public static int RELANCE = 3; // Les affaires en cours qui ont dépassé la relance
 	private String statut;
 
 	private Account commercial;

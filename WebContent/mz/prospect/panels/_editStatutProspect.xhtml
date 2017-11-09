@@ -172,7 +172,7 @@
 							<h:outputText value="Devis envoyé ?" />
 						</ui:define>
 						<h:selectBooleanCheckbox value="#{editProspectManager.envoye}">
-							<a:ajax event="change" render="envoyeCalendar" />
+							<a:ajax event="change" render="envoyeCalendar,relancePanel" />
 							<f:selectItem itemValue="true" itemLabel="" />
 						</h:selectBooleanCheckbox>
 					</s:decorate>
@@ -184,8 +184,33 @@
 							</ui:define>
 							<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
 								value="#{editProspectManager.prospectDetail.datedevis}"
+								style="width:100px;height:20px" >
+								<a:ajax event="change" render="relancePanel" />
+							</rich:calendar>
+						</s:decorate>
+					</a:outputPanel>
+					<a:outputPanel id="relancePanel">
+					<s:decorate template="../../layout/display.xhtml"
+						style="width:300px;" rendered="#{editProspectManager.envoye}">
+						<ui:define name="label">
+							<h:outputText value="Relance ?" />
+						</ui:define>
+						<h:selectBooleanCheckbox value="#{editProspectManager.relance}">
+							<a:ajax event="change" render="relanceCalendar" />
+							<f:selectItem itemValue="true" itemLabel="" />
+						</h:selectBooleanCheckbox>
+					</s:decorate>
+					<a:outputPanel id="relanceCalendar">
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:400px;" rendered="#{editProspectManager.relance}">
+							<ui:define name="label">
+								<h:outputText value="Date : " />
+							</ui:define>
+							<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
+								value="#{editProspectManager.prospectDetail.dateRelance}"
 								style="width:100px;height:20px" />
 						</s:decorate>
+					</a:outputPanel>
 					</a:outputPanel>
 
 				</fieldset>

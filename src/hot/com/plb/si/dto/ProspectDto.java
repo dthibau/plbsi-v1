@@ -53,8 +53,12 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		} else if ("En attente".equals(prospect.getStatut())
 				&& role.equals(Role.COMMERCIAL)) {
 			couleur = "#fe6f5e";
-		} else if ("En cours".equals(prospect.getStatut())) {
-			couleur = "#d3d3d3";
+		} else if ("En cours".equals(prospect.getStatut())) {		
+			if ( prospect.getProspectDetail() != null && prospect.getProspectDetail().getDateRelance() != null && prospect.getProspectDetail().getDateRelance().after(new Date())) {
+				couleur = "#ffff10";
+			} else {
+				couleur = "#d3d3d3";
+			}
 		} else if (statut2.equals(prospect.getStatut())) {
 			couleur = "#98fb98";
 		} else if ("Perdu".equals(prospect.getStatut())) {

@@ -322,7 +322,7 @@ public class SearchProspectManager implements Serializable {
 
 		lastSearchDate = new Date();
 
-		if (state == ProspectCritere.ALL || state == ProspectCritere.ENCOURS) {
+		if (state == ProspectCritere.ALL || state == ProspectCritere.ENCOURS || state == ProspectCritere.RELANCE) {
 
 			Set<ProspectDto> resultSet = new HashSet<ProspectDto>();
 			if (loggedUser.isExtendedManager() || loggedUser.isDispatcher()) {
@@ -334,6 +334,9 @@ public class SearchProspectManager implements Serializable {
 				critere.setCommercial(loggedUser);
 				resultSet.addAll(ProspectDto.buildDTO(
 						prospectDao.search(critere), Role.COMMERCIAL));
+			}
+			if ( state == ProspectCritere.RELANCE ) {
+				resultSet = _filterRelance(resultSet);
 			}
 			results = _filterInterIntra(resultSet);
 
@@ -409,6 +412,16 @@ public class SearchProspectManager implements Serializable {
 			}
 		}
 		Collections.sort(ret);
+		return ret;
+	}
+	
+	private Set<ProspectDto> _filterRelance(Set<ProspectDto> resultSet) {
+		Set<ProspectDto> ret = new HashSet<ProspectDto>();
+		for ( ProspectDto pDto : resultSet) {
+			if ( pDto.getProspectDetail() != null && pDto.getProspectDetail().getDateRelance() != null && pDto.getProspectDetail().getDateRelance().after(new Date())) {
+				ret.add(pDto);
+			}
+		}
 		return ret;
 	}
 
@@ -832,7 +845,19 @@ public class SearchProspectManager implements Serializable {
 	}
 
 	public boolean isEnCours() {
-		return state == ProspectCritere.ENCOURS || state == ProspectCritere.ALL;
+		return state == ProspectCritere.ENCOURS || state == ProspectCritere.ALL || state == ProspectCritere.RELANCE;
+	}
+	
+	public void setRelance(boolean relance) {
+		if (relance) {
+			state = ProspectCritere.RELANCE;
+		} else {
+			state = ProspectCritere.TODO;
+		}
+	}
+
+	public boolean isRelance() {
+		return state == ProspectCritere.RELANCE || state == ProspectCritere.ALL;
 	}
 
 	public boolean isToDo() {

@@ -2,9 +2,11 @@ package com.plb.si.manager.prospect;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -194,6 +196,8 @@ public class EditProspectManager implements Serializable {
 	// Attribut pour savoir si l'on affiche le calendrier pour la date d'envoie
 	// du devis
 	private boolean envoye;
+	
+	private boolean relance;
 
 	private Devis lastGeneratedDevis;
 
@@ -273,16 +277,15 @@ public class EditProspectManager implements Serializable {
 			// été modifié
 			ancienCommercial = "";
 			envoye = false;
+			relance = false;
 		} else {
 			// On renseigne le commercial associé au prospect pour savoir s'il a
 			// été modifié
 			ancienCommercial = prospect.getProspectDetail().getCommercial();
 
-			if (prospect.getProspectDetail().getDatedevis() == null) {
-				envoye = false;
-			} else {
-				envoye = true;
-			}
+			envoye = (prospect.getProspectDetail().getDatedevis() != null);
+			relance = (prospect.getProspectDetail().getDateRelance() != null);
+			
 		}
 		// Last Devis généré
 		_setLastGeneratedDevis();
@@ -1092,6 +1095,25 @@ public class EditProspectManager implements Serializable {
 				prospectDetail.setDatedevis(new Date());
 			} else {
 				prospectDetail.setDatedevis(null);
+			}
+		}
+
+	}
+	public boolean isRelance() {
+		return relance;
+	}
+
+	public void setRelance(boolean relance) {
+		this.relance = relance;
+		ProspectDetail prospectDetail = getProspectDetail();
+		if (prospectDetail != null) {
+			if (relance) {
+				Calendar cal = Calendar.getInstance(Locale.FRENCH);
+				cal.setTime(prospectDetail.getDatedevis());
+				cal.add(Calendar.DAY_OF_YEAR,8);
+				prospectDetail.setDateRelance(cal.getTime());
+			} else {
+				prospectDetail.setDateRelance(null);
 			}
 		}
 

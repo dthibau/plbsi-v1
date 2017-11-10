@@ -1093,8 +1093,10 @@ public class EditProspectManager implements Serializable {
 		if (prospectDetail != null) {
 			if (envoye) {
 				prospectDetail.setDatedevis(new Date());
+				setRelance(true);
 			} else {
 				prospectDetail.setDatedevis(null);
+				setRelance(false);
 			}
 		}
 

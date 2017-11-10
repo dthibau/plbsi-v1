@@ -418,7 +418,7 @@ public class SearchProspectManager implements Serializable {
 	private Set<ProspectDto> _filterRelance(Set<ProspectDto> resultSet) {
 		Set<ProspectDto> ret = new HashSet<ProspectDto>();
 		for ( ProspectDto pDto : resultSet) {
-			if ( pDto.getProspectDetail() != null && pDto.getProspectDetail().getDateRelance() != null && pDto.getProspectDetail().getDateRelance().after(new Date())) {
+			if ( pDto.getProspectDetail() != null && pDto.getProspectDetail().getDateRelance() != null && pDto.getProspectDetail().getDateRelance().before(new Date())) {
 				ret.add(pDto);
 			}
 		}

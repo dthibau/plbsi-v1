@@ -54,7 +54,7 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 				&& role.equals(Role.COMMERCIAL)) {
 			couleur = "#fe6f5e";
 		} else if ("En cours".equals(prospect.getStatut())) {		
-			if ( prospect.getProspectDetail() != null && prospect.getProspectDetail().getDateRelance() != null && prospect.getProspectDetail().getDateRelance().after(new Date())) {
+			if ( prospect.getProspectDetail() != null && prospect.getProspectDetail().getDateRelance() != null && prospect.getProspectDetail().getDateRelance().before(new Date())) {
 				couleur = "#ffff10";
 			} else {
 				couleur = "#d3d3d3";

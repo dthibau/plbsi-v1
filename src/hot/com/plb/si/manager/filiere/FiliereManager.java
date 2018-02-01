@@ -1,6 +1,8 @@
 package com.plb.si.manager.filiere;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,10 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPClientConfig;
+import org.apache.commons.net.ftp.FTPReply;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
 import org.jboss.seam.annotations.Create;
@@ -130,12 +136,54 @@ public class FiliereManager implements Serializable {
 		_storeImage(item,"filiere/logo/");
     }
 	private void _storeImage(UploadedFile item, String path) throws IOException {	
-        // Store them in the Web content
+        // Transfer them to the Web server
+		FTPClient ftp = new FTPClient();
+//	    FTPClientConfig config = new FTPClientConfig();
+//	    config.setXXX(YYY); // change required options
+	    // for example config.setServerTimeZoneId("Pacific/Pitcairn")
+//	    ftp.configure(config );
+	    boolean error = false;
+	    try {
+	      int reply;
+	      ftp.connect(ApplicationManager.FTP_URL);
+	      ftp.login(ApplicationManager.FTP_LOGIN, ApplicationManager.FTP_PASSWORD);
+	      log.debug("Connected to FTP server.");
+	      log.debug(ftp.getReplyString());
+	      // After connection attempt, you should check the reply code to verify
+	      // success.
+	      reply = ftp.getReplyCode();
+
+	      if(!FTPReply.isPositiveCompletion(reply)) {
+	        ftp.disconnect();
+	        throw new IOException("FTP server refused connection.");
+	      }
+	      String fullPath = ApplicationManager.WEB_ROOT_IMG + "/" + path;
+	      String subDirs[] = fullPath.split("/");
+	      for ( String subDir : subDirs ) {
+	    	  if ( !ftp.changeWorkingDirectory(subDir) ) {
+	    		  ftp.makeDirectory(subDir);
+	    		  ftp.changeWorkingDirectory(subDir);
+	    	  }
+	      }
+	      ftp.setFileType(FTP.BINARY_FILE_TYPE);
+	      ftp.storeFile(item.getName(), new ByteArrayInputStream(item.getData()));
+//	      ftp.storeFile(item.getName(), new FileInputStream("/home/dthibau/Images/Anchor.png"));
+	      log.debug("Storing "+ApplicationManager.WEB_ROOT_IMG+"/"+item.getName());
+	      ftp.logout();
+	    } catch(IOException e) {
+	      throw e;
+	    } finally {
+	      if(ftp.isConnected()) {
+	        try {
+	          ftp.disconnect();
+	        } catch(IOException ioe) {
+	          // do nothing
+	        }
+	      }
+	    }
         log.debug("uploadPetit UploadItem "+item);
-        log.debug("Storing "+ApplicationManager.WEB_ROOT_IMG+"/"+item.getName());
-        OutputStream os = new BufferedOutputStream(new FileOutputStream(ApplicationManager.WEB_ROOT_IMG+"/"+item.getName(), false));
-        os.write(item.getData());
-        os.close();		
+        
+
 	}
 	
 	public void uploadVisuel(FileUploadEvent event) throws Exception {

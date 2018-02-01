@@ -125,6 +125,12 @@ public class ApplicationManager implements Serializable {
 	@Out
 	public final static String WEB_URL = projectBundle.getString("WEB_URL");
 
+	public final static String FTP_URL = projectBundle
+			.getString("FTP_URL");
+	public final static String FTP_LOGIN = projectBundle
+			.getString("FTP_LOGIN");
+	public final static String FTP_PASSWORD = projectBundle
+			.getString("FTP_PASSWORD");
 	public final static String WEB_ROOT_IMG = projectBundle
 			.getString("WEB_ROOT_IMG");
 

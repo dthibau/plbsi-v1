@@ -19,11 +19,13 @@ import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
 import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.web.RequestParameter;
 import org.jboss.seam.faces.FacesMessages;
+import org.jboss.seam.log.Log;
 import org.richfaces.component.SortOrder;
 
 import com.plb.model.Formation;
@@ -58,6 +60,8 @@ public class SearchIntervenantManager implements Serializable {
 
 	private boolean needPerformQuery = true;
 
+	@Logger
+	Log log;
 
 	@In
 	FacesMessages facesMessages;
@@ -158,7 +162,10 @@ public class SearchIntervenantManager implements Serializable {
 			List<Intervenant> results = query.getResultList();
 			return results;
 		} else {
-			return new IntervenantDao(entityManager).findAll();
+			long start = System.currentTimeMillis();
+			List<Intervenant> intervenants = new IntervenantDao(entityManager).findAll();
+			log.info("Fetching ALL Intervenants took "+(System.currentTimeMillis()-start)+ "ms");
+			return intervenants;
 		}
 	}
 

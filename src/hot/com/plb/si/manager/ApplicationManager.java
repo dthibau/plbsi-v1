@@ -416,7 +416,9 @@ public class ApplicationManager implements Serializable {
 
 	public List<Formation> getAllFormations() {
 		if (allFormations == null) {
+			long start = System.currentTimeMillis();
 			allFormations = new FormationDao(entityManager).findAll();
+			log.info("Fetching ALL Formations took "+(System.currentTimeMillis()-start)+ "ms");
 		}
 		return allFormations;
 	}

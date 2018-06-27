@@ -14,11 +14,8 @@
 	<taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpathref="jmeter.classpath" />
 
 <target name="check">
-		<delete>
-<fileset dir="${jmeter.test}/logs">
-			<include name="**/*" />
-		</fileset>
-		</delete>
+		<delete dir="${jmeter.test}/logs" failonerror="false"/>
+		<mkdir dir="${jmeter.test}/logs"/>
 		<jmeter jmeterhome="${jmeter.dir}" testplan="${jmeter.test}/checkNavigation.jmx" resultlog="${jmeter.test}/logs/checkNavigation.jtl">
 			<jvmarg value="-Xmx1024m" />
 			<jvmarg value="-Djmeter.save.saveservice.assertion_results=all"/>

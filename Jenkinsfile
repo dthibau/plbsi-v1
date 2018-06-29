@@ -16,6 +16,10 @@ pipeline {
       steps {  echo 'Testing..' 
         sh 'ant -f jmeter/build.xml check'
       }
+      post {
+          perfReport 'logs/checkNavigation.jtl'
+      }
+
     }
     
   }

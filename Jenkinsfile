@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {  echo 'Building..'   
-          sh 'ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=http://prod.plb.fr:8080 -Dprofile=int -Djasper_home=/home/jboss/jasperreports-5.5.0'
+          sh 'ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=http://dev.plb.fr:8081 -Dprofile=int -Djasper_home=/home/jboss/jasperreports-5.5.0'
       }
    }
     stage('Deploy') {
@@ -18,7 +18,7 @@ pipeline {
       }
       post {
           always {
-            perfReport 'logs/checkNavigation.jtl'
+            perfReport 'jmeter/logs/checkNavigation.jtl'
           }
       }
 

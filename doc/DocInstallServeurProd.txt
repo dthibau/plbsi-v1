@@ -1,0 +1,37 @@
+Etapes installation
+-------------------
+
+Installation sudo (apt-get install sudo)
+Ajout utilisateur dthibau
+
+Installation Open JDK 8 (https://linoxide.com/debian/install-java-8-debian-gnulinux-9-stretch/)
+sudo apt-get install default-jdk
+
+Ajout utilisateur jboss
+Ajoute de l'administrateur jboss : jboss/9lM)[dfZ
+sudo apt-get install unzip
+Récupération distribution JBoss
+Récupération distribution JasperReport
+
+Recopie de la configuration JBoss à partir de OVH
+
+Recopie script de démarrage /etc/init.d/jboss
+Modification JAVA_HOME
+Modification datasource MySQL
+Test démarrage + login : OK
+
+Installation git :
+sudo apt-get install git
+
+git clone ssh://dthibau@dev.plb.fr:22000/home/git/plbsi.git
+
+Installation Ant
+sudo apt-get install ant
+
+Test déploiement :
+cd plbsi
+ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=http://prod.plb.fr:8080 -Dprofile=prod -Djasper_home=/home/jboss/jasperreports-5.5.0
+
+OK
+
+

@@ -1,0 +1,56 @@
+Etapes installation
+-------------------
+
+Installation sudo (apt-get sudo)
+Ajout utilisateur dthibau
+
+Installation Oracle JDK 8 
+sudo apt-get install software-properties-common
+sudo add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+Ajout utilisateur jboss
+Ajoute de l'administrateur jboss : jboss/9lM)[dfZ
+sudo apt-get install unzip
+Récupération distribution JBoss
+Recopie de la configuration à partir de la prod OVH et adaptation, 
+Modification datasource mysql : lien vers base mysql plbsi_rec
+
+Installation git :
+sudo apt-get install git
+
+Ajout de l'utilisateur git/9lM)[dfZ
+Recopie des dépôts git
+Test clonage du dépôt : OK 
+
+Installation jenkins (https://pkg.jenkins.io/debian-stable/)
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+Mise à jour /etc/apt/sources.list avec : deb https://pkg.jenkins.io/debian-stable binary/
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install jenkins
+
+Installation plugins (Ant, Git, Pipeline, Blue Ocean)
+
+Installation de JasperReport dans le répertoire Home de JBoss
+
+Ajout de jenkins comme sudoers
+
+Le build de Jenkins à partir du nouveau reposiory Git fonctionne.
+Le site est accessible sur http://62.210.207.51:8081/plbsi
+
+Installation mysql
+------------------
+wget http://repo.mysql.com/mysql-apt-config_0.8.9-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+sudo apt update 
+sudo apt install mysql-server
+Password : 9lM)[dfZ
+sudo mysql_secure_installation
+create database plbsi_rec;
+create user 'plbsi_rec'@'localhost' identified by '9lM)[dfZ';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON plbsi_rec.* TO 'plbsi_rec'@'localhost';
+
+
+

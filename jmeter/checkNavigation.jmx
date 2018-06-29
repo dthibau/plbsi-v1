@@ -2481,7 +2481,7 @@
           <boolProp name="XPath.namespace">false</boolProp>
         </XPathAssertion>
         <hashTree/>
-        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse - ERREUR ?" enabled="true">
           <collectionProp name="Asserion.test_strings">
             <stringProp name="1203236063">errorMessage</stringProp>
           </collectionProp>

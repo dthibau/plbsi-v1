@@ -17,7 +17,9 @@ pipeline {
         sh 'ant -f jmeter/build.xml check'
       }
       post {
-          perfReport 'logs/checkNavigation.jtl'
+          always {
+            perfReport 'logs/checkNavigation.jtl'
+          }
       }
 
     }

@@ -117,10 +117,10 @@ public class NotificationServiceImpl implements NotificationService,
 		List<Account> destinataires = new ArrayList<Account>();
 		AccountDao accountDao = new AccountDao(entityManager);
 		//Ne fonctionne plus car plus de role intervenant manager en bdd
-		//destinataires = accountDao.findByRole(Role.INTERVENANTS_MANAGER);
+		destinataires = accountDao.findByRole(Role.INTERVENANTS_MANAGER);
 		//Parametrage manuel des concernés Laurent Aurore
-		destinataires.add(accountDao.findNames("DERUY", "Aurore"));
-		destinataires.add(accountDao.findNames("BOURQUARD", "Laurent"));
+//		destinataires.add(accountDao.findNames("DERUY", "Aurore"));
+//		destinataires.add(accountDao.findNames("BOURQUARD", "Laurent"));
 		event.setDestinataires(destinataires);
 		return destinataires;
 	}

@@ -47,7 +47,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -89,7 +89,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -150,7 +150,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -182,7 +182,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -204,7 +204,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -236,7 +236,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -250,7 +250,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -282,7 +282,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -304,7 +304,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -336,7 +336,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -363,7 +363,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -395,7 +395,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -416,7 +416,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -448,7 +448,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -462,7 +462,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -494,7 +494,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -508,7 +508,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -540,7 +540,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -554,7 +554,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -586,7 +586,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -607,7 +607,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -639,7 +639,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -660,7 +660,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -692,7 +692,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -719,7 +719,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -751,7 +751,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -772,7 +772,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -804,7 +804,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -818,7 +818,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -850,7 +850,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -871,7 +871,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -903,7 +903,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -930,7 +930,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -962,7 +962,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -983,7 +983,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1015,7 +1015,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1029,7 +1029,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1061,7 +1061,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1082,7 +1082,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1114,7 +1114,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1128,7 +1128,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1160,7 +1160,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1202,7 +1202,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1234,7 +1234,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/skinning.ecss.seam?db=eAFjW6XuDgACrwEf</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1291,7 +1291,7 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+              <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
               <stringProp name="HTTPSampler.port">8081</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1328,7 +1328,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                    <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Encoding" elementType="Header">
                     <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1394,7 +1394,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1427,7 +1427,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/login.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1449,7 +1449,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1481,7 +1481,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1495,7 +1495,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1527,7 +1527,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1549,7 +1549,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1581,7 +1581,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1610,7 +1610,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1642,7 +1642,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1664,7 +1664,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1696,7 +1696,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1718,7 +1718,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1750,7 +1750,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1772,7 +1772,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1804,7 +1804,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1833,7 +1833,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1865,7 +1865,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1887,7 +1887,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1919,7 +1919,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1941,7 +1941,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -1973,7 +1973,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1995,7 +1995,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2027,7 +2027,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2056,7 +2056,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2088,7 +2088,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2117,7 +2117,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2149,7 +2149,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2171,7 +2171,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2203,7 +2203,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2225,7 +2225,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2257,7 +2257,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2279,7 +2279,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2311,7 +2311,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2340,7 +2340,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2372,7 +2372,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2386,7 +2386,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2418,7 +2418,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2432,7 +2432,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2464,7 +2464,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2486,7 +2486,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2518,7 +2518,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2540,7 +2540,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2572,7 +2572,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2586,7 +2586,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2618,7 +2618,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2632,7 +2632,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2664,7 +2664,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2693,7 +2693,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2725,7 +2725,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2747,7 +2747,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2779,7 +2779,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2801,7 +2801,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2833,7 +2833,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2855,7 +2855,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2887,7 +2887,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2901,7 +2901,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2933,7 +2933,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2947,7 +2947,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2979,7 +2979,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -2993,7 +2993,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3025,7 +3025,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3047,7 +3047,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3079,7 +3079,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3219,7 +3219,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3271,7 +3271,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -3414,7 +3414,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3466,7 +3466,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -3618,7 +3618,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3670,7 +3670,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -3724,7 +3724,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3757,7 +3757,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3809,7 +3809,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3842,7 +3842,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/search/search.seam?cid=67</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3856,7 +3856,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3888,7 +3888,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3910,7 +3910,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3942,7 +3942,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -3956,7 +3956,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -3988,7 +3988,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4010,7 +4010,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4042,7 +4042,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4064,7 +4064,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4096,7 +4096,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4125,7 +4125,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4157,7 +4157,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4186,7 +4186,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4218,7 +4218,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4240,7 +4240,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4272,7 +4272,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4294,7 +4294,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4326,7 +4326,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4348,7 +4348,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4380,7 +4380,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4402,7 +4402,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4434,7 +4434,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4456,7 +4456,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4488,7 +4488,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4510,7 +4510,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4542,7 +4542,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4564,7 +4564,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4596,7 +4596,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4623,7 +4623,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4655,7 +4655,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4677,7 +4677,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4709,7 +4709,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4731,7 +4731,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4763,7 +4763,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4792,7 +4792,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4824,7 +4824,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4838,7 +4838,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4870,7 +4870,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4892,7 +4892,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4924,7 +4924,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -4953,7 +4953,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4985,7 +4985,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5007,7 +5007,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5039,7 +5039,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5053,7 +5053,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5085,7 +5085,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5107,7 +5107,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5139,7 +5139,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5161,7 +5161,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5193,7 +5193,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5215,7 +5215,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5247,7 +5247,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5261,7 +5261,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5293,7 +5293,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5307,7 +5307,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5339,7 +5339,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5368,7 +5368,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5400,7 +5400,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5429,7 +5429,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5461,7 +5461,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5475,7 +5475,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5507,7 +5507,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5529,7 +5529,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5561,7 +5561,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5583,7 +5583,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5615,7 +5615,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5644,7 +5644,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5676,7 +5676,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5697,7 +5697,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5729,7 +5729,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5751,7 +5751,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5783,7 +5783,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5804,7 +5804,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5836,7 +5836,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5865,7 +5865,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5897,7 +5897,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5926,7 +5926,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -5958,7 +5958,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -5972,7 +5972,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6004,7 +6004,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6026,7 +6026,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6058,7 +6058,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6080,7 +6080,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6112,7 +6112,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6134,7 +6134,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6166,7 +6166,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6195,7 +6195,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6227,7 +6227,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6241,7 +6241,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6273,7 +6273,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6295,7 +6295,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6327,7 +6327,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6349,7 +6349,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6381,7 +6381,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6403,7 +6403,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6435,7 +6435,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6457,7 +6457,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6489,7 +6489,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6511,7 +6511,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6543,7 +6543,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6572,7 +6572,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6604,7 +6604,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6626,7 +6626,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6658,7 +6658,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6672,7 +6672,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6704,7 +6704,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6718,7 +6718,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6750,7 +6750,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6764,7 +6764,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6796,7 +6796,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6832,7 +6832,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6864,7 +6864,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6900,7 +6900,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6932,7 +6932,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -6954,7 +6954,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -6986,7 +6986,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7022,7 +7022,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7054,7 +7054,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/tabPanel.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7090,7 +7090,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7122,7 +7122,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/select.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/select.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7158,7 +7158,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7190,7 +7190,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/icons.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/icons.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7226,7 +7226,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7258,7 +7258,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/select.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/select.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7280,7 +7280,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7312,7 +7312,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7334,7 +7334,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7366,7 +7366,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7388,7 +7388,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7420,7 +7420,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7434,7 +7434,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7466,7 +7466,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7488,7 +7488,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7520,7 +7520,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7562,7 +7562,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7594,7 +7594,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -7630,7 +7630,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -7662,7 +7662,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/rfRes/dropdownmenu.ecss.seam?db=eAFjW6XuDgACrwEf&amp;ln=org.richfaces</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -8026,7 +8026,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -8078,7 +8078,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -8105,7 +8105,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -8141,7 +8141,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -8155,7 +8155,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -8187,7 +8187,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -8712,7 +8712,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -8764,7 +8764,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -9300,7 +9300,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -9352,7 +9352,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -9882,7 +9882,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -9934,7 +9934,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -10464,7 +10464,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -10516,7 +10516,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -10542,7 +10542,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -10578,7 +10578,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -10676,7 +10676,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -10728,7 +10728,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -11102,7 +11102,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11154,7 +11154,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -11180,7 +11180,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11216,7 +11216,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -11230,7 +11230,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11262,7 +11262,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -11276,7 +11276,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11308,7 +11308,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -11322,7 +11322,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11354,7 +11354,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -11368,7 +11368,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11400,7 +11400,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -11414,7 +11414,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -11446,7 +11446,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -12141,7 +12141,7 @@ blabla kjlkqsldq</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -12193,7 +12193,7 @@ blabla kjlkqsldq</stringProp>
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -12210,7 +12210,7 @@ blabla kjlkqsldq</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -12246,7 +12246,7 @@ blabla kjlkqsldq</stringProp>
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -12260,7 +12260,7 @@ blabla kjlkqsldq</stringProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">dev.plb.fr</stringProp>
+            <stringProp name="HTTPSampler.domain">plbsi-rec.plb.fr</stringProp>
             <stringProp name="HTTPSampler.port">8081</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -12292,7 +12292,7 @@ blabla kjlkqsldq</stringProp>
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://dev.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
+                  <stringProp name="Header.value">http://plbsi-rec.plb.fr:8081/plbsi/mz/formation/formation.seam</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>

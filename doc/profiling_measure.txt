@@ -1,0 +1,43 @@
+###################
+# plbsi-rec.plb.fr
+###################
+Démarrage : JBoss EAP 6.4.0.GA (AS 7.5.0.Final-redhat-21) a démarré en 12578ms
+
+1er accès Liste formations :
+- Fetching from BD : Fetching ALL Formations took 6087ms
+- Code : 13ms
+
+Accès via cache : 
+- 2ms
+
+1er accès Liste Intervenants :
+- Fetching from BD : Fetching ALL Intervenants took 5937ms
+- Code 0ms
+
+Pas de cache implémenté pour Intervenants
+
+Accès à une fiche intervenant :
+- Loading one Intervenants took 5274ms
+
+##################
+#plbsi-prod.plb.fr
+##################
+JBoss EAP 6.4.0.GA (AS 7.5.0.Final-redhat-21) a démarré en 12796ms 
+
+
+1er accès Liste formations :
+- Fetching from BD : Fetching ALL Formations took 4913ms
+- Code : 12ms
+
+Accès via cache :
+- 2ms
+
+1er accès Liste Intervenants :
+- Fetching from BD : Fetching ALL Intervenants took 4181ms
+- Code 2ms
+
+Pas de cache implémenté pour Intervenants
+
+Accès à une fiche intervenant :
+- Loading one Intervenants took 4009ms
+

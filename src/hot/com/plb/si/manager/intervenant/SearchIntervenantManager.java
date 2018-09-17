@@ -91,10 +91,12 @@ public class SearchIntervenantManager implements Serializable {
 
 	@Begin(join = true)
 	public List<Intervenant> getResults() throws ParseException {
+		long start = System.currentTimeMillis();
 		if (needPerformQuery || intervenantResults == null) {
 			intervenantResults = _performIntervenantQuery();
 			needPerformQuery = false;
 		}
+		log.info("getResults 4 intervenants took "+(System.currentTimeMillis()-start)+ "ms");
 		return intervenantResults;
 	}
 

@@ -33,12 +33,13 @@ sudo apt-get install jenkins
 
 Installation plugins (Ant, Git, Pipeline, Blue Ocean)
 
+Installation Ant
 Installation de JasperReport dans le répertoire Home de JBoss
 
-Ajout de jenkins comme sudoers
+Ajout de jenkins comme sudoers, dans le groupe jboss
 
 Le build de Jenkins à partir du nouveau reposiory Git fonctionne.
-Le site est accessible sur http://62.210.207.51:8081/plbsi
+Le site est accessible sur http://plbsi-rec.plb.fr:8081/plbsi
 
 Installation mysql
 ------------------

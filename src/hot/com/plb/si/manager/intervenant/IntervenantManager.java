@@ -55,6 +55,7 @@ public class IntervenantManager implements Serializable {
 
 	@In(create = true)
 	SearchIntervenantManager searchIntervenantManager;
+	
 
 	private static int VISU_MODE = 0;
 	private static int EDIT_MODE = 1;
@@ -73,8 +74,10 @@ public class IntervenantManager implements Serializable {
 
 	@Begin(join = true)
 	public String selectIntervenant() {
+		long start = System.currentTimeMillis();
 		intervenant = entityManager.find(Intervenant.class,
 				Integer.parseInt(intervenantId));
+		
 
 		if (intervenant.getGrilleCompetence() == null) { // Backward
 															// compatibility,
@@ -91,7 +94,7 @@ public class IntervenantManager implements Serializable {
 		}
 		log.info(entityManager.contains(intervenant));
 		grilleManager.selectIntervenant(intervenant);
-		log.info(entityManager.contains(intervenant));
+		log.info("Loading one Intervenants took "+(System.currentTimeMillis()-start)+ "ms");
 		mode = VISU_MODE;
 		return "/mz/intervenant/intervenant.xhtml";
 	}

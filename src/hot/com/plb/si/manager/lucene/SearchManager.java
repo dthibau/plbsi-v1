@@ -126,6 +126,7 @@ public class SearchManager implements Serializable {
 
 	@Begin(join = true)
 	public List<FormationDto> getResults() {
+		long start = System.currentTimeMillis();
 		// cidSearch = Conversation.instance().getId();
 		if (needPerformQuery) {
 			log.debug("Executing new Query !!" );
@@ -162,6 +163,7 @@ public class SearchManager implements Serializable {
 		log.debug("getResults found " + dtos.size());
 //		if ( realSize > MAX_SIZE )
 //			return dtos.subList(0, 100);
+		log.info("getResults 4 formations took "+(System.currentTimeMillis()-start)+ "ms");
 		return dtos;
 	}
 

@@ -54,4 +54,13 @@ create user 'plbsi_rec'@'localhost' identified by '9lM)[dfZ';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON plbsi_rec.* TO 'plbsi_rec'@'localhost';
 
 
+---
+Installation font Microsoft 
+Ajouter contrib dans sources.list :
+deb http://debian.mirrors.ovh.net/debian/ jeesie main contrib non-free
+puis
+sudo apt-get install ttf-mscorefonts-installer
 
+copie manuelle des fonts dans $JDK_HOME/jre/lib/fonts
+
+Redémarrer JBoss

@@ -601,7 +601,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Merci de bien vouloir compléter les parties ci-dessous, et de nous faire parvenir (scannée par mail ou par fax : +33(0)1 43 34 90 95)<br/> la présente proposition financière paraphée et signée avec la mention «<b>Bon pour Commande</b>»"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Merci de bien vouloir compléter les parties ci-dessous, et de nous faire parvenir (scannée par mail)<br/> la présente proposition financière paraphée et signée avec la mention «<b>Bon pour Commande</b>»"]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
@@ -711,7 +711,7 @@
 			<staticText>
 				<reportElement style="adresse" x="0" y="22" width="471" height="12" forecolor="#0000FF" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
 				<textElement textAlignment="Left"/>
-				<text><![CDATA[Tél : 01 43 34 90 94 - Fax : 01 43 34 90 95 - www.plb.fr - plb@plb.fr - SARL au capital de 100 000 €]]></text>
+				<text><![CDATA[Tél : 01 43 34 90 94 -  www.plb.fr - plb@plb.fr - SARL au capital de 100 000 €]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="adresse" x="0" y="4" width="471" height="17" forecolor="#0000FF" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>

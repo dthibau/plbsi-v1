@@ -35,3 +35,14 @@ ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=http://prod.plb
 OK
 
 
+---
+Installation font Microsoft 
+Ajouter contrib dans sources.list :
+deb http://debian.mirrors.ovh.net/debian/ jeesie main contrib non-free
+puis
+sudo apt-get install ttf-mscorefonts-installer
+
+copie manuelle des fonts dans $JDK_HOME/jre/lib/fonts
+
+Redémarrer JBoss
+

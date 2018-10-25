@@ -1,0 +1,232 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:e="http://jboss.org/schema/seam/excel"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<e:workbook filename="formationsPLB.xls" type="jxl">
+	
+	<e:worksheet name="formations"
+		value="#{searchManager.results}" var="_dto" horizontalFreeze="1"
+		verticalFreeze="1">
+
+
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="id"/>
+			<ui:param name="value" value="#{_dto.formation.idFormation}"/>
+			<ui:param name="width" value="1000"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.statut']}"/>
+			<ui:param name="value" value="#{_dto.formation.statut}"/>
+			<ui:param name="width" value="1000"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+				<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.libelle']}"/>
+			<ui:param name="value" value="#{_dto.formation.libelle}"/>
+			<ui:param name="width" value="4000"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.mutualisees']}"/>
+			<ui:param name="value" value="#{applicationManager.getFormationsMutualiseesAsString(_dto.formation)}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.categorie']}"/>
+			<ui:param name="value" value="#{_dto.formation.categorie.libelle}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.filiere']}"/>
+			<ui:param name="value" value="#{_dto.formation.filierePrincipale}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+				<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.rangFilierePrincipale']}"/>
+			<ui:param name="value" value="#{_dto.formation.rangFilierePrincipale}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.support']}"/>
+			<ui:param name="value" value="#{_dto.formation.support ? 'oui' : 'non'}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.campagneAdWords']}"/>
+			<ui:param name="value" value="#{_dto.formation.campagneAdWords}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.coursPlbCataloguePartenaire']}"/>
+			<ui:param name="value" value="#{_dto.formation.coursPlbCataloguePartenaire}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-url-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.reference']}"/>
+			<ui:param name="value" value="#{_dto.formation.reference}"/>
+			<ui:param name="start" value="#{searchManager.results.indexOf(_dto)+1}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="URL"/>
+			<ui:param name="value" value="#{WEB_URL}#{_dto.formation.urlPlb}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.duree']}"/>
+			<ui:param name="value" value="#{_dto.formation.duree}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.remarques']}"/>
+			<ui:param name="value" value="#{_dto.formation.remarques}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.origine']}"/>
+			<ui:param name="value" value="#{_dto.formation.origine}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.motClePrimaire']}"/>
+			<ui:param name="value" value="#{_dto.formation.motClePrimaire}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.baliseKeyWords']}"/>
+			<ui:param name="value" value="#{_dto.formation.baliseKeyWords}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+				<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.baliseTitle']}"/>
+			<ui:param name="value" value="#{_dto.formation.baliseTitle}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.baliseDescription']}"/>
+			<ui:param name="value" value="#{_dto.formation.baliseDescription}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.url']}"/>
+			<ui:param name="value" value="#{_dto.formation.url}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.type']}"/>
+			<ui:param name="value" value="#{_dto.formation.type}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.visible']}"/>
+			<ui:param name="value" value="#{_dto.formation.visible}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.nouveaute']}"/>
+			<ui:param name="value" value="#{_dto.formation.nouveaute}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.top10']}"/>
+			<ui:param name="value" value="#{_dto.formation.top10}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.certification']}"/>
+			<ui:param name="value" value="#{_dto.formation.certification}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.distance']}"/>
+			<ui:param name="value" value="#{_dto.formation.distance}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.dateCreation']}"/>
+			<ui:param name="value" value="#{_dto.formation.dateCreation}"/>
+			<ui:param name="type" value="date"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.dateModification']}"/>
+			<ui:param name="value" value="#{_dto.formation.dateModification}"/>
+			<ui:param name="type" value="date"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.archivedDate']}"/>
+			<ui:param name="value" value="#{_dto.formation.archivedDate}"/>
+			<ui:param name="type" value="date"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.argumentaire']}"/>
+			<ui:param name="value" value="#{_dto.formation.argumentaire}"/>
+			<ui:param name="type" value="text"/>	
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.plbInter']}"/>
+			<ui:param name="value" value="#{_dto.formation.plbInter}"/>
+			<ui:param name="type" value="text"/>	
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.tarif']}"/>
+			<ui:param name="value" value="#{_dto.intra ? messages['formation.intra'] : _dto.tarifInter}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.tarifInter']}"/>
+			<ui:param name="value" value="#{_dto.formation.codeTarifInter}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>		
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.formationPartenaires']}"/>
+			<ui:param name="value" value="#{applicationManager.getFormationsPartenairesAsString(_dto.formation)}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>		
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.tarifIntra']}"/>
+			<ui:param name="value" value="#{_dto.formation.libreIntra}"/>
+			<ui:param name="type" value="text"/>
+			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.niveau']}"/>
+			<ui:param name="value" value="#{_dto.formation.niveau}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.eligibleCpf']}"/>
+			<ui:param name="value" value="#{_dto.formation.eligibleCpf}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+				<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.officiel']}"/>
+			<ui:param name="value" value="#{_dto.formation.officiel}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+		
+		<ui:repeat var="_month" value="#{searchManager.allMonthSession}">
+			<ui:include src="../../common/excel-session-column.xhtml">
+				<ui:param name="header" value="#{longMonthFormat.format(_month)}"/>
+				<ui:param name="value" value="#{applicationManager.getFormationAllSessionsAsString(_dto.formation,_month)}"/>
+				<ui:param name="type" value="text"/>		
+			</ui:include>			
+		</ui:repeat>		
+		
+	</e:worksheet>
+</e:workbook>
+</html>

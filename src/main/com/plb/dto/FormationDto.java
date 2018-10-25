@@ -50,6 +50,19 @@ public class FormationDto {
 	public void setTarifInter(float tarifInter) {
 		this.tarifInter = tarifInter;
 	}
-	
+	public int getHeures() {
+		return formation.getDuree()*7;
+	}
+	public String getGescoffCode() {
+		if ( formation.getFilierePrincipale().getLibelle().equals("Développement Personnel") ) {
+			return "413";
+		} else if ( formation.getFilierePrincipale().getLibelle().equals("Management") ) {
+			return "414";
+		} else if ( formation.getFilierePrincipale().getLibelle().equals("Relation client") ) {
+			return "312";
+		} 
+		// Pour toutes les autres ....
+		return "326";
+	}
 	
 }

@@ -12,12 +12,15 @@
 	    <ui:include src="export/calendrierPanel.xhtml"/>
 		<s:button view="/mz/search/export/search_xls.xhtml"
 			rendered="#{sessionDataManager.managerIntervenantsManager and !empty searchManager.results}" value="Export Excel" />
-		
+<br/>
+		<s:button view="/mz/search/export/search_gescof.xhtml"
+			rendered="#{sessionDataManager.managerIntervenantsManager and !empty searchManager.results}" value="Export Gescof" />
+<br/>		
 		<a:commandButton rendered="#{sessionDataManager.managerIntervenantsManager}"
 				value="Génère calendrier">
 				<rich:componentControl target="calendrierPopup" operation="show" />
 			</a:commandButton>
-		
+<br/>		
 		<s:button action="#{searchManager.exportAdWords}" 
 			rendered="#{sessionDataManager.managerIntervenantsManager and !empty searchManager.results}" value="Export AdWords" />
 </ui:composition>

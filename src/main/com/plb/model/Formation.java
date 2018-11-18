@@ -440,7 +440,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Transient
 	public String getUrlPdf() {
 
-		return getReference() != null ? "http://www.plb.fr/Formation/Telecharger?reference="
+		return getReference() != null ? "/Formation/Telecharger?reference="
 				+ getReference()
 				: "";
 	}
@@ -448,7 +448,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Transient
 	public String getUrlRTF() {
 
-		return getReference() != null ? "http://www.plb.fr/formation/rtf?reference="
+		return getReference() != null ? "/formation/rtf?reference="
 				+ getReference()
 				: "";
 	}

@@ -141,7 +141,10 @@ public class ApplicationManager implements Serializable {
 	public final static String URL_CSS = projectBundle.getString("URL_CSS");
 
 	public final static String DEVIS_CC = projectBundle.getString("DEVIS_CC");
+	
+	public final static int DEVIS_RELANCE = Integer.parseInt(projectBundle.getString("DEVIS_RELANCE"));
 
+	
 	// Statuts prospects
 	@Out
 	public static final String ST_INTRA_RECHERCHE = "statut.intra.recherche";

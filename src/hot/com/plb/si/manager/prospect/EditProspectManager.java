@@ -1112,7 +1112,7 @@ public class EditProspectManager implements Serializable {
 			if (relance) {
 				Calendar cal = Calendar.getInstance(Locale.FRENCH);
 				cal.setTime(prospectDetail.getDatedevis());
-				cal.add(Calendar.DAY_OF_YEAR,7);
+				cal.add(Calendar.DAY_OF_YEAR,ApplicationManager.DEVIS_RELANCE);
 				prospectDetail.setDateRelance(cal.getTime());
 			} else {
 				prospectDetail.setDateRelance(null);

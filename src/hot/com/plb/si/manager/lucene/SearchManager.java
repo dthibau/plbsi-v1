@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.faces.event.ValueChangeEvent;
 
@@ -167,6 +168,13 @@ public class SearchManager implements Serializable {
 		return dtos;
 	}
 
+	public List<FormationDto> getVisibleResults() {
+		List<FormationDto> results = getResults();
+		
+		 List<FormationDto> ret = results.stream().filter(dto -> dto.getFormation().getVisible().equals("oui")).collect(Collectors.toList());
+		 
+		return ret;
+	}
 	
 	public int getRealSize() {
 		if ( needPerformQuery || needFilter )

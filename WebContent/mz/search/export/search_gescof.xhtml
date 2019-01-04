@@ -4,80 +4,100 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <e:workbook filename="Gescof.xls" type="jxl">
-	
-	<e:worksheet name="formations"
-		value="#{searchManager.results}" var="_dto" horizontalFreeze="1"
-		verticalFreeze="1">
+
+	<e:worksheet name="formations" value="#{searchManager.results}"
+		var="_dto" horizontalFreeze="1" verticalFreeze="1">
 
 
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="Code produit"/>
-			<ui:param name="value" value="#{_dto.formation.reference}"/>
-			<ui:param name="width" value="1000"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="Code produit" />
+			<ui:param name="value" value="#{_dto.formation.reference}" />
+			<ui:param name="width" value="1000" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="IntituleProduit"/>
-			<ui:param name="value" value="#{_dto.formation.libelle}"/>
-			<ui:param name="width" value="1000"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="IntituleProduit" />
+			<ui:param name="value" value="#{_dto.formation.libelle}" />
+			<ui:param name="width" value="1000" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="NbHeures"/>
-			<ui:param name="value" value="#{_dto.heures}"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="NbHeures" />
+			<ui:param name="value" value="#{_dto.heures}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="Nbjours"/>
-			<ui:param name="value" value="#{_dto.formation.duree}"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="Nbjours" />
+			<ui:param name="value" value="#{_dto.formation.duree}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="CoutTotalHT"/>
-			<ui:param name="value" value="#{_dto.intra ? 0 : _dto.tarifInter}"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="CoutTotalHT" />
+			<ui:param name="value" value="#{_dto.intra ? 0 : _dto.tarifInter}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="NiveauFormation"/>
-			<ui:param name="value" value="IX"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="NiveauFormation" />
+			<ui:param name="value" value="IX" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="FamilleProduits"/>
-			<ui:param name="value" value="#{_dto.formation.categorie.libelle}"/>	
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="FamilleProduits" />
+			<ui:param name="value" value="#{_dto.formation.categorie.libelle}" />
+			<ui:param name="type" value="text" />
+		</ui:include>
+
+		<ui:include src="./static_gescof1.xhtml" />
+
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="Produit1" />
+			<ui:param name="value"
+				value="#{_dto.formation.filierePrincipale.libelle}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="Produit1"/>
-			<ui:param name="value" value="#{_dto.formation.filierePrincipale.libelle}"/>	
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="Produit2" />
+			<ui:param name="value" value="" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="Produit3"/>
-			<ui:param name="value" value="#{_dto.formation.origine}"/>	
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="Produit3" />
+			<ui:param name="value" value="#{_dto.formation.origine}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="Produit4"/>
-			<ui:param name="value" value="#{WEB_URL}#{_dto.formation.urlPlb}"/>	
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="Produit4" />
+			<ui:param name="value" value="#{WEB_URL}#{_dto.formation.urlPlb}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
+		
+		<ui:include src="./static_gescof2.xhtml" />
+		
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="TitleSEO"/>
-			<ui:param name="value" value="#{_dto.formation.url}"/>
-			<ui:param name="type" value="text"/>			
-		</ui:include>	
-		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="PublicationProduits_Observations"/>
-			<ui:param name="value" value="#{_dto.formation.objectifs}"/>
-			<ui:param name="width" value="4000"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="TitleSEO" />
+			<ui:param name="value" value="#{_dto.formation.url}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
+			<ui:include src="../../common/excel-column.xhtml">
+		<ui:param name="header" value="FamilleProduits_Departement" />
+		<ui:param name="value" value="" />
+		<ui:param name="type" value="text" />
+	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="SpeFormations_NumSpeFormation"/>
-			<ui:param name="value" value="#{_dto.gescoffCode}"/>
-			<ui:param name="type" value="text"/>
+			<ui:param name="header" value="SpeFormations_NumSpeFormation" />
+			<ui:param name="value" value="#{_dto.gescoffCode}" />
+			<ui:param name="type" value="text" />
 		</ui:include>
+		
+		<ui:include src="./static_gescof3.xhtml" />
+		
+<!-- 		<ui:include src="../../common/excel-column.xhtml"> -->
+<!-- 			<ui:param name="header" value="PublicationProduits_Observations" /> -->
+<!-- 			<ui:param name="value" value="#{_dto.formation.objectifs}" /> -->
+<!-- 			<ui:param name="width" value="4000" /> -->
+<!-- 			<ui:param name="type" value="text" /> -->
+<!-- 		</ui:include> -->
+
 	</e:worksheet>
 </e:workbook>
 </html>

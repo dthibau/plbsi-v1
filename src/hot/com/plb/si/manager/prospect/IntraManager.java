@@ -839,6 +839,10 @@ public class IntraManager implements Serializable {
 			statutChange = false;
 		}
 	}
+	
+	public void maintainConversation() {
+		log.debug("Maintaining conversation for prospect " + prospect);
+	}
 
 	// GETTEURS AND SETTEURS
 

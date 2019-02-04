@@ -475,6 +475,11 @@
 				<h:commandButton type="submit" action="#{intraManager.saveIntra()}" value="Enregistrer la demande d'intra" style="width:200px; height:40px;"/>
 			</center>		
 		</h:form>
+	
+		<h:form>
+			<a:poll id="polling" action="#{intraManager.maintainConversation}"
+				interval="#{CONVERSATION_FREQUENCY}" />
+		</h:form>
 	</ui:define>
 	
 </ui:composition>

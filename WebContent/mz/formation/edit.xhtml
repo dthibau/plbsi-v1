@@ -382,6 +382,12 @@
 				</ui:define>
 				<h:selectBooleanCheckbox value="#{formation.eligibleCpf}" id="eliCheck"/>
 			</s:decorate>
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.codeCpf']}" id="cpfDecorate"/>
+				</ui:define>
+				<h:inputText value="#{formation.codeCpf}" id="cpfCheck"/>
+			</s:decorate>
 			<s:decorate template="../layout/display.xhtml" id="eleDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.elearning']}" />

@@ -235,6 +235,12 @@
 				<h:selectBooleanCheckbox value="#{formation.eligibleCpf}"
 					disabled="true" />
 			</s:decorate>
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.codeCpf']}" />
+				</ui:define>
+				<h:outputText value="#{formation.codeCpf}" /> 
+			</s:decorate>
 
 			<s:decorate template="../layout/display.xhtml"
 				rendered="#{not empty formation.argumentaire}">

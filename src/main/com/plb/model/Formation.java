@@ -215,6 +215,8 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "for_eligible_cpf", columnDefinition = "tinyint")
 	private Boolean eligibleCpf;
 
+	private String codeCpf;
+	
 	@Column(name = "for_elearning", columnDefinition = "tinyint")
 	private Boolean elearning;
 
@@ -1185,6 +1187,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setEligibleCpf(Boolean eligibleCpf) {
 		this.eligibleCpf = eligibleCpf;
+	}
+
+	public String getCodeCpf() {
+		return codeCpf;
+	}
+
+	public void setCodeCpf(String codeCpf) {
+		this.codeCpf = codeCpf;
 	}
 
 	public Boolean getElearning() {

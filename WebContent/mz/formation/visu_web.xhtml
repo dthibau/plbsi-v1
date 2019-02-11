@@ -10,6 +10,17 @@
 
 	<s:decorate template="layout/web.xhtml">
 
+		<ui:define name="descriptif">
+
+			<div class="formation_objectifs">
+				<h:outputFormat escape="false"
+					rendered="#{formation.descriptif != null}"
+					value="#{formation.descriptif}" />
+			</div>
+
+
+		</ui:define>
+		
 		<ui:define name="objectifs">
 
 			<div class="formation_objectifs">

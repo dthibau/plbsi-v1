@@ -10,6 +10,9 @@
 
 	<s:decorate template="layout/web.xhtml" id="webDecorate">
 
+		<ui:define name="descriptif">
+ 			<plb:editorObjectifs value="#{formation.descriptif}" id="descriptifEditor" height="160" urlCss="#{URL_CSS}"/> 
+		</ui:define>
 		<ui:define name="objectifs">
  			<plb:editorObjectifs value="#{formation.objectifs}" id="objectifsEditor" height="160" urlCss="#{URL_CSS}"/> 
 		</ui:define>

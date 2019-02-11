@@ -173,6 +173,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	// Contenu web
 	@Lob
+	@Column(columnDefinition = "mediumtext")
+	private String descriptif;
+	
+	@Lob
 	@Column(name = "for_objectifs", columnDefinition = "mediumtext")
 	private String objectifs;
 
@@ -1064,6 +1068,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setArgumentaire(String argumentaire) {
 		this.argumentaire = argumentaire;
+	}
+
+	public String getDescriptif() {
+		return descriptif;
+	}
+
+	public void setDescriptif(String descriptif) {
+		this.descriptif = descriptif;
 	}
 
 	public String getObjectifs() {

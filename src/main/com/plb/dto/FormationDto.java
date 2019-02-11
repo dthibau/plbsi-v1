@@ -1,13 +1,18 @@
 package com.plb.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.plb.model.Formation;
 
-public class FormationDto {
+public class FormationDto implements Serializable, Comparable<FormationDto>  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Formation formation;
 	private boolean intra;
 	private float tarifInter;
@@ -47,6 +52,9 @@ public class FormationDto {
 	public float getTarifInter() {
 		return tarifInter;
 	}
+	public int getTarifInterAsInt() {
+		return (int)tarifInter;
+	}
 	public void setTarifInter(float tarifInter) {
 		this.tarifInter = tarifInter;
 	}
@@ -63,6 +71,11 @@ public class FormationDto {
 		} 
 		// Pour toutes les autres ....
 		return "326";
+	}
+	@Override
+	public int compareTo(FormationDto o) {
+		// TODO Auto-generated method stub
+		return getFormation().getReference().compareTo(o.getFormation().getReference());
 	}
 	
 }

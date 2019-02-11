@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.lucene.queryParser.ParseException;
 import org.hibernate.search.jpa.FullTextEntityManager;
@@ -173,9 +175,15 @@ public class SearchManager implements Serializable {
 		
 		 List<FormationDto> ret = results.stream().filter(dto -> dto.getFormation().getVisible().equals("oui")).collect(Collectors.toList());
 		 
+		 Collections.sort(ret);
+		 
+		 HttpServletResponse response = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		 response.setContentType("application/text");
+		
 		return ret;
 	}
-	
+
+
 	public int getRealSize() {
 		if ( needPerformQuery || needFilter )
 			getResults();

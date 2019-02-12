@@ -17,6 +17,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.Transient;
 
+import org.hibernate.Hibernate;
 import org.hibernate.LazyInitializationException;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory;
@@ -442,7 +443,9 @@ public class ApplicationManager implements Serializable {
 		if (ret == null) {
 			formation = entityManager.find(Formation.class,
 					formation.getIdFormation());
+			
 			ret = formation.getFormationsPartenaire();
+			Hibernate.initialize(ret);
 			allFormationsPartenaire.put(formation, ret);
 		}
 		return ret;

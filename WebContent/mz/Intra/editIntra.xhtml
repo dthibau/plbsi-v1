@@ -6,273 +6,285 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a="http://richfaces.org/a4j"
-    xmlns:a4j="http://richfaces.org/a4j"
-    xmlns:p="http://java.sun.com/jsf/html">
-    
-    <!-- Pop up de warning, non modification de statut -->
+	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+	<!-- Pop up de warning, non modification de statut -->
 	<ui:include src="../Intra/popupStatutNotif.xhtml" />
-		
-    <h:form id="editFormIntra">
-		<rich:tabPanel switchType="client" id="mainPanelIntra" style="width:100%; overflow-x:auto; overflow-y:auto;">
-	        <rich:tab header="Récapitulatif de la demande" name="page1">
-		        <rich:panel header="Information intra">
-			        <table border="0" cellspacing="3">
-			        	<tr>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+
+	<h:form id="editFormIntra">
+		<rich:tabPanel switchType="client" id="mainPanelIntra"
+			style="width:100%; overflow-x:auto; overflow-y:auto;">
+			<rich:tab header="Récapitulatif de la demande" name="page1">
+				<rich:panel header="Information intra">
+					<table border="0" cellspacing="3">
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.dateCreation']}" />
 									</ui:define>
 									<h:outputText value="#{intraManager.intra.dateCreation}" />
-								</s:decorate>
-			        		</td>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.nomEntreprise']}" />
 									</ui:define>
 									<h:outputText value="#{intraManager.intra.prospect.societe}" />
-								</s:decorate>
-			        		</td>
-			        		<td><s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['devis.contactClient']}" />
 									</ui:define>
 									<h:outputText value="#{intraManager.intra.prospect.nom}" />
-								</s:decorate>
-						</td>
-		        		</tr>
-		        		<tr>
-		        			<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.commerciale']}" />
 									</ui:define>
-									<h:outputText value="#{intraManager.intra.prospect.prospectDetail.commercial}" />
-								</s:decorate>
-			        		</td>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+									<h:outputText
+										value="#{intraManager.intra.prospect.prospectDetail.commercial}" />
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="Prob. transformation" />
 									</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.probTransformation}" style="width:160px; height:20px;">
-											<f:selectItem itemValue="peu de chance" itemLabel="peu de chance"/>
-										   	<f:selectItem itemValue="ne sait pas" itemLabel="ne sait pas"/>
-										   	<f:selectItem itemValue="forte chance" itemLabel="forte chance"/>
+									<h:selectOneMenu
+										value="#{intraManager.intra.probTransformation}"
+										style="width:160px; height:20px;">
+										<f:selectItem itemValue="peu de chance"
+											itemLabel="peu de chance" />
+										<f:selectItem itemValue="ne sait pas" itemLabel="ne sait pas" />
+										<f:selectItem itemValue="forte chance"
+											itemLabel="forte chance" />
 									</h:selectOneMenu>
-								</s:decorate>
-			        		</td>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['intra.duree']}" />
 									</ui:define>
 									<h:inputText value="#{intraManager.intra.duree}" />
-								</s:decorate>
-			        		</td>
-		        		</tr>
-		        		<tr>
-		        			<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.lieu']}" />
 									</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.prospect.prospectDetail.lieu}" style="width:160px; height:20px;">
-										<a:ajax event="change" render="ville"/>
-									   	<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB"/>
-									   	<f:selectItem itemValue="Chez le client" itemLabel="Client" />
+									<h:selectOneMenu
+										value="#{intraManager.intra.prospect.prospectDetail.lieu}"
+										style="width:160px; height:20px;">
+										<a:ajax event="change" render="ville" />
+										<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
+										<f:selectItem itemValue="Chez le client" itemLabel="Client" />
 									</h:selectOneMenu>
-								</s:decorate>
-			        		</td>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.participant']}" />
 									</ui:define>
-									<h:inputText value="#{intraManager.intra.prospect.prospectDetail.nb_participants}" />
-								</s:decorate>
-			        		</td>
-		        		</tr>
-		        		<tr>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+									<h:inputText
+										value="#{intraManager.intra.prospect.prospectDetail.nb_participants}" />
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.dateSouhait']}" />
 									</ui:define>
-									<h:inputText value="#{intraManager.intra.prospect.prospectDetail.date_souhaite}" />
-								</s:decorate>
-		        			</td>
-		        		</tr>
-		        	</table>
-		        </rich:panel>
-        	</rich:tab>
-        	<rich:tab header="Environnement technique" name="page2">
-        		<table border="0" cellspacing="3">
-	        		<tr>
-	        			<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+									<h:inputText
+										value="#{intraManager.intra.prospect.prospectDetail.date_souhaite}" />
+								</s:decorate></td>
+						</tr>
+					</table>
+				</rich:panel>
+			</rich:tab>
+			<rich:tab header="Environnement technique" name="page2">
+				<table border="0" cellspacing="3">
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Profil des participants" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.profilParticipant}" cols="60" rows="2"/>
-							</s:decorate>
-		        		</td>
-		        		<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea value="#{intraManager.intra.profilParticipant}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Env. technique" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.environnementTech}" cols="60" rows="2"/>
-							</s:decorate>
-		        		</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea value="#{intraManager.intra.environnementTech}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Connaissance sujet" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.connaissanceSujet}" cols="60" rows="2"/>
-							</s:decorate>
-		        		</td>
-		        		<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea value="#{intraManager.intra.connaissanceSujet}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Objectif" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.objectif}" cols="60" rows="2"/>
-							</s:decorate>
-		        		</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea value="#{intraManager.intra.objectif}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Contact tech." />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.coordonneesContactTech}" cols="60" rows="2"/>
-							</s:decorate>
-	        			</td>
-	        		</tr>
-	        	</table>
-        	</rich:tab>
-        	<rich:tab header="Formation(s) / Intervenant(s)" name="page3">
-        		<rich:panel header="Etat de l'intra">
-	        		<table border="0" cellspacing="3">
-		        		<tr>
-			        		<td>
-			        			<a:outputPanel id="statutPage1">
-				        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								<h:inputTextarea
+									value="#{intraManager.intra.coordonneesContactTech}" cols="60"
+									rows="2" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</rich:tab>
+			<rich:tab header="Formation(s) / Intervenant(s)" name="page3">
+				<rich:panel header="Etat de l'intra">
+					<table border="0" cellspacing="3">
+						<tr>
+							<td><a:outputPanel id="statutPage1">
+									<s:decorate template="../layout/display.xhtml"
+										style="width:400px;">
 										<ui:define name="label">
 											<h:outputText value="#{messages['intra.statut']}" />
 										</ui:define>
-										<h:selectOneMenu value="#{intraManager.intra.statutIntra}" style="width:110px; height:20px;">
-											<a:ajax event="change" listener="#{intraManager.statutChange()}" render="statutPage3, buttonValidation"/>
-											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}" itemLabel="#{messages[ST_INTRA_RECHERCHE]}"/>
-											<f:selectItem itemValue="#{ST_INTRA_AUDIT}" itemLabel="#{messages[ST_INTRA_AUDIT]}" />
-											<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}"  itemLabel="#{messages[ST_INTRA_COMMERCIAL]}"/>
-											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}" itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}" />
-											<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}" itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}"/>
-											<f:selectItem itemValue="#{ST_INTRA_ANNULE}" itemLabel="#{messages[ST_INTRA_ANNULE]}"/>
-											<f:selectItem itemValue="#{ST_INTRA_OK}" itemLabel="#{messages[ST_INTRA_OK]}"/>
+										<h:selectOneMenu value="#{intraManager.intra.statutIntra}"
+											style="width:110px; height:20px;">
+											<a:ajax event="change"
+												listener="#{intraManager.statutChange()}"
+												render="statutPage3, buttonValidation" />
+											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}"
+												itemLabel="#{messages[ST_INTRA_RECHERCHE]}" />
+											<f:selectItem itemValue="#{ST_INTRA_AUDIT}"
+												itemLabel="#{messages[ST_INTRA_AUDIT]}" />
+											<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}"
+												itemLabel="#{messages[ST_INTRA_COMMERCIAL]}" />
+											<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}"
+												itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}" />
+											<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}"
+												itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}" />
+											<f:selectItem itemValue="#{ST_INTRA_ANNULE}"
+												itemLabel="#{messages[ST_INTRA_ANNULE]}" />
+											<f:selectItem itemValue="#{ST_INTRA_OK}"
+												itemLabel="#{messages[ST_INTRA_OK]}" />
 										</h:selectOneMenu>
 									</s:decorate>
-								</a:outputPanel>
-			        		</td>
-			        		<td>
-			        			<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</a:outputPanel></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="Valider" />
 									</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.valide}" style="width:160px; height:20px;">
+									<h:selectOneMenu value="#{intraManager.intra.valide}"
+										style="width:160px; height:20px;">
 										<f:selectItem itemValue="0" itemLabel="Non" />
-									   	<f:selectItem itemValue="1" itemLabel="Oui"/>
+										<f:selectItem itemValue="1" itemLabel="Oui" />
 									</h:selectOneMenu>
-								</s:decorate>
-			        		</td>
-			        	</tr>
-			        	<tr>
-			        		<td>
-								<s:decorate template="../layout/display.xhtml" style="width:600px">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:600px">
 									<ui:define name="label">CV formateurs</ui:define>
 									<h:selectOneMenu value="#{intraManager.intra.cv}">
-									   	<f:selectItem itemValue="1" itemLabel="OUI"/>
-									   	<f:selectItem itemValue="0" itemLabel="NON"/>
+										<f:selectItem itemValue="1" itemLabel="OUI" />
+										<f:selectItem itemValue="0" itemLabel="NON" />
 									</h:selectOneMenu>
-								</s:decorate>
-							</td>	        			
-			        	</tr>
-			        	<tr>
-	        			<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
-								<ui:define name="label">
-									<h:outputText value="Frais ?" />
-								</ui:define>
-								<h:selectOneMenu value="#{intraManager.intra.frais}">
-									<a:ajax event="change" render="montanFrais"/>
-								   	<f:selectItem itemValue="1" itemLabel="OUI"/>
-								   	<f:selectItem itemValue="0" itemLabel="NON"/>
-								</h:selectOneMenu>
-							</s:decorate>
-		        		</td>
-		        		<td>
-		        			<a:outputPanel id="montanFrais">
-			        			<s:decorate template="../layout/display.xhtml" style="width:500px;" rendered="#{intraManager.intra.frais == 1}">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:500px;">
 									<ui:define name="label">
-										<h:outputText value="Montant Frais" />
+										<h:outputText value="Frais ?" />
 									</ui:define>
-									<h:inputText value="#{intraManager.intra.montantFrais}">
-										<f:validateDoubleRange minimum="1"/>
-									</h:inputText>
-								</s:decorate>
-							</a:outputPanel>
-		        		</td>
-		        	</tr>
-			        	<tr>
-			        		<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+									<h:selectOneMenu value="#{intraManager.intra.frais}">
+										<a:ajax event="change" render="montanFrais" />
+										<f:selectItem itemValue="1" itemLabel="OUI" />
+										<f:selectItem itemValue="0" itemLabel="NON" />
+									</h:selectOneMenu>
+								</s:decorate></td>
+							<td><a:outputPanel id="montanFrais">
+									<s:decorate template="../layout/display.xhtml"
+										style="width:500px;"
+										rendered="#{intraManager.intra.frais == 1}">
+										<ui:define name="label">
+											<h:outputText value="Montant Frais" />
+										</ui:define>
+										<h:inputText value="#{intraManager.intra.montantFrais}">
+											<f:validateDoubleRange minimum="1" />
+										</h:inputText>
+									</s:decorate>
+								</a:outputPanel></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
-										<h:outputText value="#{messages['intra.mailConfirm']}"/>
+										<h:outputText value="#{messages['intra.mailConfirm']}" />
 									</ui:define>
 									<h:selectBooleanCheckbox value="#{intraManager.confirm}" />
-								</s:decorate>
-							</td>
-		        			<td>
-								<h:graphicImage id="explication" value="/img/interrogation.jpg" width="35px" height="35px">
-							 		<rich:tooltip styleClass="tooltip" layout="block">
-	            						<span> 
-	            							Un mail de confirmation vous sera envoyé en cas de changement de statut<br />
-	            							ou de validation d'intra.
-	              						</span>
-	        						</rich:tooltip>
-	       						</h:graphicImage>
-		        			</td>
-			        	</tr>
-			        </table>
-		        </rich:panel>
-		        <br />
-		        <!-- Tableau intra formation/intervenant -->
+								</s:decorate></td>
+							<td><h:graphicImage id="explication"
+									value="/img/interrogation.jpg" width="35px" height="35px">
+									<rich:tooltip styleClass="tooltip" layout="block">
+										<span> Un mail de confirmation vous sera envoyé en cas
+											de changement de statut<br /> ou de validation d'intra.
+										</span>
+									</rich:tooltip>
+								</h:graphicImage></td>
+						</tr>
+					</table>
+				</rich:panel>
+				<br />
+				<!-- Tableau intra formation/intervenant -->
 				<rich:panel id="referencePanel" header="Tableau Récapitulatif">
 					<s:decorate template="../layout/display.xhtml">
 						<a:commandButton value="Ajouter une formation"
-							action="#{intraManager.addReferenceForModif()}" execute="@this referencePanel"
-							render="referencePanel" oncomplete="#{rich:component('spinner')}.stop()">
-								<f:param name="cid" value="#{conversation.id}" />
+							action="#{intraManager.addReferenceForModif()}"
+							execute="@this referencePanel" render="referencePanel"
+							oncomplete="#{rich:component('spinner')}.stop()">
+							<f:param name="cid" value="#{conversation.id}" />
 						</a:commandButton>
 					</s:decorate>
 					<rich:dataTable value="#{intraManager.intra.prospect.formations}"
-						var="formation" rowKeyVar="index" style="width:100%; overflow-x:auto; overflow-y:auto;">
+						var="formation" rowKeyVar="index"
+						style="width:100%; overflow-x:auto; overflow-y:auto;">
 						<rich:column>
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.reference']}" />
 							</f:facet>
 							<center>
-								<h:selectOneMenu value="#{formation.formation}" render="referencePanel">
-									<a:ajax event="change" render="referencePanel" oncomplete="#{rich:component('spinner')}.stop()"/>
+								<h:selectOneMenu value="#{formation.formation}"
+									render="referencePanel">
+									<a:ajax event="change" render="referencePanel"
+										oncomplete="#{rich:component('spinner')}.stop()" />
 									<s:selectItems value="#{formationsActives}" var="for"
-										label="#{for.reference}" noSelectionLabel="Sélectionner une réference" itemValue="#{for}"/>
+										label="#{for.reference}"
+										noSelectionLabel="Sélectionner une réference"
+										itemValue="#{for}" />
 									<s:convertEntity />
 								</h:selectOneMenu>
 							</center>
@@ -281,7 +293,8 @@
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.libelleFormation']}" />
 							</f:facet>
-							<h:outputText value="#{formation.formation.libelle}" style="width:150px"/>
+							<h:outputText value="#{formation.formation.libelle}"
+								style="width:150px" />
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">
@@ -296,7 +309,7 @@
 								<h:outputText value="Durée souhaitée" />
 							</f:facet>
 							<center>
-								<h:inputText value="#{formation.dureeVoulu}" style="width:50px"/>
+								<h:inputText value="#{formation.dureeVoulu}" style="width:50px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -304,7 +317,7 @@
 								<h:outputText value="Dates souhaitées" />
 							</f:facet>
 							<center>
-								<h:inputText value="#{formation.session}" style="width:120px"/>
+								<h:inputText value="#{formation.session}" style="width:120px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -312,7 +325,7 @@
 								<h:outputText value="Nb part." />
 							</f:facet>
 							<center>
-								<h:inputText value="#{formation.participant}" style="width:30px"/>
+								<h:inputText value="#{formation.participant}" style="width:30px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -321,66 +334,72 @@
 							</f:facet>
 							<s:decorate template="../layout/display.xhtml">
 								<a:commandButton value="Ajouter un intevenant"
-									action="#{intraManager.addIntervenant(index,indexI)}" execute="@this referencePanel"
-									render="referencePanel" oncomplete="#{rich:component('spinner')}.stop()">
-										<f:param name="cid" value="#{conversation.id}" />
+									action="#{intraManager.addIntervenant(index,indexI)}"
+									execute="@this referencePanel" render="referencePanel"
+									oncomplete="#{rich:component('spinner')}.stop()">
+									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</s:decorate>
 							<center>
 								<rich:dataTable value="#{formation.intervenants}"
-								var="intervenant" rowKeyVar="indexI">
+									var="intervenant" rowKeyVar="indexI">
 									<rich:column>
 										<f:facet name="header">
 											<h:outputText value="Nom - Prénom" />
 										</f:facet>
-											<h:selectOneMenu value="#{intervenant.intervenant}" style="width:180px; height:20px;">
-												<a:ajax event="change" oncomplete="#{rich:component('spinner')}.stop()"/>
-												<s:selectItems value="#{intraManager.listeIntervenant}" var="intervenantL"
+										<h:selectOneMenu value="#{intervenant.intervenant}"
+											style="width:180px; height:20px;">
+											<a:ajax event="change"
+												oncomplete="#{rich:component('spinner')}.stop()" />
+											<s:selectItems value="#{intraManager.listeIntervenant}"
+												var="intervenantL"
 												label="#{intervenantL.nom} - #{intervenantL.prenom}"
 												noSelectionLabel="Sélectionner un intervenant" />
-												<s:convertEntity />
-											</h:selectOneMenu>
+											<s:convertEntity />
+										</h:selectOneMenu>
 									</rich:column>
 									<rich:column style="width:50px">
 										<f:facet name="header">
-											<h:outputText value="Tarif" style="width:50px"/>
+											<h:outputText value="Tarif" style="width:50px" />
 										</f:facet>
-											<h:inputText value="#{intervenant.tarif}" style="width:50px"/>					
+										<h:inputText value="#{intervenant.tarif}" style="width:50px" />
 									</rich:column>
 									<rich:column>
 										<f:facet name="header" style="width:250px">
-											<h:outputText value="Note" style="width:250px"/>
+											<h:outputText value="Note" style="width:250px" />
 										</f:facet>
-											<h:inputText value="#{intervenant.note}" style="width:250px"/>
+										<h:inputText value="#{intervenant.note}" style="width:250px" />
 									</rich:column>
 									<rich:column>
 										<f:facet name="header">
-											<h:outputText value="Retenu"/>
+											<h:outputText value="Retenu" />
 										</f:facet>
-											<h:selectOneMenu value="#{intervenant.favori}">
-												<f:selectItem itemValue="0" itemLabel="NON"/>
-								   				<f:selectItem itemValue="1" itemLabel="OUI"/>
-											</h:selectOneMenu>
+										<h:selectOneMenu value="#{intervenant.favori}">
+											<f:selectItem itemValue="0" itemLabel="NON" />
+											<f:selectItem itemValue="1" itemLabel="OUI" />
+										</h:selectOneMenu>
 									</rich:column>
 									<rich:column>
-								<f:facet name="header">Action</f:facet>
-								<center>
-									<a:commandButton value="Suppr"
-										action="#{intraManager.removeIntervenant(formation.id,index,indexI)}" execute="@this"
-										render="referencePanel" oncomplete="#{rich:component('spinner')}.stop()">
-										<f:param name="cid" value="#{conversation.id}" />
-									</a:commandButton>
-								</center>
-							</rich:column>
-							</rich:dataTable>
-						</center>
+										<f:facet name="header">Action</f:facet>
+										<center>
+											<a:commandButton value="Suppr"
+												action="#{intraManager.removeIntervenant(formation.id,index,indexI)}"
+												execute="@this" render="referencePanel"
+												oncomplete="#{rich:component('spinner')}.stop()">
+												<f:param name="cid" value="#{conversation.id}" />
+											</a:commandButton>
+										</center>
+									</rich:column>
+								</rich:dataTable>
+							</center>
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">Action</f:facet>
 							<center>
 								<a:commandButton value="Supprimer"
-									action="#{intraManager.removeReferenceForModif(index)}" execute="@this"
-									render="referencePanel" oncomplete="#{rich:component('spinner')}.stop()">
+									action="#{intraManager.removeReferenceForModif(index)}"
+									execute="@this" render="referencePanel"
+									oncomplete="#{rich:component('spinner')}.stop()">
 									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</center>
@@ -390,33 +409,37 @@
 				<rich:panel id="referencePanelSpe">
 					<s:decorate template="../layout/display.xhtml">
 						<a:commandButton value="Ajouter un Spé"
-							action="#{intraManager.addSpe()}" execute="@this referencePanelSpe"
-							render="referencePanelSpe" oncomplete="#{rich:component('spinner')}.stop()">
-								<f:param name="cid" value="#{conversation.id}" />
+							action="#{intraManager.addSpe()}"
+							execute="@this referencePanelSpe" render="referencePanelSpe"
+							oncomplete="#{rich:component('spinner')}.stop()">
+							<f:param name="cid" value="#{conversation.id}" />
 						</a:commandButton>
 					</s:decorate>
 					<rich:dataTable value="#{intraManager.intra.intraReferenceSpe}"
-						var="intraReferenceSpe" rowKeyVar="index" style="width:100%; overflow-x:auto; overflow-y:auto;">
+						var="intraReferenceSpe" rowKeyVar="index"
+						style="width:100%; overflow-x:auto; overflow-y:auto;">
 						<rich:column>
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.reference']}" />
 							</f:facet>
 							<center>
-								<h:outputText value="Spé" style="width:150px"/>
+								<h:outputText value="Spé" style="width:150px" />
 							</center>
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.libelleFormation']}" />
 							</f:facet>
-							<h:inputText value="#{intraReferenceSpe.referenceSpe.libelle}" style="width:200px"/>
+							<h:inputText value="#{intraReferenceSpe.referenceSpe.libelle}"
+								style="width:200px" />
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">
 								<h:outputText value="Durée souhaitée" />
 							</f:facet>
 							<center>
-								<h:inputText value="#{intraReferenceSpe.referenceSpe.duree}" style="width:50px"/>
+								<h:inputText value="#{intraReferenceSpe.referenceSpe.duree}"
+									style="width:50px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -424,7 +447,8 @@
 								<h:outputText value="Dates souhaitées" />
 							</f:facet>
 							<center>
-								<h:inputText value="#{intraReferenceSpe.referenceSpe.session}" style="width:120px"/>
+								<h:inputText value="#{intraReferenceSpe.referenceSpe.session}"
+									style="width:120px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -432,7 +456,9 @@
 								<h:outputText value="Nb part." />
 							</f:facet>
 							<center>
-								<h:inputText value="#{intraReferenceSpe.referenceSpe.participant}" style="width:30px"/>
+								<h:inputText
+									value="#{intraReferenceSpe.referenceSpe.participant}"
+									style="width:30px" />
 							</center>
 						</rich:column>
 						<rich:column>
@@ -442,67 +468,73 @@
 							<s:decorate template="../layout/display.xhtml">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<a:commandButton value="Ajouter un intevenant"
-									action="#{intraManager.addIntervenantSpe(index,indexI)}" execute="@this referencePanelSpe"
-									render="referencePanelSpe" oncomplete="#{rich:component('spinner')}.stop()">
-										<f:param name="cid" value="#{conversation.id}" />
+									action="#{intraManager.addIntervenantSpe(index,indexI)}"
+									execute="@this referencePanelSpe" render="referencePanelSpe"
+									oncomplete="#{rich:component('spinner')}.stop()">
+									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</s:decorate>
 							<center>
 								<rich:dataTable value="#{intraReferenceSpe.intervenants}"
-								var="intervenant" rowKeyVar="indexI" style="width:300px">
+									var="intervenant" rowKeyVar="indexI" style="width:300px">
 									<rich:column>
 										<f:facet name="header">
 											<h:outputText value="Nom - Prénom" />
 										</f:facet>
-											<h:selectOneMenu value="#{intervenant.intervenant}" style="width:180px; height:20px;">
-												<a:ajax event="change" oncomplete="#{rich:component('spinner')}.stop()"/>
-												<s:selectItems value="#{intraManager.listeIntervenant}" var="intervenantL"
+										<h:selectOneMenu value="#{intervenant.intervenant}"
+											style="width:180px; height:20px;">
+											<a:ajax event="change"
+												oncomplete="#{rich:component('spinner')}.stop()" />
+											<s:selectItems value="#{intraManager.listeIntervenant}"
+												var="intervenantL"
 												label="#{intervenantL.nom} - #{intervenantL.prenom}"
 												noSelectionLabel="Sélectionner un intervenant" />
-												<s:convertEntity />
-											</h:selectOneMenu>
+											<s:convertEntity />
+										</h:selectOneMenu>
 									</rich:column>
 									<rich:column style="width:50px">
 										<f:facet name="header">
-											<h:outputText value="Tarif" style="width:50px"/>
+											<h:outputText value="Tarif" style="width:50px" />
 										</f:facet>
-											<h:inputText value="#{intervenant.tarif}" style="width:50px"/>					
+										<h:inputText value="#{intervenant.tarif}" style="width:50px" />
 									</rich:column>
 									<rich:column style="width:150px">
 										<f:facet name="header">
-											<h:outputText value="Note" style="width:150px"/>
+											<h:outputText value="Note" style="width:150px" />
 										</f:facet>
-											<h:inputText value="#{intervenant.note}" style="width:150px"/>
+										<h:inputText value="#{intervenant.note}" style="width:150px" />
 									</rich:column>
 									<rich:column>
 										<f:facet name="header">
 											<h:outputText value="Retenu" />
 										</f:facet>
-											<h:selectOneMenu value="#{intervenant.favori}">
-												<f:selectItem itemValue="0" itemLabel="NON"/>
-								   				<f:selectItem itemValue="1" itemLabel="OUI"/>
-											</h:selectOneMenu>
+										<h:selectOneMenu value="#{intervenant.favori}">
+											<f:selectItem itemValue="0" itemLabel="NON" />
+											<f:selectItem itemValue="1" itemLabel="OUI" />
+										</h:selectOneMenu>
 									</rich:column>
 									<rich:column>
 										<f:facet name="header">Action</f:facet>
 										<center>
 											<a:commandButton value="Suppr"
-												action="#{intraManager.removeIntervenantSpe(intraReferenceSpe.idIntraRef,index,indexI)}" execute="@this"
-												render="referencePanelSpe" oncomplete="#{rich:component('spinner')}.stop()">
+												action="#{intraManager.removeIntervenantSpe(intraReferenceSpe.idIntraRef,index,indexI)}"
+												execute="@this" render="referencePanelSpe"
+												oncomplete="#{rich:component('spinner')}.stop()">
 												<f:param name="cid" value="#{conversation.id}" />
 											</a:commandButton>
 										</center>
 									</rich:column>
 								</rich:dataTable>
 							</center>
-							
+
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">Action</f:facet>
 							<center>
 								<a:commandButton value="Supprimer"
 									action="#{intraManager.removeSpe(index)}" execute="@this"
-									render="referencePanelSpe" oncomplete="#{rich:component('spinner')}.stop()">
+									render="referencePanelSpe"
+									oncomplete="#{rich:component('spinner')}.stop()">
 									<f:param name="cid" value="#{conversation.id}" />
 								</a:commandButton>
 							</center>
@@ -510,193 +542,209 @@
 					</rich:dataTable>
 				</rich:panel>
 				<br />
-				<rich:panel header="Retour commercial" rendered="#{ST_INTRA_ANNULE.equals(intraManager.intra.statutIntra)}">
+				Tu me vois ?
+				<rich:panel header="Retour commercial" id="raisonPanel" 
+					rendered="#{ST_INTRA_ANNULE.equals(intraManager.intra.statutIntra)}">
 					<a:outputPanel>
-						<s:decorate template="../layout/display.xhtml" style="width:700px;">
+						<s:decorate template="../layout/editArea.xhtml" 
+							style="width:700px;">
 							<ui:define name="label">
-								<h:outputText value="#{messages['prospect.raisonPerte']}" />
+								<h:outputText value="#{messages['prospect.raisonPerte']}" /><br/>(Max. 255 car.)
 							</ui:define>
-							<h:inputTextarea value="#{intraManager.intra.prospect.prospectDetail.raisonPerte}" cols="60" rows="2"/>
+							<h:inputTextarea
+								value="#{intraManager.intra.prospect.prospectDetail.raisonPerte}"
+								cols="60" rows="2">
+								<f:validateLength maximum="255" />
+								<f:ajax execute="@this" event="keyup" render="raisonMsg"/>
+							</h:inputTextarea>
+							&nbsp;<s:message id="raisonMsg" styleClass="errors"/>
 						</s:decorate>
 					</a:outputPanel>
 				</rich:panel>
 				<br />
 				<rich:panel header="Note Perso" id="notePerso">
 					<center>
-		        	<a:commandButton value="Ajouter une note"
-						action="#{intraManager.addNote()}" execute="@this notePerso"
-						render="notePerso" oncomplete="#{rich:component('spinner')}.stop()">
+						<a:commandButton value="Ajouter une note"
+							action="#{intraManager.addNote()}" execute="@this notePerso"
+							render="notePerso"
+							oncomplete="#{rich:component('spinner')}.stop()">
 							<f:param name="cid" value="#{conversation.id}" />
-					</a:commandButton>
-	        		<rich:dataTable value="#{intraManager.messages}" var="message" rowKeyVar="index">
-						<rich:column>
-							<f:facet name="header">
-								<h:outputText value="Message n°" />
-							</f:facet>
-								<center><h:outputText value="#{index+1}" /></center>
-							<f:facet name="footer">
-								<h:outputText value="Message n°" />
-							</f:facet>
-						</rich:column>
-						<rich:column>
-							<f:facet name="header">
-								<h:outputText value="#{messages['historique.date']}" />
-							</f:facet>
+						</a:commandButton>
+						<rich:dataTable value="#{intraManager.messages}" var="message"
+							rowKeyVar="index">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Message n°" />
+								</f:facet>
+								<center>
+									<h:outputText value="#{index+1}" />
+								</center>
+								<f:facet name="footer">
+									<h:outputText value="Message n°" />
+								</f:facet>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['historique.date']}" />
+								</f:facet>
 								<h:outputText value="#{message.date}">
-									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1"/>
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
 								</h:outputText>
-							<f:facet name="footer">
-								<h:outputText value="#{messages['historique.date']}" />
-							</f:facet>
-						 </rich:column>
-						 <rich:column>
-							<f:facet name="header">
-								<h:outputText value="#{messages['message.emetteur']}" />
-							</f:facet>
+								<f:facet name="footer">
+									<h:outputText value="#{messages['historique.date']}" />
+								</f:facet>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{messages['message.emetteur']}" />
+								</f:facet>
 								<h:outputText value="#{message.account.nomComplet}" />
-							<f:facet name="footer">
-								<h:outputText value="#{messages['message.emetteur']}" />
-							</f:facet>
-						 </rich:column>
-						 <rich:column>
-							<f:facet name="header">
-								<h:outputText value="#{messages['historique.FormationCommentEvent']}" />
-							</f:facet>
-								<h:outputText value="#{message.libelle}" rendered="#{index != (intraManager.messages.size()-1) or intraManager.modif==false}"/>  
+								<f:facet name="footer">
+									<h:outputText value="#{messages['message.emetteur']}" />
+								</f:facet>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText
+										value="#{messages['historique.FormationCommentEvent']}" />
+								</f:facet>
+								<h:outputText value="#{message.libelle}"
+									rendered="#{index != (intraManager.messages.size()-1) or intraManager.modif==false}" />
 								<!--  h:inputTextarea value="#{message.libelle}" rendered="#{index != (intraManager.messages.size()-1) or intraManager.modif==false}" cols="100" rows="2" disabled="true" style="color:black"/ -->
-								<h:inputTextarea value="#{message.libelle}" rendered="#{index == (intraManager.messages.size()-1) and intraManager.modif==true}" cols="100" rows="2"/>
-							<f:facet name="footer">
-								<h:outputText value="#{messages['historique.FormationCommentEvent']}" />
-							</f:facet>
-						 </rich:column>
-					</rich:dataTable> 
-				</center>				
-			</rich:panel>
-        	</rich:tab>
-        	<rich:tab header="Logistique" name="page4">
-        		<table border="0" cellspacing="3">
-	        		<tr>
-		        		<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea value="#{message.libelle}"
+									rendered="#{index == (intraManager.messages.size()-1) and intraManager.modif==true}"
+									cols="100" rows="2" />
+								<f:facet name="footer">
+									<h:outputText
+										value="#{messages['historique.FormationCommentEvent']}" />
+								</f:facet>
+							</rich:column>
+						</rich:dataTable>
+					</center>
+				</rich:panel>
+			</rich:tab>
+			<rich:tab header="Logistique" name="page4">
+				<table border="0" cellspacing="3">
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Contact support" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.coordonneesContactsupport}" cols="60" rows="2"/>
-							</s:decorate>
-		        		</td>
-	        		</tr>
-		        	<tr>
-		        		<td>
-		        			<s:decorate template="../layout/display.xhtml" style="width:500px;">
+								<h:inputTextarea
+									value="#{intraManager.intra.coordonneesContactsupport}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Horaire de formation" />
 								</ui:define>
-							</s:decorate>
-								<br />
-								<table>
-									<tr>
-										<td>
-											Deb : 
-										</td>
-										<td>
-											<rich:inputNumberSpinner value="#{intraManager.heureDeb}" minValue="0" maxValue="23" step="1"/>
-										</td>
-										<td>
-											&nbsp;H&nbsp;
-										</td>
-										<td>
-											<rich:inputNumberSpinner value="#{intraManager.minDeb}" minValue="0" maxValue="59" step="1"/>
-											
-										</td>
-									</tr>
-									<tr>
-										<td>
-											Fin : 
-										</td>
-										<td>
-											<rich:inputNumberSpinner value="#{intraManager.heureFin}" minValue="0" maxValue="23" step="1"/>
-										</td>
-										<td>
-											&nbsp;H&nbsp;
-										</td>
-										<td>
-											<rich:inputNumberSpinner value="#{intraManager.minFin}" minValue="0" maxValue="59" step="1"/>
-										</td>
-									</tr>
-								</table>
-		        		</td>
-	        		</tr>
-	        	</table>
-	        	<rich:collapsiblePanel header="Adresse : " expanded="true" switchType="client">
-			        	<table border="0" cellspacing="0">	        		
-		        		<tr>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:600px;">
+							</s:decorate> <br />
+							<table>
+								<tr>
+									<td>Deb :</td>
+									<td><rich:inputNumberSpinner
+											value="#{intraManager.heureDeb}" minValue="0" maxValue="23"
+											step="1" /></td>
+									<td>&nbsp;H&nbsp;</td>
+									<td><rich:inputNumberSpinner
+											value="#{intraManager.minDeb}" minValue="0" maxValue="59"
+											step="1" /></td>
+								</tr>
+								<tr>
+									<td>Fin :</td>
+									<td><rich:inputNumberSpinner
+											value="#{intraManager.heureFin}" minValue="0" maxValue="23"
+											step="1" /></td>
+									<td>&nbsp;H&nbsp;</td>
+									<td><rich:inputNumberSpinner
+											value="#{intraManager.minFin}" minValue="0" maxValue="59"
+											step="1" /></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<rich:collapsiblePanel header="Adresse : " expanded="true"
+					switchType="client">
+					<table border="0" cellspacing="0">
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:600px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.nomEntreprise']}" />
 									</ui:define>
 									<h:outputText value="#{intraManager.intra.prospect.societe}" />
-								</s:decorate>
-		        			</td>
-		        		</tr>
-		        		<tr>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:600px;">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:600px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.adresse']}" />
 									</ui:define>
 									<h:inputText value="#{intraManager.intra.prospect.adresse}" />
-								</s:decorate>
-		        			</td>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.ville']}" />
 									</ui:define>
 									<h:inputText value="#{intraManager.intra.prospect.ville}" />
-								</s:decorate>
-		        			</td>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.cp']}" />
 									</ui:define>
 									<h:inputText value="#{intraManager.intra.prospect.cp}" />
-								</s:decorate>
-		        			</td>
-	        			</tr>
-	        			<tr>
-		        			<td>
-		        				<s:decorate template="../layout/display.xhtml" style="width:400px;">
+								</s:decorate></td>
+						</tr>
+						<tr>
+							<td><s:decorate template="../layout/display.xhtml"
+									style="width:400px;">
 									<ui:define name="label">
 										<h:outputText value="#{messages['prospect.pays']}" />
 									</ui:define>
 									<h:inputText value="#{intraManager.intra.prospect.pays}" />
-								</s:decorate>
-		        			</td>
-		        		</tr>
-		        	</table>
-	        	</rich:collapsiblePanel>
-        	</rich:tab>
-        	<br />
-	        <center>
+								</s:decorate></td>
+						</tr>
+					</table>
+				</rich:collapsiblePanel>
+			</rich:tab>
+			<br />
+			<center>
 				<a:status id="spinner">
 					<f:facet name="stop" />
 					<f:facet name="start">
-						<h:graphicImage value="/img/load.gif" alt="Chargement ..." style="width:2%"/>
+						<h:graphicImage value="/img/load.gif" alt="Chargement ..."
+							style="width:2%" />
 					</f:facet>
 				</a:status>
 			</center>
-       </rich:tabPanel>
-       <center>
-       		<a4j:outputPanel id="buttonValidation">
-	      		<a4j:commandButton value="Valider Modification" action="#{intraManager.modifyIntra()}" render="resultListIntra,resultat,totalPanelIntra,afficheModifIntra" oncomplete="if (#{facesContext.maximumSeverity == null}) #{rich:component('popupModifIntra')}.hide()" style="width:120px;height:35px;" rendered="#{intraManager.statutChange == true}"/>
-	      		<a4j:commandButton value="Valider Modification" execute="@form" render="formulaireValidNonModif" oncomplete="#{rich:component('popupNotifStatut')}.show()" style="width:120px;height:35px;" rendered="#{intraManager.statutChange == false}"/>
-      		</a4j:outputPanel>
-       </center>
-    </h:form>
-    <br />
-    <center>
-    	<a4j:commandButton value="Annuler Modification" oncomplete="#{rich:component('popupModifIntra')}.hide()" style="width:120px;height:35px;"/>
+		</rich:tabPanel>
+		<center>
+			<a4j:outputPanel id="buttonValidation">
+				<a4j:commandButton value="Valider Modification"
+					action="#{intraManager.modifyIntra()}"
+					render="resultListIntra,resultat,totalPanelIntra,afficheModifIntra"
+					oncomplete="if (#{facesContext.maximumSeverity == null}) #{rich:component('popupModifIntra')}.hide()"
+					style="width:120px;height:35px;"
+					rendered="#{intraManager.statutChange == true}" />
+				<a4j:commandButton value="Valider Modification" execute="@form"
+					render="formulaireValidNonModif"
+					oncomplete="#{rich:component('popupNotifStatut')}.show()"
+					style="width:120px;height:35px;"
+					rendered="#{intraManager.statutChange == false}" />
+			</a4j:outputPanel>
+		</center>
+	</h:form>
+	<br />
+	<center>
+		<a4j:commandButton value="Annuler Modification"
+			oncomplete="#{rich:component('popupModifIntra')}.hide()"
+			style="width:120px;height:35px;" />
 	</center>
 </ui:composition>

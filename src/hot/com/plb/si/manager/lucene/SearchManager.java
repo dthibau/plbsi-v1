@@ -491,9 +491,13 @@ public class SearchManager implements Serializable {
 		if (allMonthSession == null) {
 			allMonthSession = new ArrayList<Date>();
 			SessionDao sDao = new SessionDao(entityManager);
-			Calendar start = Calendar.getInstance();
-			start.setTime(sDao.getOldestSession().getDebut());
-			PlbUtil.normalizeMonth(start);
+			Calendar start = Calendar.getInstance();		
+			start.add(Calendar.YEAR, -1);
+			start.set(Calendar.MONTH, 0);
+//			if ( sDao.getOldestSession().getDebut().after(start.getTime()) ) {
+//				start.setTime(sDao.getOldestSession().getDebut());
+//			}
+//			PlbUtil.normalizeMonth(start);
 			Calendar end = Calendar.getInstance();
 			end.setTime(sDao.getNewestSession().getDebut());
 

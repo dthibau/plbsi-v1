@@ -72,6 +72,10 @@ public class FormationDto implements Serializable, Comparable<FormationDto>  {
 		// Pour toutes les autres ....
 		return "326";
 	}
+	
+	public int getRangFiliere() {
+		return getFormation().getCategorie().getRang()*100000 + getFormation().getRangCategorie();
+	}
 	@Override
 	public int compareTo(FormationDto o) {
 		// TODO Auto-generated method stub

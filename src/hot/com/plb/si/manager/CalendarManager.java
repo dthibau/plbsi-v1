@@ -20,6 +20,7 @@ import org.jboss.seam.log.Log;
 
 import com.plb.dto.FormationDto;
 import com.plb.model.Filiere;
+import com.plb.si.dto.FormationFiliereComparator;
 import com.plb.si.manager.lucene.SearchManager;
 import com.plb.si.service.FiliereDao;
 import com.plb.si.service.FormationDao;
@@ -78,7 +79,9 @@ public class CalendarManager {
 		if ( selection ) {
 			return formationsByFiliere.get(filiere);
 		}
-		return FormationDto.buildDtos(formationDao.findByFilierePrincipale(filiere), tarifsInter);
+		List<FormationDto> dtos = FormationDto.buildDtos(formationDao.findByFilierePrincipale(filiere), tarifsInter);
+		Collections.sort(dtos, new FormationFiliereComparator());
+		return dtos;
 	}
 	
 	public String generate() {

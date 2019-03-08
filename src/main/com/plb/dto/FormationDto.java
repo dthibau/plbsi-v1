@@ -74,7 +74,13 @@ public class FormationDto implements Serializable, Comparable<FormationDto>  {
 	}
 	
 	public int getRangFiliere() {
-		return getFormation().getCategorie().getRang()*100000 + getFormation().getRangCategorie();
+		if ( !formation.getFilierePrincipale().equals(formation.getCategorie().getFiliere()) ) {
+			return getFormation().getCategorie().getRang()*100000 + (getFormation().getRangCategorie()+100000);
+					
+		} else {
+			return getFormation().getCategorie().getRang()*100000 + getFormation().getRangCategorie();
+		}
+		
 	}
 	@Override
 	public int compareTo(FormationDto o) {

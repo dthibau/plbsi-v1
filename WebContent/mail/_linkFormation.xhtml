@@ -7,6 +7,8 @@
 
 		<h:outputText value="#{messages['mail.directLink.label']}" /> : <a class="logoLien" href="#{server}/DirectLink/formation.seam?formationId=#{formation.idFormation}">#{server}/DirectLink/formation.seam?formationId=#{formation.idFormation}</a>
 		<br/><br/>
+		<h:outputText value="#{messages['mail.directLink.label.site']}" /> : <a class="logoLien" href="#{WEB_URL}#{formation.urlPlb}">#{formation.reference}</a>
+		<br/><br/>
 	
 
 

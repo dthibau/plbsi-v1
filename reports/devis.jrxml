@@ -443,7 +443,7 @@
 				<textFieldExpression><![CDATA[$F{prenom} + " " + $F{nom}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement style="default" x="183" y="0" width="189" height="80" uuid="8db1ec0c-dc84-4924-9011-81fcb55279ad"/>
+				<reportElement style="default" x="160" y="0" width="189" height="80" uuid="8db1ec0c-dc84-4924-9011-81fcb55279ad"/>
 				<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
 			</image>
 			<textField>

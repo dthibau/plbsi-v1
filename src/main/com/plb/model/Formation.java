@@ -415,32 +415,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Transient
 	public Filiere getFilierePrincipale() {
-		if (!getFormationFilieres().isEmpty()) {
-			for (FormationFiliere ff : getFormationFilieres()) {
-				if (ff.isPrincipale()) {
-					return ff.getFiliere();
-				}
-			}
-
-		}
-		if (!getFilieres().isEmpty()) {
-			return getFilieres().get(0);
-		}
-		return getCategorie() != null ? getCategorie().getFiliere() : null;
+		return getCategorie().getFiliere();
+		
 	}
 
 	@Transient
 	public int getRangFilierePrincipale() {
-		if (!getFormationFilieres().isEmpty()) {
-			for (FormationFiliere ff : getFormationFilieres()) {
-				if (ff.isPrincipale()) {
-					return ff.getRangFiliere();
-				}
-			}
-
-		}
-
-		return -1;
+		return getRangCategorie();
+		
 	}
 
 	@Transient

@@ -195,13 +195,6 @@
 						oncomplete="#{rich:component('formationFilierePopup')}.show();"
 						immediate="true">
 					</a:commandButton>
-					&#160;
-					<a:commandButton value="Rendre principale"
-						rendered="#{fFiliere.isPrincipale.equals('non')}"
-						render="formationFiliereList"
-						action="#{formationManager.setPrincipale(fFiliere)}">
-						<s:conversationId />
-					</a:commandButton>
 				</rich:column>
 			</rich:dataTable>
 

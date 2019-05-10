@@ -63,6 +63,7 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 	}
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+		this.filiere = categorie.getFiliere();
 	}
 	public Filiere getFiliere() {
 		return filiere;

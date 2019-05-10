@@ -6,9 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -49,6 +51,7 @@ import com.plb.model.event.FormationCommentEvent;
 import com.plb.model.event.FormationCreationEvent;
 import com.plb.model.event.FormationModificationEvent;
 import com.plb.model.event.FormationSessionEvent;
+import com.plb.si.dto.FormationCategorieDto;
 import com.plb.si.service.EventDao;
 import com.plb.si.service.FormationDao;
 import com.plb.si.service.NotificationService;
@@ -409,6 +412,22 @@ public class FormationManager implements Serializable {
 			return formationDao.findByFiliere(newFormationFiliere.getFiliere());
 		}
 		return new ArrayList<FormationFiliere>();
+	}
+	
+	public List<FormationCategorieDto> autresFormationsNewCategorie() {
+		List<FormationCategorieDto> ret = new ArrayList<>();
+		if (newFormationFiliere.getCategorie() != null) {
+			List<Formation> formations= formationDao.findByCategorie(newFormationFiliere.getCategorie());
+			ret.addAll(formations.stream().map(f -> new FormationCategorieDto(f)).collect(Collectors.toList()));
+			
+			List<FormationFiliere> formationsFilieres = formationDao.findByCategorieSecondaire(newFormationFiliere.getCategorie());
+			ret.addAll(formationsFilieres.stream().map(ff -> new FormationCategorieDto(ff)).collect(Collectors.toList()));
+		
+			Collections.sort(ret);
+		}
+		
+		return ret;
+		
 	}
 
 	public void setPrincipale(FormationFiliere fFiliere) {

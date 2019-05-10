@@ -45,36 +45,11 @@
 			</s:decorate>
 		</ui:define>
 		<ui:define name="filieres">
-			<s:decorate template="../layout/displayArea.xhtml">
-				<ui:define name="label">
-					<h:outputText value="#{messages['formation.filiere']}" />
-				</ui:define>
-				<rich:dataTable value="#{formation.formationFilieres}"
-					var="fFiliere" style="margin-left:0px">
-					<rich:column>
-						<f:facet name="header">
-						#{messages['formation.filiere']}
-						</f:facet>
-						<a:outputPanel rendered="#{fFiliere.principale}">
-							<b>#{fFiliere.libelle}</b>
-						</a:outputPanel>
-						<a:outputPanel rendered="#{!fFiliere.principale}">#{fFiliere.libelle}</a:outputPanel>
-					</rich:column>
-					<rich:column>
-						<f:facet name="header">
-						#{messages['formation.filiere.rang']}
-					</f:facet>
-						<h:outputText value="#{fFiliere.rangFiliere}" />
-					</rich:column>
-				</rich:dataTable>
-			</s:decorate>
-
-
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.categorie']}" />
 				</ui:define>
-				<h:outputText value="#{formation.categorie.libelle}" />
+				<h:outputText value="#{formation.categorie.filiere.libelle} -> #{formation.categorie.libelle}" />
 			</s:decorate>
 
 			<s:decorate
@@ -115,6 +90,32 @@
 				</rich:dataTable>
 			</s:decorate>
 
+			<s:decorate template="../layout/displayArea.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.filieres']}" />
+				</ui:define>
+				<rich:dataTable value="#{formation.formationFilieres}"
+					var="fFiliere" style="margin-left:0px">
+					<rich:column>
+						<f:facet name="header">
+						#{messages['formation.categorie']}
+					</f:facet>
+						<h:outputText value="#{fFiliere.categorie != null ? fFiliere.categorie.libelle :'A définir'}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+						#{messages['formation.filiere']}
+						</f:facet>
+						<a:outputPanel>#{fFiliere.libelle}</a:outputPanel>
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+						#{messages['formation.filiere.rang']}
+					</f:facet>
+						<h:outputText value="#{fFiliere.rangFiliere}" />
+					</rich:column>
+				</rich:dataTable>
+			</s:decorate>
 
 
 		</ui:define>

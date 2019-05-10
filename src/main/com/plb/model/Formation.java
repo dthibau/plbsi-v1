@@ -768,6 +768,15 @@ public class Formation implements Serializable, Comparable<Formation> {
 		}
 		return false;
 	}
+	@Transient
+	public boolean contains(Categorie categorie) {
+		for (FormationFiliere ff : formationFilieres) {
+			if (ff.getCategorie() != null && ff.getCategorie().equals(categorie) ) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Transient
 	public List<Filiere> getFilieres() {
@@ -783,15 +792,12 @@ public class Formation implements Serializable, Comparable<Formation> {
 		StringBuffer sbf = new StringBuffer();
 		boolean bFirst = true;
 		for (FormationFiliere f : getFormationFilieres()) {
-			if (bFirst) {
-				sbf.append(f.isPrincipale() ? "<b>" + f.getLibelle() + "</b>"
-						: f.getLibelle());
+			if (bFirst) {		
 				bFirst = false;
 			} else {
-				sbf.append("<br/>"
-						+ (f.isPrincipale() ? "<b>" + f.getLibelle() + "</b>"
-								: f.getLibelle()));
+				sbf.append("<br/>");
 			}
+			sbf.append(f.getLibelle()).append(" -> ").append(f.getCategorie() != null ? f.getCategorie().getLibelle() : "A définir");
 		}
 		return sbf.toString();
 	}

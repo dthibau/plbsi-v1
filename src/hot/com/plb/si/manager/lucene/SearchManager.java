@@ -292,8 +292,6 @@ public class SearchManager implements Serializable {
 		}
 	}
 
-
-
 	public String getSearchString() {
 		return searchString;
 	}
@@ -436,10 +434,10 @@ public class SearchManager implements Serializable {
 			if (!includeArchived && f.getArchivedDate() != null) {
 				continue;
 			}
-			if (filiere != null && !filiere.equals(f.getFilierePrincipale())) {
+			if (filiere != null && !filiere.equals(f.getFilierePrincipale()) && !f.contains(filiere)) {
 				continue;
 			}
-			if (categorie != null && !f.getCategorie().equals(categorie)) {
+			if (categorie != null && !f.getCategorie().equals(categorie) && !f.contains(categorie) ) {
 				continue;
 			}
 			if (partenaire != null && !plbOnly && !_containsPartenaire(f, partenaire)) {

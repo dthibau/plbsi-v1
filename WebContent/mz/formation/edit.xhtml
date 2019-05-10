@@ -6,8 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:plb="http://plb.fr/components" 
-	xmlns:a="http://richfaces.org/a4j">
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
 
 	<s:decorate id="eDecorate"
 		template="#{sessionDataManager.managerIntervenantsManager ? (formationManager.creationMode ? 'layout/properties_new.xhtml' : 'layout/properties.xhtml') : 'layout/properties_commercial.xhtml'}">
@@ -25,7 +24,8 @@
 
 			<s:decorate template="../layout/edit.xhtml" id="libDecorate">
 				<ui:define name="label">#{messages['formation.libelle']}</ui:define>
-				<h:inputText id="libInput" required="true" size="80" value="#{formation.libelle}">
+				<h:inputText id="libInput" required="true" size="80"
+					value="#{formation.libelle}">
 					<a:ajax event="change" execute="@this" render="baliseTitlePanel"
 						listener="#{formationManager.updateBaliseTitle}" />
 				</h:inputText>
@@ -41,7 +41,7 @@
 
 			<s:decorate template="../layout/edit.xhtml" id="preDecorate">
 				<ui:define name="label">#{messages['formation.precision']}</ui:define>
-				<h:inputTextarea value="#{formation.precision}" id="preArea"/>
+				<h:inputTextarea value="#{formation.precision}" id="preArea" />
 			</s:decorate>
 
 
@@ -49,75 +49,30 @@
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.duree']}" />
 				</ui:define>
-				<h:inputText required="true" size="2" value="#{formation.duree}" id="durInput">
+				<h:inputText required="true" size="2" value="#{formation.duree}"
+					id="durInput">
 					<a:ajax event="valueChange" execute="@this" render="prixPanel" />
 				</h:inputText>
 			</s:decorate>
 			<s:decorate rendered="#{!sessionDataManager.commercial}"
 				template="../layout/edit.xhtml" id="staDecorate">
 				<ui:define name="label">#{messages['formation.statut']}</ui:define>
-				<h:inputTextarea value="#{formation.statut}" cols="60" rows="3" id="staArea"/>
+				<h:inputTextarea value="#{formation.statut}" cols="60" rows="3"
+					id="staArea" />
 			</s:decorate>
 		</ui:define>
 
 		<ui:define name="filieres">
-			<a:commandButton value="Ajouter à une filière" id="addFButton"
-				render="formationFiliereContent"
-				action="#{formationManager.addNewFormationFiliere}"
-				oncomplete="#{rich:component('formationFilierePopup')}.show();">
-
-			</a:commandButton>
-
-
-			<rich:dataTable id="formationFiliereList"
-				value="#{formation.formationFilieres}" var="fFiliere">
-				<rich:column>
-					<f:facet name="header">
-						#{messages['formation.filiere']}
-						</f:facet>
-<a:outputPanel rendered="#{fFiliere.principale}">
-							<b>#{fFiliere.libelle}</b>
-						</a:outputPanel>
-						<a:outputPanel rendered="#{!fFiliere.principale}">#{fFiliere.libelle}</a:outputPanel>
-										</rich:column>
-				<rich:column>
-					<f:facet name="header">
-						#{messages['formation.filiere.rang']}
-					</f:facet>
-					<h:outputText value="#{fFiliere.rangFiliere}" />
-				</rich:column>
-				<rich:column>
-					<f:facet name="header" />
-					<a:commandButton value="Supprimer"
-						action="#{formationManager.removeFormationFiliere(fFiliere)}"
-						render="formationFiliereList"
-						immediate="true">
-						<s:conversationId />
-					</a:commandButton>
-					&#160;
-					<a:commandButton value="Modifier le rang"
-						render="formationFiliereContent"
-						action="#{formationManager.setNewFormationFiliere(fFiliere)}"
-						oncomplete="#{rich:component('formationFilierePopup')}.show();"
-						immediate="true">
-					</a:commandButton>
-					&#160;
-					<a:commandButton value="Rendre principale" rendered="#{fFiliere.isPrincipale.equals('non')}"
-						render="formationFiliereList"
-						action="#{formationManager.setPrincipale(fFiliere)}">
-						<s:conversationId />
-					</a:commandButton>
-				</rich:column>
-			</rich:dataTable>
 
 			<s:decorate template="../layout/edit.xhtml" id="catDecorate">
 				<ui:define name="label">#{messages['formation.categorie']}</ui:define>
-				<h:selectOneMenu required="true" value="#{formation.categorie}" id="catSel">
+				<h:selectOneMenu required="true" value="#{formation.categorie}"
+					id="catSel">
 					<a:ajax event="change" render="rangCategoriePanel baliseTitlePanel"
 						execute="@this" listener="#{formationManager.updateBaliseTitle}">
 					</a:ajax>
 					<s:selectItems value="#{categories}" var="categorie"
-						label="#{categorie.libelle}"
+						label="#{categorie.libelle} (#{categorie.filiere.libelle})"
 						noSelectionLabel="Sélectionner une catégorie" />
 					<s:convertEntity />
 				</h:selectOneMenu>
@@ -125,12 +80,12 @@
 
 			<a:outputPanel layout="block" id="rangCategoriePanel">
 				<a:outputPanel rendered="#{formation.categorie != null}">
-					<s:decorate id="rangCategorieDecoration" 
+					<s:decorate id="rangCategorieDecoration"
 						template="../layout/edit.xhtml">
 						<ui:define name="label">#{messages['formation.rangCategorie']}
 					
 					</ui:define>
-						<h:inputText value="#{formation.rangCategorie}" id="rangInput"/>
+						<h:inputText value="#{formation.rangCategorie}" id="rangInput" />
 					</s:decorate>
 					<div>
 						<rich:collapsiblePanel expanded="#{false}" id="autPanel"
@@ -160,13 +115,13 @@
 					</div>
 				</a:outputPanel>
 			</a:outputPanel>
-
-			<a:commandButton value="Ajouter une formations associée" id="addFaButton"
-				render="formationAssocieesPopup">
+			<br />
+			<a:commandButton value="Ajouter une formations associée"
+				id="addFaButton" render="formationAssocieesPopup">
 				<rich:componentControl target="formationAssocieesPopup"
 					operation="show" />
 			</a:commandButton>
-	
+
 			<rich:dataTable id="formationAssocieesList"
 				value="#{formation.formationAssociees}" var="fFormation">
 				<rich:column>
@@ -185,9 +140,10 @@
 					</a:commandButton>
 				</rich:column>
 			</rich:dataTable>
-			<br/>
+			<br />
 			<rich:dataTable id="formationSuivantesListesEdit"
-				value="#{formationManager.formationSuivantes}" var="fFormation" rendered="#{not empty formationManager.formationSuivantes}">
+				value="#{formationManager.formationSuivantes}" var="fFormation"
+				rendered="#{not empty formationManager.formationSuivantes}">
 				<rich:column>
 					<f:facet name="header">
 						#{messages['formation.formationSuivantes']}
@@ -195,7 +151,61 @@
 							#{fFormation.libelle}				
 					</rich:column>
 			</rich:dataTable>
-			
+<br/>
+			<a:commandButton value="Ajouter à une catégorie secondaire"
+				id="addFButton" render="formationFiliereContent"
+				action="#{formationManager.addNewFormationFiliere}"
+				oncomplete="#{rich:component('formationFilierePopup')}.show();">
+
+			</a:commandButton>
+
+
+			<rich:dataTable id="formationFiliereList"
+				value="#{formation.formationFilieres}" var="fFiliere">
+				<rich:column>
+					<f:facet name="header">
+						#{messages['formation.categorie']}
+					</f:facet>
+					<h:outputText
+						value="#{fFiliere.categorie != null ? fFiliere.categorie.libelle :'A définir'}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						#{messages['formation.filiere']}
+						</f:facet>
+					<a:outputPanel>#{fFiliere.libelle}</a:outputPanel>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						#{messages['formation.filiere.rang']}
+					</f:facet>
+					<h:outputText value="#{fFiliere.rangFiliere}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header" />
+					<a:commandButton value="Supprimer"
+						action="#{formationManager.removeFormationFiliere(fFiliere)}"
+						render="formationFiliereList" immediate="true">
+						<s:conversationId />
+					</a:commandButton>
+					&#160;
+					<a:commandButton value="Modifier le rang"
+						render="formationFiliereContent"
+						action="#{formationManager.setNewFormationFiliere(fFiliere)}"
+						oncomplete="#{rich:component('formationFilierePopup')}.show();"
+						immediate="true">
+					</a:commandButton>
+					&#160;
+					<a:commandButton value="Rendre principale"
+						rendered="#{fFiliere.isPrincipale.equals('non')}"
+						render="formationFiliereList"
+						action="#{formationManager.setPrincipale(fFiliere)}">
+						<s:conversationId />
+					</a:commandButton>
+				</rich:column>
+			</rich:dataTable>
+
+
 
 		</ui:define>
 
@@ -217,7 +227,7 @@
 					<h:outputText value="#{messages['formation.url']}" />
 				</ui:define>
 				<h:inputText required="true" size="20" value="#{formation.url}"
-					validator="#{formationManager.validateUrl}" id="urlInput"/>
+					validator="#{formationManager.validateUrl}" id="urlInput" />
 			</s:decorate>
 
 			<s:decorate
@@ -227,7 +237,7 @@
 					<h:outputText value="#{messages['formation.baliseKeyWords']}" />
 				</ui:define>
 				<h:inputTextarea required="true" value="#{formation.baliseKeyWords}"
-					cols="60" rows="3" id="balArea"/>
+					cols="60" rows="3" id="balArea" />
 			</s:decorate>
 
 			<s:decorate template="../layout/edit.xhtml" id="adDecorate">
@@ -235,7 +245,7 @@
 					<h:outputText value="#{messages['formation.campagneAdWords']}" />
 				</ui:define>
 				<h:inputTextarea value="#{formation.campagneAdWords}" cols="60"
-					rows="3" id="adArea"/>
+					rows="3" id="adArea" />
 			</s:decorate>
 
 			<s:decorate
@@ -245,7 +255,7 @@
 					<h:outputText value="#{messages['formation.baliseDescription']}" />
 				</ui:define>
 				<h:inputTextarea value="#{formation.baliseDescription}" cols="60"
-					rows="3" id="balDArea"/>
+					rows="3" id="balDArea" />
 			</s:decorate>
 
 			<a:outputPanel id="baliseTitlePanel">
@@ -262,27 +272,30 @@
 		<ui:define name="commercial">
 			<s:decorate template="../layout/edit.xhtml" id="remDecorate">
 				<ui:define name="label">#{messages['formation.remarques']}</ui:define>
-				<plb:editorRemarques id="remarquesEditor" value="#{formation.remarques}" height="80" />
+				<plb:editorRemarques id="remarquesEditor"
+					value="#{formation.remarques}" height="80" />
 			</s:decorate>
 
 			<a:outputPanel id="prixPanel">
-			<s:decorate template="../layout/edit.xhtml" rendered="#{formation.duree &lt; 7}" id="tInterDecrorate">
-				<ui:define name="label">
-					<h:outputText value="#{messages['formation.tarifInter']}" />
-				</ui:define>
-				<h:selectOneMenu value="#{formation.codeTarifInter}" id="tInterSelect">
-					<a:ajax event="change" execute="@this" render="prixPanel" />
-					<f:selectItem itemValue=""
-						itemLabel="#{messages['formation.tarifInter.sans']}" />
-					<f:selectItem itemValue="E1" itemLabel="E1" />
-					<f:selectItem itemValue="E2" itemLabel="E2" />
-					<f:selectItem itemValue="E3" itemLabel="E3" />
-					<f:selectItem itemValue="E4" itemLabel="E4" />
-					<f:selectItem itemValue="E5" itemLabel="E5" />
-					<f:selectItem itemValue="E6" itemLabel="E6" />
+				<s:decorate template="../layout/edit.xhtml"
+					rendered="#{formation.duree &lt; 7}" id="tInterDecrorate">
+					<ui:define name="label">
+						<h:outputText value="#{messages['formation.tarifInter']}" />
+					</ui:define>
+					<h:selectOneMenu value="#{formation.codeTarifInter}"
+						id="tInterSelect">
+						<a:ajax event="change" execute="@this" render="prixPanel" />
+						<f:selectItem itemValue=""
+							itemLabel="#{messages['formation.tarifInter.sans']}" />
+						<f:selectItem itemValue="E1" itemLabel="E1" />
+						<f:selectItem itemValue="E2" itemLabel="E2" />
+						<f:selectItem itemValue="E3" itemLabel="E3" />
+						<f:selectItem itemValue="E4" itemLabel="E4" />
+						<f:selectItem itemValue="E5" itemLabel="E5" />
+						<f:selectItem itemValue="E6" itemLabel="E6" />
 
-				</h:selectOneMenu>
-			</s:decorate>
+					</h:selectOneMenu>
+				</s:decorate>
 
 
 				<s:decorate template="../layout/edit.xhtml" id="prixDecorate">
@@ -291,7 +304,7 @@
 					</ui:define>
 					<h:inputText
 						rendered="#{empty formation.codeTarifInter or formation.codeTarifInter.equals('E0') or formation.duree &gt; 6}"
-						value="#{formation.prix}" id="prixInput"/>
+						value="#{formation.prix}" id="prixInput" />
 
 					<h:outputText
 						rendered="#{!empty formation.codeTarifInter and !formation.codeTarifInter.equals('E0')}"
@@ -304,7 +317,8 @@
 					<ui:define name="label">
 						<h:outputText value="#{messages['formation.updateTarif']}" />
 					</ui:define>
-					<h:selectBooleanCheckbox value="#{formationManager.updateTarif}" id="updTarifCheck"/>
+					<h:selectBooleanCheckbox value="#{formationManager.updateTarif}"
+						id="updTarifCheck" />
 				</s:decorate>
 			</a:outputPanel>
 
@@ -312,14 +326,15 @@
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.tarifIntra']}" />
 				</ui:define>
-				<h:inputText value="#{formation.libreIntra}" id="tIntraInput"/>
+				<h:inputText value="#{formation.libreIntra}" id="tIntraInput" />
 			</s:decorate>
 
 			<s:decorate template="../layout/edit.xhtml" id="oriDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.origine']}" />
 				</ui:define>
-				<h:inputText required="true" size="20" value="#{formation.origine}" id="oriInput"/>
+				<h:inputText required="true" size="20" value="#{formation.origine}"
+					id="oriInput" />
 			</s:decorate>
 
 			<s:decorate template="../layout/edit.xhtml" id="couDecorate">
@@ -328,21 +343,22 @@
 						value="#{messages['formation.coursPlbCataloguePartenaire']}" />
 				</ui:define>
 				<h:inputText size="20"
-					value="#{formation.coursPlbCataloguePartenaire}" id="couInput"/>
+					value="#{formation.coursPlbCataloguePartenaire}" id="couInput" />
 			</s:decorate>
 
 			<s:decorate template="../layout/display.xhtml" id="interDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.plbInter']}" />
 				</ui:define>
-				<h:selectBooleanCheckbox value="#{formation.plbInter}" id="interCheck"/>
+				<h:selectBooleanCheckbox value="#{formation.plbInter}"
+					id="interCheck" />
 			</s:decorate>
 
 			<s:decorate template="../layout/display.xhtml" id="supDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.support']}" />
 				</ui:define>
-				<h:selectBooleanCheckbox value="#{formation.support}" id="supCheck"/>
+				<h:selectBooleanCheckbox value="#{formation.support}" id="supCheck" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml" id="disDecorate">
 				<ui:define name="label">
@@ -358,13 +374,13 @@
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.certification']}" />
 				</ui:define>
-				<h:inputText value="#{formation.certification}" id="cerInput"/>
+				<h:inputText value="#{formation.certification}" id="cerInput" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml" id="offDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.officiel']}" />
 				</ui:define>
-				<h:inputText value="#{formation.officiel}" id="offInput"/>
+				<h:inputText value="#{formation.officiel}" id="offInput" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml" id="nivDecorate">
 				<ui:define name="label">
@@ -378,26 +394,30 @@
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.eligibleCpf']}" id="eliDecorate"/>
+					<h:outputText value="#{messages['formation.eligibleCpf']}"
+						id="eliDecorate" />
 				</ui:define>
-				<h:selectBooleanCheckbox value="#{formation.eligibleCpf}" id="eliCheck"/>
+				<h:selectBooleanCheckbox value="#{formation.eligibleCpf}"
+					id="eliCheck" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.codeCpf']}" id="cpfDecorate"/>
+					<h:outputText value="#{messages['formation.codeCpf']}"
+						id="cpfDecorate" />
 				</ui:define>
-				<h:inputText value="#{formation.codeCpf}" id="cpfCheck"/>
+				<h:inputText value="#{formation.codeCpf}" id="cpfCheck" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml" id="eleDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.elearning']}" />
 				</ui:define>
-				<h:selectBooleanCheckbox value="#{formation.elearning}" id="eleCheck"/>
+				<h:selectBooleanCheckbox value="#{formation.elearning}"
+					id="eleCheck" />
 			</s:decorate>
 			<s:decorate template="../layout/edit.xhtml" id="argDecorate">
 				<ui:define name="label">#{messages['formation.argumentaire']}</ui:define>
 				<h:inputTextarea value="#{formation.argumentaire}" cols="100"
-					rows="8" id="argArea"/>
+					rows="8" id="argArea" />
 			</s:decorate>
 		</ui:define>
 		<ui:define name="mutualisees">
@@ -467,19 +487,19 @@
 					<f:facet name="header">
 						#{messages['formationPartenaire.code']}
 					</f:facet>
-					<h:inputText value="#{fPartenaire.code}" id="fPatCode"/>
+					<h:inputText value="#{fPartenaire.code}" id="fPatCode" />
 				</rich:column>
 				<rich:column>
 					<f:facet name="header">
 						#{messages['formationPartenaire.prix']}
 					</f:facet>
-					<h:inputText value="#{fPartenaire.prix}" id="fPatPrix"/>
+					<h:inputText value="#{fPartenaire.prix}" id="fPatPrix" />
 				</rich:column>
 				<rich:column>
 					<f:facet name="header">
 						#{messages['formationPartenaire.url']}
 					</f:facet>
-					<h:inputText value="#{fPartenaire.url}" id="fPatUrl"/>
+					<h:inputText value="#{fPartenaire.url}" id="fPatUrl" />
 				</rich:column>
 				<rich:column>
 					<f:facet name="header" />

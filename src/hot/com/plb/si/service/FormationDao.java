@@ -89,6 +89,14 @@ public class FormationDao {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<FormationFiliere> findByCategorieSecondaire(Categorie categorie) {
+		Query q = entityManager
+				.createQuery("from FormationFiliere ff where ff.formation.archivedDate is null and ff.formation.visible='oui' and ff.categorie=:categorie order by ff.rangFiliere");
+		q.setParameter("categorie", categorie);
+		return q.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<FormationFiliere> findByFiliere(Filiere filiere) {
 		Query q = entityManager
 				.createQuery("from FormationFiliere ff where ff.formation.archivedDate is null and ff.formation.visible='oui' and ff.filiere=:filiere order by ff.rangFiliere");

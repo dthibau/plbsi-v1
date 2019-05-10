@@ -24,6 +24,10 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 //	@IndexedEmbedded
 	private Filiere filiere;
 	
+	@ManyToOne
+	@JoinColumn(name="id_categorie")
+	private Categorie categorie;
+	
 	@Column(name="forfil_rang")
 	private Integer rangFiliere;
 
@@ -54,6 +58,12 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 		this.formation = formation;
 	}
 
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	public Filiere getFiliere() {
 		return filiere;
 	}
@@ -66,8 +76,8 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 		return rangFiliere;
 	}
 
-	public void setRangFiliere(Integer rangFiliere) {
-		this.rangFiliere = rangFiliere;
+	public void setRangFiliere(Integer rangCategorie) {
+		this.rangFiliere = rangCategorie;
 	}
 	
 	public String getIsPrincipale() {

@@ -19,7 +19,7 @@
 	<rich:popupPanel id="formationFilierePopup" modal="true"
 		autosized="true" resizeable="false">
 		<f:facet name="header">
-			<h:outputText value="Ajout d'une formation à une filière" />
+			<h:outputText value="Ajout d'une formation à une catégorie secondaire" />
 		</f:facet>
 		<f:facet name="controls">
 			<h:outputLink value="#"
@@ -31,14 +31,14 @@
 			<a:outputPanel id="formationFiliereContent">
 			<s:decorate template="../layout/edit.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.filiere']}" />
+					<h:outputText value="#{messages['formation.filieres']}" />
 				</ui:define>
 				<h:selectOneMenu id="inputFpPartenaire" required="true"
-					value="#{formationManager.newFormationFiliere.filiere}">
+					value="#{formationManager.newFormationFiliere.categorie}">
 					<a:ajax event="change" render="rangFilierePanel" execute="@this" />
-					<s:selectItems value="#{filieres}" var="filiere"
-						label="#{filiere.libelle}"
-						noSelectionLabel="Sélectionner une filière" />
+					<s:selectItems value="#{categories}" var="categorie"
+						label="#{categorie.libelle} (#{categorie.filiere.libelle})"
+						noSelectionLabel="Sélectionner une catégorie" />
 					<s:convertEntity />
 				</h:selectOneMenu>
 			</s:decorate>
@@ -46,7 +46,7 @@
 
 
 			<a:outputPanel layout="block" id="rangFilierePanel">
-			<a:outputPanel rendered="#{formationManager.newFormationFiliere.filiere != null}">
+			<a:outputPanel rendered="#{formationManager.newFormationFiliere.categorie != null}">
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">
 						<h:outputText value="#{messages['formation.filiere.rang']}" />
@@ -57,21 +57,21 @@
 				
 				<div>
 					<rich:panel 
-						header="Voir les autres formations de la filière"
+						header="Voir les autres formations de la categorie"
 						switchType="ajax">
 						<div id="" style="overflow-y:scroll; height:400px;">
 						<table width="100%" class="table-border" cellpadding="4">
 						<tr class="table-border"><th class="table-border">#{messages['formation.reference']}</th>
 						<th class="table-border">#{messages['formation.libelle']}</th>
 						<th class="table-border">#{messages['formation.filiere.rang']}</th></tr>
-						<a:repeat value="#{formationManager.autresFormationsFiliere()}" var="fFiliere">
+						<a:repeat value="#{formationManager.autresFormationsNewCategorie()}" var="fFormation">
 						<tr class="table-border">
-						<td class="table-border"><h:outputLink rendered="#{fFiliere.formation.urlPlb != null}"
-									value="#{WEB_URL}#{fFiliere.formation.urlPlb}" target="_blank">#{fFiliere.formation.reference}</h:outputLink>
-								<h:outputText rendered="#{fFiliere.formation.urlPlb == null}"
-									value="#{fFiliere.formation.reference}" /></td>
-						<td class="table-border"><h:outputText value="#{fFiliere.formation.libelle}" /></td>
-						<td class="table-border"><h:outputText value="#{fFiliere.rangFiliere}" /></td>
+						<td class="table-border"><h:outputLink rendered="#{fFormation.formation.urlPlb != null}"
+									value="#{WEB_URL}#{fFormation.formation.urlPlb}" target="_blank">#{fFormation.formation.reference}</h:outputLink>
+								<h:outputText rendered="#{fFormation.formation.urlPlb == null}"
+									value="#{fFormation.formation.reference}" /></td>
+						<td class="table-border"><h:outputText value="#{fFormation.formation.libelle}" /></td>
+						<td class="table-border"><h:outputText value="#{fFormation.rang}" /></td>
 						</tr>
 						</a:repeat>
 						</table>

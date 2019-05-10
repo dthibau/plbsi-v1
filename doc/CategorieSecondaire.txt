@@ -1,0 +1,55 @@
+Alors pour contiuer cette discussion.
+
+Par exemple, la formation "Objective C" aurait
+
+- pour filière/catgéorie principale : Développment / Mac
+
+- pour filière/catgéorie secondaire : Telecom Mobile / iPhone et iPad
+
+Un autre exemple la formation "Rest en Java" aurait
+
+- pour filière/catgéorie principale : Java  / Web Services SOA
+
+- pour filière/catgéorie secondaire : Développment / service web
+
+
+Une formation pourrait avoir plusieurs filière/catégorie secondaires
+
+Pour chaque association, on lui donnerait son rang dans la catgéorie (et c'est le seul rang que l'on aurait à indiquer pour une formation)
+
+Les tris (tell que catalogue) prendrait les filières principales.
+
+
+All right ?
+
+
+Le 10/04/2019 à 10:48, David THIBAU a écrit :
+> Hello,
+>
+>
+> Je reviens à la charge sur ce problème récurrent qui ne fait que de nous embêter.
+>
+> On aimerait pouvoir placer une formation à 2 endroits sur le site, le problème est que dans la base elle n'est associée qu'à une seule catégorie (correspondant à la filière principale).l
+>
+>
+> Je pense que étant donné que vous êtes en train de redévelopper le site web, c'est le bon moment pour se débarasser de cette épine.
+>
+> Finalement, je pense que les impacts sur la base de données et plbsi sont minimes.
+>
+> - Il faudrait lorsque l'on associe la formation à une filière secondaire, que l'on choisisse également uen catégorie secondaire correspondante.
+>
+>
+> En termes d'impact :
+>
+>  - Modification de la table for_filiere ajout d'une colonne id_categorie
+>
+>  - Reprise du formulaire plbsi pour que cela soit plus claire, (on pourrait en plus régler ces histoires de rang sur lesquels j'ai commencé à travailler => 1 seul rang par formation correspondant au rang dans sa catégorie)
+>
+> Tout cela c'est moins d'une journée et peut être compatible avec la version du site existante
+>
+>
+> Dans la prochaine version, prendre en compte ses nouveaux champs pour avoir des tris plus clairs, la présence de la formation en 2 endroits et plus d'autres formations
+>
+>
+> Allez dites-moi que je vous ai convaincu
+

@@ -415,7 +415,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Transient
 	public Filiere getFilierePrincipale() {
-		return getCategorie().getFiliere();
+		return getCategorie() != null ? getCategorie().getFiliere() : null;
 		
 	}
 

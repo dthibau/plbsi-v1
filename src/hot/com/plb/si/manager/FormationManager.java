@@ -39,6 +39,7 @@ import org.jboss.seam.international.StatusMessage.Severity;
 import org.jboss.seam.log.Log;
 
 import com.plb.dto.SessionDto;
+import com.plb.model.Categorie;
 import com.plb.model.Filiere;
 import com.plb.model.Formation;
 import com.plb.model.FormationFiliere;
@@ -104,6 +105,9 @@ public class FormationManager implements Serializable {
 	
 	@In
 	ApplicationManager applicationManager;
+	
+	@In(create=true)
+	List<Categorie> categories;
 
 	@Logger
 	Log log;
@@ -273,6 +277,46 @@ public class FormationManager implements Serializable {
 		setVisuMode();
 	}
 
+	public void updateCategorie() {
+		if ( formation.getCategorie() != null ) {
+			// @@ 3.5 
+			// On force la filière principale de la catégorie
+			if ( !formation.contains(formation.getCategorie().getFiliere())) {
+				_erasePrincipale();
+				FormationFiliere ff = new FormationFiliere(formation);
+				ff.setCategorie(formation.getCategorie()); // Update also filiere
+				ff.setIsPrincipale("oui");
+				if ( formation.getRangCategorie() != null ) {
+					ff.setRangFiliere(formation.getRangCategorie());
+				}
+				formation.addFormationFiliere(ff);
+			} else {
+				_erasePrincipale();
+				FormationFiliere ff = formation.getFormationFiliere(formation.getCategorie().getFiliere());
+				ff.setIsPrincipale("oui");
+				if ( formation.getRangCategorie() != null ) {
+					ff.setRangFiliere(formation.getRangCategorie());
+				}
+			}
+			updateBaliseTitle();
+		}
+	}
+	
+	public void updateRangCategorie() {
+		if ( formation.getCategorie() != null ) {
+			FormationFiliere ff = formation.getFormationFiliere(formation.getCategorie().getFiliere());
+			ff.setRangFiliere(formation.getRangCategorie());
+		}
+	}
+	
+	private void _erasePrincipale() {
+		for ( FormationFiliere ff : formation.getFormationFilieres() ) {
+			if ( ff.isPrincipale() ) {
+				ff.setIsPrincipale("non");
+			}
+		}
+	}
+	
 	public void updateBaliseTitle() {
 		log.debug("updateBaliseTitle()");
 		if (formation.getBaliseTitle() == null
@@ -371,12 +415,13 @@ public class FormationManager implements Serializable {
 		this.newSession = newSession;
 	}
 
-	/* Ajout d'une filiere */
+	/* Ajout d'une catégorie */
 	public void addFormationFiliere() {
 		if (formation.getFormationFilieres().isEmpty()) {
 			newFormationFiliere.setIsPrincipale("oui");
 		}
 		formation.addFormationFiliere(newFormationFiliere);
+		newFormationFiliere = new FormationFiliere(formation);
 	}
 
 	public void saveFormationFiliere() {
@@ -404,12 +449,26 @@ public class FormationManager implements Serializable {
 	}
 
 	public void removeFormationFiliere(FormationFiliere ff) {
-		formation.removeFormationFiliere(ff);
-		if (!formation.getFormationFilieres().isEmpty()) {
-			formation.getFormationFilieres().get(0).setIsPrincipale("oui");
+		// @ 3.5
+		if ( formation.getFormationFilieres().size() > 1 ) {
+			boolean wasPrincipal = ff.isPrincipale();
+			formation.removeFormationFiliere(ff);
+			 
+			if (wasPrincipal) {
+				formation.getFormationFilieres().get(0).setIsPrincipale("oui");
+			}
 		}
 	}
 
+	public List<Categorie> getSelectableCategories() {
+		List<Categorie> ret = new ArrayList<>();
+		for ( Categorie categorie : categories ) {
+			if ( !formation.contains(categorie.getFiliere()) ) {
+				ret.add(categorie);
+			}
+		}
+		return ret;
+	}
 	public List<FormationFiliere> autresFormationsFiliere() {
 		if (newFormationFiliere.getFiliere() != null) {
 			return formationDao.findByFiliere(newFormationFiliere.getFiliere());

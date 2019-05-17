@@ -68,8 +68,8 @@
 				<ui:define name="label">#{messages['formation.categorie']}</ui:define>
 				<h:selectOneMenu required="true" value="#{formation.categorie}"
 					id="catSel">
-					<a:ajax event="change" render="rangCategoriePanel baliseTitlePanel"
-						execute="@this" listener="#{formationManager.updateBaliseTitle}">
+					<a:ajax event="change" render="rangCategoriePanel baliseTitlePanel,formationFiliereList"
+						execute="@this" listener="#{formationManager.updateCategorie}">
 					</a:ajax>
 					<s:selectItems value="#{categories}" var="categorie"
 						label="#{categorie.libelle} (#{categorie.filiere.libelle})"
@@ -85,7 +85,11 @@
 						<ui:define name="label">#{messages['formation.rangCategorie']}
 					
 					</ui:define>
-						<h:inputText value="#{formation.rangCategorie}" id="rangInput" />
+						<h:inputText value="#{formation.rangCategorie}" id="rangInput" >
+						<a:ajax event="change" render="formationFiliereList"
+						execute="@this" listener="#{formationManager.updateRangCategorie}">
+					</a:ajax>
+						</h:inputText>
 					</s:decorate>
 					<div>
 						<rich:collapsiblePanel expanded="#{false}" id="autPanel"
@@ -186,7 +190,7 @@
 				</rich:column>
 				<rich:column>
 					<f:facet name="header" />
-					<a:commandButton value="Supprimer"
+					<a:commandButton value="Supprimer" disabled="#{fFiliere.principale}"
 						action="#{formationManager.removeFormationFiliere(fFiliere)}"
 						render="formationFiliereList" immediate="true">
 						<s:conversationId />
@@ -197,13 +201,6 @@
 						action="#{formationManager.setNewFormationFiliere(fFiliere)}"
 						oncomplete="#{rich:component('formationFilierePopup')}.show();"
 						immediate="true">
-					</a:commandButton>
-					&#160;
-					<a:commandButton value="Rendre principale (Affichage filière web)"
-						rendered="#{fFiliere.isPrincipale.equals('non')}"
-						render="formationFiliereList"
-						action="#{formationManager.setPrincipale(fFiliere)}">
-						<s:conversationId />
 					</a:commandButton>
 				</rich:column>
 			</rich:dataTable>

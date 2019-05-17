@@ -29,18 +29,21 @@
 		</f:facet>
 		<h:form>
 			<a:outputPanel id="formationFiliereContent">
+			#{formationManager.newFormationFiliere.categorie}
 			<s:decorate template="../layout/edit.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.filieres']}" />
+					<h:outputText value="#{messages['formation.categorie']}" />
 				</ui:define>
-				<h:selectOneMenu id="inputFpPartenaire" required="true"
+				<h:selectOneMenu id="inputFpPartenaire" required="true" rendered="#{formationManager.newFormationFiliere.categorie == null}"
 					value="#{formationManager.newFormationFiliere.categorie}">
 					<a:ajax event="change" render="rangFilierePanel" execute="@this" />
-					<s:selectItems value="#{categories}" var="categorie"
+					<s:selectItems value="#{formationManager.selectableCategories}" var="categorie"
 						label="#{categorie.libelle} (#{categorie.filiere.libelle})"
 						noSelectionLabel="Sélectionner une catégorie" />
 					<s:convertEntity />
 				</h:selectOneMenu>
+				<h:outputText rendered="#{formationManager.newFormationFiliere.categorie != null}"
+				 value="#{formationManager.newFormationFiliere.categorie.libelle}"/>
 			</s:decorate>
 
 
@@ -49,7 +52,7 @@
 			<a:outputPanel rendered="#{formationManager.newFormationFiliere.categorie != null}">
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">
-						<h:outputText value="#{messages['formation.filiere.rang']}" />
+						<h:outputText value="#{messages['formation.rangCategorie']}" />
 					</ui:define>
 					<h:inputText id="inputFpCode" size="3" required="true"
 						value="#{formationManager.newFormationFiliere.rangFiliere}" />

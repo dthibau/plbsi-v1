@@ -751,6 +751,15 @@ public class Formation implements Serializable, Comparable<Formation> {
 		return false;
 	}
 	@Transient
+	public FormationFiliere getFormationFiliere(Filiere filiere) {
+		for (FormationFiliere ff : formationFilieres) {
+			if (ff.getFiliere().equals(filiere)) {
+				return ff;
+			}
+		}
+		return null;
+	}
+	@Transient
 	public boolean contains(Categorie categorie) {
 		for (FormationFiliere ff : formationFilieres) {
 			if (ff.getCategorie() != null && ff.getCategorie().equals(categorie) ) {

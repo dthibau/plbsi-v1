@@ -101,6 +101,9 @@ public class FormationManager implements Serializable {
 
 	@In(create = true)
 	Map<String, Float> tarifsInter;
+	
+	@In
+	ApplicationManager applicationManager;
 
 	@Logger
 	Log log;
@@ -728,4 +731,7 @@ public class FormationManager implements Serializable {
 		this.showArgumentaire = showArgumentaire;
 	}
 
+	public String getKibanaLink() {
+		return applicationManager.getKibanaLink(formation.getReference());
+	}
 }

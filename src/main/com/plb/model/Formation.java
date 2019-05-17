@@ -779,7 +779,8 @@ public class Formation implements Serializable, Comparable<Formation> {
 			} else {
 				sbf.append("<br/>");
 			}
-			sbf.append(f.getLibelle()).append(" -> ").append(f.getCategorie() != null ? f.getCategorie().getLibelle() : "A définir");
+			// sbf.append(f.getLibelle()).append(" -> ").append(f.getCategorie() != null ? f.getCategorie().getLibelle() : "A définir");
+			sbf.append(f.getLibelle());
 		}
 		return sbf.toString();
 	}

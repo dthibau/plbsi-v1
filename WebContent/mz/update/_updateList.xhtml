@@ -1,0 +1,67 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
+
+	<h:form>
+		<center>
+			<a:commandButton action="#{updateManager.save}"
+				render="resultList,updateCount" value="Enregistrer"
+				style="font-size:18px" />
+		</center>
+
+
+		<br />
+		<a:outputPanel id="updateCount" layout="block">
+			Formations à mettre à jour : <h:outputText
+				value="#{updateManager.updateCount}" />
+
+		</a:outputPanel>
+		<rich:dataTable id="resultList" value="#{updateManager.results}"
+			var="_formation">
+
+			<rich:column id="libelle">
+				<f:facet name="header">
+				#{messages['formation.libelle']}
+			</f:facet>
+				<h:outputLink rendered="#{_formation.urlPlb != null}"
+					styleClass="#{_formation.type}"
+					value="#{WEB_URL}#{_formation.urlPlb}" target="_blank">#{_formation.reference}</h:outputLink>
+				<h:outputText rendered="#{_formation.urlPlb == null}"
+					styleClass="#{_formation.type}" value="#{_formation.reference}" />
+				<br />
+				<s:link view="/mz/formation/formation.xhtml"
+					action="#{formationManager.select}">
+					<f:param name="formationId" value="#{_formation.idFormation}" />
+					<s:conversationPropagation type="none" />
+					#{_formation.libelle}
+				</s:link>
+
+			</rich:column>
+			<rich:column id="descriptif" width="300">
+				<f:facet name="header">
+					<h:outputText value="#{messages['formation.descriptif']}" />
+				</f:facet>
+				<plb:editorObjectifs value="#{_formation.descriptif}"
+					id="descriptifEditor" height="160" urlCss="#{URL_CSS}" />
+
+			</rich:column>
+
+			<rich:column id="objectifs" width="300">
+				<f:facet name="header">
+					<h:outputText value="#{messages['formation.objectifs']}" />
+				</f:facet>
+				<plb:editorObjectifs value="#{_formation.objectifs}"
+					id="objectifsEditor" height="160" urlCss="#{URL_CSS}" />
+
+			</rich:column>
+
+		</rich:dataTable>
+
+	</h:form>
+</ui:composition>

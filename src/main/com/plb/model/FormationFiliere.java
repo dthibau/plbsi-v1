@@ -29,7 +29,7 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 	private Categorie categorie;
 	
 	@Column(name="forfil_rang")
-	private Integer rangFiliere;
+	private Integer rang;
 
 	@Column(name="forfil_filiere_principale", columnDefinition="set")
 	private String isPrincipale = "non";
@@ -46,7 +46,7 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 	public FormationFiliere getCopy() {
 		FormationFiliere newFF = new FormationFiliere(this.formation);
 		newFF.setFiliere(this.filiere);
-		newFF.setRangFiliere(this.rangFiliere);
+		newFF.setRang(this.rang);
 		
 		return newFF;
 	}
@@ -73,12 +73,12 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 		this.filiere = filiere;
 	}
 
-	public Integer getRangFiliere() {
-		return rangFiliere;
+	public Integer getRang() {
+		return rang;
 	}
 
-	public void setRangFiliere(Integer rangCategorie) {
-		this.rangFiliere = rangCategorie;
+	public void setRang(Integer rangCategorie) {
+		this.rang = rangCategorie;
 	}
 	
 	public String getIsPrincipale() {
@@ -100,4 +100,40 @@ public class FormationFiliere implements Comparable<FormationFiliere>{
 		// TODO Auto-generated method stub
 		return getFormation().compareTo(o.getFormation());
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categorie == null) ? 0 : categorie.hashCode());
+		result = prime * result + ((filiere == null) ? 0 : filiere.hashCode());
+		result = prime * result + ((formation == null) ? 0 : formation.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FormationFiliere other = (FormationFiliere) obj;
+		if (categorie == null) {
+			if (other.categorie != null)
+				return false;
+		} else if (!categorie.equals(other.categorie))
+			return false;
+		if (filiere == null) {
+			if (other.filiere != null)
+				return false;
+		} else if (!filiere.equals(other.filiere))
+			return false;
+		if (formation == null) {
+			if (other.formation != null)
+				return false;
+		} else if (!formation.equals(other.formation))
+			return false;
+		return true;
+	}
+	
 }

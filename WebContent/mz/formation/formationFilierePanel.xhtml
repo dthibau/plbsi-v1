@@ -29,33 +29,40 @@
 		</f:facet>
 		<h:form>
 			<a:outputPanel id="formationFiliereContent">
-			#{formationManager.newFormationFiliere.categorie}
 			<s:decorate template="../layout/edit.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.categorie']}" />
+					<h:outputText value="#{messages['formation.filiere']} / #{messages['formation.categorie']}" />
 				</ui:define>
-				<h:selectOneMenu id="inputFpPartenaire" required="true" rendered="#{formationManager.newFormationFiliere.categorie == null}"
+				<h:selectOneMenu required="true" rendered="#{!formationManager.formationFiliereExists}"
+					value="#{formationManager.newFormationFiliere.filiere}">
+					<a:ajax event="change" render="categorieSelect" execute="@this" />
+					<s:selectItems value="#{formationManager.selectableFilieresSecondaires}" var="filiere"
+						label="#{filiere.libelle}"
+						noSelectionLabel="Sélectionner une filière" />
+					<s:convertEntity />
+				</h:selectOneMenu>
+
+				<h:selectOneMenu id="categorieSelect" required="true" rendered="#{!formationManager.formationFiliereExists}"
 					value="#{formationManager.newFormationFiliere.categorie}">
-					<a:ajax event="change" render="rangFilierePanel" execute="@this" />
-					<s:selectItems value="#{formationManager.selectableCategories}" var="categorie"
-						label="#{categorie.libelle} (#{categorie.filiere.libelle})"
+					<a:ajax event="change" render="rangPanel" execute="@this" />
+					<s:selectItems value="#{formationManager.selectableCategoriesSecondaires}" var="categorie"
+						label="#{categorie.libelle}"
 						noSelectionLabel="Sélectionner une catégorie" />
 					<s:convertEntity />
 				</h:selectOneMenu>
-				<h:outputText rendered="#{formationManager.newFormationFiliere.categorie != null}"
-				 value="#{formationManager.newFormationFiliere.categorie.libelle}"/>
+				<h:outputText value="#{formationManager.newFormationFiliere.filiere.libelle} / #{formationManager.newFormationFiliere.categorie.libelle}" rendered="#{formationManager.formationFiliereExists}"/>
 			</s:decorate>
 
 
 
-			<a:outputPanel layout="block" id="rangFilierePanel">
+			<a:outputPanel layout="block" id="rangPanel">
 			<a:outputPanel rendered="#{formationManager.newFormationFiliere.categorie != null}">
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">
 						<h:outputText value="#{messages['formation.rangCategorie']}" />
 					</ui:define>
 					<h:inputText id="inputFpCode" size="3" required="true"
-						value="#{formationManager.newFormationFiliere.rangFiliere}" />
+						value="#{formationManager.newFormationFiliere.rang}" />
 				</s:decorate>
 				
 				<div>
@@ -66,7 +73,7 @@
 						<table width="100%" class="table-border" cellpadding="4">
 						<tr class="table-border"><th class="table-border">#{messages['formation.reference']}</th>
 						<th class="table-border">#{messages['formation.libelle']}</th>
-						<th class="table-border">#{messages['formation.filiere.rang']}</th></tr>
+						<th class="table-border">#{messages['formation.rangCategorie']}</th></tr>
 						<a:repeat value="#{formationManager.autresFormationsNewCategorie()}" var="fFormation">
 						<tr class="table-border">
 						<td class="table-border"><h:outputLink rendered="#{fFormation.formation.urlPlb != null}"
@@ -93,7 +100,7 @@
 			<a:commandButton action="#{formationManager.addFormationFiliere}" rendered="#{!formationManager.formationFiliereExists}"
 				value="Ajouter" execute="@form" render="formationFiliereList"
 				oncomplete="#{rich:component('formationFilierePopup')}.hide();"></a:commandButton>
-			<a:commandButton action="#{formationManager.saveFormationFiliere}" rendered="#{formationManager.formationFiliereExists}"
+			<a:commandButton action="#{formationManager.updateRang}" rendered="#{formationManager.formationFiliereExists}"
 				value="Modifier" execute="@form" render="formationFiliereList"
 				oncomplete="#{rich:component('formationFilierePopup')}.hide();"></a:commandButton>
 		</a:outputPanel>

@@ -102,12 +102,15 @@ public class FormationManager implements Serializable {
 
 	@In(create = true)
 	Map<String, Float> tarifsInter;
-	
+
 	@In
 	ApplicationManager applicationManager;
-	
-	@In(create=true)
+
+	@In(create = true)
 	List<Categorie> categories;
+
+	@In(create = true)
+	List<Filiere> filieres;
 
 	@Logger
 	Log log;
@@ -148,8 +151,11 @@ public class FormationManager implements Serializable {
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public void select(Formation formation) {
 		log.debug("Select formation : " + formation);
-		formation = entityManager.find(Formation.class,
-				formation.getIdFormation());
+		formation = entityManager.find(Formation.class, formation.getIdFormation());
+		// @3.5 : Pour être sur que le falg filière principale utilisée par le site web
+		// soit en cohérence
+		// Doit disparaitre à terme
+		updateCategorie();
 		_storeOldState();
 		mode = VISU_MODE;
 
@@ -158,9 +164,12 @@ public class FormationManager implements Serializable {
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public String select() {
 		log.debug("Select formation : " + formationId);
-		formation = entityManager.find(Formation.class,
-				Integer.parseInt(formationId));
+		formation = entityManager.find(Formation.class, Integer.parseInt(formationId));
 		_storeOldState();
+		// @3.5 : Pour être sur que le falg filière principale utilisée par le site web
+		// soit en cohérence
+		// Doit disparaitre à terme
+		updateCategorie();
 		mode = VISU_MODE;
 
 		return "/mz/formation/formation.xhtml";
@@ -195,18 +204,16 @@ public class FormationManager implements Serializable {
 			String modif = "";
 			if (isUpdateTarif()) {
 				formation.setLastUpdatePrix(new Date());
-				modif = Labels.getString("formation.updateTarif")
-						+ " : Oui <br/>";
+				modif = Labels.getString("formation.updateTarif") + " : Oui <br/>";
 			}
-			modif += PlbUtil.diffFormation(oldFormation, oldFilieres,
-					oldFormationsPartenaire, oldFormations, formation);
+			modif += PlbUtil.diffFormation(oldFormation, oldFilieres, oldFormationsPartenaire, oldFormations,
+					formation);
 
 			if (modif.length() > 0) {
 				if (modif.indexOf(Labels.getString("formation.argumentaire")) != -1) {
 					showArgumentaire = true;
 				}
-				Event event = new FormationModificationEvent(loggedUser,
-						formation, modif);
+				Event event = new FormationModificationEvent(loggedUser, formation, modif);
 				entityManager.persist(event);
 				formation.setDateModification(new Date());
 				historique = null;
@@ -233,16 +240,13 @@ public class FormationManager implements Serializable {
 		log.debug("Formation " + this.formation + " SAVED ");
 	}
 
-	public void validateReference(FacesContext context, UIComponent component,
-			Object value) {
+	public void validateReference(FacesContext context, UIComponent component, Object value) {
 		log.debug("validateReference()");
 		String newReference = (String) value;
-		if (oldFormation == null
-				|| !oldFormation.getReference().equals(newReference)) {
+		if (oldFormation == null || !oldFormation.getReference().equals(newReference)) {
 			try {
 				formationDao.findByReference(newReference);
-				throw new ValidatorException(new FacesMessage(
-						Labels.getString("error.reference.unique")));
+				throw new ValidatorException(new FacesMessage(Labels.getString("error.reference.unique")));
 			} catch (NoResultException e) {
 			}
 		}
@@ -271,86 +275,77 @@ public class FormationManager implements Serializable {
 		log.debug("cancel()");
 		currentSessions = null;
 		entityManager.clear();
-		formation = entityManager.find(Formation.class,
-				formation.getIdFormation());
+		formation = entityManager.find(Formation.class, formation.getIdFormation());
 
 		setVisuMode();
 	}
 
 	public void updateCategorie() {
-		if ( formation.getCategorie() != null ) {
-			// @@ 3.5 
+		if (formation.getCategorie() != null) {
+			_erasePrincipale();
+			// @@ 3.5
 			// On force la filière principale de la catégorie
-			if ( !formation.contains(formation.getCategorie().getFiliere())) {
-				_erasePrincipale();
+			if (!formation.contains(formation.getCategorie().getFiliere())) {
 				FormationFiliere ff = new FormationFiliere(formation);
 				ff.setCategorie(formation.getCategorie()); // Update also filiere
 				ff.setIsPrincipale("oui");
-				if ( formation.getRangCategorie() != null ) {
-					ff.setRangFiliere(formation.getRangCategorie());
+				if (formation.getRangCategorie() != null) {
+					ff.setRang(formation.getRangCategorie());
 				}
 				formation.addFormationFiliere(ff);
 			} else {
-				_erasePrincipale();
 				FormationFiliere ff = formation.getFormationFiliere(formation.getCategorie().getFiliere());
 				ff.setIsPrincipale("oui");
-				if ( formation.getRangCategorie() != null ) {
-					ff.setRangFiliere(formation.getRangCategorie());
+				ff.setCategorie(formation.getCategorie()); // @3.5 Mise à jour également de la catégorie, disparait à
+															// terme
+				if (formation.getRangCategorie() != null) {
+					ff.setRang(formation.getRangCategorie());
 				}
 			}
 			updateBaliseTitle();
 		}
 	}
-	
+
 	public void updateRangCategorie() {
-		if ( formation.getCategorie() != null ) {
+		if (formation.getCategorie() != null) {
 			FormationFiliere ff = formation.getFormationFiliere(formation.getCategorie().getFiliere());
-			ff.setRangFiliere(formation.getRangCategorie());
+			ff.setRang(formation.getRangCategorie());
 		}
 	}
-	
+
 	private void _erasePrincipale() {
-		for ( FormationFiliere ff : formation.getFormationFilieres() ) {
-			if ( ff.isPrincipale() ) {
+		for (FormationFiliere ff : formation.getFormationFilieres()) {
+			if (ff.isPrincipale()) {
 				ff.setIsPrincipale("non");
 			}
 		}
 	}
-	
+
 	public void updateBaliseTitle() {
 		log.debug("updateBaliseTitle()");
-		if (formation.getBaliseTitle() == null
-				|| formation.getBaliseTitle().length() == 0) {
-			if (formation.getLibelle() != null
-					&& formation.getMotClePrimaire() != null
+		if (formation.getBaliseTitle() == null || formation.getBaliseTitle().length() == 0) {
+			if (formation.getLibelle() != null && formation.getMotClePrimaire() != null
 					&& formation.getCategorie() != null) {
-				formation.setBaliseTitle("FORMATION "
-						+ formation.getMotClePrimaire() + ","
-						+ formation.getLibelle() + " | PLB");
+				formation.setBaliseTitle(
+						"FORMATION " + formation.getMotClePrimaire() + "," + formation.getLibelle() + " | PLB");
 			}
 		}
 	}
 
-	public void validateUrl(FacesContext context, UIComponent component,
-			Object value) {
+	public void validateUrl(FacesContext context, UIComponent component, Object value) {
 		log.debug("validateUrl()");
 		String[] schemes = { "http" };
 		UrlValidator validator = new UrlValidator(schemes);
 		if (!validator.isValid("http://www.plb.fr/" + value)) {
-			throw new ValidatorException(new FacesMessage(
-					Labels.getString("error.invalidURL")));
+			throw new ValidatorException(new FacesMessage(Labels.getString("error.invalidURL")));
 		}
 		String url = (String) value;
 
-		if (url.indexOf('.') != -1 || url.indexOf('*') != -1
-				|| url.indexOf("'") != -1 || url.indexOf('"') != -1
-				|| url.indexOf('?') != -1 || url.indexOf('&') != -1
-				|| url.indexOf('|') != -1 || url.indexOf('/') != -1
+		if (url.indexOf('.') != -1 || url.indexOf('*') != -1 || url.indexOf("'") != -1 || url.indexOf('"') != -1
+				|| url.indexOf('?') != -1 || url.indexOf('&') != -1 || url.indexOf('|') != -1 || url.indexOf('/') != -1
 				|| url.indexOf('\\') != -1) {
-			throw new ValidatorException(new FacesMessage(
-					FacesMessage.SEVERITY_ERROR,
-					Labels.getString("error.invalidFormationURL"),
-					Labels.getString("error.invalidFormationURL")));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					Labels.getString("error.invalidFormationURL"), Labels.getString("error.invalidFormationURL")));
 		}
 
 	}
@@ -384,13 +379,11 @@ public class FormationManager implements Serializable {
 	}
 
 	public Float getPrixInter() {
-		return tarifsInter.get(formation.getCodeTarifInter()
-				+ formation.getDuree());
+		return tarifsInter.get(formation.getCodeTarifInter() + formation.getDuree());
 	}
 
 	public boolean isPrixObsolete() {
-		return formation.getLastUpdatePrix() == null
-				|| formation.getLastUpdatePrix().before(lastUpdateTarifs);
+		return formation.getLastUpdatePrix() == null || formation.getLastUpdatePrix().before(lastUpdateTarifs);
 	}
 
 	public List<Event> getHistorique() {
@@ -415,25 +408,22 @@ public class FormationManager implements Serializable {
 		this.newSession = newSession;
 	}
 
-	/* Ajout d'une catégorie */
+	/* Ajout d'une catégorie secondaire */
 	public void addFormationFiliere() {
-		if (formation.getFormationFilieres().isEmpty()) {
-			newFormationFiliere.setIsPrincipale("oui");
-		}
+
 		formation.addFormationFiliere(newFormationFiliere);
 		newFormationFiliere = new FormationFiliere(formation);
 	}
 
-	public void saveFormationFiliere() {
-		if ( entityManager.contains(formation) ) {  // Seulement si la formation existe déjà en base
-			entityManager.merge(newFormationFiliere);
-			// entityManager.flush();
-			newFormationFiliere = new FormationFiliere(formation);
-		}
+	public void updateRang() {
+		
+		formation.removeFormationFiliere(newFormationFiliere);
+		formation.addFormationFiliere(newFormationFiliere);
+		
 	}
 
 	public boolean isFormationFiliereExists() {
-		return entityManager.contains(newFormationFiliere) || (!entityManager.contains(formation) &&formation.getFormationFilieres().contains(newFormationFiliere));
+		return formation.getFormationFilieres().contains(newFormationFiliere);
 	}
 
 	public FormationFiliere getNewFormationFiliere() {
@@ -450,55 +440,62 @@ public class FormationManager implements Serializable {
 
 	public void removeFormationFiliere(FormationFiliere ff) {
 		// @ 3.5
-		if ( formation.getFormationFilieres().size() > 1 ) {
+		if (formation.getFormationFilieres().size() > 1) {
 			boolean wasPrincipal = ff.isPrincipale();
 			formation.removeFormationFiliere(ff);
-			 
+
 			if (wasPrincipal) {
 				formation.getFormationFilieres().get(0).setIsPrincipale("oui");
 			}
 		}
 	}
 
-	public List<Categorie> getSelectableCategories() {
-		List<Categorie> ret = new ArrayList<>();
-		for ( Categorie categorie : categories ) {
-			if ( !formation.contains(categorie.getFiliere()) ) {
-				ret.add(categorie);
-			}
-		}
-		return ret;
+	public List<Filiere> getSelectableFilieresSecondaires() {
+		return filieres.stream().filter(f -> !f.equals(formation.getCategorie().getFiliere()) && !formation.contains(f))
+				.collect(Collectors.toList());
+
 	}
+
+	public List<Categorie> getSelectableCategoriesSecondaires() {
+		return newFormationFiliere.getFiliere() != null ? 
+				categories.stream().filter(c -> c.getFiliere().equals(newFormationFiliere.getFiliere()))
+				.collect(Collectors.toList())
+				: categories.stream().filter(c -> !formation.contains(c.getFiliere())).collect(Collectors.toList());
+	}
+
 	public List<FormationFiliere> autresFormationsFiliere() {
 		if (newFormationFiliere.getFiliere() != null) {
 			return formationDao.findByFiliere(newFormationFiliere.getFiliere());
 		}
 		return new ArrayList<FormationFiliere>();
 	}
-	
+
 	public List<FormationCategorieDto> autresFormationsNewCategorie() {
 		List<FormationCategorieDto> ret = new ArrayList<>();
 		if (newFormationFiliere.getCategorie() != null) {
-			List<Formation> formations= formationDao.findByCategorie(newFormationFiliere.getCategorie());
+			List<Formation> formations = formationDao.findByCategorie(newFormationFiliere.getCategorie());
 			ret.addAll(formations.stream().map(f -> new FormationCategorieDto(f)).collect(Collectors.toList()));
-			
-			List<FormationFiliere> formationsFilieres = formationDao.findByCategorieSecondaire(newFormationFiliere.getCategorie());
-			ret.addAll(formationsFilieres.stream().map(ff -> new FormationCategorieDto(ff)).collect(Collectors.toList()));
-		
+
+			List<FormationFiliere> formationsFilieres = formationDao
+					.findByCategorieSecondaire(newFormationFiliere.getCategorie());
+			ret.addAll(
+					formationsFilieres.stream().map(ff -> new FormationCategorieDto(ff)).collect(Collectors.toList()));
+
 			Collections.sort(ret);
 		}
-		
+
 		return ret;
-		
+
 	}
 
 	public void setPrincipale(FormationFiliere fFiliere) {
 		List<FormationFiliere> ffs = formation.getFormationFilieres();
-		for ( FormationFiliere ff : ffs ) {
+		for (FormationFiliere ff : ffs) {
 			ff.setIsPrincipale("non");
 		}
 		fFiliere.setIsPrincipale("oui");
 	}
+
 	public void addNewSession() {
 		formation.addSession(newSession);
 		newSession = new Session(formation);
@@ -509,8 +506,7 @@ public class FormationManager implements Serializable {
 	}
 
 	public void newSessionDebutChanged() {
-		if (newSession.getDebut() != null && newSession.getFin() == null
-				&& formation.getDuree() != 0) {
+		if (newSession.getDebut() != null && newSession.getFin() == null && formation.getDuree() != 0) {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(newSession.getDebut());
 			cal.add(Calendar.DAY_OF_YEAR, (int) formation.getDuree());
@@ -529,8 +525,7 @@ public class FormationManager implements Serializable {
 		return newFormationPartenaire;
 	}
 
-	public void setNewFormationPartenaire(
-			FormationPartenaire newSessionPartenaire) {
+	public void setNewFormationPartenaire(FormationPartenaire newSessionPartenaire) {
 		this.newFormationPartenaire = newSessionPartenaire;
 	}
 
@@ -541,16 +536,16 @@ public class FormationManager implements Serializable {
 		// entityManager.remove(s);
 		// }
 		// entityManager.remove(fp);
-		
-		// Grosse verrue car un programme batch supprime les sessions passées sans prévenir Hibernate
-		org.hibernate.Session session = (org.hibernate.Session) entityManager
-				.getDelegate();
-		SessionFactoryImplementor sfi = (SessionFactoryImplementor) session
-				.getSessionFactory();
+
+		// Grosse verrue car un programme batch supprime les sessions passées sans
+		// prévenir Hibernate
+		org.hibernate.Session session = (org.hibernate.Session) entityManager.getDelegate();
+		SessionFactoryImplementor sfi = (SessionFactoryImplementor) session.getSessionFactory();
 		ConnectionProvider cp = sfi.getConnectionProvider();
 
 		Connection c = cp.getConnection();
-		PreparedStatement ps = c.prepareStatement("delete from formation_partenaire_formation_session where formation_partenaire_id = ?");
+		PreparedStatement ps = c.prepareStatement(
+				"delete from formation_partenaire_formation_session where formation_partenaire_id = ?");
 		ps.setInt(1, fp.getId());
 		ps.executeUpdate();
 		ps.close();
@@ -587,11 +582,9 @@ public class FormationManager implements Serializable {
 
 	@RaiseEvent("formationUpdated")
 	public void saveCurrentSessions() {
-		String modif = PlbUtil.mergeSessions(formation, currentSessions,
-				currentYear);
+		String modif = PlbUtil.mergeSessions(formation, currentSessions, currentYear);
 		if (modif.length() > 0) {
-			Event event = new FormationSessionEvent(loggedUser, formation,
-					modif);
+			Event event = new FormationSessionEvent(loggedUser, formation, modif);
 			entityManager.persist(event);
 			historique = null;
 			if (loggedUser.isOnlyCommercial()) {
@@ -604,7 +597,7 @@ public class FormationManager implements Serializable {
 		// Réinitialisation
 		// currentSessions = null; // Force refreshing
 		mode = VISU_MODE;
-		
+
 		log.debug("Save current sessions for " + this.formation);
 	}
 
@@ -628,12 +621,11 @@ public class FormationManager implements Serializable {
 	}
 
 	public void addFormationAssociee() {
-		newFormationAssociee = entityManager.find(Formation.class,
-				newFormationAssociee.getIdFormation());
+		newFormationAssociee = entityManager.find(Formation.class, newFormationAssociee.getIdFormation());
 		log.debug("Add formation associee " + newFormationAssociee + " for " + this.formation);
 		formation.getFormationAssociees().add(newFormationAssociee);
 		formationSuivantes = null;
-		
+
 	}
 
 	public void removeFormationAssociee(Formation formation) {
@@ -646,13 +638,13 @@ public class FormationManager implements Serializable {
 		if (formationSuivantes == null) {
 			formationSuivantes = new ArrayList<Formation>();
 
-			if (formation.getCategorie() != null
-					&& formation.getRangCategorie() != null && formation.getRangCategorie() > 0
-					&& formation.getFormationAssociees().size() < 3) {
-				List<Formation> suivantes = formationDao
-						.findSuivantes(formation);
-				int stop = (3 - formation.getFormationAssociees().size()) < suivantes.size() ? (3 - formation.getFormationAssociees().size()) : suivantes.size();
-						
+			if (formation.getCategorie() != null && formation.getRangCategorie() != null
+					&& formation.getRangCategorie() > 0 && formation.getFormationAssociees().size() < 3) {
+				List<Formation> suivantes = formationDao.findSuivantes(formation);
+				int stop = (3 - formation.getFormationAssociees().size()) < suivantes.size()
+						? (3 - formation.getFormationAssociees().size())
+						: suivantes.size();
+
 				for (int i = 0; i < stop; i++) {
 					formationSuivantes.add(suivantes.get(i));
 				}
@@ -671,55 +663,44 @@ public class FormationManager implements Serializable {
 	}
 
 	public void addFormationMutualisee() {
-		newFormationMutualisee = entityManager.find(Formation.class,
-				newFormationMutualisee.getIdFormation());
+		newFormationMutualisee = entityManager.find(Formation.class, newFormationMutualisee.getIdFormation());
 		StringBuilder sb = new StringBuilder();
 		if (formation.getFormationMutualisees() != null) {
 			if (newFormationMutualisee.getFormationMutualisees() != null) {
-				for (Formation f : newFormationMutualisee
-						.getFormationMutualisees().getFormations()) {
+				for (Formation f : newFormationMutualisee.getFormationMutualisees().getFormations()) {
 					formation.getFormationMutualisees().addFormation(f);
 					sb.append(f.getReference() + " ");
-					
+
 				}
 				newFormationMutualisee.getFormationMutualisees().setFormations(new ArrayList<Formation>());
-				entityManager.remove(newFormationMutualisee
-						.getFormationMutualisees());
-				facesMessages.addFromResourceBundle(Severity.INFO,
-						"mutualisation.merge", sb.toString());
+				entityManager.remove(newFormationMutualisee.getFormationMutualisees());
+				facesMessages.addFromResourceBundle(Severity.INFO, "mutualisation.merge", sb.toString());
 
 			} else {
-				formation.getFormationMutualisees().addFormation(
-						newFormationMutualisee);
-				facesMessages.addFromResourceBundle(Severity.INFO,
-						"mutualisation.add", newFormationMutualisee);
+				formation.getFormationMutualisees().addFormation(newFormationMutualisee);
+				facesMessages.addFromResourceBundle(Severity.INFO, "mutualisation.add", newFormationMutualisee);
 			}
 		} else {
 			if (newFormationMutualisee.getFormationMutualisees() != null) {
-				for (Formation f : newFormationMutualisee
-						.getFormationMutualisees().getFormations()) {
+				for (Formation f : newFormationMutualisee.getFormationMutualisees().getFormations()) {
 					sb.append(f.getReference() + " ");
 				}
-				newFormationMutualisee.getFormationMutualisees().addFormation(
-						formation);
-				facesMessages.addFromResourceBundle(Severity.INFO,
-						"mutualisation.addToGroup", sb.toString());
+				newFormationMutualisee.getFormationMutualisees().addFormation(formation);
+				facesMessages.addFromResourceBundle(Severity.INFO, "mutualisation.addToGroup", sb.toString());
 			} else {
 				FormationMutualisees formationMutualisees = new FormationMutualisees();
 				formationMutualisees.addFormation(newFormationMutualisee);
 				formationMutualisees.addFormation(formation);
 				entityManager.persist(formationMutualisees);
-				facesMessages.addFromResourceBundle(Severity.INFO,
-						"mutualisation.new");
+				facesMessages.addFromResourceBundle(Severity.INFO, "mutualisation.new");
 			}
 		}
 		log.debug("Added formation mutualisee " + formation);
 
 	}
-	
+
 	public void removeFormationMutualisee(Formation formationMutualisee) {
-		formationMutualisee = entityManager.find(Formation.class,
-				formationMutualisee.getIdFormation());
+		formationMutualisee = entityManager.find(Formation.class, formationMutualisee.getIdFormation());
 		formation.getFormationMutualisees().removeFormation(formationMutualisee);
 
 	}
@@ -749,25 +730,25 @@ public class FormationManager implements Serializable {
 
 	@End
 	@RaiseEvent("formationUpdated")
-	public String deleteFormation() {		
+	public String deleteFormation() {
 		log.debug("About to delete formation " + formation);
 		formationDao.deleteFormation(formation);
 		historique = null;
 		entityManager.flush();
 		entityManager.clear();
-		
+
 		return "list";
 	}
 
 	@End
 	@RaiseEvent("formationUpdated")
-	public String archiveFormation() {		
+	public String archiveFormation() {
 		log.debug("About to archive formation " + formation);
 		formationDao.archiveFormation(formation);
 		historique = null;
 		entityManager.flush();
 		entityManager.clear();
-		
+
 		return "list";
 	}
 

@@ -165,7 +165,7 @@
 
 
 			<rich:dataTable id="formationFiliereList"
-				value="#{formation.formationFilieres}" var="fFiliere">
+				value="#{formation.categoriesSecondaires}" var="fFiliere">
 				<rich:column>
 					<f:facet name="header">
 						#{messages['formation.categorie']}
@@ -184,9 +184,9 @@
 				</rich:column>
 				<rich:column>
 					<f:facet name="header">
-						#{messages['formation.filiere.rang']}
+						#{messages['formation.rangCategorie']}
 					</f:facet>
-					<h:outputText value="#{fFiliere.rangFiliere}" />
+					<h:outputText value="#{fFiliere.rang}" />
 				</rich:column>
 				<rich:column>
 					<f:facet name="header" />
@@ -196,7 +196,7 @@
 						<s:conversationId />
 					</a:commandButton>
 					&#160;
-					<a:commandButton value="Modifier le rang"
+					<a:commandButton value="Modifier"
 						render="formationFiliereContent"
 						action="#{formationManager.setNewFormationFiliere(fFiliere)}"
 						oncomplete="#{rich:component('formationFilierePopup')}.show();"

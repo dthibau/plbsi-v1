@@ -19,7 +19,7 @@ public class FormationCategorieDto implements Comparable<FormationCategorieDto>{
 	public FormationCategorieDto(FormationFiliere formationFiliere) {
 		this.formation = formationFiliere.getFormation();
 		this.categorie = formationFiliere.getCategorie();
-		this.rang = formationFiliere.getRangFiliere();
+		this.rang = formationFiliere.getRang();
 	}
 	
 	public Formation getFormation() {

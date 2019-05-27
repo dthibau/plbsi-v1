@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -120,7 +121,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	private Integer rangCategorie;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.EAGER)
-	@OrderBy("rangFiliere ASC")
+	@OrderBy("rang ASC")
 	private List<FormationFiliere> formationFilieres = new ArrayList<FormationFiliere>();
 
 	@OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -713,6 +714,11 @@ public class Formation implements Serializable, Comparable<Formation> {
 			}
 		}
 		return ret;
+	}
+
+	@Transient 
+	public List<FormationFiliere> getCategoriesSecondaires() {
+		return formationFilieres.stream().filter(ff -> !ff.isPrincipale()).collect(Collectors.toList());
 	}
 
 	public List<FormationFiliere> getFormationFilieres() {

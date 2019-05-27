@@ -29,10 +29,10 @@ public class RangFiliereComparator implements Comparator<Formation> {
 		}
 		int rang1 = -99999; int rang2 = -99999;
 		if ( ff1 != null ) {
-			rang1 = ff1.getRangFiliere();
+			rang1 = ff1.getRang();
 		}
 		if ( ff2 != null ) {
-			rang2 = ff2.getRangFiliere();
+			rang2 = ff2.getRang();
 		}
 		return  rang1 - rang2;
 			

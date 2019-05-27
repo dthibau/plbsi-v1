@@ -92,9 +92,9 @@
 
 			<s:decorate template="../layout/displayArea.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.filieres']}" />
+					<h:outputText value="#{messages['formation.categoriesSecondaires']}" />
 				</ui:define>
-				<rich:dataTable value="#{formation.formationFilieres}"
+				<rich:dataTable value="#{formation.categoriesSecondaires}"
 					var="fFiliere" style="margin-left:0px">
 					<rich:column>
 						<f:facet name="header">
@@ -110,9 +110,9 @@
 					</rich:column>
 					<rich:column>
 						<f:facet name="header">
-						#{messages['formation.filiere.rang']}
+						#{messages['formation.rangCategorie']}
 					</f:facet>
-						<h:outputText value="#{fFiliere.rangFiliere}" />
+						<h:outputText value="#{fFiliere.rang}" />
 					</rich:column>
 				</rich:dataTable>
 			</s:decorate>

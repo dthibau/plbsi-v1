@@ -463,8 +463,11 @@ public class FormationManager implements Serializable {
 	}
 
 	public List<Filiere> getSelectableFilieresSecondaires() {
+		if ( formation.getCategorie() != null ) {
 		return filieres.stream().filter(f -> !f.equals(formation.getCategorie().getFiliere()) && !formation.contains(f))
 				.collect(Collectors.toList());
+		}
+		return null;
 
 	}
 

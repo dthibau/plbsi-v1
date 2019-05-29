@@ -291,6 +291,8 @@ public class FormationManager implements Serializable {
 				ff.setIsPrincipale("oui");
 				if (formation.getRangCategorie() != null) {
 					ff.setRang(formation.getRangCategorie());
+				} else {
+					ff.setRang(0);
 				}
 				formation.addFormationFiliere(ff);
 			} else {
@@ -300,6 +302,8 @@ public class FormationManager implements Serializable {
 															// terme
 				if (formation.getRangCategorie() != null) {
 					ff.setRang(formation.getRangCategorie());
+				} else {
+					ff.setRang(0);
 				}
 			}
 			updateBaliseTitle();

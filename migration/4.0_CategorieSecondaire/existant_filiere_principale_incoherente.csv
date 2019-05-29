@@ -1,0 +1,86 @@
+for_libelle,for_reference,cat_libelle,fil_libelle
+"Apache Camel",JACM,"Web Services - SOA","Java - Java EE"
+"REST en Java",JRES,"Web Services - SOA","Java - Java EE"
+"Le framework JUnit",JJUN,Tests,"Java - Java EE"
+"Bases de données relationnelles: Conception et modélisation ",BBDR,"Non informaticiens ou débutant","Bases de données"
+"Power BI - Analysez vos données (Excel / Office 365 )",PBIO,"Microsoft Office 365","Bases de données"
+"Power BI - Initiation",BPBI,"Microsoft Office 365","Bases de données"
+"Red Hat JBoss Application Administration I ",JB248,"JBoss / Wildfly","Unix - Linux - macOS"
+"Certification RHCJA - JBoss Application Administration I examen inclus ",JB249,"JBoss / Wildfly","Unix - Linux - macOS"
+"Red Hat JBoss Application Administration niveau II ",JB348,"JBoss / Wildfly","Unix - Linux - macOS"
+"Red Hat OpenStack Administration - Niveau 2",CL210,Cloud,"Unix - Linux - macOS"
+"Certification RHCSA OpenStack Administration avec Examen ",CL211,Cloud,"Unix - Linux - macOS"
+"Power Systems for AIX III : Virtualization - Implementing Shared Storage Pools",AN32G,"Power System et PowerHA","Unix - Linux - macOS"
+"Red Hat OpenShift Enterprise - Administration (avec certification RHCE PaaS)",DO281,Cloud,"Unix - Linux - macOS"
+"Red Hat CloudForms: Gestion de Cloud Hybride (avec certification RHCE Hybrid Claoud Management)",CL221,Cloud,"Unix - Linux - macOS"
+"Red Hat OpenStack Administration - Niveau 1",CL110,Cloud,"Unix - Linux - macOS"
+"Red Hat OpenStack Administration III",CL310,Cloud,"Unix - Linux - macOS"
+"Red Hat JBoss Data Virtualization Development",JB450,"JBoss / Wildfly","Unix - Linux - macOS"
+"Red Hat JBoss Data Virtualization Development avec examen (EX450)",JB451,"JBoss / Wildfly","Unix - Linux - macOS"
+"Administration de conteneurs, de Kubernetes et de Red Hat OpenShift (Officielle Red Hat)",DO285,Cloud,"Unix - Linux - macOS"
+"Red Hat OpenShift Enterprise - Administration",DO280,Cloud,"Unix - Linux - macOS"
+"Red Hat Ceph Storage Architecture et Administration",CEPH125,Cloud,"Unix - Linux - macOS"
+"Swift, développer des applications iOS pour développeur objet (iPhone/iPad)",USDO,"iOS Développement Natif (iPhone - iPad)","Unix - Linux - macOS"
+"Architectures réseaux sécurisées ",RARS,Sécurité,Réseaux
+"SDN: Software Defined Network  - La synthèse",SDNS,Virtualisation,Réseaux
+"BizTalk Server 2016 : Conception et développement",BIZT,"Développement Windows","Microsoft Application"
+"Swift, le langage","DSWI ","iOS Développement Natif (iPhone - iPad)",Développement
+"Open GL, développement 3D (iPhone/iPad)",UPGL,"iOS Développement Natif (iPhone - iPad)",Développement
+"GWT Google Web Toolkit avancé",GWTA,"Java - Client Riche",Développement
+"UI/UX : Optimiser les UI et les UX pour la conception logicielle",UIUX,"Ergonomie Web, Tablette, Mobile  – UX",Développement
+"C++ Objets connectés : Développer une solution de A à Z",IOTD,"Internet des Objets - IoT",Développement
+"Développement Sécurisé en C++",DCSC,"Développement Sécurisé",Développement
+"Eco Conception de Services Numériques",ECOC,Divers,Développement
+"Groovy, Maîtriser le langage de scripting Groovy",JLLG,"Java - Framework et outils",Développement
+"Les Architectures Web, La synthèse",ITWE,"Système d'information","Web - Digital"
+"Responsive Web Design",TRWE,"Ergonomie Web, Tablette, Mobile  – UX","Web - Digital"
+"Les Bitcoins",BTCN,Divers,"Web - Digital"
+"Web services REST en PHP",WSPHP,"Web Services - SOA","Web - Digital"
+"Guerilla Testing : confronter & optimiser sa conception par des tests rapides",GTCO,"Ergonomie Web, Tablette, Mobile  – UX","Web - Digital"
+"L'Accessibilité Web",ACWB,"Ergonomie Web, Tablette, Mobile  – UX","Web - Digital"
+"Accessibilité Web : Bonnes pratiques",IABP,"Ergonomie Web, Tablette, Mobile  – UX","Web - Digital"
+"Dématérialisation : État de l’art",FDEA,Divers,"Management des SI"
+"Panorama 2019 des technologies informatiques (1/4) : Matériel et systèmes d’exploitation",DMSE,"Panorama des technologies informatiques ","Management des SI"
+"Panorama 2019 des technologies informatiques (2/4) : Les Réseaux, Le Web et la Sécurité",DRWS,"Panorama des technologies informatiques ","Management des SI"
+"Panorama 2019 des technologies informatiques (3/4) : Développement,base de données, et architecture des applications",DLBA,"Panorama des technologies informatiques ","Management des SI"
+"Panorama 2019 des technologies informatiques (4/4) : Développement WEB et mobiles",DDWM,"Panorama des technologies informatiques ","Management des SI"
+"Séminaire : Etat de l'art des nouvelles technologies informatiques",DETI,"Panorama des technologies informatiques ","Management des SI"
+"Marketing digital, tendances et enjeux ",DEAE,"Panorama des technologies informatiques ","Management des SI"
+"Stratégie SI",NDID,"Panorama des technologies informatiques ","Management des SI"
+"Comprendre les normes, méthodes, et référentiels pour optimiser son SI",DSLM,"Panorama des technologies informatiques ","Management des SI"
+" Utiliser le NFC dans un univers de marque",UNFC,"Panorama des technologies informatiques ","Management des SI"
+"Nouvelles architectures IT inspirées des géants du Web",DGDW,"Panorama des technologies informatiques ","Management des SI"
+"Green IT - Etat de l'art",GITE,Divers,"Management des SI"
+"Révolution Digitale",FRDI,"Panorama des technologies informatiques ","Management des SI"
+"Les Nouveaux Métiers du Numérique",MNMN,"Panorama des technologies informatiques ","Management des SI"
+"Élaborer un Business Case",EUBC,"Gestion de projet - Outils et Principes",Management
+"TestLink : Bâtir un référentiel de Tests",GRTL,Tests,"Gestion de projet"
+"Tests des applications mobiles smartphone et tablette (IOS et Android)",GTAM,Tests,"Gestion de projet"
+"Tests et Recettes pour la maitrise d'ouvrage une introduction complète",GMTR,Tests,"Gestion de projet"
+"Gestion et contrôle de la Qualité Projet",GCQP,"Système d'information","Gestion de projet"
+"CMAP Testing Foundation - Testeur des Applications Mobile",TAPM,Tests,"Gestion de projet"
+"Modèle TMMI – Enjeux, Démarche, Mesures et Certification TMMI-FL",EDEM,Tests,"Gestion de projet"
+"Test Logiciel : concepts et outils ",GSTL,Tests,"Gestion de projet"
+"Sécurité Java Card",JCSJ,"Développement embarqué",Sécurité
+"Java Card : sécuriser vos développements",JCSD,"Développement embarqué",Sécurité
+"CCSP - Certified Cloud Security Professional",CCSP,Cloud,Sécurité
+"Sécurité Cloud Computing : Niveau Avancé",SCCA,Cloud,Sécurité
+"Sécurité du Système d’Information pour non informaticien",SISS,"Non informaticiens ou débutant",Sécurité
+"Biométrie, Découverte, Etat de l’art et Applications",BDEA,Sécurité,"Télécom - Mobile"
+"VoWiFi: Voice over WiFi",RVOW,WiFi,"Télécom - Mobile"
+"SalesForce - L'essentiel de l'administration pour les nouveaux administrateurs sous Lightning",ADX201,SalesForce,"Relation client"
+"SalesForce - L'essentiel de l'administration pour les administrateurs expérimentés avec lightning",ADX211,SalesForce,"Relation client"
+"Salesforce : Developpement declaratif  pour les platform app builders avec l’expérience lightning",DEX402,SalesForce,"Relation client"
+"Salesforce - Programmatic Development using Apex & Visualforce",DEX450,SalesForce,"Relation client"
+"SalesForce - Vue d'ensemble de l'administration et  des aspects fonctionnels",SFO1,SalesForce,"Relation client"
+"SalesForce - Vue d'ensemble Architecture & Exploitation ",SFO2,SalesForce,"Relation client"
+"Salesforce Sales Cloud : Mise en œuvre d'une stratégie analytique",STR301,SalesForce,"Relation client"
+"ZZ VMware vCenter Configuration Manager 5.8 - Install, Configure, Manage",UCOS,VMware,"Microsoft Système"
+" ZZ VMware vCenter Operations Manager: Analyze & Predict v5.6",UCAP,VMware,"Microsoft Système"
+"Débutant en informatique",FDEI,"Non informaticiens ou débutant","Microsoft Système"
+"Enjeux et solutions de la virtualisation",VMSE,"Gestion de projet","Microsoft Système"
+"Planification et gestion des terminaux mobiles de l'entreprise à l'aide d'EMS et des outils AD",M20398,Mobile,"Microsoft Système"
+"Microsoft R:  Analyser les Big Data avec Microsoft R",M20773,"Aide à la décision","Microsoft Système"
+"GPFS 3.5 Optimisation des performances",AN82G,AIX,IBM
+"AIX - Les bases",AN10G,AIX,IBM
+"Oracle Data Visualization Desktop",AODV,"Oracle BI","Big Data - BI"

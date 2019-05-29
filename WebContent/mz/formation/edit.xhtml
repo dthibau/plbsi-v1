@@ -97,21 +97,21 @@
 							switchType="client">
 							<rich:dataTable
 								value="#{formationManager.autresFormationsCategorie()}"
-								var="formation">
+								var="fFormation">
 								<rich:column>
 									<f:facet name="header">#{messages['formation.reference']}</f:facet>
-									<h:outputLink rendered="#{formation.urlPlb != null}"
-										value="#{WEB_URL}#{formation.urlPlb}" target="_blank">#{formation.reference}</h:outputLink>
-									<h:outputText rendered="#{formation.urlPlb == null}"
-										value="#{formation.reference}" />
+									<h:outputLink rendered="#{fFormation.formation.urlPlb != null}"
+										value="#{WEB_URL}#{fFormation.formation.urlPlb}" target="_blank">#{fFormation.formation.reference}</h:outputLink>
+									<h:outputText rendered="#{fFormation.formation.urlPlb == null}"
+										value="#{fFormation.formation.reference}" />
 								</rich:column>
 								<rich:column>
 									<f:facet name="header">#{messages['formation.libelle']}</f:facet>
-									<h:outputText value="#{formation.libelle}" />
+									<h:outputText value="#{fFormation.formation.libelle}" />
 								</rich:column>
 								<rich:column>
 									<f:facet name="header">#{messages['formation.rangCategorie']}</f:facet>
-									<h:outputText value="#{formation.rangCategorie}" />
+									<h:outputText value="#{fFormation.rang}" />
 								</rich:column>
 							</rich:dataTable>
 						</rich:collapsiblePanel>

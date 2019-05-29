@@ -786,19 +786,33 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Transient
 	public String getFilieresAsString() {
+		
 		StringBuffer sbf = new StringBuffer();
+		
+		sbf.append("<b>").append(categorie.getFiliere().getLibelle()).append("</b>");
 		boolean bFirst = true;
 		for (FormationFiliere f : getFormationFilieres()) {
-			if (bFirst) {		
-				bFirst = false;
-			} else {
-				sbf.append("<br/>");
+			if (!f.isPrincipale()) {		
+				sbf.append("<br/>").append(f.getLibelle());
 			}
-			// sbf.append(f.getLibelle()).append(" -> ").append(f.getCategorie() != null ? f.getCategorie().getLibelle() : "A définir");
-			sbf.append(f.getLibelle());
 		}
 		return sbf.toString();
 	}
+	@Transient
+	public String getCategoriesAsString() {
+		
+		StringBuffer sbf = new StringBuffer();
+		
+		sbf.append("<b>").append(categorie.getLibelle()).append("</b>");
+		boolean bFirst = true;
+		for (FormationFiliere f : getFormationFilieres()) {
+			if (!f.isPrincipale()) {		
+				sbf.append("<br/>").append(f.getCategorie().getLibelle());
+			}
+		}
+		return sbf.toString();
+	}
+
 
 	public Categorie getCategorie() {
 		return categorie;

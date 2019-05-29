@@ -131,9 +131,8 @@
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
-			<b> <h:outputText escape="false"
-					value="#{_dto.formation.categorie.libelle}" />
-			</b>
+			<h:outputText escape="false"
+				value="#{_dto.formation.categoriesAsString}" />
 		</rich:column>
 		<rich:column
 			rendered="#{sessionDataManager.managerIntervenantsManager}"

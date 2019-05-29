@@ -393,11 +393,23 @@ public class FormationManager implements Serializable {
 		return historique;
 	}
 
-	public List<Formation> autresFormationsCategorie() {
+	public List<FormationCategorieDto> autresFormationsCategorie() {
+		List<FormationCategorieDto> ret = new ArrayList<FormationCategorieDto>();
+		
 		if (formation.getCategorie() != null) {
-			return formationDao.findByCategorie(formation.getCategorie());
+			List<Formation> formations = formationDao.findByCategorie(formation.getCategorie());
+			ret.addAll(formations.stream().map(f -> new FormationCategorieDto(f)).collect(Collectors.toList()));
+
+			List<FormationFiliere> formationsFilieres = formationDao
+					.findByCategorieSecondaire(formation.getCategorie());
+			ret.addAll(
+					formationsFilieres.stream().map(ff -> new FormationCategorieDto(ff)).collect(Collectors.toList()));
+
+			Collections.sort(ret);
 		}
-		return new ArrayList<Formation>();
+
+		return ret;
+		
 	}
 
 	public Session getNewSession() {

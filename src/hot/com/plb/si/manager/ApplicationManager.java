@@ -134,13 +134,6 @@ public class ApplicationManager implements Serializable {
 			.getString("FTP_PASSWORD");
 	public final static String WEB_ROOT_IMG = projectBundle
 			.getString("WEB_ROOT_IMG");
-	
-	public final static String kibanaLinkStart = projectBundle
-			.getString("KIBANA_LINK_START");
-	public final static String kibanaLinkQuery = projectBundle
-			.getString("KIBANA_LINK_QUERY");
-	public final static String kibanaLinkEnd = projectBundle
-			.getString("KIBANA_LINK_END");
 
 	@Out
 	public final static String WEB_URL_IMG = projectBundle
@@ -587,10 +580,5 @@ public class ApplicationManager implements Serializable {
 		}
 
 		return ret;
-	}
-	
-	public String getKibanaLink(String query) {
-		return query != null && query.length() > 0 ? kibanaLinkStart + kibanaLinkQuery.replace("$query$", query) + kibanaLinkEnd
-				: kibanaLinkStart  + kibanaLinkEnd;
 	}
 }

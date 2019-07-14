@@ -103,9 +103,6 @@ public class FormationManager implements Serializable {
 	@In(create = true)
 	Map<String, Float> tarifsInter;
 
-	@In
-	ApplicationManager applicationManager;
-
 	@In(create = true)
 	List<Categorie> categories;
 
@@ -790,7 +787,4 @@ public class FormationManager implements Serializable {
 		this.showArgumentaire = showArgumentaire;
 	}
 
-	public String getKibanaLink() {
-		return applicationManager.getKibanaLink(formation.getReference());
-	}
 }

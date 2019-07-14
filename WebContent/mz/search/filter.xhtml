@@ -58,7 +58,7 @@
 				<span> #{messages['formation.filiere']} : <h:selectOneMenu
 						id="selectFiliere" value="#{searchManager.filiere}">
 						<a:ajax event="change"
-							render="resultList,categoriesSelect,messages,totalPanel,searchPanel,kibanaPanel"
+							render="resultList,categoriesSelect,messages,totalPanel,searchPanel"
 							execute="@this" immediate="true"
 							listener="#{searchManager.changeCriteria}">
 						</a:ajax>
@@ -72,7 +72,7 @@
 				#{messages['formation.categorie']} : <h:selectOneMenu
 						id="selectCategorie" value="#{searchManager.categorie}">
 						<a:ajax event="change"
-							render="resultList,totalPanel,messages,searchPanel,kibanaPanel"
+							render="resultList,totalPanel,messages,searchPanel"
 							execute="@this" immediate="true"
 							listener="#{searchManager.changeCriteria}" />
 						<s:selectItems value="#{searchManager.categories}" var="categorie"
@@ -112,7 +112,7 @@
 					value="#{searchManager.searchString}" />
 				<a:commandButton value="Rechercher"
 					id="searchButton"
-					render="resultList,totalPanel,messages,kibanaPanel"
+					render="resultList,totalPanel,messages"
 					execute="@this,searchString,moreResults"
 					action="#{searchManager.search()}" />
 				<h:selectBooleanCheckbox value="#{searchManager.moreResults}"

@@ -110,8 +110,7 @@ public class SearchManager implements Serializable {
 	@In(create=true)
 	ApplicationManager applicationManager;
 	
-	public static String FILIERE_KIBANA_FIELD = "produit1";
-	public static String CATEGORIE_KIBANA_FIELD = "familleproduits";
+	
 
 	@Logger
 	Log log;
@@ -521,26 +520,4 @@ public class SearchManager implements Serializable {
 		this.showNextYear = showNextYear;
 	}
 
-	public String getKibanaLink() {
-		boolean bFirst=true;
-		StringBuffer sbf = new StringBuffer();
-		if ( filiere != null ) {
-			sbf.append(FILIERE_KIBANA_FIELD).append(":").append(filiere.getLibelle());
-			bFirst=false;
-		}
-		if ( categorie != null ) {
-			if ( !bFirst ) {
-				sbf.append(" AND ");
-			}
-			sbf.append(CATEGORIE_KIBANA_FIELD).append(":").append(categorie.getLibelle());
-			bFirst=false;
-		}
-		if ( searchString != null ) {
-			if ( !bFirst ) {
-				sbf.append(" AND ");
-			}
-			sbf.append(searchString);
-		}
-		return applicationManager.getKibanaLink(sbf.toString());
-	}
 }

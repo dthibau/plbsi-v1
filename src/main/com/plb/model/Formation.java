@@ -105,6 +105,18 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "tar_code_intra", columnDefinition = "char")
 	String tarifIntra = "";
 
+	@Column(name = "remise", columnDefinition = "varchar(3)")
+	@Length(max=3)
+	String remise = "";
+	
+	@Lob
+	@Column(name = "moyens_pedagogiques", columnDefinition = "longtext")
+	String moyensPedagogiques = "";
+	
+	@Lob
+	@Column(name = "modalites_suivi", columnDefinition = "longtext")
+	String modalitesSuivi = "";
+	
 	@Column(name = "for_nouveaute", columnDefinition = "enum")
 	String nouveaute = "non";
 
@@ -1257,6 +1269,30 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setDataVersion(Integer dataVersion) {
 		this.dataVersion = dataVersion;
+	}
+
+	public String getRemise() {
+		return remise;
+	}
+
+	public void setRemise(String remise) {
+		this.remise = remise;
+	}
+
+	public String getMoyensPedagogiques() {
+		return moyensPedagogiques;
+	}
+
+	public void setMoyensPedagogiques(String moyensPedagogiques) {
+		this.moyensPedagogiques = moyensPedagogiques;
+	}
+
+	public String getModalitesSuivi() {
+		return modalitesSuivi;
+	}
+
+	public void setModalitesSuivi(String modalitesSuivi) {
+		this.modalitesSuivi = modalitesSuivi;
 	}
 
 	@Override

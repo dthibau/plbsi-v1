@@ -269,6 +269,18 @@
 			</a:outputPanel>
 
 		</ui:define>
+				<ui:define name="moyens">
+			<s:decorate template="../layout/edit.xhtml" id="moyDecorate">
+				<ui:define name="label">#{messages['formation.moyens_pedagogiques']}</ui:define>
+				<plb:editorRemarques id="moyEditor"
+					value="#{formation.moyensPedagogiques}" height="80" />
+			</s:decorate>
+						<s:decorate template="../layout/edit.xhtml" id="modDecorate">
+				<ui:define name="label">#{messages['formation.modalites_suivi']}</ui:define>
+				<plb:editorRemarques id="modEditor"
+					value="#{formation.modalitesSuivi}" height="80" />
+			</s:decorate>
+			</ui:define>
 		<ui:define name="commercial">
 			<s:decorate template="../layout/edit.xhtml" id="remDecorate">
 				<ui:define name="label">#{messages['formation.remarques']}</ui:define>
@@ -329,6 +341,23 @@
 				<h:inputText value="#{formation.libreIntra}" id="tIntraInput" />
 			</s:decorate>
 
+			<s:decorate template="../layout/edit.xhtml" id="remiseDecorate">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.remise']}" />
+				</ui:define>
+				<h:selectOneMenu value="#{formation.remise}"
+						id="remiseSelect">
+						<f:selectItem itemValue=""
+							itemLabel="#{messages['formation.remise.sans']}" />
+						<f:selectItem itemValue="0" itemLabel="0" />
+						<f:selectItem itemValue="TP" itemLabel="TP" />
+						<f:selectItem itemValue="P" itemLabel="P" />
+						<f:selectItem itemValue="M" itemLabel="M" />
+						<f:selectItem itemValue="G" itemLabel="G" />
+						<f:selectItem itemValue="TG" itemLabel="TG" />
+					</h:selectOneMenu>
+			</s:decorate>
+			
 			<s:decorate template="../layout/edit.xhtml" id="oriDecorate">
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.origine']}" />

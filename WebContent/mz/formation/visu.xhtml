@@ -120,6 +120,24 @@
 
 		</ui:define>
 
+		<ui:define name="moyens">
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.moyens_pedagogiques']}" />
+				</ui:define>
+				<h:outputFormat escape="false"
+					value="#{formation.moyensPedagogiques}" />
+			</s:decorate>
+			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.modalites_suivi']}" />
+				</ui:define>
+				<h:outputFormat escape="false"
+					value="#{formation.modalitesSuivi}" />
+			</s:decorate>
+			
+		</ui:define>
 		<ui:define name="commercial">
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
@@ -167,6 +185,13 @@
 					<h:outputText value="#{messages['formation.tarifIntra']}" />
 				</ui:define>
 				<h:outputText value="#{formation.libreIntra}" />
+			</s:decorate>
+			
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
+					<h:outputText value="#{messages['formation.remise']}" />
+				</ui:define>
+				<h:outputText value="#{formation.remise}" />
 			</s:decorate>
 
 			<s:decorate template="../layout/display.xhtml">

@@ -28,11 +28,13 @@
 				onheaderclick="changePage('page4')">
 				<ui:include src="panels/_editCommerce.xhtml" />
 			</rich:tab>
-			<rich:tab header="Suivi intra" name="page5" onheaderclick="changePage('page5')"
+			<rich:tab header="Suivi intra" name="page5"
+				onheaderclick="changePage('page5')"
 				rendered="#{!empty editProspectManager.prospect.informationIntra}">
 				<ui:include src="panels/_editIntra.xhtml" />
 			</rich:tab>
-			<rich:tab header="Environnement technique" name="page6" onheaderclick="changePage('page6')"
+			<rich:tab header="Environnement technique" name="page6"
+				onheaderclick="changePage('page6')"
 				rendered="#{!empty editProspectManager.prospect.informationIntra}">
 				<ui:include src="panels/_editEnvironnement.xhtml" />
 			</rich:tab>
@@ -40,17 +42,23 @@
 
 		<br />
 		<center>
-			<a4j:commandButton action="#{editProspectManager.modifyProspect()}"
-				render="resultList,resultat,totalPanel,messages"
-				value="Valider Modification"
-				oncomplete="#{rich:component('popupModif')}.hide()"
-				style="width:120px;height:35px;" />
+
+			<a:outputPanel id="buttonPanel">
+				<a4j:commandButton action="#{editProspectManager.modifyProspect()}"
+					render="resultList,resultat,totalPanel,messages"
+					disabled="#{!editProspectManager.formValid}"
+					value="Valider Modification"
+					oncomplete="#{rich:component('popupModif')}.hide()"
+					style="width:120px;height:35px;" />
 			&nbsp;&nbsp;
 			<a4j:commandButton value="Annuler Modification"
-				action="#{editProspectManager.cancel()}"
-				render="resultList,resultat,totalPanel,messages"
-				oncomplete="#{rich:component('popupModif')}.hide()"
-				style="width:120px;height:35px;" />
+					action="#{editProspectManager.cancel()}"
+					render="resultList,resultat,totalPanel,messages"
+					oncomplete="#{rich:component('popupModif')}.hide()"
+					style="width:120px;height:35px;" /><br/>
+				<h:outputText value="#{editProspectManager.buttonMsg}"
+					style="color:red" />
+			</a:outputPanel>
 		</center>
 	</h:form>
 

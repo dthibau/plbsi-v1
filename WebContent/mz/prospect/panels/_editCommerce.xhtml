@@ -15,45 +15,40 @@
 				<fieldset>
 					<legend> Proposition </legend>
 					<ui:include src="../fields/_dateDevis.xhtml" />
+					<a:outputPanel id="montantPanel">
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:500px;"
+							rendered="#{editProspectManager.prospect.statut != ST_PERDU}">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.montant']}" />
+							</ui:define>
+							<h:inputText id="montantOblig"
+								value="#{editProspectManager.prospectDetail.montant}">
+								<a:ajax event="change" render="buttonPanel" />
+							</h:inputText>
+						</s:decorate>
 
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:500px;"
-						rendered="#{editProspectManager.remplirPerte == false}">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.montant']}" />
-						</ui:define>
-						<h:inputText id="montantOblig"
-							value="#{editProspectManager.prospectDetail.montant}"
-							rendered="#{editProspectManager.remplir}" required="true" />
-									&nbsp;&nbsp;
-									<h:outputText
-							value="(*)Le montant doit obligatoirement être renseigné."
-							rendered="#{editProspectManager.remplir}" style="color:red" />
-						<rich:message for="montantOblig" ajaxRendered="true" />
-						<h:inputText value="#{editProspectManager.prospectDetail.montant}"
-							rendered="#{editProspectManager.remplir == false and editProspectManager.remplirPerte==false}" />
-					</s:decorate>
-
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:500px;"
-						rendered="#{editProspectManager.remplirPerte}">
-						<ui:define name="label">
-							<h:outputText value="#{messages['prospect.raisonPerte']}" />
-						</ui:define>
-						<h:selectOneMenu
-							value="#{editProspectManager.prospectDetail.raisonPerte}"
-							style="width:175px;">
-							<f:selectItem itemValue="" />
-							<f:selectItem itemValue="Autre" />
-							<f:selectItem itemValue="Contenu" />
-							<f:selectItem itemValue="Date" />
-							<f:selectItem itemValue="Durée" />
-							<f:selectItem itemValue="Lieu" />
-							<f:selectItem itemValue="NSP" />
-							<f:selectItem itemValue="Prix" />
-						</h:selectOneMenu>
-					</s:decorate>
-
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:500px;"
+							rendered="#{editProspectManager.prospect.statut == ST_PERDU}">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.raisonPerte']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospectDetail.raisonPerte}"
+								style="width:175px;">
+								<a:ajax event="change" render="buttonPanel" />
+								<f:selectItem itemValue="" />
+								<f:selectItem itemValue="Autre" />
+								<f:selectItem itemValue="Contenu" />
+								<f:selectItem itemValue="Date" />
+								<f:selectItem itemValue="Durée" />
+								<f:selectItem itemValue="Lieu" />
+								<f:selectItem itemValue="NSP" />
+								<f:selectItem itemValue="Prix" />
+							</h:selectOneMenu>
+						</s:decorate>
+					</a:outputPanel>
 					<s:decorate template="../../layout/edit.xhtml" style="width:400px"
 						rendered="#{('INTRA').equals(editProspectManager.prospect.prospectDetail.typeFormation)}">
 						<ui:define name="label">#{messages['prospect.prixJour']}</ui:define>

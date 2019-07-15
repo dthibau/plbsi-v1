@@ -123,7 +123,7 @@
 		<center><p><h:graphicImage value="/img/montant.jpg" width="30%" height="30%"/><br /></p></center>
 		<h:form>
 			<a:outputPanel id="montantSigne">
-		       <s:decorate template="../layout/edit.xhtml" style="width:500px;" rendered="#{editProspectManager.remplirPerte == false}">
+		       <s:decorate template="../layout/edit.xhtml" style="width:500px;" rendered="#{editProspectManager.prospect.statut != ST_PERDU}">
 					<ui:define name="label">
 						<h:outputText value="#{messages['prospect.montant']}" />
 					</ui:define>

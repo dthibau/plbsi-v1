@@ -187,11 +187,8 @@ public class EditProspectManager implements Serializable {
 	private static int NEW_MODE = 2;
 	int mode = EDIT_MODE;
 
-	// Attribu pour remplissage obligatoire ou non du montant et raison de la
-	// perte
-	private boolean remplir;
-
-	private boolean remplirPerte;
+	// Message expliquant que le bouton est grisé
+	private String buttonMsg;
 
 	// Attribut pour savoir si l'on affiche le calendrier pour la date d'envoie
 	// du devis
@@ -233,9 +230,6 @@ public class EditProspectManager implements Serializable {
 	@Create
 	public void _init() {
 
-		// Initialisation du remplissage obligatoire de montant
-		remplir = false;
-		remplirPerte = false;
 
 		accountDao = new AccountDao(entityManager);
 		prospectDao = new ProspectDao(entityManager);
@@ -296,8 +290,7 @@ public class EditProspectManager implements Serializable {
 		prospectTemp = prospect.clone();
 		prospectDetailTemp = prospect.getProspectDetail().clone();
 		lastRef = prospect.getReference();
-		// Param�trage
-		remplirMontant();
+
 		// trouve les sessions associ�es � la reference du prospect
 		_findSession();
 		findPrix();
@@ -349,6 +342,9 @@ public class EditProspectManager implements Serializable {
 
 		if (prospect.getInformationIntra() != null) {
 			_modifyIntra();
+		}
+		if ( !ST_PERDU.equals(prospect.getStatut()) ) {
+			prospect.getProspectDetail().setRaisonPerte("");
 		}
 		// Si changement de statut et montant null
 		if (!((ST_GAGNE).equals(prospect.getStatut()) && prospect
@@ -609,7 +605,6 @@ public class EditProspectManager implements Serializable {
 		prospect.setStatut(prospectTemp.getStatut());
 		prospect.getProspectDetail()
 				.setMontant(prospectDetailTemp.getMontant());
-		remplir = false;
 	}
 
 	// Suppresion du prospect via la pop up
@@ -654,24 +649,6 @@ public class EditProspectManager implements Serializable {
 		}
 	}
 
-	// Fonction permettant le changement dynamique du statut
-	public void remplirMontant() {
-		log.debug(loggedUser + " remplirMontant");
-		remplir = false;
-		remplirPerte = false;
-		try {
-			if (ST_GAGNE.equals(prospect.getStatut())) {
-				remplir = true;
-			} else if (ST_PERDU.equals(prospect.getStatut())) {
-				remplirPerte = true;
-			}
-		} catch (Exception e) {
-			log.debug(loggedUser + " STACKTRACE");
-			remplir = false;
-			remplirPerte = false;
-			e.printStackTrace();
-		}
-	}
 
 	// Fonction qui permet de gerer la pertinence de l'avancement d'un prospect
 	public void gereStatut() {
@@ -965,13 +942,6 @@ public class EditProspectManager implements Serializable {
 		this.commercialeR = commercialeR;
 	}
 
-	public boolean isRemplir() {
-		return remplir;
-	}
-
-	public void setRemplir(boolean remplir) {
-		this.remplir = remplir;
-	}
 
 	public String getAncienCommercial() {
 		return ancienCommercial;
@@ -1033,14 +1003,6 @@ public class EditProspectManager implements Serializable {
 			}
 		}
 		return result;
-	}
-
-	public boolean isRemplirPerte() {
-		return remplirPerte;
-	}
-
-	public void setRemplirPerte(boolean remplirPerte) {
-		this.remplirPerte = remplirPerte;
 	}
 
 	public Map<String, Float> getPrix() {
@@ -1278,5 +1240,27 @@ public class EditProspectManager implements Serializable {
 		} else {
 			return "";
 		}
+	}
+	
+	public String getButtonMsg() {
+		return buttonMsg;
+	}
+
+	public void setButtonMsg(String buttonMsg) {
+		this.buttonMsg = buttonMsg;
+	}
+
+	public boolean isFormValid() {
+		buttonMsg = "";
+		if ( prospect != null ) {
+		if (ST_GAGNE.equals(prospect.getStatut()) && (prospect.getProspectDetail().getMontant() == null || prospect.getProspectDetail().getMontant() == 0)  ) {
+			buttonMsg += "Veuillez remplir un montant";
+			return false;
+		} else if (ST_PERDU.equals(prospect.getStatut()) && (prospect.getProspectDetail().getRaisonPerte() == null || prospect.getProspectDetail().getRaisonPerte().length() ==0) ) {
+			buttonMsg += "Veuillez remplir la raison de la perte";
+			return false;
+		}
+		}
+		return true;
 	}
 }

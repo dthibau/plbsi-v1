@@ -39,7 +39,7 @@ insert into formation_filiere (id_formation,id_filiere,forfil_rang,forfil_filier
 (select id_formation,id_filiere_principale,for_rang_categorie,'oui',formation.id_categorie from formation,categorie where formation.id_categorie=categorie.id_categorie and for_rang_categorie is not null);
 
 /* Requêtes Web */
-/* Filiere */
+/* Formations de la Filiere 1 */
 SELECT filiere.fil_libelle,categorie.cat_libelle,formation.for_libelle,formation.for_reference,formation.for_duree 
 FROM plbconsult.formation_filiere,formation,filiere,categorie
 WHERE formation_filiere.id_filiere = 1
@@ -49,7 +49,7 @@ AND formation_filiere.id_filiere = filiere.id_filiere
 AND formation.archivedDate is null
 order by categorie.cat_rang,formation_filiere.forfil_rang;
 
-/* Catégorie */
+/* Formations de la Catégorie 55*/
 SELECT categorie.cat_libelle,categorie.cat_description,formation.for_libelle,formation.for_reference,formation.for_duree 
 FROM plbconsult.formation_filiere,formation,categorie
 WHERE formation_filiere.id_categorie = 55
@@ -57,6 +57,13 @@ AND formation_filiere.id_formation = formation.id_formation
 AND formation_filiere.id_categorie = categorie.id_categorie
 AND formation.archivedDate is null
 order by formation_filiere.forfil_rang;
+
+/* Catégories associée de la catégorie 55 */
+SELECT categorie.cat_libelle,categorie.cat_description 
+FROM categorie_cat,categorie
+WHERE categorie_cat.id_categorie = 55
+AND categorie_cat.id_categorie_assoc = categorie.id_categorie
+order by categorie_cat.order;
 
 
 

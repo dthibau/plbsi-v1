@@ -802,7 +802,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		StringBuffer sbf = new StringBuffer();
 		
 		sbf.append("<b>").append(categorie.getFiliere().getLibelle()).append("</b>");
-		boolean bFirst = true;
 		for (FormationFiliere f : getFormationFilieres()) {
 			if (!f.isPrincipale()) {		
 				sbf.append("<br/>").append(f.getLibelle());
@@ -816,7 +815,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		StringBuffer sbf = new StringBuffer();
 		
 		sbf.append("<b>").append(categorie.getLibelle()).append("</b>");
-		boolean bFirst = true;
 		for (FormationFiliere f : getFormationFilieres()) {
 			if (!f.isPrincipale()) {		
 				sbf.append("<br/>").append(f.getCategorie().getLibelle());

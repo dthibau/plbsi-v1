@@ -49,7 +49,7 @@
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.categorie']}" />
 				</ui:define>
-				<h:outputText value="#{formation.categorie.filiere.libelle} -> #{formation.categorie.libelle}" />
+				<h:outputText value="#{formation.categorie.libelle} (#{formation.categorie.filiere.libelle}) " />
 			</s:decorate>
 
 			<s:decorate

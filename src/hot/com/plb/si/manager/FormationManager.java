@@ -401,7 +401,7 @@ public class FormationManager implements Serializable {
 
 	public List<FormationCategorieDto> autresFormationsCategorie() {
 		List<FormationCategorieDto> ret = new ArrayList<FormationCategorieDto>();
-		
+
 		if (formation.getCategorie() != null) {
 			List<Formation> formations = formationDao.findByCategorie(formation.getCategorie());
 			ret.addAll(formations.stream().map(f -> new FormationCategorieDto(f)).collect(Collectors.toList()));
@@ -415,7 +415,7 @@ public class FormationManager implements Serializable {
 		}
 
 		return ret;
-		
+
 	}
 
 	public Session getNewSession() {
@@ -434,10 +434,10 @@ public class FormationManager implements Serializable {
 	}
 
 	public void updateRang() {
-		
+
 		formation.removeFormationFiliere(newFormationFiliere);
 		formation.addFormationFiliere(newFormationFiliere);
-		
+
 	}
 
 	public boolean isFormationFiliereExists() {
@@ -469,18 +469,19 @@ public class FormationManager implements Serializable {
 	}
 
 	public List<Filiere> getSelectableFilieresSecondaires() {
-		if ( formation.getCategorie() != null ) {
-		return filieres.stream().filter(f -> !f.equals(formation.getCategorie().getFiliere()) && !formation.contains(f))
-				.collect(Collectors.toList());
+		if (formation.getCategorie() != null) {
+			return filieres.stream()
+					.filter(f -> !f.equals(formation.getCategorie().getFiliere()) && !formation.contains(f))
+					.collect(Collectors.toList());
 		}
 		return null;
 
 	}
 
 	public List<Categorie> getSelectableCategoriesSecondaires() {
-		return newFormationFiliere.getFiliere() != null ? 
-				categories.stream().filter(c -> c.getFiliere().equals(newFormationFiliere.getFiliere()))
-				.collect(Collectors.toList())
+		return newFormationFiliere.getFiliere() != null
+				? categories.stream().filter(c -> c.getFiliere().equals(newFormationFiliere.getFiliere()))
+						.collect(Collectors.toList())
 				: categories.stream().filter(c -> !formation.contains(c.getFiliere())).collect(Collectors.toList());
 	}
 
@@ -553,11 +554,14 @@ public class FormationManager implements Serializable {
 	@RaiseEvent("formationUpdated")
 	public void removeFormationPartenaire(FormationPartenaire fp) throws SQLException {
 		formation.removeFormationPartenaire(fp);
-		// for (Session s : fp.getSessions()) {
-		// entityManager.remove(s);
-		// }
-		// entityManager.remove(fp);
 
+		_sqlRemoveSessionPartenaire(fp);
+
+		log.debug("Remove Formation Partenaire " + fp + " for " + this.formation);
+		currentSessions = null;
+	}
+
+	private void _sqlRemoveSessionPartenaire(FormationPartenaire fp) throws SQLException {
 		// Grosse verrue car un programme batch supprime les sessions passées sans
 		// prévenir Hibernate
 		org.hibernate.Session session = (org.hibernate.Session) entityManager.getDelegate();
@@ -571,8 +575,6 @@ public class FormationManager implements Serializable {
 		ps.executeUpdate();
 		ps.close();
 		c.close();
-		log.debug("Remove Formation Partenaire " + fp + " for " + this.formation);
-		currentSessions = null;
 	}
 
 	public int getCurrentYear() {
@@ -751,14 +753,19 @@ public class FormationManager implements Serializable {
 
 	@End
 	@RaiseEvent("formationUpdated")
-	public String deleteFormation() {
+	public String deleteFormation() throws SQLException {
 		log.debug("About to delete formation " + formation);
+		for (FormationPartenaire fp : formation.getFormationsPartenaire()) {
+			_sqlRemoveSessionPartenaire(fp);
+		}
+		formation.setFormationsPartenaire(new ArrayList<>());
+
 		formationDao.deleteFormation(formation);
 		historique = null;
 		entityManager.flush();
 		entityManager.clear();
 
-		return "list";
+		return formation.getArchivedDate() != null ? "archive" : "list";
 	}
 
 	@End
@@ -786,7 +793,7 @@ public class FormationManager implements Serializable {
 		entityManager.flush();
 		entityManager.clear();
 
-		return "list";
+		return "archive";
 	}
 
 	private void _storeOldState() {

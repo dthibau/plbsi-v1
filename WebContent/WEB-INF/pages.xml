@@ -15,6 +15,10 @@
             	<end-conversation/>
                 <redirect view-id="/mz/search/search.xhtml"/>
            </rule>
+            <rule if-outcome="archive">
+            	<end-conversation/>
+                <redirect view-id="/mz/search/archived.xhtml"/>
+           </rule>
         </navigation>
     </page>
     

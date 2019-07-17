@@ -167,11 +167,11 @@ public class FormationDao {
 			removeFormationAssocie(formation);
 		}
 		formation.setFormationAssociees(new ArrayList<Formation>());
-		EventDao eDao = new EventDao(entityManager);
-		List<Event> events = eDao.findAll(formation);
-		for ( Event e : events ) {
-			entityManager.remove(e);
-		}
+//		EventDao eDao = new EventDao(entityManager);
+//		List<Event> events = eDao.findAll(formation);
+//		for ( Event e : events ) {
+//			entityManager.remove(e);
+//		}
 		CompetenceDao cDao = new CompetenceDao(entityManager);
 		List<Competence> competences = cDao.findByFormation(formation);
 		for ( Competence c : competences ) {

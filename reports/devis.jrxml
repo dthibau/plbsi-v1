@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="419"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -420,6 +420,9 @@
 				<staticText>
 					<reportElement x="0" y="9" width="142" height="16" uuid="0be8dd88-1291-4c81-871c-ba7d0f985dd7"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
 					<text><![CDATA[Offre valable 30 jours]]></text>
 				</staticText>
 			</band>
@@ -431,7 +434,7 @@
 	<title>
 		<band height="150" splitType="Stretch">
 			<staticText>
-				<reportElement style="default" x="0" y="0" width="142" height="12" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab"/>
+				<reportElement style="default" x="0" y="0" width="142" height="12" forecolor="#045C9B" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -580,24 +583,14 @@
 				<text><![CDATA[Tarif total €]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="title" mode="Opaque" x="0" y="0" width="555" height="32" backcolor="#DCDCDC" uuid="a0d8af01-b4fd-451a-b001-04ac43f90ae5"/>
-				<box topPadding="4">
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
+				<reportElement style="title" mode="Opaque" x="0" y="0" width="555" height="32" forecolor="#045C9B" uuid="a0d8af01-b4fd-451a-b001-04ac43f90ae5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Proposition financière"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Opaque" x="0" y="32" width="555" height="36" backcolor="#DCDCDC" uuid="7eb048e8-e9bb-412b-8de8-d65ee07c852b"/>
-				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
+				<reportElement mode="Opaque" x="0" y="32" width="555" height="36" uuid="7eb048e8-e9bb-412b-8de8-d65ee07c852b"/>
 				<textElement textAlignment="Center" markup="html">
 					<font isItalic="true"/>
 				</textElement>
@@ -678,7 +671,7 @@
 				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="sousTitle" x="0" y="18" width="555" height="28" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
+				<reportElement style="sousTitle" mode="Opaque" x="0" y="18" width="555" height="28" backcolor="#F2F2F2" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
 				<box topPadding="0">
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -688,7 +681,7 @@
 				<text><![CDATA[CONDITIONS D'ANNULATION/REPORT]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="46" width="555" height="46" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
+				<reportElement mode="Opaque" x="0" y="46" width="555" height="46" backcolor="#F2F2F2" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
 				<box>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -704,29 +697,29 @@
 	<pageFooter>
 		<band height="56">
 			<staticText>
-				<reportElement style="adresse" x="0" y="36" width="471" height="11" forecolor="#0000FF" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
+				<reportElement style="adresse" x="0" y="36" width="471" height="11" forecolor="#045C9B" uuid="c8525ebb-0499-4001-aec4-93a770178122"/>
 				<textElement textAlignment="Left"/>
 				<text><![CDATA[ RCS Nanterre B 421 694 779 - APE 6202A - Siret : 42169477900057 - N° Déclaration d'activité : 119 211 300 92]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="adresse" x="0" y="22" width="471" height="12" forecolor="#0000FF" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
+				<reportElement style="adresse" x="0" y="22" width="471" height="12" forecolor="#045C9B" uuid="207777f7-fc8b-4180-8d99-23aac978bb07"/>
 				<textElement textAlignment="Left"/>
 				<text><![CDATA[Tél : 01 43 34 90 94 -  www.plb.fr - plb@plb.fr - SARL au capital de 100 000 €]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="adresse" x="0" y="4" width="471" height="17" forecolor="#0000FF" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
+				<reportElement style="adresse" x="0" y="4" width="471" height="17" forecolor="#045C9B" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
 				<box topPadding="2"/>
-				<textElement textAlignment="Left">
-					<font size="10" isBold="true"/>
+				<textElement textAlignment="Left" markup="html">
+					<font size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[PLB Consultant - 3-5 rue Maurice Ravel - 92 300 Levallois-Perret]]></text>
+				<text><![CDATA[<b>PLB Consultant</b> - 3-5 rue Maurice Ravel - 92 300 Levallois-Perret]]></text>
 			</staticText>
 			<image>
 				<reportElement x="505" y="4" width="50" height="33" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7"/>
 				<imageExpression><![CDATA["resources/opqf.png"]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="0" y="0" width="555" height="2" forecolor="#0000FF" uuid="827b7dd5-60b7-4363-a4de-02987765116c"/>
+				<reportElement x="0" y="0" width="555" height="2" forecolor="#045C9B" uuid="827b7dd5-60b7-4363-a4de-02987765116c"/>
 				<graphicElement>
 					<pen lineWidth="1.5"/>
 				</graphicElement>

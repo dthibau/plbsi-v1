@@ -67,6 +67,12 @@ public class FormationDao {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Formation> findOnlyArchived() {
+		return (List<Formation>) entityManager.createQuery(
+				"from Formation f where " + ARCHIVE_CLAUSE).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Formation> findAllWithArchivedAndPartenaires() {
 		return (List<Formation>) entityManager.createQuery(
 				"from Formation").getResultList();
@@ -148,6 +154,9 @@ public class FormationDao {
 		_unLinkFormation(formation);
 		formation.setVisible("non");
 		formation.setArchivedDate(new Date());
+	}
+	public void unarchiveFormation(Formation formation) {
+		formation.setArchivedDate(null);
 	}
 
 	private void _unLinkFormation(Formation formation) {

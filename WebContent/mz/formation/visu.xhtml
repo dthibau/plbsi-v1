@@ -338,16 +338,22 @@
 		</ui:define>
 		<ui:define name="buttons">
 
-			<a:commandButton value="Editer" id="editButton"
+			<a:commandButton rendered="#{formation.archivedDate == null}"
+			    value="Editer" id="editButton"
 				action="#{formationManager.setEditMode}"
 				render="formationPanel,referencementPanel,webPanel,sessionsPanel">
 				<f:param name="cid" value="#{conversation.id}" />
 			</a:commandButton>
 
 			<a:commandButton
-				rendered="#{sessionDataManager.managerIntervenantsManager}"
+				rendered="#{sessionDataManager.managerIntervenantsManager and formation.archivedDate == null}"
 				value="Archiver">
 				<rich:componentControl target="archivePopup" operation="show" />
+			</a:commandButton>
+			<a:commandButton
+				rendered="#{sessionDataManager.managerIntervenantsManager and formation.archivedDate != null}"
+				value="Dés-Archiver">
+				<rich:componentControl target="unarchivePopup" operation="show" />
 			</a:commandButton>
 
 			<a:commandButton

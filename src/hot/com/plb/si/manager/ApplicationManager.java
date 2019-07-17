@@ -180,7 +180,7 @@ public class ApplicationManager implements Serializable {
 	int MAX_SIZE = 20;
 	private List<ProspectUpdate> lastProspectUpdated = new LinkedList<ProspectUpdate>();
 
-	private List<Formation> allFormations, allFormationsArchived;
+	private List<Formation> allFormations, allFormationsArchived, onlyFormationsArchived;
 
 	public void refresh() {
 		log.debug("Refreshing filieres, categories, partenaires, ... from application cache");
@@ -412,6 +412,7 @@ public class ApplicationManager implements Serializable {
 	public void refreshFormations() {
 		allFormations = null;
 		allFormationsArchived = null;
+		onlyFormationsArchived = null;
 		formationsActives = null;
 		allFormationsPartenaire = new HashMap<Formation, List<FormationPartenaire>>();
 		allFormationsMutualisee = new HashMap<Formation, FormationMutualisees>();
@@ -433,6 +434,14 @@ public class ApplicationManager implements Serializable {
 					.findAllWithArchived();
 		}
 		return allFormationsArchived;
+	}
+
+	public List<Formation> getOnlyFormationsArchived() {
+		if (onlyFormationsArchived == null) {
+			onlyFormationsArchived = new FormationDao(entityManager)
+					.findOnlyArchived();
+		}
+		return onlyFormationsArchived;
 	}
 
 	public List<FormationPartenaire> getFormationsPartenaire(Formation formation) {

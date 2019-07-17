@@ -1,0 +1,103 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<rich:panel>
+		<h:form id="ff_form">
+			<a:outputPanel id="filterPanel">
+				<span> #{messages['formation.filiere']} : <h:selectOneMenu
+						id="selectFiliere" value="#{archivedManager.filiere}">
+						<a:ajax event="change"
+							render="resultList,categoriesSelect,messages,totalPanel,searchPanel"
+							execute="@this" immediate="true"
+							listener="#{archivedManager.changeCriteria}">
+						</a:ajax>
+						<s:selectItems value="#{filieres}" var="filiere"
+							label="#{filiere.libelle}"
+							noSelectionLabel="Sélectionner une filière" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</span>
+				<a:outputPanel id="categoriesSelect">
+				#{messages['formation.categorie']} : <h:selectOneMenu
+						id="selectCategorie" value="#{archivedManager.categorie}">
+						<a:ajax event="change"
+							render="resultList,totalPanel,messages,searchPanel"
+							execute="@this" immediate="true"
+							listener="#{archivedManager.changeCriteria}" />
+						<s:selectItems value="#{archivedManager.categories}" var="categorie"
+							label="#{categorie.libelle}"
+							noSelectionLabel="Sélectionner une catégorie" />
+						<s:convertEntity />
+					</h:selectOneMenu>
+				</a:outputPanel>
+				<span><h:outputText value="#{messages['partenaire.plb']}" />
+					<h:selectBooleanCheckbox value="#{archivedManager.plbOnly}"
+						id="plbOnlyCheck" label="#{messages['search.obsolete.tarifs']}">
+						<a:ajax event="change"
+							render="selectPartenaire,resultList,totalPanel" execute="@this"
+							immediate="true" listener="#{archivedManager.filter}" />
+					</h:selectBooleanCheckbox>&#160; #{messages['partenaire']} : <h:selectOneMenu
+						id="selectPartenaire" disabled="#{archivedManager.plbOnly}"
+						value="#{archivedManager.partenaire}">
+						<a:ajax event="change" listener="#{archivedManager.filter}"
+							render="resultList,totalPanel,searchPanel" />
+						<s:selectItems value="#{partenaires}" var="partenaire"
+							label="#{partenaire.nom}"
+							noSelectionLabel="Sélectionner un partenaire" />
+						<s:convertEntity />
+					</h:selectOneMenu> </span>
+			</a:outputPanel>
+			<a:outputPanel id="searchPanel" layout="block">
+		#{messages['keyword']} : <h:inputText id="searchString"
+					value="#{archivedManager.searchString}" />
+				<a:commandButton value="Rechercher"
+					id="searchButton"
+					render="resultList,totalPanel,messages"
+					execute="@this,searchString,moreResults"
+					action="#{archivedManager.search()}" />
+				<h:selectBooleanCheckbox value="#{archivedManager.moreResults}"
+					id="moreResults">
+				</h:selectBooleanCheckbox>
+				<h:outputText value="#{messages['search.moreResults']}" />
+			</a:outputPanel>
+
+
+
+
+			<input type="hidden" name="cid" value="#{conversation.id}" />
+
+			<a:status>
+				<f:facet name="stop" />
+				<f:facet name="start">
+					<h:graphicImage value="/img/ai.gif" alt="Chargement ..." />
+				</f:facet>
+			</a:status>
+			<br />
+			<br />
+
+
+			<a:outputPanel id="totalPanel">
+				<br />Résultat : #{archivedManager.results.size} formation(s) trouvées 
+				&#160;&#160;/&#160;&#160;
+				Pagination : <h:selectBooleanCheckbox value="#{archivedManager.pagination}" >
+				<a:ajax event="change" render="resultList"/>
+				</h:selectBooleanCheckbox>
+				
+</a:outputPanel>
+			<div style="float: right; width: 301px;">
+				<a:commandButton value="Afficher tout"
+					render="selectFiliere,categoriesSelect,plbOnlyCheck,selectPartenaire,searchString,resultList,totalPanel"
+					execute="@this" action="#{archivedManager.reset()}" />
+			</div>
+		</h:form>
+
+	</rich:panel>
+
+</ui:composition>

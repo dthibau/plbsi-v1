@@ -54,6 +54,11 @@
 			</rich:menuItem>
 			<rich:menuItem submitMode="client"
 				rendered="#{sessionDataManager.managerIntervenantsManager}">
+				<s:link id="menuArchived" view="/mz/search/archived.xhtml"
+					value="Formation archivées" propagation="none" />
+			</rich:menuItem>
+			<rich:menuItem submitMode="client"
+				rendered="#{sessionDataManager.managerIntervenantsManager}">
 				<s:link rendered="#{sessionDataManager.managerIntervenantsManager}"
 					id="menuUpdate" view="/mz/update/update.xhtml" 
 					value="Mise à jour Description/Objectifs" propagation="none" />

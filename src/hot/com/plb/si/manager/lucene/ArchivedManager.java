@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.faces.context.FacesContext;
@@ -45,18 +46,11 @@ import com.plb.si.service.SearchFormation;
 import com.plb.si.service.SessionDao;
 import com.plb.si.util.PlbUtil;
 
-@Name("searchManager")
+@Name("archivedManager")
 @Scope(ScopeType.SESSION)
-public class SearchManager implements Serializable {
+public class ArchivedManager implements Serializable {
 
-	// @Out(required=false, scope=ScopeType.SESSION)
-	// String cidSearch;
 
-	@Out
-	public static int CATALOGUE_VIEW = 0;
-	@Out
-	public static int SESSION_VIEW = 1;
-	private int currentView = CATALOGUE_VIEW;
 	/**
 	 * 
 	 */
@@ -69,8 +63,7 @@ public class SearchManager implements Serializable {
 	private Partenaire partenaire;
 	private boolean plbOnly = false;
 	private boolean plbHidden = false;
-	private boolean obsoleteTarifs = false, obsoleteSessions = false,
-			moreResults = false;
+	private boolean moreResults = false;
 	private boolean pagination = true;
 
 	List<Formation> results;
@@ -99,17 +92,11 @@ public class SearchManager implements Serializable {
 	@In(create = true)
 	Date lastUpdateTarifs;
 
-	List<FormationDto> adWordsResult;
-
-	int currentYear, nextYear;
-
 	private boolean needPerformQuery = true, needFilter = true;
-	private boolean showNextYear = false;
 	boolean firstAccess = true;
 	
 	@In(create=true)
 	ApplicationManager applicationManager;
-	
 	
 
 	@Logger
@@ -118,11 +105,9 @@ public class SearchManager implements Serializable {
 	@Create
 	@Begin(join = true)
 	public void init() {
-		log.debug("Creating searchManager ");
+		log.debug("Creating archivedManager ");
 		results = new ArrayList<Formation>();
 
-		currentYear = Calendar.getInstance().get(Calendar.YEAR);
-		nextYear = currentYear + 1;
 		unsetOrder();	
 
 	}
@@ -135,7 +120,7 @@ public class SearchManager implements Serializable {
 			log.debug("Executing new Query !!" );
 			entityManager.clear();
 			try {
-				queryResults = _performQuery(false);
+				queryResults = _performQuery();
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -149,7 +134,7 @@ public class SearchManager implements Serializable {
 		}
 		if (needFilter) {
 			log.debug("Executing new Filtering !!" );
-			results = _filterResults(queryResults, false);
+			results = _filterResults(queryResults);
 			if (categorie != null) {
 				Collections.sort(results, new RangCategorieComparator());
 			} else if (filiere != null) {
@@ -162,10 +147,7 @@ public class SearchManager implements Serializable {
 			log.debug("Building DTOS !!" );
 			dtos = FormationDto.buildDtos(results, tarifsInter);
 		}
-//		realSize = dtos.size();
 		log.debug("getResults found " + dtos.size());
-//		if ( realSize > MAX_SIZE )
-//			return dtos.subList(0, 100);
 		log.debug("getResults 4 formations took "+(System.currentTimeMillis()-start)+ "ms");
 		return dtos;
 	}
@@ -190,30 +172,6 @@ public class SearchManager implements Serializable {
 		return realSize;
 	}
 
-	public List<FormationDto> getAdWordResults() {
-		// cidSearch = Conversation.instance().getId();
-		if (adWordsResult == null) {
-			List<Formation> results;
-			try {
-				results = _performQuery(true);
-				results = _filterResults(results, true);
-				Collections.sort(results, new FilierePrincipaleComparator());
-				adWordsResult = FormationDto.buildDtos(results, tarifsInter);
-			} catch (ParseException e) {
-				e.printStackTrace();
-				facesMessages.add(Severity.ERROR,
-						"Impossible de comprendre la requête");
-			}
-
-		}
-
-		return adWordsResult;
-	}
-
-	public String exportAdWords() {
-		adWordsResult = null;
-		return "/mz/search/export/adwords.xhtml";
-	}
 
 	public void search() {
 		needPerformQuery = true;
@@ -225,8 +183,6 @@ public class SearchManager implements Serializable {
 		categorie = null;
 		partenaire = null;
 		plbOnly = false;
-		obsoleteTarifs = false;
-		obsoleteSessions = false;
 		needPerformQuery = true;
 	}
 
@@ -356,54 +312,13 @@ public class SearchManager implements Serializable {
 		this.plbHidden = plbHidden;
 	}
 
-	public int getCurrentView() {
-		return currentView;
-	}
-
-	public void setCurrentView(int currentView) {
-		this.currentView = currentView;
-	}
-
-	public boolean isObsoleteTarifs() {
-		return obsoleteTarifs;
-	}
-
-	public void setObsoleteTarifs(boolean obsoleteTarifs) {
-		this.obsoleteTarifs = obsoleteTarifs;
-	}
-
-	public boolean isObsoleteSessions() {
-		return obsoleteSessions;
-	}
-
-	public void setObsoleteSessions(boolean obsoleteSessions) {
-		this.obsoleteSessions = obsoleteSessions;
-	}
-
 	public boolean isMoreResults() {
 		return moreResults;
 	}
 
 	public void setMoreResults(boolean moreResults) {
 		this.moreResults = moreResults;
-	}
-
-	public int getCurrentYear() {
-		return currentYear;
-	}
-
-	public void setCurrentYear(int currentYear) {
-		this.currentYear = currentYear;
-	}
-
-	public int getNextYear() {
-		return nextYear;
-	}
-
-	public void setNextYear(int nextYear) {
-		this.nextYear = nextYear;
-	}
-	
+	}	
 
 	public boolean isPagination() {
 		return pagination;
@@ -413,27 +328,24 @@ public class SearchManager implements Serializable {
 		this.pagination = pagination;
 	}
 
-	private List<Formation> _performQuery(boolean includeArchived)
+	private List<Formation> _performQuery()
 			throws ParseException {
 		if (searchString != null && !"".equals(searchString)) {
 			unsetOrder(); // Tri naturel par pertinence
 			SearchFormation searchFormation = new SearchFormation(entityManager);
-			return searchFormation.search(searchString, moreResults);
+			List<Formation> found = searchFormation.search(searchString, moreResults);
+			return found.stream().filter(f -> f.getArchivedDate() != null ).collect(Collectors.toList());
 		} else {
 			sortBy("statut");
 			sortBy("statut");
-			return includeArchived ? applicationManager.getAllFormationsArchived() : applicationManager.getAllFormations();
+			return applicationManager.getOnlyFormationsArchived();
 		}
 	}
 
-	private List<Formation> _filterResults(List<Formation> formations,
-			boolean includeArchived) {
+	private List<Formation> _filterResults(List<Formation> formations) {
 
 		List<Formation> ret = new ArrayList<Formation>();
 		for (Formation f : formations) {
-			if (!includeArchived && f.getArchivedDate() != null) {
-				continue;
-			}
 			if (filiere != null && !filiere.equals(f.getFilierePrincipale()) && !f.contains(filiere)) {
 				continue;
 			}
@@ -446,26 +358,7 @@ public class SearchManager implements Serializable {
 			if (plbOnly && !applicationManager.getFormationsPartenaire(f).isEmpty()) {
 				continue;
 			}
-			if (currentView == SESSION_VIEW && f.isintra()) {
-				continue;
-			}
-			if (currentView == CATALOGUE_VIEW && obsoleteTarifs
-					&& !f.hasObsoleteTarif(lastUpdateTarifs)) {
-				continue;
-			}
-			if (currentView == SESSION_VIEW && !plbHidden && obsoleteSessions
-					&& !f.hasObsoleteSession(nextYear)) {
-				continue;
-			}
-			if (currentView == SESSION_VIEW && plbHidden && obsoleteSessions
-					&& !f.hasObsoletePartenaireSession(nextYear)) {
-				continue;
-			}
-			if (currentView == SESSION_VIEW && plbHidden
-					&& applicationManager.getFormationsPartenaire(f).isEmpty()) {
-				continue;
-			}
-
+			
 			ret.add(f);
 		}
 		return ret;
@@ -485,39 +378,5 @@ public class SearchManager implements Serializable {
 
 
 
-	public List<Date> getAllMonthSession() {
-		if (allMonthSession == null) {
-			allMonthSession = new ArrayList<Date>();
-			SessionDao sDao = new SessionDao(entityManager);
-			Calendar start = Calendar.getInstance();		
-			start.add(Calendar.YEAR, -1);
-			start.set(Calendar.MONTH, 0);
-//			if ( sDao.getOldestSession().getDebut().after(start.getTime()) ) {
-//				start.setTime(sDao.getOldestSession().getDebut());
-//			}
-//			PlbUtil.normalizeMonth(start);
-			Calendar end = Calendar.getInstance();
-			end.setTime(sDao.getNewestSession().getDebut());
-
-			for (Calendar cal = start; cal.before(end); cal.add(Calendar.MONTH,
-					1)) {
-				allMonthSession.add(cal.getTime());
-			}
-		}
-		log.debug("getAllMonthSessions found "+allMonthSession.size());
-		return allMonthSession;
-	}
-
-	public int getDisplayYear() {
-		return showNextYear ? nextYear : currentYear;
-	}
-
-	public boolean isShowNextYear() {
-		return showNextYear;
-	}
-
-	public void setShowNextYear(boolean showNextYear) {
-		this.showNextYear = showNextYear;
-	}
 
 }

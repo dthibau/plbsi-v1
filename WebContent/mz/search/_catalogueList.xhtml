@@ -7,23 +7,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a="http://richfaces.org/a4j">
-
-	<rich:dataTable id="resultList" value="#{searchManager.results}"
-		var="_dto" first="#{searchManager.pagination ? listManager.first : 0}"
-		rows="#{searchManager.pagination ? listManager.pageSize : 0}"
+	
+	<ui:param name="resultManager" value="#{resultManager == null ? searchManager : resultManager}"/>
+	
+	<rich:dataTable id="resultList" value="#{resultManager.results}"
+		var="_dto" first="#{resultManager.pagination ? listManager.first : 0}"
+		rows="#{resultManager.pagination ? listManager.pageSize : 0}"
 		rowClass="#{_dto.formation.visible} #{_dto.formation.plbInter ? 'plb' : ''}">
 		<rich:column id="reference" styleClass="#{_dto.formation.type}"
-			sortOrder="#{searchManager.getOrder('reference')}"
+			sortOrder="#{resultManager.getOrder('reference')}"
 			sortBy="#{_dto.formation.reference}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.reference']}"
-					render="resultList" action="#{searchManager.sortBy('reference')}">
+					render="resultList" action="#{resultManager.sortBy('reference')}">
 					<s:conversationId />
 				</a:commandLink>
-				<a:outputPanel rendered="#{searchManager.isAscending('reference')}">
+				<a:outputPanel rendered="#{resultManager.isAscending('reference')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('reference')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('reference')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -36,17 +38,17 @@
 
 		</rich:column>
 		<rich:column id="libelle"
-			sortOrder="#{searchManager.getOrder('libelle')}"
+			sortOrder="#{resultManager.getOrder('libelle')}"
 			sortBy="#{_dto.formation.libelle}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.libelle']}"
-					render="resultList" action="#{searchManager.sortBy('libelle')}">
+					render="resultList" action="#{resultManager.sortBy('libelle')}">
 					<s:conversationId />
 				</a:commandLink>
-				<a:outputPanel rendered="#{searchManager.isAscending('libelle')}">
+				<a:outputPanel rendered="#{resultManager.isAscending('libelle')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('libelle')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('libelle')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -59,35 +61,35 @@
 
 		</rich:column>
 
-		<rich:column id="duree" sortOrder="#{searchManager.getOrder('duree')}"
+		<rich:column id="duree" sortOrder="#{resultManager.getOrder('duree')}"
 			sortBy="#{_dto.formation.duree}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.duree']}"
-					render="resultList" action="#{searchManager.sortBy('duree')}">
+					render="resultList" action="#{resultManager.sortBy('duree')}">
 					<s:conversationId />
 				</a:commandLink>
-				<a:outputPanel rendered="#{searchManager.isAscending('duree')}">
+				<a:outputPanel rendered="#{resultManager.isAscending('duree')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('duree')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('duree')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
 				#{_dto.formation.duree}
 
 			</rich:column>
-		<rich:column id="tarif" sortOrder="#{searchManager.getOrder('tarif')}"
+		<rich:column id="tarif" sortOrder="#{resultManager.getOrder('tarif')}"
 			styleClass="tarif #{_dto.formation.hasObsoleteTarif(lastUpdateTarifs) ? 'obsolete' : ''}"
 			sortBy="#{_dto.tarifInter}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.tarif']}"
-					render="resultList" action="#{searchManager.sortBy('tarif')}">
+					render="resultList" action="#{resultManager.sortBy('tarif')}">
 					<s:conversationId />
 				</a:commandLink>
-				<a:outputPanel rendered="#{searchManager.isAscending('tarif')}">
+				<a:outputPanel rendered="#{resultManager.isAscending('tarif')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('tarif')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('tarif')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -99,19 +101,19 @@
 				value="#{messages['formation.intra']}" />
 		</rich:column>
 		<rich:column rendered="#{sessionDataManager.commercial}"
-			id="tarifIntra" sortOrder="#{searchManager.getOrder('tarifIntra')}"
+			id="tarifIntra" sortOrder="#{resultManager.getOrder('tarifIntra')}"
 			sortBy="#{_dto.formation.libreIntra}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.tarifIntraCode']}"
-					render="resultList" action="#{searchManager.sortBy('tarifIntra')}">
+					render="resultList" action="#{resultManager.sortBy('tarifIntra')}">
 					<s:conversationId />
 				</a:commandLink>
 				<a:outputPanel
-					rendered="#{searchManager.isAscending('tarifIntraOrder')}">
+					rendered="#{resultManager.isAscending('tarifIntraOrder')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
 				<a:outputPanel
-					rendered="#{searchManager.isDescending('tarifIntra')}">
+					rendered="#{resultManager.isDescending('tarifIntra')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -120,14 +122,14 @@
 		<rich:column
 			rendered="#{sessionDataManager.managerIntervenantsManager}"
 			id="categorie" sortBy="#{_dto.formation.categorie.libelle}"
-			sortOrder="#{searchManager.getOrder('categorie')}">
+			sortOrder="#{resultManager.getOrder('categorie')}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.categorie']}"
-					render="resultList" action="#{searchManager.sortBy('categorie')}" />
-				<a:outputPanel rendered="#{searchManager.isAscending('categorie')}">
+					render="resultList" action="#{resultManager.sortBy('categorie')}" />
+				<a:outputPanel rendered="#{resultManager.isAscending('categorie')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('categorie')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('categorie')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -179,17 +181,17 @@
 			<h:outputText escape="false" value="#{_dto.formation.origine}" />
 		</rich:column>
 		<rich:column id="statut" rendered="#{!sessionDataManager.commercial}"
-			sortOrder="#{searchManager.getOrder('statut')}"
+			sortOrder="#{resultManager.getOrder('statut')}"
 			sortBy="#{_dto.formation.statut}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.statut']}"
-					render="resultList" action="#{searchManager.sortBy('statut')}">
+					render="resultList" action="#{resultManager.sortBy('statut')}">
 					<s:conversationId />
 				</a:commandLink>
-				<a:outputPanel rendered="#{searchManager.isAscending('statut')}">
+				<a:outputPanel rendered="#{resultManager.isAscending('statut')}">
 					<img src="#{request.contextPath}/img/sort_down.png" width="10" />
 				</a:outputPanel>
-				<a:outputPanel rendered="#{searchManager.isDescending('statut')}">
+				<a:outputPanel rendered="#{resultManager.isDescending('statut')}">
 					<img src="#{request.contextPath}/img/sort_up.png" width="10" />
 				</a:outputPanel>
 			</f:facet>
@@ -204,7 +206,7 @@
 				value="#{applicationManager.getSameFormations(_dto.formation)}"
 				var="f">
 				<s:link view="/mz/formation/formation.xhtml"
-					action="#{formationManager.select}">
+					action="#{resultManager.select}">
 					<f:param name="formationId" value="#{f.idFormation}" />
 					<s:conversationPropagation type="none" />
 					#{f.libelle} (#{f.reference})
@@ -219,7 +221,7 @@
 			<h:outputText escape="false" value="#{_dto.formation.shortRemarques}" />
 		</rich:column>
 		<f:facet name="footer">
-			<!-- 			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{searchManager.pagination ? listManager.currentPage :  0}" fastStep="5"/> -->
+			<!-- 			<rich:dataScroller id="ds2" renderIfSinglePage="false" page="#{resultManager.pagination ? listManager.currentPage :  0}" fastStep="5"/> -->
 			<rich:dataScroller id="ds2" renderIfSinglePage="false"
 				page="#{listManager.currentPage}" fastStep="5" />
 		</f:facet>

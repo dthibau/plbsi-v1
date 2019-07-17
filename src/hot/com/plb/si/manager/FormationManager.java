@@ -48,10 +48,12 @@ import com.plb.model.FormationPartenaire;
 import com.plb.model.Session;
 import com.plb.model.directory.Account;
 import com.plb.model.event.Event;
+import com.plb.model.event.FormationArchiveEvent;
 import com.plb.model.event.FormationCommentEvent;
 import com.plb.model.event.FormationCreationEvent;
 import com.plb.model.event.FormationModificationEvent;
 import com.plb.model.event.FormationSessionEvent;
+import com.plb.model.event.FormationUnArchiveEvent;
 import com.plb.si.dto.FormationCategorieDto;
 import com.plb.si.service.EventDao;
 import com.plb.si.service.FormationDao;
@@ -763,7 +765,23 @@ public class FormationManager implements Serializable {
 	@RaiseEvent("formationUpdated")
 	public String archiveFormation() {
 		log.debug("About to archive formation " + formation);
+		Event event = new FormationArchiveEvent(loggedUser, formation);
+		entityManager.persist(event);
 		formationDao.archiveFormation(formation);
+		historique = null;
+		entityManager.flush();
+		entityManager.clear();
+
+		return "list";
+	}
+
+	@End
+	@RaiseEvent("formationUpdated")
+	public String unarchiveFormation() {
+		log.debug("About to archive formation " + formation);
+		Event event = new FormationUnArchiveEvent(loggedUser, formation);
+		entityManager.persist(event);
+		formationDao.unarchiveFormation(formation);
 		historique = null;
 		entityManager.flush();
 		entityManager.clear();

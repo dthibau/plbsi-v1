@@ -1,0 +1,1 @@
+update typecontact set libelle='Qualification' where libelle='Prospection';

@@ -85,7 +85,7 @@ public class CategorieManager implements Serializable {
 		log.debug("Creating CategorieManager : loggedUser="+loggedUser);
 		categoriesAsString = new ArrayList<String>(categories.size());
 		for ( Categorie categorie : categories ) {
-			categoriesAsString.add(categorie.getLibelle());
+			categoriesAsString.add(categorie.getLibelle().replace(",", "|"));
 		}
 	}
 
@@ -167,7 +167,7 @@ public class CategorieManager implements Serializable {
 		List<CategorieConnexe> categoriesConnexes = new ArrayList<CategorieConnexe>();
 		int i=0;
 		for ( String libelle : selectedCategories ) {
-			Categorie linkedCategorie = _getCategorieFromLibelle(libelle);
+			Categorie linkedCategorie = _getCategorieFromLibelle(libelle.replace("|", ","));
 			CategorieConnexe categorieConnexe = new CategorieConnexe();
 			categorieConnexe.setBaseCategorie(this.categorie);
 			categorieConnexe.setLinkedCategorie(linkedCategorie);

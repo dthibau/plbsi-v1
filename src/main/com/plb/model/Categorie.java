@@ -146,7 +146,7 @@ public class Categorie {
 		List<String> ret = new ArrayList<String>(getCategoriesConnexes().size());
 		
 		for ( CategorieConnexe catConnexe : categoriesConnexes ) {
-			ret.add(catConnexe.getOrder(), catConnexe.getLinkedCategorie().getLibelle());
+			ret.add(catConnexe.getOrder(), catConnexe.getLinkedCategorie().getLibelle().replaceAll(",", "|"));
 		}
 		
 		return ret;

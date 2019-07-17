@@ -99,6 +99,7 @@
 										sourceCaption="#{messages['categories']}"
 										targetCaption="#{messages['categorie.connexes']}"
 										listWidth="200px" listHeight="450px" orderable="true">
+										<f:validateLength maximum="5000"/>
 										<f:selectItems value="#{categoriesAsString}" var="categorie"
 											itemValue="#{categorie}" itemLabel="#{categorie}" />
 

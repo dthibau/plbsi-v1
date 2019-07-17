@@ -9,33 +9,38 @@
 	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
 
 	<s:decorate template="layout/web.xhtml" id="webDecorate">
-
 		<ui:define name="descriptif">
- 			<plb:editorObjectifs value="#{formation.descriptif}" id="descriptifEditor" height="160" urlCss="#{URL_CSS}"/> 
+			<plb:editorObjectifs value="#{formation.descriptif}"
+				id="descriptifEditor" height="160" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="objectifs">
- 			<plb:editorObjectifs value="#{formation.objectifs}" id="objectifsEditor" height="160" urlCss="#{URL_CSS}"/> 
+			<plb:editorObjectifs value="#{formation.objectifs}"
+				id="objectifsEditor" height="160" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="prerequis">
-			<plb:editorPrerequis value="#{formation.prerequis}" id="prerequisEditor"
-				height="80" urlCss="#{URL_CSS}"/>
+			<plb:editorPrerequis value="#{formation.prerequis}"
+				id="prerequisEditor" height="80" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="travauxPratiques">
-			<plb:editorTP value="#{formation.travauxPratiques}" id="tpEditor" height="80" urlCss="#{URL_CSS}"/>	
+			<plb:editorTP value="#{formation.travauxPratiques}" id="tpEditor"
+				height="80" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="participants">
-			<plb:editorParticipants value="#{formation.participants}" id="participantsEditor" height="80" urlCss="#{URL_CSS}"/>			
+			<plb:editorParticipants value="#{formation.participants}"
+				id="participantsEditor" height="80" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="libelleInformations">
-			<h:inputText value="#{formation.libelleInformation}" id="linfInput"/>
+			<h:inputText value="#{formation.libelleInformation}" id="linfInput" />
 		</ui:define>
 		<ui:define name="informations">
-<!-- 			<plb:editor value="#{formation.infos}" id="infosEditor"  height="80" /> -->
-			<plb:editorsimple value="#{formation.infos}" id="infosEditor" cols="80" />
+			<!-- 			<plb:editor value="#{formation.infos}" id="infosEditor"  height="80" /> -->
+			<plb:editorsimple value="#{formation.infos}" id="infosEditor"
+				cols="80" />
 		</ui:define>
 		<ui:define name="description">
-<!-- 			<plb:editor value="#{formation.infos}" id="infosEditor"  height="80" /> -->
-			<plb:editorDescription value="#{formation.description}" id="descriptionEditor" cols="80" />
+			<!-- 			<plb:editor value="#{formation.infos}" id="infosEditor"  height="80" /> -->
+			<plb:editorDescription value="#{formation.description}"
+				id="descriptionEditor" cols="80" />
 		</ui:define>
 		<ui:define name="publication">
 			<s:decorate template="../layout/edit.xhtml" id="pubDecorate">
@@ -48,19 +53,28 @@
 			<s:decorate template="../layout/edit.xhtml" id="topDecorate">
 				<ui:define name="label">#{messages['formation.top10']}</ui:define>
 				<rich:inputNumberSpinner value="#{formation.top10}" maxValue="40"
-					inputSize="2" step="1" id="topInput"/>
+					inputSize="2" step="1" id="topInput" />
 			</s:decorate>
 		</ui:define>
 		<ui:define name="contenu">
-
 			<div id="contenu" style="color:#{formation.filierePrincipale.color}">
 				<plb:editorContenu value="#{formation.contenu}" id="contenuEditor"
-					height="800" urlCss="#{URL_CSS}"/>
-
+					height="800" urlCss="#{URL_CSS}" />
 			</div>
 		</ui:define>
+		<ui:define name="moyens">
+			<s:decorate template="../layout/edit.xhtml" id="moyDecorate">
+				<ui:define name="label">#{messages['formation.moyens_pedagogiques']}</ui:define>
+				<plb:editorRemarques id="moyEditor"
+					value="#{formation.moyensPedagogiques}" height="80" />
+			</s:decorate>
+			<s:decorate template="../layout/edit.xhtml" id="modDecorate">
+				<ui:define name="label">#{messages['formation.modalites_suivi']}</ui:define>
+				<plb:editorRemarques id="modEditor"
+					value="#{formation.modalitesSuivi}" height="80" />
+			</s:decorate>
+		</ui:define>
 		<ui:define name="buttons">
-
 			<ui:include src="_editButtons.xhtml" />
 		</ui:define>
 	</s:decorate>

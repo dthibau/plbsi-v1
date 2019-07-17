@@ -20,7 +20,7 @@
 
 
 		</ui:define>
-		
+
 		<ui:define name="objectifs">
 
 			<div class="formation_objectifs">
@@ -61,29 +61,29 @@
 			</div>
 		</ui:define>
 		<ui:define name="travauxPratiques">
-				<div class="formation_travaux">
-					<h:outputFormat escape="false"
-						rendered="#{formation.travauxPratiques != null}"
-						value="#{formation.travauxPratiques}" />
-				</div>
+			<div class="formation_travaux">
+				<h:outputFormat escape="false"
+					rendered="#{formation.travauxPratiques != null}"
+					value="#{formation.travauxPratiques}" />
+			</div>
 		</ui:define>
 		<ui:define name="libelleInformations">
 
-				<h:outputText rendered="#{not empty formation.libelleInformation}"
-					value="#{formation.libelleInformation}" />
-				<h:outputText rendered="#{empty formation.libelleInformation}"
-					value="#{messages['formation.informations']}" />
+			<h:outputText rendered="#{not empty formation.libelleInformation}"
+				value="#{formation.libelleInformation}" />
+			<h:outputText rendered="#{empty formation.libelleInformation}"
+				value="#{messages['formation.informations']}" />
 
 		</ui:define>
 		<ui:define name="informations">
-				<div class="formation_remarques">
-					<h:outputText escape="false" value="#{formation.infos}" />
-				</div>
+			<div class="formation_remarques">
+				<h:outputText escape="false" value="#{formation.infos}" />
+			</div>
 		</ui:define>
 		<ui:define name="description">
-				<div class="formation_description">
-					<h:outputText escape="false" value="#{formation.description}" />
-				</div>
+			<div class="formation_description">
+				<h:outputText escape="false" value="#{formation.description}" />
+			</div>
 		</ui:define>
 		<ui:define name="publication">
 			<s:decorate template="../layout/display.xhtml">
@@ -106,31 +106,26 @@
 			<rich:jQuery selector="#dummyEditor" query="hide()" />
 			<div style="height: 800px; overflow: auto">
 
-					<div class="description_contenu">
-						<h:outputFormat escape="false"
-							rendered="#{formation.contenu != null}"
-							value="#{formation.contenu}" />
-					</div>
+				<div class="description_contenu">
+					<h:outputFormat escape="false"
+						rendered="#{formation.contenu != null}"
+						value="#{formation.contenu}" />
+				</div>
 
 			</div>
 		</ui:define>
 		<ui:define name="moyens">
-			<s:decorate template="../layout/display.xhtml">
-				<ui:define name="label">
-					<h:outputText value="#{messages['formation.moyens_pedagogiques']}" />
-				</ui:define>
+			<div class="formation_remarques">
 				<h:outputFormat escape="false"
 					value="#{formation.moyensPedagogiques}" />
-			</s:decorate>
-			
-			<s:decorate template="../layout/display.xhtml">
-				<ui:define name="label">
-					<h:outputText value="#{messages['formation.modalites_suivi']}" />
-				</ui:define>
-				<h:outputFormat escape="false"
-					value="#{formation.modalitesSuivi}" />
-			</s:decorate>
-			
+			</div>
+
+		</ui:define>
+		<ui:define name="modalites">
+			<div class="formation_remarques">
+				<h:outputFormat escape="false" value="#{formation.modalitesSuivi}" />
+			</div>
+
 		</ui:define>
 		<ui:define name="buttons">
 

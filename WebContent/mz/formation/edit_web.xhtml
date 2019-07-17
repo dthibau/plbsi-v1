@@ -63,16 +63,12 @@
 			</div>
 		</ui:define>
 		<ui:define name="moyens">
-			<s:decorate template="../layout/edit.xhtml" id="moyDecorate">
-				<ui:define name="label">#{messages['formation.moyens_pedagogiques']}</ui:define>
-				<plb:editorRemarques id="moyEditor"
-					value="#{formation.moyensPedagogiques}" height="80" />
-			</s:decorate>
-			<s:decorate template="../layout/edit.xhtml" id="modDecorate">
-				<ui:define name="label">#{messages['formation.modalites_suivi']}</ui:define>
-				<plb:editorRemarques id="modEditor"
+				<plb:editorObjectifs id="moyEditor"
+					value="#{formation.moyensPedagogiques}" height="80" />		
+		</ui:define>
+		<ui:define name="modalites">
+				<plb:editorObjectifs id="modEditor"
 					value="#{formation.modalitesSuivi}" height="80" />
-			</s:decorate>
 		</ui:define>
 		<ui:define name="buttons">
 			<ui:include src="_editButtons.xhtml" />

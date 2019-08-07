@@ -85,7 +85,7 @@
 						<ui:define name="label">#{messages['formation.rangCategorie']}
 					
 					</ui:define>
-						<h:inputText value="#{formation.rangCategorie}" id="rangInput" >
+						<h:inputText value="#{formation.rangCategorie}" id="rangInput" required="true">
 						<a:ajax event="change" render="formationFiliereList"
 						execute="@this" listener="#{formationManager.updateRangCategorie}">
 					</a:ajax>

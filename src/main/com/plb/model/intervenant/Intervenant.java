@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -25,6 +26,7 @@ import com.plb.model.Fichier;
 
 @Entity 
 @Indexed
+@Table(name = "intervenant")
 public class Intervenant implements Contact {
 	
 	@Id

@@ -12,7 +12,6 @@ import com.plb.model.Filiere;
 import com.plb.model.Formation;
 import com.plb.model.FormationFiliere;
 import com.plb.model.FormationMutualisees;
-import com.plb.model.FormationPartenaire;
 import com.plb.model.ProspectFormation;
 import com.plb.model.devis.Devis;
 import com.plb.model.event.Event;
@@ -166,9 +165,6 @@ public class FormationDao {
 	}
 
 	private void _unLinkFormation(Formation formation) {
-		if (formation.getFormationsPartenaire() != null) {
-			removeFormationsPartenaire(formation);
-		}
 		if (formation.getFormationMutualisees() != null) {
 			removeFormationMutualise(formation);
 		}
@@ -212,14 +208,6 @@ public class FormationDao {
 		for ( Formation f : formations ) {
 			f.getFormationAssociees().remove(formation);
 		}
-	}
-	@SuppressWarnings("unchecked")
-	public void removeFormationsPartenaire(Formation formation) {
-		for ( FormationPartenaire fp : formation.getFormationsPartenaire() ) {
-			entityManager.remove(fp);
-		}
-		formation.setFormationsPartenaire(new ArrayList<>());
-		
 	}
 
 }

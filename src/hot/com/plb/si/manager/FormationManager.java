@@ -756,7 +756,7 @@ public class FormationManager implements Serializable {
 	public String deleteFormation() throws SQLException {
 		log.debug("About to delete formation " + formation);
 		for (FormationPartenaire fp : formation.getFormationsPartenaire()) {
-			_sqlRemoveSessionPartenaire(fp);
+			removeFormationPartenaire(fp);
 		}
 		formation.setFormationsPartenaire(new ArrayList<>());
 

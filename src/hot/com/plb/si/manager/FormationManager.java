@@ -756,7 +756,8 @@ public class FormationManager implements Serializable {
 	public String deleteFormation() throws SQLException {
 		log.debug("About to delete formation " + formation);
 		for (FormationPartenaire fp : formation.getFormationsPartenaire()) {
-			removeFormationPartenaire(fp);
+			_sqlRemoveSessionPartenaire(fp);
+			entityManager.remove(fp); // Cascading does not work !!
 		}
 		formation.setFormationsPartenaire(new ArrayList<>());
 

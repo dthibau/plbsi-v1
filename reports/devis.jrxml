@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="419"/>
+	<property name="ireport.y" value="365"/>
 	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -276,7 +276,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="0.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<text><![CDATA[Tarif total HT € à payer]]></text>
 				</staticText>
 				<textField pattern="#,##0.00 €">
@@ -288,7 +288,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$V{TotalDevis}]]></textFieldExpression>
 				</textField>
 				<staticText>
@@ -300,7 +300,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="0.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<text><![CDATA[T.V.A. à 20,0%]]></text>
 				</staticText>
 				<textField evaluationTime="Auto" pattern="#,##0.00 €">
@@ -312,7 +312,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
 				</textField>
 				<staticText>
@@ -324,7 +324,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="0.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<text><![CDATA[Tarif total TTC €]]></text>
 				</staticText>
 				<textField evaluationTime="Band" pattern="#,##0.00 €">
@@ -336,7 +336,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}+$V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}+$V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
 				</textField>
 				<staticText>
@@ -356,7 +356,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="0.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<text><![CDATA[Tarif total Hors taxe remisé €]]></text>
 				</staticText>
 				<textField>
@@ -366,7 +366,7 @@
 					<box>
 						<leftPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right" markup="none"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none"/>
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? "Remise ("+$F{remise}+"%)" : "Remise"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Auto" pattern="#,##0.00 €">
@@ -380,7 +380,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise} : $V{totalHTRemiseValeur}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00 €">
@@ -394,7 +394,7 @@
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{TotalDevis} * $F{remise} / 100 : $F{remise}]]></textFieldExpression>
 				</textField>
 			</band>

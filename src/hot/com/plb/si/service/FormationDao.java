@@ -30,7 +30,7 @@ public class FormationDao {
 	@SuppressWarnings("unchecked")
 	public List<Formation> findAll() {
 		return (List<Formation>) entityManager.createQuery(
-				"from Formation f JOIN FETCH f.formationFilieres where "+ACTIF_CLAUSE).getResultList();
+				"select distinct f from Formation f JOIN FETCH f.formationFilieres where "+ACTIF_CLAUSE).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -63,13 +63,13 @@ public class FormationDao {
 	@SuppressWarnings("unchecked")
 	public List<Formation> findAllWithArchived() {
 		return (List<Formation>) entityManager.createQuery(
-				"from Formation f JOIN FETCH f.formationFilieres ").getResultList();
+				"select distinct f from Formation f JOIN FETCH f.formationFilieres ").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Formation> findOnlyArchived() {
 		return (List<Formation>) entityManager.createQuery(
-				"from Formation f JOIN FETCH f.formationFilieres where " + ARCHIVE_CLAUSE).getResultList();
+				"select distinct f from Formation f JOIN FETCH f.formationFilieres where " + ARCHIVE_CLAUSE).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

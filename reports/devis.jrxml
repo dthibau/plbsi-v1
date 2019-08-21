@@ -268,7 +268,7 @@
 		<groupFooter>
 			<band height="118">
 				<staticText>
-					<reportElement style="titleCol" x="0" y="-1" width="471" height="22" uuid="83ba75af-078b-44dc-a7b4-1ce44cfff63c"/>
+					<reportElement style="titleCol" x="0" y="-1" width="471" height="20" uuid="83ba75af-078b-44dc-a7b4-1ce44cfff63c"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -280,7 +280,7 @@
 					<text><![CDATA[Tarif total HT € à payer]]></text>
 				</staticText>
 				<textField pattern="#,##0.00 €">
-					<reportElement x="472" y="-1" width="83" height="22" uuid="5eceea16-11e8-4775-8e37-51ef2f530a1d"/>
+					<reportElement x="472" y="-1" width="83" height="20" uuid="5eceea16-11e8-4775-8e37-51ef2f530a1d"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -292,7 +292,7 @@
 					<textFieldExpression><![CDATA[$V{TotalDevis}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="61" width="471" height="18" uuid="e87359c1-7b35-4abc-9c35-10df3c44db95"/>
+					<reportElement x="0" y="59" width="471" height="20" uuid="e87359c1-7b35-4abc-9c35-10df3c44db95"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -304,7 +304,7 @@
 					<text><![CDATA[T.V.A. à 20,0%]]></text>
 				</staticText>
 				<textField evaluationTime="Auto" pattern="#,##0.00 €">
-					<reportElement x="472" y="61" width="83" height="18" uuid="aa1e2dcb-6626-4bdd-8722-789b0806c0d9"/>
+					<reportElement x="472" y="59" width="83" height="20" uuid="aa1e2dcb-6626-4bdd-8722-789b0806c0d9"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -316,7 +316,7 @@
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="79" width="471" height="22" uuid="f872f236-c89a-4eb5-a902-5262fbfb5fbf"/>
+					<reportElement x="0" y="79" width="471" height="20" uuid="f872f236-c89a-4eb5-a902-5262fbfb5fbf"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -328,7 +328,7 @@
 					<text><![CDATA[Tarif total TTC €]]></text>
 				</staticText>
 				<textField evaluationTime="Band" pattern="#,##0.00 €">
-					<reportElement x="472" y="79" width="83" height="22" uuid="78d43cec-5bf6-4c3e-add6-f4ad4510fed3"/>
+					<reportElement x="472" y="79" width="83" height="20" uuid="78d43cec-5bf6-4c3e-add6-f4ad4510fed3"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -346,7 +346,7 @@
 					<text><![CDATA[Les tarifs indiqués incluent la prestation de formation et la fourniture d'un support de cours par participant]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="39" width="471" height="22" isRemoveLineWhenBlank="true" uuid="85fee59b-77b9-4700-a5f5-df7141160192">
+					<reportElement x="0" y="39" width="471" height="20" isRemoveLineWhenBlank="true" uuid="85fee59b-77b9-4700-a5f5-df7141160192">
 						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
 					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
@@ -360,7 +360,7 @@
 					<text><![CDATA[Tarif total Hors taxe remisé €]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="0" y="21" width="471" height="18" isRemoveLineWhenBlank="true" uuid="555135d5-0b1c-4c76-9303-7c3d36892a47">
+					<reportElement x="0" y="19" width="471" height="20" isRemoveLineWhenBlank="true" uuid="555135d5-0b1c-4c76-9303-7c3d36892a47">
 						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -370,7 +370,7 @@
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? "Remise ("+$F{remise}+"%)" : "Remise"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Auto" pattern="#,##0.00 €">
-					<reportElement x="472" y="39" width="83" height="22" isRemoveLineWhenBlank="true" uuid="bd111d1b-0c11-4bfa-b1da-cccd9efabc2e">
+					<reportElement x="472" y="39" width="83" height="20" isRemoveLineWhenBlank="true" uuid="bd111d1b-0c11-4bfa-b1da-cccd9efabc2e">
 						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
 					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
@@ -384,7 +384,7 @@
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise} : $V{totalHTRemiseValeur}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00 €">
-					<reportElement x="472" y="21" width="83" height="18" isRemoveLineWhenBlank="true" uuid="89bafdd6-524e-45b0-a64d-09238c589e23">
+					<reportElement x="472" y="19" width="83" height="20" isRemoveLineWhenBlank="true" uuid="89bafdd6-524e-45b0-a64d-09238c589e23">
 						<printWhenExpression><![CDATA[$F{remise}!=0]]></printWhenExpression>
 					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
@@ -640,7 +640,7 @@
 			</textField>
 			<textField pattern="#,##0.00 €">
 				<reportElement stretchType="RelativeToTallestObject" x="472" y="0" width="83" height="52" uuid="e975c3d2-b800-41e6-a8e5-a596c4c6c08c"/>
-				<box topPadding="2" leftPadding="2" bottomPadding="2">
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>

@@ -6,6 +6,7 @@ build/
 bin/
 dist/
 exploded-archives/
+classes/
 
 #Ant
 dist/

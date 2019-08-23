@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="devis" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="15" uuid="cf680310-cd08-40e9-9c90-9cceb27ba636">
+	<property name="net.sf.jasperreports.export.docx.embed.fonts" value="true"/>
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="365"/>
-	<style name="default" isDefault="true" fontName="Arial" fontSize="9" isBold="false"/>
-	<style name="title" fontName="Arial" fontSize="16" isBold="true"/>
-	<style name="titleCol" hAlign="Left" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<style name="legend" style="default" hAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+	<style name="default" isDefault="true" fontName="Roboto Th" fontSize="9" isBold="false"/>
+	<style name="title" fontName="Roboto Th" fontSize="16" isBold="true"/>
+	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Roboto Th" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="legend" style="default" hTextAlign="Center" hImageAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
 	<style name="sousTitle" style="default" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="adresse" style="default" fontSize="8"/>
 	<parameter name="idDevis" class="java.lang.Integer">

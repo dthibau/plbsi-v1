@@ -38,7 +38,7 @@
 	<property name="schema.version" value="${version}" />
 
 	<!-- Jasper -->
-	<property name="jasper_home" value="/home/dthibau/Dev/outils/jasperreports-5.5.0" />
+	<property name="jasper_home" value="/home/dthibau/Dev/outils/jasperreports-6.9.0" />
 
 	<fileset id="lib" dir="${lib.dir}">
 		<include name="*.jar" />
@@ -396,13 +396,15 @@
 		<delete dir="${deploy.dir}/${project.name}.war" />
 	</target>
 
-	<target name="build-report">
+	<target name="build-report" description="Compile les rapports Jasper">
+		<echo message="Buildin report with ${jasper_home}" />
+
 		<path id="cp">
 			<fileset dir="${jasper_home}">
 				<include name="**/*.jar" />
 			</fileset>
-			<fileset refid="lib" />
-			<fileset refid="server-lib" />
+			<!-- fileset refid="lib" -->
+			<!-- fileset refid="server-lib" -->
 		</path>
 
 		<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">

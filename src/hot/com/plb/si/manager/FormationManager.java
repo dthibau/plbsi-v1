@@ -308,7 +308,7 @@ public class FormationManager implements Serializable {
 					ff.setRang(0);
 				}
 			}
-			updateBaliseTitle();
+//			updateBaliseTitle();
 		}
 	}
 
@@ -330,8 +330,7 @@ public class FormationManager implements Serializable {
 	public void updateBaliseTitle() {
 		log.debug("updateBaliseTitle()");
 		if (formation.getBaliseTitle() == null || formation.getBaliseTitle().length() == 0) {
-			if (formation.getLibelle() != null && formation.getMotClePrimaire() != null
-					&& formation.getCategorie() != null) {
+			if (formation.getLibelle() != null && formation.getMotClePrimaire() != null ) {
 				formation.setBaliseTitle(
 						"FORMATION " + formation.getMotClePrimaire() + "," + formation.getLibelle() + " | PLB");
 			}

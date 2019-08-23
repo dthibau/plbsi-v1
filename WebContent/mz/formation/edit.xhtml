@@ -26,7 +26,7 @@
 				<ui:define name="label">#{messages['formation.libelle']}</ui:define>
 				<h:inputText id="libInput" required="true" size="80"
 					value="#{formation.libelle}">
-					<a:ajax event="change" execute="@this" render="baliseTitlePanel"
+					<a:ajax event="change" execute="@this,baliseTitlePanel" render="baliseTitlePanel"
 						listener="#{formationManager.updateBaliseTitle}" />
 				</h:inputText>
 			</s:decorate>
@@ -217,7 +217,7 @@
 				</ui:define>
 				<h:inputText required="true" size="20"
 					value="#{formation.motClePrimaire}" id="mkeyInput">
-					<a:ajax event="change" render="baliseTitlePanel" execute="@this"
+					<a:ajax event="change" render="baliseTitlePanel" execute="@this,baliseTitlePanel"
 						listener="#{formationManager.updateBaliseTitle}" />
 				</h:inputText>
 			</s:decorate>

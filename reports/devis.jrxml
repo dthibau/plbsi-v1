@@ -5,11 +5,11 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="365"/>
-	<style name="default" isDefault="true" fontName="Roboto Th" fontSize="9" isBold="false"/>
-	<style name="title" fontName="Roboto Th" fontSize="16" isBold="true"/>
-	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Roboto Th" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="default" isDefault="true" fontName="Open Sans" fontSize="9" isBold="false"/>
+	<style name="title" fontName="Roboto" fontSize="22" isBold="false"/>
+	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Open Sans" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="legend" style="default" hTextAlign="Center" hImageAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
-	<style name="sousTitle" style="default" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="sousTitle" fontName="Roboto" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="adresse" style="default" fontSize="8"/>
 	<parameter name="idDevis" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
@@ -436,14 +436,21 @@
 	<title>
 		<band height="150" splitType="Stretch">
 			<staticText>
-				<reportElement style="default" x="0" y="0" width="142" height="12" forecolor="#045C9B" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab"/>
+				<reportElement style="sousTitle" x="0" y="0" width="142" height="18" forecolor="#045C9B" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contact commercial]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="default" x="0" y="12" width="142" height="15" uuid="404c6a46-e5d4-4b7a-854f-82c2f2970c9b"/>
+				<reportElement style="default" x="0" y="49" width="142" height="15" uuid="404c6a46-e5d4-4b7a-854f-82c2f2970c9b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{prenom} + " " + $F{nom}]]></textFieldExpression>
 			</textField>
@@ -452,11 +459,15 @@
 				<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement style="default" x="0" y="27" width="142" height="15" uuid="823b6e3e-6128-4cba-8978-8366316f2cc7"/>
+				<reportElement style="default" x="0" y="19" width="142" height="15" uuid="823b6e3e-6128-4cba-8978-8366316f2cc7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="42" width="142" height="15" uuid="ce9f3a7f-5541-43eb-8f2f-c719ead3ea9a"/>
+				<reportElement x="0" y="34" width="142" height="15" uuid="ce9f3a7f-5541-43eb-8f2f-c719ead3ea9a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement markup="none"/>
 				<textFieldExpression><![CDATA["Tél : " + $F{telephone}]]></textFieldExpression>
 			</textField>

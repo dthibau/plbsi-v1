@@ -6,10 +6,10 @@
 	<property name="ireport.y" value="365"/>
 	<style name="default" isDefault="true" fontName="Open Sans" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Roboto" fontSize="22" isBold="false"/>
-	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Open Sans" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Open Sans" fontSize="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="legend" style="default" hTextAlign="Center" hImageAlign="Center" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
 	<style name="sousTitle" fontName="Roboto" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<style name="adresse" style="default" fontSize="8"/>
+	<style name="adresse" style="default" fontSize="7"/>
 	<parameter name="idDevis" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[22830]]></defaultValueExpression>
 	</parameter>
@@ -341,7 +341,10 @@
 					<textFieldExpression><![CDATA[$F{remiseUnit}.equals("%") ? $V{totalHTRemise}+$V{totalHTRemise}*0.2 : $V{totalHTRemiseValeur}+$V{totalHTRemiseValeur}*0.2]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement style="legend" x="0" y="102" width="555" height="16" uuid="3911c93f-b41a-4187-b217-7e07b18a57f8"/>
+					<reportElement style="legend" x="0" y="100" width="555" height="18" uuid="3911c93f-b41a-4187-b217-7e07b18a57f8">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
 					<textElement textAlignment="Left"/>
 					<text><![CDATA[Les tarifs indiqués incluent la prestation de formation et la fourniture d'un support de cours par participant]]></text>
@@ -402,7 +405,9 @@
 			<band height="26">
 				<printWhenExpression><![CDATA[$P{particulier}]]></printWhenExpression>
 				<staticText>
-					<reportElement style="legend" x="0" y="10" width="555" height="16" uuid="f218b528-2d59-47ee-9f0e-744bfa6b03e9"/>
+					<reportElement style="legend" x="0" y="8" width="555" height="18" uuid="f218b528-2d59-47ee-9f0e-744bfa6b03e9">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
 					<textElement textAlignment="Left"/>
 					<text><![CDATA[Pour les inscriptions à titre individuel (particulier ou indépendant), nous demandons un règlement anticipé des frais de formation]]></text>
@@ -419,7 +424,10 @@
 			</band>
 			<band height="25">
 				<staticText>
-					<reportElement x="0" y="9" width="142" height="16" uuid="0be8dd88-1291-4c81-871c-ba7d0f985dd7"/>
+					<reportElement x="0" y="7" width="142" height="18" uuid="0be8dd88-1291-4c81-871c-ba7d0f985dd7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
 					<textElement>
 						<font isBold="true"/>
@@ -435,19 +443,19 @@
 	<title>
 		<band height="150" splitType="Stretch">
 			<staticText>
-				<reportElement style="sousTitle" x="0" y="0" width="142" height="18" forecolor="#045C9B" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab">
+				<reportElement style="default" x="0" y="0" width="142" height="15" forecolor="#045C9B" uuid="f31a91ca-2072-49bf-8b62-6e94e75456ab">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Roboto" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contact commercial]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="default" x="0" y="49" width="142" height="15" uuid="404c6a46-e5d4-4b7a-854f-82c2f2970c9b">
+				<reportElement style="default" x="0" y="46" width="142" height="15" uuid="404c6a46-e5d4-4b7a-854f-82c2f2970c9b">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement markup="html"/>
@@ -458,13 +466,13 @@
 				<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement style="default" x="0" y="19" width="142" height="15" uuid="823b6e3e-6128-4cba-8978-8366316f2cc7">
+				<reportElement style="default" x="0" y="16" width="142" height="15" uuid="823b6e3e-6128-4cba-8978-8366316f2cc7">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="34" width="142" height="15" uuid="ce9f3a7f-5541-43eb-8f2f-c719ead3ea9a">
+				<reportElement x="0" y="31" width="142" height="15" uuid="ce9f3a7f-5541-43eb-8f2f-c719ead3ea9a">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement markup="none"/>
@@ -536,7 +544,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement markup="html"/>
-				<textFieldExpression><![CDATA["Les formations que nous vous proposons ci-dessous sont en inter-entreprises. <br/>Les participants de sociétés différentes participent ensemble à la même formation"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<i>Les formations que nous vous proposons ci-dessous sont en inter-entreprises. <br/>Les participants de sociétés différentes participent ensemble à la même formation</i>"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="titleCol" x="0" y="144" width="183" height="34" uuid="77ba174b-7274-4402-8763-28d57536c066"/>
@@ -683,13 +691,15 @@
 				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="sousTitle" mode="Opaque" x="0" y="18" width="555" height="28" backcolor="#F2F2F2" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
+				<reportElement style="sousTitle" mode="Opaque" x="0" y="18" width="555" height="28" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
 				<box topPadding="0">
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
 				<text><![CDATA[CONDITIONS D'ANNULATION/REPORT]]></text>
 			</staticText>
 			<textField>
@@ -722,7 +732,7 @@
 				<reportElement style="adresse" x="0" y="4" width="471" height="17" forecolor="#045C9B" uuid="1fa97e1f-5ac3-4cdf-a2a0-f119835e7083"/>
 				<box topPadding="2"/>
 				<textElement textAlignment="Left" markup="html">
-					<font size="10" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[<b>PLB Consultant</b> - 3-5 rue Maurice Ravel - 92 300 Levallois-Perret]]></text>
 			</staticText>

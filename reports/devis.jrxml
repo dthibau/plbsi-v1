@@ -479,15 +479,20 @@
 				<textFieldExpression><![CDATA["Tél : " + $F{telephone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="sousTitle" x="372" y="80" width="183" height="27" uuid="bb9f66c3-7f8a-4d10-8dcd-956dc5f34152"/>
+				<reportElement style="sousTitle" x="372" y="80" width="183" height="20" uuid="bb9f66c3-7f8a-4d10-8dcd-956dc5f34152"/>
 				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="372" y="109" width="183" height="20" uuid="bdea8e6e-8fb8-4288-ac42-030b6fca8759"/>
+				<reportElement x="372" y="100" width="183" height="16" uuid="bdea8e6e-8fb8-4288-ac42-030b6fca8759">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textFieldExpression><![CDATA[$F{contact_client}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="372" y="129" width="183" height="17" uuid="4f691689-311e-4c6b-88fe-79985b2fb0b6"/>
+				<reportElement x="372" y="116" width="183" height="17" uuid="4f691689-311e-4c6b-88fe-79985b2fb0b6">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textFieldExpression><![CDATA["Levallois le " + new SimpleDateFormat("dd MMMM yyyy",Locale.FRANCE).format(new Date())]]></textFieldExpression>
 			</textField>
 		</band>
@@ -495,7 +500,7 @@
 	<columnHeader>
 		<band height="178" splitType="Stretch">
 			<staticText>
-				<reportElement style="titleCol" x="0" y="78" width="132" height="20" uuid="2c0683ce-32f2-4f15-a167-a35ddb117656"/>
+				<reportElement style="titleCol" mode="Opaque" x="0" y="78" width="132" height="20" backcolor="#FAFAFA" uuid="2c0683ce-32f2-4f15-a167-a35ddb117656"/>
 				<box topPadding="2" leftPadding="4" bottomPadding="2" rightPadding="4">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -510,7 +515,7 @@
 				<text><![CDATA[Formule proposée]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="titleCol" x="0" y="98" width="132" height="38" uuid="ca2b9085-6568-46d5-afad-c0cbd5157edb"/>
+				<reportElement style="titleCol" mode="Opaque" x="0" y="98" width="132" height="38" backcolor="#FAFAFA" uuid="ca2b9085-6568-46d5-afad-c0cbd5157edb"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -536,7 +541,7 @@
 				<text><![CDATA[INTER-ENTREPRISES]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="132" y="98" width="423" height="38" isPrintWhenDetailOverflows="true" uuid="8212636e-6e91-4c23-8f2b-e9f93aca5f9f"/>
+				<reportElement mode="Transparent" x="132" y="98" width="423" height="38" isPrintWhenDetailOverflows="true" backcolor="#FFFFFF" uuid="8212636e-6e91-4c23-8f2b-e9f93aca5f9f"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -547,7 +552,7 @@
 				<textFieldExpression><![CDATA["<i>Les formations que nous vous proposons ci-dessous sont en inter-entreprises. <br/>Les participants de sociétés différentes participent ensemble à la même formation</i>"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="titleCol" x="0" y="144" width="183" height="34" uuid="77ba174b-7274-4402-8763-28d57536c066"/>
+				<reportElement style="titleCol" mode="Opaque" x="0" y="144" width="183" height="34" backcolor="#FAFAFA" uuid="77ba174b-7274-4402-8763-28d57536c066"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -559,7 +564,7 @@
 				<text><![CDATA[Session]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
-				<reportElement style="titleCol" x="183" y="144" width="103" height="34" uuid="1562df14-2099-4a8f-8847-10c922f8e904"/>
+				<reportElement style="titleCol" mode="Opaque" x="183" y="144" width="103" height="34" backcolor="#FAFAFA" uuid="1562df14-2099-4a8f-8847-10c922f8e904"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -569,7 +574,7 @@
 				<textFieldExpression><![CDATA["Calendrier des sessions " + $V{annee}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="titleCol" x="371" y="144" width="101" height="34" uuid="5a33fbdf-72ad-4af3-8515-3639eab1c84c"/>
+				<reportElement style="titleCol" mode="Opaque" x="371" y="144" width="101" height="34" backcolor="#FAFAFA" uuid="5a33fbdf-72ad-4af3-8515-3639eab1c84c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -581,7 +586,7 @@
 				<text><![CDATA[Nombre de participants]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
-				<reportElement style="titleCol" x="286" y="144" width="85" height="34" uuid="8942185a-7731-4e11-8af6-ec80712bb282"/>
+				<reportElement style="titleCol" mode="Opaque" x="286" y="144" width="85" height="34" backcolor="#FAFAFA" uuid="8942185a-7731-4e11-8af6-ec80712bb282"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -591,7 +596,7 @@
 				<textFieldExpression><![CDATA["Tarif HT"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="titleCol" x="472" y="144" width="83" height="34" uuid="bc35a14b-1167-4a83-9c83-8cd48787bd21"/>
+				<reportElement style="titleCol" mode="Opaque" x="472" y="144" width="83" height="34" backcolor="#FAFAFA" uuid="bc35a14b-1167-4a83-9c83-8cd48787bd21"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -693,9 +698,10 @@
 			<staticText>
 				<reportElement style="sousTitle" mode="Opaque" x="0" y="18" width="555" height="28" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>
 				<box topPadding="0">
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
@@ -703,11 +709,12 @@
 				<text><![CDATA[CONDITIONS D'ANNULATION/REPORT]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="0" y="46" width="555" height="46" backcolor="#F2F2F2" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
+				<reportElement mode="Opaque" x="0" y="46" width="555" height="46" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
 				<box>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" markup="html"/>
 				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :

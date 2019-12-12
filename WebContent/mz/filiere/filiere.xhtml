@@ -109,6 +109,18 @@
 				<s:decorate template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['filiere.color']}</ui:define>
 					<h:inputText required="true" value="#{filiere.color}"></h:inputText>
+					<span style="background-color:#{filiere.color}">&#160;&#160;&#160;&#160;</span>
+				</s:decorate>
+				<s:decorate template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['filiere.color_titre']}</ui:define>
+					<h:inputText required="true" value="#{filiere.colorTitre}">
+						<a:ajax execute="@this"
+							render="previewColorTitre" />
+					</h:inputText>
+					<a:outputPanel id="previewColorTitre">
+					<span style="background-color:#{filiere.colorTitre}">&#160;&#160;&#160;&#160;</span>
+					</a:outputPanel>
+					
 				</s:decorate>
 			</a:outputPanel>
 			<h:commandButton value="Annuler" immediate="true"

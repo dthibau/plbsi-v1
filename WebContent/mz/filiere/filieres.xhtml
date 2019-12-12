@@ -65,6 +65,13 @@
 					<span style="background-color:#{_filiere.color}">&#160;&#160;&#160;&#160;</span>
 					( <h:outputText value="#{_filiere.color}" /> )
 			</rich:column>
+							<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['filiere.color_titre']}" />
+					</f:facet>
+					<span style="background-color:#{_filiere.colorTitre}">&#160;&#160;&#160;&#160;</span>
+					( <h:outputText value="#{_filiere.colorTitre}" /> )
+			</rich:column>
 
 			</rich:dataTable>
 		</h:form>

@@ -37,6 +37,9 @@ public class Filiere implements Comparable<Filiere> {
 	
 	@Column(name="fil_color")
 	private String color;
+	
+	@Column(name="fil_color_titre")
+	private String colorTitre;
 
 	@OneToMany(mappedBy="filiere",cascade=CascadeType.ALL)
 	@ContainedIn
@@ -201,6 +204,14 @@ public class Filiere implements Comparable<Filiere> {
 
 	public void setDataVersion(Integer dataVersion) {
 		this.dataVersion = dataVersion;
+	}
+
+	public String getColorTitre() {
+		return colorTitre;
+	}
+
+	public void setColorTitre(String colorTitre) {
+		this.colorTitre = colorTitre;
 	}
 
 	@Override

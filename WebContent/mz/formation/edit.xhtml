@@ -31,6 +31,13 @@
 				</h:inputText>
 			</s:decorate>
 
+			<s:decorate template="../layout/edit.xhtml" id="toplibDecorate">
+				<ui:define name="label">#{messages['formation.top-libelle']}</ui:define>
+				<h:inputText size="80"
+					value="#{formation.topLibelle}">
+				</h:inputText>
+			</s:decorate>
+			
 			<s:decorate template="../layout/edit.xhtml" id="visDecorate">
 				<ui:define name="label">#{messages['formation.visible']}</ui:define>
 				<h:selectOneMenu value="#{formation.visible}" id="visSelect">

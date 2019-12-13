@@ -238,7 +238,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	private Boolean elearning;
 
 	@Column(name = "for_niveau")
-	private String niveau = "débutant";
+	private String niveau = "Fondamental";
 
 	@Column(name = "data_version")
 	private Integer dataVersion = 3;

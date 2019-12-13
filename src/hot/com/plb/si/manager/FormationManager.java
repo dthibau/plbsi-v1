@@ -80,6 +80,8 @@ public class FormationManager implements Serializable {
 
 	private boolean showArgumentaire = false;
 
+	private boolean autreNiveau = false;
+
 	@RequestParameter
 	String formationId;
 
@@ -151,12 +153,7 @@ public class FormationManager implements Serializable {
 	public void select(Formation formation) {
 		log.debug("Select formation : " + formation);
 		formation = entityManager.find(Formation.class, formation.getIdFormation());
-		// @3.5 : Pour être sur que le falg filière principale utilisée par le site web
-		// soit en cohérence
-		// Doit disparaitre à terme
-		updateCategorie();
-		_storeOldState();
-		mode = VISU_MODE;
+		_initSelect();
 
 	}
 
@@ -164,12 +161,7 @@ public class FormationManager implements Serializable {
 	public String select() {
 		log.debug("Select formation : " + formationId);
 		formation = entityManager.find(Formation.class, Integer.parseInt(formationId));
-		_storeOldState();
-		// @3.5 : Pour être sur que le falg filière principale utilisée par le site web
-		// soit en cohérence
-		// Doit disparaitre à terme
-		updateCategorie();
-		mode = VISU_MODE;
+		_initSelect();
 
 		return "/mz/formation/formation.xhtml";
 	}
@@ -179,9 +171,19 @@ public class FormationManager implements Serializable {
 	public String selectByReference() {
 		log.debug("Select formation : " + ref);
 		formation = formationDao.findByReference(ref);
-		_storeOldState();
-		mode = VISU_MODE;
+		_initSelect();
 		return "/mz/formation/formation.xhtml";
+	}
+
+	private void _initSelect() {
+		autreNiveau = !formation.getNiveau().equals(ApplicationManager.NIVEAU_FONDAMENTAL)
+				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
+				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE);
+		_storeOldState();
+		// Doit disparaitre à terme
+		updateCategorie();
+		mode = VISU_MODE;
+
 	}
 
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
@@ -195,6 +197,7 @@ public class FormationManager implements Serializable {
 		newFormationPartenaire = new FormationPartenaire(formation);
 		newFormationFiliere = new FormationFiliere(formation);
 
+		autreNiveau = false;
 		mode = NEW_MODE;
 		return "/mz/formation/formation.xhtml";
 	}
@@ -330,7 +333,7 @@ public class FormationManager implements Serializable {
 	public void updateBaliseTitle() {
 		log.debug("updateBaliseTitle()");
 		if (formation.getBaliseTitle() == null || formation.getBaliseTitle().length() == 0) {
-			if (formation.getLibelle() != null && formation.getMotClePrimaire() != null ) {
+			if (formation.getLibelle() != null && formation.getMotClePrimaire() != null) {
 				formation.setBaliseTitle(
 						"FORMATION " + formation.getMotClePrimaire() + "," + formation.getLibelle() + " | PLB");
 			}
@@ -813,6 +816,14 @@ public class FormationManager implements Serializable {
 
 	public void setShowArgumentaire(boolean showArgumentaire) {
 		this.showArgumentaire = showArgumentaire;
+	}
+
+	public boolean isAutreNiveau() {
+		return autreNiveau;
+	}
+
+	public void setAutreNiveau(boolean autreNiveau) {
+		this.autreNiveau = autreNiveau;
 	}
 
 }

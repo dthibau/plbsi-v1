@@ -68,7 +68,7 @@
 				<ui:define name="label">#{messages['formation.categorie']}</ui:define>
 				<h:selectOneMenu required="true" value="#{formation.categorie}"
 					id="catSel">
-					<a:ajax event="change" render="rangCategoriePanel baliseTitlePanel,formationFiliereList"
+					<a:ajax event="change" render="rangCategoriePanel,formationFiliereList"
 						execute="@this" listener="#{formationManager.updateCategorie}">
 					</a:ajax>
 					<s:selectItems value="#{categories}" var="categorie"

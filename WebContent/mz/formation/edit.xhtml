@@ -411,11 +411,15 @@
 				<ui:define name="label">
 					<h:outputText value="#{messages['formation.niveau']}" />
 				</ui:define>
-				<h:selectOneMenu value="#{formation.niveau}" id="nivSelect">
-					<f:selectItem itemValue="Débutant" />
-					<f:selectItem itemValue="Intermédiaire" />
-					<f:selectItem itemValue="Expert" />
+				<h:selectOneMenu value="#{formation.niveau}" id="nivSelect" rendered="#{!formationManager.autreNiveau}">
+					<f:selectItem itemValue="${NIVEAU_FONDAMENTAL}" />
+					<f:selectItem itemValue="${NIVEAU_INTERMEDIAIRE}" />
+					<f:selectItem itemValue="${NIVEAU_AVANCE}" />
 				</h:selectOneMenu>
+				Autre : <h:selectBooleanCheckbox value="#{formationManager.autreNiveau}" >
+					<a:ajax execute="@this" render="nivDecorate"/>
+				</h:selectBooleanCheckbox>
+				<h:inputText value="#{formation.niveau}" rendered="#{formationManager.autreNiveau}"/>
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">

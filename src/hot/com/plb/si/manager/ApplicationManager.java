@@ -145,6 +145,14 @@ public class ApplicationManager implements Serializable {
 	
 	public final static int DEVIS_RELANCE = Integer.parseInt(projectBundle.getString("DEVIS_RELANCE"));
 
+	// Niveau formation
+	@Out
+	public final static String NIVEAU_FONDAMENTAL="Fondamental";
+	@Out
+	public final static String NIVEAU_INTERMEDIAIRE="Intermédiaire";
+	@Out
+	public final static String NIVEAU_AVANCE="Avancé";
+	
 	
 	// Statuts prospects
 	@Out

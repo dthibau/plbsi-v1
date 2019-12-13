@@ -190,7 +190,12 @@
 			<ui:param name="header" value="#{messages['formation.tarifInter']}"/>
 			<ui:param name="value" value="#{_dto.formation.codeTarifInter}"/>
 			<ui:param name="type" value="text"/>
-		</ui:include>		
+		</ui:include>	
+		<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.remise']}"/>
+			<ui:param name="value" value="#{_dto.formation.remise}"/>
+			<ui:param name="type" value="text"/>
+		</ui:include>	
 		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.formationPartenaires']}"/>
 			<ui:param name="value" value="#{applicationManager.getFormationsPartenairesAsString(_dto.formation)}"/>
@@ -211,6 +216,11 @@
 		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.eligibleCpf']}"/>
 			<ui:param name="value" value="#{_dto.formation.eligibleCpf}"/>
+			<ui:param name="type" value="text"/>			
+		</ui:include>
+				<ui:include src="../../common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['formation.codeCpf']}"/>
+			<ui:param name="value" value="#{_dto.formation.codeCpf}"/>
 			<ui:param name="type" value="text"/>			
 		</ui:include>
 				<ui:include src="../../common/excel-column.xhtml">

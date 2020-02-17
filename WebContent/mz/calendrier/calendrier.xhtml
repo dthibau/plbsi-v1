@@ -266,7 +266,7 @@ tr:hover {
 							</h:outputText> <h:outputText rendered="#{_dto.intra}"
 								value="#{messages['formation.intra']}" /></td>
 						<ui:repeat value="#{calendarManager.months}" var="_month">
-							<td>#{_dto.formation.getAllSessionsAsString(_month)}</td>
+							<td align="center">#{_dto.formation.getAllSessionsAsString(_month)}</td>
 						</ui:repeat>
 					</tr>
 				</ui:repeat>

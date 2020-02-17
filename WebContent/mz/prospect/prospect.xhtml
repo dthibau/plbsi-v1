@@ -23,6 +23,7 @@
 										<h:selectOneMenu value="#{prospectManager.prospect.type}" style="width:160px; height:20px;" required="true">
 											<f:selectItem itemValue="" itemLabel="N/C"/>
 											<f:selectItems value="#{typesContactSi}" var="type" itemValue="#{type.libelle.toUpperCase()}" itemLabel="#{type.libelle}"/>
+											<f:selectItems value="#{typesContactAutre}" var="type" itemValue="#{type.libelle.toUpperCase()}" itemLabel="#{type.libelle}"/>
 										</h:selectOneMenu>
 								   	</s:decorate>
 								</td>

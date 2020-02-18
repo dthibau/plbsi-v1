@@ -242,6 +242,9 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Column(name = "data_version")
 	private Integer dataVersion = 3;
+	
+	@Column(name = "autre_objectif_simple")
+	private String autreObjectifSimple;
 
 	@Transient
 	public boolean contains(Partenaire partenaire) {
@@ -1291,6 +1294,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setModalitesSuivi(String modalitesSuivi) {
 		this.modalitesSuivi = modalitesSuivi;
+	}
+
+	public String getAutreObjectifSimple() {
+		return autreObjectifSimple;
+	}
+
+	public void setAutreObjectifSimple(String autreObjectifSimple) {
+		this.autreObjectifSimple = autreObjectifSimple;
 	}
 
 	@Override

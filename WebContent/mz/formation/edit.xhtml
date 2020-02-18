@@ -410,9 +410,15 @@
 					<f:selectItem itemValue="${NIVEAU_AVANCE}" />
 				</h:selectOneMenu>
 				Autre : <h:selectBooleanCheckbox value="#{formationManager.autreNiveau}" >
-					<a:ajax execute="@this" render="nivDecorate"/>
+					<a:ajax execute="@this" render="nivDecorate,objDecorate"/>
 				</h:selectBooleanCheckbox>
 				<h:inputText value="#{formation.niveau}" rendered="#{formationManager.autreNiveau}"/>
+			</s:decorate>
+			<s:decorate template="../layout/display.xhtml" id="objDecorate">
+				<ui:define name="label">
+					<h:outputText rendered="#{formationManager.autreNiveau}" value="#{messages['formation.objectif.simple']}" />
+				</ui:define>
+				<h:inputText rendered="#{formationManager.autreNiveau}" value="#{formation.autreObjectifSimple}" />
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">

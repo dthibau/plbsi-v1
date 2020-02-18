@@ -85,7 +85,16 @@ public class FormationDao {
 		q.setParameter("categorie", categorie);
 		return q.getResultList();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<FormationFiliere> findFormationFiliereByCategorie(Categorie categorie) {
+		Query q = entityManager
+				.createQuery("from FormationFiliere ff where ff.categorie=:categorie order by ff.rang");
+		q.setParameter("categorie", categorie);
+		return q.getResultList();
+	}
 	
+
 	@SuppressWarnings("unchecked")
 	public List<Formation> findArchivedByCategorie(Categorie categorie) {
 		Query q = entityManager

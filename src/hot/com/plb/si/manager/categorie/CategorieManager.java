@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
 import org.jboss.seam.annotations.Create;
-import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
@@ -26,6 +25,7 @@ import com.plb.model.Categorie;
 import com.plb.model.CategorieConnexe;
 import com.plb.model.Filiere;
 import com.plb.model.Formation;
+import com.plb.model.FormationFiliere;
 import com.plb.model.RangCategorieFiliereComparator;
 import com.plb.model.directory.Account;
 import com.plb.si.manager.ApplicationManager;
@@ -77,8 +77,10 @@ public class CategorieManager implements Serializable {
 	
 	@Out(required=false)
 	List<Categorie> referents;
-
 	
+	FormationDao formationDao = null;
+
+	boolean filiereHasChanged=false;
 
 	@Create
 	public void init() {
@@ -87,6 +89,7 @@ public class CategorieManager implements Serializable {
 		for ( Categorie categorie : categories ) {
 			categoriesAsString.add(categorie.getLibelle().replace(",", "|"));
 		}
+		formationDao = new FormationDao(entityManager);
 	}
 
 	@Begin(join = true)
@@ -131,7 +134,16 @@ public class CategorieManager implements Serializable {
 		if (!entityManager.contains(categorie)) {
 			entityManager.persist(categorie);
 		}
+		
 //		applicationManager.fetchCategories();
+		if ( filiereHasChanged ) {
+			// Just load the category into the cache before bulk update
+			entityManager.flush();
+			entityManager.clear();
+			categorie = entityManager.find(Categorie.class,
+					categorie.getId());
+			_updateFormationFilieres();
+		}
 		autresCategoriesFilieres = null;
 		return "/mz/categorie/categories.xhtml";
 	}
@@ -207,6 +219,7 @@ public class CategorieManager implements Serializable {
 		}
 	}
 	public void updateAutresCategoiresFiliere() {
+		filiereHasChanged = true;
 		autresCategoriesFilieres = null;
 		// Set categorie connexe
 		Filiere filiere = categorie.getFiliere();
@@ -227,6 +240,22 @@ public class CategorieManager implements Serializable {
 			categorie.setCategoriesConnexes(categoriesConnexes);
 			selectedCategories = categorie.getCategoriesConnexesAsCategories();
 			facesMessages.add(Severity.INFO,"Catégories connexes modifiées !");
+		}
+	}
+	
+	private void _updateFormationFilieres() {
+		List<FormationFiliere> ffs = formationDao.findFormationFiliereByCategorie(categorie);
+		for (FormationFiliere ff : ffs) {
+			FormationFiliere newFF = new FormationFiliere();
+			newFF.setCategorie(categorie);
+			newFF.setFiliere(categorie.getFiliere());
+			newFF.setFormation(ff.getFormation());
+			newFF.setRang(ff.getRang());
+			newFF.setIsPrincipale(ff.getIsPrincipale());
+			entityManager.persist(newFF);
+			ff.getFormation().removeFormationFiliere(ff);
+			entityManager.remove(ff);
+			
 		}
 	}
 }

@@ -5,29 +5,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+	xmlns:a="http://richfaces.org/a4j" >
 
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <meta name="robots" content="noindex, nofollow"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:100,400,700,900,900i&amp;display=swap" rel="stylesheet"/> 
 <title>Calendrier</title>
 
 <style type="text/css">
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 13px;
 	margin: 0px;
-	background-image: url(head-calendrier.jpg);
-	background-repeat: no-repeat;
 }
 
-.titre {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 26px;
+
+	.titre {
+	font-family:'Roboto', sans-serif;
+	font-size: 30px;
 	font-weight: bold;
-	padding-bottom: 15px;
-	margin-bottom: 20px;
-	line-height: 60px;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	line-height: 80px;
+}
+
+.intitule {
+	font-family:'Roboto', sans-serif;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 18px;
+	color: #FFFFFF;
 }
 
 a.calendrier {
@@ -41,55 +49,84 @@ a:hover.calendrier {
 }
 
 .row0.pair {
-	background-color: #DFF0FF;
+	background-color: #cee5f9;
 }
+
+.row0.pair:hover {
+	background-color: #9EB4D3;
+}
+
 
 .filiere1 {
 	color: #5197CB;
 }
 
 .row1.pair {
-	background-color: #D7E3F1;
+	background-color: #c7e4f9;
 }
+	
+.row1.pair:hover {
+	background-color: #74b2e0;
+}
+
 
 .filiere2 {
 	color: #5ABFD1;
 }
 
 .row2.pair {
-	background-color: #DCEFF3;
+	background-color: #ccf3fb;
 }
 
+.row2.pair:hover {
+	background-color: #a3dfeb;
+}
+	
 .filiere3 {
 	color: #00A992;
 }
 
 .row3.pair {
-	background-color: #DAEFF2;
+	background-color: #C8F0E1;
 }
 
+.row3.pair:hover {
+	background-color: #ABDECB;
+}
+	
 .filiere4 {
 	color: #539A32;
 }
 
 .row4.pair {
-	background-color: #EDF2E6;
+	background-color: #D7EBBB;
 }
 
+.row4.pair :hover {
+	background-color: #BAD09C;
+}	
+	
 .filiere5 {
 	color: #BCCC1B;
 }
 
 .row5.pair {
-	background-color: #F0F2CF;
+	background-color: #E4E7B3;
 }
 
+.row5.pair :hover {
+	background-color: #D0D58B;
+}	
 .filiere6 {
 	color: #8AAD2B;
 }
 
 .row6.pair {
-	background-color: #E4EACD;
+	background-color: #E0DAB2;
+}
+	
+.row6.pair :hover {
+	background-color: #D1C78D;
 }
 
 .filiere7 {
@@ -97,7 +134,11 @@ a:hover.calendrier {
 }
 
 .row7.pair {
-	background-color: #FFF9E7;
+	background-color: #DECFA0;
+}
+
+.row7.pair :hover{
+	background-color: #D0C093;
 }
 
 .filiere8 {
@@ -105,7 +146,11 @@ a:hover.calendrier {
 }
 
 .row8.pair {
-	background-color: #FDEAC7;
+	background-color: #FAE7C1;
+}
+
+.row8.pair :hover{
+	background-color: #E7D5B1;
 }
 
 .filiere9 {
@@ -113,7 +158,11 @@ a:hover.calendrier {
 }
 
 .row9.pair {
-	background-color: #FBDEC3;
+	background-color: #F2D4B9;
+}
+	
+.row9.pair :hover {
+	background-color: #E6C7AB;
 }
 
 .filiere10 {
@@ -123,6 +172,10 @@ a:hover.calendrier {
 .row10.pair {
 	background-color: #F8D4C2;
 }
+	
+.row10.pair :hover {
+	background-color: #E7C2AF;
+}
 
 .filiere11 {
 	color: #DF0023;
@@ -131,7 +184,10 @@ a:hover.calendrier {
 .row11.pair {
 	background-color: #F6C9B9;
 }
-
+	
+.row11.pair :hover{
+	background-color: #DBB3A5;
+}	
 .filiere12 {
 	color: #C90925;
 }
@@ -140,6 +196,10 @@ a:hover.calendrier {
 	background-color: #F1CCC0;
 }
 
+.row12.pair :hover {
+	background-color: #E2B7AA;
+}
+	
 .filiere13 {
 	color: #AA1932;
 }
@@ -148,12 +208,20 @@ a:hover.calendrier {
 	background-color: #E9CAC4;
 }
 
+.row13.pair :hover{
+	background-color: #DEB5AD;
+}
+	
 .filiere14 {
 	color: #A11952;
 }
 
 .row14.pair {
-	background-color: #F3E5E9;
+	background-color: #EED3DB;
+}
+
+.row14.pair :hover {
+background-color: #E0C3CC;
 }
 
 .filiere15 {
@@ -161,7 +229,11 @@ a:hover.calendrier {
 }
 
 .row15.pair {
-	background-color: #F4E6EB;
+	background-color: #F5CCDA;
+}
+	
+.row15.pair :hover {
+background-color: #E5B3C4;
 }
 
 .filiere16 {
@@ -169,7 +241,11 @@ a:hover.calendrier {
 }
 
 .row16.pair {
-	background-color: #F6DBE4;
+	background-color: #EFCFE5;
+}
+	
+.row16.pair :hover {
+	background-color: #E8C0DC;
 }
 
 .filiere17 {
@@ -177,7 +253,11 @@ a:hover.calendrier {
 }
 
 .row17.pair {
-	background-color: #FCEFF4;
+	background-color: #F8DCEC;
+}
+
+.row17.pair :hover{
+	background-color: #E7CADB;
 }
 
 .filiere18 {
@@ -185,7 +265,11 @@ a:hover.calendrier {
 }
 
 .row18.pair {
-	background-color: #FCEFF4;
+	background-color: #F7D8ED;
+}
+
+.row18.pair :hover{
+	background-color: #E7BEDA;
 }
 
 .filiere19 {
@@ -193,7 +277,11 @@ a:hover.calendrier {
 }
 
 .row19.pair {
-	background-color: #EDDEEA;
+	background-color: #E6CBEB;
+}
+
+.row19.pair :hover {
+	background-color: #DBBBE0;
 }
 
 .filiere20 {
@@ -201,7 +289,11 @@ a:hover.calendrier {
 }
 
 .row20.pair {
-	background-color: #E7DCE9;
+	background-color: #D6CCE2;
+}
+	
+.row20.pair :hover{
+	background-color: #C9BED7;
 }
 
 .filiere21 {
@@ -217,34 +309,79 @@ thead {
 }
 
 tr:hover {
-	background-color: #E5DE85;
+	background-color: #e4eaf2;
 }
 
 #container {
 	width: 95%;
-	padding: 230px 0 0 40px;
+	padding: 0 0 0 40px;
+	border-spacing: 10px;
 }
+	
+#logo {
+	width: 100%;
+	height: 70px;
+	background-image: url(logo-plb.png);
+	background-repeat: no-repeat;
+	background-position: 40px 10px;
+	background-color: #FFFFFF;
+	}
+
+
+	
+	
+#header {
+	width: 100%;
+	height: 200px;
+	background-image: url(head-calendrier-6.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-color: #d5dce1;
+}
+
+#texte {
+	font-family: "Roboto Light", sans-serif;
+	font-size: 24px;
+	color: #FFFFFF;
+	margin-left: 43px;
+	padding-top: 42px;
+	line-height: 26px;
+}
+	
+#calendrier {
+font-family: "Roboto", sans-serif;
+font-size: 38px;
+color: #FFFFFF;
+margin-left: 41px;
+padding-top: 20px;
+}
+	
+
 </style>
 <!-- CSS goes in the document HEAD or added to your external stylesheet -->
-
-
 </head>
 <body>
+	<div id="logo">
+	</div>
+	<div id="header"><div id="texte">Centre de formation <br />
+en informatique et management</div>
+		<div id="calendrier">Calendrier des formations</div>
+	</div>
 	<div id="container">
 		<ui:repeat var="_filiere" value="#{calendarManager.filieres}"
 			varStatus="status">
 
 			<span class="titre filiere#{status.index}">#{_filiere.libelle}</span>
-			<table width="100%">
+			<table width="100%" cellpadding="4">
 				<thead class="filiere#{status.index}">
-					<tr>
-						<td width="500" bgcolor="#FFFFFF">Formations</td>
-						<td width="70" bgcolor="#FFFFFF">Réf.</td>
-						<td width="50" align="center" bgcolor="#FFFFFF">Durée</td>
-						<td width="90" align="center" nowrap="nowrap" bgcolor="#FFFFFF">Tarif HT
+					<tr class="intitule">
+						<td width="500" bgcolor="#276bb4">Formations</td>
+						<td width="70" bgcolor="#276bb4">Réf.</td>
+						<td width="50" align="center" bgcolor="#276bb4">Durée</td>
+						<td width="90" align="center" nowrap="nowrap" bgcolor="#276bb4">Tarif HT
 						</td>
 						<ui:repeat value="#{calendarManager.months}" var="_month">
-							<td bgcolor="#FFFFFF">#{fullMonthFormat.format(_month)}</td>
+							<td bgcolor="#276bb4">#{fullMonthFormat.format(_month)}</td>
 						</ui:repeat>
 					</tr>
 				</thead>

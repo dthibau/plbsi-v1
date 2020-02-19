@@ -244,6 +244,13 @@
 			</s:decorate>
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
+					<h:outputText value="#{messages['formation.objectif.simple']}" />
+				</ui:define>
+				<h:outputText value="#{formation.autreObjectifSimple}" rendered="#{formationManager.autreNiveau}"/>
+				<h:outputText value="#{formationManager.objectifSimpleDefaultValue}" rendered="#{!formationManager.autreNiveau}"/>
+			</s:decorate>
+			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">
 					<h:outputText value="#{messages['formation.eligibleCpf']}" />
 				</ui:define>
 				<h:selectBooleanCheckbox value="#{formation.eligibleCpf}"

@@ -27,9 +27,12 @@
 							style="width:160px; height:20px;"
 							rendered="#{!applicationManager.isWebType(editProspectManager.prospect.type)}">
 							<f:ajax event="change" render="@form"></f:ajax>
-							<f:selectItems value="#{typesContact}" var="type"
+							<f:selectItems value="#{typesContactSi}" var="type"
 								itemValue="#{type.libelle.toUpperCase()}"
 								itemLabel="#{type.libelle}" />
+							<f:selectItems value="#{typesContactAutre}" var="type" 
+							    itemValue="#{type.libelle.toUpperCase()}" 
+							    itemLabel="#{type.libelle}"/>
 						</h:selectOneMenu>
 						<h:outputText value="#{editProspectManager.prospect.type}"
 							rendered="#{applicationManager.isWebType(editProspectManager.prospect.type)}" />

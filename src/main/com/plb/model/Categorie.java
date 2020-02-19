@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +21,8 @@ import javax.persistence.Table;
 public class Categorie {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "categorieGenerator")
+	@SequenceGenerator(name = "categorieGenerator", sequenceName = "CATEGORIE_ID", initialValue = 1500000, allocationSize = 1)
 	@Column(name="id_categorie")
 	private int id;
 	

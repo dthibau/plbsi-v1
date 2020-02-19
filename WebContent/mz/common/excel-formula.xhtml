@@ -1,0 +1,9 @@
+<e:column xmlns:e="http://jboss.org/schema/seam/excel"
+xmlns:f="http://java.sun.com/jsf/core"
+style="xls-column-autosize: false; xls-column-width: 3000">
+	<f:facet name="header">
+		<e:cell value="#{header}" style="xls-font: bold 10 Verdana; xls-background-color: gray_25; xls-border: thin black; xls-alignment: centre;"/>
+	</f:facet>
+	<e:formula style="xls-border-right:thin black; xls-shrink-to-fit :false; xls-locked :true">#{value}</e:formula>
+</e:column>
+

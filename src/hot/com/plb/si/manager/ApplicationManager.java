@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.Transient;
 
 import org.hibernate.Hibernate;
 import org.hibernate.LazyInitializationException;
@@ -40,6 +39,7 @@ import com.plb.model.Prospect;
 import com.plb.model.Session;
 import com.plb.model.TarifIntra;
 import com.plb.model.TypeContact;
+import com.plb.model.TypeContactAutre;
 import com.plb.model.TypeContactSI;
 import com.plb.model.TypeContactWeb;
 import com.plb.model.UpdateTarif;
@@ -51,7 +51,6 @@ import com.plb.si.service.FiliereDao;
 import com.plb.si.service.FormationDao;
 import com.plb.si.service.PartenaireDao;
 import com.plb.si.service.TypeContactDao;
-import com.plb.si.util.Labels;
 import com.plb.util.Util;
 
 @Name("applicationManager")
@@ -94,6 +93,10 @@ public class ApplicationManager implements Serializable {
 
 	@Out(required = false)
 	private List<TypeContactWeb> typesContactWeb;
+	
+	@Out(required = false)
+	private List<TypeContactAutre> typesContactAutre;
+
 
 	@Out(required = false)
 	private List<Formation> formationsActives;
@@ -398,6 +401,18 @@ public class ApplicationManager implements Serializable {
 		}
 	}
 
+	@Factory("typesContactAutre")
+	public void fetchTypeContactAutre() {
+		if (typesContact == null) {
+			fetchTypeContact();
+		}
+		typesContactAutre = new ArrayList<TypeContactAutre>();
+		for (TypeContact tc : typesContact) {
+			if (tc instanceof TypeContactAutre) {
+				typesContactAutre.add((TypeContactAutre) tc);
+			}
+		}
+	}
 	public boolean isWebType(String typeProspect) {
 		if (typesContactWeb == null) {
 			fetchTypeContactWeb();

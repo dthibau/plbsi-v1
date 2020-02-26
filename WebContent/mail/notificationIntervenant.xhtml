@@ -21,7 +21,7 @@
 	</ui:define>
 
 	<ui:define name="MailContent">
-		<h:outputText escape="false" value="#{event.messageAsHTML}"/>
+		<h:outputText escape="false" value="#{event.messageAsHTML}" />
 		<br />
 		<br />
 
@@ -30,12 +30,19 @@
 			<ui:include src="_grilleUrl.xhtml" />
 		</a:outputPanel>
 		<br />
-		<br />		
-		
+		<br />
+
+	</ui:define>
+
+	<ui:define name="MailAttachments">
+		<ui:repeat var="_pj" value="#{event.attachments}">
+			<m:attachment value="#{_pj.data}" contentType="#{_pj.contentType}"
+				fileName="#{_pj.name}" />
+		</ui:repeat>
 	</ui:define>
 
 	<ui:define name="MailContentAlternative">
-		
+
 
 	</ui:define>
 

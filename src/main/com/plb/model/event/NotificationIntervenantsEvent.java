@@ -3,13 +3,16 @@ package com.plb.model.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+import com.plb.model.Fichier;
 import com.plb.model.intervenant.Intervenant;
 import com.plb.util.Util;
 
@@ -25,6 +28,9 @@ public class NotificationIntervenantsEvent extends Event {
 	@ManyToMany
 	@JoinTable(joinColumns=@JoinColumn(name="event_id"))
 	List<Intervenant> intervenants = new ArrayList<Intervenant>();
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	List<Fichier> attachments = new ArrayList<>();
 
 	public String getSubject() {
 		return subject;
@@ -48,6 +54,21 @@ public class NotificationIntervenantsEvent extends Event {
 
 	public void setIntervenants(List<Intervenant> intervenants) {
 		this.intervenants = intervenants;
+	}
+
+	public List<Fichier> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Fichier> attachments) {
+		this.attachments = attachments;
+	}
+	
+	public void addAttachment(Fichier attachment) {
+		this.attachments.add(attachment);
+	}
+	public void removeAttachment(Fichier attachment) {
+		this.attachments.remove(attachment);
 	}
 
 	@Override

@@ -8,7 +8,7 @@
 
     <div class="prop">
 
-        <s:label styleClass="name #{invalid?'errors':''}">
+        <s:label styleClass="name #{invalid?'errors':''}" style="width:300px">
             <ui:insert name="label"/>
             <s:span styleClass="required" rendered="#{required}">*</s:span>
         </s:label>

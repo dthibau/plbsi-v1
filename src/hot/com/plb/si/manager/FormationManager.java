@@ -192,8 +192,7 @@ public class FormationManager implements Serializable {
 		formation = new Formation();
 		formation.setType("mauve");
 		formation.setMoyensPedagogiques("Default Content Moyens pédagogiques");
-		formation.setModalitesSuivi("Les participants signent une feuille de présence par demi-journée. "
-				+ "\n Une attestation de fin de stage est remise à la fin de la formation.");
+		formation.setModalitesSuivi(Labels.getString("formation.modalites_suivi.default"));
 		newFormationPartenaire = new FormationPartenaire(formation);
 		newFormationFiliere = new FormationFiliere(formation);
 

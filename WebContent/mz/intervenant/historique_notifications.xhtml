@@ -1,0 +1,64 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+
+	<f:facet name="header">
+		<rich:columnGroup>
+			<rich:column>
+				<h:outputText value="#{messages['historique.date']}" />
+			</rich:column>
+			<rich:column>
+				<h:outputText value="#{messages['message.emetteur']}" />
+			</rich:column>
+			<rich:column>
+				<h:outputText value="#{messages['historique.subject']}" />
+			</rich:column>
+		</rich:columnGroup>
+	</f:facet>
+	<rich:column id="sCol">
+		<rich:collapsibleSubTableToggler for="sbtbl" />
+		<h:outputText value="#{event.date}">
+			<s:convertDateTime type="both" />
+		</h:outputText>
+	</rich:column>
+
+	<rich:column id="acteur">
+		<h:outputText rendered="#{event.account != null}"
+			value="#{event.account.nomComplet}" />
+		<h:outputText
+			rendered="#{event.account == null and event.intervenant != null}"
+			value="#{event.intervenant.nomComplet}" />
+	</rich:column>
+
+	<rich:column id="type">
+		<h:outputText value="#{event.subject}" />
+	</rich:column>
+	<rich:collapsibleSubTable value="#{event.messageAsArray}" var="msg"
+		id="sbtbl" expandMode="client" expanded="#{false}">
+		<rich:column colspan="3" id="message">
+			<i><h:outputText escape="false" value="#{msg}" /></i>
+			<br />
+			<br />
+
+		</rich:column>
+		<f:facet name="footer">
+			<ul>
+				<a:repeat value="#{manager.getAttachmentNames(event)}" var="name">
+					<li>#{name}</li>
+				</a:repeat>
+			</ul>
+			<h:outputFormat rendered="#{event.hasDestinataires()}"
+				value="#{messages['mail.destinataires']}">
+				<f:param value="#{event.destinatairesAsString}"></f:param>
+			</h:outputFormat>
+		</f:facet>
+	</rich:collapsibleSubTable>
+
+
+</ui:composition>

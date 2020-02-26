@@ -1,6 +1,5 @@
 package com.plb.si.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +9,7 @@ import com.plb.model.Formation;
 import com.plb.model.InformationIntra;
 import com.plb.model.Prospect;
 import com.plb.model.event.Event;
+import com.plb.model.event.NotificationIntervenantsEvent;
 import com.plb.model.intervenant.Intervenant;
 
 public class EventDao {
@@ -45,7 +45,25 @@ public class EventDao {
 
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<NotificationIntervenantsEvent> findLastNotifications(int page, int max) {
+		int first = page * max;
+		Query query = entityManager
+				.createQuery("from NotificationIntervenantsEvent e order by e.date desc")
+				.setFirstResult(first).setMaxResults(max);
 
+		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<String> findAttachmentNames(NotificationIntervenantsEvent event) {
+		Query query = entityManager
+				.createQuery("select a.name from NotificationIntervenantsEvent e, IN(e.attachments) a where e = :event")
+				.setParameter("event", event);
+		
+		return query.getResultList();
+	}
 	@SuppressWarnings("unchecked")
 	public List<Event> findAll(Formation formation) {
 		Query query = entityManager

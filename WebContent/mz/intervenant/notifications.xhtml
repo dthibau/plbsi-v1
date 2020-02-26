@@ -1,0 +1,37 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<rich:panel>
+			<rich:dataTable id="historiqueList" value="#{notificationManager.notifications}" var="event">
+				<ui:include src="./historique_notifications.xhtml">
+					<ui:param name="manager" value="#{notificationManager}" />
+				</ui:include>
+				
+			</rich:dataTable>
+			<div style="margin-left:300px">
+			<rich:panel id="controlPanel" style="width:220px">
+				<h:form>
+				<input type="hidden" name="cid" value="#{conversation.id}" />
+				
+						<a:commandButton disabled="#{notificationManager.currentPage == 0}" value="#{messages['pagination.recent']}" immediate="true" action="#{notificationManager.forward}" render="historiqueList,controlPanel"/>
+
+					 #{notificationManager.currentPage*PAGE_SIZE+1} - #{(notificationManager.currentPage+1)*PAGE_SIZE}
+
+						<a:commandButton value="#{messages['pagination.vieux']}" immediate="true" action="#{notificationManager.backward}" render="historiqueList,controlPanel"/>
+
+				</h:form>
+			</rich:panel>
+			</div>
+		</rich:panel>
+
+	</ui:define>
+</ui:composition>

@@ -1,4 +1,4 @@
-package com.plb.si.manager;
+package com.plb.si.manager.intervenant;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,11 +16,12 @@ import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.log.Log;
 
 import com.plb.model.event.Event;
+import com.plb.model.event.NotificationIntervenantsEvent;
 import com.plb.si.service.EventDao;
 
-@Name("homeManager")
+@Name("notificationManager")
 @Scope(ScopeType.CONVERSATION)
-public class HomeManager implements Serializable {
+public class NotificationManager implements Serializable {
 
 	/**
 	 * 
@@ -34,7 +35,7 @@ public class HomeManager implements Serializable {
 	
 	@In EntityManager entityManager;
 	
-	List<Event> historique;
+	List<NotificationIntervenantsEvent> notifications;
 	EventDao eventDao;
 	
 	@Logger
@@ -46,25 +47,30 @@ public class HomeManager implements Serializable {
 		eventDao = new EventDao(entityManager);
 	}
 	@Begin(join=true)
-	public List<Event> getHistorique() {
+	public List<NotificationIntervenantsEvent> getNotifications() {
 		
-		if ( historique == null ) {
-			log.debug("getHistorique()");
-			historique = eventDao.findLast(currentPage,PAGE_SIZE);
+		if ( notifications == null ) {
+			log.debug("getNotifications");
+			notifications = eventDao.findLastNotifications(currentPage,PAGE_SIZE);
 		}
-		return historique;
+		return notifications;
 	}
 	
+	public List<String> getAttachmentNames(NotificationIntervenantsEvent event) {
+		
+		return eventDao.findAttachmentNames(event);
+	}
+
 	public void forward() {
 		if ( currentPage > 0 ) {
 			currentPage--;
 		}
-		historique = null;
+		notifications = null;
 		
 	}
 	public void backward() {
 		currentPage++;
-		historique = null;
+		notifications = null;
 	}
 	public int getCurrentPage() {
 		return currentPage;

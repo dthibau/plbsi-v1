@@ -1115,6 +1115,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 	public String getDescriptif() {
 		return descriptif;
 	}
+	
+	public String getDescriptifAsString() {
+		return descriptif != null ? HTMLUtils.getData(descriptif) : "";
+	}
 
 	public void setDescriptif(String descriptif) {
 		this.descriptif = descriptif;
@@ -1122,6 +1126,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public String getObjectifs() {
 		return objectifs;
+	}
+
+	public String getObjectifsAsString() {
+		return objectifs != null ? HTMLUtils.getData(objectifs) : "";
 	}
 
 	public void setObjectifs(String objectifs) {
@@ -1138,6 +1146,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public String getPrerequis() {
 		return prerequis;
+	}
+	
+	public String getPrerequisAsString() {
+		return prerequis !=null ? HTMLUtils.getData(prerequis) : "";
 	}
 
 	public void setPrerequis(String prerequis) {
@@ -1294,6 +1306,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 	public String getMoyensPedagogiques() {
 		return moyensPedagogiques;
 	}
+	
+	public String getMoyensPedagogiquesAsString() {
+		return moyensPedagogiques != null ? HTMLUtils.getData(moyensPedagogiques) : "";
+	}
 
 	public void setMoyensPedagogiques(String moyensPedagogiques) {
 		this.moyensPedagogiques = moyensPedagogiques;
@@ -1301,6 +1317,9 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public String getModalitesSuivi() {
 		return modalitesSuivi;
+	}
+	public String getModalitesSuiviAsString() {
+		return modalitesSuivi != null ? HTMLUtils.getData(modalitesSuivi) : "";
 	}
 
 	public void setModalitesSuivi(String modalitesSuivi) {

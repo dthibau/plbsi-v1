@@ -21,7 +21,7 @@
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_PreRequis" />
-		<ui:param name="value" value="" />
+		<ui:param name="value" value="#{_dto.formation.prerequisAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
@@ -36,12 +36,12 @@
 	</ui:include>
 	<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_Evaluation" />
-		<ui:param name="value" value="" />
+		<ui:param name="value" value="#{_dto.formation.modalitesSuiviAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_Pedagogie" />
-		<ui:param name="value" value="" />
+		<ui:param name="value" value="#{_dto.formation.moyensPedagogiquesAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
@@ -86,7 +86,7 @@
 	</ui:include>
 					<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_Observations" />
-		<ui:param name="value" value="" />
+		<ui:param name="value" value="#{_dto.formation.objectifsAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 	<ui:include src="../../common/excel-column.xhtml">

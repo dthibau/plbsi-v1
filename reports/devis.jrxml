@@ -4,6 +4,8 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="365"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Mysql"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="default" isDefault="true" fontName="Open Sans" fontSize="9" isBold="false"/>
 	<style name="title" fontName="Roboto" fontSize="22" isBold="false"/>
 	<style name="titleCol" hTextAlign="Left" hImageAlign="Left" fontName="Open Sans" fontSize="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -413,13 +415,13 @@
 					<text><![CDATA[Pour les inscriptions à titre individuel (particulier ou indépendant), nous demandons un règlement anticipé des frais de formation]]></text>
 				</staticText>
 			</band>
-			<band height="86">
+			<band height="94">
 				<printWhenExpression><![CDATA[$P{etranger}]]></printWhenExpression>
 				<staticText>
-					<reportElement style="legend" x="0" y="12" width="555" height="74" isPrintWhenDetailOverflows="true" uuid="2fa6d733-57cb-44ff-8ed3-bbea20eef613"/>
+					<reportElement style="legend" x="0" y="12" width="555" height="82" isPrintWhenDetailOverflows="true" uuid="2fa6d733-57cb-44ff-8ed3-bbea20eef613"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
-					<textElement textAlignment="Left"/>
-					<text><![CDATA[Pour nos clients dont le siège est situé hors de France Métropolitaine, 100% du montant des prestations doit être réglé impérativement avant le début des formations. Dès que vous aurez choisi votre session, nous vous enverrons une facture ainsi que nos coordonnées bancaires pour vous permettre d’effectuer le règlement de la formation. En fonction de votre nationalité, vous pourriez également avoir besoin d’un visa pour venir suivre une formation en France. Dès réception de votre confirmation et de votre paiement, si le consulat vous le demande, nous pourrions vous envoyer une attestation d’inscription ou tout autre justificatif prouvant que vous êtes inscrit dans notre centre.]]></text>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Pour nos clients dont le siège est situé hors de France Métropolitaine, 100% du montant des prestations doit être réglé impérativement avant le début des formations. Dès que vous aurez choisi votre session, nous vous enverrons une facture ainsi que nos coordonnées bancaires pour vous permettre d’effectuer le règlement de la formation. En fonction de votre nationalité, vous pourriez également avoir besoin d’un visa pour venir suivre une formation en France. Dès réception de votre confirmation et de votre paiement, si le consulat vous le demande, nous pourrions vous envoyer une attestation d’inscription ou tout autre justificatif prouvant que vous êtes inscrit dans notre centre.        ]]></text>
 				</staticText>
 			</band>
 			<band height="25">

@@ -176,9 +176,10 @@ public class FormationManager implements Serializable {
 	}
 
 	private void _initSelect() {
-		autreNiveau = !formation.getNiveau().equals(ApplicationManager.NIVEAU_FONDAMENTAL)
-				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
-				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE);
+		autreNiveau = !(formation.getNiveau().equals(ApplicationManager.NIVEAU_FONDAMENTAL)
+				|| formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
+				|| formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE)) 
+				|| (formation.getAutreObjectifSimple() != null && formation.getAutreObjectifSimple().length() > 0);
 		_storeOldState();
 		// Doit disparaitre à terme
 		updateCategorie();

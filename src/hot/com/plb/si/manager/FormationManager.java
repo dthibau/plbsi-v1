@@ -823,6 +823,9 @@ public class FormationManager implements Serializable {
 
 	public void setAutreNiveau(boolean autreNiveau) {
 		this.autreNiveau = autreNiveau;
+		if ( !autreNiveau ) {
+			formation.setAutreObjectifSimple(null);
+		}
 	}
 
 	public String getObjectifSimpleDefaultValue() {

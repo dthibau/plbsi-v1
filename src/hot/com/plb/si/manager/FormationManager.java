@@ -191,7 +191,7 @@ public class FormationManager implements Serializable {
 		log.debug("createNew()");
 		formation = new Formation();
 		formation.setType("mauve");
-		formation.setMoyensPedagogiques("Default Content Moyens pédagogiques");
+		formation.setMoyensPedagogiques(Labels.getString("formation.moyens_pedagogiques.default"));
 		formation.setModalitesSuivi(Labels.getString("formation.modalites_suivi.default"));
 		newFormationPartenaire = new FormationPartenaire(formation);
 		newFormationFiliere = new FormationFiliere(formation);

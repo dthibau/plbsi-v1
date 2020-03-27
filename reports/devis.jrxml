@@ -712,7 +712,7 @@
 				<text><![CDATA[CONDITIONS D'ANNULATION/REPORT]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="0" y="53" width="555" height="39" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
+				<reportElement mode="Opaque" x="0" y="53" width="555" height="35" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="ff4ed338-240c-42ca-8948-d57c25adaf45"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -721,7 +721,7 @@
 				</box>
 				<textElement textAlignment="Center" markup="html"/>
 				<textFieldExpression><![CDATA[$P{etranger} ? "<br/>A moins de 15 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé" :
-"Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/><br/>"
+"Entre 5 et 10 jours ouvrés avant la date du stage => 50% du montant de formation sera facturé" + "<br/>"
 + "A moins de 5 jours ouvrés ou en cas d'absence du stagiaire => 100% du montant de formation sera facturé"]]></textFieldExpression>
 			</textField>
 		</band>

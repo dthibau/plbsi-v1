@@ -2,7 +2,6 @@ package com.plb.si.manager.prospect;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -52,7 +51,6 @@ import com.plb.si.service.FormationDao;
 import com.plb.si.service.MessageDao;
 import com.plb.si.service.NotificationService;
 import com.plb.si.service.ProspectDao;
-import com.plb.si.service.ProspectDetailDao;
 
 @Name("searchProspect")
 @Scope(ScopeType.CONVERSATION)

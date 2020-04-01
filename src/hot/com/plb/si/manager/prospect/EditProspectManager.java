@@ -259,6 +259,7 @@ public class EditProspectManager implements Serializable {
 		modif = false;
 		try {
 			prospect = entityManager.find(Prospect.class, p.getIdProspect());
+			historique = null;
 			mode = VISU_MODE;
 		} catch (Exception e) {
 			log.error("Une erreur est survenue : " + e);

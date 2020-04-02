@@ -99,7 +99,7 @@
 		</ui:define>
 		<ui:define name="buttons">
 
-	<a:commandButton value="Editer" rendered="#{sessionDataManager.managerIntervenantsManager}"
+	<a:commandButton value="Editer" rendered="#{sessionDataManager.managerIntervenantsManager or (empty formation.formationMutualisees and !formation.plbInter and !formation.type.equals('rouge'))}"
 		action="#{formationManager.setEditSessionMode}" render="formationPanel,webPanel,referencementPanel,sessionsPanel">
 		<f:param name="cid" value="#{conversation.id}" />
 	</a:commandButton>

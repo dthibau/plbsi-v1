@@ -23,12 +23,19 @@ public class IntervenantDao {
 		return (List<Intervenant>) entityManager.createQuery("from Intervenant i order by i.nom, i.prenom ").getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Intervenant> findLast(int limit) {
+		return (List<Intervenant>) entityManager.createQuery("from Intervenant i order by i.dateMisAJour desc, i.nom, i.prenom ").setMaxResults(limit).getResultList();
+	}
+	
 	public Intervenant findByUrl(String url) {
 		Query q = entityManager.createQuery("from Intervenant i where i.grilleCompetence.url = :url ");
 		q.setParameter("url", url);
 		
 		return (Intervenant)q.getSingleResult();
 	}
+	
+	
 
 //	@SuppressWarnings("unchecked")
 //	public List<Intervenant> findByFormation(Formation formation) {

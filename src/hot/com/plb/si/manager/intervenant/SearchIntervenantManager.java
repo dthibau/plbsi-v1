@@ -38,7 +38,10 @@ public class SearchIntervenantManager implements Serializable {
 
 	private static final long serialVersionUID = -209923931683152793L;
 
+	@Out
 	public static int pageSize = 20;
+	
+	private boolean paginated=true;
 
 	private String searchString;
 
@@ -93,6 +96,7 @@ public class SearchIntervenantManager implements Serializable {
 	public List<Intervenant> getResults() throws ParseException {
 		long start = System.currentTimeMillis();
 		if (needPerformQuery || intervenantResults == null) {
+			log.info("Performing query ");
 			intervenantResults = _performIntervenantQuery();
 			needPerformQuery = false;
 		}
@@ -108,6 +112,14 @@ public class SearchIntervenantManager implements Serializable {
 
 	public void search() {
 		needPerformQuery = true;
+	}
+
+	public boolean isPaginated() {
+		return paginated;
+	}
+
+	public void setPaginated(boolean paginated) {
+		this.paginated = paginated;
 	}
 
 	public SortOrder getOrder(String key) {
@@ -146,6 +158,7 @@ public class SearchIntervenantManager implements Serializable {
 		searchString = null;
 		needPerformQuery = true;
 	}
+	
 
 	public String getSearchString() {
 		return searchString;
@@ -165,8 +178,8 @@ public class SearchIntervenantManager implements Serializable {
 			return results;
 		} else {
 			long start = System.currentTimeMillis();
-			List<Intervenant> intervenants = new IntervenantDao(entityManager).findAll();
-			log.info("Fetching ALL Intervenants took "+(System.currentTimeMillis()-start)+ "ms");
+			List<Intervenant> intervenants = paginated ? new IntervenantDao(entityManager).findLast(pageSize) : new IntervenantDao(entityManager).findAll();
+			log.info("Fetching Intervenants (paginated=" + paginated + ") took "+(System.currentTimeMillis()-start)+ "ms");
 			return intervenants;
 		}
 	}
@@ -201,7 +214,7 @@ public class SearchIntervenantManager implements Serializable {
 		}
 		luceneQuery = parser.parse(sbf.toString());
 
-//		System.out.println(luceneQuery);
+		log.debug("luceneQuery " + luceneQuery);
 		return luceneQuery;
 	}
 	private boolean _invalidToken(String token ) {

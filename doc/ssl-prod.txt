@@ -1,0 +1,55 @@
+#Installation certbot sur Debian (https://certbot.eff.org/lets-encrypt/debianjessie-other)
+##########################################################################################
+wget https://dl.eff.org/certbot-auto
+sudo mv certbot-auto /usr/local/bin/certbot-auto
+sudo chown root /usr/local/bin/certbot-auto
+sudo chmod 0755 /usr/local/bin/certbot-auto
+sudo /usr/local/bin/certbot-auto --install-only
+
+# Génération certificat
+#######################
+sudo /usr/local/bin/certbot-auto certonly --standalone -d plbsi-rec.plb.fr
+
+lbourquard@plb.fr pour mail d'alert de renouvellement
+=> Génération des fichiers cert.pem, chain.pem, fullchain.pem, privKey.pem dans 
+/etc/letsencrypt/live/plbsi-rec.plb.fr
+ 
+# Transformation format pem dans le format pks12 (compris par java)
+# Stockage dans un keystore protégé par mot de passe
+####################################################
+openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out keystore.p12 -name tomcat -CAfile chain.pem -caname root
+
+Mot de passe : 9lM)[dfZ
+
+# Accès en lecture au certificat
+sudo chmod 755 /etc/letsencrypt/live/
+
+# Renew automatic
+# Inscription de la cron-tab avec re-transformation et redémarrage du service
+#############################################################################
+
+echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && /usr/local/bin/certbot-auto renew -q " | sudo tee -a /etc/crontab > /dev/null
+
+
+# Installation dans jboss avec jboss-cli
+########################################
+sudo su jboss
+cd
+ ./jboss-eap-6.4/bin/jboss-cli.sh
+> connect
+> /subsystem=web/connector=HTTPS/:add(socket-binding=https,scheme=https, \
+protocol=HTTP/1.1,secure=true)
+> /subsystem=web/connector=HTTPS/ssl=configuration:add( \
+name=https,certificate-key-file="/etc/letsencrypt/live/plbsi-prod.plb.fr/keystore.p12", \
+password="9lM)[dfZ", key-alias=tomcat, cipher-suite=AES128-SHA:ALL)
+> /subsystem=web/connector=HTTPS/ssl=configuration/:write-attribute( \
+name=protocol,value=TLSv1.2)
+
+=> redémarrage nécessaire
+ 
+            
+
+
+
+
+

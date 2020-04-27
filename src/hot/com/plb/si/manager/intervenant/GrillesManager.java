@@ -1,5 +1,6 @@
 package com.plb.si.manager.intervenant;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -25,7 +26,10 @@ import org.jboss.seam.international.StatusMessage.Severity;
 import org.jboss.seam.log.Log;
 import org.jboss.seam.util.Hex;
 import org.richfaces.component.SortOrder;
+import org.richfaces.event.FileUploadEvent;
+import org.richfaces.model.UploadedFile;
 
+import com.plb.model.Fichier;
 import com.plb.model.directory.Account;
 import com.plb.model.event.NotificationIntervenantsEvent;
 import com.plb.model.intervenant.GrilleCompetence;
@@ -304,6 +308,17 @@ public class GrillesManager implements Serializable {
 		}
 		
 	}
+	public void uploadAttachment(FileUploadEvent event) throws IOException {
+		UploadedFile item = event.getUploadedFile();
+		Fichier fichier = new Fichier();
+		fichier.setName(item.getName());
+		fichier.setContentType(item.getContentType());
+		fichier.setData(item.getData());
+		fichier.setLength((int)item.getSize());
+		notificationEvent.addAttachment(fichier);
+    }
 	
-	
+	public void removeAttachment(Fichier attachment) {
+		notificationEvent.removeAttachment(attachment);
+	}
 }

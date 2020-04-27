@@ -588,7 +588,7 @@
 									<h:outputText value="#{messages['historique.date']}" />
 								</f:facet>
 								<h:outputText value="#{message.date}">
-									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT+1" />
+									<s:convertDateTime type="both" />
 								</h:outputText>
 								<f:facet name="footer">
 									<h:outputText value="#{messages['historique.date']}" />

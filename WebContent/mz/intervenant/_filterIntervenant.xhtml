@@ -16,6 +16,11 @@
 		<a:commandButton value="Afficher tout"
 			render="filterPanel,resultList,totalPanel" execute="@this"
 			action="#{searchIntervenantManager.reset()}" />
+		&nbsp;
+		<h:selectBooleanCheckbox value="#{searchIntervenantManager.paginated}" >
+			<a:ajax render="filterPanel,resultList,totalPanel" execute="@this" 
+			listener="#{searchIntervenantManager.reset()}" event="change"></a:ajax> Limité à #{pageSize}
+		</h:selectBooleanCheckbox>
 			
 
 

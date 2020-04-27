@@ -10,7 +10,8 @@
 
 
 	<a:outputPanel id="totalPanel">
-		<br />Résultat : #{manager.total} intervenant(s) trouvées
+		<br />Résultat : <a:outputPanel layout="inline" rendered="#{!manager.paginated}">#{manager.total} intervenant(s) trouvées</a:outputPanel>
+		<a:outputPanel layout="inline" rendered="#{manager.paginated}">limité à #{pageSize} intervenants</a:outputPanel>
 			</a:outputPanel>
 
 

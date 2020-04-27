@@ -176,9 +176,9 @@ public class FormationManager implements Serializable {
 	}
 
 	private void _initSelect() {
-		autreNiveau = !formation.getNiveau().equals(ApplicationManager.NIVEAU_FONDAMENTAL)
-				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
-				&& formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE);
+		autreNiveau = formation.getNiveau() == null
+				|| !(hasStandardNiveau(formation) ) 
+				|| (formation.getAutreObjectifSimple() != null && formation.getAutreObjectifSimple().length() > 0);
 		_storeOldState();
 		// Doit disparaitre à terme
 		updateCategorie();
@@ -191,7 +191,7 @@ public class FormationManager implements Serializable {
 		log.debug("createNew()");
 		formation = new Formation();
 		formation.setType("mauve");
-		formation.setMoyensPedagogiques("Default Content Moyens pédagogiques");
+		formation.setMoyensPedagogiques(Labels.getString("formation.moyens_pedagogiques.default"));
 		formation.setModalitesSuivi(Labels.getString("formation.modalites_suivi.default"));
 		newFormationPartenaire = new FormationPartenaire(formation);
 		newFormationFiliere = new FormationFiliere(formation);
@@ -823,10 +823,19 @@ public class FormationManager implements Serializable {
 
 	public void setAutreNiveau(boolean autreNiveau) {
 		this.autreNiveau = autreNiveau;
+		if ( !autreNiveau ) {
+			formation.setAutreObjectifSimple(null);
+		}
 	}
 
 	public String getObjectifSimpleDefaultValue() {
-		return Labels.getString("formation.objectif.simple."+formation.getNiveau());
+		return hasStandardNiveau(formation) ? Labels.getString("formation.objectif.simple."+formation.getNiveau()) : "";
+	}
+	
+	public boolean hasStandardNiveau(Formation formation) {
+		return formation.getNiveau().equals(ApplicationManager.NIVEAU_FONDAMENTAL)
+		|| formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
+		|| formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE);
 	}
 
 }

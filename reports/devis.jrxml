@@ -696,7 +696,7 @@
 			<staticText>
 				<reportElement style="legend" x="0" y="0" width="555" height="25" uuid="58dc0270-502a-48b8-b7ba-67a9e7d1aa00"/>
 				<textElement markup="html"/>
-				<text><![CDATA[La signature de cette page vaut acceptation des conditions générales de vente de PLB Consultant ci-jointes<br/>et valide la lecture du Règlement Intérieur de PLB Consultant <a href="https://www.plb.fr/ri.php">(<u><font color="blue">à lire sur notre site web</font></u>)</a> ]]></text>
+				<text><![CDATA[La signature de cette page vaut acceptation des Conditions Générales de Vente de PLB Consultant ci-jointes<br/>et valide la lecture du Règlement Intérieur de PLB Consultant <a href="https://www.plb.fr/ri.php">(<u><font color="blue">à lire sur notre site web</font></u>)</a> ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="sousTitle" mode="Opaque" x="0" y="25" width="555" height="28" printWhenGroupChanges="Devis" backcolor="#F2F2F2" uuid="7e564632-71b4-4bda-97ef-99b202e49d46"/>

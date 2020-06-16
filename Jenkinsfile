@@ -27,12 +27,15 @@ pipeline {
      }
    }
    stage('Test') {
-     steps {  echo 'Testing..' 
-       sh './jmeter/apache-jmeter-5.2.1/bin/jmeter -JSERVER=plbsi-rec.plb.fr -JPORT=8443 -JSCHEME=https -n -t checkNavigation.jmx -l checkNavigation.jtl'
+     steps {  
+       echo 'Testing Navigation' 
+       dir ('jmeter') {
+         sh './apache-jmeter-5.2.1/bin/jmeter -JSERVER=plbsi-rec.plb.fr -JPORT=8443 -JSCHEME=https -n -t checkNavigation.jmx -l checkNavigation.jtl'  
+       }
      }
      post {
        always {
-         perfReport './checkNavigation.jtl'
+         perfReport './jmeter/checkNavigation.jtl'
        }
       }
     }

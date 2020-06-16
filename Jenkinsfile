@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {  echo 'Building..'   
-          sh 'ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=http://plbsi-rec.plb.fr:8081 -Dprofile=int -Djasper_home=/home/jboss/jasperreports-6.9.0'
+          sh 'ant clean deploy -Djboss.home=/home/jboss/jboss-eap-6.4 -Dserver=https://plbsi-prod.plb.fr:8443 -Dprofile=int -Djasper_home=/home/jboss/jasperreports-6.9.0'
       }
    }
    stage('Deploy newsite') {

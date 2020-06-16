@@ -28,7 +28,7 @@ pipeline {
    }
    stage('Test') {
      steps {  echo 'Testing..' 
-       sh './apache-jmeter-5.2.1/bin/jmeter -JSERVER=plbsi-rec.plb.fr -JPORT=8443 -JSCHEME=https -n -t checkNavigation.jmx -l checkNavigation.jtl'
+       sh './jmeter/apache-jmeter-5.2.1/bin/jmeter -JSERVER=plbsi-rec.plb.fr -JPORT=8443 -JSCHEME=https -n -t checkNavigation.jmx -l checkNavigation.jtl'
      }
      post {
        always {

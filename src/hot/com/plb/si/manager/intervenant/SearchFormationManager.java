@@ -48,6 +48,9 @@ public class SearchFormationManager implements Serializable {
 	private static final long serialVersionUID = -209923931683152793L;
 
 	public static int pageSize = 20;
+	
+	private boolean paginated=false;
+
 
 	private String searchString;
 
@@ -230,6 +233,16 @@ public class SearchFormationManager implements Serializable {
 
 	public void setSearchString(String searchString) {
 		this.searchString = searchString;
+	}
+
+
+	public boolean isPaginated() {
+		return paginated;
+	}
+
+
+	public void setPaginated(boolean paginated) {
+		this.paginated = paginated;
 	}
 
 

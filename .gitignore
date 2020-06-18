@@ -4,6 +4,7 @@
 #.settings/
 build/
 bin/
+!jmeter/**/bin/
 dist/
 exploded-archives/
 classes/
@@ -14,8 +15,6 @@ exploded-archives/
 
 # JMeter
 *.log
-jmeter/apache-jmeter-2.11/docs/
-jmeter/apache-jmeter-2.11/printable_docs/
 
 # Word
 **/~$*

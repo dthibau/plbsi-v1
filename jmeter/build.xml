@@ -21,7 +21,8 @@
 			<jvmarg value="-Djmeter.save.saveservice.assertion_results=all"/>
 			<jvmarg value="-Djmeter.save.saveservice.output_format=xml"/>
 			<property name="SERVER" value="plbsi-rec.plb.fr"/>
-			<property name="PORT" value="8081"/>
+			<property name="PORT" value="8443"/>
+			<property name="SCHEME" value="https"/>
 			<property name="PASSWORD" value="AVTno1cd"/>
 		</jmeter>
 	</target>

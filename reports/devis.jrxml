@@ -747,9 +747,11 @@
 				<text><![CDATA[<b>PLB Consultant</b> - 3-5 rue Maurice Ravel - 92 300 Levallois-Perret - Tél : 01 43 34 90 94 - www.plb.fr - plb@plb.fr]]></text>
 			</staticText>
 			<image>
-				<reportElement x="485" y="4" width="60" height="33" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<reportElement x="471" y="19" width="83" height="26" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["resources/qualiopi.png"]]></imageExpression>
 			</image>

@@ -15,6 +15,7 @@ import com.plb.model.FormationMutualisees;
 import com.plb.model.ProspectFormation;
 import com.plb.model.devis.Devis;
 import com.plb.model.event.Event;
+import com.plb.model.event.FormationSuppressionEvent;
 import com.plb.model.intervenant.Competence;
 
 public class FormationDao {
@@ -162,6 +163,8 @@ public class FormationDao {
 			entityManager.remove(e);
 		}
 		entityManager.remove(formation);
+		
+		
 	}
 
 	public void archiveFormation(Formation formation) {

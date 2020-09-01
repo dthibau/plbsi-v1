@@ -53,6 +53,7 @@ import com.plb.model.event.FormationCommentEvent;
 import com.plb.model.event.FormationCreationEvent;
 import com.plb.model.event.FormationModificationEvent;
 import com.plb.model.event.FormationSessionEvent;
+import com.plb.model.event.FormationSuppressionEvent;
 import com.plb.model.event.FormationUnArchiveEvent;
 import com.plb.si.dto.FormationCategorieDto;
 import com.plb.si.service.EventDao;
@@ -764,6 +765,9 @@ public class FormationManager implements Serializable {
 
 		formationDao.deleteFormation(formation);
 		historique = null;
+		FormationSuppressionEvent event = new FormationSuppressionEvent(loggedUser,formation.getReference() + ":" + formation.getLibelle());
+		entityManager.persist(event);
+		
 		entityManager.flush();
 		entityManager.clear();
 

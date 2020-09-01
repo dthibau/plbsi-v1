@@ -72,6 +72,12 @@ public class Event {
 		super();
 	}
 	
+	public Event(Account account, String message) {
+		date = new Date();
+		this.account = account;
+		this.message = message;
+	}
+	
 	public Event(Account account, Formation formation, String message) {
 		date = new Date();
 		this.account = account;

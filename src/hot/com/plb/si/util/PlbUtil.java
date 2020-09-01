@@ -2,18 +2,14 @@ package com.plb.si.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.el.ELContext;
 import javax.el.ExpressionFactory;
@@ -28,7 +24,6 @@ import com.plb.model.Filiere;
 import com.plb.model.Formation;
 import com.plb.model.FormationPartenaire;
 import com.plb.model.Session;
-import com.plb.model.TarifInter;
 import com.plb.model.intervenant.Intervenant;
 
 public class PlbUtil {
@@ -107,12 +102,6 @@ public class PlbUtil {
 			sbf.append(Labels.getString("formation.remarques") + " : "
 					+ oldFormation.getRemarques() + "->"
 					+ newFormation.getRemarques() + "<br/>");
-		}
-		if (!PlbUtil.equalsWithNull(oldFormation.getCodeTarifInter(),
-				newFormation.getCodeTarifInter())) {
-			sbf.append(Labels.getString("formation.tarifInter") + " : "
-					+ oldFormation.getCodeTarifInter() + "->"
-					+ newFormation.getCodeTarifInter() + "<br/>");
 		}
 		if (!PlbUtil.equalsWithNull(oldFormation.getPrix(),
 				newFormation.getPrix())) {
@@ -319,21 +308,6 @@ public class PlbUtil {
 		}
 	}
 
-	public static String diffTarifsInter(Map<String, Float> oldTarifs,
-			List<TarifInter> tarifsInter) {
-		StringBuilder sb = new StringBuilder();
-
-		for (TarifInter tarifInter : tarifsInter) {
-			if (!PlbUtil.equalsWithNull(tarifInter.getTarif(),
-					oldTarifs.get(tarifInter.getCode()))) {
-				sb.append(Labels.getString("tarifInter") + " "
-						+ tarifInter.getCode() + " : "
-						+ oldTarifs.get(tarifInter.getCode()) + "->"
-						+ tarifInter.getTarif() + "<br/>");
-			}
-		}
-		return sb.toString();
-	}
 
 	public static String diffIntervenant(Intervenant oldIntervenant,
 			Intervenant newIntervenant) {

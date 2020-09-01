@@ -183,14 +183,9 @@
 		</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.tarif']}"/>
-			<ui:param name="value" value="#{_dto.intra ? messages['formation.intra'] : _dto.tarifInter}"/>
+			<ui:param name="value" value="#{_dto.intra ? messages['formation.intra'] : _dto.formation.prix}"/>
 			<ui:param name="type" value="text"/>
-		</ui:include>
-		<ui:include src="../../common/excel-column.xhtml">
-			<ui:param name="header" value="#{messages['formation.tarifInter']}"/>
-			<ui:param name="value" value="#{_dto.formation.codeTarifInter}"/>
-			<ui:param name="type" value="text"/>
-		</ui:include>		
+		</ui:include>	
 		<ui:include src="../../common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['formation.formationPartenaires']}"/>
 			<ui:param name="value" value="#{applicationManager.getFormationsPartenairesAsString(_dto.formation)}"/>

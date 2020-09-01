@@ -80,7 +80,7 @@
 			</rich:column>
 		<rich:column id="tarif" sortOrder="#{resultManager.getOrder('tarif')}"
 			styleClass="tarif #{_dto.formation.hasObsoleteTarif(lastUpdateTarifs) ? 'obsolete' : ''}"
-			sortBy="#{_dto.tarifInter}">
+			sortBy="#{_dto.formation.prix}">
 			<f:facet name="header">
 				<a:commandLink value="#{messages['formation.tarif']}"
 					render="resultList" action="#{resultManager.sortBy('tarif')}">
@@ -94,7 +94,7 @@
 				</a:outputPanel>
 			</f:facet>
 
-			<h:outputText rendered="#{!_dto.intra}" value="#{_dto.tarifInter}">
+			<h:outputText rendered="#{!_dto.intra}" value="#{_dto.formation.prix}">
 				<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
 			</h:outputText>
 			<h:outputText rendered="#{_dto.intra}"

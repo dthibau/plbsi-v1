@@ -132,33 +132,18 @@
 
 			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">
-					<h:outputText value="#{messages['formation.tarifInter']}" />
-				</ui:define>
-				<h:outputText value="#{formation.codeTarifInter}" />
-				<h:outputText rendered="#{empty formation.codeTarifInter}"
-					value="#{messages['formation.tarifInter.sans']}" />
-			</s:decorate>
-
-
-			<s:decorate template="../layout/display.xhtml">
-				<ui:define name="label">
 					<h:outputText value="#{messages['formation.prix']}" />
 				</ui:define>
 				<h:outputText
 					styleClass="#{formation.hasObsoleteTarif(lastUpdateTarifs) ? 'obsolete' : ''}"
-					rendered="#{(empty formation.codeTarifInter or formation.codeTarifInter.equals('E0')) and formation.prix !=0}"
+					rendered="#{formation.prix !=0}"
 					value="#{formation.prix}">
 					<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
 				</h:outputText>
 				<h:outputText
 					styleClass="#{formation.hasObsoleteTarif(lastUpdateTarifs) ? 'obsolete' : ''}"
-					rendered="#{(empty formation.codeTarifInter or formation.codeTarifInter.equals('E0')) and formation.prix ==0}"
+					rendered="#{formation.prix ==0}"
 					value="#{messages['formation.intra']}" />
-				<h:outputText
-					rendered="#{!empty formation.codeTarifInter and !formation.codeTarifInter.equals('E0')}"
-					value="#{formationManager.prixInter}">
-					<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
-				</h:outputText>
 			</s:decorate>
 
 

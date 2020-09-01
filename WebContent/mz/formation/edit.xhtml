@@ -278,40 +278,13 @@
 			</s:decorate>
 
 			<a:outputPanel id="prixPanel">
-				<s:decorate template="../layout/edit.xhtml"
-					rendered="#{formation.duree &lt; 7}" id="tInterDecrorate">
-					<ui:define name="label">
-						<h:outputText value="#{messages['formation.tarifInter']}" />
-					</ui:define>
-					<h:selectOneMenu value="#{formation.codeTarifInter}"
-						id="tInterSelect">
-						<a:ajax event="change" execute="@this" render="prixPanel" />
-						<f:selectItem itemValue=""
-							itemLabel="#{messages['formation.tarifInter.sans']}" />
-						<f:selectItem itemValue="E1" itemLabel="E1" />
-						<f:selectItem itemValue="E2" itemLabel="E2" />
-						<f:selectItem itemValue="E3" itemLabel="E3" />
-						<f:selectItem itemValue="E4" itemLabel="E4" />
-						<f:selectItem itemValue="E5" itemLabel="E5" />
-						<f:selectItem itemValue="E6" itemLabel="E6" />
-
-					</h:selectOneMenu>
-				</s:decorate>
-
 
 				<s:decorate template="../layout/edit.xhtml" id="prixDecorate">
 					<ui:define name="label">
 						<h:outputText value="#{messages['formation.prix']}" />
 					</ui:define>
 					<h:inputText
-						rendered="#{empty formation.codeTarifInter or formation.codeTarifInter.equals('E0') or formation.duree &gt; 6}"
 						value="#{formation.prix}" id="prixInput" />
-
-					<h:outputText
-						rendered="#{!empty formation.codeTarifInter and !formation.codeTarifInter.equals('E0')}"
-						value="#{formationManager.prixInter}">
-						<f:convertNumber currencySymbol="€" type="currency" locale="FR" />
-					</h:outputText>
 				</s:decorate>
 				<s:decorate template="../layout/edit.xhtml" id="updateTarif"
 					rendered="#{formation.hasObsoleteTarif(lastUpdateTarifs)}">

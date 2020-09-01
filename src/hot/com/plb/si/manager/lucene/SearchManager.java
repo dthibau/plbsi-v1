@@ -95,8 +95,6 @@ public class SearchManager implements Serializable {
 	FacesMessages facesMessages;
 
 	@In(create = true)
-	Map<String, Float> tarifsInter;
-	@In(create = true)
 	Date lastUpdateTarifs;
 
 	List<FormationDto> adWordsResult;
@@ -160,7 +158,7 @@ public class SearchManager implements Serializable {
 		}
 		if (dtos == null) {
 			log.debug("Building DTOS !!" );
-			dtos = FormationDto.buildDtos(results, tarifsInter);
+			dtos = FormationDto.buildDtos(results);
 		}
 //		realSize = dtos.size();
 		log.debug("getResults found " + dtos.size());
@@ -198,7 +196,7 @@ public class SearchManager implements Serializable {
 				results = _performQuery(true);
 				results = _filterResults(results, true);
 				Collections.sort(results, new FilierePrincipaleComparator());
-				adWordsResult = FormationDto.buildDtos(results, tarifsInter);
+				adWordsResult = FormationDto.buildDtos(results);
 			} catch (ParseException e) {
 				e.printStackTrace();
 				facesMessages.add(Severity.ERROR,

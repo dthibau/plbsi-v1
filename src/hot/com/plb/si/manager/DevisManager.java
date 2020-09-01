@@ -70,9 +70,6 @@ public class DevisManager {
 	@Out(value = ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE, scope = ScopeType.SESSION, required = false)
 	JasperPrint print;
 
-	@In(create = true)
-	Map<String, Float> tarifsInter;
-
 	private Devis devis;
 
 	private boolean creerDemandeClient;
@@ -328,17 +325,8 @@ public class DevisManager {
 
 	private float _getPrix(Formation formation) {
 
-		if (formation.getCodeTarifInter() == null
-				|| formation.getCodeTarifInter().equals("")
-				|| formation.getCodeTarifInter().equals("EO")) {
-			return formation.getPrix();
-		} else {
-			log.info("_getPrix tarifsInter" + tarifsInter + " Code : "
-					+ formation.getCodeTarifInter() + formation.getDuree()
-					+ " Formation : " + formation);
-			return tarifsInter.get(formation.getCodeTarifInter()
-					+ formation.getDuree());
-		}
+		return formation.getPrix();
+
 	}
 
 	private String _getNo(Devis devis) {

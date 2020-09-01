@@ -78,9 +78,6 @@ public class SearchProspectManager implements Serializable {
 	NotificationService notificationService;
 
 	@In(create = true)
-	Map<String, Float> tarifsInter;
-
-	@In(create = true)
 	DevisManager devisManager;
 
 	@In(create = true)
@@ -268,11 +265,11 @@ public class SearchProspectManager implements Serializable {
 
 		mode = VISU_MODE;
 
-		adWordsResult = FormationDto.buildDtos(formationsActives, tarifsInter);
+		adWordsResult = FormationDto.buildDtos(formationsActives);
 		// Recuperation des prix des formations
 		for (int i = 0; i < adWordsResult.size(); i++) {
 			prix.put(adWordsResult.get(i).getFormation().getReference(),
-					adWordsResult.get(i).getTarifInter());
+					adWordsResult.get(i).getFormation().getPrix());
 		}
 		unsetOrder();
 		log.debug(loggedUser + " init end in "

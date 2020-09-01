@@ -58,9 +58,6 @@ public class ProspectManager implements Serializable {
 	Account loggedUser;
 	
 	@In(create=true)
-	Map<String, Float> tarifsInter;
-	
-	@In(create=true)
 	List<Formation> formationsActives;
 	
 	@Logger
@@ -106,7 +103,7 @@ public class ProspectManager implements Serializable {
 
 
 		listeTypeContact = typD.findAll();
-		adWordsResult = FormationDto.buildDtos(formationsActives, tarifsInter);
+		adWordsResult = FormationDto.buildDtos(formationsActives);
 		//Initialisation des valeurs
 		prospectDetail = new ProspectDetail();
 		prospect = new Prospect();
@@ -193,7 +190,7 @@ public class ProspectManager implements Serializable {
 		if(prospect.getReference() != null){
 			for(int i = 0 ; i < adWordsResult.size() ; i++){
 				if(prospect.getReference().equals(adWordsResult.get(i).getFormation().getReference())){
-					prix = adWordsResult.get(i).getTarifInter();
+					prix = adWordsResult.get(i).getFormation().getPrix();
 				}
 			}
 		}

@@ -39,9 +39,6 @@ public class CalendarManager {
 	FiliereDao filiereDao;
 	FormationDao formationDao;
 	
-	@In(create = true)
-	Map<String, Float> tarifsInter;
-	
 	@In
 	EntityManager entityManager;
 	
@@ -79,7 +76,7 @@ public class CalendarManager {
 		if ( selection ) {
 			return formationsByFiliere.get(filiere);
 		}
-		List<FormationDto> dtos = FormationDto.buildDtos(formationDao.findByFilierePrincipale(filiere), tarifsInter);
+		List<FormationDto> dtos = FormationDto.buildDtos(formationDao.findByFilierePrincipale(filiere));
 		Collections.sort(dtos, new FormationFiliereComparator());
 		return dtos;
 	}

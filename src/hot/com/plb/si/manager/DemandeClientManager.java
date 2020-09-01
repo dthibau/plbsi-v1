@@ -57,9 +57,6 @@ public class DemandeClientManager implements Serializable {
 	IntraManager intraManager;
 	
 	@In(create=true)
-	Map<String, Float> tarifsInter;
-	
-	@In(create=true)
 	List<Formation> formationsActives;
 	
 	@Logger
@@ -116,7 +113,7 @@ public class DemandeClientManager implements Serializable {
 		AccountDao accD = new AccountDao(entityManager);
 		FormationDao forD = new FormationDao(entityManager);
 		listeCommerciale = accD.findAllCommercialeActive();
-		adWordsResult = FormationDto.buildDtos(formationsActives, tarifsInter);
+		adWordsResult = FormationDto.buildDtos(formationsActives);
 		//Affichage formulaire
 		afficheFormulaire = false;
 		//Initialisation des valeurs
@@ -267,7 +264,7 @@ public class DemandeClientManager implements Serializable {
 		if(prospect.getReference() != null){
 			for(int i = 0 ; i < adWordsResult.size() ; i++){
 				if(prospect.getReference().equals(adWordsResult.get(i).getFormation().getReference())){
-					setPrix(adWordsResult.get(i).getTarifInter());
+					setPrix(adWordsResult.get(i).getFormation().getPrix());
 				}
 			}
 		}

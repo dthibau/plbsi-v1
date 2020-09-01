@@ -106,9 +106,6 @@ public class FormationManager implements Serializable {
 	Event event;
 
 	@In(create = true)
-	Map<String, Float> tarifsInter;
-
-	@In(create = true)
 	List<Categorie> categories;
 
 	@In(create = true)
@@ -384,10 +381,6 @@ public class FormationManager implements Serializable {
 
 	public boolean isCreationMode() {
 		return mode == NEW_MODE;
-	}
-
-	public Float getPrixInter() {
-		return tarifsInter.get(formation.getCodeTarifInter() + formation.getDuree());
 	}
 
 	public boolean isPrixObsolete() {

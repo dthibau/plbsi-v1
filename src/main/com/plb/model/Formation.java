@@ -122,9 +122,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	String libreIntra;
 
-	@Column(name = "tar1_code_inter")
-	String codeTarifInter;
-
 	@ManyToOne
 	@JoinColumn(name = "id_categorie")
 	private Categorie categorie;
@@ -270,7 +267,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		ret.setBaliseTitle(baliseTitle);
 		ret.setCampagneAdWords(campagneAdWords);
 		ret.setRemarques(remarques);
-		ret.setCodeTarifInter(codeTarifInter);
 		ret.setPrix(prix);
 		ret.setLibreIntra(libreIntra);
 		ret.setOrigine(origine);
@@ -332,8 +328,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	}
 
 	public boolean hasObsoleteTarif(Date lastUpdate) {
-		return (codeTarifInter == null || codeTarifInter.length() == 0)
-				&& (lastUpdatePrix == null || lastUpdatePrix.before(lastUpdate));
+		return (lastUpdatePrix == null || lastUpdatePrix.before(lastUpdate));
 	}
 
 	public boolean hasObsoleteSession(int year) {
@@ -372,11 +367,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	// This buisiness rule is also present in FormationDTO
 	public boolean isintra() {
-		if (getCodeTarifInter() == null || getCodeTarifInter().length() == 0
-				|| getCodeTarifInter().startsWith("E0")) {
-			return getPrix() == 0;
-		}
-		return false;
+		return getPrix() == 0;
 	}
 
 	public String getLibreIntra() {
@@ -385,14 +376,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setLibreIntra(String libreIntra) {
 		this.libreIntra = libreIntra;
-	}
-
-	public String getCodeTarifInter() {
-		return codeTarifInter;
-	}
-
-	public void setCodeTarifInter(String codeTarifInter) {
-		this.codeTarifInter = codeTarifInter;
 	}
 
 	public int getDuree() {

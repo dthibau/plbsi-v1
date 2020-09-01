@@ -88,8 +88,6 @@ public class ArchivedManager implements Serializable {
 	FacesMessages facesMessages;
 
 	@In(create = true)
-	Map<String, Float> tarifsInter;
-	@In(create = true)
 	Date lastUpdateTarifs;
 
 	private boolean needPerformQuery = true, needFilter = true;
@@ -145,7 +143,7 @@ public class ArchivedManager implements Serializable {
 		}
 		if (dtos == null) {
 			log.debug("Building DTOS !!" );
-			dtos = FormationDto.buildDtos(results, tarifsInter);
+			dtos = FormationDto.buildDtos(results);
 		}
 		log.debug("getResults found " + dtos.size());
 		log.debug("getResults 4 formations took "+(System.currentTimeMillis()-start)+ "ms");

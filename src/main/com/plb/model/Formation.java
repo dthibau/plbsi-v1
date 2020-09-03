@@ -63,6 +63,9 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "for_libelle", columnDefinition = "text")
 	@Field
 	private String libelle;
+	@Column(name = "for_toplibelle", columnDefinition = "text")
+	private String topLibelle;
+	
 	@Column(name = "for_precision_libelle", columnDefinition = "text")
 	@Field
 	private String precision;
@@ -301,6 +304,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public String getTopLibelle() {
+		return topLibelle;
+	}
+
+	public void setTopLibelle(String topLibelle) {
+		this.topLibelle = topLibelle;
 	}
 
 	public String getPrecision() {

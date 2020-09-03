@@ -22,6 +22,11 @@
 			<ui:include src="fields/libelle.xhtml" />
 
 			<s:decorate template="../layout/display.xhtml">
+				<ui:define name="label">#{messages['formation.top-libelle']}</ui:define>
+				<h:outputText value="#{formation.topLibelle}" />
+			</s:decorate>
+			
+			<s:decorate template="../layout/display.xhtml">
 				<ui:define name="label">#{messages['formation.visible']}</ui:define>
 				<h:outputText value="#{formation.visible}" />
 			</s:decorate>

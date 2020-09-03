@@ -834,4 +834,5 @@ public class FormationManager implements Serializable {
 		|| formation.getNiveau().equals(ApplicationManager.NIVEAU_INTERMEDIAIRE)
 		|| formation.getNiveau().equals(ApplicationManager.NIVEAU_AVANCE);
 	}
+
 }

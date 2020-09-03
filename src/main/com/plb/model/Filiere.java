@@ -35,7 +35,7 @@ public class Filiere implements Comparable<Filiere> {
 	@Column(name="fil_ordre")
 	private int ordre;
 	
-	@Column(name="fil_color")
+	@Column(name="new_fil_color")
 	private String color;
 	
 	@Column(name="fil_color_titre")
@@ -64,7 +64,7 @@ public class Filiere implements Comparable<Filiere> {
 	@Column(name="fil_image_petit")
 	private String imagePetit;
 	
-	@Column(name="fil_image_moyen")
+	@Column(name="new_fil_image_moyen")
 	private String imageMoyen;
 	
 	@Column(name="fil_logo")

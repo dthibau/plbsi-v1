@@ -446,7 +446,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Transient
 	public String getUrlRTF() {
 
-		return getReference() != null ? "/formation/rtf?reference="
+		return getReference() != null ? "/home/rtf?reference="
 				+ getReference()
 				: "";
 	}

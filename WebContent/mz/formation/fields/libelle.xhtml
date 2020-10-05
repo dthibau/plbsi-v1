@@ -14,9 +14,9 @@
 		</ui:define>
 		<h:outputText value="#{formation.libelle}" />&#160;
 				<h:outputLink rendered="#{formation.urlPdf != null}"
-			styleClass="large" value="#{WEB_URL}#{formation.urlPdf}" target="_blank">#{messages['formation.pdf']}</h:outputLink>
+			styleClass="large" value="#{PDF_URL}#{formation.urlPdf}" target="_blank">#{messages['formation.pdf']}</h:outputLink>
 				&#160;
-				<h:outputLink value="#{WEB_URL}#{formation.urlRTF}" target="_blank">#{messages['formation.rtf']}</h:outputLink>
+				<h:outputLink value="#{PDF_URL}#{formation.urlRTF}" target="_blank">#{messages['formation.rtf']}</h:outputLink>
 			&#160;
 				<h:outputLink rendered="#{sessionDataManager.managerIntervenantsManager and formation.urlBO != null}"
 			styleClass="large" value="#{formation.urlBO}" target="_blank">#{messages['formation.bo']}</h:outputLink>

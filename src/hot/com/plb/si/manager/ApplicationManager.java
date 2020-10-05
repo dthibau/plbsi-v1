@@ -128,6 +128,8 @@ public class ApplicationManager implements Serializable {
 	public final static String SERVEUR = projectBundle.getString("SERVEUR");
 	@Out
 	public final static String WEB_URL = projectBundle.getString("WEB_URL");
+	@Out
+	public final static String PDF_URL = projectBundle.getString("PDF_URL");
 
 	public final static String FTP_URL = projectBundle
 			.getString("FTP_URL");

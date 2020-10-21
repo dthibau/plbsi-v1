@@ -23,7 +23,7 @@
 		</f:facet>
 		<h:form>
 			<rich:select enableManualInput="true" value="#{formationManager.newFormationMutualisee}">
-				<s:selectItems value="#{formationManager.allFormations}"
+				<s:selectItems value="#{applicationManager.allFormations}"
 					var="formation" label="#{formation.reference}-#{formation.libelle}"
 					noSelectionLabel="start typing for select" />
 				<s:convertEntity />

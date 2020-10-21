@@ -149,27 +149,34 @@ public class FormationManager implements Serializable {
 
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public void select(Formation formation) {
+		long ts = System.currentTimeMillis();
 		log.debug("Select formation : " + formation);
 		formation = entityManager.find(Formation.class, formation.getIdFormation());
 		_initSelect();
+		log.debug("Select formation take : " + (ts-System.currentTimeMillis()));
+
 
 	}
 
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public String select() {
+		long ts = System.currentTimeMillis();
 		log.debug("Select formation : " + formationId);
 		formation = entityManager.find(Formation.class, Integer.parseInt(formationId));
 		_initSelect();
-
+		log.debug("Select formation take : " + (ts-System.currentTimeMillis()));
 		return "/mz/formation/formation.xhtml";
 	}
 
 	// Fonction qui recupere une formation en fonction de sa référence
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
 	public String selectByReference() {
+		long ts = System.currentTimeMillis();
 		log.debug("Select formation : " + ref);
 		formation = formationDao.findByReference(ref);
 		_initSelect();
+		log.debug("SelectByReference take : " + (ts-System.currentTimeMillis()));
+		
 		return "/mz/formation/formation.xhtml";
 	}
 
@@ -721,13 +728,6 @@ public class FormationManager implements Serializable {
 		formationMutualisee = entityManager.find(Formation.class, formationMutualisee.getIdFormation());
 		formation.getFormationMutualisees().removeFormation(formationMutualisee);
 
-	}
-
-	public List<Formation> getAllFormations() {
-		if (allFormations == null) {
-			allFormations = formationDao.findAll();
-		}
-		return allFormations;
 	}
 
 	public Event getEvent() {

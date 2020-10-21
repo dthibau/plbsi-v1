@@ -32,6 +32,7 @@ import com.plb.model.intervenant.Competence;
 import com.plb.model.intervenant.GrilleCompetence;
 import com.plb.model.intervenant.Intervenant;
 import com.plb.si.dto.CompetenceDto;
+import com.plb.si.manager.ApplicationManager;
 import com.plb.si.service.FormationDao;
 import com.plb.si.service.IntervenantDao;
 import com.plb.si.service.NotificationService;
@@ -46,6 +47,9 @@ public class GrilleManager {
 
 	@In
 	EntityManager entityManager;
+	
+	@In
+	ApplicationManager applicationManager;
 
 	@Out
 	Intervenant intervenant;
@@ -260,21 +264,6 @@ public class GrilleManager {
 		return ret;
 	}
 
-	// public List<Competence> getCompetencesAnimees(int part) {
-	//
-	// if (competencesAnimees == null) {
-	// competencesAnimees = getCompetencesAnimees();
-	// }
-	// int toIndex = competencesAnimees.size() % 2 == 0 ? competencesAnimees
-	// .size() / 2 : (competencesAnimees.size() + 1) / 2;
-	//
-	// if (part % 2 == 0) {
-	// return competencesAnimees.subList(0, toIndex - 1);
-	// } else {
-	// return competencesAnimees.subList(toIndex,
-	// competencesAnimees.size() - 1);
-	// }
-	// }
 
 	public String terminer() {
 
@@ -323,7 +312,8 @@ public class GrilleManager {
 
 		} else {
 			newFormations = new ArrayList<Formation>();
-			knownFormations = formationDao.findAll();
+			// Using cache
+			knownFormations = applicationManager.getAllFormations();
 			_fillMap(knownFormations, knownFilieres);
 		}
 

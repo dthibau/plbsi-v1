@@ -13,9 +13,13 @@
 			<plb:editorObjectifs value="#{formation.descriptif}"
 				id="descriptifEditor" height="160" urlCss="#{URL_CSS}" />
 		</ui:define>
-		<ui:define name="objectifs">
-			<plb:editorObjectifs value="#{formation.objectifs}"
-				id="objectifsEditor" height="160" urlCss="#{URL_CSS}" />
+		<ui:define name="objectifs_operationels">
+			<plb:editorObjectifs value="#{formation.objectifs_operationels}"
+				id="objectifsOperationelsEditor" height="160" urlCss="#{URL_CSS}" />
+		</ui:define>
+		<ui:define name="objectifs_pedagogiques">
+			<plb:editorObjectifs value="#{formation.objectifs_pedagogiques}"
+				id="objectifsPedagogiquesEditor" height="160" urlCss="#{URL_CSS}" />
 		</ui:define>
 		<ui:define name="prerequis">
 			<plb:editorPrerequis value="#{formation.prerequis}"
@@ -63,12 +67,12 @@
 			</div>
 		</ui:define>
 		<ui:define name="moyens">
-				<plb:editorObjectifs id="moyEditor"
-					value="#{formation.moyensPedagogiques}" height="80" />		
+			<plb:editorObjectifs id="moyEditor"
+				value="#{formation.moyensPedagogiques}" height="80" />
 		</ui:define>
 		<ui:define name="modalites">
-				<plb:editorObjectifs id="modEditor"
-					value="#{formation.modalitesSuivi}" height="80" />
+			<plb:editorObjectifs id="modEditor"
+				value="#{formation.modalitesSuivi}" height="80" />
 		</ui:define>
 		<ui:define name="buttons">
 			<ui:include src="_editButtons.xhtml" />

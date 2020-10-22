@@ -29,11 +29,17 @@
 
 				</fieldset>		
 				<fieldset>
-					<legend> #{messages['formation.objectifs']}</legend>
+					<legend> #{messages['formation.objectifs_operationels']}</legend>
 					
-					<ui:insert name="objectifs" />
+					<ui:insert name="objectifs_operationels" />
 
-				</fieldset>			
+				</fieldset>		
+				<fieldset>
+					<legend> #{messages['formation.objectifs_pedagogiques']}</legend>
+					
+					<ui:insert name="objectifs_pedagogiques" />
+
+				</fieldset>		
 				<fieldset>
 					<legend> #{messages['formation.prerequis']} </legend>
 					<ui:insert name="prerequis" />

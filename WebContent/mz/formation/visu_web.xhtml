@@ -21,12 +21,23 @@
 
 		</ui:define>
 
-		<ui:define name="objectifs">
+		<ui:define name="objectifs_operationels">
 
 			<div class="formation_objectifs">
 				<h:outputFormat escape="false"
-					rendered="#{formation.objectifs != null}"
-					value="#{formation.objectifs}" />
+					rendered="#{formation.objectifs_operationels != null}"
+					value="#{formation.objectifs_operationels}" />
+			</div>
+
+
+		</ui:define>
+		
+		<ui:define name="objectifs_pedagogiques">
+
+			<div class="formation_objectifs">
+				<h:outputFormat escape="false"
+					rendered="#{formation.objectifs_pedagogiques != null}"
+					value="#{formation.objectifs_pedagogiques}" />
 			</div>
 
 

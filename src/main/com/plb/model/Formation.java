@@ -190,8 +190,12 @@ public class Formation implements Serializable, Comparable<Formation> {
 	private String descriptif;
 	
 	@Lob
+	@Column(name = "for_objectifs_operationels", columnDefinition = "mediumtext")
+	private String objectifs_operationels;
+	
+	@Lob
 	@Column(name = "for_objectifs", columnDefinition = "mediumtext")
-	private String objectifs;
+	private String objectifs_pedagogiques;
 
 	@Lob
 	@Column(name = "for_prerequis", columnDefinition = "mediumtext")
@@ -1107,16 +1111,24 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.descriptif = descriptif;
 	}
 
-	public String getObjectifs() {
-		return objectifs;
+	public String getObjectifs_pedagogiques() {
+		return objectifs_pedagogiques;
 	}
 
-	public String getObjectifsAsString() {
-		return objectifs != null ? HTMLUtils.getData(objectifs) : "";
+	public String getObjectifs_pedagogiquesAsString() {
+		return objectifs_pedagogiques != null ? HTMLUtils.getData(objectifs_pedagogiques) : "";
 	}
 
-	public void setObjectifs(String objectifs) {
-		this.objectifs = objectifs;
+	public void setObjectifs_pedagogiques(String objectifs) {
+		this.objectifs_pedagogiques = objectifs;
+	}
+
+	public String getObjectifs_operationels() {
+		return objectifs_operationels;
+	}
+
+	public void setObjectifs_operationels(String objectifs_operationnels) {
+		this.objectifs_operationels = objectifs_operationnels;
 	}
 
 	public String getTravauxPratiques() {

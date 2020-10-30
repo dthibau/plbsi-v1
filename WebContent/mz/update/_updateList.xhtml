@@ -8,6 +8,22 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
 
+<h:form>
+		<a:outputPanel id="updateCount" layout="block">
+					<h:selectOneMenu value="#{updateManager.filterMenu}" >
+						<a:ajax event="change" render="resultList,updateCount" execute="@this" immediate="true" />
+						<f:selectItem itemValue="#{NOT_STASHED}" itemLabel="Formations en cours de traitement" />
+						<f:selectItem itemValue="#{STASHED}" itemLabel="Formations mises de côté" />
+						<f:selectItem itemValue="#{ALL}" itemLabel="Toutes les formations sans descriptifs" />
+						
+					</h:selectOneMenu>
+					
+					
+					 : Formations restantes : <h:outputText
+				value="#{updateManager.displayedCount}" />
+<h:messages></h:messages>
+		</a:outputPanel>
+</h:form>
 	<h:form>
 		<center>
 			<a:commandButton action="#{updateManager.save}"
@@ -17,12 +33,9 @@
 
 
 		<br />
-		<a:outputPanel id="updateCount" layout="block">
-			Formations à mettre à jour : <h:outputText
-				value="#{updateManager.updateCount}" />
+		
 
-		</a:outputPanel>
-		<rich:dataTable id="resultList" value="#{updateManager.results}"
+		<rich:dataTable id="resultList" value="#{updateManager.displayedFormations}"
 			var="_formation">
 
 			<rich:column id="libelle">
@@ -53,7 +66,8 @@
 
 			<rich:column id="objectifs_operationnels" width="300">
 				<f:facet name="header">
-					<h:outputText value="#{messages['formation.objectifs_operationnels']}" />
+					<h:outputText
+						value="#{messages['formation.objectifs_operationnels']}" />
 				</f:facet>
 				<plb:editorObjectifs value="#{_formation.objectifs_operationnels}"
 					id="objectifs_operationnelsEditor" height="160" urlCss="#{URL_CSS}" />
@@ -61,10 +75,19 @@
 
 			<rich:column id="objectifs_pedagogiques" width="300">
 				<f:facet name="header">
-					<h:outputText value="#{messages['formation.objectifs_pedagogiques']}" />
+					<h:outputText
+						value="#{messages['formation.objectifs_pedagogiques']}" />
 				</f:facet>
 				<plb:editorObjectifs value="#{_formation.objectifs_pedagogiques}"
 					id="objectifs_pedagogiquesEditor" height="160" urlCss="#{URL_CSS}" />
+			</rich:column>
+			<rich:column id="passer_button" width="100">
+				<f:facet name="header">
+					<h:outputText value="Passer" />
+				</f:facet>
+				<a:commandButton action="#{updateManager.stash(_formation)}"
+					render="resultList,updateCount" value="Mettre de côté"
+					style="font-size:18px" />
 			</rich:column>
 
 		</rich:dataTable>

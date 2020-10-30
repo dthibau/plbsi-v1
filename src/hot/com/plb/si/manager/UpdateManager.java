@@ -96,7 +96,7 @@ public class UpdateManager {
 		formations = q.setMaxResults(20+stashedFormations.size()).getResultList();
 		
 		Query c =  entityManager.createQuery(
-				"select count(f) from Formation f where f.archivedDate is null and f.descriptif is null" );
+				"select count(f) from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null)" );
 		
 		updateCount = ((Long)c.getSingleResult()).intValue();
 	}

@@ -49,16 +49,22 @@
 				</f:facet>
 				<plb:editorObjectifs value="#{_formation.descriptif}"
 					id="descriptifEditor" height="160" urlCss="#{URL_CSS}" />
-
 			</rich:column>
 
-			<rich:column id="objectifs" width="300">
+			<rich:column id="objectifs_operationnels" width="300">
 				<f:facet name="header">
-					<h:outputText value="#{messages['formation.objectifs']}" />
+					<h:outputText value="#{messages['formation.objectifs_operationnels']}" />
 				</f:facet>
-				<plb:editorObjectifs value="#{_formation.objectifs}"
-					id="objectifsEditor" height="160" urlCss="#{URL_CSS}" />
+				<plb:editorObjectifs value="#{_formation.objectifs_operationnels}"
+					id="objectifs_operationnelsEditor" height="160" urlCss="#{URL_CSS}" />
+			</rich:column>
 
+			<rich:column id="objectifs_pedagogiques" width="300">
+				<f:facet name="header">
+					<h:outputText value="#{messages['formation.objectifs_pedagogiques']}" />
+				</f:facet>
+				<plb:editorObjectifs value="#{_formation.objectifs_pedagogiques}"
+					id="objectifs_pedagogiquesEditor" height="160" urlCss="#{URL_CSS}" />
 			</rich:column>
 
 		</rich:dataTable>

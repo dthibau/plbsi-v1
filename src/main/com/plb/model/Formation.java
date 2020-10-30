@@ -190,8 +190,8 @@ public class Formation implements Serializable, Comparable<Formation> {
 	private String descriptif;
 	
 	@Lob
-	@Column(name = "for_objectifs_operationels", columnDefinition = "mediumtext")
-	private String objectifs_operationels;
+	@Column(name = "for_objectifs_operationnels", columnDefinition = "mediumtext")
+	private String objectifs_operationnels;
 	
 	@Lob
 	@Column(name = "for_objectifs", columnDefinition = "mediumtext")
@@ -1123,12 +1123,12 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.objectifs_pedagogiques = objectifs;
 	}
 
-	public String getObjectifs_operationels() {
-		return objectifs_operationels;
+	public String getObjectifs_operationnels() {
+		return objectifs_operationnels;
 	}
 
-	public void setObjectifs_operationels(String objectifs_operationnels) {
-		this.objectifs_operationels = objectifs_operationnels;
+	public void setObjectifs_operationnels(String objectifs_operationnels) {
+		this.objectifs_operationnels = objectifs_operationnels;
 	}
 
 	public String getTravauxPratiques() {

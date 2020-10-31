@@ -1,9 +1,7 @@
 package com.plb.si.manager;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.component.UIInput;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -11,29 +9,29 @@ import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Begin;
 import org.jboss.seam.annotations.FlushModeType;
 import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.log.Log;
 
 import com.plb.model.Formation;
 import com.plb.model.StashedFormation;
 
 @Name("updateManager")
-@Scope(ScopeType.SESSION)
+@Scope(ScopeType.CONVERSATION)
 public class UpdateManager {
 	
 	@In
 	EntityManager entityManager;
 	
-	List<Formation> displayedFormations;
 	List<Formation> formations;
-	List<StashedFormation> stashedFormations;
-	int updateCount, displayedCount=-1;
+	int count;
 	
 	boolean filterChanged;
 	
 	@Out
-	public static int ALL =0;
+	public static int DONE =0;
 	@Out
 	public static int NOT_STASHED =1;
 	@Out
@@ -41,19 +39,15 @@ public class UpdateManager {
 	
 	private int filterMenu = NOT_STASHED;
 	
+	@Logger
+	Log log;
+	
 
 	@Begin(join = true, flushMode=FlushModeType.MANUAL)
 	public List<Formation> getResults() {
 		
-		if ( stashedFormations == null ) {
-			_fetchStashed();
-		}
-		if ( formations == null ) {
+		if ( formations == null || filterChanged ) { 
 			_fetch();
-		}	
-		
-		if ( displayedFormations == null || filterChanged ) { 
-			_filter();
 			filterChanged = false;
 		}
 		return formations;
@@ -64,7 +58,7 @@ public class UpdateManager {
 	public void save() {
 		entityManager.flush();
 		formations = null;
-		displayedFormations = null;
+		_fetch();
 	}
 	
 	public void stash(Formation formation) {
@@ -72,101 +66,78 @@ public class UpdateManager {
 		s.setFormation(formation);
 		entityManager.persist(s);
 		entityManager.flush();
-		stashedFormations.add(s);
-		formations = null;
-		displayedFormations = null;
+		_fetch();
 	}
 
 
-	public int getDisplayedCount() {
-		getResults();
-		return displayedCount;
-	}
-	public List<Formation> getDisplayedFormations() {
-		getResults();
-		return displayedFormations;
-	}
-	
+
 
 	@SuppressWarnings("unchecked")
 	private void _fetch() {
-		Query q =  entityManager.createQuery(
-				"from Formation f where f.archivedDate is null and f.descriptif is null" );
+		log.debug("Fetching ");
+		Query q =  entityManager.createQuery(_getFetchQuery());		
+		formations = q.setMaxResults(20).getResultList();
 		
-		formations = q.setMaxResults(20+stashedFormations.size()).getResultList();
+		Query c =  
+		entityManager.createQuery(_getCountQuery());
 		
-		Query c =  entityManager.createQuery(
-				"select count(f) from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null)" );
-		
-		updateCount = ((Long)c.getSingleResult()).intValue();
+		count = ((Long)c.getSingleResult()).intValue();
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void _fetchStashed() {
-		Query q =  entityManager.createQuery(
-				"from StashedFormation" );
-		
-		stashedFormations = q.getResultList();
-		
+	public String _getFetchQuery() {
+		String ret="";
 
+		if ( filterMenu == DONE ) {
+			ret =  "from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null";
+		} else if ( filterMenu == NOT_STASHED ) {
+			ret =  "from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null) and f not in (select s.formation from StashedFormation s)"; 
+		} else if ( filterMenu == STASHED ) {
+			ret =  "select s.formation from StashedFormation s"; 
+		}
+		log.debug("Fetch query is "+ret);
+
+		return ret;
+	}
+	public String _getCountQuery() {
+		String ret="";
+		if ( filterMenu == DONE ) {
+			ret = "select count(f) from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null";
+		} else if ( filterMenu == NOT_STASHED ) {
+			ret = "select count(f) from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null) and f not in (select s.formation from StashedFormation s)"; 
+		} else if ( filterMenu == STASHED ) {
+			ret = "select count(s) from StashedFormation s"; 
+		}
+		log.debug("Count query is "+ret);
+		return ret;
 	}
 	
-//	public void updateFilter() {
-//		String value = (String)htmlSelectMenu.getSubmittedValue();
-//		setFilterMenu(Integer.parseInt(value));
-//	}
+	public int getCount() {
+		log.debug("getCount :"+count);
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
 	public int getFilterMenu() {
+		log.debug("getFilterMenu :"+filterMenu);
+
 		return filterMenu;
 	}
 
 
 	public void setFilterMenu(int filter) {
 		if ( filter != this.filterMenu ) {
-			filterChanged = true;
-		}
-		this.filterMenu = filter;
-	}
-
-
-	private void _filter() {
-		if ( filterMenu == ALL ) {
-			displayedFormations = formations;
-			displayedCount = updateCount;
-		} else if ( filterMenu == NOT_STASHED ) {
-			displayedFormations = new ArrayList<Formation>();
-			for ( Formation f : formations ) {
-				boolean bStashed = false;
-				for ( StashedFormation s : stashedFormations ) {
-					if ( s.getFormation().getIdFormation() == f.getIdFormation() ) {
-						bStashed = true;
-					}
-				}
-				if ( ! bStashed ) {
-					displayedFormations.add(f);
-				}
-				if ( displayedFormations.size() >= 20 ) {
-					break;
-				}
-			}
-			displayedCount = updateCount - stashedFormations.size();
-		} else if ( filterMenu == STASHED ) {
-			displayedFormations = new ArrayList<Formation>();
-			for ( StashedFormation s : stashedFormations ) {
-				displayedFormations.add(s.getFormation());
-			}
-			displayedCount = stashedFormations.size();
+			log.debug("FilterMenu Changed ... fetching");
+			this.filterMenu = filter;
+			_fetch();
 		}
 	}
 
 
-//	public UIInput getHtmlSelectMenu() {
-//		return htmlSelectMenu;
-//	}
-//
-//
-//	public void setHtmlSelectMenu(UIInput htmlSelectMenu) {
-//		this.htmlSelectMenu = htmlSelectMenu;
-//	}
 	
 	
 }

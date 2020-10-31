@@ -8,22 +8,6 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:plb="http://plb.fr/components" xmlns:a="http://richfaces.org/a4j">
 
-<h:form>
-		<a:outputPanel id="updateCount" layout="block">
-					<h:selectOneMenu value="#{updateManager.filterMenu}" >
-						<a:ajax event="change" render="resultList,updateCount" execute="@this" immediate="true" />
-						<f:selectItem itemValue="#{NOT_STASHED}" itemLabel="Formations en cours de traitement" />
-						<f:selectItem itemValue="#{STASHED}" itemLabel="Formations mises de côté" />
-						<f:selectItem itemValue="#{ALL}" itemLabel="Toutes les formations sans descriptifs ou objectifs opérationnels" />
-						
-					</h:selectOneMenu>
-					
-					
-					 : Formations restantes : <h:outputText
-				value="#{updateManager.displayedCount}" />
-<h:messages></h:messages>
-		</a:outputPanel>
-</h:form>
 	<h:form>
 		<center>
 			<a:commandButton action="#{updateManager.save}"
@@ -33,9 +17,21 @@
 
 
 		<br />
+		<a:outputPanel id="updateCount" layout="block">
+					<h:selectOneMenu value="#{updateManager.filterMenu}" >
+						<a:ajax event="change" render="resultList,updateCount" execute="@this" immediate="true" />
+						<f:selectItem itemValue="#{NOT_STASHED}" itemLabel="Formations en cours de traitement" />
+						<f:selectItem itemValue="#{STASHED}" itemLabel="Formations mises de côté" />
+						<f:selectItem itemValue="#{DONE}" itemLabel="Les formations déjà traitées" />					
+					</h:selectOneMenu>
+					
+					
+					 : Formations restantes : <h:outputText
+				value="#{updateManager.count}" />
+		</a:outputPanel>
 		
 
-		<rich:dataTable id="resultList" value="#{updateManager.displayedFormations}"
+		<rich:dataTable id="resultList" value="#{updateManager.results}"
 			var="_formation">
 
 			<rich:column id="libelle">

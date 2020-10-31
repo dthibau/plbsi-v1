@@ -68,6 +68,13 @@ public class UpdateManager {
 		entityManager.flush();
 		_fetch();
 	}
+	
+	public void unstash(Formation formation) {
+		StashedFormation s = entityManager.find(StashedFormation.class, formation.getIdFormation());
+		entityManager.remove(s);
+		entityManager.flush();
+		_fetch();
+	}
 
 
 

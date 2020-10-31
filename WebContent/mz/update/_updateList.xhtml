@@ -81,8 +81,11 @@
 				<f:facet name="header">
 					<h:outputText value="Passer" />
 				</f:facet>
-				<a:commandButton action="#{updateManager.stash(_formation)}"
+				<a:commandButton action="#{updateManager.stash(_formation)}" rendered="#{updateManager.filterMenu == NOT_STASHED}"
 					render="resultList,updateCount" value="Mettre de côté"
+					style="font-size:18px" />
+				<a:commandButton action="#{updateManager.unstash(_formation)}" rendered="#{updateManager.filterMenu == STASHED}"
+					render="resultList,updateCount" value="A faire"
 					style="font-size:18px" />
 			</rich:column>
 

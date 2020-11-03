@@ -95,9 +95,9 @@ public class UpdateManager {
 		String ret="";
 
 		if ( filterMenu == DONE ) {
-			ret =  "from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null";
+			ret =  "from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null and f.objectifs_pedagogiques is not null";
 		} else if ( filterMenu == NOT_STASHED ) {
-			ret =  "from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null) and f not in (select s.formation from StashedFormation s)"; 
+			ret =  "from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null or f.objectifs_pedagogiques is null) and f not in (select s.formation from StashedFormation s)"; 
 		} else if ( filterMenu == STASHED ) {
 			ret =  "select s.formation from StashedFormation s"; 
 		}
@@ -108,9 +108,9 @@ public class UpdateManager {
 	public String _getCountQuery() {
 		String ret="";
 		if ( filterMenu == DONE ) {
-			ret = "select count(f) from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null";
+			ret = "select count(f) from Formation f where f.archivedDate is null and f.descriptif is not null and f.objectifs_operationnels is not null and f.objectifs_pedagogiques is not null";
 		} else if ( filterMenu == NOT_STASHED ) {
-			ret = "select count(f) from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null) and f not in (select s.formation from StashedFormation s)"; 
+			ret = "select count(f) from Formation f where f.archivedDate is null and (f.descriptif is null or f.objectifs_operationnels is null or f.objectifs_pedagogiques is null) and f not in (select s.formation from StashedFormation s)"; 
 		} else if ( filterMenu == STASHED ) {
 			ret = "select count(s) from StashedFormation s"; 
 		}

@@ -1131,6 +1131,13 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.objectifs_operationnels = objectifs_operationnels;
 	}
 
+	public String getGescofObjectifs() {
+		return objectifs_operationnels != null ?HTMLUtils.getData(objectifs_operationnels) : (objectifs_pedagogiques != null ? HTMLUtils.getData(objectifs_pedagogiques) : "");
+	}
+	public String getGescofEvaluation() {
+		return objectifs_pedagogiques != null ?HTMLUtils.getData(objectifs_pedagogiques) : (objectifs_operationnels != null ? HTMLUtils.getData(objectifs_operationnels) : (description != null ? HTMLUtils.getData(description) : "") );
+	}
+
 	public String getTravauxPratiques() {
 		return travauxPratiques;
 	}

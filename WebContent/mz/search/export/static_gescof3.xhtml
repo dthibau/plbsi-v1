@@ -11,7 +11,7 @@
 	</ui:include>
 	<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_ResumeProduit" />
-		<ui:param name="value" value="" />
+		<ui:param name="value" value="#{_dto.formation.descriptifAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">
@@ -36,8 +36,7 @@
 	</ui:include>
 	<ui:include src="../../common/excel-column.xhtml">
 		<ui:param name="header" value="PublicationProduits_Evaluation" />
-<!-- 		<ui:param name="value" value="#{_dto.formation.modalitesSuiviAsString}" /> -->
-		<ui:param name="value" value="#{_dto.formation.gescofEvaluation}" />	
+		<ui:param name="value" value="#{_dto.formation.modalitesSuiviAsString}" />
 		<ui:param name="type" value="text" />
 	</ui:include>
 		<ui:include src="../../common/excel-column.xhtml">

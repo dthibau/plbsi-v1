@@ -1083,6 +1083,9 @@ public class Formation implements Serializable, Comparable<Formation> {
 		}
 	}
 
+	public String getContenuAsString() {
+		return contenu != null ? HTMLUtils.getData(contenu) : "";
+	}
 	public String getDescription() {
 		return description;
 	}

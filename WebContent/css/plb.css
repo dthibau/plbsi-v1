@@ -128,8 +128,9 @@ font-size : 14px;
 }
 
 .support {
-	background-color:green;	
-	font-color:white;
+	background-color:green !important;
+	background-image: none !important;
+	color:white !important;
 }
 /*
 a.mauve {

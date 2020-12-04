@@ -32,17 +32,8 @@ public class TableauRowDto {
 		counts.put(key,count);
 	}
 	
-	public String getNC() {
-		return counts.get(0) != null ? ""+counts.get(0) : "0";
-	}
-	public String getUn() {
-		return counts.get(1) != null ? ""+counts.get(1) : "0";
-	}
-	public String getDeux() {
-		return counts.get(2) != null ? ""+counts.get(2) : "0";
-	}
-	public String getTrois() {
-		return counts.get(3) != null ? ""+counts.get(3) : "0";
+	public Long getCount(int potentiel) {
+		return counts.get(potentiel) != null ? counts.get(potentiel) : 0l;
 	}
 	
 }

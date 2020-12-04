@@ -9,54 +9,137 @@
 	xmlns:a="http://richfaces.org/a4j">
 
 	<h:form>
-	<center>
-		<rich:collapsiblePanel header="Tableau de répartition" expanded="false">
+		<center>
+			<rich:collapsiblePanel header="Tableau de répartition"
+				expanded="false">
 
-			<a:outputPanel id="dateSelect">
+				<a:outputPanel id="dateSelect">
 				Date de début : <rich:calendar value="#{searchProspect.dateDebut}">
-					<a:ajax event="change" render="tableauPanel" />
-				</rich:calendar>
+						<a:ajax event="change" render="tableauPanel" />
+					</rich:calendar>
 				Date de fin : <rich:calendar value="#{searchProspect.dateFin}">
-					<a:ajax event="change" render="tableauPanel" />
-				</rich:calendar>
-			</a:outputPanel>
-			<br/><br/>
-			<a:outputPanel id="tableauPanel">
-				<rich:dataTable value="#{searchProspect.tableau}" var="_tDto">
-					<rich:column>
-						<f:facet name="header">
-							<h:outputText value="#{messages['prospect.com']}" />
-						</f:facet>
-						<h:outputText value="#{_tDto.commercial}" /> 
-					</rich:column>
-					<rich:column>
-						<f:facet name="header">
-							<h:outputText value="#{messages['prospect.potentiel.0']}" />
-						</f:facet>
-						<h:outputText value="#{_tDto.NC}" />
-					</rich:column>
-					<rich:column>
-						<f:facet name="header">
-							<h:outputText value="#{messages['prospect.potentiel.1']}" />
-						</f:facet>
-						<h:outputText value="#{_tDto.un}" />
-					</rich:column>
-					<rich:column>
-						<f:facet name="header">
-							<h:outputText value="#{messages['prospect.potentiel.2']}" />
-						</f:facet>
-						<h:outputText value="#{_tDto.deux}" />
-					</rich:column>
-					<rich:column>
-						<f:facet name="header">
-							<h:outputText value="#{messages['prospect.potentiel.3']}" />
-						</f:facet>
-						<h:outputText value="#{_tDto.trois}" />
-					</rich:column>
-				</rich:dataTable>
-			</a:outputPanel>
+						<a:ajax event="change" render="tableauPanel" />
+					</rich:calendar>
+				</a:outputPanel>
+				<br />
+				<br />
+				<a:outputPanel id="tableauPanel">
+					<rich:dataTable value="#{searchProspect.tableau.rows}" var="_tDto">
 
-		</rich:collapsiblePanel>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.com']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.commercial}" />
+							<f:facet name="footer">
+							Total
+						</f:facet>
+
+						</rich:column>
+
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.0']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.getCount(0)}" />
+							<f:facet name="footer">
+								<h:outputText value="#{searchProspect.tableau.getTotal(0)}" />
+							</f:facet>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.1']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.getCount(1)}" />
+							<f:facet name="footer">
+								<h:outputText value="#{searchProspect.tableau.getTotal(1)}" />
+							</f:facet>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.2']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.getCount(2)}" />
+							<f:facet name="footer">
+								<h:outputText value="#{searchProspect.tableau.getTotal(2)}" />
+							</f:facet>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.3']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.getCount(3)}" />
+							<f:facet name="footer">
+								<h:outputText value="#{searchProspect.tableau.getTotal(3)}" />
+							</f:facet>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.4']}" />
+							</f:facet>
+							<h:outputText value="#{_tDto.getCount(4)}" />
+							<f:facet name="footer">
+								<h:outputText value="#{searchProspect.tableau.getTotal(4)}" />
+							</f:facet>
+						</rich:column>
+						<rich:column styleClass="support" headerClass="support">
+							<f:facet name="header">
+								<h:outputText styleClass="support"
+									value="#{messages['prospect.potentiel.0']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,0)}"
+								styleClass="support">
+								<f:convertNumber type="percent" />
+							</h:outputText>
+						</rich:column>
+						<rich:column styleClass="support" headerClass="support">
+							<f:facet name="header">
+								<h:outputText styleClass="support"
+									value="#{messages['prospect.potentiel.1']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,1)}" >
+								<f:convertNumber type="percent" />
+							</h:outputText>
+
+						</rich:column>
+						<rich:column styleClass="support" headerClass="support">
+							<f:facet name="header">
+								<h:outputText styleClass="support"
+									value="#{messages['prospect.potentiel.2']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,2)}" >
+								<f:convertNumber type="percent" />
+							</h:outputText>
+						</rich:column>
+												<rich:column styleClass="support" headerClass="support">
+							<f:facet name="header">
+								<h:outputText styleClass="support"
+									value="#{messages['prospect.potentiel.3']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,3)}" >
+								<f:convertNumber type="percent" />
+							</h:outputText>
+						</rich:column>
+												<rich:column styleClass="support" headerClass="support">
+							<f:facet name="header">
+								<h:outputText styleClass="support"
+									value="#{messages['prospect.potentiel.4']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,4)}" >
+								<f:convertNumber type="percent" />
+							</h:outputText>
+						</rich:column>
+
+
+					</rich:dataTable>
+				</a:outputPanel>
+
+			</rich:collapsiblePanel>
 		</center>
 	</h:form>
 </ui:composition>

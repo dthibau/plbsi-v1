@@ -42,6 +42,7 @@ import com.plb.model.event.Event;
 import com.plb.model.message.Message;
 import com.plb.si.dto.ProspectDto;
 import com.plb.si.dto.ProspectUpdate;
+import com.plb.si.dto.TableauRepartitionDto;
 import com.plb.si.dto.TableauRowDto;
 import com.plb.si.manager.ApplicationManager;
 import com.plb.si.manager.DevisManager;
@@ -1127,13 +1128,14 @@ public class SearchProspectManager implements Serializable {
 
 
 
-	public List<TableauRowDto> getTableau() {
-		List<TableauRowDto> tableau = new ArrayList<TableauRowDto>();
-		for ( int i=0; i<=3; i++ ) {
+	public TableauRepartitionDto getTableau() {
+		List<TableauRowDto> rows = new ArrayList<TableauRowDto>();
+		// Différents niveau de potentiel 
+		for ( int i=0; i<=4; i++ ) {
 			List<Object[]> counts = prospectDao.countPotentiel(i,dateDebut,dateFin);
-			_addCols(tableau, i, counts);
+			_addCols(rows, i, counts);
 		}
-		return tableau;
+		return new TableauRepartitionDto(rows);
 	}
 
 	private void _addCols(List<TableauRowDto> tableau, int key,

@@ -156,6 +156,8 @@ public class SearchProspectManager implements Serializable {
 	private Date dateDebut;
 	private Date dateFin;
 
+	TableauRepartitionDto tableauRepartition;
+
 	private int potentiel = -1;
 
 	// Attribut pour remplissage heure formation
@@ -174,7 +176,6 @@ public class SearchProspectManager implements Serializable {
 
 	// SortOrder
 	private Map<String, SortOrder> orders = new HashMap<String, SortOrder>();
-
 
 	// Attribu pour les mode visu; edit
 	private static int VISU_MODE = 0;
@@ -269,12 +270,10 @@ public class SearchProspectManager implements Serializable {
 		adWordsResult = FormationDto.buildDtos(formationsActives);
 		// Recuperation des prix des formations
 		for (int i = 0; i < adWordsResult.size(); i++) {
-			prix.put(adWordsResult.get(i).getFormation().getReference(),
-					adWordsResult.get(i).getFormation().getPrix());
+			prix.put(adWordsResult.get(i).getFormation().getReference(), adWordsResult.get(i).getFormation().getPrix());
 		}
 		unsetOrder();
-		log.debug(loggedUser + " init end in "
-				+ (System.currentTimeMillis() - start));
+		log.debug(loggedUser + " init end in " + (System.currentTimeMillis() - start));
 		return "/mz/search/searchProspects.xhtml";
 	}
 
@@ -293,19 +292,14 @@ public class SearchProspectManager implements Serializable {
 		Set<ProspectDto> resultSet = new HashSet<ProspectDto>();
 		try {
 			if (loggedUser.isExtendedManager() || loggedUser.isDispatcher()) {
-				resultSet
-						.addAll(ProspectDto.buildDTO(
-								prospectDao.findProspectInit(critere),
-								Role.DISPATCHER));
+				resultSet.addAll(ProspectDto.buildDTO(prospectDao.findProspectInit(critere), Role.DISPATCHER));
 			}
 			if (loggedUser.isCommercial()) {
-				resultSet.addAll(ProspectDto.buildDTO(prospectDao
-						.findActiveAssociateProspect(loggedUser, critere),
+				resultSet.addAll(ProspectDto.buildDTO(prospectDao.findActiveAssociateProspect(loggedUser, critere),
 						Role.COMMERCIAL));
 			}
 		} catch (Exception e) {
-			log.error("Une erreur est survenue lors de l'initialisation de liste de résultat : "
-					+ e);
+			log.error("Une erreur est survenue lors de l'initialisation de liste de résultat : " + e);
 		}
 		results = _filterInterIntra(resultSet);
 
@@ -323,15 +317,13 @@ public class SearchProspectManager implements Serializable {
 			Set<ProspectDto> resultSet = new HashSet<ProspectDto>();
 			if (loggedUser.isExtendedManager() || loggedUser.isDispatcher()) {
 				critere.setCommercial(commercialeR);
-				resultSet.addAll(ProspectDto.buildDTO(
-						prospectDao.search(critere), Role.DISPATCHER));
+				resultSet.addAll(ProspectDto.buildDTO(prospectDao.search(critere), Role.DISPATCHER));
 			}
 			if (loggedUser.isCommercial()) {
 				critere.setCommercial(loggedUser);
-				resultSet.addAll(ProspectDto.buildDTO(
-						prospectDao.search(critere), Role.COMMERCIAL));
+				resultSet.addAll(ProspectDto.buildDTO(prospectDao.search(critere), Role.COMMERCIAL));
 			}
-			if ( state == ProspectCritere.RELANCE ) {
+			if (state == ProspectCritere.RELANCE) {
 				resultSet = _filterRelance(resultSet);
 			}
 			results = _filterInterIntra(resultSet);
@@ -381,11 +373,9 @@ public class SearchProspectManager implements Serializable {
 		List<ProspectDto> ret = new ArrayList<ProspectDto>();
 		if (interIntra == ALL_INT) {
 			for (ProspectDto pDto : resultSet) {
-				if (pDto.getProspect().getInformationIntra() == null
-						|| !"En cours".equals(statut)
-						|| !ApplicationManager.ST_INTRA_ANNULE.equals(pDto
-								.getProspect().getInformationIntra()
-								.getStatutIntra())) {
+				if (pDto.getProspect().getInformationIntra() == null || !"En cours".equals(statut)
+						|| !ApplicationManager.ST_INTRA_ANNULE
+								.equals(pDto.getProspect().getInformationIntra().getStatutIntra())) {
 					ret.add(pDto);
 				}
 			}
@@ -398,10 +388,8 @@ public class SearchProspectManager implements Serializable {
 		} else if (interIntra == INTRA) {
 			for (ProspectDto pDto : resultSet) {
 				if (pDto.getProspect().getInformationIntra() != null) {
-					if (!"En cours".equals(statut)
-							|| !ApplicationManager.ST_INTRA_ANNULE.equals(pDto
-									.getProspect().getInformationIntra()
-									.getStatutIntra())) {
+					if (!"En cours".equals(statut) || !ApplicationManager.ST_INTRA_ANNULE
+							.equals(pDto.getProspect().getInformationIntra().getStatutIntra())) {
 						ret.add(pDto);
 					}
 				}
@@ -410,11 +398,12 @@ public class SearchProspectManager implements Serializable {
 		Collections.sort(ret);
 		return ret;
 	}
-	
+
 	private Set<ProspectDto> _filterRelance(Set<ProspectDto> resultSet) {
 		Set<ProspectDto> ret = new HashSet<ProspectDto>();
-		for ( ProspectDto pDto : resultSet) {
-			if ( pDto.getProspectDetail() != null && pDto.getProspectDetail().getDateRelance() != null && pDto.getProspectDetail().getDateRelance().before(new Date())) {
+		for (ProspectDto pDto : resultSet) {
+			if (pDto.getProspectDetail() != null && pDto.getProspectDetail().getDateRelance() != null
+					&& pDto.getProspectDetail().getDateRelance().before(new Date())) {
 				ret.add(pDto);
 			}
 		}
@@ -426,8 +415,7 @@ public class SearchProspectManager implements Serializable {
 	}
 
 	/**
-	 * Fonction de rafraichissement prend tous les objets li�s et les
-	 * rafraichient
+	 * Fonction de rafraichissement prend tous les objets li�s et les rafraichient
 	 */
 	@Observer("refreshNeeded")
 	public void refresh() {
@@ -446,8 +434,7 @@ public class SearchProspectManager implements Serializable {
 		log.debug(loggedUser + " selectProspectDelete");
 		try {
 			deleteUnique = true;
-			prospectDelete = entityManager.find(Prospect.class,
-					Integer.parseInt(prospectSelected));
+			prospectDelete = entityManager.find(Prospect.class, Integer.parseInt(prospectSelected));
 		} catch (Exception e) {
 			log.debug(loggedUser + " STACKTRACE");
 			e.printStackTrace();
@@ -471,8 +458,7 @@ public class SearchProspectManager implements Serializable {
 
 	// Suppresion du prospect via la pop up
 	public void deleteProspect() {
-		log.debug(loggedUser + " deleteProspect prospectDelete="
-				+ prospectDelete);
+		log.debug(loggedUser + " deleteProspect prospectDelete=" + prospectDelete);
 		if (prospectDelete != null) {
 			EventDao ev = new EventDao(entityManager);
 			ev.deletEventProspect(prospectDelete);
@@ -608,12 +594,9 @@ public class SearchProspectManager implements Serializable {
 			int accMaj = 0;
 			for (int i = 0; i < longueurChamp; i++) {
 				lettre = champ.charAt(i) + "";
-				if (!lettre.equals(" ") && !lettre.equals("0")
-						&& !lettre.equals("1") && !lettre.equals("2")
-						&& !lettre.equals("3") && !lettre.equals("4")
-						&& !lettre.equals("5") && !lettre.equals("6")
-						&& !lettre.equals("7") && !lettre.equals("8")
-						&& !lettre.equals("9")
+				if (!lettre.equals(" ") && !lettre.equals("0") && !lettre.equals("1") && !lettre.equals("2")
+						&& !lettre.equals("3") && !lettre.equals("4") && !lettre.equals("5") && !lettre.equals("6")
+						&& !lettre.equals("7") && !lettre.equals("8") && !lettre.equals("9")
 						&& lettre.equals(lettre.toUpperCase())) {
 					accMaj = accMaj + 1;
 				}
@@ -658,8 +641,7 @@ public class SearchProspectManager implements Serializable {
 			if ((statut).equals(pDto.getStatut())) {
 				nbProspectSigne = nbProspectSigne + 1;
 				if (pDto.getProspectDetail().getMontant() != null) {
-					montantTotal = montantTotal
-							+ pDto.getProspectDetail().getMontant();
+					montantTotal = montantTotal + pDto.getProspectDetail().getMontant();
 				}
 			}
 
@@ -684,8 +666,7 @@ public class SearchProspectManager implements Serializable {
 
 	public boolean horaireDefaut() {
 		boolean rep = false;
-		if ("0".equals(heureDeb) && "0".equals(heureFin) && "0".equals(minDeb)
-				&& "0".equals(minFin)) {
+		if ("0".equals(heureDeb) && "0".equals(heureFin) && "0".equals(minDeb) && "0".equals(minFin)) {
 			rep = true;
 		}
 		return rep;
@@ -713,13 +694,11 @@ public class SearchProspectManager implements Serializable {
 	}
 
 	public boolean isAscending(String key) {
-		return orders.get(key) != null
-				&& orders.get(key).equals(SortOrder.ascending);
+		return orders.get(key) != null && orders.get(key).equals(SortOrder.ascending);
 	}
 
 	public boolean isDescending(String key) {
-		return orders.get(key) != null
-				&& orders.get(key).equals(SortOrder.descending);
+		return orders.get(key) != null && orders.get(key).equals(SortOrder.descending);
 	}
 
 	public void sortBy(String key) {
@@ -843,7 +822,7 @@ public class SearchProspectManager implements Serializable {
 	public boolean isEnCours() {
 		return state == ProspectCritere.ENCOURS || state == ProspectCritere.ALL || state == ProspectCritere.RELANCE;
 	}
-	
+
 	public void setRelance(boolean relance) {
 		if (relance) {
 			state = ProspectCritere.RELANCE;
@@ -1108,6 +1087,7 @@ public class SearchProspectManager implements Serializable {
 
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
+		tableauRepartition = null;
 	}
 
 	public Date getDateFin() {
@@ -1116,6 +1096,7 @@ public class SearchProspectManager implements Serializable {
 
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
+		tableauRepartition = null;
 	}
 
 	public TypeContact getTypeContact() {
@@ -1126,31 +1107,30 @@ public class SearchProspectManager implements Serializable {
 		this.typeContact = typeContact;
 	}
 
-
-
 	public TableauRepartitionDto getTableau() {
-		List<TableauRowDto> rows = new ArrayList<TableauRowDto>();
-		// Différents niveau de potentiel 
-		for ( int i=0; i<=4; i++ ) {
-			List<Object[]> counts = prospectDao.countPotentiel(i,dateDebut,dateFin);
-			_addCols(rows, i, counts);
+		if (tableauRepartition == null) {
+			List<TableauRowDto> rows = new ArrayList<TableauRowDto>();
+			// Différents niveau de potentiel
+			for (int i = 0; i <= 4; i++) {
+				List<Object[]> counts = prospectDao.countPotentiel(i, dateDebut, dateFin);
+				_addCols(rows, i, counts);
+			}
+			tableauRepartition = new TableauRepartitionDto(rows);
 		}
-		return new TableauRepartitionDto(rows);
+		return tableauRepartition;
 	}
 
-	private void _addCols(List<TableauRowDto> tableau, int key,
-			List<Object[]> counts) {
+	private void _addCols(List<TableauRowDto> tableau, int key, List<Object[]> counts) {
 
 		for (Object[] count : counts) {
-			if ( count[1] != null && count[1] instanceof String && ((String)count[1]).length() > 0 ) {
-			TableauRowDto row = _getCommercialRow(tableau, (String) count[1]);
-			row.getCounts().put(key, (Long) count[0]);
+			if (count[1] != null && count[1] instanceof String && ((String) count[1]).length() > 0) {
+				TableauRowDto row = _getCommercialRow(tableau, (String) count[1]);
+				row.getCounts().put(key, (Long) count[0]);
 			}
 		}
 	}
 
-	private TableauRowDto _getCommercialRow(List<TableauRowDto> tableau,
-			String commercial) {
+	private TableauRowDto _getCommercialRow(List<TableauRowDto> tableau, String commercial) {
 
 		for (TableauRowDto row : tableau) {
 			if (row.getCommercial().equals(commercial)) {

@@ -32,7 +32,7 @@ public class TableauRepartitionDto {
 	
 	public Double getPourcent(TableauRowDto row, int potentiel) {
 		if ( row != null )
-		return row.getCount(potentiel).doubleValue() / totalsPotentiel.get(potentiel);
+		return totalsPotentiel.get(potentiel) != null && totalsPotentiel.get(potentiel) != 0 ? row.getCount(potentiel).doubleValue() / totalsPotentiel.get(potentiel) : 0d;
 		else 
 			return 0d;
 	}

@@ -82,55 +82,48 @@
 								<h:outputText value="#{searchProspect.tableau.getTotal(4)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column styleClass="support" headerClass="support">
+						<rich:column>
 							<f:facet name="header">
-								<h:outputText styleClass="support"
-									value="#{messages['prospect.potentiel.0']} %" />
+								<h:outputText value="#{messages['prospect.potentiel.0']} %" />
 							</f:facet>
 							<h:outputText
-								value="#{searchProspect.tableau.getPourcent(_tDto,0)}"
-								styleClass="support">
+								value="#{searchProspect.tableau.getPourcent(_tDto,0)}">
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-						<rich:column styleClass="support" headerClass="support">
+						<rich:column>
 							<f:facet name="header">
-								<h:outputText styleClass="support"
-									value="#{messages['prospect.potentiel.1']} %" />
+								<h:outputText value="#{messages['prospect.potentiel.1']} %" />
 							</f:facet>
 							<h:outputText
-								value="#{searchProspect.tableau.getPourcent(_tDto,1)}" >
-								<f:convertNumber type="percent" />
-							</h:outputText>
-
-						</rich:column>
-						<rich:column styleClass="support" headerClass="support">
-							<f:facet name="header">
-								<h:outputText styleClass="support"
-									value="#{messages['prospect.potentiel.2']} %" />
-							</f:facet>
-							<h:outputText
-								value="#{searchProspect.tableau.getPourcent(_tDto,2)}" >
+								value="#{searchProspect.tableau.getPourcent(_tDto,1)}">
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-												<rich:column styleClass="support" headerClass="support">
+						<rich:column>
 							<f:facet name="header">
-								<h:outputText styleClass="support"
-									value="#{messages['prospect.potentiel.3']} %" />
+								<h:outputText value="#{messages['prospect.potentiel.2']} %" />
 							</f:facet>
 							<h:outputText
-								value="#{searchProspect.tableau.getPourcent(_tDto,3)}" >
+								value="#{searchProspect.tableau.getPourcent(_tDto,2)}">
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-												<rich:column styleClass="support" headerClass="support">
+						<rich:column>
 							<f:facet name="header">
-								<h:outputText styleClass="support"
-									value="#{messages['prospect.potentiel.4']} %" />
+								<h:outputText value="#{messages['prospect.potentiel.3']} %" />
 							</f:facet>
 							<h:outputText
-								value="#{searchProspect.tableau.getPourcent(_tDto,4)}" >
+								value="#{searchProspect.tableau.getPourcent(_tDto,3)}">
+								<f:convertNumber type="percent" />
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{messages['prospect.potentiel.4']} %" />
+							</f:facet>
+							<h:outputText
+								value="#{searchProspect.tableau.getPourcent(_tDto,4)}">
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>

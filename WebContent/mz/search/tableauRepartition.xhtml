@@ -37,7 +37,7 @@
 
 						</rich:column>
 
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.0']}" />
 							</f:facet>
@@ -46,7 +46,7 @@
 								<h:outputText value="#{searchProspect.tableau.getTotal(0)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column>
+						<rich:column  style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.1']}" />
 							</f:facet>
@@ -55,7 +55,7 @@
 								<h:outputText value="#{searchProspect.tableau.getTotal(1)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.2']}" />
 							</f:facet>
@@ -64,25 +64,25 @@
 								<h:outputText value="#{searchProspect.tableau.getTotal(2)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.3']}" />
 							</f:facet>
-							<h:outputText value="#{_tDto.getCount(3)}" />
+							<h:outputText value="#{_tDto.getCount(3)}"/>
 							<f:facet name="footer">
 								<h:outputText value="#{searchProspect.tableau.getTotal(3)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.4']}" />
 							</f:facet>
-							<h:outputText value="#{_tDto.getCount(4)}" />
+							<h:outputText value="#{_tDto.getCount(4)}"/>
 							<f:facet name="footer">
 								<h:outputText value="#{searchProspect.tableau.getTotal(4)}" />
 							</f:facet>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.0']} %" />
 							</f:facet>
@@ -91,7 +91,7 @@
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.1']} %" />
 							</f:facet>
@@ -100,7 +100,7 @@
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.2']} %" />
 							</f:facet>
@@ -109,7 +109,7 @@
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.3']} %" />
 							</f:facet>
@@ -118,7 +118,7 @@
 								<f:convertNumber type="percent" />
 							</h:outputText>
 						</rich:column>
-						<rich:column>
+						<rich:column style="text-align:right;">
 							<f:facet name="header">
 								<h:outputText value="#{messages['prospect.potentiel.4']} %" />
 							</f:facet>

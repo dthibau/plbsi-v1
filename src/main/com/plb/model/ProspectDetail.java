@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.plb.util.HTMLUtils;
+
 
 
 @Entity
@@ -315,6 +317,9 @@ public class ProspectDetail implements Serializable {
 	}
 
 
+	public String getParticipantsAsString() {
+		return HTMLUtils.getData(participants);
+	}
 	public String getParticipants() {
 		return participants;
 	}

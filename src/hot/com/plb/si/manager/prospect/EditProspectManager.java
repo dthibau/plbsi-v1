@@ -76,6 +76,9 @@ public class EditProspectManager implements Serializable {
 			"prospect.gagne");
 	@Out
 	public static String ST_PERDU = "Perdu";
+	@Out
+	public static String ST_DOUBLON= SeamResourceBundle.getBundle().getString(
+			"prospect.gagne");
 	/**
 	 * 
 	 */
@@ -501,7 +504,7 @@ public class EditProspectManager implements Serializable {
 						ApplicationManager.ST_INTRA_LOGISTIQUE);
 			}
 			if (prospect.getStatut().equals(ST_PERDU)
-					|| prospect.getStatut().equals(ST_ABANDON)) {
+					|| prospect.getStatut().equals(ST_ABANDON) || prospect.getStatut().equals(ST_DOUBLON) ) {
 				prospect.getInformationIntra().setStatutIntra(
 						ApplicationManager.ST_INTRA_ANNULE);
 				if (prospect.getInformationIntra().getRaisonPerte() == null

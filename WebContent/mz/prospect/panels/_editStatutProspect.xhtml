@@ -116,6 +116,7 @@
 								<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_DOUBLON}" />
 								<f:selectItem itemValue="#{ST_ABANDON}" />
 								<f:selectItem itemValue="#{ST_GAGNE}" />
 								<f:selectItem itemValue="#{ST_PERDU}" />
@@ -127,6 +128,7 @@
 								<a:ajax event="change" render="statutDemande,buttonPanel,montantPanel"/>
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_DOUBLON}" />
 								<f:selectItem itemValue="#{ST_ABANDON}" />
 								<f:selectItem itemValue="#{ST_GAGNE}" />
 								<f:selectItem itemValue="#{ST_PERDU}" />
@@ -137,6 +139,7 @@
 								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
 								<a:ajax event="change" render="statutDemande,buttonPanel,montantPanel"/>
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
+								<f:selectItem itemValue="#{ST_DOUBLON}" />
 								<f:selectItem itemValue="#{ST_ABANDON}" />
 								<f:selectItem itemValue="#{ST_GAGNE}" />
 								<f:selectItem itemValue="#{ST_PERDU}" />

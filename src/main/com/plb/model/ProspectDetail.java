@@ -163,12 +163,24 @@ public class ProspectDetail implements Serializable {
 	@JoinColumn(name = "id_formulaire_contact")
 	private Prospect prospect;
 	
+	@Column(name = "utm_source")
+	private String utm_source;
+	@Column(name = "utm_campaign")
+	private String utm_campaign;
+	@Column(name = "utm_medium")
+	private String utm_medium;
+	@Column(name = "gclid")
+	private String gclid;
+	@Column(name = "fbclid")
+	private String fbclid;
+	@Column(name = "msclkid")
+	private String msclkid;
+	
 	private int potentiel;
 	
 	public String getTypeFormation() {
 		return typeFormation;
 	}
-
 
 	public void setTypeFormation(String typeFormation) {
 		this.typeFormation = typeFormation;
@@ -578,9 +590,67 @@ public class ProspectDetail implements Serializable {
 		return potentiel;
 	}
 
-
 	public void setPotentiel(int potentiel) {
 		this.potentiel = potentiel;
+	}
+
+	public String getUtm_source() {
+		return utm_source;
+	}
+
+
+	public void setUtm_source(String utm_source) {
+		this.utm_source = utm_source;
+	}
+
+
+	public String getUtm_campaign() {
+		return utm_campaign;
+	}
+
+
+	public void setUtm_campaign(String utm_campaign) {
+		this.utm_campaign = utm_campaign;
+	}
+
+
+	public String getUtm_medium() {
+		return utm_medium;
+	}
+
+
+	public void setUtm_medium(String utm_medium) {
+		this.utm_medium = utm_medium;
+	}
+
+
+	public String getGclid() {
+		return gclid;
+	}
+
+
+	public void setGclid(String gclid) {
+		this.gclid = gclid;
+	}
+
+
+	public String getFbclid() {
+		return fbclid;
+	}
+
+
+	public void setFbclid(String fbclid) {
+		this.fbclid = fbclid;
+	}
+
+
+	public String getMsclkid() {
+		return msclkid;
+	}
+
+
+	public void setMsclkid(String msclkid) {
+		this.msclkid = msclkid;
 	}
 
 

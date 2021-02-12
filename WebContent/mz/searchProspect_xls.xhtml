@@ -78,6 +78,36 @@
 				<ui:param name="value" value="#{!empty _pdto.prospect.informationIntra ? _pdto.prospect.informationIntra.idInforamtionIntra : ''}"/>
 				<ui:param name="type" value="text"/>
 			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="utm_source"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.utm_source}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="utm_campaign"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.utm_campaign}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="utm_medium"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.utm_medium}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="gclid"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.gclid}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="fbclid"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.fbclid}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
+			<ui:include src="common/excel-column.xhtml">
+				<ui:param name="header" value="msclkid"/>
+				<ui:param name="value" value="#{_pdto.prospectDetail.msclkid}"/>
+				<ui:param name="type" value="text"/>
+			</ui:include>
 
 		</e:worksheet>
 	

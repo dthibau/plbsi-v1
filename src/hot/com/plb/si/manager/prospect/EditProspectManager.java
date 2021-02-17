@@ -78,7 +78,7 @@ public class EditProspectManager implements Serializable {
 	public static String ST_PERDU = "Perdu";
 	@Out
 	public static String ST_DOUBLON= SeamResourceBundle.getBundle().getString(
-			"prospect.gagne");
+			"prospect.doublon");
 	/**
 	 * 
 	 */

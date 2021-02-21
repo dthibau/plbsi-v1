@@ -10,7 +10,7 @@
 		verticalFreeze="1">
 			<ui:include src="common/excel-column.xhtml">
 				<ui:param name="header" value="#{messages['prospect.date']}"/>
-				<ui:param name="value" value="#{_pdto.prospect.dateCreation}"/>
+				<ui:param name="value" value="#{_pdto.dateCreation}"/>
 				<ui:param name="type" value="date"/>
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">
@@ -60,7 +60,7 @@
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">
 				<ui:param name="header" value="#{messages['prospect.montant']}"/>
-				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.montant}"/>
+				<ui:param name="value" value="#{_pdto.prospect.prospectDetail.montantAsString}"/>
 				<ui:param name="type" value="float"/>
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">
@@ -70,7 +70,7 @@
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">
 				<ui:param name="header" value="#{messages['prospect.lastUpdateDate']}"/>
-				<ui:param name="value" value="#{_pdto.prospect.dateModification}"/>
+				<ui:param name="value" value="#{_pdto.dateModification}"/>
 				<ui:param name="type" value="date"/>
 			</ui:include>
 			<ui:include src="common/excel-column.xhtml">

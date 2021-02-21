@@ -1,6 +1,7 @@
 package com.plb.si.dto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,8 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 	public static ResourceBundle bundle = SeamResourceBundle.getBundle();
 	public static String statut1 = bundle.getString("prospect.nonAffecte");
 	public static String statut2 = bundle.getString("prospect.gagne");
+	public static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
 	private Prospect prospect;
 	// Le rôle visualisant le prospect
 	private Role role;
@@ -90,8 +93,12 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		return prospect.getProspectDetail();
 	}
 
-	public Date getDateCreation() {
-		return prospect.getDateCreation();
+	public String getDateCreation() {
+		return df.format(prospect.getDateCreation());
+	}
+
+	public String getDateModification() {
+		return prospect.getDateModification() != null ? df.format(prospect.getDateModification()) : "";
 	}
 
 	public String getDateDevis() {

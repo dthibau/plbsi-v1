@@ -264,6 +264,9 @@ public class ProspectDetail implements Serializable {
 		return montant;
 	}
 
+	public String getMontantAsString() {
+		return montant != null ? montant +" €" : "";
+	}
 
 	public void setMontant(Float montant) {
 		this.montant = montant;

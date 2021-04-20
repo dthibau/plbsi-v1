@@ -107,7 +107,7 @@ public class ProspectDao {
 	private String _buildWhereClause(ProspectCritere critere) {
 		StringBuffer sbf = new StringBuffer("");
 		if (!critere.isAll()) {
-			sbf.append(" and p.statut<>:gagne and p.statut<>'Perdu' and p.statut<>'Abandon'");
+			sbf.append(" and p.statut<>:gagne and p.statut<>'Perdu' and p.statut<>'Abandon' and p.statut<>'Doublon'");
 		}
 		if (critere.getStatut() != null) {
 			sbf.append(" and p.statut=:statut");

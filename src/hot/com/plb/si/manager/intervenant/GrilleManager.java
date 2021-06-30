@@ -47,7 +47,7 @@ public class GrilleManager {
 
 	@In
 	EntityManager entityManager;
-	
+
 	@In
 	ApplicationManager applicationManager;
 
@@ -59,7 +59,7 @@ public class GrilleManager {
 	@Logger
 	Log log;
 
-	@In(create=true)
+	@In(create = true)
 	List<Filiere> filieres;
 
 	private int step = 0;
@@ -170,14 +170,13 @@ public class GrilleManager {
 	}
 
 	public List<CompetenceDto> getKnownCompetencesRows(Filiere filiere) {
-		if ( filiere == null ) {
+		if (filiere == null) {
 			log.error("Calling getKnownCompetencesRows with filiere == null !!");
 			return new ArrayList<CompetenceDto>();
 		}
-		log.debug("getKnownCompetencesRows cache for Filiere " + filiere
-				+ " is null ? "
+		log.debug("getKnownCompetencesRows cache for Filiere " + filiere + " is null ? "
 				+ (hshKnownCompetencesRows.get(filiere) == null));
-		
+
 		if (hshKnownCompetencesRows.get(filiere) == null) {
 			hshKnownCompetencesRows.put(filiere, _getKnownCompetences(filiere));
 		}
@@ -186,16 +185,20 @@ public class GrilleManager {
 
 	private List<CompetenceDto> _getKnownCompetences(Filiere filiere) {
 		List<Formation> knownFormations = knownFilieres.get(filiere);
-		List<CompetenceDto> ret = new ArrayList<CompetenceDto>(
-				knownFormations.size());
-		for (Formation formation : knownFormations) {
-			Competence competence = intervenant.getGrilleCompetence()
-					.getCompetence(formation);
-			if (competence != null) {
-				ret.add(new CompetenceDto(competence));
-			} else {
-				ret.add(new CompetenceDto(formation));
+		List<CompetenceDto> ret = null;
+		if (knownFormations != null) {
+			ret = new ArrayList<CompetenceDto>(knownFormations.size());
+			for (Formation formation : knownFormations) {
+				Competence competence = intervenant.getGrilleCompetence().getCompetence(formation);
+				if (competence != null) {
+					ret.add(new CompetenceDto(competence));
+				} else {
+					ret.add(new CompetenceDto(formation));
+				}
 			}
+		} else {
+			log.warn("GrilleDeCompétence : Aucune formation connue pour " + filiere);
+			ret = new ArrayList<CompetenceDto>();
 		}
 
 		Collections.sort(ret);
@@ -203,12 +206,12 @@ public class GrilleManager {
 	}
 
 	public List<CompetenceDto> getNewCompetencesRows(Filiere filiere) {
-		if ( filiere == null ) {
+		if (filiere == null) {
 			log.error("Calling getNewCompetencesRows with filiere == null !!");
 			return new ArrayList<CompetenceDto>();
 		}
-		log.debug("getNewCompetencesRows cache for Filiere " + filiere
-				+ " is null ? " + (hshNewCompetencesRows.get(filiere) == null));
+		log.debug("getNewCompetencesRows cache for Filiere " + filiere + " is null ? "
+				+ (hshNewCompetencesRows.get(filiere) == null));
 		if (hshNewCompetencesRows.get(filiere) == null) {
 			hshNewCompetencesRows.put(filiere, _getNewCompetences(filiere));
 		}
@@ -217,11 +220,9 @@ public class GrilleManager {
 
 	private List<CompetenceDto> _getNewCompetences(Filiere filiere) {
 		List<Formation> newFormations = newFilieres.get(filiere);
-		List<CompetenceDto> ret = new ArrayList<CompetenceDto>(
-				newFormations.size());
+		List<CompetenceDto> ret = new ArrayList<CompetenceDto>(newFormations.size());
 		for (Formation formation : newFormations) {
-			Competence competence = intervenant.getGrilleCompetence()
-					.getCompetence(formation);
+			Competence competence = intervenant.getGrilleCompetence().getCompetence(formation);
 			if (competence != null) {
 				ret.add(new CompetenceDto(competence));
 			} else {
@@ -240,8 +241,7 @@ public class GrilleManager {
 	}
 
 	public List<Competence> getCompetencesAnimees(Filiere filiere) {
-		log.debug("getCompetencesAnimees for filiere " + filiere + " cache is "
-				+ hshCompetencesAnimees.get(filiere));
+		log.debug("getCompetencesAnimees for filiere " + filiere + " cache is " + hshCompetencesAnimees.get(filiere));
 		if (hshCompetencesAnimees.get(filiere) == null) {
 			hshCompetencesAnimees.put(filiere, _getCompetencesAnimees(filiere));
 		}
@@ -253,8 +253,7 @@ public class GrilleManager {
 		if (filiere != null) {
 			List<Competence> competences = intervenant.getGrilleCompetence().getCompetences();
 			for (Competence competence : competences) {
-				Formation formation = entityManager.find(Formation.class,
-						competence.getFormation().getIdFormation());
+				Formation formation = entityManager.find(Formation.class, competence.getFormation().getIdFormation());
 				if (formation.getFilierePrincipale().equals(filiere)) {
 					ret.add(competence);
 				}
@@ -264,7 +263,6 @@ public class GrilleManager {
 		return ret;
 	}
 
-
 	public String terminer() {
 
 		intervenant.getGrilleCompetence().setFilledDate(new Date());
@@ -272,13 +270,11 @@ public class GrilleManager {
 
 		modif += PlbUtil.diffIntervenant(oldIntervenant, intervenant);
 		if (modif.length() > 0) {
-			Event event = new IntervenantModificationEvent(null, intervenant,
-					modif);
+			Event event = new IntervenantModificationEvent(null, intervenant, modif);
 			entityManager.persist(event);
 			intervenant.setDateMisAJour(new Date());
 			if (intervenant.getTarif() != oldIntervenant.getTarif()) {
-				notificationService.sendUpdateTarif(intervenant,
-						oldIntervenant.getTarif());
+				notificationService.sendUpdateTarif(intervenant, oldIntervenant.getTarif());
 			}
 			_storeOldState();
 		}
@@ -303,11 +299,9 @@ public class GrilleManager {
 		FormationDao formationDao = new FormationDao(entityManager);
 		if (grilleCompetence.getFilledDate() != null) { // Update newFilieres
 														// and Formations
-			newFormations = formationDao.findAllFrom(grilleCompetence
-					.getFilledDate());
+			newFormations = formationDao.findAllFrom(grilleCompetence.getFilledDate());
 			_fillMap(newFormations, newFilieres);
-			knownFormations = formationDao.findAllBefore(grilleCompetence
-					.getFilledDate());
+			knownFormations = formationDao.findAllBefore(grilleCompetence.getFilledDate());
 			_fillMap(knownFormations, knownFilieres);
 
 		} else {
@@ -319,12 +313,10 @@ public class GrilleManager {
 
 	}
 
-	private void _fillMap(List<Formation> formations,
-			Map<Filiere, List<Formation>> map) {
+	private void _fillMap(List<Formation> formations, Map<Filiere, List<Formation>> map) {
 		for (Formation formation : formations) {
 			if (map.get(formation.getFilierePrincipale()) == null) {
-				map.put(formation.getFilierePrincipale(),
-						new ArrayList<Formation>());
+				map.put(formation.getFilierePrincipale(), new ArrayList<Formation>());
 			}
 			map.get(formation.getFilierePrincipale()).add(formation);
 		}
@@ -344,37 +336,35 @@ public class GrilleManager {
 	}
 
 	public void toggleFilierre(CompetenceDto c) {
-		if ( c.getChecked() ) {
-			intervenant.getGrilleCompetence().addCompetence(c.getFormation());		
+		if (c.getChecked()) {
+			intervenant.getGrilleCompetence().addCompetence(c.getFormation());
 		} else {
-			intervenant.getGrilleCompetence().removeCompetence(c.getFormation());	
+			intervenant.getGrilleCompetence().removeCompetence(c.getFormation());
 		}
 		Filiere filiere = c.getFormation().getFilierePrincipale();
 //		refresh();
 
 		expandFiliere.put(filiere, true);
-		log.debug("Toggle " + filiere + "/" + c.getFormation() + " par "
-				+ intervenant);
+		log.debug("Toggle " + filiere + "/" + c.getFormation() + " par " + intervenant);
 
 	}
-	
+
 	public void updateSupport(CompetenceDto c) {
-		intervenant.getGrilleCompetence().getCompetence(c.getFormation()).setSupport(c.getSupport());;		
-		log.debug("UpdateSupport /" + c.getFormation() + " / "
-				+ intervenant + " / " + c.getSupport());
+		intervenant.getGrilleCompetence().getCompetence(c.getFormation()).setSupport(c.getSupport());
+		;
+		log.debug("UpdateSupport /" + c.getFormation() + " / " + intervenant + " / " + c.getSupport());
 
 	}
+
 	public void updateRemarques(CompetenceDto c) {
-		intervenant.getGrilleCompetence().getCompetence(c.getFormation()).setRemarques(c.getRemarques());		
-		log.debug("UpdateRemarques /" + c.getFormation() + " / "
-				+ intervenant + " / " + c.getRemarques());
+		intervenant.getGrilleCompetence().getCompetence(c.getFormation()).setRemarques(c.getRemarques());
+		log.debug("UpdateRemarques /" + c.getFormation() + " / " + intervenant + " / " + c.getRemarques());
 
 	}
 
 	public boolean isExpanded(Filiere filiere) {
 		// return false;
-		return filiere != null && expandFiliere.get(filiere) != null ? expandFiliere
-				.get(filiere) : false;
+		return filiere != null && expandFiliere.get(filiere) != null ? expandFiliere.get(filiere) : false;
 
 	}
 

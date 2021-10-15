@@ -224,6 +224,10 @@ public class PlbUtil {
 		StringBuilder sb = new StringBuilder();
 		for (SessionDto sessionDto : newSessions) {
 			if (sessionDto.getOrganisme().equals("PLB")) {
+				// Compatibilité v2
+				for ( Session s : sessionDto.getAllSessions() ) {
+					s.setIdSessionLieu(1l);
+				}
 				_mergeSessions(formation, "PLB", formation.getSessions(),
 						formation.getSessionsPLB(),
 						sessionDto.getAllSessions(), currentYear, sb);

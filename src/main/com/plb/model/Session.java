@@ -37,8 +37,9 @@ public class Session implements Comparable<Session> {
 	@JoinColumn(name = "id_formation")
 	private Formation formation;
 	
-//	@ManyToOne(optional=true)
-//	FormationPartenaire formationPartenaire;
+
+	@Column(name = "session_lieu_id")
+	private Long idSessionLieu;
 
 	public Session() {
 
@@ -126,13 +127,13 @@ public class Session implements Comparable<Session> {
 		this.formation = formation;
 	}
 
-//	public FormationPartenaire getFormationPartenaire() {
-//		return formationPartenaire;
-//	}
-//
-//	public void setFormationPartenaire(FormationPartenaire formationPartenaire) {
-//		this.formationPartenaire = formationPartenaire;
-//	}
+	public Long getIdSessionLieu() {
+		return idSessionLieu;
+	}
+
+	public void setIdSessionLieu(Long idSessionLieu) {
+		this.idSessionLieu = idSessionLieu;
+	}
 
 	@Override
 	public int hashCode() {

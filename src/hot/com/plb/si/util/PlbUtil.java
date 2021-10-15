@@ -226,7 +226,9 @@ public class PlbUtil {
 			if (sessionDto.getOrganisme().equals("PLB")) {
 				// Compatibilité v2
 				for ( Session s : sessionDto.getAllSessions() ) {
-					s.setIdSessionLieu(1l);
+					if ( s.getIdSessionLieu() == null ) {
+						s.setIdSessionLieu(1l);
+					}
 				}
 				_mergeSessions(formation, "PLB", formation.getSessions(),
 						formation.getSessionsPLB(),

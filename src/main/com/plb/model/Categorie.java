@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -54,6 +55,7 @@ public class Categorie {
 	private int rang;
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="baseCategorie")
+	@OrderBy("order")
 	List<CategorieConnexe> categoriesConnexes = new ArrayList<CategorieConnexe>();
 	
 	@Column(name="cat_afficher_haut", columnDefinition = "TINYINT")
@@ -148,7 +150,7 @@ public class Categorie {
 		List<String> ret = new ArrayList<String>(getCategoriesConnexes().size());
 		
 		for ( CategorieConnexe catConnexe : categoriesConnexes ) {
-			ret.add(catConnexe.getOrder(), catConnexe.getLinkedCategorie().getLibelle().replaceAll(",", "|"));
+			ret.add(catConnexe.getLinkedCategorie().getLibelle().replaceAll(",", "|"));
 		}
 		
 		return ret;

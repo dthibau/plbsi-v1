@@ -79,7 +79,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "for_reference", columnDefinition = "text")
 	@Field
 	private String reference;
-	@Column(name = "for_remarques", columnDefinition = "mediumtext")
+	@Column(name = "for_remarques", columnDefinition = "longtext")
 	@Field
 	private String remarques = "";
 

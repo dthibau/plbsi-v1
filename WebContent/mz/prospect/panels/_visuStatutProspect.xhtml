@@ -56,6 +56,17 @@
 						<h:outputText value="N/C"
 							rendered="#{empty editProspectManager.prospect.prospectDetail.date_souhaite}" />
 					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.modalites']}" />
+						</ui:define>
+						<h:outputText
+							value="Présentiel"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null || !editProspectManager.prospect.prospectDetail.modalite}" />
+						<h:outputText
+							value="A distance"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite}" />
+					</s:decorate>
 				</fieldset>
 			</td>
 			<td>

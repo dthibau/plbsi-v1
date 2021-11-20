@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Type;
+
 import com.plb.util.HTMLUtils;
 
 
@@ -175,6 +177,9 @@ public class ProspectDetail implements Serializable {
 	private String fbclid;
 	@Column(name = "msclkid")
 	private String msclkid;
+	@Column(name = "modalite", columnDefinition = "BIT")
+	@Type(type = "numeric_boolean")
+	private Boolean modalite;
 	
 	private int potentiel;
 	
@@ -651,11 +656,17 @@ public class ProspectDetail implements Serializable {
 		return msclkid;
 	}
 
-
 	public void setMsclkid(String msclkid) {
 		this.msclkid = msclkid;
 	}
 
+	public Boolean getModalite() {
+		return modalite;
+	}
+
+	public void setModalite(Boolean modalite) {
+		this.modalite = modalite;
+	}
 
 	public ProspectDetail clone() {
 		ProspectDetail d = new ProspectDetail();

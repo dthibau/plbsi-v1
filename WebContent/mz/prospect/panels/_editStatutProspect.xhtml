@@ -30,9 +30,9 @@
 							<f:selectItems value="#{typesContactSi}" var="type"
 								itemValue="#{type.libelle.toUpperCase()}"
 								itemLabel="#{type.libelle}" />
-							<f:selectItems value="#{typesContactAutre}" var="type" 
-							    itemValue="#{type.libelle.toUpperCase()}" 
-							    itemLabel="#{type.libelle}"/>
+							<f:selectItems value="#{typesContactAutre}" var="type"
+								itemValue="#{type.libelle.toUpperCase()}"
+								itemLabel="#{type.libelle}" />
 						</h:selectOneMenu>
 						<h:outputText value="#{editProspectManager.prospect.type}"
 							rendered="#{applicationManager.isWebType(editProspectManager.prospect.type)}" />
@@ -82,6 +82,20 @@
 								render=":editForm:f_date_souhaite:f_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
 						</h:inputText>
 					</s:decorate>
+					<a:outputPanel id="s_modalites">
+						<s:decorate template="../../layout/display.xhtml"
+							style="width:400px;">
+							<ui:define name="label">
+								<h:outputText value="#{messages['prospect.modalites']}" />
+							</ui:define>
+							<h:selectOneMenu
+								value="#{editProspectManager.prospect.prospectDetail.modalite}"
+								style="width:160px; height:20px;">
+								<f:selectItem itemValue="false" itemLabel="Présentiel" />
+								<f:selectItem itemValue="true" itemLabel="A distance" />
+							</h:selectOneMenu>
+						</s:decorate>
+					</a:outputPanel>
 				</fieldset>
 			</td>
 			<td>
@@ -112,7 +126,8 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial == null}">
-								<a:ajax event="change" render="statutDemande,buttonPanel,montantPanel"/>
+								<a:ajax event="change"
+									render="statutDemande,buttonPanel,montantPanel" />
 								<f:selectItem itemValue="#{ST_NON_AFFECTE}" />
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
@@ -125,7 +140,8 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.managerDispatcher}">
-								<a:ajax event="change" render="statutDemande,buttonPanel,montantPanel"/>
+								<a:ajax event="change"
+									render="statutDemande,buttonPanel,montantPanel" />
 								<f:selectItem itemValue="#{ST_EN_ATTENTE}" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
 								<f:selectItem itemValue="#{ST_DOUBLON}" />
@@ -137,7 +153,8 @@
 								value="#{editProspectManager.prospect.statut}"
 								style="width:175px;"
 								rendered="#{editProspectManager.prospectDetail.commercial != null and sessionDataManager.commercial}">
-								<a:ajax event="change" render="statutDemande,buttonPanel,montantPanel"/>
+								<a:ajax event="change"
+									render="statutDemande,buttonPanel,montantPanel" />
 								<f:selectItem itemValue="#{ST_EN_COURS}" />
 								<f:selectItem itemValue="#{ST_DOUBLON}" />
 								<f:selectItem itemValue="#{ST_ABANDON}" />
@@ -189,33 +206,33 @@
 							</ui:define>
 							<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
 								value="#{editProspectManager.prospectDetail.datedevis}"
-								style="width:100px;height:20px" >
+								style="width:100px;height:20px">
 								<a:ajax event="change" render="relancePanel" />
 							</rich:calendar>
 						</s:decorate>
 					</a:outputPanel>
 					<a:outputPanel id="relancePanel">
-					<s:decorate template="../../layout/display.xhtml"
-						style="width:300px;" rendered="#{editProspectManager.envoye}">
-						<ui:define name="label">
-							<h:outputText value="Relance ?" />
-						</ui:define>
-						<h:selectBooleanCheckbox value="#{editProspectManager.relance}">
-							<a:ajax event="change" render="relanceCalendar" />
-							<f:selectItem itemValue="true" itemLabel="" />
-						</h:selectBooleanCheckbox>
-					</s:decorate>
-					<a:outputPanel id="relanceCalendar">
 						<s:decorate template="../../layout/display.xhtml"
-							style="width:400px;" rendered="#{editProspectManager.relance}">
+							style="width:300px;" rendered="#{editProspectManager.envoye}">
 							<ui:define name="label">
-								<h:outputText value="Date : " />
+								<h:outputText value="Relance ?" />
 							</ui:define>
-							<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
-								value="#{editProspectManager.prospectDetail.dateRelance}"
-								style="width:100px;height:20px" />
+							<h:selectBooleanCheckbox value="#{editProspectManager.relance}">
+								<a:ajax event="change" render="relanceCalendar" />
+								<f:selectItem itemValue="true" itemLabel="" />
+							</h:selectBooleanCheckbox>
 						</s:decorate>
-					</a:outputPanel>
+						<a:outputPanel id="relanceCalendar">
+							<s:decorate template="../../layout/display.xhtml"
+								style="width:400px;" rendered="#{editProspectManager.relance}">
+								<ui:define name="label">
+									<h:outputText value="Date : " />
+								</ui:define>
+								<rich:calendar datePattern="dd/M/yyyy" enableManualInput="true"
+									value="#{editProspectManager.prospectDetail.dateRelance}"
+									style="width:100px;height:20px" />
+							</s:decorate>
+						</a:outputPanel>
 					</a:outputPanel>
 
 				</fieldset>

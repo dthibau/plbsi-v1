@@ -118,6 +118,13 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 		return (prospect.getSociete() != null && prospect.getSociete().length() > 0) ? prospect
 				.getSociete() : bundle.getString("prospect.nonRenseigne");
 	}
+	
+	public String getAdresse() {
+		return (prospect.getAdresse() != null ? prospect.getAdresse() : "")  + " " 
+	             + (prospect.getCp() != null ? prospect.getCp() : "")  + " " 
+				+ (prospect.getVille() != null ? prospect.getVille() : "");
+		
+	}
 
 	public String getReference() {
 		return prospect.getReference();

@@ -57,7 +57,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "formationGenerator")
-	@SequenceGenerator(name = "formationGenerator", sequenceName = "FORMATION_ID", initialValue = 700000, allocationSize = 1)
+	@SequenceGenerator(name = "formationGenerator", sequenceName = "formation_id", initialValue = 700000, allocationSize = 1)
 	@Column(name = "id_formation")
 	private int idFormation;
 	@Column(name = "for_libelle", columnDefinition = "text")
@@ -70,7 +70,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Field
 	private String precision;
 	@Column(name = "for_prix", columnDefinition = "decimal")
-	private float prix;
+	private Float prix;
 	@Temporal(TemporalType.DATE)
 	private Date lastUpdatePrix;
 	@Column(name = "for_duree", columnDefinition = "decimal")
@@ -326,11 +326,11 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.precision = precision;
 	}
 
-	public float getPrix() {
+	public Float getPrix() {
 		return prix;
 	}
 
-	public void setPrix(float prix) {
+	public void setPrix(Float prix) {
 		this.prix = prix;
 	}
 

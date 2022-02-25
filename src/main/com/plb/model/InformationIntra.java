@@ -38,7 +38,7 @@ public class InformationIntra implements Serializable {
 	//Attributs de l'objet
 	@Id
 	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator_client2")
-	@SequenceGenerator (name = "generator_client2", sequenceName = "WINDEV_SEQ2", initialValue = 3000, allocationSize = 1)
+	@SequenceGenerator (name = "generator_client2", sequenceName = "windev_seq2", initialValue = 3000, allocationSize = 1)
 	@Column(name = "id_information_intra")
 	private int idInforamtionIntra;
 	

@@ -3,7 +3,6 @@ package com.plb.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.plb.model.Formation;
 
@@ -28,11 +27,12 @@ public class FormationDto implements Serializable, Comparable<FormationDto> {
 	public FormationDto(Formation formation) {
 		this.formation = formation;
 
-		intra = formation.getPrix() != 0 ? false : true;
+		// Si pas renseigné ou != 0, ce n'est pas un intra
+		intra = formation.getPrix() == null || formation.getPrix() != 0 ? false : true;
 	}
 
 	public int getPrixAsInt() {
-		return (int) formation.getPrix();
+		return formation.getPrix().intValue();
 	}
 
 	public Formation getFormation() {

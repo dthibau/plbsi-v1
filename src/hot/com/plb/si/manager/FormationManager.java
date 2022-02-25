@@ -232,7 +232,7 @@ public class FormationManager implements Serializable {
 				}
 			}
 		} else { // Création
-			if (formation.getPrix() != 0) {
+			if (formation.getPrix() !=null && formation.getPrix() != 0) {
 				formation.setLastUpdatePrix(new Date());
 			}
 			formation.setDateCreation(new Date());

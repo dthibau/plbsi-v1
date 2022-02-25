@@ -24,7 +24,7 @@
           </elementProp>
           <elementProp name="PASSWORD" elementType="Argument">
             <stringProp name="Argument.name">PASSWORD</stringProp>
-            <stringProp name="Argument.value">${__P(PASSWORD,AVTno1cd)}</stringProp>
+            <stringProp name="Argument.value">s8sFU&amp;4VFY@4q4xka_5P5Y$5^ZB8:4y$f({f</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="SCHEME" elementType="Argument">
@@ -65,7 +65,7 @@
           </elementProp>
           <stringProp name="HTTPSampler.domain">${SERVER}</stringProp>
           <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-          <stringProp name="HTTPSampler.protocol">${SCHEME}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
@@ -161,7 +161,7 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
               <elementProp name="loginForm:password" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">loginForm:password</stringProp>
                 <stringProp name="Argument.value">${PASSWORD}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>

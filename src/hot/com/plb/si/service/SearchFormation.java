@@ -8,12 +8,15 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 import org.hibernate.search.SearchFactory;
 import org.hibernate.search.jpa.FullTextEntityManager;
+import org.jboss.logging.Logger;
 
 import com.plb.model.Formation;
 
 public class SearchFormation {
 
 	private FullTextEntityManager entityManager;
+	
+	private static Logger log = Logger.getLogger(SearchFormation.class.getName());
 
 	private class SearchField {
 		private String name;
@@ -88,7 +91,7 @@ public class SearchFormation {
 		}
 		luceneQuery = parser.parse(sbf.toString());
 
-//		System.out.println(luceneQuery);
+		log.debug("Lucene Query is " + luceneQuery);
 		return luceneQuery;
 	}
 	

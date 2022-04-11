@@ -65,10 +65,10 @@
 							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null}" />					
 						<h:outputText
 							value="Présentiel"
-							rendered="#{editProspectManager.prospect.prospectDetail.modalite == 0}" />
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite != null && !editProspectManager.prospect.prospectDetail.modalite == 0}" />
 						<h:outputText
 							value="A distance"
-							rendered="#{editProspectManager.prospect.prospectDetail.modalite == 1}" />
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite}" />
 					</s:decorate>
 				</fieldset>
 			</td>

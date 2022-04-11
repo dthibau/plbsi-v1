@@ -61,8 +61,12 @@
 							<h:outputText value="#{messages['prospect.modalites']}" />
 						</ui:define>
 						<h:outputText
+							value="Non renseigné"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null}" />
+						
+						<h:outputText
 							value="Présentiel"
-							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null || !editProspectManager.prospect.prospectDetail.modalite}" />
+							rendered="#{!editProspectManager.prospect.prospectDetail.modalite}" />
 						<h:outputText
 							value="A distance"
 							rendered="#{editProspectManager.prospect.prospectDetail.modalite}" />

@@ -208,10 +208,11 @@
 						<tr>
 							<td><s:decorate template="../layout/display.xhtml"
 									style="width:600px">
-									<ui:define name="label">CV formateurs</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.cv}">
-										<f:selectItem itemValue="1" itemLabel="OUI" />
-										<f:selectItem itemValue="0" itemLabel="NON" />
+									<ui:define name="label">Certification ?</ui:define>
+									<h:selectOneMenu value="#{intraManager.intra.certification}">
+										<f:selectItem itemValue="NON" itemLabel="NON"/>
+									   	<f:selectItem itemValue="OUI" itemLabel="OUI"/>
+									   	<f:selectItem itemValue="Peut-être" itemLabel="Peut-être"/>
 									</h:selectOneMenu>
 								</s:decorate></td>
 						</tr>

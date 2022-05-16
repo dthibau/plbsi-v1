@@ -94,11 +94,14 @@ public class InformationIntra implements Serializable {
 	@Column(name = "statut_intra")
 	private String statutIntra;
 	
-	@Column(name = "cv")
-	private Integer cv;
+//	@Column(name = "cv")
+//	private Integer cv;
 	
 	@Column(name="format")
 	private String format;
+	
+	@Column(name="certification")
+	private String certification;
 	
 //	@Column(name = "frais")
 //	private Integer frais;
@@ -234,20 +237,20 @@ public class InformationIntra implements Serializable {
 		this.dateCreation = dateCreation;
 	}
 
-	public Integer getCv() {
-		return cv;
-	}
-
-	public void setCv(Integer cv) {
-		this.cv = cv;
-	}
-
 	public String getFormat() {
 		return format;
 	}
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+
+	public String getCertification() {
+		return certification;
+	}
+
+	public void setCertification(String certification) {
+		this.certification = certification;
 	}
 
 	public Date getDateModification() {

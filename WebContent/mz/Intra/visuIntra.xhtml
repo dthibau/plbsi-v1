@@ -29,14 +29,13 @@
 								</ui:define>
 								<h:outputText value="#{intraManager.intra.prospect.societe}" />
 							</s:decorate></td>
-						<td><s:decorate template="../layout/display.xhtml" style="width:400px;">
-									<ui:define name="label">
-										<h:outputText value="#{messages['devis.contactClient']}" />
-									</ui:define>
-									<h:outputText value="#{intraManager.intra.prospect.nom}" />
-								</s:decorate>
-						
-						</td>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:400px;">
+								<ui:define name="label">
+									<h:outputText value="#{messages['devis.contactClient']}" />
+								</ui:define>
+								<h:outputText value="#{intraManager.intra.prospect.nom}" />
+							</s:decorate></td>
 					</tr>
 					<tr>
 						<td><s:decorate template="../layout/display.xhtml"
@@ -142,7 +141,7 @@
 								<h:outputText
 									value="#{messages['historique.FormationCommentEvent']}" />
 							</f:facet>
-							<h:outputText value="#{message.libelle}"  />
+							<h:outputText value="#{message.libelle}" />
 							<f:facet name="footer">
 								<h:outputText
 									value="#{messages['historique.FormationCommentEvent']}" />
@@ -209,7 +208,8 @@
 								<ui:define name="label">
 									<h:outputText value="#{messages['intra.statut']}" />
 								</ui:define>
-								<h:outputText value="#{messages[intraManager.intra.statutIntra]}" />
+								<h:outputText
+									value="#{messages[intraManager.intra.statutIntra]}" />
 							</s:decorate></td>
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:400px;">
@@ -225,13 +225,8 @@
 					<tr>
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
-								<ui:define name="label">
-									<h:outputText value="CV ?" />
-								</ui:define>
-								<h:outputText value="Oui"
-									rendered="#{intraManager.intra.cv == 1}" />
-								<h:outputText value="Non"
-									rendered="#{intraManager.intra.cv == 0}" />
+								<ui:define name="label">Certification ?</ui:define>
+								<h:outputText value="#{intraManager.intra.certification}" />
 							</s:decorate></td>
 					</tr>
 					<tr>
@@ -240,7 +235,7 @@
 								<ui:define name="label">
 									<h:outputText value="Quel Format ?" />
 								</ui:define>
-								<h:outputText value="#{intraManager.intra.format}"/>
+								<h:outputText value="#{intraManager.intra.format}" />
 							</s:decorate></td>
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
@@ -382,7 +377,7 @@
 								</f:facet>
 								<h:outputText value="#{intraManager.intra.prospect.societe}" />
 							</rich:column>
-							
+
 							<rich:column>
 								<f:facet name="header">
 									<h:outputText value="#{messages['prospect.com']}" />

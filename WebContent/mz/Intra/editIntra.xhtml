@@ -147,13 +147,22 @@
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
 								<ui:define name="label">
+									<h:outputText value="Contraintes particulières ?" />
+								</ui:define>
+								<h:inputTextarea value="#{intraManager.intra.contraintesParticulieres}"
+									cols="60" rows="2" />
+							</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate template="../layout/display.xhtml"
+								style="width:500px;">
+								<ui:define name="label">
 									<h:outputText value="Objectif" />
 								</ui:define>
 								<h:inputTextarea value="#{intraManager.intra.objectif}"
 									cols="60" rows="2" />
 							</s:decorate></td>
-					</tr>
-					<tr>
+
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
 								<ui:define name="label">

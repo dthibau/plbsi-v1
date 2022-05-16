@@ -71,7 +71,11 @@ public class InformationIntra implements Serializable {
 	
 	@Column(name = "connaissance_sujet")
 	private String connaissanceSujet;
-	
+
+	@Column(name = "contraintes_particulieres", columnDefinition="text")
+	@Lob
+	private String contraintesParticulieres;
+
 	@Column(name = "objectif", columnDefinition="text")
 	@Lob
 	private String objectif;
@@ -193,6 +197,14 @@ public class InformationIntra implements Serializable {
 
 	public void setConnaissanceSujet(String connaissanceSujet) {
 		this.connaissanceSujet = connaissanceSujet;
+	}
+
+	public String getContraintesParticulieres() {
+		return contraintesParticulieres;
+	}
+
+	public void setContraintesParticulieres(String contraintesParticulieres) {
+		this.contraintesParticulieres = contraintesParticulieres;
 	}
 
 	public String getObjectif() {

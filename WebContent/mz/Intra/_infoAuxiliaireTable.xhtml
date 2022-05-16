@@ -52,14 +52,26 @@
 					<tr>
 						<td><s:decorate template="../layout/edit.xhtml"
 								style="width:600px">
+								<ui:define name="label">Contraintes particulières </ui:define>
+								<h:outputText value="#{intra.contraintesParticulieres}" />
+							</s:decorate></td>
+					</tr>
+				</table>
+			</td>
+
+		</tr>
+		<tr>
+			<td>
+				<table border="0" cellspacing="5">
+					<tr>
+						<td><s:decorate template="../layout/edit.xhtml"
+								style="width:600px">
 								<ui:define name="label">Objectifs </ui:define>
 								<h:outputText value="#{intra.objectif}" />
 							</s:decorate></td>
 					</tr>
 				</table>
 			</td>
-		</tr>
-		<tr>
 			<td>
 				<table border="0" cellspacing="5">
 					<tr>

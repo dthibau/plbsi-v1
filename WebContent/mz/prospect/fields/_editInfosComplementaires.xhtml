@@ -36,9 +36,13 @@
 						<ui:define name="label">
 							<h:outputText value="Connaissance sujet" />
 						</ui:define>
-						<h:inputTextarea
-							value="#{editProspectManager.prospect.informationIntra.connaissanceSujet}"
-							cols="60" rows="2" />
+						<h:selectOneMenu value="#{intraManager.intra.connaissanceSujet}"
+							style="width:160px; height:20px;" required="true">
+							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+							<f:selectItem itemValue="Débutant" itemLabel="Débutant" />
+							<f:selectItem itemValue="Scolaire" itemLabel="Scolaire" />
+							<f:selectItem itemValue="Expert" itemLabel="Expert" />
+						</h:selectOneMenu>
 					</s:decorate></td>
 				<td><s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">

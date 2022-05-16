@@ -136,8 +136,13 @@
 								<ui:define name="label">
 									<h:outputText value="Connaissance sujet" />
 								</ui:define>
-								<h:inputTextarea value="#{intraManager.intra.connaissanceSujet}"
-									cols="60" rows="2" />
+								<h:selectOneMenu value="#{intraManager.intra.connaissanceSujet}"
+									style="width:160px; height:20px;" required="true">
+									<f:selectItem itemValue="" itemLabel="-- Choisir --" />
+									<f:selectItem itemValue="Débutant" itemLabel="Débutant" />
+									<f:selectItem itemValue="Scolaire" itemLabel="Scolaire" />
+									<f:selectItem itemValue="Expert" itemLabel="Expert" />
+								</h:selectOneMenu>
 							</s:decorate></td>
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
@@ -210,25 +215,24 @@
 									style="width:600px">
 									<ui:define name="label">Certification ?</ui:define>
 									<h:selectOneMenu value="#{intraManager.intra.certification}">
-										<f:selectItem itemValue="NON" itemLabel="NON"/>
-									   	<f:selectItem itemValue="OUI" itemLabel="OUI"/>
-									   	<f:selectItem itemValue="Peut-être" itemLabel="Peut-être"/>
+										<f:selectItem itemValue="NON" itemLabel="NON" />
+										<f:selectItem itemValue="OUI" itemLabel="OUI" />
+										<f:selectItem itemValue="Peut-être" itemLabel="Peut-être" />
 									</h:selectOneMenu>
 								</s:decorate></td>
 						</tr>
 						<tr>
 							<td><s:decorate template="../layout/display.xhtml"
 									style="width:500px;">
-								<ui:define name="label">
-									<h:outputText value="Quel Format ?" />
-								</ui:define>
-								<h:selectOneMenu
-									value="#{intraManager.intra.format}">
-									<f:selectItem itemValue="" itemLabel="--- A préciser ---" />									
-									<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
-									<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
-									<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
-								</h:selectOneMenu>
+									<ui:define name="label">
+										<h:outputText value="Quel Format ?" />
+									</ui:define>
+									<h:selectOneMenu value="#{intraManager.intra.format}">
+										<f:selectItem itemValue="" itemLabel="--- A préciser ---" />
+										<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
+										<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
+										<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
+									</h:selectOneMenu>
 								</s:decorate></td>
 							<td><a:outputPanel id="montanFrais">
 									<s:decorate template="../layout/display.xhtml"
@@ -546,21 +550,22 @@
 				</rich:panel>
 				<br />
 				Tu me vois ?
-				<rich:panel header="Retour commercial" id="raisonPanel" 
+				<rich:panel header="Retour commercial" id="raisonPanel"
 					rendered="#{ST_INTRA_ANNULE.equals(intraManager.intra.statutIntra)}">
 					<a:outputPanel>
-						<s:decorate template="../layout/editArea.xhtml" 
+						<s:decorate template="../layout/editArea.xhtml"
 							style="width:700px;">
 							<ui:define name="label">
-								<h:outputText value="#{messages['prospect.raisonPerte']}" /><br/>(Max. 255 car.)
+								<h:outputText value="#{messages['prospect.raisonPerte']}" />
+								<br />(Max. 255 car.)
 							</ui:define>
 							<h:inputTextarea
 								value="#{intraManager.intra.prospect.prospectDetail.raisonPerte}"
 								cols="60" rows="2">
 								<f:validateLength maximum="255" />
-								<f:ajax execute="@this" event="keyup" render="raisonMsg"/>
+								<f:ajax execute="@this" event="keyup" render="raisonMsg" />
 							</h:inputTextarea>
-							&nbsp;<s:message id="raisonMsg" styleClass="errors"/>
+							&nbsp;<s:message id="raisonMsg" styleClass="errors" />
 						</s:decorate>
 					</a:outputPanel>
 				</rich:panel>

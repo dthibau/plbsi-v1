@@ -69,8 +69,7 @@ public class InformationIntra implements Serializable {
 	@Lob
 	private String preRequis;
 	
-	@Column(name = "connaissance_sujet", columnDefinition="text")
-	@Lob
+	@Column(name = "connaissance_sujet")
 	private String connaissanceSujet;
 	
 	@Column(name = "objectif", columnDefinition="text")

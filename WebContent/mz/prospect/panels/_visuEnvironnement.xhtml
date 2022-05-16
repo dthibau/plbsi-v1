@@ -9,56 +9,71 @@
 	xmlns:a="http://richfaces.org/a4j" xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:p="http://java.sun.com/jsf/html">
 
-<table border="0" cellspacing="3">
-				<tr>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Profil des participants" />
-							</ui:define>
-							<h:outputText value="#{editProspectManager.prospect.informationIntra.profilParticipant}" />
-						</s:decorate></td>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Les pax disposent-ils des pré-requis ?" />
-							</ui:define>
-							<h:outputText value="#{editProspectManager.prospect.informationIntra.preRequis}" />
-						</s:decorate></td>
-				</tr>
-				<tr>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Connaissance sujet" />
-							</ui:define>
-							<h:outputText value="#{editProspectManager.prospect.informationIntra.connaissanceSujet}" />
-						</s:decorate></td>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Contraintes particulières" />
-							</ui:define>
-							<h:outputText value="#{editProspectManager.prospect.informationIntra.contraintesParticulieres}" />
-						</s:decorate></td>
-				</tr>
-				<tr>
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Objectif" />
-							</ui:define>
-							<h:outputText value="#{editProspectManager.prospect.informationIntra.objectif}" />
-						</s:decorate></td>
+	<table border="0" cellspacing="3">
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Profil des participants" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.profilParticipant}" />
+				</s:decorate></td>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Les pax disposent-ils des pré-requis ?" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.preRequis}" />
+				</s:decorate></td>
+		</tr>
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Connaissance sujet" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.connaissanceSujet}" />
+				</s:decorate></td>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Contraintes particulières" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.contraintesParticulieres}" />
+				</s:decorate></td>
+		</tr>
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Handicap" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.handicap}" />
+				</s:decorate></td>
+		</tr>
+		<tr>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Objectif" />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.objectif}" />
+				</s:decorate></td>
 
-					<td><s:decorate template="../../layout/display.xhtml"
-							style="width:500px;">
-							<ui:define name="label">
-								<h:outputText value="Contact tech." />
-							</ui:define>
-							<h:outputText
-								value="#{editProspectManager.prospect.informationIntra.coordonneesContactTech}" />
-						</s:decorate></td>
-				</tr>
-			</table>
+			<td><s:decorate template="../../layout/display.xhtml"
+					style="width:500px;">
+					<ui:define name="label">
+						<h:outputText value="Contact tech." />
+					</ui:define>
+					<h:outputText
+						value="#{editProspectManager.prospect.informationIntra.coordonneesContactTech}" />
+				</s:decorate></td>
+		</tr>
+	</table>
 </ui:composition>

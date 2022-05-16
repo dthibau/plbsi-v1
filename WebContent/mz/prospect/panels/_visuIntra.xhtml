@@ -421,6 +421,14 @@
 				<tr>
 					<td><s:decorate template="../../layout/display.xhtml">
 							<ui:define name="label">
+								<h:outputText value="Handicap" />
+							</ui:define>
+							<h:outputText
+								value="#{editProspectManager.prospect.informationIntra.handicap}" />
+						</s:decorate></td>
+
+					<td><s:decorate template="../../layout/display.xhtml">
+							<ui:define name="label">
 								<h:outputText value="Objectif" />
 							</ui:define>
 							<h:outputText

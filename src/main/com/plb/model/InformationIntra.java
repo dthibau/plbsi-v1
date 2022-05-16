@@ -75,6 +75,10 @@ public class InformationIntra implements Serializable {
 	@Column(name = "contraintes_particulieres", columnDefinition="text")
 	@Lob
 	private String contraintesParticulieres;
+	
+	@Column(name = "handicap", columnDefinition="text")
+	@Lob
+	private String handicap;
 
 	@Column(name = "objectif", columnDefinition="text")
 	@Lob
@@ -205,6 +209,14 @@ public class InformationIntra implements Serializable {
 
 	public void setContraintesParticulieres(String contraintesParticulieres) {
 		this.contraintesParticulieres = contraintesParticulieres;
+	}
+
+	public String getHandicap() {
+		return handicap;
+	}
+
+	public void setHandicap(String handicap) {
+		this.handicap = handicap;
 	}
 
 	public String getObjectif() {

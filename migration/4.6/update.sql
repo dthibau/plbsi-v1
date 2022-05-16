@@ -7,3 +7,5 @@ update information_intra set connaissance_sujet=substring(connaissance_sujet,0,8
 ALTER TABLE information_intra CHANGE connaissance_sujet connaissance_sujet varchar(80);
 
 alter table information_intra add column contraintes_particulieres text;
+alter table information_intra add column handicap text;
+

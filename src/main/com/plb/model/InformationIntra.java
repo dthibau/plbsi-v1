@@ -65,9 +65,9 @@ public class InformationIntra implements Serializable {
 	@Lob
 	private String profilParticipant;
 	
-	@Column(name = "environnement_tech", columnDefinition="text")
+	@Column(name = "pre_requis", columnDefinition="text")
 	@Lob
-	private String environnementTech;
+	private String preRequis;
 	
 	@Column(name = "connaissance_sujet", columnDefinition="text")
 	@Lob
@@ -180,12 +180,12 @@ public class InformationIntra implements Serializable {
 		this.profilParticipant = profilParticipant;
 	}
 
-	public String getEnvironnementTech() {
-		return environnementTech;
+	public String getPreRequis() {
+		return preRequis;
 	}
 
-	public void setEnvironnementTech(String environnementTech) {
-		this.environnementTech = environnementTech;
+	public void setPreRequis(String environnementTech) {
+		this.preRequis = environnementTech;
 	}
 
 	public String getConnaissanceSujet() {

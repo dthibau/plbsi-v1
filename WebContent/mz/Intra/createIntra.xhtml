@@ -97,11 +97,16 @@
 						<tr>
 							<td>
 								<s:decorate template="../layout/edit.xhtml" style="width:500px">
-									<ui:define name="label">Frais de dép souhaités</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.frais}">
-										<f:selectItem itemValue="0" itemLabel="NON"/>
-									   	<f:selectItem itemValue="1" itemLabel="OUI"/>
-									</h:selectOneMenu>
+								<ui:define name="label">
+									<h:outputText value="Quel Format ?" />
+								</ui:define>
+								<h:selectOneMenu
+									value="#{editProspectManager.prospect.informationIntra.format}">
+									<f:selectItem itemValue="" itemLabel="--- A préciser ---" />
+									<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
+									<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
+									<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
+								</h:selectOneMenu>
 								</s:decorate>
 							</td>
 							<td>

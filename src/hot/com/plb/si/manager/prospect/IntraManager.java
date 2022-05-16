@@ -698,16 +698,16 @@ public class IntraManager implements Serializable {
 	}
 
 	public void horaire() {
-		if (heureDeb.length() == 1) {
+		if (heureDeb != null && heureDeb.length() == 1) {
 			heureDeb = "0" + heureDeb;
 		}
-		if (heureFin.length() == 1) {
+		if (heureFin != null && heureFin.length() == 1) {
 			heureFin = "0" + heureFin;
 		}
-		if (minDeb.length() == 1) {
+		if (minDeb != null && minDeb.length() == 1) {
 			minDeb = "0" + minDeb;
 		}
-		if (minFin.length() == 1) {
+		if (minFin != null && minFin.length() == 1) {
 			minFin = "0" + minFin;
 		}
 	}

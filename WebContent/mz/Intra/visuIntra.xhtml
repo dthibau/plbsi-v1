@@ -238,15 +238,12 @@
 						<td><s:decorate template="../layout/display.xhtml"
 								style="width:500px;">
 								<ui:define name="label">
-									<h:outputText value="Frais ?" />
+									<h:outputText value="Quel Format ?" />
 								</ui:define>
-								<h:outputText value="Oui"
-									rendered="#{intraManager.intra.frais == 1}" />
-								<h:outputText value="Non"
-									rendered="#{intraManager.intra.frais == 0}" />
+								<h:outputText value="#{intraManager.intra.format}"/>
 							</s:decorate></td>
 						<td><s:decorate template="../layout/display.xhtml"
-								style="width:500px;" rendered="#{intraManager.intra.frais == 1}">
+								style="width:500px;">
 								<ui:define name="label">
 									<h:outputText value="Montant Frais Jours" />
 								</ui:define>

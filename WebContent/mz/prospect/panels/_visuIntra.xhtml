@@ -371,12 +371,9 @@
 				<tr>
 					<td><s:decorate template="../../layout/display.xhtml">
 							<ui:define name="label">
-								<h:outputText value="Frais ?" />
+								<h:outputText value="Quel format ?" />
 							</ui:define>
-							<h:outputText value="Oui"
-								rendered="#{editProspectManager.prospect.informationIntra.frais == 1}" />
-							<h:outputText value="Non"
-								rendered="#{editProspectManager.prospect.informationIntra.frais == 0}" />
+							<h:outputText value="#{editProspectManager.prospect.informationIntra.format}"/>
 						</s:decorate></td>
 					<td><s:decorate template="../../layout/display.xhtml">
 							<ui:define name="label">

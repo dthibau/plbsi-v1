@@ -218,19 +218,20 @@
 						<tr>
 							<td><s:decorate template="../layout/display.xhtml"
 									style="width:500px;">
-									<ui:define name="label">
-										<h:outputText value="Frais ?" />
-									</ui:define>
-									<h:selectOneMenu value="#{intraManager.intra.frais}">
-										<a:ajax event="change" render="montanFrais" />
-										<f:selectItem itemValue="1" itemLabel="OUI" />
-										<f:selectItem itemValue="0" itemLabel="NON" />
-									</h:selectOneMenu>
+								<ui:define name="label">
+									<h:outputText value="Quel Format ?" />
+								</ui:define>
+								<h:selectOneMenu
+									value="#{intraManager.intra.format}">
+									<f:selectItem itemValue="" itemLabel="--- A préciser ---" />									
+									<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
+									<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
+									<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
+								</h:selectOneMenu>
 								</s:decorate></td>
 							<td><a:outputPanel id="montanFrais">
 									<s:decorate template="../layout/display.xhtml"
-										style="width:500px;"
-										rendered="#{intraManager.intra.frais == 1}">
+										style="width:500px;">
 										<ui:define name="label">
 											<h:outputText value="Montant Frais" />
 										</ui:define>

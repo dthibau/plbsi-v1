@@ -97,8 +97,13 @@ public class InformationIntra implements Serializable {
 	@Column(name = "cv")
 	private Integer cv;
 	
-	@Column(name = "frais")
-	private Integer frais;
+	@Column(name="format")
+	private String format;
+	
+//	@Column(name = "frais")
+//	private Integer frais;
+	
+	
 	
 	@Column(name = "montant_frais")
 	private Float montantFrais;
@@ -237,12 +242,12 @@ public class InformationIntra implements Serializable {
 		this.cv = cv;
 	}
 
-	public Integer getFrais() {
-		return frais;
+	public String getFormat() {
+		return format;
 	}
 
-	public void setFrais(Integer frais) {
-		this.frais = frais;
+	public void setFormat(String format) {
+		this.format = format;
 	}
 
 	public Date getDateModification() {

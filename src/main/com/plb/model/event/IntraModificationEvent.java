@@ -16,5 +16,8 @@ public class IntraModificationEvent extends Event {
 	public IntraModificationEvent(Account account, InformationIntra intra) {
 		super(account, intra, "Modification du statut de l'intra : "+intra.getStatutIntra(), intra.getStatutIntra());
 	}
+	public IntraModificationEvent(Account account, String msg, InformationIntra intra) {
+		super(account, intra, msg, intra.getStatutIntra());
+	}
 
 }

@@ -9,6 +9,7 @@ import com.plb.model.InformationIntra;
 import com.plb.model.Prospect;
 import com.plb.model.devis.Email;
 import com.plb.model.directory.Account;
+import com.plb.model.directory.Role;
 import com.plb.model.event.Event;
 import com.plb.model.event.NotificationIntervenantsEvent;
 import com.plb.model.intervenant.Intervenant;
@@ -19,7 +20,7 @@ public interface NotificationService {
 	
 	public List<Account> resolveDestinatairesProspect(Account newActor, Account lastActor, Event event);
 	
-	public List<Account> sendToIntervenantManager(Event event);
+	public List<Account> resolveDestinataires(Role role, Event event);
 	
 	public void sendMail( @Duration long waitingTime, Formation formation, Event event);
 	

@@ -16,5 +16,8 @@ public class ProspectModificationEvent extends Event {
 	public ProspectModificationEvent(Account account, Prospect prospect) {
 		super(account,prospect, "Modification d'un prospect");
 	}
+	public ProspectModificationEvent(Account account, String msg, Prospect prospect) {
+		super(account,prospect, msg);
+	}
 
 }

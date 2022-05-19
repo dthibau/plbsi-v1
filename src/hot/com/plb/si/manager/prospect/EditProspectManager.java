@@ -41,6 +41,7 @@ import com.plb.model.ReferenceSpe;
 import com.plb.model.TypeContact;
 import com.plb.model.devis.Devis;
 import com.plb.model.directory.Account;
+import com.plb.model.directory.Role;
 import com.plb.model.event.Event;
 import com.plb.model.event.IntraModificationEvent;
 import com.plb.model.event.IntraNoteEvent;
@@ -122,6 +123,8 @@ public class EditProspectManager implements Serializable {
 	private Prospect prospectTemp;
 
 	private ProspectDetail prospectDetailTemp;
+	
+	private int originalPotentiel;
 
 	// Libellé formation
 	@Out(required = false)
@@ -334,6 +337,8 @@ public class EditProspectManager implements Serializable {
 			}
 			statutIntraTemp = prospect.getInformationIntra().getStatutIntra();
 		}
+		originalPotentiel = prospect.getProspectDetail().getPotentiel();
+
 	}
 
 	// Fonction de modification de propsect
@@ -343,6 +348,14 @@ public class EditProspectManager implements Serializable {
 
 		if (prospect.getInformationIntra() != null) {
 			_modifyIntra();
+		}
+		// Detect change in potentiel to send notifications to Dispatcher
+		if ( originalPotentiel != 0 && originalPotentiel != prospect.getProspectDetail().getPotentiel() ) {
+			ProspectModificationEvent prospectEvent = new ProspectModificationEvent(
+					loggedUser, "Modification du potentiel " +originalPotentiel + "->" +  prospect.getProspectDetail().getPotentiel(), prospect);
+			notificationService.resolveDestinataires(Role.DISPATCHER, prospectEvent);
+			notificationService.sendMailProspect(10, prospect, prospectEvent);
+			entityManager.persist(prospectEvent);
 		}
 		if ( !ST_PERDU.equals(prospect.getStatut()) ) {
 			prospect.getProspectDetail().setRaisonPerte("");
@@ -531,6 +544,7 @@ public class EditProspectManager implements Serializable {
 			prospect.getInformationIntra().setHeureFin("");
 		}
 
+		
 		// Detect change in statutIntra to send notifications
 		if (!statutIntraTemp.equals(prospect.getInformationIntra()
 				.getStatutIntra())
@@ -547,7 +561,7 @@ public class EditProspectManager implements Serializable {
 
 			// Envoie de mail pour notifier le changement de statut d'un
 			// prospect
-			notificationService.sendToIntervenantManager(intraEvent);
+			notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER, intraEvent);
 			notificationService.sendMailIntra(1000,
 					prospect.getInformationIntra(), intraEvent, false);
 			// si confirmation donc envoie de mail de confirmation au
@@ -574,7 +588,7 @@ public class EditProspectManager implements Serializable {
 			entityManager.persist(intraEvent);
 			// Envoie de mail pour notifier le changement de statut d'un
 			// prospect
-			notificationService.sendToIntervenantManager(intraEvent);
+			notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER ,intraEvent);
 			notificationService.sendMailIntra(1000,
 					prospect.getInformationIntra(), intraEvent, false);
 			// si confirmation donc envoie de mail de confirmation au

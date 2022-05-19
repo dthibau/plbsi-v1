@@ -31,6 +31,7 @@ import com.plb.model.Prospect;
 import com.plb.model.ProspectFormation;
 import com.plb.model.ReferenceSpe;
 import com.plb.model.directory.Account;
+import com.plb.model.directory.Role;
 import com.plb.model.event.Event;
 import com.plb.model.event.IntraCreationEvent;
 import com.plb.model.event.IntraModificationEvent;
@@ -305,7 +306,7 @@ public class IntraManager implements Serializable {
 	public String saveIntra() {
 		IntraCreationEvent intraCreationEvent = _persistIntra();
 		// Envoie de mail pour notifier la création d'un intra
-		notificationService.sendToIntervenantManager(intraCreationEvent);
+		notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER, intraCreationEvent);
 		notificationService.sendMailIntra(1000, intra, intraCreationEvent);
 		// si confirmation donc envoie de mail de confirmation au role
 		// Intervenant_Manager
@@ -447,7 +448,7 @@ public class IntraManager implements Serializable {
 			// si confirmation donc envoie de mail de confirmation au role
 			// Intervenant_Manager
 			if (confirm == true) {
-				notificationService.sendToIntervenantManager(intraEvent);
+				notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER, intraEvent);
 				notificationService
 						.sendMailIntra(1000, intra, intraEvent, true);
 			}
@@ -473,7 +474,8 @@ public class IntraManager implements Serializable {
 			// si confirmation donc envoie de mail de confirmation au role
 			// Intervenant_Manager
 			if (confirm == true) {
-				notificationService.sendToIntervenantManager(intraEvent);
+				notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER, intraEvent);
+
 				notificationService
 						.sendMailIntra(1000, intra, intraEvent, true);
 			}
@@ -501,7 +503,7 @@ public class IntraManager implements Serializable {
 			// si confirmation donc envoie de mail de confirmation de validation
 			// au role Intervenant_Manager
 			if (confirm == true) {
-				notificationService.sendToIntervenantManager(intraValide);
+				notificationService.resolveDestinataires(Role.INTERVENANTS_MANAGER, intraValide);
 				notificationService.sendMailIntra(1000, intra,	intraValide);
 			}
 		}

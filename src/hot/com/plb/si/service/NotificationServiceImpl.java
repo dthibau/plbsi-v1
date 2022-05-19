@@ -111,18 +111,16 @@ public class NotificationServiceImpl implements NotificationService,
 		return destinataires;
 	}
 	
+		
 	//Permet la notification au role Intervenant_Manager
-	@Override
-	public List<Account> sendToIntervenantManager(Event event) {
-		List<Account> destinataires = new ArrayList<Account>();
-		AccountDao accountDao = new AccountDao(entityManager);
-		//Ne fonctionne plus car plus de role intervenant manager en bdd
-		destinataires = accountDao.findByRole(Role.INTERVENANTS_MANAGER);
+
+	public List<Account> resolveDestinataires(Role role, Event event) {
+		AccountDao accountDao = new AccountDao(entityManager);	
+		event.setDestinataires(accountDao.findByRole(role));
 		//Parametrage manuel des concernés Laurent Aurore
 //		destinataires.add(accountDao.findNames("DERUY", "Aurore"));
 //		destinataires.add(accountDao.findNames("BOURQUARD", "Laurent"));
-		event.setDestinataires(destinataires);
-		return destinataires;
+		return event.getDestinataires();
 	}
 
 	@Asynchronous

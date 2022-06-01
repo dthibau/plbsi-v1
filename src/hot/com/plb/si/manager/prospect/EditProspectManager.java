@@ -125,6 +125,7 @@ public class EditProspectManager implements Serializable {
 	private ProspectDetail prospectDetailTemp;
 	
 	private int originalPotentiel;
+	private String originalPotentielAsString;
 
 	// Libellé formation
 	@Out(required = false)
@@ -338,6 +339,7 @@ public class EditProspectManager implements Serializable {
 			statutIntraTemp = prospect.getInformationIntra().getStatutIntra();
 		}
 		originalPotentiel = prospect.getProspectDetail().getPotentiel();
+		originalPotentielAsString = prospect.getProspectDetail().getPotentielAsString();
 
 	}
 
@@ -352,7 +354,7 @@ public class EditProspectManager implements Serializable {
 		// Detect change in potentiel to send notifications to Dispatcher
 		if ( originalPotentiel != 0 && originalPotentiel != prospect.getProspectDetail().getPotentiel() ) {
 			ProspectModificationEvent prospectEvent = new ProspectModificationEvent(
-					loggedUser, "Modification du potentiel " +originalPotentiel + "->" +  prospect.getProspectDetail().getPotentiel(), prospect);
+					loggedUser, "Modification du potentiel " +originalPotentielAsString + "->" +  prospect.getProspectDetail().getPotentielAsString(), prospect);
 			notificationService.resolveDestinataires(Role.DISPATCHER, prospectEvent);
 			notificationService.sendMailProspect(10, prospect, prospectEvent);
 			entityManager.persist(prospectEvent);

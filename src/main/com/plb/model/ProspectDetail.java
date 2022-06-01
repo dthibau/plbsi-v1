@@ -601,6 +601,21 @@ public class ProspectDetail implements Serializable {
 	public void setPotentiel(int potentiel) {
 		this.potentiel = potentiel;
 	}
+	
+	@Transient
+	public String getPotentielAsString() {
+		if ( potentiel == 0 )  
+			return "N/C";
+		if ( potentiel == 1 )
+			return "Faible";
+		if ( potentiel == 2)
+			return "Moyen";
+		if ( potentiel ==3 )
+			return "Bon";
+		if ( potentiel == 4 )
+			return "Très bon";
+		return ""+potentiel;
+	}
 
 	public String getUtm_source() {
 		return utm_source;

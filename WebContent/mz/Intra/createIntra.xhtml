@@ -34,16 +34,8 @@
 							<td><s:decorate template="../layout/edit.xhtml"
 									style="width:400px">
 									<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
-									<h:selectOneMenu
-										value="#{intraManager.prospect.prospectDetail.lieu}"
-										style="width:160px; height:20px;" required="true">
-										<a:ajax event="change"
-											render="adresse1,adresse2,adresse3,adresse4" />
-										<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-										<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-										<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-										<f:selectItem itemValue="A distance" itemLabel="Distance" />
-									</h:selectOneMenu>
+									<h:inputText value="#{intraManager.prospect.prospectDetail.lieu}"
+											style="width:160px; height:20px;" required="true" />
 								</s:decorate></td>
 							<td><a:outputPanel id="adresse1">
 									<s:decorate template="../layout/display.xhtml">

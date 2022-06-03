@@ -76,14 +76,8 @@
 							<td><s:decorate template="../layout/edit.xhtml"
 									style="width:400px">
 									<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
-									<h:selectOneMenu value="#{searchProspect.prospectDetail.lieu}"
-										style="width:160px; height:20px;">
-										<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-										<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-										<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-										<f:selectItem itemValue="A distance" itemLabel="Distance" />
-										<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
-									</h:selectOneMenu>
+									<h:inputText value="#{searchProspect.prospectDetail.lieu}"
+										style="width:160px; height:20px;" />
 								</s:decorate></td>
 						</tr>
 						<tr>
@@ -465,14 +459,9 @@
 										<ui:define name="label">
 											<h:outputText value="#{messages['prospect.lieu']}" />
 										</ui:define>
-										<h:selectOneMenu
+										<h:inputText
 											value="#{searchProspect.prospect.prospectDetail.lieu}"
-											style="width:160px; height:20px;">
-											<a:ajax event="change" render="" />
-											<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-											<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-											<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
-										</h:selectOneMenu>
+											style="width:160px; height:20px;" />
 									</s:decorate></td>
 								<td><s:decorate template="../layout/display.xhtml"
 										style="width:400px;">

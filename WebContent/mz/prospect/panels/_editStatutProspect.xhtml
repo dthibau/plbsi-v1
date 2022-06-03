@@ -61,15 +61,9 @@
 							<ui:define name="label">
 								<h:outputText value="#{messages['prospect.lieu']}" />
 							</ui:define>
-							<h:selectOneMenu
-								value="#{editProspectManager.prospect.prospectDetail.lieu}"
-								style="width:160px; height:20px;">
-								<a:ajax event="change" render=":editForm:f_lieu" />
-								<f:selectItem itemValue="" itemLabel="A définir" />
-								<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-								<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-								<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
-							</h:selectOneMenu>
+																<h:inputText value="#{editProspectManager.prospect.prospectDetail.lieu}"
+											style="width:160px; height:20px;" required="true" />
+
 						</s:decorate>
 					</a:outputPanel>
 					<s:decorate id="s_date_souhaite"

@@ -32,13 +32,20 @@
 							value="#{editProspectManager.prospect.informationIntra.statutIntra}"
 							style="width:110px; height:20px;">
 							<a:ajax event="change" render="statutIntra" />
-							<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}" itemLabel="#{messages[ST_INTRA_RECHERCHE]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_AUDIT}" itemLabel="#{messages[ST_INTRA_AUDIT]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}" itemLabel="#{messages[ST_INTRA_COMMERCIAL]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}" itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}" itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_ANNULE}" itemLabel="#{messages[ST_INTRA_ANNULE]}"/>
-							<f:selectItem itemValue="#{ST_INTRA_OK}" itemLabel="#{messages[ST_INTRA_OK]}"/>
+							<f:selectItem itemValue="#{ST_INTRA_RECHERCHE}"
+								itemLabel="#{messages[ST_INTRA_RECHERCHE]}" />
+							<f:selectItem itemValue="#{ST_INTRA_AUDIT}"
+								itemLabel="#{messages[ST_INTRA_AUDIT]}" />
+							<f:selectItem itemValue="#{ST_INTRA_COMMERCIAL}"
+								itemLabel="#{messages[ST_INTRA_COMMERCIAL]}" />
+							<f:selectItem itemValue="#{ST_INTRA_RECHERCHE_MODIFIE}"
+								itemLabel="#{messages[ST_INTRA_RECHERCHE_MODIFIE]}" />
+							<f:selectItem itemValue="#{ST_INTRA_LOGISTIQUE}"
+								itemLabel="#{messages[ST_INTRA_LOGISTIQUE]}" />
+							<f:selectItem itemValue="#{ST_INTRA_ANNULE}"
+								itemLabel="#{messages[ST_INTRA_ANNULE]}" />
+							<f:selectItem itemValue="#{ST_INTRA_OK}"
+								itemLabel="#{messages[ST_INTRA_OK]}" />
 						</h:selectOneMenu>
 					</s:decorate></td>
 				<td><s:decorate template="../../layout/display.xhtml"
@@ -108,14 +115,8 @@
 							<ui:define name="label">
 								<h:outputText value="#{messages['prospect.lieu']}" />
 							</ui:define>
-							<h:selectOneMenu
-								value="#{editProspectManager.prospect.prospectDetail.lieu}"
-								style="width:160px; height:20px;">
-								<a:ajax event="change" render="" />
-								<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-								<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-								<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />						
-							</h:selectOneMenu>
+							<h:inputText value="#{editProspectManager.prospect.prospectDetail.lieu}"
+								style="width:160px; height:20px;" required="true" />
 						</s:decorate></td>
 					<td><s:decorate template="../../layout/display.xhtml"
 							style="width:400px;">
@@ -182,7 +183,7 @@
 								</ui:define>
 								<h:selectOneMenu
 									value="#{editProspectManager.prospect.informationIntra.format}">
-									<f:selectItem itemValue="" itemLabel="--- A préciser ---" />									
+									<f:selectItem itemValue="" itemLabel="--- A préciser ---" />
 									<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
 									<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
 									<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />

@@ -12,26 +12,17 @@
 	<rich:panel id="popInfFor" header="Informations formation : ">
 		<table border="0" cellspacing="3">
 			<tr>
-				<td><ui:include src="../fields/_typeFormation.xhtml" >
-					<ui:param name="prefix" value="f" />
-				</ui:include> 
-				<a:outputPanel id="f_lieu">
-				<s:decorate 
-						template="../../layout/edit.xhtml"
-						rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}">
-						<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
-						<h:selectOneMenu
-							value="#{editProspectManager.prospectDetail.lieu}"
-							style="width:160px; height:20px;">
-							<a:ajax event="change" render=":editForm:s_lieu" />
-							<f:selectItem itemValue="" itemLabel="-- Choisir --" />
-							<f:selectItem itemValue="Chez PLB Consultant" itemLabel="PLB" />
-							<f:selectItem itemValue="En vos locaux" itemLabel="Client" />
-							<f:selectItem itemValue="Ne sait pas" itemLabel="Ne sait pas" />
-						</h:selectOneMenu>
-					</s:decorate>
-				</a:outputPanel>
-				</td>
+				<td><ui:include src="../fields/_typeFormation.xhtml">
+						<ui:param name="prefix" value="f" />
+					</ui:include> <a:outputPanel id="f_lieu">
+						<s:decorate template="../../layout/edit.xhtml"
+							rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}">
+							<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
+							<h:inputText value="#{editProspectManager.prospectDetail.lieu}"
+								style="width:160px; height:20px;" />
+
+						</s:decorate>
+					</a:outputPanel></td>
 
 				<td><a:outputPanel id="refEdit">
 						<s:decorate template="../../layout/display.xhtml">
@@ -42,7 +33,7 @@
 								value="#{editProspectManager.prospect.reference}"
 								style="width:160px;">
 								<a:ajax event="change" render="refEdit,session"
-									listener="#{editProspectManager.findPrix}"/>
+									listener="#{editProspectManager.findPrix}" />
 								<f:selectItem itemValue="" itemLabel="Choissisez la référence" />
 								<f:selectItems value="#{formationsActives}" var="formation"
 									itemValue="#{formation.reference}"
@@ -105,14 +96,16 @@
 							</h:selectOneMenu>
 						</s:decorate>
 					</a:outputPanel></td>
-				<td><s:decorate id="f_date_souhaite" template="../../layout/display.xhtml">
+				<td><s:decorate id="f_date_souhaite"
+						template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateSouhait']}" />
 						</ui:define>
 						<h:inputText id="f_date_souhaite_input"
-							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}" >
-							<a:ajax event="change" render=":editForm:s_date_souhaite:s_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
-							</h:inputText>
+							value="#{editProspectManager.prospect.prospectDetail.date_souhaite}">
+							<a:ajax event="change"
+								render=":editForm:s_date_souhaite:s_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
+						</h:inputText>
 					</s:decorate></td>
 			</tr>
 		</table>

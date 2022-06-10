@@ -219,7 +219,24 @@ public class NotificationServiceImpl implements NotificationService,
 		}
 
 	}
-	
+
+	@Asynchronous
+	@TransactionAttribute(value = TransactionAttributeType.NOT_SUPPORTED)
+	public void sendMailProspectPotentielChanged(@Duration long waitingTime, Prospect prospect,
+			Event event) {
+		if (ApplicationManager.MAIL_ENABLED && Renderer.instance() != null) {
+			Contexts.getEventContext()
+					.set("server", ApplicationManager.SERVEUR);
+			Contexts.getEventContext().set("event", event);
+			Contexts.getEventContext().set("prospect", prospect);
+			// On gere le bonne acheminemnt des mails
+			for ( Account destinataire : event.getDestinataires() ) {
+				_sendAccount(destinataire, event,"/mail/notificationProspectPotentielChanged.xhtml");
+			}
+		}
+
+	}
+
 	public void sendMailIntra(long waitingTime, InformationIntra intra, Event event) {
 		
 		if (ApplicationManager.MAIL_ENABLED && Renderer.instance() != null) {

@@ -26,6 +26,8 @@ public interface NotificationService {
 	
 	public void sendMailProspect( @Duration long waitingTime, Prospect prospect, Event event);
 	
+	public void sendMailProspectPotentielChanged(@Duration long waitingTime, Prospect prospect, Event event);
+
 	public void sendMailIntra(long waitingTime, InformationIntra intra, Event event);
 	
 	public void sendMailIntra( @Duration long waitingTime, InformationIntra intra, Event event, boolean confirmation);

@@ -356,7 +356,7 @@ public class EditProspectManager implements Serializable {
 			ProspectModificationEvent prospectEvent = new ProspectModificationEvent(
 					loggedUser, "Modification du potentiel " +originalPotentielAsString + "->" +  prospect.getProspectDetail().getPotentielAsString(), prospect);
 			notificationService.resolveDestinataires(Role.DISPATCHER, prospectEvent);
-			notificationService.sendMailProspect(10, prospect, prospectEvent);
+			notificationService.sendMailProspectPotentielChanged(10, prospect, prospectEvent);
 			entityManager.persist(prospectEvent);
 		}
 		if ( !ST_PERDU.equals(prospect.getStatut()) ) {

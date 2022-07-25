@@ -746,26 +746,12 @@
 				</textElement>
 				<text><![CDATA[<b>PLB Consultant</b> - 3-5 rue Maurice Ravel - 92 300 Levallois-Perret - Tél : 01 43 34 90 94 - www.plb.fr - plb@plb.fr]]></text>
 			</staticText>
-			<image>
-				<reportElement x="471" y="19" width="83" height="26" uuid="df5a4d57-b3bc-492f-ad71-91c0ef4b3ea7">
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<imageExpression><![CDATA["resources/qualiopi.png"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="0" y="0" width="555" height="2" forecolor="#045C9B" uuid="827b7dd5-60b7-4363-a4de-02987765116c"/>
 				<graphicElement>
 					<pen lineWidth="1.5"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement style="adresse" x="0" y="42" width="471" height="11" forecolor="#045C9B" uuid="09f29ff1-6bb9-49bf-85d7-1dd47d0aaee6"/>
-				<textElement textAlignment="Left"/>
-				<text><![CDATA[La certification qualité a été délivrée au titre de la catégorie d'actions suivantes : actions de formation.]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>

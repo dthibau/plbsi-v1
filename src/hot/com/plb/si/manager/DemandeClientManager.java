@@ -36,7 +36,6 @@ import com.plb.si.service.FormationDao;
 
 @Name("demandeClientManager")
 @Scope(ScopeType.CONVERSATION)
-
 public class DemandeClientManager implements Serializable {
 	
 	/**

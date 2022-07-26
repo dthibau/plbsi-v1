@@ -11,6 +11,7 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 
 	<ui:define name="body">
+	
 		<h:form>
 			<rich:panel header="Création d'une demande d'intra ">
 				<rich:panel header="Informations principales : ">
@@ -19,14 +20,14 @@
 							<td><s:decorate template="../layout/display.xhtml"
 									style="width:500px">
 									<ui:define name="label">#{messages['prospect.nomEntreprise']}</ui:define>
-									<h:outputText value="#{intraManager.prospect.societe}"
+									<h:outputText value="#{intraManager.intra.prospect.societe}"
 										style="width:160px; height:20px;" />
 								</s:decorate></td>
 							<td><s:decorate template="../layout/display.xhtml"
 									style="width:500px">
 									<ui:define name="label">#{messages['prospect.attribueA']}</ui:define>
 									<h:outputText
-										value="#{intraManager.prospect.prospectDetail.commercial}"
+										value="#{intraManager.intra.prospect.prospectDetail.commercial}"
 										style="width:160px; height:20px;" />
 								</s:decorate></td>
 						</tr>
@@ -34,7 +35,7 @@
 							<td><s:decorate template="../layout/edit.xhtml"
 									style="width:400px">
 									<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
-									<h:inputText value="#{intraManager.prospect.prospectDetail.lieu}"
+									<h:inputText value="#{intraManager.intra.prospect.prospectDetail.lieu}"
 											style="width:160px; height:20px;" required="true" />
 								</s:decorate></td>
 							<td><a:outputPanel id="adresse1">
@@ -43,7 +44,7 @@
 											<h:outputText value="#{messages['prospect.adresse']}"
 												style="width:500px;" />
 										</ui:define>
-										<h:inputText value="#{intraManager.prospect.adresse}"
+										<h:inputText value="#{intraManager.intra.prospect.adresse}"
 											style="width:280px;" />
 									</s:decorate>
 								</a:outputPanel></td>
@@ -53,7 +54,7 @@
 										<ui:define name="label">
 											<h:outputText value="#{messages['prospect.ville']}" />
 										</ui:define>
-										<h:inputText value="#{intraManager.prospect.ville}" />
+										<h:inputText value="#{intraManager.intra.prospect.ville}" />
 									</s:decorate>
 								</a:outputPanel></td>
 						</tr>
@@ -64,7 +65,7 @@
 										<ui:define name="label">
 											<h:outputText value="#{messages['prospect.cp']}" />
 										</ui:define>
-										<h:inputText value="#{intraManager.prospect.cp}" />
+										<h:inputText value="#{intraManager.intra.prospect.cp}" />
 									</s:decorate>
 								</a:outputPanel></td>
 							<td><a:outputPanel id="adresse4">
@@ -73,7 +74,7 @@
 										<ui:define name="label">
 											<h:outputText value="#{messages['prospect.pays']}" />
 										</ui:define>
-										<h:inputText value="#{intraManager.prospect.pays}" />
+										<h:inputText value="#{intraManager.intra.prospect.pays}" />
 									</s:decorate>
 								</a:outputPanel></td>
 						</tr>
@@ -92,7 +93,7 @@
 										<h:outputText value="Quel Format ?" />
 									</ui:define>
 									<h:selectOneMenu
-										value="#{editProspectManager.prospect.informationIntra.format}">
+										value="#{intraManager.intra.prospect.informationIntra.format}">
 										<f:selectItem itemValue="" itemLabel="--- A préciser ---" />
 										<f:selectItem itemValue="Intra Std" itemLabel="Intra Std" />
 										<f:selectItem itemValue="Sur mesure" itemLabel="Sur mesure" />
@@ -134,7 +135,7 @@
 							</a:commandButton>
 						</s:decorate>
 						<br />
-						<rich:dataTable value="#{intraManager.prospect.formations}"
+						<rich:dataTable value="#{intraManager.intra.prospect.formations}"
 							var="formation" rowKeyVar="index"
 							style="width:100%; overflow-x:auto; overflow-y:auto;">
 							<rich:column>

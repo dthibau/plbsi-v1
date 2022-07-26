@@ -356,6 +356,8 @@
 				<br />
 				<center>
 					<a4j:outputPanel id="validation">
+						<input type="hidden" name="cid" value="#{conversation.id}" />
+				
 						<h:commandButton type="submit" value="Enregistrer demande client"
 							action="#{demandeClientManager.saveDemandeClient}"
 							style="width:200px; height:40px;"

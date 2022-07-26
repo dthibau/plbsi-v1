@@ -18,8 +18,9 @@
 						<s:decorate template="../../layout/edit.xhtml"
 							rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}">
 							<ui:define name="label">#{messages['prospect.lieu']}</ui:define>
-							<h:inputText value="#{editProspectManager.prospectDetail.lieu}"
+							<h:outputText value="#{editProspectManager.prospectDetail.lieu}"
 								style="width:160px; height:20px;" />
+
 
 						</s:decorate>
 					</a:outputPanel></td>

@@ -1,5 +1,6 @@
 package com.plb.si.manager;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
@@ -98,6 +100,9 @@ public class FormationManager implements Serializable {
 
 	@In
 	FacesMessages facesMessages;
+	
+	@In
+	FacesContext facesContext;
 
 	@In(create = true)
 	NotificationService notificationService;
@@ -170,14 +175,17 @@ public class FormationManager implements Serializable {
 
 	// Fonction qui recupere une formation en fonction de sa référence
 	@Begin(join = true, flushMode = FlushModeType.MANUAL)
-	public String selectByReference() {
+	public void selectByReference() throws IOException {
 		long ts = System.currentTimeMillis();
 		log.debug("Select formation : " + ref);
 		formation = formationDao.findByReference(ref);
 		_initSelect();
 		log.debug("SelectByReference take : " + (ts-System.currentTimeMillis()));
 		
-		return "/mz/formation/formation.xhtml";
+		HttpServletResponse response = (HttpServletResponse)facesContext.getExternalContext().getResponse();
+		response.sendRedirect(ApplicationManager.PLBSI_V2 + "offre/formation/"+formation.getIdFormation());
+		facesContext.responseComplete();
+		// return "/mz/formation/formation.xhtml";
 	}
 
 	private void _initSelect() {

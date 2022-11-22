@@ -2,13 +2,11 @@ package com.plb.si.manager.lucene;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.faces.context.FacesContext;
@@ -34,17 +32,13 @@ import org.richfaces.component.SortOrder;
 import com.plb.dto.FormationDto;
 import com.plb.model.Categorie;
 import com.plb.model.Filiere;
-import com.plb.model.FilierePrincipaleComparator;
 import com.plb.model.Formation;
 import com.plb.model.FormationPartenaire;
 import com.plb.model.Partenaire;
 import com.plb.model.RangCategorieComparator;
 import com.plb.model.RangFiliereComparator;
 import com.plb.si.manager.ApplicationManager;
-import com.plb.si.service.FormationDao;
 import com.plb.si.service.SearchFormation;
-import com.plb.si.service.SessionDao;
-import com.plb.si.util.PlbUtil;
 
 @Name("archivedManager")
 @Scope(ScopeType.SESSION)

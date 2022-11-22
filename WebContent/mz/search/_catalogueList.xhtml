@@ -206,8 +206,8 @@
 				value="#{applicationManager.getSameFormations(_dto.formation)}"
 				var="f">
 				<s:link view="/mz/formation/formation.xhtml"
-					action="#{resultManager.select}">
-					<f:param name="formationId" value="#{f.idFormation}" />
+					action="#{resultManager.selectByReference}">
+					<f:param name="ref" value="#{f.reference}" />
 					<s:conversationPropagation type="none" />
 					#{f.libelle} (#{f.reference})
 				</s:link>;

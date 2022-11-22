@@ -26,9 +26,9 @@
 			</rich:columnGroup>
 		</f:facet>
 		<rich:column>
-			<s:link view="/mz/formation/formation.xhtml"
-				action="#{formationManager.select}">
-				<f:param name="formationId" value="#{_dto.formation.idFormation}" />
+			<s:link view="/mz/formation/formation.xhtml" target="_blank"
+				action="#{formationManager.selectByReference}">
+				<f:param name="ref" value="#{_dto.formation.reference}" />
 				<s:conversationPropagation type="none" />
 					#{_dto.formation.libelle}
 				</s:link>

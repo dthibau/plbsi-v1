@@ -45,7 +45,7 @@
 					styleClass="#{_formation.type}" value="#{_formation.reference}" />
 				<br />
 				<s:link view="/mz/formation/formation.xhtml"
-					action="#{formationManager.select}">
+					action="#{formationManager.selectByReference(_formation.reference)}">
 					<f:param name="formationId" value="#{_formation.idFormation}" />
 					<s:conversationPropagation type="none" />
 					#{_formation.libelle}

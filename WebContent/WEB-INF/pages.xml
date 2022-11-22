@@ -23,8 +23,6 @@
     </page>
     
 
-<page action="#{formationManager.select}" view-id="/DirectLink/formation.xhtml"/>
-
 <page action="#{grilleManager.authenticate}" view-id="/DirectLink/grille.xhtml"/>
 <page action="#{dispatchManager.generate}" view-id="/DirectLink/crossTab.xhtml"/>
 

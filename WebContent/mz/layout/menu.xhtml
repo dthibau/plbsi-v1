@@ -35,44 +35,11 @@
 					</s:link>
 				</h:panelGroup>
 			</f:facet>
-			<rich:menuItem submitMode="client" rendered="#{empty cidSearch}">
-				<s:link rendered="#{empty cidSearch}" id="menuSearchId1"
-					view="/mz/search/search.xhtml" value="Formations"
-					propagation="none" />
-			</rich:menuItem>
-			<rich:menuItem submitMode="client" rendered="#{!empty cidSearch}">
-				<s:link rendered="#{!empty cidSearch}" id="menuSearchId2"
-					view="/mz/search/search.xhtml" value="Formations">
-					<f:param name="cid" value="#{cidSearch}" />
-				</s:link>
-			</rich:menuItem>
-			<rich:menuItem submitMode="client"
-				rendered="#{sessionDataManager.managerIntervenantsManager}">
-				<s:link rendered="#{sessionDataManager.managerIntervenantsManager}"
-					id="menuCreateId" action="#{formationManager.createNew}"
-					value="Nouvelle Formation" propagation="none" />
-			</rich:menuItem>
-			<rich:menuItem submitMode="client"
-				rendered="#{sessionDataManager.managerIntervenantsManager}">
-				<s:link id="menuArchived" view="/mz/search/archived.xhtml"
-					value="Formation archivées" propagation="none" />
-			</rich:menuItem>
 			<rich:menuItem submitMode="client"
 				rendered="#{sessionDataManager.managerIntervenantsManager}">
 				<s:link rendered="#{sessionDataManager.managerIntervenantsManager}"
 					id="menuUpdate" view="/mz/update/update.xhtml" 
 					value="Mise à jour Description/Objectifs" propagation="none" />
-			</rich:menuItem>
-			<rich:menuSeparator id="menuSeparatorFilieres" />
-			<rich:menuItem submitMode="client"
-				rendered="#{sessionDataManager.managerIntervenantsManager}">
-				<s:link id="menuFilieres" view="/mz/filiere/filieres.xhtml"
-					value="Filières" propagation="none" />
-			</rich:menuItem>
-			<rich:menuItem submitMode="client"
-				rendered="#{sessionDataManager.managerIntervenantsManager}">
-				<s:link id="menuCategories" view="/mz/categorie/categories.xhtml"
-					value="Catégories" propagation="none" />
 			</rich:menuItem>
 		</rich:dropDownMenu>
 		<!-- menu Intervenant -->

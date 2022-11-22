@@ -200,8 +200,6 @@ public class EditProspectManager implements Serializable {
 	
 	private boolean relance;
 
-	private Devis lastGeneratedDevis;
-
 	// Attribut pour gérer l'envoie de mail
 	private String ancienCommercial;
 
@@ -286,8 +284,7 @@ public class EditProspectManager implements Serializable {
 			relance = (prospect.getProspectDetail().getDateRelance() != null);
 			
 		}
-		// Last Devis généré
-		_setLastGeneratedDevis();
+
 
 		messages = messageDao.findAllOrderedByDate(prospect);
 
@@ -882,10 +879,6 @@ public class EditProspectManager implements Serializable {
 		return historique;
 	}
 
-	@Observer("devisGenerated")
-	public void _setLastGeneratedDevis() {
-		lastGeneratedDevis = devisDao.findLastByProspect(prospect);
-	}
 
 	public Prospect getProspect() {
 		return prospect;
@@ -1242,13 +1235,6 @@ public class EditProspectManager implements Serializable {
 		return null;
 	}
 
-	public Devis getLastGeneratedDevis() {
-		return lastGeneratedDevis;
-	}
-
-	public void setLastGeneratedDevis(Devis lastGeneratedDevis) {
-		this.lastGeneratedDevis = lastGeneratedDevis;
-	}
 
 	public String getPotentielAsString() {
 		if (prospect != null && prospect.getProspectDetail() != null) {

@@ -447,10 +447,6 @@ public class SearchManager implements Serializable {
 			if (currentView == SESSION_VIEW && f.isintra()) {
 				continue;
 			}
-			if (currentView == CATALOGUE_VIEW && obsoleteTarifs
-					&& !f.hasObsoleteTarif(lastUpdateTarifs)) {
-				continue;
-			}
 			if (currentView == SESSION_VIEW && !plbHidden && obsoleteSessions
 					&& !f.hasObsoleteSession(nextYear)) {
 				continue;

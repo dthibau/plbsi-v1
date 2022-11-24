@@ -16,9 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -63,8 +61,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "for_libelle", columnDefinition = "text")
 	@Field
 	private String libelle;
-	@Column(name = "for_toplibelle", columnDefinition = "text")
-	private String topLibelle;
 	
 	@Column(name = "for_precision_libelle", columnDefinition = "text")
 	@Field
@@ -93,8 +89,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Field
 	@Length(max = 50)
 	private String motClePrimaire;
-	@Column(name = "for_balise_title", columnDefinition = "mediumtext")
-	private String baliseTitle;
 
 	@Column(name = "for_url", columnDefinition = "text")
 	private String url;
@@ -120,9 +114,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "modalites_suivi", columnDefinition = "longtext")
 	String modalitesSuivi = "";
 	
-	@Column(name = "for_nouveaute", columnDefinition = "enum")
-	String nouveaute = "non";
-
 	String libreIntra;
 
 	@ManyToOne
@@ -153,22 +144,13 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Lob
 	private String campagneAdWords;
 
-	@Column(name = "for_cours_officiel")
-	private String officiel;
-
 	@Column(columnDefinition = "bit")
 	private Boolean support;
 	@Column(columnDefinition = "bit")
 	private Boolean plbInter;
-	@Length(max = 255)
-	private String coursPlbCataloguePartenaire;
 
 	@ManyToOne(optional = true)
 	private FormationMutualisees formationMutualisees;
-
-	@ManyToMany
-	@JoinTable(name = "formation_formation", joinColumns = { @JoinColumn(name = "id_formation_principale", referencedColumnName = "id_formation") }, inverseJoinColumns = { @JoinColumn(name = "id_formation_suivante", referencedColumnName = "id_formation") })
-	private List<Formation> formationAssociees;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date archivedDate;
@@ -180,9 +162,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "for_date_derniere_modif")
 	private Date dateModification;
-
-	@Lob
-	private String argumentaire;
 
 	// Contenu web
 	@Lob
@@ -201,13 +180,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Column(name = "for_prerequis", columnDefinition = "mediumtext")
 	private String prerequis;
 
-	@Lob
-	@Column(name = "for_travaux_pratiques", columnDefinition = "mediumtext")
-	private String travauxPratiques;
-
-	@Lob
-	@Column(name = "for_infos", columnDefinition = "mediumtext")
-	private String infos;
 
 	@Column(name = "for_replace", columnDefinition = "text")
 	private String replace;
@@ -226,29 +198,14 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@Field
 	private String description;
 
-	@Column(name = "for_top10", columnDefinition = "tinyint")
-	private Integer top10 = 0;
-
-	private String certification;
-
 	private String distance = "Non";
-
-	@Column(name = "for_eligible_cpf", columnDefinition = "tinyint")
-	private Boolean eligibleCpf;
-
-	private String codeCpf;
-	
-	@Column(name = "for_elearning", columnDefinition = "tinyint")
-	private Boolean elearning;
 
 	@Column(name = "for_niveau")
 	private String niveau = "Fondamental";
 
 	@Column(name = "data_version")
 	private Integer dataVersion = 3;
-	
-	@Column(name = "autre_objectif_simple")
-	private String autreObjectifSimple;
+
 
 	@Transient
 	public boolean contains(Partenaire partenaire) {
@@ -260,38 +217,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 			}
 		}
 		return false;
-	}
-
-	public Formation getCopy() {
-		Formation ret = new Formation();
-		ret.setReference(reference);
-		ret.setLibelle(libelle);
-		ret.setCategorie(categorie);
-		ret.setPrecision(precision);
-		ret.setStatut(statut);
-		ret.setDuree(duree);
-		ret.setMotClePrimaire(motClePrimaire);
-		ret.setBaliseTitle(baliseTitle);
-		ret.setCampagneAdWords(campagneAdWords);
-		ret.setRemarques(remarques);
-		ret.setPrix(prix);
-		ret.setLibreIntra(libreIntra);
-		ret.setOrigine(origine);
-		ret.setCoursPlbCataloguePartenaire(coursPlbCataloguePartenaire);
-		ret.setPlbInter(plbInter);
-		ret.setSupport(support);
-		ret.setArgumentaire(argumentaire);
-
-		for (Session session : sessions) {
-			ret.addSession(session);
-		}
-		ret.setType(type);
-		for (FormationPartenaire fp : formationsPartenaire) {
-			ret.addFormationPartenaire(fp);
-		}
-
-		return ret;
-
 	}
 
 	public int getIdFormation() {
@@ -308,14 +233,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
-	}
-
-	public String getTopLibelle() {
-		return topLibelle;
-	}
-
-	public void setTopLibelle(String topLibelle) {
-		this.topLibelle = topLibelle;
 	}
 
 	public String getPrecision() {
@@ -370,14 +287,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setTarifIntra(String tarifIntra) {
 		this.tarifIntra = tarifIntra;
-	}
-
-	public String getNouveaute() {
-		return nouveaute;
-	}
-
-	public void setNouveaute(String nouveaute) {
-		this.nouveaute = nouveaute;
 	}
 
 	// This buisiness rule is also present in FormationDTO
@@ -502,12 +411,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		return remarques != null ? remarques.replace("\n", "<br/>") : "";
 	}
 
-	@Transient
-	public String getMultiLigneArgumentaire() {
-		return argumentaire != null ? argumentaire.replace("\n", "<br/>")
-				: null;
-	}
-
 	public List<Session> getSessions() {
 		return sessions;
 	}
@@ -516,14 +419,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.sessions = sessions;
 	}
 
-	public void addSession(Session session) {
-		sessions.add(session);
-	}
-
-	public void removeSession(Session session) {
-		sessions.remove(session);
-	}
-
+	
 	/**
 	 * Année en cours
 	 * 
@@ -742,23 +638,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.formationFilieres = formationFilieres;
 	}
 
-	public void addFormationFiliere(FormationFiliere formationFiliere) {
-		this.formationFilieres.add(formationFiliere);
-		formationFiliere.setFormation(this);
-	}
-
-	public void removeFormationFiliere(FormationFiliere formationFiliere) {
-		this.formationFilieres.remove(formationFiliere);
-	}
-
-	@Transient
-	public List<FormationFiliere> getCopyFormationFilieres() {
-		List<FormationFiliere> ret = new ArrayList<FormationFiliere>();
-		for (FormationFiliere ff : formationFilieres) {
-			ret.add(ff.getCopy());
-		}
-		return ret;
-	}
 
 	@Transient
 	public boolean contains(Filiere filiere) {
@@ -946,13 +825,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.motClePrimaire = motClePrimaire;
 	}
 
-	public String getBaliseTitle() {
-		return baliseTitle;
-	}
-
-	public void setBaliseTitle(String baliseTitle) {
-		this.baliseTitle = baliseTitle;
-	}
 
 	public String getCampagneAdWords() {
 		return campagneAdWords;
@@ -968,15 +840,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setSupport(Boolean support) {
 		this.support = support;
-	}
-
-	public String getCoursPlbCataloguePartenaire() {
-		return coursPlbCataloguePartenaire;
-	}
-
-	public void setCoursPlbCataloguePartenaire(
-			String coursPlbCataloguePartenaire) {
-		this.coursPlbCataloguePartenaire = coursPlbCataloguePartenaire;
 	}
 
 	public Boolean getPlbInter() {
@@ -1013,14 +876,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 			return formationMutualisees.getFormations();
 		}
 		return new ArrayList<Formation>();
-	}
-
-	public List<Formation> getFormationAssociees() {
-		return formationAssociees;
-	}
-
-	public void setFormationAssociees(List<Formation> formationAssociees) {
-		this.formationAssociees = formationAssociees;
 	}
 
 	public Date getArchivedDate() {
@@ -1094,14 +949,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.description = description;
 	}
 
-	public String getArgumentaire() {
-		return argumentaire;
-	}
-
-	public void setArgumentaire(String argumentaire) {
-		this.argumentaire = argumentaire;
-	}
-
 	public String getDescriptif() {
 		return descriptif;
 	}
@@ -1138,15 +985,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		return objectifs_operationnels != null ?HTMLUtils.getData(objectifs_operationnels) : (objectifs_pedagogiques != null ? HTMLUtils.getData(objectifs_pedagogiques) : "");
 	}
 
-
-	public String getTravauxPratiques() {
-		return travauxPratiques;
-	}
-
-	public void setTravauxPratiques(String travauxPratiques) {
-		this.travauxPratiques = travauxPratiques;
-	}
-
 	public String getPrerequis() {
 		return prerequis;
 	}
@@ -1168,14 +1006,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 			return prerequis.trim().substring(4, prerequis.trim().length() - 4);
 		}
 		return prerequis.trim();
-	}
-
-	public String getInfos() {
-		return infos;
-	}
-
-	public void setInfos(String infos) {
-		this.infos = infos;
 	}
 
 	public String getLibelleInformation() {
@@ -1226,22 +1056,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.participants = participants;
 	}
 
-	public Integer getTop10() {
-		return top10;
-	}
-
-	public void setTop10(Integer top10) {
-		this.top10 = top10;
-	}
-
-	public String getCertification() {
-		return certification;
-	}
-
-	public void setCertification(String certification) {
-		this.certification = certification;
-	}
-
 	public String getDistance() {
 		return distance;
 	}
@@ -1250,44 +1064,12 @@ public class Formation implements Serializable, Comparable<Formation> {
 		this.distance = distance;
 	}
 
-	public Boolean getEligibleCpf() {
-		return eligibleCpf;
-	}
-
-	public void setEligibleCpf(Boolean eligibleCpf) {
-		this.eligibleCpf = eligibleCpf;
-	}
-
-	public String getCodeCpf() {
-		return codeCpf;
-	}
-
-	public void setCodeCpf(String codeCpf) {
-		this.codeCpf = codeCpf;
-	}
-
-	public Boolean getElearning() {
-		return elearning;
-	}
-
-	public void setElearning(Boolean elearning) {
-		this.elearning = elearning;
-	}
-
 	public String getNiveau() {
 		return niveau;
 	}
 
 	public void setNiveau(String niveau) {
 		this.niveau = niveau;
-	}
-
-	public String getOfficiel() {
-		return officiel;
-	}
-
-	public void setOfficiel(String officiel) {
-		this.officiel = officiel;
 	}
 
 	public Integer getDataVersion() {
@@ -1327,14 +1109,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setModalitesSuivi(String modalitesSuivi) {
 		this.modalitesSuivi = modalitesSuivi;
-	}
-
-	public String getAutreObjectifSimple() {
-		return autreObjectifSimple;
-	}
-
-	public void setAutreObjectifSimple(String autreObjectifSimple) {
-		this.autreObjectifSimple = autreObjectifSimple;
 	}
 
 	@Override

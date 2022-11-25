@@ -120,9 +120,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	@JoinColumn(name = "id_categorie")
 	private Categorie categorie;
 
-	@Column(name = "for_rang_categorie")
-	private Integer rangCategorie;
-
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.EAGER)
 	@OrderBy("rang ASC")
 	private List<FormationFiliere> formationFilieres = new ArrayList<FormationFiliere>();
@@ -338,14 +335,22 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Transient
 	public Filiere getFilierePrincipale() {
-		return getCategorie() != null ? getCategorie().getFiliere() : null;
+		return getFormationFilieres().stream()
+				.filter(ff -> ff.getIsPrincipale().equals("oui"))
+				.map(ff->ff.getFiliere())
+				.collect(Collectors.toList()).get(0);
 		
 	}
 
 	@Transient
 	public int getRangFilierePrincipale() {
-		return getRangCategorie();
-		
+		int rangCategorieInFiliere= getFormationFilieres().stream()
+				.filter(ff -> ff.getIsPrincipale().equals("oui"))
+				.map(ff->ff.getCategorie().getRang())
+				.collect(Collectors.toList()).get(0);
+
+
+		return rangCategorieInFiliere*1000+getRangCategorie();
 	}
 
 	@Transient
@@ -713,11 +718,10 @@ public class Formation implements Serializable, Comparable<Formation> {
 	}
 
 	public Integer getRangCategorie() {
-		return rangCategorie;
-	}
-
-	public void setRangCategorie(Integer rangCategorie) {
-		this.rangCategorie = rangCategorie;
+		return getFormationFilieres().stream()
+				.filter(ff -> ff.getIsPrincipale().equals("oui"))
+				.map(ff->ff.getRang())
+				.collect(Collectors.toList()).get(0);
 	}
 
 	public List<FormationPartenaire> getFormationsPartenaire() {

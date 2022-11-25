@@ -80,14 +80,6 @@ public class FormationDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Formation> findByCategorie(Categorie categorie) {
-		Query q = entityManager
-				.createQuery("from Formation f where " + ACTIF_CLAUSE + " and f.categorie=:categorie order by f.rangCategorie");
-		q.setParameter("categorie", categorie);
-		return q.getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
 	public List<FormationFiliere> findFormationFiliereByCategorie(Categorie categorie) {
 		Query q = entityManager
 				.createQuery("from FormationFiliere ff where ff.categorie=:categorie order by ff.rang");
@@ -96,14 +88,6 @@ public class FormationDao {
 	}
 	
 
-	@SuppressWarnings("unchecked")
-	public List<Formation> findArchivedByCategorie(Categorie categorie) {
-		Query q = entityManager
-				.createQuery("from Formation f where " + ARCHIVE_CLAUSE + " and f.categorie=:categorie order by f.rangCategorie");
-		q.setParameter("categorie", categorie);
-		return q.getResultList();
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<FormationFiliere> findByCategorieSecondaire(Categorie categorie) {
 		Query q = entityManager
@@ -144,15 +128,6 @@ public class FormationDao {
 				.createQuery("from Formation f where " + ACTIF_CLAUSE + " and f.reference=:reference");
 		q.setParameter("reference", reference);
 		return (Formation)q.getSingleResult();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Formation> findSuivantes(Formation formation) {
-		Query q = entityManager
-				.createQuery("from Formation f where f.categorie=:categorie and f.rangCategorie > :rang and f.archivedDate is null order by rangCategorie");
-		q.setParameter("categorie", formation.getCategorie());
-		q.setParameter("rang", formation.getRangCategorie());
-		return q.getResultList();
 	}
 
 }

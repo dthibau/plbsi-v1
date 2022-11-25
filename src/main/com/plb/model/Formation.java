@@ -116,10 +116,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 	
 	String libreIntra;
 
-	@ManyToOne
-	@JoinColumn(name = "id_categorie")
-	private Categorie categorie;
-
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.EAGER)
 	@OrderBy("rang ASC")
 	private List<FormationFiliere> formationFilieres = new ArrayList<FormationFiliere>();
@@ -686,7 +682,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 		
 		StringBuffer sbf = new StringBuffer();
 		
-		sbf.append("<b>").append(categorie.getFiliere().getLibelle()).append("</b>");
+		sbf.append("<b>").append(getCategorie().getFiliere().getLibelle()).append("</b>");
 		for (FormationFiliere f : getFormationFilieres()) {
 			if (!f.isPrincipale()) {		
 				sbf.append("<br/>").append(f.getLibelle());
@@ -699,7 +695,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 		
 		StringBuffer sbf = new StringBuffer();
 		
-		sbf.append("<b>").append(categorie.getLibelle()).append("</b>");
+		sbf.append("<b>").append(getCategorie().getLibelle()).append("</b>");
 		for (FormationFiliere f : getFormationFilieres()) {
 			if (!f.isPrincipale()) {		
 				sbf.append("<br/>").append(f.getCategorie().getLibelle());
@@ -710,12 +706,13 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 
 	public Categorie getCategorie() {
-		return categorie;
+		return getFormationFilieres().stream()
+				.filter(ff -> ff.getIsPrincipale().equals("oui"))
+				.map(ff->ff.getCategorie())
+				.collect(Collectors.toList()).get(0);
 	}
 
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
+
 
 	public Integer getRangCategorie() {
 		return getFormationFilieres().stream()

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.plb.model.Session;
 
@@ -23,6 +24,7 @@ public class DevisSession implements Serializable {
 	@ManyToOne
 	private Session session;
 	
+	@Transient
 	private int nbParticipants;
 
 	public int getId() {

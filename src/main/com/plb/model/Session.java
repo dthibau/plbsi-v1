@@ -30,7 +30,7 @@ public class Session implements Comparable<Session> {
 	@Column(name = "forsess_date_fin", columnDefinition="timestamp")
 	@Temporal(TemporalType.DATE)
 	private Date fin;
-	@Column(name = "forsess_promotion", columnDefinition="smallint")
+	@Transient
 	private int promotion;
 
 	@ManyToOne

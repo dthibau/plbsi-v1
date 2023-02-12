@@ -4,6 +4,9 @@ tools {
   ant 'ANT'
   jdk 'JDK8'
 }
+   options {
+        buildDiscarder(logRotator(numToKeepStr: "20"))
+   }
   stages {
     stage('Build') {
       steps {  echo 'Building..'   

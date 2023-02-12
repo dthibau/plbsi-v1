@@ -2,6 +2,7 @@ pipeline {
    agent any
 tools {
   ant 'ANT'
+  jdk 'JDK8'
 }
   stages {
     stage('Build') {

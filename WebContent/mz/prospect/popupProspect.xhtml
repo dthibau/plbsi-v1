@@ -27,17 +27,6 @@
 			    	<h:graphicImage value="/img/imprimer.png" style="width:3%;"/>  
 				</s:link> 
 				&nbsp;&nbsp;
-      			<a:commandLink action="#{editProspectManager.prepareDevis()}" rendered="#{editProspectManager.visuMode}" 
-      			render="devisContent" oncomplete="#{rich:component('devisPopup')}.show();">
-      				<h:graphicImage id="dev" value="/img/devis.jpg" style="width:3%;">
-      					<rich:tooltip styleClass="tooltip" layout="block">
-        					<span> 
-        						Cliquez pour générer un devis associé a ce prospect.
-          					</span>
-    					</rich:tooltip>
-    				</h:graphicImage>
-				</a:commandLink>
-				&nbsp;&nbsp;
 
       			<s:link target="_blank" view="/mz/devis/envoiDevis.xhtml" action="#{envoiDevisManager.selectProspect()}">
       			     <f:param name="idProspect" value="#{prospect.idProspect}"/>

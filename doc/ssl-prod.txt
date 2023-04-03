@@ -22,7 +22,7 @@ openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out keystore.p12 -n
 Mot de passe : 9lM)[dfZ
 
 # Accès en lecture au certificat
-sudo chmod 755 /etc/letsencrypt/live/
+sudo chmod -R 755 /etc/letsencrypt/live/
 
 # Renew automatic
 # Inscription de la cron-tab avec re-transformation et redémarrage du service

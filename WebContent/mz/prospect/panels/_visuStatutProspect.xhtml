@@ -56,6 +56,17 @@
 						<h:outputText value="N/C"
 							rendered="#{empty editProspectManager.prospect.prospectDetail.date_souhaite}" />
 					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.modalites']}" />
+						</ui:define>
+						<h:outputText value="Non renseigné"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null}" />
+						<h:outputText value="Présentiel"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite != null and !editProspectManager.prospect.prospectDetail.modalite}" />
+						<h:outputText value="A distance"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite}" />
+					</s:decorate>
 				</fieldset>
 			</td>
 			<td>
@@ -80,18 +91,20 @@
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.potentiel']}" />
 						</ui:define>
-						<h:outputText
-							value="#{editProspectManager.potentielAsString}" />
+						<h:outputText value="#{editProspectManager.potentielAsString}" />
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
 						<ui:define name="label">
 							<h:outputText value="#{messages['prospect.dateCreation']}" />
 						</ui:define>
-						<h:outputText value="#{editProspectManager.prospect.dateCreation}" >
-						<f:convertDateTime type="both" locale="FR" timeZone="Europe/Paris"/>
+						<h:outputText value="#{editProspectManager.prospect.dateCreation}">
+							<f:convertDateTime type="both" locale="FR"
+								timeZone="Europe/Paris" />
 						</h:outputText>
-						<a:outputPanel layout="inline" rendered="#{editProspectManager.prospect.prospectDetail.rempliPar != null}">
-						/ <h:outputText value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
+						<a:outputPanel layout="inline"
+							rendered="#{editProspectManager.prospect.prospectDetail.rempliPar != null}">
+						/ <h:outputText
+								value="#{editProspectManager.prospect.prospectDetail.rempliPar}" />
 						</a:outputPanel>
 					</s:decorate>
 					<s:decorate template="../../layout/display.xhtml">
@@ -100,11 +113,12 @@
 						</ui:define>
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.datedevis}"
-							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}" >
-							<f:convertDateTime type="date" locale="FR" timeZone="Europe/Paris"/>
-							</h:outputText>
-							
-							
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.datedevis}">
+							<f:convertDateTime type="date" locale="FR"
+								timeZone="Europe/Paris" />
+						</h:outputText>
+
+
 						<h:outputText value="Non envoyé"
 							rendered="#{empty editProspectManager.prospect.prospectDetail.datedevis}" />
 					</s:decorate>
@@ -114,11 +128,12 @@
 						</ui:define>
 						<h:outputText
 							value="#{editProspectManager.prospect.prospectDetail.dateRelance}"
-							rendered="#{!empty editProspectManager.prospect.prospectDetail.dateRelance}" >
-							<f:convertDateTime type="date" locale="FR" timeZone="Europe/Paris"/>
-							</h:outputText>
-							
-							
+							rendered="#{!empty editProspectManager.prospect.prospectDetail.dateRelance}">
+							<f:convertDateTime type="date" locale="FR"
+								timeZone="Europe/Paris" />
+						</h:outputText>
+
+
 						<h:outputText value="Pas de relance"
 							rendered="#{empty editProspectManager.prospect.prospectDetail.dateRelance}" />
 					</s:decorate>

@@ -75,6 +75,17 @@
 								render=":editForm:f_date_souhaite:f_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
 						</h:inputText>
 					</s:decorate>
+					<s:decorate template="../../layout/display.xhtml">
+						<ui:define name="label">
+							<h:outputText value="#{messages['prospect.modalites']}" />
+						</ui:define>
+						<h:outputText value="Non renseigné"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite == null}" />
+						<h:outputText value="Présentiel"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite != null and !editProspectManager.prospect.prospectDetail.modalite}" />
+						<h:outputText value="A distance"
+							rendered="#{editProspectManager.prospect.prospectDetail.modalite}" />
+					</s:decorate>
 				</fieldset>
 			</td>
 			<td>

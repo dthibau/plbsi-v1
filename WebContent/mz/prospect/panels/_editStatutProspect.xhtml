@@ -56,14 +56,12 @@
 
 					<a:outputPanel id="s_lieu">
 						<s:decorate template="../../layout/display.xhtml"
-							rendered="#{editProspectManager.prospect.prospectDetail.typeFormation.equals('INTRA')}"
 							style="width:400px;">
 							<ui:define name="label">
 								<h:outputText value="#{messages['prospect.lieu']}" />
 							</ui:define>
-																<h:inputText value="#{editProspectManager.prospect.prospectDetail.lieu}"
-											style="width:160px; height:20px;" required="true" />
-
+							<h:outputText
+								value="#{!empty editProspectManager.prospectDetail.lieu ? editProspectManager.prospectDetail.lieu : 'A définir'}" />
 						</s:decorate>
 					</a:outputPanel>
 					<s:decorate id="s_date_souhaite"
@@ -77,21 +75,6 @@
 								render=":editForm:f_date_souhaite:f_date_souhaite_input :editForm:i_date_souhaite:i_date_souhaite_input" />
 						</h:inputText>
 					</s:decorate>
-					<a:outputPanel id="s_modalites">
-						<s:decorate template="../../layout/display.xhtml"
-							style="width:400px;">
-							<ui:define name="label">
-								<h:outputText value="#{messages['prospect.modalites']}" />
-							</ui:define>
-							<h:selectOneMenu
-								value="#{editProspectManager.prospect.prospectDetail.modalite}"
-								style="width:160px; height:20px;">
-								<f:selectItem itemValue="" itemLabel="Non renseigné" />
-								<f:selectItem itemValue="false" itemLabel="Présentiel" />
-								<f:selectItem itemValue="true" itemLabel="A distance" />
-							</h:selectOneMenu>
-						</s:decorate>
-					</a:outputPanel>
 				</fieldset>
 			</td>
 			<td>

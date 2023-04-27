@@ -20,7 +20,6 @@ public class Partenaire {
 	
 	private String web;
 
-	private Float remise;
 	
 	public int getId() {
 		return id;
@@ -46,14 +45,6 @@ public class Partenaire {
 		this.web = web;
 	}
 
-	
-	public Float getRemise() {
-		return remise;
-	}
-
-	public void setRemise(Float remise) {
-		this.remise = remise;
-	}
 
 	@Override
 	public int hashCode() {

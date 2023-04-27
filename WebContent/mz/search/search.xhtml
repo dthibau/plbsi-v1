@@ -10,14 +10,10 @@
 
 	<ui:define name="body">
 
-		<ui:include src="filter.xhtml" />
-
 		<h:form id="resultForm">
-			<ui:include src="#{searchManager.currentView == SESSION_VIEW ? '_sessionList.xhtml' : '_catalogueList.xhtml'}"/>
+			<ui:include src="_catalogueList.xhtml"/>
 		</h:form>
 	</ui:define>
 	
-	<ui:define name="tools">
-		<ui:include src="_tools.xhtml"/>
-	</ui:define>
+
 </ui:composition>

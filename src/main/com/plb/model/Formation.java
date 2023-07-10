@@ -116,7 +116,7 @@ public class Formation implements Serializable, Comparable<Formation> {
 	
 	String libreIntra;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "formation", fetch = FetchType.LAZY)
 	@OrderBy("rang ASC")
 	private List<FormationFiliere> formationFilieres = new ArrayList<FormationFiliere>();
 

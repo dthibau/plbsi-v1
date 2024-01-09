@@ -97,6 +97,12 @@
 			<ui:param name="type" value="date" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header"
+				value="#{messages['prospect.dateDevis']}" />
+			<ui:param name="value" value="#{_pdto.dateDevis}" />
+			<ui:param name="type" value="date" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['intra.id']}" />
 			<ui:param name="value"
 				value="#{!empty _pdto.prospect.informationIntra ? _pdto.prospect.informationIntra.idInforamtionIntra : ''}" />

@@ -13,6 +13,11 @@
 			<ui:param name="type" value="date" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.rempliePar']}" />
+			<ui:param name="value" value="#{_pdto.prospect.prospectDetail.rempliPar}" />
+			<ui:param name="type" value="date" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['prospect.nomEntreprise']}" />
 			<ui:param name="value" value="#{_pdto.prospect.societe}" />
 			<ui:param name="type" value="text" />

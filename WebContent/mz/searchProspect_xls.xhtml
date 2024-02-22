@@ -13,6 +13,11 @@
 			<ui:param name="type" value="date" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.date']}" />
+			<ui:param name="value" value="#{_pdto.heureCreation}" />
+			<ui:param name="type" value="date" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['prospect.rempliePar']}" />
 			<ui:param name="value" value="#{_pdto.prospect.prospectDetail.rempliPar}" />
 			<ui:param name="type" value="date" />
@@ -87,7 +92,7 @@
 		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['prospect.montant']}" />
 			<ui:param name="value"
-				value="#{_pdto.prospect.prospectDetail.montantAsString}" />
+				value="#{_pdto.prospect.prospectDetail.montant}" />
 			<ui:param name="type" value="float" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">

@@ -23,7 +23,8 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 	public static ResourceBundle bundle = SeamResourceBundle.getBundle();
 	public static String statut1 = bundle.getString("prospect.nonAffecte");
 	public static String statut2 = bundle.getString("prospect.gagne");
-	public static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	public static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+	public static SimpleDateFormat hf = new SimpleDateFormat("HH:mm");
 
 	private Prospect prospect;
 	// Le rôle visualisant le prospect
@@ -95,6 +96,9 @@ public class ProspectDto implements Serializable, Comparable<ProspectDto> {
 
 	public String getDateCreation() {
 		return df.format(prospect.getDateCreation());
+	}
+	public String getHeureCreation() {
+		return hf.format(prospect.getDateCreation());
 	}
 
 	public String getDateModification() {

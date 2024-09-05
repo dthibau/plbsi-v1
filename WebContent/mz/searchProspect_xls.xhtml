@@ -42,9 +42,24 @@
 			<ui:param name="value" value="#{_pdto.prospect.ville}" />
 			<ui:param name="type" value="text" />
 		</ui:include>
-								<ui:include src="common/excel-column.xhtml">
+		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['prospect.pays']}" />
 			<ui:param name="value" value="#{_pdto.prospect.pays}" />
+			<ui:param name="type" value="text" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.telephone']}" />
+			<ui:param name="value" value="#{_pdto.prospect.telephone}" />
+			<ui:param name="type" value="text" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.nom']}" />
+			<ui:param name="value" value="#{_pdto.prospect.nom}" />
+			<ui:param name="type" value="text" />
+		</ui:include>
+				<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.prenom']}" />
+			<ui:param name="value" value="#{_pdto.prospect.prenom}" />
 			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">

@@ -15,7 +15,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -139,8 +138,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	@Column(columnDefinition = "bit")
 	private Boolean support;
-	@Column(columnDefinition = "bit")
-	private Boolean plbInter;
 
 	@ManyToOne(optional = true)
 	private FormationMutualisees formationMutualisees;
@@ -841,14 +838,6 @@ public class Formation implements Serializable, Comparable<Formation> {
 
 	public void setSupport(Boolean support) {
 		this.support = support;
-	}
-
-	public Boolean getPlbInter() {
-		return plbInter;
-	}
-
-	public void setPlbInter(Boolean plbInter) {
-		this.plbInter = plbInter;
 	}
 
 	public FormationMutualisees getFormationMutualisees() {

@@ -13,7 +13,7 @@
 	<rich:dataTable id="resultList" value="#{resultManager.results}"
 		var="_dto" first="#{resultManager.pagination ? listManager.first : 0}"
 		rows="#{resultManager.pagination ? listManager.pageSize : 0}"
-		rowClass="#{_dto.formation.visible} #{_dto.formation.plbInter ? 'plb' : ''}">
+		rowClass="#{_dto.formation.visible}">
 		<rich:column id="reference" styleClass="#{_dto.formation.type}"
 			sortOrder="#{resultManager.getOrder('reference')}"
 			sortBy="#{_dto.formation.reference}">

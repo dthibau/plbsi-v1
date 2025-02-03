@@ -63,6 +63,11 @@
 			<ui:param name="type" value="text" />
 		</ui:include>
 		<ui:include src="common/excel-column.xhtml">
+			<ui:param name="header" value="#{messages['prospect.fonction']}" />
+			<ui:param name="value" value="#{_pdto.prospectDetail.fonction}" />
+			<ui:param name="type" value="text" />
+		</ui:include>
+		<ui:include src="common/excel-column.xhtml">
 			<ui:param name="header" value="#{messages['prospect.natureClient']}" />
 			<ui:param name="value" value="#{_pdto.prospectDetail.natureClient}" />
 			<ui:param name="type" value="text" />
